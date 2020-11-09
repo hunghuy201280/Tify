@@ -4,3 +4,4 @@ Debug/
 *.cache
 **/.suo
 storage.ide-wal
+**/sqlite3/
