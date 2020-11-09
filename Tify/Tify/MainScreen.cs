@@ -151,6 +151,8 @@ namespace Tify
             //Mở childForm
             if (sender == home_button)
                 openChildForm(new Home(this));
+            else if (sender == myMix_button)
+                openChildForm(new MyMix());
             else
                 MessageBox.Show("Chuaco");
         }
