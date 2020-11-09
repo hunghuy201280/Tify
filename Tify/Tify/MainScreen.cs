@@ -30,6 +30,7 @@ namespace Tify
 
             soundPlayer.URL = @"https://data25.chiasenhac.com/download2/2126/1/2125711-e9320e2c/128/Giau%20Vi%20Ban_%20Sang%20Vi%20Vo%20-%20RPT%20MCK.mp3";
             time = soundPlayer.controls.currentPosition;
+            soundPlayer.controls.stop();
         }
 
         #endregion Load form
