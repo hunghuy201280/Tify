@@ -6,3 +6,4 @@ Debug/
 storage.ide-wal
 **/sqlite3/*.ide
 **/sqlite3/*.ide-shm
+**/DesignTimeBuild/
