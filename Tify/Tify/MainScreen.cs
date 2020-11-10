@@ -148,7 +148,7 @@ namespace Tify
                     temp.ForeColor = Color.FromArgb(255, 255, 255);
                 }
             }
-            
+
             //Mở childForm
             if (sender == home_button)
                 openChildForm(new Home(this));
@@ -157,7 +157,12 @@ namespace Tify
                 bool ismix = false;
                 openChildForm(new MyMix(ismix));
             }
+            else if (sender == playlist_button)
+            {
+                openChildForm(new PlayList());
+            }
             else
+
                 MessageBox.Show("Chuaco");
         }
 

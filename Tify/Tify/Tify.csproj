@@ -70,6 +70,12 @@
     <Compile Include="MyMix.designer.cs">
       <DependentUpon>MyMix.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayList.Designer.cs">
+      <DependentUpon>PlayList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Home.resx">
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyMix.resx">
       <DependentUpon>MyMix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayList.resx">
+      <DependentUpon>PlayList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
