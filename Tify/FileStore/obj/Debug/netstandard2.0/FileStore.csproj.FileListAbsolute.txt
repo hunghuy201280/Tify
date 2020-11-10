@@ -18,3 +18,13 @@ C:\Users\Hi\Desktop\doan\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.
 C:\Users\Hi\Desktop\doan\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.AssemblyInfo.cs
 C:\Users\Hi\Desktop\doan\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.dll
 C:\Users\Hi\Desktop\doan\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.pdb
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\bin\Debug\netstandard2.0\FileStore.deps.json
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\bin\Debug\netstandard2.0\FileStore.dll
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\bin\Debug\netstandard2.0\FileStore.pdb
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.csprojAssemblyReference.cache
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.Resource.resources
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.csproj.GenerateResource.cache
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.AssemblyInfoInputs.cache
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.AssemblyInfo.cs
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.dll
+C:\Users\Hi\Source\Repos\hunghuy201280\Tify\Tify\FileStore\obj\Debug\netstandard2.0\FileStore.pdb
