@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Tify
+{
+    public partial class CreatePlayList : Form
+    {
+        public CreatePlayList()
+        {
+            InitializeComponent();
+            Text_PlayList_Count.Text = "0/500";
+
+
+        }
+    }
+}

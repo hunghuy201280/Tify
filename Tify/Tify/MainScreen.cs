@@ -304,5 +304,15 @@ namespace Tify
         //test
 
         #endregion test
+
+
+        #region createplaylist
+        private void createNewPlaylist_button_Click(object sender, EventArgs e)
+        {
+            var myForm = new CreatePlayList();
+            myForm.Show();
+        }
+
+        #endregion createplaylist
     }
 }
