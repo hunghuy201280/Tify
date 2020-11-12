@@ -58,12 +58,19 @@
             this.playlist_button = new System.Windows.Forms.Button();
             this.artists_button = new System.Windows.Forms.Button();
             this.tracks_button = new System.Windows.Forms.Button();
+            this.searchBar_panel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.searchBar_textBox = new System.Windows.Forms.TextBox();
+            this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
             this.player_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).BeginInit();
             this.menu_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
+            this.searchBar_panel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
             this.SuspendLayout();
             // 
             // player_panel
@@ -119,18 +126,18 @@
             this.volume_trackBar.ButtonBorderColor = System.Drawing.Color.Black;
             this.volume_trackBar.ButtonColor = System.Drawing.Color.White;
             this.volume_trackBar.ButtonCornerRadius = ((uint)(4u));
-            this.volume_trackBar.ButtonSize = new System.Drawing.Size(12, 12);
+            this.volume_trackBar.ButtonSize = new System.Drawing.Size(10, 10);
             this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
             this.volume_trackBar.ContextMenuStrip = null;
             this.volume_trackBar.LargeChange = 2;
-            this.volume_trackBar.Location = new System.Drawing.Point(951, 29);
+            this.volume_trackBar.Location = new System.Drawing.Point(951, 40);
             this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
             this.volume_trackBar.Maximum = 100;
             this.volume_trackBar.Minimum = 0;
             this.volume_trackBar.Name = "volume_trackBar";
             this.volume_trackBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.volume_trackBar.ShowButtonOnHover = false;
-            this.volume_trackBar.Size = new System.Drawing.Size(130, 45);
+            this.volume_trackBar.Size = new System.Drawing.Size(130, 11);
             this.volume_trackBar.SliderFlyOut = MediaSlider.MediaSlider.FlyOutStyle.None;
             this.volume_trackBar.SmallChange = 1;
             this.volume_trackBar.SmoothScrolling = false;
@@ -139,7 +146,7 @@
             this.volume_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.volume_trackBar.TickType = MediaSlider.MediaSlider.TickMode.Standard;
             this.volume_trackBar.TrackBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.volume_trackBar.TrackDepth = 4;
+            this.volume_trackBar.TrackDepth = 2;
             this.volume_trackBar.TrackFillColor = System.Drawing.Color.White;
             this.volume_trackBar.TrackProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(101)))), ((int)(((byte)(188)))));
             this.volume_trackBar.TrackShadow = false;
@@ -350,6 +357,7 @@
             this.createNewPlaylist_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.createNewPlaylist_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.createNewPlaylist_button.UseVisualStyleBackColor = true;
+            this.createNewPlaylist_button.Click += new System.EventHandler(this.createNewPlaylist_button_Click);
             this.createNewPlaylist_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.createNewPlaylist_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
@@ -587,15 +595,62 @@
             this.tracks_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.tracks_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
+            // searchBar_panel
+            // 
+            this.searchBar_panel.BackColor = System.Drawing.Color.Black;
+            this.searchBar_panel.Controls.Add(this.panel1);
+            this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
+            this.searchBar_panel.Name = "searchBar_panel";
+            this.searchBar_panel.Size = new System.Drawing.Size(857, 60);
+            this.searchBar_panel.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.panel1.Controls.Add(this.searchBar_textBox);
+            this.panel1.Controls.Add(this.searchBar_icon);
+            this.panel1.Location = new System.Drawing.Point(455, 14);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(390, 40);
+            this.panel1.TabIndex = 0;
+            // 
+            // searchBar_textBox
+            // 
+            this.searchBar_textBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.searchBar_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.searchBar_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
+            this.searchBar_textBox.Location = new System.Drawing.Point(40, 0);
+            this.searchBar_textBox.Name = "searchBar_textBox";
+            this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
+            this.searchBar_textBox.TabIndex = 2;
+            this.searchBar_textBox.Text = "Search";
+            // 
+            // searchBar_icon
+            // 
+            this.searchBar_icon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchBar_icon.Image = ((System.Drawing.Image)(resources.GetObject("searchBar_icon.Image")));
+            this.searchBar_icon.Location = new System.Drawing.Point(0, 0);
+            this.searchBar_icon.Name = "searchBar_icon";
+            this.searchBar_icon.Size = new System.Drawing.Size(40, 40);
+            this.searchBar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.searchBar_icon.TabIndex = 1;
+            this.searchBar_icon.TabStop = false;
+            // 
             // childForm_panel
             // 
+            this.childForm_panel.AutoScroll = true;
             this.childForm_panel.BackColor = System.Drawing.Color.Black;
             this.childForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
-            this.childForm_panel.Location = new System.Drawing.Point(240, 0);
+            this.childForm_panel.Location = new System.Drawing.Point(240, 60);
             this.childForm_panel.Name = "childForm_panel";
-            this.childForm_panel.Size = new System.Drawing.Size(857, 637);
-            this.childForm_panel.TabIndex = 24;
+            this.childForm_panel.Size = new System.Drawing.Size(857, 577);
+            this.childForm_panel.TabIndex = 26;
             // 
             // MainScreen
             // 
@@ -603,10 +658,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 737);
             this.Controls.Add(this.childForm_panel);
+            this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(775, 364);
+            this.MinimumSize = new System.Drawing.Size(774, 362);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -619,6 +675,10 @@
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
+            this.searchBar_panel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -652,6 +712,10 @@
         public System.Windows.Forms.Label myPlaylist_label;
         public System.Windows.Forms.Button createNewPlaylist_button;
         public System.Windows.Forms.ImageList createPlaylist_imgList;
+        private System.Windows.Forms.Panel searchBar_panel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox searchBar_icon;
+        private System.Windows.Forms.TextBox searchBar_textBox;
         public System.Windows.Forms.Panel childForm_panel;
     }
 }

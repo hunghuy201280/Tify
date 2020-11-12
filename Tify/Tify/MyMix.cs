@@ -17,6 +17,15 @@ namespace Tify
             InitializeComponent();
             
         }
+         bool Mixed ;
+
+        public MyMix(bool hasMix)
+        {
+            Mixed = hasMix;
+
+            InitializeComponent();
+
+        }
 
         private void MyMix_Load(object sender, EventArgs e)
         {
@@ -26,35 +35,29 @@ namespace Tify
             this.ClientSize.Width / 2 - panel_MyMix.Size.Width / 2,
             this.ClientSize.Height / 2 - panel_MyMix.Size.Height / 2);
             panel_MyMix.Anchor = AnchorStyles.None;
-
-            
-
-        }
-      
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-            if (panel_MyMix.Visible == true)
+            if (Mixed == true)
             {
-                groupBox1.Visible = true;
+                MyMix_GroupBox.Visible = true;
                 panel_MyMix.Visible = false;
             }
             else
             {
-                groupBox1.Visible = false;
+                MyMix_GroupBox.Visible = false;
                 panel_MyMix.Visible = true;
             }
-          
+
+
+
 
         }
 
+
+       
         private void groupBox1_Resize(object sender, EventArgs e)
         {
 
-            groupBox1.Width = this.Width - 12;
-            groupBox1.Height = this.Height - 12;
+            MyMix_GroupBox.Width = this.Width - 12;
+            MyMix_GroupBox.Height = this.Height - 12;
         }
     }
 }
