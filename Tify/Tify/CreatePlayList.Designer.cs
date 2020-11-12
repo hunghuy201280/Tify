@@ -34,6 +34,7 @@
             this.Title_TextBox = new System.Windows.Forms.TextBox();
             this.Description_TextBox = new System.Windows.Forms.TextBox();
             this.Text_PlayList_Count = new System.Windows.Forms.Label();
+            this.CreatePlayList_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Text_CreatePlaylist
@@ -106,12 +107,26 @@
             this.Text_PlayList_Count.TabIndex = 5;
             this.Text_PlayList_Count.Text = "Text";
             // 
+            // CreatePlayList_Button
+            // 
+            this.CreatePlayList_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(98)))), ((int)(((byte)(105)))));
+            this.CreatePlayList_Button.FlatAppearance.BorderSize = 0;
+            this.CreatePlayList_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreatePlayList_Button.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlayList_Button.Location = new System.Drawing.Point(218, 341);
+            this.CreatePlayList_Button.Name = "CreatePlayList_Button";
+            this.CreatePlayList_Button.Size = new System.Drawing.Size(133, 50);
+            this.CreatePlayList_Button.TabIndex = 6;
+            this.CreatePlayList_Button.Text = "Create Play List";
+            this.CreatePlayList_Button.UseVisualStyleBackColor = false;
+            // 
             // CreatePlayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(600, 337);
+            this.ClientSize = new System.Drawing.Size(600, 403);
+            this.Controls.Add(this.CreatePlayList_Button);
             this.Controls.Add(this.Text_PlayList_Count);
             this.Controls.Add(this.Description_TextBox);
             this.Controls.Add(this.Title_TextBox);
@@ -135,5 +150,6 @@
         private System.Windows.Forms.TextBox Title_TextBox;
         private System.Windows.Forms.TextBox Description_TextBox;
         private System.Windows.Forms.Label Text_PlayList_Count;
+        private System.Windows.Forms.Button CreatePlayList_Button;
     }
 }
