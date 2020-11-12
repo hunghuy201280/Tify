@@ -11,6 +11,8 @@ namespace Tify
         public MainScreen()
         {
             InitializeComponent();
+            searchBar_textBox.GotFocus += RemoveText;
+            searchBar_textBox.LostFocus +=AddText;
         }
 
         #region Load form
@@ -154,7 +156,7 @@ namespace Tify
                 openChildForm(new Home(this));
             else if (sender == myMix_button)
             {
-                bool ismix = false;
+                bool ismix = true;
                 openChildForm(new MyMix(ismix));
             }
             else if (sender == playlist_button)
@@ -285,10 +287,7 @@ namespace Tify
             else if (type == "panel")
             {
                 Panel panel = needHide as Panel;
-                panel.AutoScroll = false;
-                panel.HorizontalScroll.Maximum = 0;
-                panel.AutoScroll = false;
-                panel.VerticalScroll.Visible = false;
+                
 
                 panel.VerticalScroll.Maximum = 0;
                 panel.AutoScroll = false;
@@ -305,6 +304,30 @@ namespace Tify
 
         #endregion test
 
+
+        #region placeHolder for search bar
+
+        public void RemoveText(object sender, EventArgs e)
+        {
+            if (searchBar_textBox.Text == "Search")
+            {
+                searchBar_textBox.Text = "";
+                searchBar_textBox.ForeColor = Color.White;
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchBar_textBox.Text))
+            {
+                searchBar_textBox.Text = "Search";
+                searchBar_textBox.ForeColor = Color.FromArgb(152, 162, 166);
+            }
+        }
+
+
+
+        #endregion
 
         #region createplaylist
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
