@@ -130,7 +130,7 @@
             this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
             this.volume_trackBar.ContextMenuStrip = null;
             this.volume_trackBar.LargeChange = 2;
-            this.volume_trackBar.Location = new System.Drawing.Point(951, 29);
+            this.volume_trackBar.Location = new System.Drawing.Point(951, 40);
             this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
             this.volume_trackBar.Maximum = 100;
             this.volume_trackBar.Minimum = 0;
