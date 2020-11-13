@@ -78,7 +78,7 @@
             this.Title_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Title_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Title_TextBox.Location = new System.Drawing.Point(34, 105);
-            this.Title_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Title_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Title_TextBox.Name = "Title_TextBox";
             this.Title_TextBox.Size = new System.Drawing.Size(528, 23);
             this.Title_TextBox.TabIndex = 3;
@@ -88,12 +88,12 @@
             this.Description_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Description_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Description_TextBox.Location = new System.Drawing.Point(34, 195);
-            this.Description_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Description_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Description_TextBox.Multiline = true;
             this.Description_TextBox.Name = "Description_TextBox";
             this.Description_TextBox.Size = new System.Drawing.Size(528, 105);
             this.Description_TextBox.TabIndex = 4;
-            this.Description_TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Description_TextBox_KeyPress);
+            this.Description_TextBox.TextChanged += new System.EventHandler(this.Description_TextBox_TextChanged);
             // 
             // Text_PlayList_Count
             // 
@@ -134,7 +134,7 @@
             this.Controls.Add(this.Text_PlayList_Name);
             this.Controls.Add(this.Text_CreatePlaylist);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreatePlayList";
             this.Text = "CreatePlayList";
             this.ResumeLayout(false);

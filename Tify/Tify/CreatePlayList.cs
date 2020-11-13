@@ -15,29 +15,17 @@ namespace Tify
         public CreatePlayList()
         {
             InitializeComponent();
-            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() +"/ 500" ;
+            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
+
 
 
         }
-        int count = 0;
-        private void Description_TextBox_KeyPress(object sender, KeyPressEventArgs e)
+       
+
+        private void Description_TextBox_TextChanged(object sender, EventArgs e)
         {
-
-            /* Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";*/
-            if (e.KeyChar == '\b')
-            {
-                count--;
-            }
-            else if (count >= 500)
-            {
-                e.Handled = true;
-            }
-            else
-                count++;
-            if (count <= 0)
-                count = 0;
-            Text_PlayList_Count.Text = count.ToString() + "/ 500";
+            Description_TextBox.MaxLength = 5;
+            Text_PlayList_Count.Text = (Description_TextBox.Text.Length).ToString() + "/ 500";
         }
-
     }
 }
