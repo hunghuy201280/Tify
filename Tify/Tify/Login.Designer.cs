@@ -51,13 +51,13 @@
             this.Login_Panel.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_Panel.Location = new System.Drawing.Point(238, 97);
             this.Login_Panel.Name = "Login_Panel";
-            this.Login_Panel.Size = new System.Drawing.Size(314, 301);
+            this.Login_Panel.Size = new System.Drawing.Size(365, 301);
             this.Login_Panel.TabIndex = 0;
             // 
             // Login_Button
             // 
             this.Login_Button.FlatAppearance.BorderSize = 0;
-            this.Login_Button.Location = new System.Drawing.Point(121, 237);
+            this.Login_Button.Location = new System.Drawing.Point(157, 236);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.Size = new System.Drawing.Size(75, 30);
             this.Login_Button.TabIndex = 5;
@@ -66,14 +66,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(103, 167);
+            this.textBox2.Location = new System.Drawing.Point(130, 158);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(165, 26);
             this.textBox2.TabIndex = 4;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 124);
+            this.textBox1.Location = new System.Drawing.Point(130, 115);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(165, 26);
             this.textBox1.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             this.Login_Pwd.AutoSize = true;
             this.Login_Pwd.ForeColor = System.Drawing.Color.White;
-            this.Login_Pwd.Location = new System.Drawing.Point(15, 170);
+            this.Login_Pwd.Location = new System.Drawing.Point(42, 161);
             this.Login_Pwd.Name = "Login_Pwd";
             this.Login_Pwd.Size = new System.Drawing.Size(82, 19);
             this.Login_Pwd.TabIndex = 2;
@@ -93,7 +93,7 @@
             this.Login_UserName.AutoSize = true;
             this.Login_UserName.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_UserName.ForeColor = System.Drawing.Color.White;
-            this.Login_UserName.Location = new System.Drawing.Point(3, 124);
+            this.Login_UserName.Location = new System.Drawing.Point(30, 115);
             this.Login_UserName.Name = "Login_UserName";
             this.Login_UserName.Size = new System.Drawing.Size(101, 20);
             this.Login_UserName.TabIndex = 1;
@@ -102,7 +102,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(121, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(157, 22);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(76, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
