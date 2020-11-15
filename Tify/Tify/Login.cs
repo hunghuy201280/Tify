@@ -15,10 +15,10 @@ namespace Tify
         public Login()
         {
             InitializeComponent();
-            panel1.Location = new Point(
-            this.ClientSize.Width / 2 - panel1.Size.Width / 2,
-            this.ClientSize.Height / 2 - panel1.Size.Height / 2);
-            panel1.Anchor = AnchorStyles.None;
+            Login_Panel.Location = new Point(
+            this.ClientSize.Width / 2 - Login_Panel.Size.Width / 2,
+            this.ClientSize.Height / 2 - Login_Panel.Size.Height / 2);
+            Login_Panel.Anchor = AnchorStyles.None;
 
         }
 

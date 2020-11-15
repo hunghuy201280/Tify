@@ -29,28 +29,75 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Login_Panel = new System.Windows.Forms.Panel();
+            this.Login_Button = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Login_Pwd = new System.Windows.Forms.Label();
+            this.Login_UserName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Login_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // Login_Panel
             // 
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(238, 97);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 249);
-            this.panel1.TabIndex = 0;
+            this.Login_Panel.Controls.Add(this.Login_Button);
+            this.Login_Panel.Controls.Add(this.textBox2);
+            this.Login_Panel.Controls.Add(this.textBox1);
+            this.Login_Panel.Controls.Add(this.Login_Pwd);
+            this.Login_Panel.Controls.Add(this.Login_UserName);
+            this.Login_Panel.Controls.Add(this.pictureBox1);
+            this.Login_Panel.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_Panel.Location = new System.Drawing.Point(238, 97);
+            this.Login_Panel.Name = "Login_Panel";
+            this.Login_Panel.Size = new System.Drawing.Size(314, 301);
+            this.Login_Panel.TabIndex = 0;
+            // 
+            // Login_Button
+            // 
+            this.Login_Button.FlatAppearance.BorderSize = 0;
+            this.Login_Button.Location = new System.Drawing.Point(121, 237);
+            this.Login_Button.Name = "Login_Button";
+            this.Login_Button.Size = new System.Drawing.Size(75, 30);
+            this.Login_Button.TabIndex = 5;
+            this.Login_Button.Text = "Login";
+            this.Login_Button.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(103, 167);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(165, 26);
+            this.textBox2.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 124);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(165, 26);
+            this.textBox1.TabIndex = 3;
+            // 
+            // Login_Pwd
+            // 
+            this.Login_Pwd.AutoSize = true;
+            this.Login_Pwd.ForeColor = System.Drawing.Color.White;
+            this.Login_Pwd.Location = new System.Drawing.Point(15, 170);
+            this.Login_Pwd.Name = "Login_Pwd";
+            this.Login_Pwd.Size = new System.Drawing.Size(82, 19);
+            this.Login_Pwd.TabIndex = 2;
+            this.Login_Pwd.Text = "Password :";
+            // 
+            // Login_UserName
+            // 
+            this.Login_UserName.AutoSize = true;
+            this.Login_UserName.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_UserName.ForeColor = System.Drawing.Color.White;
+            this.Login_UserName.Location = new System.Drawing.Point(3, 124);
+            this.Login_UserName.Name = "Login_UserName";
+            this.Login_UserName.Size = new System.Drawing.Size(101, 20);
+            this.Login_UserName.TabIndex = 1;
+            this.Login_UserName.Text = "User name : ";
             // 
             // pictureBox1
             // 
@@ -62,52 +109,17 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "User name : ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(15, 170);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(103, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 26);
-            this.textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(103, 167);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 26);
-            this.textBox2.TabIndex = 4;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 464);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Login_Panel);
             this.Name = "Login";
             this.Text = "Login";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Login_Panel.ResumeLayout(false);
+            this.Login_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -115,11 +127,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Login_Panel;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Login_Pwd;
+        private System.Windows.Forms.Label Login_UserName;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button Login_Button;
     }
 }
