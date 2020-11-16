@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,8 +23,18 @@ namespace Tify
         {
             callForm= parentForm;
             InitializeComponent();
+            
             /*  flowLayoutPanel1.AutoScrollPosition = new Point(0, 0);
               flowLayoutPanel1.HorizontalScroll.Maximum = 195 * flowLayoutPanel1.Controls.Count + 195 - flowLayoutPanel1.Size.Width;*/
+           
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            this.Size=new Size(callForm.childForm_panel.Size.Width - 16, callForm.childForm_panel.Height - 39);
+            //MainScreen.hideScrollBar(flowLayoutPanel1, "flow");
+            DoubleBuffered = true;
+
             foreach (var item in home_flowLayoutPanel.Controls)
             {
                 if (item is GroupBox)
@@ -37,19 +48,15 @@ namespace Tify
                             flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
                             flowLayoutPanel.HorizontalScroll.Maximum = 195 * flowLayoutPanel.Controls.Count +
                                 195 - flowLayoutPanel.Size.Width;
+                            typeof(FlowLayoutPanel).InvokeMember("DoubleBuffered",
+            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, flowLayoutPanel, new object[] { true });
                         }
 
                     }
 
                 }
             }
-        }
-
-        private void Home_Load(object sender, EventArgs e)
-        {
-            this.Size=new Size(callForm.childForm_panel.Size.Width - 16, callForm.childForm_panel.Height - 39);
-            //MainScreen.hideScrollBar(flowLayoutPanel1, "flow");
-            
         }
 
         //test
