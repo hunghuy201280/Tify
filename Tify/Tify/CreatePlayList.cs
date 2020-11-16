@@ -15,9 +15,17 @@ namespace Tify
         public CreatePlayList()
         {
             InitializeComponent();
-            Text_PlayList_Count.Text = "0/500";
+            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
 
 
+
+        }
+       
+
+        private void Description_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Description_TextBox.MaxLength = 5;
+            Text_PlayList_Count.Text = (Description_TextBox.Text.Length).ToString() + "/ 500";
         }
     }
 }
