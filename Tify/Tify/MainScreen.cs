@@ -126,6 +126,9 @@ namespace Tify
 
         #region Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
+
+
+
         private void menu_button_Click(object sender, EventArgs e)
         {
             Button btt = sender as Button;
@@ -337,5 +340,10 @@ namespace Tify
         }
 
         #endregion createplaylist
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
     }
 }

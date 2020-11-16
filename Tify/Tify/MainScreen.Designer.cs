@@ -63,6 +63,7 @@
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
             this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
+            this.progressBar_pictureBox = new System.Windows.Forms.PictureBox();
             this.player_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).BeginInit();
@@ -71,11 +72,13 @@
             this.searchBar_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // player_panel
             // 
             this.player_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
+            this.player_panel.Controls.Add(this.progressBar_pictureBox);
             this.player_panel.Controls.Add(this.volume_button);
             this.player_panel.Controls.Add(this.volume_trackBar);
             this.player_panel.Controls.Add(this.play_pause_panel);
@@ -652,6 +655,17 @@
             this.childForm_panel.Size = new System.Drawing.Size(857, 577);
             this.childForm_panel.TabIndex = 26;
             // 
+            // progressBar_pictureBox
+            // 
+            this.progressBar_pictureBox.BackColor = System.Drawing.Color.Blue;
+            this.progressBar_pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar_pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.progressBar_pictureBox.Name = "progressBar_pictureBox";
+            this.progressBar_pictureBox.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar_pictureBox.TabIndex = 15;
+            this.progressBar_pictureBox.TabStop = false;
+            this.progressBar_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +693,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -717,6 +732,7 @@
         private System.Windows.Forms.PictureBox searchBar_icon;
         private System.Windows.Forms.TextBox searchBar_textBox;
         public System.Windows.Forms.Panel childForm_panel;
+        private System.Windows.Forms.PictureBox progressBar_pictureBox;
     }
 }
 

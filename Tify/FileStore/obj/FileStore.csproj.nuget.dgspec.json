@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\13\\Source\\Repos\\hunghuy201280\\Tify\\Tify\\FileStore\\FileStore.csproj": {}
+    "C:\\Users\\Admin\\Downloads\\Tailieu\\C#\\Tify\\Tify\\FileStore\\FileStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\13\\Source\\Repos\\hunghuy201280\\Tify\\Tify\\FileStore\\FileStore.csproj": {
+    "C:\\Users\\Admin\\Downloads\\Tailieu\\C#\\Tify\\Tify\\FileStore\\FileStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\13\\Source\\Repos\\hunghuy201280\\Tify\\Tify\\FileStore\\FileStore.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Downloads\\Tailieu\\C#\\Tify\\Tify\\FileStore\\FileStore.csproj",
         "projectName": "FileStore",
-        "projectPath": "C:\\Users\\13\\Source\\Repos\\hunghuy201280\\Tify\\Tify\\FileStore\\FileStore.csproj",
-        "packagesPath": "C:\\Users\\13\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\13\\Source\\Repos\\hunghuy201280\\Tify\\Tify\\FileStore\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Downloads\\Tailieu\\C#\\Tify\\Tify\\FileStore\\FileStore.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Downloads\\Tailieu\\C#\\Tify\\Tify\\FileStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\13\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
