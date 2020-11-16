@@ -341,9 +341,21 @@ namespace Tify
 
         #endregion createplaylist
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+
+        #region mo form login/register khi click vao account button
+        Login loginForm = new Login();
+        private void account_button_Click(object sender, EventArgs e)
         {
-            
+            loginForm.StartPosition = FormStartPosition.CenterParent;
+            loginForm.ShowDialog();
         }
+        #endregion
+
+        #region progressBar
+        private void progressBar_pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.progressBar_pictureBox = new System.Windows.Forms.PictureBox();
             this.volume_button = new System.Windows.Forms.Button();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.play_pause_panel = new System.Windows.Forms.Panel();
@@ -63,8 +64,8 @@
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
             this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
-            this.progressBar_pictureBox = new System.Windows.Forms.PictureBox();
             this.player_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).BeginInit();
             this.play_pause_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).BeginInit();
             this.menu_panel.SuspendLayout();
@@ -72,7 +73,6 @@
             this.searchBar_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // player_panel
@@ -95,6 +95,17 @@
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
+            // 
+            // progressBar_pictureBox
+            // 
+            this.progressBar_pictureBox.BackColor = System.Drawing.Color.Blue;
+            this.progressBar_pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar_pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.progressBar_pictureBox.Name = "progressBar_pictureBox";
+            this.progressBar_pictureBox.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar_pictureBox.TabIndex = 15;
+            this.progressBar_pictureBox.TabStop = false;
+            this.progressBar_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_pictureBox_MouseDown);
             // 
             // volume_button
             // 
@@ -406,6 +417,7 @@
             this.account_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.account_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.account_button.UseVisualStyleBackColor = false;
+            this.account_button.Click += new System.EventHandler(this.account_button_Click);
             this.account_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.account_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
@@ -655,17 +667,6 @@
             this.childForm_panel.Size = new System.Drawing.Size(857, 577);
             this.childForm_panel.TabIndex = 26;
             // 
-            // progressBar_pictureBox
-            // 
-            this.progressBar_pictureBox.BackColor = System.Drawing.Color.Blue;
-            this.progressBar_pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar_pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.progressBar_pictureBox.Name = "progressBar_pictureBox";
-            this.progressBar_pictureBox.Size = new System.Drawing.Size(1097, 5);
-            this.progressBar_pictureBox.TabIndex = 15;
-            this.progressBar_pictureBox.TabStop = false;
-            this.progressBar_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,6 +685,7 @@
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.player_panel.ResumeLayout(false);
             this.player_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).EndInit();
             this.play_pause_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).EndInit();
             this.menu_panel.ResumeLayout(false);
@@ -693,7 +695,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
