@@ -24,7 +24,8 @@ namespace Tify
         private void testFunc()
         {
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
-            time = soundPlayer.controls.currentPosition;
+            soundPlayer.controls.stop();
+            time = 0;
 
             songImg_pictureBox.Load(GetSongData.GetSongCover(testURL));
             string[] artists = GetSongData.GetSongArtist(testURL);
