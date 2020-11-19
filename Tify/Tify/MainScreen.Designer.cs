@@ -64,6 +64,8 @@
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
             this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
+            this.player_imageList = new System.Windows.Forms.ImageList(this.components);
+            this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar_pictureBox)).BeginInit();
             this.play_pause_panel.SuspendLayout();
@@ -123,6 +125,8 @@
             this.volume_button.Name = "volume_button";
             this.volume_button.Size = new System.Drawing.Size(44, 40);
             this.volume_button.TabIndex = 14;
+            this.volume_button.Tag = "on";
+            this.myToolTip.SetToolTip(this.volume_button, "Volume");
             this.volume_button.UseVisualStyleBackColor = false;
             this.volume_button.Click += new System.EventHandler(this.volume_button_Click);
             // 
@@ -195,7 +199,10 @@
             this.shuffle_button.Name = "shuffle_button";
             this.shuffle_button.Size = new System.Drawing.Size(28, 32);
             this.shuffle_button.TabIndex = 11;
+            this.shuffle_button.Tag = "on";
+            this.myToolTip.SetToolTip(this.shuffle_button, "Shuffle");
             this.shuffle_button.UseVisualStyleBackColor = false;
+            this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
             // 
             // previous_button
             // 
@@ -212,6 +219,7 @@
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(28, 32);
             this.previous_button.TabIndex = 10;
+            this.myToolTip.SetToolTip(this.previous_button, "Previous");
             this.previous_button.UseVisualStyleBackColor = false;
             // 
             // next_button
@@ -229,6 +237,7 @@
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(28, 32);
             this.next_button.TabIndex = 9;
+            this.myToolTip.SetToolTip(this.next_button, "Next");
             this.next_button.UseVisualStyleBackColor = false;
             // 
             // pause_button
@@ -246,6 +255,8 @@
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(40, 50);
             this.pause_button.TabIndex = 8;
+            this.pause_button.Tag = "pause";
+            this.myToolTip.SetToolTip(this.pause_button, "Pause");
             this.pause_button.UseVisualStyleBackColor = false;
             this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
@@ -667,6 +678,22 @@
             this.childForm_panel.Size = new System.Drawing.Size(857, 577);
             this.childForm_panel.TabIndex = 26;
             // 
+            // player_imageList
+            // 
+            this.player_imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("player_imageList.ImageStream")));
+            this.player_imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.player_imageList.Images.SetKeyName(0, "pause.png");
+            this.player_imageList.Images.SetKeyName(1, "play.png");
+            this.player_imageList.Images.SetKeyName(2, "volume.png");
+            this.player_imageList.Images.SetKeyName(3, "mute.png");
+            this.player_imageList.Images.SetKeyName(4, "shuffle_on.png");
+            this.player_imageList.Images.SetKeyName(5, "shuffle_off.png");
+            // 
+            // myToolTip
+            // 
+            this.myToolTip.BackColor = System.Drawing.Color.Red;
+            this.myToolTip.ForeColor = System.Drawing.Color.DimGray;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,6 +761,8 @@
         private System.Windows.Forms.TextBox searchBar_textBox;
         public System.Windows.Forms.Panel childForm_panel;
         private System.Windows.Forms.PictureBox progressBar_pictureBox;
+        private System.Windows.Forms.ImageList player_imageList;
+        private System.Windows.Forms.ToolTip myToolTip;
     }
 }
 

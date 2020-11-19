@@ -39,25 +39,30 @@ namespace Tify
 
         #region Đổi icon khi nhấn vào nút play/pause
 
-        private bool isPause = true;
         private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
         private double time;
 
         private void pause_button_Click(object sender, EventArgs e)
         {
-            if (isPause)
+            
+            if (pause_button.Tag.ToString()=="pause")
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.play);
+                pause_button.BackgroundImage = player_imageList.Images["play.png"];
                 soundPlayer.controls.currentPosition = time;
                 soundPlayer.controls.play();
+                pause_button.Tag = "play";
+                myToolTip.SetToolTip(pause_button, "Play");
             }
             else
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.pause);
+                pause_button.BackgroundImage = player_imageList.Images["pause.png"];
                 time = soundPlayer.controls.currentPosition;
                 soundPlayer.controls.pause();
+                pause_button.Tag = "pause";
+                myToolTip.SetToolTip(pause_button, "Pause");
+
             }
-            isPause = !isPause;
+
         }
 
         #endregion Đổi icon khi nhấn vào nút play/pause
@@ -66,18 +71,33 @@ namespace Tify
 
         private bool isMute = false;
 
-     
-
         private void volume_button_Click(object sender, EventArgs e)
         {
             if (isMute)
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.volume);
+                volume_button.BackgroundImage = player_imageList.Images["volume.png"];
             else
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.mute);
+                volume_button.BackgroundImage = player_imageList.Images["mute.png"];
             isMute = !isMute;
         }
 
         #endregion Đổi icon khi nhấn vào nút âm lượng
+
+        #region Đổi icon khi nhấn vào nút shuffle
+        
+        private void shuffle_button_Click(object sender, EventArgs e)
+        {
+            if (shuffle_button.Tag.ToString()=="on")
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
+                shuffle_button.Tag = "off";
+            }
+            else
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
+                shuffle_button.Tag = "on";
+            }
+        }
+        #endregion
 
         #region event khi Form size đổi
 
@@ -127,8 +147,6 @@ namespace Tify
         #region Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
 
-
-
         private void menu_button_Click(object sender, EventArgs e)
         {
             Button btt = sender as Button;
@@ -173,16 +191,7 @@ namespace Tify
 
         #endregion Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
-        #region Chuyển dạng byte[] trong file resources thành image
-
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-
-        #endregion Chuyển dạng byte[] trong file resources thành image
+    
 
         #region Phóng to & thu nhỏ menu panel khi di chuột vào
 
@@ -356,6 +365,10 @@ namespace Tify
         {
 
         }
+
+
         #endregion
+
+      
     }
 }
