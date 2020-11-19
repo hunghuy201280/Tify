@@ -27,7 +27,7 @@ namespace Tify
             //volume
 
             volume_trackBar.Maximum = 100;
-            
+            volume_trackBar.Value = 50;
             //
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
@@ -118,20 +118,40 @@ namespace Tify
 
         #region Đổi icon khi nhấn vào nút âm lượng
 
-        private bool isMute = false;
 
+        int lastVolume=0;
         private void volume_button_Click(object sender, EventArgs e)
         {
-            if (isMute)
+           
+            if (volume_button.Tag.ToString()=="off")
+            {
                 volume_button.BackgroundImage = player_imageList.Images["volume.png"];
+                volume_trackBar.Value = lastVolume;
+                volume_button.Tag = "on";
+            }
             else
+            {
                 volume_button.BackgroundImage = player_imageList.Images["mute.png"];
-            isMute = !isMute;
+                lastVolume = volume_trackBar.Value;
+                volume_trackBar.Value = 0;
+                
+                volume_button.Tag = "off";
+            }
+            
         }
 
-      
+
 
         #endregion Đổi icon khi nhấn vào nút âm lượng
+
+        #region Volume trackbar
+
+        private void volume_trackBar_ValueChanged(object sender, EventArgs e)
+        {
+            soundPlayer.settings.volume = volume_trackBar.Value;
+            
+        }
+        #endregion
 
         #region Đổi icon khi nhấn vào nút shuffle
 
@@ -337,20 +357,16 @@ namespace Tify
             if (type == "flow")
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.VerticalScroll.Visible = false;
-
-                flowpanel.VerticalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Visible = false;
-                flowpanel.AutoScroll = true;
+                
             }
             else if (type == "panel")
             {
                 Panel panel = needHide as Panel;
-                
+
+                panel.AutoScroll = false;
+                panel.HorizontalScroll.Maximum = 0;
+                panel.AutoScroll = false;
+                panel.VerticalScroll.Visible = false;
 
                 panel.VerticalScroll.Maximum = 0;
                 panel.AutoScroll = false;
@@ -441,7 +457,15 @@ namespace Tify
             soundPlayer.controls.currentPosition = progressBar.Value;
         }
 
-        
+        private void progressBar_MouseHover(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 12);
+        }
+
+        private void progressBar_MouseLeave(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 5);
+        }
 
         private void onesec_Tick(object sender, EventArgs e)
         {
@@ -459,13 +483,7 @@ namespace Tify
         }
         #endregion
 
-        #region Volume trackbar
-
-        private void volume_trackBar_ValueChanged(object sender, EventArgs e)
-        {
-            soundPlayer
-        }
-        #endregion
+        
 
 
     }

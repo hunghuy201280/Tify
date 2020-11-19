@@ -106,6 +106,8 @@
             this.progressBar.Size = new System.Drawing.Size(1097, 5);
             this.progressBar.TabIndex = 15;
             this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
+            this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
+            this.progressBar.MouseHover += new System.EventHandler(this.progressBar_MouseHover);
             // 
             // volume_button
             // 
@@ -338,7 +340,6 @@
             // 
             // menu_panel
             // 
-            this.menu_panel.AutoScroll = true;
             this.menu_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.menu_panel.Controls.Add(this.createNewPlaylist_button);
             this.menu_panel.Controls.Add(this.myPlaylist_label);
