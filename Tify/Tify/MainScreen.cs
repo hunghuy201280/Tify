@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using WMPLib;
-
+using GetData;
 namespace Tify
 {
     public partial class MainScreen : Form
@@ -13,8 +13,33 @@ namespace Tify
             InitializeComponent();
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
+            soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
         }
 
+        #region test
+
+        //test
+        private string testURL = "https://vi.chiasenhac.vn/mp3/yoasobi/yoru-ni-kakeru-tsvwswrzq949a1.html";
+
+        private void testFunc()
+        {
+            soundPlayer.URL = GetSongData.GetStreamLink(testURL);
+            time = soundPlayer.controls.currentPosition;
+
+            songImg_pictureBox.Load(GetSongData.GetSongCover(testURL));
+            string[] artists = GetSongData.GetSongArtist(testURL);
+            artist_label.Text = string.Empty;
+            foreach (string artist in artists)
+            {
+                artist_label.Text += artist + ";";
+            }
+            
+            title_label.Text = GetSongData.GetSongName(testURL);
+        }
+
+        #endregion test
+
+        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
         #region Load form
 
         private void MainScreen_Load(object sender, EventArgs e)
@@ -30,16 +55,15 @@ namespace Tify
 
             //demo
 
-            soundPlayer.URL = @"https://data25.chiasenhac.com/download2/2126/1/2125711-e9320e2c/128/Giau%20Vi%20Ban_%20Sang%20Vi%20Vo%20-%20RPT%20MCK.mp3";
-            time = soundPlayer.controls.currentPosition;
-            soundPlayer.controls.stop();
+            testFunc();
+            
         }
 
         #endregion Load form
 
         #region Đổi icon khi nhấn vào nút play/pause
 
-        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
+       
         private double time;
 
         private void pause_button_Click(object sender, EventArgs e)
@@ -310,11 +334,7 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
-        #region test
-
-        //test
-
-        #endregion test
+      
 
 
         #region placeHolder for search bar
@@ -358,17 +378,39 @@ namespace Tify
             loginForm.StartPosition = FormStartPosition.CenterParent;
             loginForm.ShowDialog();
         }
+
         #endregion
 
         #region progressBar
-        private void progressBar_pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
 
+
+        private void SoundPlayer_PlayStateChange(int NewState)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Maximum = (int)soundPlayer.currentMedia.duration;
+                onesec.Start();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsPaused)
+            {
+                onesec.Stop();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsStopped)
+            {
+                onesec.Stop();
+                progressBar.Value = 0;
+            }
         }
 
-
+        private void onesec_Tick(object sender, EventArgs e)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Value = (int)soundPlayer.controls.currentPosition;
+            }
+        }
         #endregion
 
-      
+
     }
 }
