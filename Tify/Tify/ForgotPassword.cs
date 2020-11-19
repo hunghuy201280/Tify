@@ -10,29 +10,26 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class Register : Form
+    public partial class ForgotPassword : Form
     {
-        public Register()
+        public ForgotPassword()
         {
             InitializeComponent();
-            Register_Panel.Location = new Point(
-            this.ClientSize.Width / 2 - Register_Panel.Size.Width / 2,
-            this.ClientSize.Height / 2 - Register_Panel.Size.Height / 2);
-            Register_Panel.Anchor = AnchorStyles.None;
+            Forgotpwd_panel.Location = new Point(
+            this.ClientSize.Width / 2 - Forgotpwd_panel.Size.Width / 2,
+            this.ClientSize.Height / 2 - Forgotpwd_panel.Size.Height / 2);
+            Forgotpwd_panel.Anchor = AnchorStyles.None;
         }
-        
+
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             textBox2.MaxLength = 10;
 
 
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
-            
-
-          
         }
     }
 }
