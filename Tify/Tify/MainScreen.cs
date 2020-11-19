@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using WMPLib;
-
+using GetData;
 namespace Tify
 {
     public partial class MainScreen : Form
@@ -13,8 +13,57 @@ namespace Tify
             InitializeComponent();
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
+            soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
         }
 
+        #region test
+
+        //test
+        private string testURL = "https://vi.chiasenhac.vn/mp3/yoasobi/yoru-ni-kakeru-tsvwswrzq949a1.html";
+
+        private void testFunc()
+        {
+          
+            //volume
+
+            volume_trackBar.Maximum = 100;
+            volume_trackBar.Value = 50;
+            //
+            soundPlayer.URL = GetSongData.GetStreamLink(testURL);
+            soundPlayer.controls.stop();
+            time = 0;
+
+            songImg_pictureBox.Load(GetSongData.GetSongCover(testURL));
+            string[] artists = GetSongData.GetSongArtist(testURL);
+            artist_label.Text = string.Empty;
+            foreach (string artist in artists)
+            {
+                artist_label.Text += artist + ";";
+            }
+            
+            title_label.Text = GetSongData.GetSongName(testURL);
+
+            //timer
+            currentTime_label.Text = "0:00 /";
+            int[] duration = GetSongData.GetSongDuration(testURL);
+            int durationMin = duration[0];
+            int durationSec = duration[1];
+            
+            
+            
+            if (durationSec < 10)
+            {
+                duration_label.Text = " "+ durationMin + ":0" + durationSec;
+            }
+            else
+            {
+                duration_label.Text =" "+  durationMin + ":" + durationSec;
+            }
+        }
+
+        #endregion test
+
+        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
         #region Load form
 
         private void MainScreen_Load(object sender, EventArgs e)
@@ -30,54 +79,96 @@ namespace Tify
 
             //demo
 
-            soundPlayer.URL = @"https://data25.chiasenhac.com/download2/2126/1/2125711-e9320e2c/128/Giau%20Vi%20Ban_%20Sang%20Vi%20Vo%20-%20RPT%20MCK.mp3";
-            time = soundPlayer.controls.currentPosition;
-            soundPlayer.controls.stop();
+            testFunc();
+            
         }
 
         #endregion Load form
 
         #region Đổi icon khi nhấn vào nút play/pause
 
-        private bool isPause = true;
-        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
+       
         private double time;
 
         private void pause_button_Click(object sender, EventArgs e)
         {
-            if (isPause)
+            
+            if (pause_button.Tag.ToString()=="pause")
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.play);
-                soundPlayer.controls.currentPosition = time;
-                soundPlayer.controls.play();
+                pause_button.BackgroundImage = player_imageList.Images["play.png"];
+                time = soundPlayer.controls.currentPosition;
+                soundPlayer.controls.pause();
+                pause_button.Tag = "play";
+                myToolTip.SetToolTip(pause_button, "Play");
             }
             else
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.pause);
-                time = soundPlayer.controls.currentPosition;
-                soundPlayer.controls.pause();
+                pause_button.BackgroundImage = player_imageList.Images["pause.png"];
+                soundPlayer.controls.currentPosition = time;
+                soundPlayer.controls.play();
+                
+                pause_button.Tag = "pause";
+                myToolTip.SetToolTip(pause_button, "Pause");
+
             }
-            isPause = !isPause;
+
         }
 
         #endregion Đổi icon khi nhấn vào nút play/pause
 
         #region Đổi icon khi nhấn vào nút âm lượng
 
-        private bool isMute = false;
 
-     
-
+        int lastVolume=0;
         private void volume_button_Click(object sender, EventArgs e)
         {
-            if (isMute)
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.volume);
+           
+            if (volume_button.Tag.ToString()=="off")
+            {
+                volume_button.BackgroundImage = player_imageList.Images["volume.png"];
+                volume_trackBar.Value = lastVolume;
+                volume_button.Tag = "on";
+            }
             else
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.mute);
-            isMute = !isMute;
+            {
+                volume_button.BackgroundImage = player_imageList.Images["mute.png"];
+                lastVolume = volume_trackBar.Value;
+                volume_trackBar.Value = 0;
+                
+                volume_button.Tag = "off";
+            }
+            
         }
 
+
+
         #endregion Đổi icon khi nhấn vào nút âm lượng
+
+        #region Volume trackbar
+
+        private void volume_trackBar_ValueChanged(object sender, EventArgs e)
+        {
+            soundPlayer.settings.volume = volume_trackBar.Value;
+            
+        }
+        #endregion
+
+        #region Đổi icon khi nhấn vào nút shuffle
+
+        private void shuffle_button_Click(object sender, EventArgs e)
+        {
+            if (shuffle_button.Tag.ToString()=="on")
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
+                shuffle_button.Tag = "off";
+            }
+            else
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
+                shuffle_button.Tag = "on";
+            }
+        }
+        #endregion
 
         #region event khi Form size đổi
 
@@ -127,8 +218,6 @@ namespace Tify
         #region Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
 
-
-
         private void menu_button_Click(object sender, EventArgs e)
         {
             Button btt = sender as Button;
@@ -173,16 +262,7 @@ namespace Tify
 
         #endregion Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
-        #region Chuyển dạng byte[] trong file resources thành image
-
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-
-        #endregion Chuyển dạng byte[] trong file resources thành image
+    
 
         #region Phóng to & thu nhỏ menu panel khi di chuột vào
 
@@ -277,20 +357,16 @@ namespace Tify
             if (type == "flow")
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.VerticalScroll.Visible = false;
-
-                flowpanel.VerticalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Visible = false;
-                flowpanel.AutoScroll = true;
+                
             }
             else if (type == "panel")
             {
                 Panel panel = needHide as Panel;
-                
+
+                panel.AutoScroll = false;
+                panel.HorizontalScroll.Maximum = 0;
+                panel.AutoScroll = false;
+                panel.VerticalScroll.Visible = false;
 
                 panel.VerticalScroll.Maximum = 0;
                 panel.AutoScroll = false;
@@ -301,11 +377,7 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
-        #region test
-
-        //test
-
-        #endregion test
+      
 
 
         #region placeHolder for search bar
@@ -349,13 +421,70 @@ namespace Tify
             loginForm.StartPosition = FormStartPosition.CenterParent;
             loginForm.ShowDialog();
         }
+
         #endregion
 
         #region progressBar
-        private void progressBar_pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
 
+
+        private void SoundPlayer_PlayStateChange(int NewState)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Maximum = (int)soundPlayer.currentMedia.duration;
+                onesec.Start();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsPaused)
+            {
+                onesec.Stop();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsStopped)
+            {
+                onesec.Stop();
+                progressBar.Value = 0;
+            }
+        }
+
+        string curMin="0" , curSec ="0";
+
+        private void progressBar_MouseClick(object sender, MouseEventArgs e)
+        {
+            double MousePosition = e.X;
+            double ratio = MousePosition / progressBar.Size.Width;
+            double ProgressBarValue = ratio * progressBar.Maximum;
+
+            progressBar.Value = (int)ProgressBarValue;
+            soundPlayer.controls.currentPosition = progressBar.Value;
+        }
+
+        private void progressBar_MouseHover(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 12);
+        }
+
+        private void progressBar_MouseLeave(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 5);
+        }
+
+        private void onesec_Tick(object sender, EventArgs e)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Value = (int)soundPlayer.controls.currentPosition;
+                curMin = (progressBar.Value / 60).ToString();
+                if (progressBar.Value % 60<10)
+                    curSec = "0" + (progressBar.Value % 60).ToString();
+                else
+                    curSec = (progressBar.Value % 60).ToString();
+               
+                currentTime_label.Text = curMin + ":" + curSec + " /";
+            }
         }
         #endregion
+
+        
+
+
     }
 }

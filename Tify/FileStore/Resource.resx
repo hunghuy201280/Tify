@@ -121,6 +121,9 @@
   <data name="account" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\account.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\add.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="album" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\album.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -133,8 +136,17 @@
   <data name="artist_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\artist_white.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="back_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\back_normal.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dummy_cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\dummy_cover.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="minimumUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\minimumUI.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\more.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -156,6 +168,9 @@
   </data>
   <data name="next_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\next_hover.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="next_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\next_normal.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="normalUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\normalUI.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -184,11 +199,26 @@
   <data name="previous_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\previous_hover.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="region_global_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\region_global_large.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="region_jp_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\region_jp_large.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\search.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="shuffle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\shuffle.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="shuffle_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\shuffle_hover.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shuffle_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\shuffle_off.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="shuffle_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\shuffle_on.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="track" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\track.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
