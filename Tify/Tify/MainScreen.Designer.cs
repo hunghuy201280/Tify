@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.volume_button = new System.Windows.Forms.Button();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.play_pause_panel = new System.Windows.Forms.Panel();
@@ -65,7 +66,6 @@
             this.childForm_panel = new System.Windows.Forms.Panel();
             this.player_imageList = new System.Windows.Forms.ImageList(this.components);
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.player_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
@@ -97,6 +97,15 @@
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar.TabIndex = 15;
+            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
             // 
             // volume_button
             // 
@@ -137,7 +146,7 @@
             this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
             this.volume_trackBar.ContextMenuStrip = null;
             this.volume_trackBar.LargeChange = 2;
-            this.volume_trackBar.Location = new System.Drawing.Point(951, 40);
+            this.volume_trackBar.Location = new System.Drawing.Point(951, 45);
             this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
             this.volume_trackBar.Maximum = 100;
             this.volume_trackBar.Minimum = 0;
@@ -160,6 +169,7 @@
             this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
             this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
             this.volume_trackBar.Value = 0;
+            this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // play_pause_panel
             // 
@@ -682,15 +692,6 @@
             // 
             this.myToolTip.BackColor = System.Drawing.Color.Red;
             this.myToolTip.ForeColor = System.Drawing.Color.DimGray;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1097, 5);
-            this.progressBar.TabIndex = 15;
-            this.progressBar.Value = 50;
             // 
             // onesec
             // 

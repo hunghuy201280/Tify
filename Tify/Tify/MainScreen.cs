@@ -23,6 +23,12 @@ namespace Tify
 
         private void testFunc()
         {
+          
+            //volume
+
+            volume_trackBar.Maximum = 100;
+            
+            //
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
             time = 0;
@@ -36,6 +42,23 @@ namespace Tify
             }
             
             title_label.Text = GetSongData.GetSongName(testURL);
+
+            //timer
+            currentTime_label.Text = "0:00 /";
+            int[] duration = GetSongData.GetSongDuration(testURL);
+            int durationMin = duration[0];
+            int durationSec = duration[1];
+            
+            
+            
+            if (durationSec < 10)
+            {
+                duration_label.Text = " "+ durationMin + ":0" + durationSec;
+            }
+            else
+            {
+                duration_label.Text =" "+  durationMin + ":" + durationSec;
+            }
         }
 
         #endregion test
@@ -73,16 +96,17 @@ namespace Tify
             if (pause_button.Tag.ToString()=="pause")
             {
                 pause_button.BackgroundImage = player_imageList.Images["play.png"];
-                soundPlayer.controls.currentPosition = time;
-                soundPlayer.controls.play();
+                time = soundPlayer.controls.currentPosition;
+                soundPlayer.controls.pause();
                 pause_button.Tag = "play";
                 myToolTip.SetToolTip(pause_button, "Play");
             }
             else
             {
                 pause_button.BackgroundImage = player_imageList.Images["pause.png"];
-                time = soundPlayer.controls.currentPosition;
-                soundPlayer.controls.pause();
+                soundPlayer.controls.currentPosition = time;
+                soundPlayer.controls.play();
+                
                 pause_button.Tag = "pause";
                 myToolTip.SetToolTip(pause_button, "Pause");
 
@@ -105,10 +129,12 @@ namespace Tify
             isMute = !isMute;
         }
 
+      
+
         #endregion Đổi icon khi nhấn vào nút âm lượng
 
         #region Đổi icon khi nhấn vào nút shuffle
-        
+
         private void shuffle_button_Click(object sender, EventArgs e)
         {
             if (shuffle_button.Tag.ToString()=="on")
@@ -403,12 +429,41 @@ namespace Tify
             }
         }
 
+        string curMin="0" , curSec ="0";
+
+        private void progressBar_MouseClick(object sender, MouseEventArgs e)
+        {
+            double MousePosition = e.X;
+            double ratio = MousePosition / progressBar.Size.Width;
+            double ProgressBarValue = ratio * progressBar.Maximum;
+
+            progressBar.Value = (int)ProgressBarValue;
+            soundPlayer.controls.currentPosition = progressBar.Value;
+        }
+
+        
+
         private void onesec_Tick(object sender, EventArgs e)
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
                 progressBar.Value = (int)soundPlayer.controls.currentPosition;
+                curMin = (progressBar.Value / 60).ToString();
+                if (progressBar.Value % 60<10)
+                    curSec = "0" + (progressBar.Value % 60).ToString();
+                else
+                    curSec = (progressBar.Value % 60).ToString();
+               
+                currentTime_label.Text = curMin + ":" + curSec + " /";
             }
+        }
+        #endregion
+
+        #region Volume trackbar
+
+        private void volume_trackBar_ValueChanged(object sender, EventArgs e)
+        {
+            soundPlayer
         }
         #endregion
 
