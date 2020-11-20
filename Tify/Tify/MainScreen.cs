@@ -4,6 +4,8 @@ using System.IO;
 using System.Windows.Forms;
 using WMPLib;
 using GetData;
+using System.Drawing.Imaging;
+
 namespace Tify
 {
     public partial class MainScreen : Form
@@ -14,6 +16,8 @@ namespace Tify
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
+           
+          
         }
 
         #region test
@@ -21,6 +25,7 @@ namespace Tify
         //test
         private string testURL = "https://vi.chiasenhac.vn/mp3/yoasobi/yoru-ni-kakeru-tsvwswrzq949a1.html";
 
+        private PictureBox songPicture = new PictureBox();
         private void testFunc()
         {
           
@@ -32,8 +37,10 @@ namespace Tify
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
             time = 0;
-
-            songImg_pictureBox.Load(GetSongData.GetSongCover(testURL));
+            
+          
+            songPicture.Load(GetSongData.GetSongCover(testURL));
+            songCover_panel.BackgroundImage = songPicture.Image;
             string[] artists = GetSongData.GetSongArtist(testURL);
             artist_label.Text = string.Empty;
             foreach (string artist in artists)
@@ -79,8 +86,10 @@ namespace Tify
 
             //demo
 
-            testFunc();
-            
+            // testFunc();
+
+            songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            songImgOpacity_panel.Hide();
         }
 
         #endregion Load form
@@ -177,7 +186,7 @@ namespace Tify
             //Chỉnh lại vị trí của 3 dòng title,artist,playingFrom và ẩn hoặc hiện songImg
             if (this.Size.Width <= 975)
             {
-                songImg_pictureBox.Hide();
+                songCover_panel.Hide();
                 //x=18
                 title_label.Location = new Point(15, title_label.Location.Y);
                 artist_label.Location = new Point(15, artist_label.Location.Y);
@@ -185,7 +194,7 @@ namespace Tify
             }
             else
             {
-                songImg_pictureBox.Show();
+                songCover_panel.Show();
                 //x=104
                 title_label.Location = new Point(104, title_label.Location.Y);
                 artist_label.Location = new Point(104, artist_label.Location.Y);
@@ -467,6 +476,8 @@ namespace Tify
             progressBar.Size = new Size(progressBar.Size.Width, 5);
         }
 
+       
+
         private void onesec_Tick(object sender, EventArgs e)
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
@@ -481,10 +492,44 @@ namespace Tify
                 currentTime_label.Text = curMin + ":" + curSec + " /";
             }
         }
+
+
+
+
         #endregion
 
-        
+        #region event with music cover
 
+   
+
+        private void songCover_panel_MouseHover(object sender, EventArgs e)
+        {
+            songImgOpacity_panel.Show();
+        }
+
+        public void songCover_panel_MouseLeave(object sender, EventArgs e)
+        {
+            if (songCover_panel.ClientRectangle.Contains(songCover_panel.PointToClient(Control.MousePosition)))
+                return;
+            else
+            {
+                songImgOpacity_panel.Hide();
+                base.OnMouseLeave(e);
+             
+            }
+            
+        }
+
+        private void songDetailMinimize_button_Click(object sender, EventArgs e)
+        {
+            songDetail_panel.SendToBack();
+        }
+
+        private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
+        {
+            songDetail_panel.BringToFront();
+        }
+        #endregion
 
     }
 }

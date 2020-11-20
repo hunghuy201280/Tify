@@ -32,9 +32,6 @@ namespace Tify
 
             MyMix_GroupBox.Visible = true;
 
-
-
-
         }
 
 
