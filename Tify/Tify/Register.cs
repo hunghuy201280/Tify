@@ -34,5 +34,10 @@ namespace Tify
 
           
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            textBox2.Text = 0+trackBar1.Value.ToString();
+        }
     }
 }

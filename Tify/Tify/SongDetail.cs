@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace Tify
 {
@@ -15,13 +16,15 @@ namespace Tify
         public SongDetail()
         {
             InitializeComponent();
+          
         }
         private MainScreen mainscr;
-        public SongDetail(MainScreen callForm)
+        public SongDetail(MainScreen callForm, WindowsMediaPlayer player)
         {
             mainscr = callForm;
             
             InitializeComponent();
+            soundPlayer = player;
         }
 
         private void songDetailMinimize_button_Click(object sender, EventArgs e)
@@ -29,5 +32,7 @@ namespace Tify
             mainscr.Controls["songDetail_panel"].SendToBack();
 
         }
+       
+        
     }
 }

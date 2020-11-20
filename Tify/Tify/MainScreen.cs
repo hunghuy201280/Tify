@@ -86,7 +86,7 @@ namespace Tify
 
             //demo
 
-            // testFunc();
+             testFunc();
 
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -102,27 +102,29 @@ namespace Tify
        
         private double time;
 
-        private void pause_button_Click(object sender, EventArgs e)
+        public void pause_button_Click(object sender, EventArgs e)
         {
-            
-            if (pause_button.Tag.ToString()=="pause")
+            Button pause=sender as Button;
+            if (pause.Tag.ToString()=="pause")
             {
-                pause_button.BackgroundImage = player_imageList.Images["play.png"];
+                pause.BackgroundImage = player_imageList.Images["play.png"];
                 time = soundPlayer.controls.currentPosition;
                 soundPlayer.controls.pause();
-                pause_button.Tag = "play";
-                myToolTip.SetToolTip(pause_button, "Play");
+                pause.Tag = "play";
+                myToolTip.SetToolTip(pause, "Play");
             }
             else
             {
-                pause_button.BackgroundImage = player_imageList.Images["pause.png"];
+                pause.BackgroundImage = player_imageList.Images["pause.png"];
                 soundPlayer.controls.currentPosition = time;
                 soundPlayer.controls.play();
-                
-                pause_button.Tag = "pause";
-                myToolTip.SetToolTip(pause_button, "Pause");
+
+                pause.Tag = "pause";
+                myToolTip.SetToolTip(pause, "Pause");
 
             }
+            //
+                
 
         }
 
@@ -517,7 +519,7 @@ namespace Tify
             else
             {
                 songImgOpacity_panel.Hide();
-                base.OnMouseLeave(e);
+                base.OnMouseLeave(e); 
                 
             }
             

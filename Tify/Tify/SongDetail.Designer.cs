@@ -48,16 +48,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.songCover_detailPictureBox = new System.Windows.Forms.PictureBox();
             this.songDetailMinimize_button = new System.Windows.Forms.Button();
-            this.songDetail_rightPanel = new System.Windows.Forms.Panel();
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
+            this.songDetail_rightPanel = new System.Windows.Forms.Panel();
+            this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.songDetail_panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // songDetail_panel
@@ -88,7 +89,7 @@
             // songDetail_leftPanel
             // 
             this.songDetail_leftPanel.Controls.Add(this.panel4);
-            this.songDetail_leftPanel.Controls.Add(this.pictureBox1);
+            this.songDetail_leftPanel.Controls.Add(this.songCover_detailPictureBox);
             this.songDetail_leftPanel.Controls.Add(this.songDetailMinimize_button);
             this.songDetail_leftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songDetail_leftPanel.Location = new System.Drawing.Point(3, 3);
@@ -374,15 +375,15 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Hole In The Heart";
             // 
-            // pictureBox1
+            // songCover_detailPictureBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(185, 94);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(360, 360);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.songCover_detailPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("songCover_detailPictureBox.Image")));
+            this.songCover_detailPictureBox.Location = new System.Drawing.Point(185, 94);
+            this.songCover_detailPictureBox.Name = "songCover_detailPictureBox";
+            this.songCover_detailPictureBox.Size = new System.Drawing.Size(360, 360);
+            this.songCover_detailPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.songCover_detailPictureBox.TabIndex = 2;
+            this.songCover_detailPictureBox.TabStop = false;
             // 
             // songDetailMinimize_button
             // 
@@ -405,6 +406,12 @@
             this.songDetailMinimize_button.UseVisualStyleBackColor = true;
             this.songDetailMinimize_button.Click += new System.EventHandler(this.songDetailMinimize_button_Click);
             // 
+            // songDetaillImageList
+            // 
+            this.songDetaillImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("songDetaillImageList.ImageStream")));
+            this.songDetaillImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.songDetaillImageList.Images.SetKeyName(0, "minimize.png");
+            // 
             // songDetail_rightPanel
             // 
             this.songDetail_rightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -412,12 +419,6 @@
             this.songDetail_rightPanel.Name = "songDetail_rightPanel";
             this.songDetail_rightPanel.Size = new System.Drawing.Size(353, 751);
             this.songDetail_rightPanel.TabIndex = 3;
-            // 
-            // songDetaillImageList
-            // 
-            this.songDetaillImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("songDetaillImageList.ImageStream")));
-            this.songDetaillImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.songDetaillImageList.Images.SetKeyName(0, "minimize.png");
             // 
             // SongDetail
             // 
@@ -435,7 +436,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -460,9 +461,10 @@
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox songCover_detailPictureBox;
         private System.Windows.Forms.Button songDetailMinimize_button;
         private System.Windows.Forms.Panel songDetail_rightPanel;
         private System.Windows.Forms.ImageList songDetaillImageList;
+        private System.Windows.Forms.ToolTip myToolTip;
     }
 }

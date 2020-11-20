@@ -731,11 +731,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 737);
+            this.Controls.Add(this.songDetail_panel);
             this.Controls.Add(this.childForm_panel);
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
-            this.Controls.Add(this.songDetail_panel);
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(774, 361);
             this.Name = "MainScreen";
@@ -795,9 +795,9 @@
         private System.Windows.Forms.ToolTip myToolTip;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer onesec;
-        private System.Windows.Forms.Panel songDetail_panel;
         private System.Windows.Forms.Panel songImgOpacity_panel;
         private System.Windows.Forms.Panel songCover_panel;
+        private System.Windows.Forms.Panel songDetail_panel;
     }
 }
 
