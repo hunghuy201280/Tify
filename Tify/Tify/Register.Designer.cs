@@ -88,6 +88,7 @@
             // 
             // Register_Button
             // 
+            this.Register_Button.BackColor = System.Drawing.Color.White;
             this.Register_Button.FlatAppearance.BorderSize = 0;
             this.Register_Button.Location = new System.Drawing.Point(211, 309);
             this.Register_Button.Margin = new System.Windows.Forms.Padding(4);
@@ -95,7 +96,7 @@
             this.Register_Button.Size = new System.Drawing.Size(101, 37);
             this.Register_Button.TabIndex = 5;
             this.Register_Button.Text = "Register";
-            this.Register_Button.UseVisualStyleBackColor = true;
+            this.Register_Button.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 

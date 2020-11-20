@@ -94,7 +94,7 @@
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.player_panel.Location = new System.Drawing.Point(0, 784);
-            this.player_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.player_panel.Margin = new System.Windows.Forms.Padding(4);
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1463, 123);
             this.player_panel.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1463, 6);
             this.progressBar.TabIndex = 15;
@@ -183,7 +183,7 @@
             this.play_pause_panel.Controls.Add(this.next_button);
             this.play_pause_panel.Controls.Add(this.pause_button);
             this.play_pause_panel.Location = new System.Drawing.Point(575, 0);
-            this.play_pause_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.play_pause_panel.Margin = new System.Windows.Forms.Padding(4);
             this.play_pause_panel.Name = "play_pause_panel";
             this.play_pause_panel.Size = new System.Drawing.Size(313, 123);
             this.play_pause_panel.TabIndex = 12;
@@ -358,7 +358,7 @@
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu_panel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
-            this.menu_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menu_panel.Margin = new System.Windows.Forms.Padding(4);
             this.menu_panel.Name = "menu_panel";
             this.menu_panel.Size = new System.Drawing.Size(320, 784);
             this.menu_panel.TabIndex = 2;
@@ -631,7 +631,7 @@
             this.searchBar_panel.Controls.Add(this.panel1);
             this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchBar_panel.Location = new System.Drawing.Point(320, 0);
-            this.searchBar_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_panel.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_panel.Name = "searchBar_panel";
             this.searchBar_panel.Size = new System.Drawing.Size(1143, 74);
             this.searchBar_panel.TabIndex = 1;
@@ -643,7 +643,7 @@
             this.panel1.Controls.Add(this.searchBar_textBox);
             this.panel1.Controls.Add(this.searchBar_icon);
             this.panel1.Location = new System.Drawing.Point(607, 17);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 49);
             this.panel1.TabIndex = 0;
@@ -657,7 +657,7 @@
             this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
             this.searchBar_textBox.Location = new System.Drawing.Point(53, 0);
-            this.searchBar_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_textBox.Name = "searchBar_textBox";
             this.searchBar_textBox.Size = new System.Drawing.Size(467, 46);
             this.searchBar_textBox.TabIndex = 2;
@@ -668,7 +668,7 @@
             this.searchBar_icon.Dock = System.Windows.Forms.DockStyle.Left;
             this.searchBar_icon.Image = ((System.Drawing.Image)(resources.GetObject("searchBar_icon.Image")));
             this.searchBar_icon.Location = new System.Drawing.Point(0, 0);
-            this.searchBar_icon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_icon.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_icon.Name = "searchBar_icon";
             this.searchBar_icon.Size = new System.Drawing.Size(53, 49);
             this.searchBar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -682,7 +682,7 @@
             this.childForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
             this.childForm_panel.Location = new System.Drawing.Point(320, 74);
-            this.childForm_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.childForm_panel.Margin = new System.Windows.Forms.Padding(4);
             this.childForm_panel.Name = "childForm_panel";
             this.childForm_panel.Size = new System.Drawing.Size(1143, 710);
             this.childForm_panel.TabIndex = 26;
@@ -718,7 +718,7 @@
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1026, 435);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
