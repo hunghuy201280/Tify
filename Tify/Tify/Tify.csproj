@@ -115,6 +115,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="SongDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongDetail.Designer.cs">
+      <DependentUpon>SongDetail.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +156,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongDetail.resx">
+      <DependentUpon>SongDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />
     <None Include="packages.config" />

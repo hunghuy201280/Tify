@@ -88,8 +88,11 @@ namespace Tify
 
             // testFunc();
 
+            //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
+
+            //add control to panel
         }
 
         #endregion Load form
@@ -515,19 +518,27 @@ namespace Tify
             {
                 songImgOpacity_panel.Hide();
                 base.OnMouseLeave(e);
-             
+                
             }
             
         }
 
-        private void songDetailMinimize_button_Click(object sender, EventArgs e)
+        public void songDetailMinimize_button_Click(object sender, EventArgs e)
         {
             songDetail_panel.SendToBack();
         }
 
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {
+            SongDetail songDetail = new SongDetail(this);
+            songDetail.TopLevel = false;
+
+            songDetail_panel.Controls.Add(songDetail);
+            songDetail.Dock = DockStyle.Fill;
+            songDetail.BringToFront();
+            songDetail.Show();
             songDetail_panel.BringToFront();
+
         }
         #endregion
 

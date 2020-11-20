@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.songCover_panel = new System.Windows.Forms.Panel();
+            this.songImgOpacity_panel = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.volume_button = new System.Windows.Forms.Button();
             this.volume_trackBar = new MediaSlider.MediaSlider();
@@ -67,18 +69,14 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.songImgOpacity_panel = new System.Windows.Forms.Panel();
-            this.songCover_panel = new System.Windows.Forms.Panel();
-            this.songDetailMinimize_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
+            this.songCover_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
             this.menu_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
             this.searchBar_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
-            this.songDetail_panel.SuspendLayout();
-            this.songCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // player_panel
@@ -102,6 +100,30 @@
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
             this.player_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            // 
+            // songCover_panel
+            // 
+            this.songCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songCover_panel.BackgroundImage")));
+            this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
+            this.songCover_panel.Location = new System.Drawing.Point(12, 20);
+            this.songCover_panel.Name = "songCover_panel";
+            this.songCover_panel.Size = new System.Drawing.Size(65, 65);
+            this.songCover_panel.TabIndex = 0;
+            this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
+            // 
+            // songImgOpacity_panel
+            // 
+            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
+            this.songImgOpacity_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songImgOpacity_panel.BackgroundImage")));
+            this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
+            this.songImgOpacity_panel.Name = "songImgOpacity_panel";
+            this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
+            this.songImgOpacity_panel.TabIndex = 16;
+            this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
             // 
             // progressBar
             // 
@@ -698,44 +720,11 @@
             this.songDetail_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.songDetail_panel.Controls.Add(this.songDetailMinimize_button);
+            this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
             this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1097, 737);
             this.songDetail_panel.TabIndex = 0;
-            // 
-            // songImgOpacity_panel
-            // 
-            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
-            this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
-            this.songImgOpacity_panel.Name = "songImgOpacity_panel";
-            this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
-            this.songImgOpacity_panel.TabIndex = 16;
-            this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
-            this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
-            // 
-            // songCover_panel
-            // 
-            this.songCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songCover_panel.BackgroundImage")));
-            this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
-            this.songCover_panel.Location = new System.Drawing.Point(12, 20);
-            this.songCover_panel.Name = "songCover_panel";
-            this.songCover_panel.Size = new System.Drawing.Size(65, 65);
-            this.songCover_panel.TabIndex = 0;
-            this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
-            // 
-            // songDetailMinimize_button
-            // 
-            this.songDetailMinimize_button.Location = new System.Drawing.Point(33, 14);
-            this.songDetailMinimize_button.Name = "songDetailMinimize_button";
-            this.songDetailMinimize_button.Size = new System.Drawing.Size(75, 23);
-            this.songDetailMinimize_button.TabIndex = 0;
-            this.songDetailMinimize_button.Text = "button1";
-            this.songDetailMinimize_button.UseVisualStyleBackColor = true;
-            this.songDetailMinimize_button.Click += new System.EventHandler(this.songDetailMinimize_button_Click);
             // 
             // MainScreen
             // 
@@ -756,6 +745,7 @@
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.player_panel.ResumeLayout(false);
             this.player_panel.PerformLayout();
+            this.songCover_panel.ResumeLayout(false);
             this.play_pause_panel.ResumeLayout(false);
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
@@ -764,8 +754,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
-            this.songDetail_panel.ResumeLayout(false);
-            this.songCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -810,7 +798,6 @@
         private System.Windows.Forms.Panel songDetail_panel;
         private System.Windows.Forms.Panel songImgOpacity_panel;
         private System.Windows.Forms.Panel songCover_panel;
-        private System.Windows.Forms.Button songDetailMinimize_button;
     }
 }
 
