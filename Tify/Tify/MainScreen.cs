@@ -4,6 +4,8 @@ using System.IO;
 using System.Windows.Forms;
 using WMPLib;
 using GetData;
+using System.Drawing.Imaging;
+
 namespace Tify
 {
     public partial class MainScreen : Form
@@ -14,6 +16,8 @@ namespace Tify
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
+           
+          
         }
 
         #region test
@@ -21,6 +25,7 @@ namespace Tify
         //test
         private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
 
+        private PictureBox songPicture = new PictureBox();
         private void testFunc()
         {
           
@@ -32,8 +37,10 @@ namespace Tify
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
             time = 0;
-
-            songImg_pictureBox.Load(GetSongData.GetSongCover(testURL));
+            
+          
+            songPicture.Load(GetSongData.GetSongCover(testURL));
+            songCover_panel.BackgroundImage = songPicture.Image;
             string[] artists = GetSongData.GetSongArtist(testURL);
             artist_label.Text = string.Empty;
             foreach (string artist in artists)
@@ -79,8 +86,13 @@ namespace Tify
 
             //demo
 
-            testFunc();
-            
+             testFunc();
+
+            //set opacity for song cover
+            songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            songImgOpacity_panel.Hide();
+
+            //add control to panel
         }
 
         #endregion Load form
@@ -90,27 +102,29 @@ namespace Tify
        
         private double time;
 
-        private void pause_button_Click(object sender, EventArgs e)
+        public void pause_button_Click(object sender, EventArgs e)
         {
-            
-            if (pause_button.Tag.ToString()=="pause")
+            Button pause=sender as Button;
+            if (pause.Tag.ToString()=="pause")
             {
-                pause_button.BackgroundImage = player_imageList.Images["play.png"];
+                pause.BackgroundImage = player_imageList.Images["play.png"];
                 time = soundPlayer.controls.currentPosition;
                 soundPlayer.controls.pause();
-                pause_button.Tag = "play";
-                myToolTip.SetToolTip(pause_button, "Play");
+                pause.Tag = "play";
+                myToolTip.SetToolTip(pause, "Play");
             }
             else
             {
-                pause_button.BackgroundImage = player_imageList.Images["pause.png"];
+                pause.BackgroundImage = player_imageList.Images["pause.png"];
                 soundPlayer.controls.currentPosition = time;
                 soundPlayer.controls.play();
-                
-                pause_button.Tag = "pause";
-                myToolTip.SetToolTip(pause_button, "Pause");
+
+                pause.Tag = "pause";
+                myToolTip.SetToolTip(pause, "Pause");
 
             }
+            //
+                
 
         }
 
@@ -177,7 +191,7 @@ namespace Tify
             //Chỉnh lại vị trí của 3 dòng title,artist,playingFrom và ẩn hoặc hiện songImg
             if (this.Size.Width <= 975)
             {
-                songImg_pictureBox.Hide();
+                songCover_panel.Hide();
                 //x=18
                 title_label.Location = new Point(15, title_label.Location.Y);
                 artist_label.Location = new Point(15, artist_label.Location.Y);
@@ -185,7 +199,7 @@ namespace Tify
             }
             else
             {
-                songImg_pictureBox.Show();
+                songCover_panel.Show();
                 //x=104
                 title_label.Location = new Point(104, title_label.Location.Y);
                 artist_label.Location = new Point(104, artist_label.Location.Y);
@@ -331,9 +345,9 @@ namespace Tify
 
         #region Mở childForm
 
-        private Form activeForm = null;
+         private Form activeForm = null;
 
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -467,6 +481,8 @@ namespace Tify
             progressBar.Size = new Size(progressBar.Size.Width, 5);
         }
 
+       
+
         private void onesec_Tick(object sender, EventArgs e)
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
@@ -481,10 +497,52 @@ namespace Tify
                 currentTime_label.Text = curMin + ":" + curSec + " /";
             }
         }
+
+
+
+
         #endregion
 
-        
+        #region event with music cover
 
+   
+
+        private void songCover_panel_MouseHover(object sender, EventArgs e)
+        {
+            songImgOpacity_panel.Show();
+        }
+
+        public void songCover_panel_MouseLeave(object sender, EventArgs e)
+        {
+            if (songCover_panel.ClientRectangle.Contains(songCover_panel.PointToClient(Control.MousePosition)))
+                return;
+            else
+            {
+                songImgOpacity_panel.Hide();
+                base.OnMouseLeave(e); 
+                
+            }
+            
+        }
+
+        public void songDetailMinimize_button_Click(object sender, EventArgs e)
+        {
+            songDetail_panel.SendToBack();
+        }
+
+        private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
+        {
+            SongDetail songDetail = new SongDetail(this);
+            songDetail.TopLevel = false;
+
+            songDetail_panel.Controls.Add(songDetail);
+            songDetail.Dock = DockStyle.Fill;
+            songDetail.BringToFront();
+            songDetail.Show();
+            songDetail_panel.BringToFront();
+
+        }
+        #endregion
 
     }
 }
