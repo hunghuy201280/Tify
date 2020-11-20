@@ -22,6 +22,50 @@ namespace Tify
 
         }
 
+        
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.Red;
+            
+            Form register = new Register();
+            register.ShowDialog();
+            
+
+        }
+
+        private void label2_MouseEnter(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.Blue;
+        }
+
+        private void label2_MouseLeave(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.White;
+        }
+
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.Red;
+
+            
+            Form forgotpwd = new ForgotPassword();
+            forgotpwd.ShowDialog();
+
+
+        }
+
+        private void label4_MouseEnter(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.Blue;
+        }
+
+        private void label4_MouseLeave(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.White;
+        }
+
        
     }
-}
+    }
