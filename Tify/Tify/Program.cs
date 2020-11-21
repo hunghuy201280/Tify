@@ -16,7 +16,7 @@ namespace Tify
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MixContainer());
+            Application.Run(new MainScreen());
         }
     }
 }

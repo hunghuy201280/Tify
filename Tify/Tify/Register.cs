@@ -20,5 +20,24 @@ namespace Tify
             this.ClientSize.Height / 2 - Register_Panel.Size.Height / 2);
             Register_Panel.Anchor = AnchorStyles.None;
         }
+        
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            textBox2.MaxLength = 10;
+
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            {
+                e.Handled = true;
+            }
+            
+
+          
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            textBox2.Text = 0+trackBar1.Value.ToString();
+        }
     }
 }

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
+            this.songCover_panel = new System.Windows.Forms.Panel();
+            this.songImgOpacity_panel = new System.Windows.Forms.Panel();
             this.volume_button = new System.Windows.Forms.Button();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.play_pause_panel = new System.Windows.Forms.Panel();
@@ -43,7 +46,6 @@
             this.playingFrom_label = new System.Windows.Forms.Label();
             this.artist_label = new System.Windows.Forms.Label();
             this.title_label = new System.Windows.Forms.Label();
-            this.songImg_pictureBox = new System.Windows.Forms.PictureBox();
             this.menu_panel = new System.Windows.Forms.Panel();
             this.createNewPlaylist_button = new System.Windows.Forms.Button();
             this.createPlaylist_imgList = new System.Windows.Forms.ImageList(this.components);
@@ -63,9 +65,14 @@
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
             this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
+            this.player_imageList = new System.Windows.Forms.ImageList(this.components);
+            this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.onesec = new System.Windows.Forms.Timer(this.components);
+            this.songDetail_panel = new System.Windows.Forms.Panel();
             this.player_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
+            this.songCover_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).BeginInit();
             this.menu_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
             this.searchBar_panel.SuspendLayout();
@@ -75,7 +82,9 @@
             // 
             // player_panel
             // 
-            this.player_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
+            this.player_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
+            this.player_panel.Controls.Add(this.progressBar);
+            this.player_panel.Controls.Add(this.songCover_panel);
             this.player_panel.Controls.Add(this.volume_button);
             this.player_panel.Controls.Add(this.volume_trackBar);
             this.player_panel.Controls.Add(this.play_pause_panel);
@@ -84,7 +93,6 @@
             this.player_panel.Controls.Add(this.playingFrom_label);
             this.player_panel.Controls.Add(this.artist_label);
             this.player_panel.Controls.Add(this.title_label);
-            this.player_panel.Controls.Add(this.songImg_pictureBox);
             this.player_panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,6 +100,52 @@
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
+            this.player_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar.EditValue = 50;
+            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.progressBar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.progressBar.Properties.EndColor = System.Drawing.Color.Empty;
+            this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
+            this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
+            this.progressBar.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar.TabIndex = 0;
+            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
+            this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
+            this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
+            this.progressBar.MouseHover += new System.EventHandler(this.progressBar_MouseHover);
+            this.progressBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseMove);
+            this.progressBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseUp);
+            // 
+            // songCover_panel
+            // 
+            this.songCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songCover_panel.BackgroundImage")));
+            this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
+            this.songCover_panel.Location = new System.Drawing.Point(12, 20);
+            this.songCover_panel.Name = "songCover_panel";
+            this.songCover_panel.Size = new System.Drawing.Size(65, 65);
+            this.songCover_panel.TabIndex = 0;
+            this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
+            // 
+            // songImgOpacity_panel
+            // 
+            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
+            this.songImgOpacity_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songImgOpacity_panel.BackgroundImage")));
+            this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
+            this.songImgOpacity_panel.Name = "songImgOpacity_panel";
+            this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
+            this.songImgOpacity_panel.TabIndex = 16;
+            this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
             // 
             // volume_button
             // 
@@ -109,6 +163,8 @@
             this.volume_button.Name = "volume_button";
             this.volume_button.Size = new System.Drawing.Size(44, 40);
             this.volume_button.TabIndex = 14;
+            this.volume_button.Tag = "on";
+            this.myToolTip.SetToolTip(this.volume_button, "Volume");
             this.volume_button.UseVisualStyleBackColor = false;
             this.volume_button.Click += new System.EventHandler(this.volume_button_Click);
             // 
@@ -130,7 +186,7 @@
             this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
             this.volume_trackBar.ContextMenuStrip = null;
             this.volume_trackBar.LargeChange = 2;
-            this.volume_trackBar.Location = new System.Drawing.Point(951, 40);
+            this.volume_trackBar.Location = new System.Drawing.Point(951, 45);
             this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
             this.volume_trackBar.Maximum = 100;
             this.volume_trackBar.Minimum = 0;
@@ -153,6 +209,7 @@
             this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
             this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
             this.volume_trackBar.Value = 0;
+            this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // play_pause_panel
             // 
@@ -181,7 +238,10 @@
             this.shuffle_button.Name = "shuffle_button";
             this.shuffle_button.Size = new System.Drawing.Size(28, 32);
             this.shuffle_button.TabIndex = 11;
+            this.shuffle_button.Tag = "on";
+            this.myToolTip.SetToolTip(this.shuffle_button, "Shuffle");
             this.shuffle_button.UseVisualStyleBackColor = false;
+            this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
             // 
             // previous_button
             // 
@@ -198,6 +258,7 @@
             this.previous_button.Name = "previous_button";
             this.previous_button.Size = new System.Drawing.Size(28, 32);
             this.previous_button.TabIndex = 10;
+            this.myToolTip.SetToolTip(this.previous_button, "Previous");
             this.previous_button.UseVisualStyleBackColor = false;
             // 
             // next_button
@@ -215,6 +276,7 @@
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(28, 32);
             this.next_button.TabIndex = 9;
+            this.myToolTip.SetToolTip(this.next_button, "Next");
             this.next_button.UseVisualStyleBackColor = false;
             // 
             // pause_button
@@ -232,6 +294,8 @@
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(40, 50);
             this.pause_button.TabIndex = 8;
+            this.pause_button.Tag = "pause";
+            this.myToolTip.SetToolTip(this.pause_button, "Pause");
             this.pause_button.UseVisualStyleBackColor = false;
             this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
@@ -301,20 +365,8 @@
             this.title_label.TabIndex = 1;
             this.title_label.Text = "Hole In The Heart";
             // 
-            // songImg_pictureBox
-            // 
-            this.songImg_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("songImg_pictureBox.Image")));
-            this.songImg_pictureBox.Location = new System.Drawing.Point(18, 17);
-            this.songImg_pictureBox.Margin = new System.Windows.Forms.Padding(18);
-            this.songImg_pictureBox.Name = "songImg_pictureBox";
-            this.songImg_pictureBox.Size = new System.Drawing.Size(65, 65);
-            this.songImg_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.songImg_pictureBox.TabIndex = 0;
-            this.songImg_pictureBox.TabStop = false;
-            // 
             // menu_panel
             // 
-            this.menu_panel.AutoScroll = true;
             this.menu_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.menu_panel.Controls.Add(this.createNewPlaylist_button);
             this.menu_panel.Controls.Add(this.myPlaylist_label);
@@ -403,6 +455,7 @@
             this.account_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.account_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.account_button.UseVisualStyleBackColor = false;
+            this.account_button.Click += new System.EventHandler(this.account_button_Click);
             this.account_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.account_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
@@ -652,6 +705,38 @@
             this.childForm_panel.Size = new System.Drawing.Size(857, 577);
             this.childForm_panel.TabIndex = 26;
             // 
+            // player_imageList
+            // 
+            this.player_imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("player_imageList.ImageStream")));
+            this.player_imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.player_imageList.Images.SetKeyName(0, "pause.png");
+            this.player_imageList.Images.SetKeyName(1, "play.png");
+            this.player_imageList.Images.SetKeyName(2, "volume.png");
+            this.player_imageList.Images.SetKeyName(3, "mute.png");
+            this.player_imageList.Images.SetKeyName(4, "shuffle_on.png");
+            this.player_imageList.Images.SetKeyName(5, "shuffle_off.png");
+            // 
+            // myToolTip
+            // 
+            this.myToolTip.BackColor = System.Drawing.Color.Red;
+            this.myToolTip.ForeColor = System.Drawing.Color.DimGray;
+            // 
+            // onesec
+            // 
+            this.onesec.Interval = 1000;
+            this.onesec.Tick += new System.EventHandler(this.onesec_Tick);
+            // 
+            // songDetail_panel
+            // 
+            this.songDetail_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
+            this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
+            this.songDetail_panel.Name = "songDetail_panel";
+            this.songDetail_panel.Size = new System.Drawing.Size(1097, 737);
+            this.songDetail_panel.TabIndex = 0;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -661,8 +746,9 @@
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
+            this.Controls.Add(this.songDetail_panel);
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(774, 362);
+            this.MinimumSize = new System.Drawing.Size(774, 361);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -670,8 +756,9 @@
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.player_panel.ResumeLayout(false);
             this.player_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
+            this.songCover_panel.ResumeLayout(false);
             this.play_pause_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.songImg_pictureBox)).EndInit();
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
@@ -687,7 +774,6 @@
         public System.Windows.Forms.Button home_button;
         public System.Windows.Forms.Panel player_panel;
         public System.Windows.Forms.Panel menu_panel;
-        public System.Windows.Forms.PictureBox songImg_pictureBox;
         public System.Windows.Forms.Label title_label;
         public System.Windows.Forms.Label artist_label;
         public System.Windows.Forms.Label playingFrom_label;
@@ -717,6 +803,13 @@
         private System.Windows.Forms.PictureBox searchBar_icon;
         private System.Windows.Forms.TextBox searchBar_textBox;
         public System.Windows.Forms.Panel childForm_panel;
+        private System.Windows.Forms.ImageList player_imageList;
+        private System.Windows.Forms.ToolTip myToolTip;
+        private System.Windows.Forms.Timer onesec;
+        private System.Windows.Forms.Panel songImgOpacity_panel;
+        private System.Windows.Forms.Panel songCover_panel;
+        private System.Windows.Forms.Panel songDetail_panel;
+        private DevExpress.XtraEditors.ProgressBarControl progressBar;
     }
 }
 

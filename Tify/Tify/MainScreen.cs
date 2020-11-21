@@ -3,6 +3,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using WMPLib;
+using GetData;
+using System.Drawing.Imaging;
 
 namespace Tify
 {
@@ -13,8 +15,62 @@ namespace Tify
             InitializeComponent();
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
+            soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
+           
+          
         }
 
+        #region test
+
+        //test
+        private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
+
+        private PictureBox songPicture = new PictureBox();
+        private void testFunc()
+        {
+          
+            //volume
+
+            volume_trackBar.Maximum = 100;
+            volume_trackBar.Value = 50;
+            //
+            soundPlayer.URL = GetSongData.GetStreamLink(testURL);
+            soundPlayer.controls.stop();
+            time = 0;
+            
+          
+            songPicture.Load(GetSongData.GetSongCover(testURL));
+            songCover_panel.BackgroundImage = songPicture.Image;
+            string[] artists = GetSongData.GetSongArtist(testURL);
+            artist_label.Text = string.Empty;
+            foreach (string artist in artists)
+            {
+                artist_label.Text += artist + ";";
+            }
+            
+            title_label.Text = GetSongData.GetSongName(testURL);
+
+            //timer
+            currentTime_label.Text = "0:00 /";
+            int[] duration = GetSongData.GetSongDuration(testURL);
+            int durationMin = duration[0];
+            int durationSec = duration[1];
+            
+            
+            
+            if (durationSec < 10)
+            {
+                duration_label.Text = " "+ durationMin + ":0" + durationSec;
+            }
+            else
+            {
+                duration_label.Text =" "+  durationMin + ":" + durationSec;
+            }
+        }
+
+        #endregion test
+
+        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
         #region Load form
 
         private void MainScreen_Load(object sender, EventArgs e)
@@ -30,54 +86,103 @@ namespace Tify
 
             //demo
 
-            soundPlayer.URL = @"https://data25.chiasenhac.com/download2/2126/1/2125711-e9320e2c/128/Giau%20Vi%20Ban_%20Sang%20Vi%20Vo%20-%20RPT%20MCK.mp3";
-            time = soundPlayer.controls.currentPosition;
-            soundPlayer.controls.stop();
+            testFunc();
+
+            //set opacity for song cover
+            songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            songImgOpacity_panel.Hide();
+
+            //add control to panel
         }
 
         #endregion Load form
 
         #region Đổi icon khi nhấn vào nút play/pause
 
-        private bool isPause = true;
-        private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
+       
         private double time;
 
-        private void pause_button_Click(object sender, EventArgs e)
+        public void pause_button_Click(object sender, EventArgs e)
         {
-            if (isPause)
+            Button pause=sender as Button;
+            if (pause.Tag.ToString()=="pause")
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.play);
-                soundPlayer.controls.currentPosition = time;
-                soundPlayer.controls.play();
+                pause.BackgroundImage = player_imageList.Images["play.png"];
+                time = soundPlayer.controls.currentPosition;
+                soundPlayer.controls.pause();
+                pause.Tag = "play";
+                myToolTip.SetToolTip(pause, "Play");
             }
             else
             {
-                pause_button.BackgroundImage = byteArrayToImage(FileStore.Resource.pause);
-                time = soundPlayer.controls.currentPosition;
-                soundPlayer.controls.pause();
+                pause.BackgroundImage = player_imageList.Images["pause.png"];
+                soundPlayer.controls.currentPosition = time;
+                soundPlayer.controls.play();
+
+                pause.Tag = "pause";
+                myToolTip.SetToolTip(pause, "Pause");
+
             }
-            isPause = !isPause;
+            //
+                
+
         }
 
         #endregion Đổi icon khi nhấn vào nút play/pause
 
         #region Đổi icon khi nhấn vào nút âm lượng
 
-        private bool isMute = false;
 
-     
-
+        int lastVolume=0;
         private void volume_button_Click(object sender, EventArgs e)
         {
-            if (isMute)
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.volume);
+           
+            if (volume_button.Tag.ToString()=="off")
+            {
+                volume_button.BackgroundImage = player_imageList.Images["volume.png"];
+                volume_trackBar.Value = lastVolume;
+                volume_button.Tag = "on";
+            }
             else
-                volume_button.BackgroundImage = byteArrayToImage(FileStore.Resource.mute);
-            isMute = !isMute;
+            {
+                volume_button.BackgroundImage = player_imageList.Images["mute.png"];
+                lastVolume = volume_trackBar.Value;
+                volume_trackBar.Value = 0;
+                
+                volume_button.Tag = "off";
+            }
+            
         }
 
+
+
         #endregion Đổi icon khi nhấn vào nút âm lượng
+
+        #region Volume trackbar
+
+        private void volume_trackBar_ValueChanged(object sender, EventArgs e)
+        {
+            soundPlayer.settings.volume = volume_trackBar.Value;
+            
+        }
+        #endregion
+
+        #region Đổi icon khi nhấn vào nút shuffle
+
+        private void shuffle_button_Click(object sender, EventArgs e)
+        {
+            if (shuffle_button.Tag.ToString()=="on")
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
+                shuffle_button.Tag = "off";
+            }
+            else
+            {
+                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
+                shuffle_button.Tag = "on";
+            }
+        }
+        #endregion
 
         #region event khi Form size đổi
 
@@ -86,7 +191,7 @@ namespace Tify
             //Chỉnh lại vị trí của 3 dòng title,artist,playingFrom và ẩn hoặc hiện songImg
             if (this.Size.Width <= 975)
             {
-                songImg_pictureBox.Hide();
+                songCover_panel.Hide();
                 //x=18
                 title_label.Location = new Point(15, title_label.Location.Y);
                 artist_label.Location = new Point(15, artist_label.Location.Y);
@@ -94,7 +199,7 @@ namespace Tify
             }
             else
             {
-                songImg_pictureBox.Show();
+                songCover_panel.Show();
                 //x=104
                 title_label.Location = new Point(104, title_label.Location.Y);
                 artist_label.Location = new Point(104, artist_label.Location.Y);
@@ -125,6 +230,7 @@ namespace Tify
         #endregion event khi Form size đổi
 
         #region Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
+
 
         private void menu_button_Click(object sender, EventArgs e)
         {
@@ -170,16 +276,7 @@ namespace Tify
 
         #endregion Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
-        #region Chuyển dạng byte[] trong file resources thành image
-
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-
-        #endregion Chuyển dạng byte[] trong file resources thành image
+    
 
         #region Phóng to & thu nhỏ menu panel khi di chuột vào
 
@@ -248,9 +345,9 @@ namespace Tify
 
         #region Mở childForm
 
-        private Form activeForm = null;
+         private Form activeForm = null;
 
-        private void openChildForm(Form childForm)
+        public void openChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -274,20 +371,16 @@ namespace Tify
             if (type == "flow")
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.VerticalScroll.Visible = false;
-
-                flowpanel.VerticalScroll.Maximum = 0;
-                flowpanel.AutoScroll = false;
-                flowpanel.HorizontalScroll.Visible = false;
-                flowpanel.AutoScroll = true;
+                
             }
             else if (type == "panel")
             {
                 Panel panel = needHide as Panel;
-                
+
+                panel.AutoScroll = false;
+                panel.HorizontalScroll.Maximum = 0;
+                panel.AutoScroll = false;
+                panel.VerticalScroll.Visible = false;
 
                 panel.VerticalScroll.Maximum = 0;
                 panel.AutoScroll = false;
@@ -298,11 +391,7 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
-        #region test
-
-        //test
-
-        #endregion test
+      
 
 
         #region placeHolder for search bar
@@ -337,5 +426,158 @@ namespace Tify
         }
 
         #endregion createplaylist
+
+
+        #region mo form login/register khi click vao account button
+        Login loginForm = new Login();
+        private void account_button_Click(object sender, EventArgs e)
+        {
+            loginForm.StartPosition = FormStartPosition.CenterParent;
+            loginForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region progressBar
+
+
+        private void SoundPlayer_PlayStateChange(int NewState)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
+                
+               
+                onesec.Start();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsPaused)
+            {
+                onesec.Stop();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsStopped)
+            {
+                onesec.Stop();
+                progressBar.Position = 0;
+            }
+        }
+
+        string curMin="0" , curSec ="0";
+      
+
+        private void progressBar_MouseHover(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 14);
+        }
+
+        private void progressBar_MouseLeave(object sender, EventArgs e)
+        {
+            progressBar.Size = new Size(progressBar.Size.Width, 7);
+        }
+
+        private void progressBar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (progressBar.ClientRectangle.Contains(progressBar.PointToClient(Control.MousePosition)))
+            {
+
+                double MousePosition = e.X;
+                double ratio = MousePosition / progressBar.Size.Width;
+                double ProgressBarValue = ratio * progressBar.Properties.Maximum;
+
+                progressBar.Position = (int)ProgressBarValue;
+                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+            }
+        }
+
+        //Drag
+        bool isDown = false;
+        private void progressBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDown = true;
+        }
+
+        private void progressBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDown)
+            {
+                double MousePosition = e.X;
+                double ratio = MousePosition / progressBar.Size.Width;
+                double ProgressBarValue = ratio * progressBar.Properties.Maximum;
+                progressBar.Position = (int)ProgressBarValue;
+                
+            }
+            
+        }
+        private void progressBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDown = false;
+            if (!progressBar.ClientRectangle.Contains(progressBar.PointToClient(Control.MousePosition)))
+                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+            
+        }
+
+
+        private void onesec_Tick(object sender, EventArgs e)
+        {
+            if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
+            {
+                progressBar.Position = (int)soundPlayer.controls.currentPosition;
+                curMin = ((int)progressBar.Position / 60).ToString();
+                if ((int)progressBar.Position % 60<10)
+                    curSec = "0" + ((int)progressBar.Position % 60).ToString();
+                else
+                    curSec = ((int)progressBar.Position % 60).ToString();
+               
+                currentTime_label.Text = curMin + ":" + curSec + " /";
+            }
+        }
+
+
+
+
+        #endregion
+
+        #region event with music cover
+
+   
+
+        private void songCover_panel_MouseHover(object sender, EventArgs e)
+        {
+            songImgOpacity_panel.Show();
+        }
+
+        public void songCover_panel_MouseLeave(object sender, EventArgs e)
+        {
+            if (songCover_panel.ClientRectangle.Contains(songCover_panel.PointToClient(Control.MousePosition)))
+                return;
+            else
+            {
+                songImgOpacity_panel.Hide();
+                base.OnMouseLeave(e); 
+                
+            }
+            
+        }
+
+        public void songDetailMinimize_button_Click(object sender, EventArgs e)
+        {
+            songDetail_panel.SendToBack();
+        }
+
+      
+
+        private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
+        {
+           /* SongDetail songDetail = new SongDetail();
+            songDetail.TopLevel = false;
+
+            songDetail_panel.Controls.Add(songDetail);
+            songDetail.Dock = DockStyle.Fill;
+            songDetail.BringToFront();
+            songDetail.Show();
+            songDetail_panel.BringToFront();*/
+
+        }
+        #endregion
+
     }
 }

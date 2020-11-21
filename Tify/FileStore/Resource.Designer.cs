@@ -73,6 +73,16 @@ namespace FileStore {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] album {
             get {
                 object obj = ResourceManager.GetObject("album", resourceCulture);
@@ -113,9 +123,39 @@ namespace FileStore {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] back_normal {
+            get {
+                object obj = ResourceManager.GetObject("back_normal", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] dummy_cover {
+            get {
+                object obj = ResourceManager.GetObject("dummy_cover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] icon {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] minimumUI {
+            get {
+                object obj = ResourceManager.GetObject("minimumUI", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -186,6 +226,16 @@ namespace FileStore {
         public static byte[] next_hover {
             get {
                 object obj = ResourceManager.GetObject("next_hover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] next_normal {
+            get {
+                object obj = ResourceManager.GetObject("next_normal", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -283,6 +333,36 @@ namespace FileStore {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] region_global_large {
+            get {
+                object obj = ResourceManager.GetObject("region_global_large", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] region_jp_large {
+            get {
+                object obj = ResourceManager.GetObject("region_jp_large", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] shuffle {
             get {
                 object obj = ResourceManager.GetObject("shuffle", resourceCulture);
@@ -296,6 +376,26 @@ namespace FileStore {
         public static byte[] shuffle_hover {
             get {
                 object obj = ResourceManager.GetObject("shuffle_hover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] shuffle_off {
+            get {
+                object obj = ResourceManager.GetObject("shuffle_off", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] shuffle_on {
+            get {
+                object obj = ResourceManager.GetObject("shuffle_on", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -30,11 +30,7 @@ namespace Tify
         private void MyMix_Load(object sender, EventArgs e)
         {
 
-           
-            MyMix_GroupBox.Visible = false;
-
-
-
+            MyMix_GroupBox.Visible = true;
 
         }
 
