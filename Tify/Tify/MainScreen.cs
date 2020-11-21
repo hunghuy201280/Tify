@@ -86,7 +86,7 @@ namespace Tify
 
             //demo
 
-            testFunc();
+            //testFunc();
 
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);

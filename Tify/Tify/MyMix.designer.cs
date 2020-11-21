@@ -56,6 +56,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.playlistDetail_panel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.MyMix_GroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -97,6 +98,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -375,6 +377,18 @@
             this.playlistDetail_panel.Size = new System.Drawing.Size(1128, 688);
             this.playlistDetail_panel.TabIndex = 19;
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.Location = new System.Drawing.Point(193, 234);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 43);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add Mix";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MyMix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +404,7 @@
             this.MyMix_GroupBox.ResumeLayout(false);
             this.MyMix_GroupBox.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -440,5 +455,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel playlistDetail_panel;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -42,5 +42,25 @@ namespace Tify
             MyMix_GroupBox.Width = this.Width - 12;
             MyMix_GroupBox.Height = this.Height - 12;
         }
+        
+        private void addMix()
+        {
+
+
+            MixContainer mix = new MixContainer();
+           
+            
+            mix.TopLevel = false;
+            mix.FormBorderStyle = FormBorderStyle.None;
+            flowLayoutPanel1.Controls.Add(mix);
+            
+            mix.BringToFront();
+            mix.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addMix();
+        }
     }
 }
