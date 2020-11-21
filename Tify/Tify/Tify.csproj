@@ -82,6 +82,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="MixContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MixContainer.Designer.cs">
+      <DependentUpon>MixContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyMix.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MixContainer.resx">
+      <DependentUpon>MixContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyMix.resx">
       <DependentUpon>MyMix.cs</DependentUpon>
