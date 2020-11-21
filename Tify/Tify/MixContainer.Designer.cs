@@ -29,56 +29,58 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MixContainer));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Mix_Name = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Mix_Artist = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel7
             // 
-            this.panel1.Controls.Add(this.Mix_Artist);
-            this.panel1.Controls.Add(this.Mix_Name);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(180, 201);
-            this.panel1.TabIndex = 0;
+            this.panel7.Controls.Add(this.label13);
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.pictureBox7);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.ForeColor = System.Drawing.Color.White;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(5, 30, 5, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(180, 201);
+            this.panel7.TabIndex = 14;
             // 
-            // Mix_Name
+            // label13
             // 
-            this.Mix_Name.AutoSize = true;
-            this.Mix_Name.Font = new System.Drawing.Font("Nationale", 10F, System.Drawing.FontStyle.Bold);
-            this.Mix_Name.ForeColor = System.Drawing.Color.White;
-            this.Mix_Name.Location = new System.Drawing.Point(20, 141);
-            this.Mix_Name.Name = "Mix_Name";
-            this.Mix_Name.Size = new System.Drawing.Size(81, 17);
-            this.Mix_Name.TabIndex = 3;
-            this.Mix_Name.Text = "Mix_Name";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(20, 175);
+            this.label13.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 16);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Playlist";
             // 
-            // pictureBox1
+            // label14
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(23, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(135, 135);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(20, 153);
+            this.label14.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 18);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Japan Top 50";
             // 
-            // Mix_Artist
+            // pictureBox7
             // 
-            this.Mix_Artist.AutoSize = true;
-            this.Mix_Artist.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mix_Artist.ForeColor = System.Drawing.Color.Gray;
-            this.Mix_Artist.Location = new System.Drawing.Point(20, 158);
-            this.Mix_Artist.Name = "Mix_Artist";
-            this.Mix_Artist.Size = new System.Drawing.Size(65, 16);
-            this.Mix_Artist.TabIndex = 4;
-            this.Mix_Artist.Text = "Mix_Artist";
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(23, 0);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(135, 135);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
             // 
             // MixContainer
             // 
@@ -86,22 +88,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(180, 201);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Controls.Add(this.panel7);
             this.Name = "MixContainer";
             this.Text = "MixContainer";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label Mix_Name;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label Mix_Artist;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }

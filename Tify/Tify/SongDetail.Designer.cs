@@ -35,7 +35,6 @@
             this.songDetail_leftPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.volume_detailTrackBar = new MediaSlider.MediaSlider();
-            this.progressBar_detail = new System.Windows.Forms.ProgressBar();
             this.volume_detailButton = new System.Windows.Forms.Button();
             this.mediaSlider2 = new MediaSlider.MediaSlider();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -43,8 +42,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pause_detailButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,6 +50,9 @@
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
             this.songDetail_rightPanel = new System.Windows.Forms.Panel();
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar_detail = new System.Windows.Forms.ProgressBar();
             this.songDetail_panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
@@ -158,13 +158,6 @@
             this.volume_detailTrackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
             this.volume_detailTrackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
             this.volume_detailTrackBar.Value = 0;
-            // 
-            // progressBar_detail
-            // 
-            this.progressBar_detail.Location = new System.Drawing.Point(3, 72);
-            this.progressBar_detail.Name = "progressBar_detail";
-            this.progressBar_detail.Size = new System.Drawing.Size(731, 5);
-            this.progressBar_detail.TabIndex = 15;
             // 
             // volume_detailButton
             // 
@@ -309,33 +302,6 @@
             this.pause_detailButton.Tag = "pause";
             this.pause_detailButton.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
-            this.label1.Location = new System.Drawing.Point(10, 89);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 19);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "0:14 /";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.label2.Location = new System.Drawing.Point(51, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 19);
-            this.label2.TabIndex = 10;
-            this.label2.Text = " 3:23";
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -420,6 +386,40 @@
             this.songDetail_rightPanel.Size = new System.Drawing.Size(353, 751);
             this.songDetail_rightPanel.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
+            this.label1.Location = new System.Drawing.Point(10, 89);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 19);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "0:14 /";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.label2.Location = new System.Drawing.Point(51, 89);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 19);
+            this.label2.TabIndex = 10;
+            this.label2.Text = " 3:23";
+            // 
+            // progressBar_detail
+            // 
+            this.progressBar_detail.Location = new System.Drawing.Point(3, 72);
+            this.progressBar_detail.Name = "progressBar_detail";
+            this.progressBar_detail.Size = new System.Drawing.Size(731, 5);
+            this.progressBar_detail.TabIndex = 15;
+            // 
             // SongDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,7 +448,6 @@
         private System.Windows.Forms.Panel songDetail_leftPanel;
         public System.Windows.Forms.Panel panel4;
         public MediaSlider.MediaSlider volume_detailTrackBar;
-        private System.Windows.Forms.ProgressBar progressBar_detail;
         public System.Windows.Forms.Button volume_detailButton;
         public MediaSlider.MediaSlider mediaSlider2;
         public System.Windows.Forms.Panel panel7;
@@ -456,8 +455,6 @@
         public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button button4;
         public System.Windows.Forms.Button pause_detailButton;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
@@ -466,5 +463,8 @@
         private System.Windows.Forms.Panel songDetail_rightPanel;
         private System.Windows.Forms.ImageList songDetaillImageList;
         private System.Windows.Forms.ToolTip myToolTip;
+        private System.Windows.Forms.ProgressBar progressBar_detail;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
     }
 }
