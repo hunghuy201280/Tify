@@ -17,15 +17,37 @@ namespace Tify
             InitializeComponent();
             Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
 
-
+        }
+        private FlowLayoutPanel menu_pnl;
+        public CreatePlayList(FlowLayoutPanel frommenu)
+        {
+            InitializeComponent();
+            
+            menu_pnl = frommenu;
 
         }
-       
+
 
         private void Description_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Description_TextBox.MaxLength = 5;
+            Description_TextBox.MaxLength = 500;
             Text_PlayList_Count.Text = (Description_TextBox.Text.Length).ToString() + "/ 500";
+        }
+
+        private void CreatePlayList_Button_Click(object sender, EventArgs e)
+        {
+           
+            Button newbutton = new Button();
+            newbutton.Text = Title_TextBox.Text;
+            newbutton.AutoSize = true;
+            newbutton.ForeColor = Color.White;
+            newbutton.Width = 210;
+            newbutton.Height = 46;
+            menu_pnl.FlowDirection = FlowDirection.TopDown;
+            menu_pnl.Controls.Add(newbutton);
+            
+
+
         }
     }
 }

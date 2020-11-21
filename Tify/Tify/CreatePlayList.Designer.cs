@@ -119,6 +119,7 @@
             this.CreatePlayList_Button.TabIndex = 6;
             this.CreatePlayList_Button.Text = "Create Play List";
             this.CreatePlayList_Button.UseVisualStyleBackColor = false;
+            this.CreatePlayList_Button.Click += new System.EventHandler(this.CreatePlayList_Button_Click);
             // 
             // CreatePlayList
             // 

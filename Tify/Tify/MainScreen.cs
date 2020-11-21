@@ -421,8 +421,8 @@ namespace Tify
         #region createplaylist
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
         {
-            var myForm = new CreatePlayList();
-            myForm.Show();
+            var myForm = new CreatePlayList(CreatePlayList_FlowPanel);
+            myForm.ShowDialog();
         }
 
         #endregion createplaylist

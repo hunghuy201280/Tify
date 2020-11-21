@@ -69,6 +69,7 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
+            this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -96,7 +97,7 @@
             this.player_panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player_panel.Location = new System.Drawing.Point(0, 637);
+            this.player_panel.Location = new System.Drawing.Point(0, 808);
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
@@ -368,6 +369,7 @@
             // menu_panel
             // 
             this.menu_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.menu_panel.Controls.Add(this.CreatePlayList_FlowPanel);
             this.menu_panel.Controls.Add(this.createNewPlaylist_button);
             this.menu_panel.Controls.Add(this.myPlaylist_label);
             this.menu_panel.Controls.Add(this.account_button);
@@ -383,7 +385,7 @@
             this.menu_panel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
             this.menu_panel.Name = "menu_panel";
-            this.menu_panel.Size = new System.Drawing.Size(240, 637);
+            this.menu_panel.Size = new System.Drawing.Size(240, 808);
             this.menu_panel.TabIndex = 2;
             this.menu_panel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.menu_panel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
@@ -702,7 +704,7 @@
             this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
             this.childForm_panel.Location = new System.Drawing.Point(240, 60);
             this.childForm_panel.Name = "childForm_panel";
-            this.childForm_panel.Size = new System.Drawing.Size(857, 577);
+            this.childForm_panel.Size = new System.Drawing.Size(857, 748);
             this.childForm_panel.TabIndex = 26;
             // 
             // player_imageList
@@ -734,14 +736,24 @@
             this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
             this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
             this.songDetail_panel.Name = "songDetail_panel";
-            this.songDetail_panel.Size = new System.Drawing.Size(1097, 737);
+            this.songDetail_panel.Size = new System.Drawing.Size(1097, 908);
             this.songDetail_panel.TabIndex = 0;
+            // 
+            // CreatePlayList_FlowPanel
+            // 
+            this.CreatePlayList_FlowPanel.AutoScroll = true;
+            this.CreatePlayList_FlowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
+            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
+            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 252);
+            this.CreatePlayList_FlowPanel.TabIndex = 24;
+            this.CreatePlayList_FlowPanel.WrapContents = false;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 737);
+            this.ClientSize = new System.Drawing.Size(1097, 908);
             this.Controls.Add(this.childForm_panel);
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
@@ -810,6 +822,7 @@
         private System.Windows.Forms.Panel songCover_panel;
         private System.Windows.Forms.Panel songDetail_panel;
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
+        private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
     }
 }
 
