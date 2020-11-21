@@ -86,7 +86,7 @@ namespace Tify
 
             //demo
 
-             testFunc();
+            testFunc();
 
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -445,7 +445,9 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                progressBar.Maximum = (int)soundPlayer.currentMedia.duration;
+                progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
+                
+               
                 onesec.Start();
             }
             else if (soundPlayer.playState == WMPPlayState.wmppsPaused)
@@ -455,44 +457,75 @@ namespace Tify
             else if (soundPlayer.playState == WMPPlayState.wmppsStopped)
             {
                 onesec.Stop();
-                progressBar.Value = 0;
+                progressBar.Position = 0;
             }
         }
 
         string curMin="0" , curSec ="0";
-
-        private void progressBar_MouseClick(object sender, MouseEventArgs e)
-        {
-            double MousePosition = e.X;
-            double ratio = MousePosition / progressBar.Size.Width;
-            double ProgressBarValue = ratio * progressBar.Maximum;
-
-            progressBar.Value = (int)ProgressBarValue;
-            soundPlayer.controls.currentPosition = progressBar.Value;
-        }
+      
 
         private void progressBar_MouseHover(object sender, EventArgs e)
         {
-            progressBar.Size = new Size(progressBar.Size.Width, 12);
+            progressBar.Size = new Size(progressBar.Size.Width, 14);
         }
 
         private void progressBar_MouseLeave(object sender, EventArgs e)
         {
-            progressBar.Size = new Size(progressBar.Size.Width, 5);
+            progressBar.Size = new Size(progressBar.Size.Width, 7);
         }
 
-       
+        private void progressBar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (progressBar.ClientRectangle.Contains(progressBar.PointToClient(Control.MousePosition)))
+            {
+
+                double MousePosition = e.X;
+                double ratio = MousePosition / progressBar.Size.Width;
+                double ProgressBarValue = ratio * progressBar.Properties.Maximum;
+
+                progressBar.Position = (int)ProgressBarValue;
+                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+            }
+        }
+
+        //Drag
+        bool isDown = false;
+        private void progressBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDown = true;
+        }
+
+        private void progressBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDown)
+            {
+                double MousePosition = e.X;
+                double ratio = MousePosition / progressBar.Size.Width;
+                double ProgressBarValue = ratio * progressBar.Properties.Maximum;
+                progressBar.Position = (int)ProgressBarValue;
+                
+            }
+            
+        }
+        private void progressBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDown = false;
+            if (!progressBar.ClientRectangle.Contains(progressBar.PointToClient(Control.MousePosition)))
+                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+            
+        }
+
 
         private void onesec_Tick(object sender, EventArgs e)
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                progressBar.Value = (int)soundPlayer.controls.currentPosition;
-                curMin = (progressBar.Value / 60).ToString();
-                if (progressBar.Value % 60<10)
-                    curSec = "0" + (progressBar.Value % 60).ToString();
+                progressBar.Position = (int)soundPlayer.controls.currentPosition;
+                curMin = ((int)progressBar.Position / 60).ToString();
+                if ((int)progressBar.Position % 60<10)
+                    curSec = "0" + ((int)progressBar.Position % 60).ToString();
                 else
-                    curSec = (progressBar.Value % 60).ToString();
+                    curSec = ((int)progressBar.Position % 60).ToString();
                
                 currentTime_label.Text = curMin + ":" + curSec + " /";
             }
@@ -530,16 +563,18 @@ namespace Tify
             songDetail_panel.SendToBack();
         }
 
+      
+
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {
-            SongDetail songDetail = new SongDetail(this);
+           /* SongDetail songDetail = new SongDetail();
             songDetail.TopLevel = false;
 
             songDetail_panel.Controls.Add(songDetail);
             songDetail.Dock = DockStyle.Fill;
             songDetail.BringToFront();
             songDetail.Show();
-            songDetail_panel.BringToFront();
+            songDetail_panel.BringToFront();*/
 
         }
         #endregion

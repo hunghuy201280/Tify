@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
             this.songCover_panel = new System.Windows.Forms.Panel();
             this.songImgOpacity_panel = new System.Windows.Forms.Panel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.volume_button = new System.Windows.Forms.Button();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.play_pause_panel = new System.Windows.Forms.Panel();
@@ -70,6 +70,7 @@
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.player_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
             this.menu_panel.SuspendLayout();
@@ -82,8 +83,8 @@
             // player_panel
             // 
             this.player_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
-            this.player_panel.Controls.Add(this.songCover_panel);
             this.player_panel.Controls.Add(this.progressBar);
+            this.player_panel.Controls.Add(this.songCover_panel);
             this.player_panel.Controls.Add(this.volume_button);
             this.player_panel.Controls.Add(this.volume_trackBar);
             this.player_panel.Controls.Add(this.play_pause_panel);
@@ -100,6 +101,27 @@
             this.player_panel.Size = new System.Drawing.Size(1097, 100);
             this.player_panel.TabIndex = 1;
             this.player_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar.EditValue = 50;
+            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.progressBar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.progressBar.Properties.EndColor = System.Drawing.Color.Empty;
+            this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
+            this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
+            this.progressBar.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar.TabIndex = 0;
+            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
+            this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
+            this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
+            this.progressBar.MouseHover += new System.EventHandler(this.progressBar_MouseHover);
+            this.progressBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseMove);
+            this.progressBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseUp);
             // 
             // songCover_panel
             // 
@@ -124,17 +146,6 @@
             this.songImgOpacity_panel.TabIndex = 16;
             this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
             this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1097, 5);
-            this.progressBar.TabIndex = 15;
-            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
-            this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
-            this.progressBar.MouseHover += new System.EventHandler(this.progressBar_MouseHover);
             // 
             // volume_button
             // 
@@ -745,6 +756,7 @@
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.player_panel.ResumeLayout(false);
             this.player_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.songCover_panel.ResumeLayout(false);
             this.play_pause_panel.ResumeLayout(false);
             this.menu_panel.ResumeLayout(false);
@@ -793,11 +805,11 @@
         public System.Windows.Forms.Panel childForm_panel;
         private System.Windows.Forms.ImageList player_imageList;
         private System.Windows.Forms.ToolTip myToolTip;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer onesec;
         private System.Windows.Forms.Panel songImgOpacity_panel;
         private System.Windows.Forms.Panel songCover_panel;
         private System.Windows.Forms.Panel songDetail_panel;
+        private DevExpress.XtraEditors.ProgressBarControl progressBar;
     }
 }
 

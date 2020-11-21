@@ -24,7 +24,7 @@ namespace Tify
             mainscr = callForm;
             
             InitializeComponent();
-            soundPlayer = player;
+            
         }
 
         private void songDetailMinimize_button_Click(object sender, EventArgs e)
