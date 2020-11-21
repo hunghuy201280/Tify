@@ -23,7 +23,7 @@ namespace Tify
         #region test
 
         //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/yoasobi/yoru-ni-kakeru-tsvwswrzq949a1.html";
+        private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
 
         private PictureBox songPicture = new PictureBox();
         private void testFunc()
