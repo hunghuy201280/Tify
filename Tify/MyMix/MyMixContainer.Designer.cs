@@ -71,8 +71,7 @@
             // 
             // MyMixContainer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.MyMixArtist_label);
             this.Controls.Add(this.MyMixName_label);

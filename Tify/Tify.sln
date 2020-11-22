@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tify", "Tify\Tify.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistContainer", "Playlist\PlaylistContainer.csproj", "{658BFAC3-0B79-408D-A308-236BB5C3B66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMix", "MyMix\MyMix.csproj", "{D5CB43DD-7D20-4194-9644-03004A12E19F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMixContainer", "MyMix\MyMixContainer.csproj", "{D5CB43DD-7D20-4194-9644-03004A12E19F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
