@@ -36,16 +36,22 @@ namespace Tify
 
         private void CreatePlayList_Button_Click(object sender, EventArgs e)
         {
-           
+            
             Button newbutton = new Button();
+            newbutton.FlatStyle = FlatStyle.Flat;
+            newbutton.FlatAppearance.BorderSize = 0;
             newbutton.Text = Title_TextBox.Text;
+            newbutton.Font = new Font("Nationale", 12);
             newbutton.AutoSize = true;
+            
+            newbutton.TextAlign = ContentAlignment.MiddleLeft;
             newbutton.ForeColor = Color.White;
             newbutton.Width = 210;
             newbutton.Height = 46;
             menu_pnl.FlowDirection = FlowDirection.TopDown;
             menu_pnl.Controls.Add(newbutton);
-            
+          
+
 
 
         }
