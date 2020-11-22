@@ -612,6 +612,14 @@ namespace Tify
         {
             return soundPlayer;
         }
+        public Button getPause_button()
+        {
+            return pause_button;
+        }
+        public Panel getSongDetailPanel()
+        {
+            return songDetail_panel;
+        }
         #endregion
     }
 }

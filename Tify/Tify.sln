@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tify", "Tify\Tify.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistContainer", "Playlist\PlaylistContainer.csproj", "{658BFAC3-0B79-408D-A308-236BB5C3B66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMixContainer", "MyMix\MyMixContainer.csproj", "{36436037-B97B-45D0-BD1B-9EF363FDFA84}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36436037-B97B-45D0-BD1B-9EF363FDFA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36436037-B97B-45D0-BD1B-9EF363FDFA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36436037-B97B-45D0-BD1B-9EF363FDFA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36436037-B97B-45D0-BD1B-9EF363FDFA84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,6 +20,7 @@ namespace Tify
         }
         private MainScreen mainscr;
         private WindowsMediaPlayer soundPlayer;
+        //private Panel songDetail_panel;
         public SongDetail(MainScreen callForm)
         {
             mainscr = callForm;
@@ -33,7 +34,5 @@ namespace Tify
             mainscr.Controls["songDetail_panel"].SendToBack();
 
         }
-       
-        
     }
 }
