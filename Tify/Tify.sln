@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tify", "Tify\Tify.csproj", "{7ED7043A-76BA-4AEE-92B4-0DD0BF8AE0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStore", "FileStore\FileStore.csproj", "{44243F3F-5958-4849-B7FA-340559CA21E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist", "Playlist\Playlist.csproj", "{658BFAC3-0B79-408D-A308-236BB5C3B66B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{7ED7043A-76BA-4AEE-92B4-0DD0BF8AE0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ED7043A-76BA-4AEE-92B4-0DD0BF8AE0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ED7043A-76BA-4AEE-92B4-0DD0BF8AE0B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44243F3F-5958-4849-B7FA-340559CA21E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44243F3F-5958-4849-B7FA-340559CA21E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44243F3F-5958-4849-B7FA-340559CA21E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44243F3F-5958-4849-B7FA-340559CA21E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658BFAC3-0B79-408D-A308-236BB5C3B66B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMix));
-            this.panel_MyMix = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MyMix_GroupBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -58,8 +55,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel_MyMix.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
+            this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.MyMix_GroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -76,45 +73,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel_MyMix
-            // 
-            this.panel_MyMix.Controls.Add(this.label1);
-            this.panel_MyMix.Controls.Add(this.pictureBox1);
-            this.panel_MyMix.Location = new System.Drawing.Point(139, 357);
-            this.panel_MyMix.Name = "panel_MyMix";
-            this.panel_MyMix.Size = new System.Drawing.Size(496, 308);
-            this.panel_MyMix.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-6, 182);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(513, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "You will soon find a personal Mix here.";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(157, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 126);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // MyMix_GroupBox
             // 
             this.MyMix_GroupBox.Controls.Add(this.flowLayoutPanel1);
             this.MyMix_GroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyMix_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MyMix_GroupBox.ForeColor = System.Drawing.Color.White;
-            this.MyMix_GroupBox.Location = new System.Drawing.Point(0, 0);
+            this.MyMix_GroupBox.Location = new System.Drawing.Point(10, 10);
             this.MyMix_GroupBox.Name = "MyMix_GroupBox";
-            this.MyMix_GroupBox.Size = new System.Drawing.Size(1052, 533);
+            this.MyMix_GroupBox.Size = new System.Drawing.Size(1128, 688);
             this.MyMix_GroupBox.TabIndex = 2;
             this.MyMix_GroupBox.TabStop = false;
             this.MyMix_GroupBox.Text = "Check out these album:";
@@ -131,10 +98,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel5);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1046, 494);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1122, 649);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // panel7
@@ -401,23 +369,42 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.Location = new System.Drawing.Point(193, 234);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 43);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add Mix";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // playlistDetail_panel
+            // 
+            this.playlistDetail_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlistDetail_panel.Location = new System.Drawing.Point(10, 10);
+            this.playlistDetail_panel.Name = "playlistDetail_panel";
+            this.playlistDetail_panel.Size = new System.Drawing.Size(1128, 688);
+            this.playlistDetail_panel.TabIndex = 19;
+            // 
             // MyMix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1052, 533);
-            this.Controls.Add(this.panel_MyMix);
+            this.ClientSize = new System.Drawing.Size(1148, 708);
             this.Controls.Add(this.MyMix_GroupBox);
+            this.Controls.Add(this.playlistDetail_panel);
             this.Name = "MyMix";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "MyMix";
             this.Load += new System.EventHandler(this.MyMix_Load);
-            this.panel_MyMix.ResumeLayout(false);
-            this.panel_MyMix.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MyMix_GroupBox.ResumeLayout(false);
             this.MyMix_GroupBox.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -441,9 +428,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel_MyMix;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox MyMix_GroupBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel7;
@@ -470,5 +454,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel playlistDetail_panel;
+        private System.Windows.Forms.Button button1;
     }
 }

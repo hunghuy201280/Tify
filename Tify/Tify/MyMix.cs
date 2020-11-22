@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Playlist;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,25 +30,8 @@ namespace Tify
 
         private void MyMix_Load(object sender, EventArgs e)
         {
-           
-            //panel new
-            panel_MyMix.Location = new Point(
-            this.ClientSize.Width / 2 - panel_MyMix.Size.Width / 2,
-            this.ClientSize.Height / 2 - panel_MyMix.Size.Height / 2);
-            panel_MyMix.Anchor = AnchorStyles.None;
-            if (Mixed == true)
-            {
-                MyMix_GroupBox.Visible = true;
-                panel_MyMix.Visible = false;
-            }
-            else
-            {
-                MyMix_GroupBox.Visible = false;
-                panel_MyMix.Visible = true;
-            }
 
-
-
+            MyMix_GroupBox.Visible = true;
 
         }
 
@@ -58,6 +42,24 @@ namespace Tify
 
             MyMix_GroupBox.Width = this.Width - 12;
             MyMix_GroupBox.Height = this.Height - 12;
+        }
+        
+        private void addMix()
+        {
+
+
+            PlaylistContainer mix = new PlaylistContainer();
+           
+            
+            
+            flowLayoutPanel1.Controls.Add(mix);
+            
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addMix();
         }
     }
 }
