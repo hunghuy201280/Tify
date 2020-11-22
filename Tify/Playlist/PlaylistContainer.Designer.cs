@@ -1,6 +1,6 @@
 ﻿namespace Playlist
 {
-    partial class Playlist
+    partial class PlaylistContainer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Playlist));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlaylistContainer));
             this.numberOfTracks_label = new System.Windows.Forms.Label();
             this.playlistName_label = new System.Windows.Forms.Label();
             this.playListCover_pictureBox = new System.Windows.Forms.PictureBox();

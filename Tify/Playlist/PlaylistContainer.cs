@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Playlist
 {
-    public partial class Playlist: UserControl
+    public partial class PlaylistContainer: UserControl
     {
-        public Playlist()
+        public PlaylistContainer()
         {
             InitializeComponent();
         }

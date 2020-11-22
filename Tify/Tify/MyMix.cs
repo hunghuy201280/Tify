@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Playlist;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,15 +48,13 @@ namespace Tify
         {
 
 
-            MixContainer mix = new MixContainer();
+            PlaylistContainer mix = new PlaylistContainer();
            
             
-            mix.TopLevel = false;
-            mix.FormBorderStyle = FormBorderStyle.None;
+            
             flowLayoutPanel1.Controls.Add(mix);
             
-            mix.BringToFront();
-            mix.Show();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

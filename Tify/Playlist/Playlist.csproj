@@ -42,18 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Playlist.cs">
+    <Compile Include="PlaylistContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Playlist.Designer.cs">
-      <DependentUpon>Playlist.cs</DependentUpon>
+    <Compile Include="PlaylistContainer.Designer.cs">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Playlist.resx">
-      <DependentUpon>Playlist.cs</DependentUpon>
+    <EmbeddedResource Include="PlaylistContainer.resx">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
