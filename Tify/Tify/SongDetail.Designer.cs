@@ -441,7 +441,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel songDetail_panel;
+     
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel songDetail_leftPanel;
         public System.Windows.Forms.Panel panel4;
