@@ -21,6 +21,7 @@ namespace Tify
         private MainScreen mainscr;
         private WindowsMediaPlayer soundPlayer;
         private Panel songDetail_panel;
+       
         public SongDetail(MainScreen callForm)
         {
            
@@ -28,6 +29,7 @@ namespace Tify
             InitializeComponent();
             mainscr = callForm;
             songDetail_panel = mainscr.getSongDetailPanel();
+            volume_detailTrackBar = mainscr.getVolume_trackBar();
         }
 
         private void songDetailMinimize_button_Click(object sender, EventArgs e)

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.player_panel = new System.Windows.Forms.Panel();
+            this.volume_trackBar = new MediaSlider.MediaSlider();
             this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
             this.songCover_panel = new System.Windows.Forms.Panel();
             this.songImgOpacity_panel = new System.Windows.Forms.Panel();
@@ -69,7 +70,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.volume_trackBar = new MediaSlider.MediaSlider();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -102,6 +102,49 @@
             this.player_panel.Size = new System.Drawing.Size(1127, 100);
             this.player_panel.TabIndex = 1;
             this.player_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            // 
+            // volume_trackBar
+            // 
+            this.volume_trackBar.Animated = false;
+            this.volume_trackBar.AnimationSize = 0.2F;
+            this.volume_trackBar.AnimationSpeed = MediaSlider.MediaSlider.AnimateSpeed.Normal;
+            this.volume_trackBar.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.volume_trackBar.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.volume_trackBar.AutoSize = true;
+            this.volume_trackBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
+            this.volume_trackBar.BackGroundImage = null;
+            this.volume_trackBar.ButtonAccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.volume_trackBar.ButtonBorderColor = System.Drawing.Color.Black;
+            this.volume_trackBar.ButtonColor = System.Drawing.Color.White;
+            this.volume_trackBar.ButtonCornerRadius = ((uint)(4u));
+            this.volume_trackBar.ButtonSize = new System.Drawing.Size(12, 12);
+            this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
+            this.volume_trackBar.ContextMenuStrip = null;
+            this.volume_trackBar.LargeChange = 2;
+            this.volume_trackBar.Location = new System.Drawing.Point(981, 43);
+            this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
+            this.volume_trackBar.Maximum = 100;
+            this.volume_trackBar.Minimum = 0;
+            this.volume_trackBar.Name = "volume_trackBar";
+            this.volume_trackBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.volume_trackBar.ShowButtonOnHover = false;
+            this.volume_trackBar.Size = new System.Drawing.Size(130, 13);
+            this.volume_trackBar.SliderFlyOut = MediaSlider.MediaSlider.FlyOutStyle.None;
+            this.volume_trackBar.SmallChange = 1;
+            this.volume_trackBar.SmoothScrolling = true;
+            this.volume_trackBar.TabIndex = 15;
+            this.volume_trackBar.TickColor = System.Drawing.Color.DarkGray;
+            this.volume_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.volume_trackBar.TickType = MediaSlider.MediaSlider.TickMode.Standard;
+            this.volume_trackBar.TrackBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.volume_trackBar.TrackDepth = 4;
+            this.volume_trackBar.TrackFillColor = System.Drawing.Color.White;
+            this.volume_trackBar.TrackProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(101)))), ((int)(((byte)(188)))));
+            this.volume_trackBar.TrackShadow = false;
+            this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
+            this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
+            this.volume_trackBar.Value = 0;
+            this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // progressBar
             // 
@@ -706,49 +749,6 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
-            // 
-            // volume_trackBar
-            // 
-            this.volume_trackBar.Animated = false;
-            this.volume_trackBar.AnimationSize = 0.2F;
-            this.volume_trackBar.AnimationSpeed = MediaSlider.MediaSlider.AnimateSpeed.Normal;
-            this.volume_trackBar.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.volume_trackBar.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.volume_trackBar.AutoSize = true;
-            this.volume_trackBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
-            this.volume_trackBar.BackGroundImage = null;
-            this.volume_trackBar.ButtonAccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.volume_trackBar.ButtonBorderColor = System.Drawing.Color.Black;
-            this.volume_trackBar.ButtonColor = System.Drawing.Color.White;
-            this.volume_trackBar.ButtonCornerRadius = ((uint)(4u));
-            this.volume_trackBar.ButtonSize = new System.Drawing.Size(12, 12);
-            this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
-            this.volume_trackBar.ContextMenuStrip = null;
-            this.volume_trackBar.LargeChange = 2;
-            this.volume_trackBar.Location = new System.Drawing.Point(981, 43);
-            this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
-            this.volume_trackBar.Maximum = 100;
-            this.volume_trackBar.Minimum = 0;
-            this.volume_trackBar.Name = "volume_trackBar";
-            this.volume_trackBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.volume_trackBar.ShowButtonOnHover = false;
-            this.volume_trackBar.Size = new System.Drawing.Size(130, 13);
-            this.volume_trackBar.SliderFlyOut = MediaSlider.MediaSlider.FlyOutStyle.None;
-            this.volume_trackBar.SmallChange = 1;
-            this.volume_trackBar.SmoothScrolling = false;
-            this.volume_trackBar.TabIndex = 15;
-            this.volume_trackBar.TickColor = System.Drawing.Color.DarkGray;
-            this.volume_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.volume_trackBar.TickType = MediaSlider.MediaSlider.TickMode.Standard;
-            this.volume_trackBar.TrackBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.volume_trackBar.TrackDepth = 4;
-            this.volume_trackBar.TrackFillColor = System.Drawing.Color.White;
-            this.volume_trackBar.TrackProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(101)))), ((int)(((byte)(188)))));
-            this.volume_trackBar.TrackShadow = false;
-            this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
-            this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
-            this.volume_trackBar.Value = 0;
-            this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // MainScreen
             // 

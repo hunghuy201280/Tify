@@ -17,8 +17,8 @@ namespace Tify
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus +=AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
-           
-          
+
+            songDetail = new SongDetail(this);
         }
 
         #region test
@@ -586,16 +586,18 @@ namespace Tify
             songDetail_panel.SendToBack();
         }
 
-     
 
+        SongDetail songDetail;
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {
-            SongDetail songDetail = new SongDetail(this);
-            songDetail.TopLevel = false;
-
-            songDetail_panel.Controls.Add(songDetail);
-            songDetail.Dock = DockStyle.Fill;
-            songDetail.BringToFront();
+            if (songDetail_panel.Controls.Count==0)
+            {
+                songDetail.TopLevel = false;
+                songDetail_panel.Controls.Add(songDetail);
+                songDetail.Dock = DockStyle.Fill;
+                songDetail.BringToFront();
+            }
+            
             songDetail.Show();
             songDetail_panel.BringToFront();
             songImgOpacity_panel.Visible = false;
@@ -620,6 +622,11 @@ namespace Tify
         public Panel getSongDetailPanel()
         {
             return songDetail_panel;
+        }
+
+        public MediaSlider.MediaSlider getVolume_trackBar()
+        {
+            return volume_trackBar;
         }
         #endregion
     }
