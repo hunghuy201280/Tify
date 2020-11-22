@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using WMPLib;
 using GetData;
 using System.Drawing.Imaging;
+using DevExpress.XtraEditors;
 
 namespace Tify
 {
@@ -18,13 +19,16 @@ namespace Tify
             searchBar_textBox.LostFocus +=AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
 
+            songDetail_panel.BringToFront();
             songDetail = new SongDetail(this);
+
+
         }
 
         #region test
 
         //test
-        private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
+        private string testURL = "https://vi.chiasenhac.vn/mp3/hoshimachi-suisei/next-color-planet-tsvw0cv7q9nv2t.html";
 
         private PictureBox songPicture = new PictureBox();
         private void testFunc()
@@ -87,13 +91,14 @@ namespace Tify
 
             //demo
 
-            //testFunc();
+            testFunc();
 
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
 
-            //add control to panel
+            
+           
         }
 
         #endregion Load form
@@ -113,6 +118,9 @@ namespace Tify
                 soundPlayer.controls.pause();
                 pause.Tag = "play";
                 myToolTip.SetToolTip(pause, "Play");
+
+                //if(pause_button.Focused==true)
+                    songDetail.setPause_Button_Img(pause.BackgroundImage);
             }
             else
             {
@@ -122,6 +130,9 @@ namespace Tify
 
                 pause.Tag = "pause";
                 myToolTip.SetToolTip(pause, "Pause");
+
+                //if (pause_button.Focused == true)
+                    songDetail.setPause_Button_Img(pause.BackgroundImage);
 
             }
             //
@@ -152,6 +163,7 @@ namespace Tify
                 
                 volume_button.Tag = "off";
             }
+            songDetail.setVolume_Button_Img(volume_button.BackgroundImage);
             
         }
 
@@ -164,7 +176,28 @@ namespace Tify
         private void volume_trackBar_ValueChanged(object sender, EventArgs e)
         {
             soundPlayer.settings.volume = volume_trackBar.Value;
-            
+            if (volume_trackBar.Focused == true || volume_button.Focused==true || songDetail.volume_detailButton.Focused==true)
+                songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
+            if (volume_trackBar.Value == 0)
+            {
+                volume_button.BackgroundImage = player_imageList.Images["mute.png"];
+                
+           
+
+                volume_button.Tag = "off";
+                songDetail.setVolume_Button_Img(volume_button.BackgroundImage);
+            }
+            else
+            {
+                if(volume_button.Tag.ToString()=="off")
+                {
+                    volume_button.BackgroundImage = player_imageList.Images["volume.png"];
+                   
+                    volume_button.Tag = "on";
+                    songDetail.setVolume_Button_Img(volume_button.BackgroundImage);
+                }
+            }
+
         }
         #endregion
 
@@ -176,12 +209,15 @@ namespace Tify
             {
                 shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
                 shuffle_button.Tag = "off";
+
             }
             else
             {
                 shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
                 shuffle_button.Tag = "on";
             }
+            songDetail.setShuffle_Button_Img(shuffle_button.BackgroundImage);
+
         }
         #endregion
 
@@ -469,8 +505,7 @@ namespace Tify
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
-                
-               
+                songDetail.setProgressBar_Maximum(progressBar.Properties.Maximum);
                 onesec.Start();
             }
             else if (soundPlayer.playState == WMPPlayState.wmppsPaused)
@@ -480,7 +515,7 @@ namespace Tify
             else if (soundPlayer.playState == WMPPlayState.wmppsStopped)
             {
                 onesec.Stop();
-                progressBar.Position = 0;
+                progressBar.EditValue = 0;
             }
         }
 
@@ -506,8 +541,8 @@ namespace Tify
                 double ratio = MousePosition / progressBar.Size.Width;
                 double ProgressBarValue = ratio * progressBar.Properties.Maximum;
 
-                progressBar.Position = (int)ProgressBarValue;
-                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+                progressBar.EditValue = (int)ProgressBarValue;
+                soundPlayer.controls.currentPosition = (int)progressBar.EditValue;
             }
         }
 
@@ -525,7 +560,7 @@ namespace Tify
                 double MousePosition = e.X;
                 double ratio = MousePosition / progressBar.Size.Width;
                 double ProgressBarValue = ratio * progressBar.Properties.Maximum;
-                progressBar.Position = (int)ProgressBarValue;
+                progressBar.EditValue = (int)ProgressBarValue;
                 
             }
             
@@ -534,7 +569,7 @@ namespace Tify
         {
             isDown = false;
             if (!progressBar.ClientRectangle.Contains(progressBar.PointToClient(Control.MousePosition)))
-                soundPlayer.controls.currentPosition = (int)progressBar.Position;
+                soundPlayer.controls.currentPosition = (int)progressBar.EditValue;
             
         }
 
@@ -543,12 +578,12 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                progressBar.Position = (int)soundPlayer.controls.currentPosition;
-                curMin = ((int)progressBar.Position / 60).ToString();
-                if ((int)progressBar.Position % 60<10)
-                    curSec = "0" + ((int)progressBar.Position % 60).ToString();
+                progressBar.EditValue = (int)soundPlayer.controls.currentPosition;
+                curMin = ((int)progressBar.EditValue / 60).ToString();
+                if ((int)progressBar.EditValue % 60<10)
+                    curSec = "0" + ((int)progressBar.EditValue % 60).ToString();
                 else
-                    curSec = ((int)progressBar.Position % 60).ToString();
+                    curSec = ((int)progressBar.EditValue % 60).ToString();
                
                 currentTime_label.Text = curMin + ":" + curSec + " /";
             }
@@ -596,16 +631,51 @@ namespace Tify
                 songDetail_panel.Controls.Add(songDetail);
                 songDetail.Dock = DockStyle.Fill;
                 songDetail.BringToFront();
+                songDetail.Show();
             }
+
             
-            songDetail.Show();
-            songDetail_panel.BringToFront();
+            songDetail_panel.Visible=true;
             songImgOpacity_panel.Visible = false;
         }
         #endregion
 
+        #region sync 2 form
+        
+        private void currentTime_label_TextChanged(object sender, EventArgs e)
+        {
+            songDetail.setCurrentTime_Label(currentTime_label.Text);
+        }
 
-        #region get control
+        private void duration_label_TextChanged(object sender, EventArgs e)
+        {
+            songDetail.setDuration_Label(duration_label.Text);
+        }
+
+        private void title_label_TextChanged(object sender, EventArgs e)
+        {
+            songDetail.setTitle_Label(title_label.Text);
+        }
+        private void artist_label_TextChanged(object sender, EventArgs e)
+        {
+            songDetail.setArtist_Label(artist_label.Text);
+        }
+        private void progressBar_EditValueChanged(object sender, EventArgs e)
+        {
+            double ratio = (int)progressBar.EditValue * 1.0f / progressBar.Properties.Maximum;
+            
+            songDetail.setPositionOfProgessBar(ratio);
+        }
+
+        private void songCover_panel_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            songDetail.setSongCover_detailPictureBox(songCover_panel.BackgroundImage);
+        }
+        #endregion
+
+
+
+        #region get/set control, perform event
         public FlowLayoutPanel getCreatePlayList_FlowPanel()
         {
             return CreatePlayList_FlowPanel;
@@ -624,9 +694,61 @@ namespace Tify
             return songDetail_panel;
         }
 
-        public MediaSlider.MediaSlider getVolume_trackBar()
+        public  MediaSlider.MediaSlider getVolume_trackBar()
         {
-            return volume_trackBar;
+            return  volume_trackBar;
+        }
+        public Button getNext_Button()
+        {
+            return next_button;
+        }
+        public Button getPrevious_Button()
+        {
+            return previous_button;
+        }
+
+       
+
+        public Button getShuffle_Button()
+        {
+            return shuffle_button;
+        }
+
+        
+
+        public Label getDuration_Label()
+        {
+            return duration_label;
+        }
+
+        public void pause_button_PerformClick()
+        {
+            pause_button.PerformClick();
+        }
+        public void shuffle_button_PerformClick()
+        {
+            shuffle_button.PerformClick();
+        }
+        public void volume_button_PerformClick()
+        {
+            volume_button.PerformClick();
+        }
+        public void setVolume_trackBarVolume(int val)
+        {
+            volume_trackBar.Value = val;
+        }
+        public void setProgressBar_Value(double ratio)
+        {
+            double ProgressBarValue = ratio * progressBar.Properties.Maximum;
+
+            progressBar.EditValue = (int)ProgressBarValue;
+        }
+
+     
+
+        public ProgressBarControl getProgressBar()
+        {
+            return progressBar;
         }
         #endregion
     }

@@ -33,7 +33,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.songDetail_leftPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.volume_detailTrackBar = new MediaSlider.MediaSlider();
+            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
+            this.volume_trackBar = new MediaSlider.MediaSlider();
             this.volume_detailButton = new System.Windows.Forms.Button();
             this.mediaSlider2 = new MediaSlider.MediaSlider();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -41,8 +42,8 @@
             this.previous_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
             this.pause_button = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.currentTime_label = new System.Windows.Forms.Label();
+            this.duration_label = new System.Windows.Forms.Label();
             this.playingFrom_label = new System.Windows.Forms.Label();
             this.artist_label = new System.Windows.Forms.Label();
             this.title_label = new System.Windows.Forms.Label();
@@ -51,13 +52,12 @@
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
             this.songDetail_rightPanel = new System.Windows.Forms.Panel();
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -92,12 +92,12 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
             this.panel4.Controls.Add(this.progressBar);
-            this.panel4.Controls.Add(this.volume_detailTrackBar);
+            this.panel4.Controls.Add(this.volume_trackBar);
             this.panel4.Controls.Add(this.volume_detailButton);
             this.panel4.Controls.Add(this.mediaSlider2);
             this.panel4.Controls.Add(this.panel7);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.currentTime_label);
+            this.panel4.Controls.Add(this.duration_label);
             this.panel4.Controls.Add(this.playingFrom_label);
             this.panel4.Controls.Add(this.artist_label);
             this.panel4.Controls.Add(this.title_label);
@@ -108,47 +108,68 @@
             this.panel4.Size = new System.Drawing.Size(731, 200);
             this.panel4.TabIndex = 15;
             // 
-            // volume_detailTrackBar
+            // progressBar
             // 
-            this.volume_detailTrackBar.Animated = false;
-            this.volume_detailTrackBar.AnimationSize = 0.2F;
-            this.volume_detailTrackBar.AnimationSpeed = MediaSlider.MediaSlider.AnimateSpeed.Normal;
-            this.volume_detailTrackBar.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.volume_detailTrackBar.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.volume_detailTrackBar.AutoSize = true;
-            this.volume_detailTrackBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
-            this.volume_detailTrackBar.BackGroundImage = null;
-            this.volume_detailTrackBar.ButtonAccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.volume_detailTrackBar.ButtonBorderColor = System.Drawing.Color.Black;
-            this.volume_detailTrackBar.ButtonColor = System.Drawing.Color.White;
-            this.volume_detailTrackBar.ButtonCornerRadius = ((uint)(4u));
-            this.volume_detailTrackBar.ButtonSize = new System.Drawing.Size(11, 11);
-            this.volume_detailTrackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
-            this.volume_detailTrackBar.ContextMenuStrip = null;
-            this.volume_detailTrackBar.LargeChange = 2;
-            this.volume_detailTrackBar.Location = new System.Drawing.Point(577, 126);
-            this.volume_detailTrackBar.Margin = new System.Windows.Forms.Padding(0);
-            this.volume_detailTrackBar.Maximum = 100;
-            this.volume_detailTrackBar.Minimum = 0;
-            this.volume_detailTrackBar.Name = "volume_detailTrackBar";
-            this.volume_detailTrackBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.volume_detailTrackBar.ShowButtonOnHover = false;
-            this.volume_detailTrackBar.Size = new System.Drawing.Size(130, 12);
-            this.volume_detailTrackBar.SliderFlyOut = MediaSlider.MediaSlider.FlyOutStyle.None;
-            this.volume_detailTrackBar.SmallChange = 1;
-            this.volume_detailTrackBar.SmoothScrolling = false;
-            this.volume_detailTrackBar.TabIndex = 14;
-            this.volume_detailTrackBar.TickColor = System.Drawing.Color.DarkGray;
-            this.volume_detailTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.volume_detailTrackBar.TickType = MediaSlider.MediaSlider.TickMode.Standard;
-            this.volume_detailTrackBar.TrackBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.volume_detailTrackBar.TrackDepth = 3;
-            this.volume_detailTrackBar.TrackFillColor = System.Drawing.Color.White;
-            this.volume_detailTrackBar.TrackProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(101)))), ((int)(((byte)(188)))));
-            this.volume_detailTrackBar.TrackShadow = false;
-            this.volume_detailTrackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
-            this.volume_detailTrackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
-            this.volume_detailTrackBar.Value = 0;
+            this.progressBar.EditValue = 50;
+            this.progressBar.Location = new System.Drawing.Point(3, 64);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.progressBar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.progressBar.Properties.EndColor = System.Drawing.Color.Empty;
+            this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
+            this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
+            this.progressBar.Size = new System.Drawing.Size(731, 5);
+            this.progressBar.TabIndex = 15;
+            this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
+            this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
+            this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
+            this.progressBar.MouseHover += new System.EventHandler(this.progressBar_MouseHover);
+            this.progressBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseMove);
+            this.progressBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseUp);
+            // 
+            // volume_trackBar
+            // 
+            this.volume_trackBar.Animated = false;
+            this.volume_trackBar.AnimationSize = 0.2F;
+            this.volume_trackBar.AnimationSpeed = MediaSlider.MediaSlider.AnimateSpeed.Normal;
+            this.volume_trackBar.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.volume_trackBar.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.volume_trackBar.AutoSize = true;
+            this.volume_trackBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(42)))), ((int)(((byte)(39)))));
+            this.volume_trackBar.BackGroundImage = null;
+            this.volume_trackBar.ButtonAccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.volume_trackBar.ButtonBorderColor = System.Drawing.Color.Black;
+            this.volume_trackBar.ButtonColor = System.Drawing.Color.White;
+            this.volume_trackBar.ButtonCornerRadius = ((uint)(4u));
+            this.volume_trackBar.ButtonSize = new System.Drawing.Size(11, 11);
+            this.volume_trackBar.ButtonStyle = MediaSlider.MediaSlider.ButtonType.Round;
+            this.volume_trackBar.ContextMenuStrip = null;
+            this.volume_trackBar.LargeChange = 2;
+            this.volume_trackBar.Location = new System.Drawing.Point(577, 126);
+            this.volume_trackBar.Margin = new System.Windows.Forms.Padding(0);
+            this.volume_trackBar.Maximum = 100;
+            this.volume_trackBar.Minimum = 0;
+            this.volume_trackBar.Name = "volume_trackBar";
+            this.volume_trackBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.volume_trackBar.ShowButtonOnHover = false;
+            this.volume_trackBar.Size = new System.Drawing.Size(130, 12);
+            this.volume_trackBar.SliderFlyOut = MediaSlider.MediaSlider.FlyOutStyle.None;
+            this.volume_trackBar.SmallChange = 1;
+            this.volume_trackBar.SmoothScrolling = false;
+            this.volume_trackBar.TabIndex = 14;
+            this.volume_trackBar.TickColor = System.Drawing.Color.DarkGray;
+            this.volume_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.volume_trackBar.TickType = MediaSlider.MediaSlider.TickMode.Standard;
+            this.volume_trackBar.TrackBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.volume_trackBar.TrackDepth = 3;
+            this.volume_trackBar.TrackFillColor = System.Drawing.Color.White;
+            this.volume_trackBar.TrackProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(101)))), ((int)(((byte)(188)))));
+            this.volume_trackBar.TrackShadow = false;
+            this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
+            this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
+            this.volume_trackBar.Value = 0;
+            this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // volume_detailButton
             // 
@@ -168,6 +189,7 @@
             this.volume_detailButton.TabIndex = 14;
             this.volume_detailButton.Tag = "on";
             this.volume_detailButton.UseVisualStyleBackColor = false;
+            this.volume_detailButton.Click += new System.EventHandler(this.volume_detailButton_Click);
             // 
             // mediaSlider2
             // 
@@ -240,6 +262,7 @@
             this.shuffle_button.TabIndex = 11;
             this.shuffle_button.Tag = "on";
             this.shuffle_button.UseVisualStyleBackColor = false;
+            this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
             // 
             // previous_button
             // 
@@ -292,33 +315,34 @@
             this.pause_button.TabIndex = 8;
             this.pause_button.Tag = "pause";
             this.pause_button.UseVisualStyleBackColor = false;
+            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
-            // label1
+            // currentTime_label
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
-            this.label1.Location = new System.Drawing.Point(10, 89);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 19);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "0:14 /";
+            this.currentTime_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentTime_label.AutoSize = true;
+            this.currentTime_label.BackColor = System.Drawing.Color.Transparent;
+            this.currentTime_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
+            this.currentTime_label.Location = new System.Drawing.Point(10, 89);
+            this.currentTime_label.Margin = new System.Windows.Forms.Padding(0);
+            this.currentTime_label.Name = "currentTime_label";
+            this.currentTime_label.Size = new System.Drawing.Size(50, 19);
+            this.currentTime_label.TabIndex = 11;
+            this.currentTime_label.Text = "0:14 /";
             // 
-            // label2
+            // duration_label
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.label2.Location = new System.Drawing.Point(51, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 19);
-            this.label2.TabIndex = 10;
-            this.label2.Text = " 3:23";
+            this.duration_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.duration_label.AutoSize = true;
+            this.duration_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.duration_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.duration_label.Location = new System.Drawing.Point(51, 89);
+            this.duration_label.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
+            this.duration_label.Name = "duration_label";
+            this.duration_label.Size = new System.Drawing.Size(44, 19);
+            this.duration_label.TabIndex = 10;
+            this.duration_label.Text = " 3:23";
             // 
             // playingFrom_label
             // 
@@ -404,20 +428,6 @@
             this.songDetail_rightPanel.Size = new System.Drawing.Size(353, 751);
             this.songDetail_rightPanel.TabIndex = 3;
             // 
-            // progressBar
-            // 
-            this.progressBar.EditValue = 50;
-            this.progressBar.Location = new System.Drawing.Point(3, 64);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.progressBar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.progressBar.Properties.EndColor = System.Drawing.Color.Empty;
-            this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
-            this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
-            this.progressBar.Size = new System.Drawing.Size(731, 5);
-            this.progressBar.TabIndex = 15;
-            // 
             // SongDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,9 +442,9 @@
             this.songDetail_leftPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -445,7 +455,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel songDetail_leftPanel;
         public System.Windows.Forms.Panel panel4;
-        public MediaSlider.MediaSlider volume_detailTrackBar;
+        public MediaSlider.MediaSlider volume_trackBar;
         public System.Windows.Forms.Button volume_detailButton;
         public MediaSlider.MediaSlider mediaSlider2;
         public System.Windows.Forms.Panel panel7;
@@ -461,8 +471,8 @@
         private System.Windows.Forms.Panel songDetail_rightPanel;
         private System.Windows.Forms.ImageList songDetaillImageList;
         private System.Windows.Forms.ToolTip myToolTip;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label currentTime_label;
+        public System.Windows.Forms.Label duration_label;
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
     }
 }

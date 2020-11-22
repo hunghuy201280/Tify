@@ -105,7 +105,7 @@
             // 
             // volume_trackBar
             // 
-            this.volume_trackBar.Animated = false;
+            this.volume_trackBar.Animated = true;
             this.volume_trackBar.AnimationSize = 0.2F;
             this.volume_trackBar.AnimationSpeed = MediaSlider.MediaSlider.AnimateSpeed.Normal;
             this.volume_trackBar.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -160,6 +160,7 @@
             this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
             this.progressBar.Size = new System.Drawing.Size(1127, 5);
             this.progressBar.TabIndex = 0;
+            this.progressBar.EditValueChanged += new System.EventHandler(this.progressBar_EditValueChanged);
             this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
             this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
             this.progressBar.MouseLeave += new System.EventHandler(this.progressBar_MouseLeave);
@@ -176,6 +177,7 @@
             this.songCover_panel.Name = "songCover_panel";
             this.songCover_panel.Size = new System.Drawing.Size(65, 65);
             this.songCover_panel.TabIndex = 0;
+            this.songCover_panel.BackgroundImageChanged += new System.EventHandler(this.songCover_panel_BackgroundImageChanged);
             this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
             // 
             // songImgOpacity_panel
@@ -239,7 +241,7 @@
             this.shuffle_button.Name = "shuffle_button";
             this.shuffle_button.Size = new System.Drawing.Size(28, 32);
             this.shuffle_button.TabIndex = 11;
-            this.shuffle_button.Tag = "on";
+            this.shuffle_button.Tag = "off";
             this.myToolTip.SetToolTip(this.shuffle_button, "Shuffle");
             this.shuffle_button.UseVisualStyleBackColor = false;
             this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
@@ -313,6 +315,7 @@
             this.currentTime_label.Size = new System.Drawing.Size(50, 19);
             this.currentTime_label.TabIndex = 11;
             this.currentTime_label.Text = "0:14 /";
+            this.currentTime_label.TextChanged += new System.EventHandler(this.currentTime_label_TextChanged);
             // 
             // duration_label
             // 
@@ -326,6 +329,7 @@
             this.duration_label.Size = new System.Drawing.Size(44, 19);
             this.duration_label.TabIndex = 10;
             this.duration_label.Text = " 3:23";
+            this.duration_label.TextChanged += new System.EventHandler(this.duration_label_TextChanged);
             // 
             // playingFrom_label
             // 
@@ -352,6 +356,7 @@
             this.artist_label.Size = new System.Drawing.Size(64, 16);
             this.artist_label.TabIndex = 3;
             this.artist_label.Text = "Yorushika";
+            this.artist_label.TextChanged += new System.EventHandler(this.artist_label_TextChanged);
             // 
             // title_label
             // 
@@ -365,6 +370,7 @@
             this.title_label.Size = new System.Drawing.Size(140, 17);
             this.title_label.TabIndex = 1;
             this.title_label.Text = "Hole In The Heart";
+            this.title_label.TextChanged += new System.EventHandler(this.title_label_TextChanged);
             // 
             // menu_panel
             // 
@@ -749,6 +755,7 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
+            this.songDetail_panel.Visible = false;
             // 
             // MainScreen
             // 
