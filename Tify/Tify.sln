@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tify", "Tify\Tify.csproj", "{7ED7043A-76BA-4AEE-92B4-0DD0BF8AE0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist", "Playlist\Playlist.csproj", "{658BFAC3-0B79-408D-A308-236BB5C3B66B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistContainer", "Playlist\PlaylistContainer.csproj", "{658BFAC3-0B79-408D-A308-236BB5C3B66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMix", "MyMix\MyMix.csproj", "{36436037-B97B-45D0-BD1B-9EF363FDFA84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMixContainer", "MyMix\MyMixContainer.csproj", "{36436037-B97B-45D0-BD1B-9EF363FDFA84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

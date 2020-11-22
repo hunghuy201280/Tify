@@ -1,6 +1,6 @@
 ﻿namespace MyMix
 {
-    partial class MyMix
+    partial class MyMixContainer
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMix));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMixContainer));
             this.MyMixArtist_label = new System.Windows.Forms.Label();
             this.MyMixName_label = new System.Windows.Forms.Label();
             this.MyMixCover_pictureBox = new System.Windows.Forms.PictureBox();

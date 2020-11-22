@@ -1,4 +1,5 @@
-﻿using My;
+﻿
+using MyMix;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,7 +49,7 @@ namespace Tify
         {
 
 
-            PlaylistContainer mix = new PlaylistContainer();
+             MyMixContainer mix = new MyMixContainer();
            
             
             

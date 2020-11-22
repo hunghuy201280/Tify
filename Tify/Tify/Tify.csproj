@@ -254,9 +254,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Playlist\Playlist.csproj">
+    <ProjectReference Include="..\MyMix\MyMixContainer.csproj">
+      <Project>{36436037-B97B-45D0-BD1B-9EF363FDFA84}</Project>
+      <Name>MyMixContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Playlist\PlaylistContainer.csproj">
       <Project>{658BFAC3-0B79-408D-A308-236BB5C3B66B}</Project>
-      <Name>Playlist</Name>
+      <Name>PlaylistContainer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MyMix
 {
-    public partial class MyMix : UserControl
+    public partial class MyMixContainer : UserControl
     {
-        public MyMix()
+        public MyMixContainer()
         {
             InitializeComponent();
         }
