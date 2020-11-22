@@ -49,6 +49,7 @@ namespace Tify
             newbutton.Width = 210;
             newbutton.Height = 46;
             menu_pnl.FlowDirection = FlowDirection.TopDown;
+            
             menu_pnl.Controls.Add(newbutton);
           
 

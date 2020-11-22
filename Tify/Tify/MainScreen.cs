@@ -82,7 +82,7 @@ namespace Tify
 
             //Hide  ScrollBar so menu_panel
             hideScrollBar(menu_panel, "panel");
-
+            
             this.DoubleBuffered = true;
 
             //demo
@@ -372,7 +372,15 @@ namespace Tify
             if (type == "flow")
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
-                
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.VerticalScroll.Visible = false;
+
+                flowpanel.VerticalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Visible = false;
+                flowpanel.AutoScroll = true;
             }
             else if (type == "panel")
             {
