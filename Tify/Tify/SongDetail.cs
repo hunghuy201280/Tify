@@ -22,7 +22,7 @@ namespace Tify
             mainscr = callForm;
             songDetail_panel = mainscr.getSongDetailPanel();
             soundPlayer = mainscr.getSoundPlayer();
-           
+            
         }
 
         #region progressBar

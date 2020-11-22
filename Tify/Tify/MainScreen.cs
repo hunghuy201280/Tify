@@ -91,8 +91,9 @@ namespace Tify
 
             //demo
 
-            testFunc();
 
+            testFunc();
+            songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
