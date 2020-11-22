@@ -1,5 +1,4 @@
-﻿
-using MyMix;
+﻿using MyMix;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

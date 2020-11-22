@@ -2,12 +2,12 @@
 {
     partial class MyMixContainer
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,7 +22,7 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
+        /// <summary>
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
@@ -69,7 +69,7 @@
             this.MyMixCover_pictureBox.TabIndex = 6;
             this.MyMixCover_pictureBox.TabStop = false;
             // 
-            // MyMix
+            // MyMixContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +77,7 @@
             this.Controls.Add(this.MyMixArtist_label);
             this.Controls.Add(this.MyMixName_label);
             this.Controls.Add(this.MyMixCover_pictureBox);
-            this.Name = "MyMix";
+            this.Name = "MyMixContainer";
             this.Size = new System.Drawing.Size(180, 201);
             ((System.ComponentModel.ISupportInitialize)(this.MyMixCover_pictureBox)).EndInit();
             this.ResumeLayout(false);
