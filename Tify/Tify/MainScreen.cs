@@ -590,15 +590,15 @@ namespace Tify
 
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {
-           /* SongDetail songDetail = new SongDetail();
+            SongDetail songDetail = new SongDetail(this);
             songDetail.TopLevel = false;
 
             songDetail_panel.Controls.Add(songDetail);
             songDetail.Dock = DockStyle.Fill;
             songDetail.BringToFront();
             songDetail.Show();
-            songDetail_panel.BringToFront();*/
-
+            songDetail_panel.BringToFront();
+            songImgOpacity_panel.Visible = false;
         }
         #endregion
 
@@ -616,6 +616,7 @@ namespace Tify
         {
             return pause_button;
         }
+
         public Panel getSongDetailPanel()
         {
             return songDetail_panel;

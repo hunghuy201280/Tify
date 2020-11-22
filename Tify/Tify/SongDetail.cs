@@ -20,18 +20,19 @@ namespace Tify
         }
         private MainScreen mainscr;
         private WindowsMediaPlayer soundPlayer;
-        //private Panel songDetail_panel;
+        private Panel songDetail_panel;
         public SongDetail(MainScreen callForm)
         {
-            mainscr = callForm;
-            
+           
+           
             InitializeComponent();
-            
+            mainscr = callForm;
+            songDetail_panel = mainscr.getSongDetailPanel();
         }
 
         private void songDetailMinimize_button_Click(object sender, EventArgs e)
         {
-            mainscr.Controls["songDetail_panel"].SendToBack();
+            songDetail_panel.SendToBack();
 
         }
     }

@@ -1,5 +1,5 @@
 ﻿
-using MyMix;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,11 +49,11 @@ namespace Tify
         {
 
 
-             MyMixContainer mix = new MyMixContainer();
+           
            
             
             
-            flowLayoutPanel1.Controls.Add(mix);
+         
             
             
         }
