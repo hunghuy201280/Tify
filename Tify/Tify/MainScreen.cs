@@ -419,10 +419,13 @@ namespace Tify
         #endregion
 
         #region createplaylist
+        
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
         {
             var myForm = new CreatePlayList(CreatePlayList_FlowPanel);
             myForm.ShowDialog();
+         
+
         }
 
         #endregion createplaylist
@@ -563,7 +566,7 @@ namespace Tify
             songDetail_panel.SendToBack();
         }
 
-      
+     
 
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {

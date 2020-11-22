@@ -47,6 +47,7 @@
             this.artist_label = new System.Windows.Forms.Label();
             this.title_label = new System.Windows.Forms.Label();
             this.menu_panel = new System.Windows.Forms.Panel();
+            this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.createNewPlaylist_button = new System.Windows.Forms.Button();
             this.createPlaylist_imgList = new System.Windows.Forms.ImageList(this.components);
             this.myPlaylist_label = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -389,6 +389,16 @@
             this.menu_panel.TabIndex = 2;
             this.menu_panel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.menu_panel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            // 
+            // CreatePlayList_FlowPanel
+            // 
+            this.CreatePlayList_FlowPanel.AutoScroll = true;
+            this.CreatePlayList_FlowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
+            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
+            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 252);
+            this.CreatePlayList_FlowPanel.TabIndex = 24;
+            this.CreatePlayList_FlowPanel.WrapContents = false;
             // 
             // createNewPlaylist_button
             // 
@@ -738,16 +748,6 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1097, 908);
             this.songDetail_panel.TabIndex = 0;
-            // 
-            // CreatePlayList_FlowPanel
-            // 
-            this.CreatePlayList_FlowPanel.AutoScroll = true;
-            this.CreatePlayList_FlowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
-            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
-            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 252);
-            this.CreatePlayList_FlowPanel.TabIndex = 24;
-            this.CreatePlayList_FlowPanel.WrapContents = false;
             // 
             // MainScreen
             // 
