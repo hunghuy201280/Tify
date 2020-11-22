@@ -55,8 +55,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.MyMix_GroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -369,14 +369,6 @@
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
-            // playlistDetail_panel
-            // 
-            this.playlistDetail_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playlistDetail_panel.Location = new System.Drawing.Point(10, 10);
-            this.playlistDetail_panel.Name = "playlistDetail_panel";
-            this.playlistDetail_panel.Size = new System.Drawing.Size(1128, 688);
-            this.playlistDetail_panel.TabIndex = 19;
-            // 
             // button1
             // 
             this.button1.AutoSize = true;
@@ -388,6 +380,14 @@
             this.button1.Text = "Add Mix";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // playlistDetail_panel
+            // 
+            this.playlistDetail_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlistDetail_panel.Location = new System.Drawing.Point(10, 10);
+            this.playlistDetail_panel.Name = "playlistDetail_panel";
+            this.playlistDetail_panel.Size = new System.Drawing.Size(1128, 688);
+            this.playlistDetail_panel.TabIndex = 19;
             // 
             // MyMix
             // 

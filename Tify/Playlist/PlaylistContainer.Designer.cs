@@ -69,15 +69,15 @@
             this.playListCover_pictureBox.TabIndex = 3;
             this.playListCover_pictureBox.TabStop = false;
             // 
-            // Playlist
+            // PlaylistContainer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.numberOfTracks_label);
             this.Controls.Add(this.playlistName_label);
             this.Controls.Add(this.playListCover_pictureBox);
-            this.Name = "Playlist";
+            this.Margin = new System.Windows.Forms.Padding(5, 30, 5, 0);
+            this.Name = "PlaylistContainer";
             this.Size = new System.Drawing.Size(180, 201);
             ((System.ComponentModel.ISupportInitialize)(this.playListCover_pictureBox)).EndInit();
             this.ResumeLayout(false);
