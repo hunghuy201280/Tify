@@ -284,6 +284,7 @@ namespace Tify
         private void menu_panel_MouseHover(object sender, EventArgs e)
         {
             //240 65
+
             if (menu_panel.Width == 65 && this.Size.Width < 860)
                 changeMenuButtonStyle(false);
         }
@@ -294,10 +295,11 @@ namespace Tify
                 return;
             else
             {
+                if (menu_panel.Width == 240 && this.Size.Width < 860)
+                    changeMenuButtonStyle(true);
                 base.OnMouseLeave(e);
             }
-            if (menu_panel.Width == 240 && this.Size.Width < 860)
-                changeMenuButtonStyle(true);
+            
         }
 
         #endregion Phóng to & thu nhỏ menu panel khi di chuột vào
@@ -431,7 +433,7 @@ namespace Tify
         
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
         {
-            var myForm = new CreatePlayList(CreatePlayList_FlowPanel);
+            var myForm = new CreatePlayList(this);
             myForm.ShowDialog();
          
 
@@ -593,7 +595,10 @@ namespace Tify
 
 
         #region get control
-
+        public FlowLayoutPanel getCreatePlayList_FlowPanel()
+        {
+            return CreatePlayList_FlowPanel;
+        }
 
         #endregion
     }
