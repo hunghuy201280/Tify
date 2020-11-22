@@ -19,7 +19,8 @@ namespace Tify
           
         }
         private MainScreen mainscr;
-        public SongDetail(MainScreen callForm, WindowsMediaPlayer player)
+        private WindowsMediaPlayer soundPlayer;
+        public SongDetail(MainScreen callForm)
         {
             mainscr = callForm;
             

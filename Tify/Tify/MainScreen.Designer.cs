@@ -398,6 +398,8 @@
             this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
             this.CreatePlayList_FlowPanel.TabIndex = 24;
             this.CreatePlayList_FlowPanel.WrapContents = false;
+            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // createNewPlaylist_button
             // 

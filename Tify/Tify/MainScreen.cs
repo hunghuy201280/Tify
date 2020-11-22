@@ -281,23 +281,32 @@ namespace Tify
 
         #region Phóng to & thu nhỏ menu panel khi di chuột vào
 
-        private void menu_panel_MouseHover(object sender, EventArgs e)
+        public void menu_panel_MouseHover(object sender, EventArgs e)
         {
             //240 65
 
             if (menu_panel.Width == 65 && this.Size.Width < 860)
                 changeMenuButtonStyle(false);
+            
         }
 
-        private void menu_panel_MouseLeave(object sender, EventArgs e)
+        public void menu_panel_MouseLeave(object sender, EventArgs e)
         {
-            if (menu_panel.ClientRectangle.Contains(menu_panel.PointToClient(Control.MousePosition)))
-                return;
+            if (menu_panel.Width == 240 && this.Size.Width < 860)
+            {
+                if (menu_panel.ClientRectangle.Contains(menu_panel.PointToClient(Control.MousePosition)))
+                    return;
+                else
+                {
+                    
+                    changeMenuButtonStyle(true);
+                 
+                    base.OnMouseLeave(e);
+                }
+            }
             else
             {
-                if (menu_panel.Width == 240 && this.Size.Width < 860)
-                    changeMenuButtonStyle(true);
-                base.OnMouseLeave(e);
+                return;
             }
             
         }
@@ -599,7 +608,10 @@ namespace Tify
         {
             return CreatePlayList_FlowPanel;
         }
-
+        public WindowsMediaPlayer getSoundPlayer()
+        {
+            return soundPlayer;
+        }
         #endregion
     }
 }

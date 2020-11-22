@@ -45,7 +45,8 @@ namespace Tify
             newbutton.Text = Title_TextBox.Text;
             newbutton.Font = new Font("Nationale", 12);
             newbutton.AutoSize = false;
-            
+            newbutton.MouseHover += mainScr.menu_panel_MouseHover;
+            newbutton.MouseLeave += mainScr.menu_panel_MouseLeave;
             newbutton.TextAlign = ContentAlignment.MiddleLeft;
             newbutton.ForeColor = Color.White;
             newbutton.Width = 210;
