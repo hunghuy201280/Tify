@@ -10,6 +10,7 @@ namespace Tify
 {
     public partial class MainScreen : Form
     {
+        
         public MainScreen()
         {
             InitializeComponent();
@@ -579,5 +580,10 @@ namespace Tify
         }
         #endregion
 
+
+        #region get control
+
+
+        #endregion
     }
 }
