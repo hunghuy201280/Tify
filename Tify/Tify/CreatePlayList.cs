@@ -19,11 +19,13 @@ namespace Tify
 
         }
         private FlowLayoutPanel menu_pnl;
-        public CreatePlayList(FlowLayoutPanel frommenu)
+        private MainScreen mainScr;
+        public CreatePlayList(MainScreen callForm)
         {
             InitializeComponent();
-            
-            menu_pnl = frommenu;
+            mainScr = callForm;
+            menu_pnl = mainScr.getCreatePlayList_FlowPanel();
+           
 
         }
 
@@ -42,13 +44,15 @@ namespace Tify
             newbutton.FlatAppearance.BorderSize = 0;
             newbutton.Text = Title_TextBox.Text;
             newbutton.Font = new Font("Nationale", 12);
-            newbutton.AutoSize = true;
-            
+            newbutton.AutoSize = false;
+            newbutton.MouseHover += mainScr.menu_panel_MouseHover;
+            newbutton.MouseLeave += mainScr.menu_panel_MouseLeave;
             newbutton.TextAlign = ContentAlignment.MiddleLeft;
             newbutton.ForeColor = Color.White;
             newbutton.Width = 210;
             newbutton.Height = 46;
             menu_pnl.FlowDirection = FlowDirection.TopDown;
+            newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             menu_pnl.Controls.Add(newbutton);
           
 

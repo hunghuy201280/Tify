@@ -97,9 +97,9 @@
             this.player_panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player_panel.Location = new System.Drawing.Point(0, 808);
+            this.player_panel.Location = new System.Drawing.Point(0, 738);
             this.player_panel.Name = "player_panel";
-            this.player_panel.Size = new System.Drawing.Size(1097, 100);
+            this.player_panel.Size = new System.Drawing.Size(1127, 100);
             this.player_panel.TabIndex = 1;
             this.player_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
             // 
@@ -115,7 +115,7 @@
             this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
-            this.progressBar.Size = new System.Drawing.Size(1097, 5);
+            this.progressBar.Size = new System.Drawing.Size(1127, 5);
             this.progressBar.TabIndex = 0;
             this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
             this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
@@ -159,7 +159,7 @@
             this.volume_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.volume_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.volume_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.volume_button.Location = new System.Drawing.Point(897, 30);
+            this.volume_button.Location = new System.Drawing.Point(927, 30);
             this.volume_button.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.volume_button.Name = "volume_button";
             this.volume_button.Size = new System.Drawing.Size(44, 40);
@@ -219,7 +219,7 @@
             this.play_pause_panel.Controls.Add(this.previous_button);
             this.play_pause_panel.Controls.Add(this.next_button);
             this.play_pause_panel.Controls.Add(this.pause_button);
-            this.play_pause_panel.Location = new System.Drawing.Point(431, 0);
+            this.play_pause_panel.Location = new System.Drawing.Point(446, 0);
             this.play_pause_panel.Name = "play_pause_panel";
             this.play_pause_panel.Size = new System.Drawing.Size(235, 100);
             this.play_pause_panel.TabIndex = 12;
@@ -307,7 +307,7 @@
             this.currentTime_label.BackColor = System.Drawing.Color.Transparent;
             this.currentTime_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTime_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
-            this.currentTime_label.Location = new System.Drawing.Point(788, 40);
+            this.currentTime_label.Location = new System.Drawing.Point(818, 40);
             this.currentTime_label.Margin = new System.Windows.Forms.Padding(0);
             this.currentTime_label.Name = "currentTime_label";
             this.currentTime_label.Size = new System.Drawing.Size(50, 19);
@@ -320,7 +320,7 @@
             this.duration_label.AutoSize = true;
             this.duration_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duration_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.duration_label.Location = new System.Drawing.Point(829, 40);
+            this.duration_label.Location = new System.Drawing.Point(859, 40);
             this.duration_label.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
             this.duration_label.Name = "duration_label";
             this.duration_label.Size = new System.Drawing.Size(44, 19);
@@ -385,20 +385,21 @@
             this.menu_panel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
             this.menu_panel.Name = "menu_panel";
-            this.menu_panel.Size = new System.Drawing.Size(240, 808);
+            this.menu_panel.Size = new System.Drawing.Size(240, 738);
             this.menu_panel.TabIndex = 2;
             this.menu_panel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.menu_panel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // CreatePlayList_FlowPanel
             // 
-            this.CreatePlayList_FlowPanel.AutoScroll = true;
-            this.CreatePlayList_FlowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CreatePlayList_FlowPanel.AutoSize = true;
             this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
             this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
-            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 252);
+            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
             this.CreatePlayList_FlowPanel.TabIndex = 24;
             this.CreatePlayList_FlowPanel.WrapContents = false;
+            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // createNewPlaylist_button
             // 
@@ -667,7 +668,7 @@
             this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
             this.searchBar_panel.Name = "searchBar_panel";
-            this.searchBar_panel.Size = new System.Drawing.Size(857, 60);
+            this.searchBar_panel.Size = new System.Drawing.Size(887, 60);
             this.searchBar_panel.TabIndex = 1;
             // 
             // panel1
@@ -676,7 +677,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.panel1.Controls.Add(this.searchBar_textBox);
             this.panel1.Controls.Add(this.searchBar_icon);
-            this.panel1.Location = new System.Drawing.Point(455, 14);
+            this.panel1.Location = new System.Drawing.Point(485, 14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(390, 40);
             this.panel1.TabIndex = 0;
@@ -714,7 +715,7 @@
             this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
             this.childForm_panel.Location = new System.Drawing.Point(240, 60);
             this.childForm_panel.Name = "childForm_panel";
-            this.childForm_panel.Size = new System.Drawing.Size(857, 748);
+            this.childForm_panel.Size = new System.Drawing.Size(887, 678);
             this.childForm_panel.TabIndex = 26;
             // 
             // player_imageList
@@ -746,14 +747,14 @@
             this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
             this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
             this.songDetail_panel.Name = "songDetail_panel";
-            this.songDetail_panel.Size = new System.Drawing.Size(1097, 908);
+            this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 908);
+            this.ClientSize = new System.Drawing.Size(1127, 838);
             this.Controls.Add(this.childForm_panel);
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);

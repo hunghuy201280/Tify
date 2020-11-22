@@ -82,7 +82,7 @@ namespace Tify
 
             //Hide  ScrollBar so menu_panel
             hideScrollBar(menu_panel, "panel");
-
+            
             this.DoubleBuffered = true;
 
             //demo
@@ -281,23 +281,34 @@ namespace Tify
 
         #region Phóng to & thu nhỏ menu panel khi di chuột vào
 
-        private void menu_panel_MouseHover(object sender, EventArgs e)
+        public void menu_panel_MouseHover(object sender, EventArgs e)
         {
             //240 65
+
             if (menu_panel.Width == 65 && this.Size.Width < 860)
                 changeMenuButtonStyle(false);
+            
         }
 
-        private void menu_panel_MouseLeave(object sender, EventArgs e)
+        public void menu_panel_MouseLeave(object sender, EventArgs e)
         {
-            if (menu_panel.ClientRectangle.Contains(menu_panel.PointToClient(Control.MousePosition)))
-                return;
+            if (menu_panel.Width == 240 && this.Size.Width < 860)
+            {
+                if (menu_panel.ClientRectangle.Contains(menu_panel.PointToClient(Control.MousePosition)))
+                    return;
+                else
+                {
+                    
+                    changeMenuButtonStyle(true);
+                 
+                    base.OnMouseLeave(e);
+                }
+            }
             else
             {
-                base.OnMouseLeave(e);
+                return;
             }
-            if (menu_panel.Width == 240 && this.Size.Width < 860)
-                changeMenuButtonStyle(true);
+            
         }
 
         #endregion Phóng to & thu nhỏ menu panel khi di chuột vào
@@ -372,7 +383,15 @@ namespace Tify
             if (type == "flow")
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
-                
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.VerticalScroll.Visible = false;
+
+                flowpanel.VerticalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Visible = false;
+                flowpanel.AutoScroll = true;
             }
             else if (type == "panel")
             {
@@ -423,7 +442,7 @@ namespace Tify
         
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
         {
-            var myForm = new CreatePlayList(CreatePlayList_FlowPanel);
+            var myForm = new CreatePlayList(this);
             myForm.ShowDialog();
          
 
@@ -585,8 +604,14 @@ namespace Tify
 
 
         #region get control
-
-
+        public FlowLayoutPanel getCreatePlayList_FlowPanel()
+        {
+            return CreatePlayList_FlowPanel;
+        }
+        public WindowsMediaPlayer getSoundPlayer()
+        {
+            return soundPlayer;
+        }
         #endregion
     }
 }
