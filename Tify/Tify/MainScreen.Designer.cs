@@ -47,7 +47,6 @@
             this.artist_label = new System.Windows.Forms.Label();
             this.title_label = new System.Windows.Forms.Label();
             this.menu_panel = new System.Windows.Forms.Panel();
-            this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.createNewPlaylist_button = new System.Windows.Forms.Button();
             this.createPlaylist_imgList = new System.Windows.Forms.ImageList(this.components);
             this.myPlaylist_label = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.playlist_button = new System.Windows.Forms.Button();
             this.artists_button = new System.Windows.Forms.Button();
             this.tracks_button = new System.Windows.Forms.Button();
+            this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.searchBar_panel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
@@ -149,7 +149,6 @@
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar.EditValue = 50;
             this.progressBar.Location = new System.Drawing.Point(0, 0);
             this.progressBar.Name = "progressBar";
             this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
@@ -263,6 +262,7 @@
             this.previous_button.TabIndex = 10;
             this.myToolTip.SetToolTip(this.previous_button, "Previous");
             this.previous_button.UseVisualStyleBackColor = false;
+            this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
             // 
             // next_button
             // 
@@ -281,6 +281,7 @@
             this.next_button.TabIndex = 9;
             this.myToolTip.SetToolTip(this.next_button, "Next");
             this.next_button.UseVisualStyleBackColor = false;
+            this.next_button.Click += new System.EventHandler(this.next_button_Click);
             // 
             // pause_button
             // 
@@ -395,17 +396,6 @@
             this.menu_panel.TabIndex = 2;
             this.menu_panel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.menu_panel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
-            // 
-            // CreatePlayList_FlowPanel
-            // 
-            this.CreatePlayList_FlowPanel.AutoSize = true;
-            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
-            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
-            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
-            this.CreatePlayList_FlowPanel.TabIndex = 24;
-            this.CreatePlayList_FlowPanel.WrapContents = false;
-            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
-            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // createNewPlaylist_button
             // 
@@ -666,6 +656,17 @@
             this.tracks_button.Click += new System.EventHandler(this.menu_button_Click);
             this.tracks_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.tracks_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            // 
+            // CreatePlayList_FlowPanel
+            // 
+            this.CreatePlayList_FlowPanel.AutoSize = true;
+            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
+            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
+            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
+            this.CreatePlayList_FlowPanel.TabIndex = 24;
+            this.CreatePlayList_FlowPanel.WrapContents = false;
+            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // searchBar_panel
             // 

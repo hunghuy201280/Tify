@@ -61,7 +61,7 @@ namespace ReccomendTrackContainer
             new Thread(() => {
                 mainscr.BeginInvoke((Action)delegate ()
                 {
-
+                    mainscr.previousTracks.Push(mainscr.currentTrack);
                     mainscr.loadNewSong(Url);
                 });
                 }).Start();

@@ -6,6 +6,8 @@ using WMPLib;
 using GetData;
 using System.Drawing.Imaging;
 using DevExpress.XtraEditors;
+using System.Threading.Tasks;
+using System.Collections;
 
 namespace Tify
 {
@@ -24,19 +26,20 @@ namespace Tify
           
 
         }
-       
 
 
-       
+
+        #region load nhac khi chuyen bai
+        string[] suggestedSong;
+        public string currentTrack;
         public void loadNewSong(string Url)
         {
-            
+            currentTrack = Url;
             soundPlayer.URL = GetSongData.GetStreamLink(Url);
             
             
-            soundPlayer.controls.stop();
+            soundPlayer.controls.play();
             time = 0;
-
 
             songPicture.Load(GetSongData.GetSongCover(Url));
             songCover_panel.BackgroundImage = songPicture.Image;
@@ -66,15 +69,19 @@ namespace Tify
                 duration_label.Text = " " + durationMin + ":" + durationSec;
             }
 
-            
+          
             //lay suggest song
-            string[] suggestedSong = GetSongData.GetSuggetSongs(Url);
+            suggestedSong = GetSongData.GetSuggetSongs(Url);
             songDetail.setSuggestedSong(suggestedSong);
         }
+        #endregion
+
+
+
         #region test
 
         //test
-        private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
+        private string testURL = "https://vi.chiasenhac.vn/mp3/nah/dmcs-tsvrrt5bqaafhq.html";
 
         private PictureBox songPicture = new PictureBox();
         private void testFunc()
@@ -119,8 +126,10 @@ namespace Tify
             }
 
             //lay suggest song
-            string[] suggestedSong = GetSongData.GetSuggetSongs(testURL);
+            suggestedSong = GetSongData.GetSuggetSongs(testURL);
             songDetail.setSuggestedSong(suggestedSong);
+            currentTrack = testURL;
+
         }
 
         #endregion test
@@ -797,15 +806,41 @@ namespace Tify
             progressBar.EditValue = (int)ProgressBarValue;
         }
 
-     
 
         public ProgressBarControl getProgressBar()
         {
             return progressBar;
         }
+
         #endregion
 
+        #region next/previous button event
+        public Stack previousTracks = new Stack();
 
-        
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            if (previousTracks.Count==0)
+            {
+                MessageBox.Show("There is no previous track");
+                return;
+            }
+            string lastTrack = previousTracks.Pop() as string;
+            loadNewSong(lastTrack);
+        }
+
+        private void next_button_Click(object sender, EventArgs e)
+        {
+            if (previousTracks.Count==0)
+            {
+                previousTracks.Push(testURL);
+            }
+            else
+            {
+                previousTracks.Push(currentTrack);
+            }
+            loadNewSong(suggestedSong[0]);
+        }
+        #endregion
+
     }
 }

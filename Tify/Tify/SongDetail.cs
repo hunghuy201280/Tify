@@ -2,6 +2,8 @@
 using ReccomendTrackContainer;
 using System;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -192,29 +194,67 @@ namespace Tify
 
         public void setSuggestedSong(string[] songUrl)
         {
-            suggestedTracks_flowPanel.Controls.Clear();
-            for (int i = 0; i < 10; i++)
+            ReccommendTrackControl[] temp = new ReccommendTrackControl[10];
+            Task t = new Task(() =>
             {
-                string url = songUrl[i];
-                ReccommendTrackControl temp = new ReccommendTrackControl(mainscr);
-                string[] artists = GetSongData.GetSongArtist(url);
-                string name=string.Empty;
-                foreach (string artist in artists)
+                for (int i = 0; i < 10; i++)
                 {
-                    name += artist + ";";
+                    suggestedTracks_flowPanel.Controls.Clear();
+                    string url = songUrl[i];
+                    temp[i] = new ReccommendTrackControl(mainscr);
+                    string[] artists = GetSongData.GetSongArtist(url);
+                    string name = string.Empty;
+                    foreach (string artist in artists)
+                    {
+                        name += artist + ";";
+                    }
+                    temp[i].setSongArtist(name);
+                    temp[i].Url = url;
+                    PictureBox tempbx = new PictureBox();
+                    tempbx.Load(GetSongData.GetSongCover(url));
+                    temp[i].setSongCover(tempbx.Image);
+                    temp[i].setSongName(GetSongData.GetSongName(url));
+                    
+
                 }
-                temp.setSongArtist(name);
-                temp.Url = url;
-                PictureBox tempbx = new PictureBox();
-                tempbx.Load(GetSongData.GetSongCover(url));
-                temp.setSongCover(tempbx.Image);
-                temp.setSongName(GetSongData.GetSongName(url));
-                suggestedTracks_flowPanel.Controls.Add(temp);
-
-            }
+            });
+            t.Start();
+            Task ta = new Task(() =>
+              {
+                  t.Wait();
+                  if (firstLoad)
+                    waitHandle.WaitOne();
+                  suggestedTracks_flowPanel.Visible = true;
+                  this.BeginInvoke((Action)delegate ()
+                  {
+                      if (suggestedTracks_flowPanel.Controls.Count!=0)
+                      {
+                          suggestedTracks_flowPanel.Controls.Clear();
+                      }
+                      suggestedTracks_flowPanel.Controls.AddRange(temp);
+                  });
+              });
+            ta.Start();
         }
-        #endregion 
-    
 
+        #endregion
+
+        private void next_button_Click(object sender, EventArgs e)
+        {
+            mainscr.getNext_Button().PerformClick();
+        }
+
+        private void previous_button_Click(object sender, EventArgs e)
+        {
+            mainscr.getPrevious_Button().PerformClick();
+        }
+        AutoResetEvent waitHandle = new AutoResetEvent(false);
+        bool firstLoad = true;
+
+        private void SongDetail_Load(object sender, EventArgs e)
+        {
+            waitHandle.Set();
+            firstLoad = false;
+        }
     }
 }
