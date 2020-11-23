@@ -92,7 +92,7 @@ namespace Tify
             //demo
 
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -626,6 +626,8 @@ namespace Tify
         SongDetail songDetail;
         private void ShowSongDetailWhenClickPlayerPanel(object sender, EventArgs e)
         {
+            //774, 361
+            this.MinimumSize = new Size(774, 710);
             if (songDetail_panel.Controls.Count==0)
             {
                 songDetail.TopLevel = false;

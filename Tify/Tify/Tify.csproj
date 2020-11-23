@@ -262,6 +262,10 @@
       <Project>{658BFAC3-0B79-408D-A308-236BB5C3B66B}</Project>
       <Name>PlaylistContainer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReccomendTrackContainer\ReccomendTrackContainer.csproj">
+      <Project>{F2FF4469-56D6-4670-AC86-26A36EC17185}</Project>
+      <Name>ReccomendTrackContainer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

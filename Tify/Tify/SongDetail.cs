@@ -23,6 +23,7 @@ namespace Tify
             songDetail_panel = mainscr.getSongDetailPanel();
             soundPlayer = mainscr.getSoundPlayer();
             
+            
         }
 
         #region progressBar
@@ -79,6 +80,7 @@ namespace Tify
         private void songDetailMinimize_button_Click(object sender, EventArgs e)
         {
             songDetail_panel.Visible = false;
+            mainscr.MinimumSize = new Size(774, 361);
         }
 
         public Label getDuration_Label()
@@ -168,5 +170,21 @@ namespace Tify
         {
             songCover_detailPictureBox.Image = img;
         }
+
+
+        //form resize
+        private void SongDetail_Resize(object sender, EventArgs e)
+        {
+            if (this.Size.Width < 1250)
+            {
+                songDetail_rightPanel.Visible = false;
+            }
+            else
+                songDetail_rightPanel.Visible = true;
+
+                           
+        }
+
+        
     }
 }

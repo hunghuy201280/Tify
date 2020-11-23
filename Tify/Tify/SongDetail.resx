@@ -117,6 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="songDetaillImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="songDetaillImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADs
+        AgAAAk1TRnQBSQFMAwEBAAFoAQABaAEAARgBAAEYAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABYAMA
+        ARgDAAEBAQABIAYAAST/AJsAAwoBDQMUARz/AHkAA9gB/QT/AxYBHxQABP8DUwGq/wBZAAMJAQwD5QH+
+        A+UB/gMaASUQAAT/A1MBqv8AYQADfAHuA+UB/gMUARwMAAT/A1MBqv8AZQAD5QH+BP8DFAEcCAAE/wNT
+        Aar/AGUAAwgBCwPlAf4D5QH+AxoBJQQABP8DUwGq/wBtAAN4AewD5QH+AxQBHAT/A1MBqv8AcQADxgH8
+        CP8DUwGq/wBZAAMmATkDUwGqA1MBqgNTAaoDUwGqA1MBqgNVAbUI/wNTAar/AFkAAzUBVSD/A1MBqv8A
+        /wD/AAcAA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGq/wBdACT//wBdAAz/AxIBGf8A
+        cQAE/wNVAbUD5QH+A9gB/QMYASH/AG0ABP8DUwGqBAADeAHsA+UB/gMSARn/AGkABP8DUwGqCAAD5QH+
+        BP8DFAEc/wBlAAT/A1MBqggAAwgBCwPlAf4D5QH+AxoBJf8AYQAE/wNTAaoQAAN8Ae4D5QH+AxQBHP8A
+        XQAE/wNTAaoUAAPlAf4E/wMUARz/AFkAAzUBVQMmATgUAAMHAQoD5QH+AwoBDv8A/wD/AP8AKAABQgFN
+        AT4HAAE+AwABKAMAAWADAAEYAwABAQEAAQEFAAEgAQEWAAP/AQAD/wkAAc8C/wkAAccBzwH/CQABwwHP
+        Af8JAAHxAc8B/wkAAfgBzwH/CQAB+AFPAf8JAAH+AQ8B/wkAAf8BDwH/CQABwAEPAf8JAAHAAQ8B/wkA
+        A/8JAAH/AfgBAwkAAf8B+AEDCQAB/wH4AX8JAAH/AfgBPwkAAf8B+QEfCQAB/wH5AY8JAAH/AfkBhwkA
+        Af8B+QHjCQAB/wH5AfEJAAH/AfkB8QkAA/8JAAP/CQAL
+</value>
+  </data>
+  <metadata name="myToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>182, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="volume_detailButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -28357,30 +28383,4 @@
         r7vTm9Pu1fZNd365Eex62W1uHnUHh9vdXvr9dsD0//if33X/D2W/oebBHobvAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="songDetaillImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="songDetaillImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADs
-        AgAAAk1TRnQBSQFMAwEBAAFAAQABQAEAARgBAAEYAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABYAMA
-        ARgDAAEBAQABIAYAAST/AJsAAwoBDQMUARz/AHkAA+cB/QT/AxYBHxQABP8DUwGq/wBZAAMJAQwD7wH+
-        A+8B/gMaASUQAAT/A1MBqv8AYQADlQHuA+8B/gMUARwMAAT/A1MBqv8AZQAD7wH+BP8DFAEcCAAE/wNT
-        Aar/AGUAAwgBCwPvAf4D7wH+AxoBJQQABP8DUwGq/wBtAAOPAewD7wH+AxQBHAT/A1MBqv8AcQAD1wH8
-        CP8DUwGq/wBZAAMmATkDUwGqA1MBqgNTAaoDUwGqA1MBqgNVAbUI/wNTAar/AFkAAzUBVSD/A1MBqv8A
-        /wD/AAcAA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGq/wBdACT//wBdAAz/AxIBGf8A
-        cQAE/wNVAbUD7wH+A+cB/QMYASH/AG0ABP8DUwGqBAADjwHsA+8B/gMSARn/AGkABP8DUwGqCAAD7wH+
-        BP8DFAEc/wBlAAT/A1MBqggAAwgBCwPvAf4D7wH+AxoBJf8AYQAE/wNTAaoQAAOVAe4D7wH+AxQBHP8A
-        XQAE/wNTAaoUAAPvAf4E/wMUARz/AFkAAzUBVQMmATgUAAMHAQoD7wH+AwoBDv8A/wD/AP8AKAABQgFN
-        AT4HAAE+AwABKAMAAWADAAEYAwABAQEAAQEFAAEgAQEWAAP/AQAD/wkAAc8C/wkAAccBzwH/CQABwwHP
-        Af8JAAHxAc8B/wkAAfgBzwH/CQAB+AFPAf8JAAH+AQ8B/wkAAf8BDwH/CQABwAEPAf8JAAHAAQ8B/wkA
-        A/8JAAH/AfgBAwkAAf8B+AEDCQAB/wH4AX8JAAH/AfgBPwkAAf8B+QEfCQAB/wH5AY8JAAH/AfkBhwkA
-        Af8B+QHjCQAB/wH5AfEJAAH/AfkB8QkAA/8JAAP/CQAL
-</value>
-  </data>
-  <metadata name="myToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>182, 17</value>
-  </metadata>
 </root>
