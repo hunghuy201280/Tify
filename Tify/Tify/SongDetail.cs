@@ -214,10 +214,7 @@ namespace Tify
             }
         }
         #endregion 
-        public void updateData()
-        {
-
-        }
+    
 
     }
 }

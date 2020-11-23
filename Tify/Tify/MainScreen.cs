@@ -24,8 +24,10 @@ namespace Tify
           
 
         }
+       
 
-      
+
+       
         public void loadNewSong(string Url)
         {
             
@@ -72,7 +74,7 @@ namespace Tify
         #region test
 
         //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/lisa-uru/saikai-tsvmwtbwq89fq9.html";
+        private string testURL = "https://chiasenhac.vn/nhac-hot/vietnam.html?playlist=1";
 
         private PictureBox songPicture = new PictureBox();
         private void testFunc()

@@ -58,7 +58,13 @@ namespace ReccomendTrackContainer
         //change song
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
-            new Thread(() => { mainscr.loadNewSong(Url); }).Start();
+            new Thread(() => {
+                mainscr.BeginInvoke((Action)delegate ()
+                {
+
+                    mainscr.loadNewSong(Url);
+                });
+                }).Start();
             
         }
     }
