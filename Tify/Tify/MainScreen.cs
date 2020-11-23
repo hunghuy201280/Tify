@@ -21,14 +21,58 @@ namespace Tify
 
             songDetail_panel.BringToFront();
             songDetail = new SongDetail(this);
-
+          
 
         }
 
+      
+        public void loadNewSong(string Url)
+        {
+            
+            soundPlayer.URL = GetSongData.GetStreamLink(Url);
+            
+            
+            soundPlayer.controls.stop();
+            time = 0;
+
+
+            songPicture.Load(GetSongData.GetSongCover(Url));
+            songCover_panel.BackgroundImage = songPicture.Image;
+            string[] artists = GetSongData.GetSongArtist(Url);
+            artist_label.Text = string.Empty;
+            foreach (string artist in artists)
+            {
+                artist_label.Text += artist + ";";
+            }
+
+            title_label.Text = GetSongData.GetSongName(Url);
+
+            //timer
+            currentTime_label.Text = "0:00 /";
+            int[] duration = GetSongData.GetSongDuration(Url);
+            int durationMin = duration[0];
+            int durationSec = duration[1];
+
+
+
+            if (durationSec < 10)
+            {
+                duration_label.Text = " " + durationMin + ":0" + durationSec;
+            }
+            else
+            {
+                duration_label.Text = " " + durationMin + ":" + durationSec;
+            }
+
+            
+            //lay suggest song
+            string[] suggestedSong = GetSongData.GetSuggetSongs(Url);
+            songDetail.setSuggestedSong(suggestedSong);
+        }
         #region test
 
         //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/hoshimachi-suisei/next-color-planet-tsvw0cv7q9nv2t.html";
+        private string testURL = "https://vi.chiasenhac.vn/mp3/lisa-uru/saikai-tsvmwtbwq89fq9.html";
 
         private PictureBox songPicture = new PictureBox();
         private void testFunc()
@@ -71,6 +115,10 @@ namespace Tify
             {
                 duration_label.Text =" "+  durationMin + ":" + durationSec;
             }
+
+            //lay suggest song
+            string[] suggestedSong = GetSongData.GetSuggetSongs(testURL);
+            songDetail.setSuggestedSong(suggestedSong);
         }
 
         #endregion test
@@ -92,7 +140,7 @@ namespace Tify
             //demo
 
 
-            //testFunc();
+            testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -754,5 +802,8 @@ namespace Tify
             return progressBar;
         }
         #endregion
+
+
+        
     }
 }

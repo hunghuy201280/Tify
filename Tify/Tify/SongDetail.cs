@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GetData;
+using ReccomendTrackContainer;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using WMPLib;
@@ -22,7 +24,7 @@ namespace Tify
             mainscr = callForm;
             songDetail_panel = mainscr.getSongDetailPanel();
             soundPlayer = mainscr.getSoundPlayer();
-            
+            MainScreen.hideScrollBar(suggestedTracks_flowPanel, "flow");
             
         }
 
@@ -185,6 +187,37 @@ namespace Tify
                            
         }
 
-        
+
+        #region setSuggestedSong
+
+        public void setSuggestedSong(string[] songUrl)
+        {
+            suggestedTracks_flowPanel.Controls.Clear();
+            for (int i = 0; i < 10; i++)
+            {
+                string url = songUrl[i];
+                ReccommendTrackControl temp = new ReccommendTrackControl(mainscr);
+                string[] artists = GetSongData.GetSongArtist(url);
+                string name=string.Empty;
+                foreach (string artist in artists)
+                {
+                    name += artist + ";";
+                }
+                temp.setSongArtist(name);
+                temp.Url = url;
+                PictureBox tempbx = new PictureBox();
+                tempbx.Load(GetSongData.GetSongCover(url));
+                temp.setSongCover(tempbx.Image);
+                temp.setSongName(GetSongData.GetSongName(url));
+                suggestedTracks_flowPanel.Controls.Add(temp);
+
+            }
+        }
+        #endregion 
+        public void updateData()
+        {
+
+        }
+
     }
 }

@@ -111,14 +111,32 @@
     <Compile Include="MyMix.designer.cs">
       <DependentUpon>MyMix.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyMixContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyMixContainer.Designer.cs">
+      <DependentUpon>MyMixContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlayList.Designer.cs">
       <DependentUpon>PlayList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaylistContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlaylistContainer.Designer.cs">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReccommendTrackControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReccommendTrackControl.Designer.cs">
+      <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,8 +170,14 @@
     <EmbeddedResource Include="MyMix.resx">
       <DependentUpon>MyMix.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyMixContainer.resx">
+      <DependentUpon>MyMixContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlayList.resx">
       <DependentUpon>PlayList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaylistContainer.resx">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -165,6 +189,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReccommendTrackControl.resx">
+      <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,20 +279,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyMix\MyMixContainer.csproj">
-      <Project>{D5CB43DD-7D20-4194-9644-03004A12E19F}</Project>
-      <Name>MyMixContainer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Playlist\PlaylistContainer.csproj">
-      <Project>{658BFAC3-0B79-408D-A308-236BB5C3B66B}</Project>
-      <Name>PlaylistContainer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ReccomendTrackContainer\ReccomendTrackContainer.csproj">
-      <Project>{F2FF4469-56D6-4670-AC86-26A36EC17185}</Project>
-      <Name>ReccomendTrackContainer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

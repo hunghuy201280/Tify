@@ -375,7 +375,6 @@
             // menu_panel
             // 
             this.menu_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.menu_panel.Controls.Add(this.CreatePlayList_FlowPanel);
             this.menu_panel.Controls.Add(this.createNewPlaylist_button);
             this.menu_panel.Controls.Add(this.myPlaylist_label);
             this.menu_panel.Controls.Add(this.account_button);
@@ -387,6 +386,7 @@
             this.menu_panel.Controls.Add(this.playlist_button);
             this.menu_panel.Controls.Add(this.artists_button);
             this.menu_panel.Controls.Add(this.tracks_button);
+            this.menu_panel.Controls.Add(this.CreatePlayList_FlowPanel);
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu_panel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);

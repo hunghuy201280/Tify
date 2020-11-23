@@ -33,8 +33,6 @@
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.songDetail_rightPanel = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.suggestedTracks_label = new System.Windows.Forms.Label();
             this.songDetail_leftPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
@@ -53,9 +51,9 @@
             this.songCover_detailPictureBox = new System.Windows.Forms.PictureBox();
             this.songDetailMinimize_button = new System.Windows.Forms.Button();
             this.tempToContainTrackbar = new System.Windows.Forms.Panel();
-            this.reccommendTrackControl1 = new ReccomendTrackContainer.ReccommendTrackControl();
+            this.suggestedTracks_label = new System.Windows.Forms.Label();
+            this.suggestedTracks_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.songDetail_rightPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -73,35 +71,13 @@
             // songDetail_rightPanel
             // 
             this.songDetail_rightPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
-            this.songDetail_rightPanel.Controls.Add(this.flowLayoutPanel1);
+            this.songDetail_rightPanel.Controls.Add(this.suggestedTracks_flowPanel);
+            this.songDetail_rightPanel.Controls.Add(this.suggestedTracks_label);
             this.songDetail_rightPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.songDetail_rightPanel.Location = new System.Drawing.Point(717, 0);
+            this.songDetail_rightPanel.Location = new System.Drawing.Point(681, 0);
             this.songDetail_rightPanel.Name = "songDetail_rightPanel";
-            this.songDetail_rightPanel.Size = new System.Drawing.Size(377, 757);
+            this.songDetail_rightPanel.Size = new System.Drawing.Size(413, 757);
             this.songDetail_rightPanel.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
-            this.flowLayoutPanel1.Controls.Add(this.suggestedTracks_label);
-            this.flowLayoutPanel1.Controls.Add(this.reccommendTrackControl1);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 94);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(387, 660);
-            this.flowLayoutPanel1.TabIndex = 16;
-            this.flowLayoutPanel1.WrapContents = false;
-            // 
-            // suggestedTracks_label
-            // 
-            this.suggestedTracks_label.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suggestedTracks_label.ForeColor = System.Drawing.Color.White;
-            this.suggestedTracks_label.Location = new System.Drawing.Point(3, 0);
-            this.suggestedTracks_label.Name = "suggestedTracks_label";
-            this.suggestedTracks_label.Size = new System.Drawing.Size(341, 60);
-            this.suggestedTracks_label.TabIndex = 0;
-            this.suggestedTracks_label.Text = "Suggested Tracks";
             // 
             // songDetail_leftPanel
             // 
@@ -112,7 +88,7 @@
             this.songDetail_leftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songDetail_leftPanel.Location = new System.Drawing.Point(0, 0);
             this.songDetail_leftPanel.Name = "songDetail_leftPanel";
-            this.songDetail_leftPanel.Size = new System.Drawing.Size(717, 757);
+            this.songDetail_leftPanel.Size = new System.Drawing.Size(681, 757);
             this.songDetail_leftPanel.TabIndex = 4;
             // 
             // panel4
@@ -132,7 +108,7 @@
             this.panel4.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(0, 527);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(717, 230);
+            this.panel4.Size = new System.Drawing.Size(681, 230);
             this.panel4.TabIndex = 15;
             // 
             // progressBar
@@ -148,7 +124,7 @@
             this.progressBar.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             this.progressBar.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.progressBar.Properties.StartColor = System.Drawing.Color.Empty;
-            this.progressBar.Size = new System.Drawing.Size(719, 5);
+            this.progressBar.Size = new System.Drawing.Size(683, 5);
             this.progressBar.TabIndex = 15;
             this.progressBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseClick);
             this.progressBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseDown);
@@ -211,7 +187,7 @@
             this.volume_detailButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.volume_detailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.volume_detailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.volume_detailButton.Location = new System.Drawing.Point(509, 141);
+            this.volume_detailButton.Location = new System.Drawing.Point(473, 141);
             this.volume_detailButton.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.volume_detailButton.Name = "volume_detailButton";
             this.volume_detailButton.Size = new System.Drawing.Size(44, 40);
@@ -227,7 +203,7 @@
             this.panel7.Controls.Add(this.previous_button);
             this.panel7.Controls.Add(this.next_button);
             this.panel7.Controls.Add(this.pause_button);
-            this.panel7.Location = new System.Drawing.Point(210, 118);
+            this.panel7.Location = new System.Drawing.Point(192, 118);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(235, 100);
             this.panel7.TabIndex = 12;
@@ -371,7 +347,7 @@
             // 
             this.songCover_detailPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.songCover_detailPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("songCover_detailPictureBox.Image")));
-            this.songCover_detailPictureBox.Location = new System.Drawing.Point(173, 94);
+            this.songCover_detailPictureBox.Location = new System.Drawing.Point(155, 94);
             this.songCover_detailPictureBox.MaximumSize = new System.Drawing.Size(372, 366);
             this.songCover_detailPictureBox.MinimumSize = new System.Drawing.Size(372, 366);
             this.songCover_detailPictureBox.Name = "songCover_detailPictureBox";
@@ -405,20 +381,34 @@
             // 
             this.tempToContainTrackbar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tempToContainTrackbar.Controls.Add(this.volume_trackBar);
-            this.tempToContainTrackbar.Location = new System.Drawing.Point(566, 154);
+            this.tempToContainTrackbar.Location = new System.Drawing.Point(530, 154);
             this.tempToContainTrackbar.Name = "tempToContainTrackbar";
             this.tempToContainTrackbar.Size = new System.Drawing.Size(130, 13);
             this.tempToContainTrackbar.TabIndex = 16;
             // 
-            // reccommendTrackControl1
+            // suggestedTracks_label
             // 
-            this.reccommendTrackControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
-            this.reccommendTrackControl1.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reccommendTrackControl1.ForeColor = System.Drawing.Color.White;
-            this.reccommendTrackControl1.Location = new System.Drawing.Point(3, 63);
-            this.reccommendTrackControl1.Name = "reccommendTrackControl1";
-            this.reccommendTrackControl1.Size = new System.Drawing.Size(338, 59);
-            this.reccommendTrackControl1.TabIndex = 16;
+            this.suggestedTracks_label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.suggestedTracks_label.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestedTracks_label.ForeColor = System.Drawing.Color.White;
+            this.suggestedTracks_label.Location = new System.Drawing.Point(0, 0);
+            this.suggestedTracks_label.Name = "suggestedTracks_label";
+            this.suggestedTracks_label.Padding = new System.Windows.Forms.Padding(0, 97, 0, 0);
+            this.suggestedTracks_label.Size = new System.Drawing.Size(413, 157);
+            this.suggestedTracks_label.TabIndex = 16;
+            this.suggestedTracks_label.Text = "Suggested Tracks";
+            // 
+            // suggestedTracks_flowPanel
+            // 
+            this.suggestedTracks_flowPanel.AutoScroll = true;
+            this.suggestedTracks_flowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
+            this.suggestedTracks_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.suggestedTracks_flowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.suggestedTracks_flowPanel.Location = new System.Drawing.Point(0, 157);
+            this.suggestedTracks_flowPanel.Name = "suggestedTracks_flowPanel";
+            this.suggestedTracks_flowPanel.Size = new System.Drawing.Size(413, 600);
+            this.suggestedTracks_flowPanel.TabIndex = 19;
+            this.suggestedTracks_flowPanel.WrapContents = false;
             // 
             // SongDetail
             // 
@@ -434,8 +424,6 @@
             this.Text = "SongDetail";
             this.Resize += new System.EventHandler(this.SongDetail_Resize);
             this.songDetail_rightPanel.ResumeLayout(false);
-            this.songDetail_rightPanel.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.songDetail_leftPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -452,9 +440,6 @@
         private System.Windows.Forms.ImageList songDetaillImageList;
         private System.Windows.Forms.ToolTip myToolTip;
         private System.Windows.Forms.Panel songDetail_rightPanel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label suggestedTracks_label;
-        private ReccomendTrackContainer.ReccommendTrackControl reccommendTrackControl1;
         private System.Windows.Forms.Panel songDetail_leftPanel;
         public System.Windows.Forms.Panel panel4;
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
@@ -473,5 +458,7 @@
         private System.Windows.Forms.PictureBox songCover_detailPictureBox;
         private System.Windows.Forms.Button songDetailMinimize_button;
         private System.Windows.Forms.Panel tempToContainTrackbar;
+        private System.Windows.Forms.Label suggestedTracks_label;
+        private System.Windows.Forms.FlowLayoutPanel suggestedTracks_flowPanel;
     }
 }
