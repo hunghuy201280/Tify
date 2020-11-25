@@ -25,7 +25,7 @@ namespace Tify
             InitializeComponent();
             mainScr = callForm;
             menu_pnl = mainScr.getCreatePlayList_FlowPanel();
-           
+            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
 
         }
 
