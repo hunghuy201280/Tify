@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMixContainer", "MyMix\MyM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReccomendTrackContainer", "ReccomendTrackContainer\ReccomendTrackContainer.csproj", "{F2FF4469-56D6-4670-AC86-26A36EC17185}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightClickCreatePlayList", "RightClickCreatePlayList\RightClickCreatePlayList.csproj", "{AEB73099-3A88-47F8-B11A-1C32203C2AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F2FF4469-56D6-4670-AC86-26A36EC17185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FF4469-56D6-4670-AC86-26A36EC17185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FF4469-56D6-4670-AC86-26A36EC17185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB73099-3A88-47F8-B11A-1C32203C2AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB73099-3A88-47F8-B11A-1C32203C2AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB73099-3A88-47F8-B11A-1C32203C2AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB73099-3A88-47F8-B11A-1C32203C2AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
