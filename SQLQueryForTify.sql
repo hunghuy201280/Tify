@@ -204,3 +204,24 @@ select * from Artist
 insert into Track values('Big City Boi','https://vi.chiasenhac.vn/mp3/binz-touliver/big-city-boi-tsvwzbwrq91q9a.html')
 ALTER TABLE Track
 ADD CONSTRAINT UN_Track UNIQUE (trackTitle,trackLink);
+
+select * from Track order by trackID 
+
+select * from Artist where artistID='https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html'
+
+
+select * from Track;
+insert into ArtistHasTrack values('https://bn.vn/ca-si/binz-zsswvs3bq924wq.html',5)
+insert into Artist values('Binz',null,'https://chiasenhac.vn/ca-si/binz-zsswvs3bq924wq.html')
+
+
+insert into ArtistHasTrack values("https://vi.chiasenhac.vn/ca-si/binz-zsswvs3bq924wq.html",@trackID)
+
+select * from Track order by trackID
+select * from ArtistHasTrack
+select* from Artist
+
+https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
+https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
+
+insert into ArtistHasTrack values('https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html',1631)

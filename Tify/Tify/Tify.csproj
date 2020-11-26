@@ -143,6 +143,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="RightClickCreatePlayList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RightClickCreatePlayList.Designer.cs">
+      <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SongDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RightClickCreatePlayList.resx">
+      <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SongDetail.resx">
       <DependentUpon>SongDetail.cs</DependentUpon>
