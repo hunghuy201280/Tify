@@ -10,16 +10,15 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class MyMixContainer : UserControl
+    public partial class ArtistContainer : UserControl
     {
-        public MyMixContainer()
+        public ArtistContainer()
         {
             InitializeComponent();
+            opacity_panel.BackColor = Color.FromArgb(125,Color.Black);
         }
 
-      
-
-        private void myMixCover_panel_MouseHover(object sender, EventArgs e)
+        private void artistCover_panel_MouseHover(object sender, EventArgs e)
         {
             opacity_panel.Visible = true;
         }
@@ -27,11 +26,6 @@ namespace Tify
         private void opacity_panel_MouseLeave(object sender, EventArgs e)
         {
             opacity_panel.Visible = false;
-        }
-
-        private void MyMixContainer_Load(object sender, EventArgs e)
-        {
-            opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
         }
     }
 }

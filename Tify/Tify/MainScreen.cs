@@ -23,15 +23,12 @@ namespace Tify
 
             songDetail_panel.BringToFront();
             songDetail = new SongDetail(this);
-            homeScr = new Home(this);
-            myMixScr = new MyMix();
-            playlistScr = new Playlist();
-            firstLoadChildForm(new Form[] { homeScr, myMixScr, playlistScr });
+            firstLoadChildForm();
         }
         Home homeScr;
         MyMix myMixScr;
         Playlist playlistScr;
-
+        Artist artistScr;
 
 
         #region load nhac khi chuyen bai
@@ -144,7 +141,7 @@ namespace Tify
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-            openChildForm(new Home(this));
+            openChildForm(homeScr);
 
             volume_trackBar.Anchor = AnchorStyles.Right;
 
@@ -363,16 +360,12 @@ namespace Tify
             if (sender == home_button)
                 openChildForm(homeScr);
             else if (sender == myMix_button)
-            {
-               
                 openChildForm(myMixScr);
-            }
             else if (sender == playlist_button)
-            {
                 openChildForm(playlistScr);
-            }
+            else if (sender == artists_button)
+                openChildForm(artistScr);
             else
-
                 MessageBox.Show("Chuaco");
         }
 
@@ -460,9 +453,15 @@ namespace Tify
 
          private Form activeForm = null;
 
-        private void firstLoadChildForm(Form[] childForm)
+        private void firstLoadChildForm()
         {
-            foreach (Form item in childForm)
+
+            artistScr = new Artist();
+            homeScr = new Home(this);
+            myMixScr = new MyMix();
+            playlistScr = new Playlist();
+            Form[] temp = { myMixScr, homeScr, playlistScr,artistScr };
+            foreach (Form item in temp)
             {
                 item.TopLevel = false;
                 item.FormBorderStyle = FormBorderStyle.None;

@@ -70,6 +70,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Artist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Artist.Designer.cs">
+      <DependentUpon>Artist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ArtistContainer.Designer.cs">
+      <DependentUpon>ArtistContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreatePlayList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,12 @@
     <Compile Include="SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Artist.resx">
+      <DependentUpon>Artist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtistContainer.resx">
+      <DependentUpon>ArtistContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </EmbeddedResource>

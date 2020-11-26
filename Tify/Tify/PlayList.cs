@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace Tify
            this.ClientSize.Height / 2 - panel_default_playlist.Size.Height / 2);
             panel_default_playlist.Anchor = AnchorStyles.None;
             /*panel_default_playlist.BringToFront();*/
+            
         }
     }
 }

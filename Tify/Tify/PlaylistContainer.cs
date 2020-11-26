@@ -8,39 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Playlist
+namespace Tify
 {
-    public partial class PlaylistContainer: UserControl
+    public partial class PlaylistContainer : UserControl
     {
         public PlaylistContainer()
         {
             InitializeComponent();
         }
-        public string getPlaylistName()
-        {
-            return playlistName_label.Text;
-        }
-        public void setPlaylistName(string name)
-        {
-            playlistName_label.Text = name;
-        }
-        public int getNumberOfTracks()
-        {
-            string res = numberOfTracks_label.Text.Replace(" Tracks", "");
-            return int.Parse(res);
-        }
-        public void setNumberOfTracks(int num)
-        {
 
-            numberOfTracks_label.Text = num.ToString() + " Tracks";
-        }
-        public void setPlaylistCover(Image image)
+        private void PlaylistContainer_Load(object sender, EventArgs e)
         {
-            playListCover_pictureBox.BackgroundImage = image;
+            opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
         }
-        public Image getPlaylistCover()
+
+        private void playlistCover_panel_MouseHover(object sender, EventArgs e)
         {
-            return playListCover_pictureBox.BackgroundImage;
+            opacity_panel.Visible = true;
+        }
+
+        private void opacity_panel_MouseLeave(object sender, EventArgs e)
+        {
+            opacity_panel.Visible = false;
         }
     }
 }

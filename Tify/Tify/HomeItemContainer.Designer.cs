@@ -35,16 +35,6 @@
             this.recentlyPlayed_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.containerTitle_label = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.playlistContainer1 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer2 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer3 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer4 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer5 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer6 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer7 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer8 = new global::Playlist.PlaylistContainer();
-            this.playlistContainer9 = new global::Playlist.PlaylistContainer();
-            this.recentlyPlayed_flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // forward_Button
@@ -79,20 +69,11 @@
             // 
             // recentlyPlayed_flowLayoutPanel
             // 
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer1);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer2);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer3);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer4);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer5);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer6);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer7);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer8);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.playlistContainer9);
             this.recentlyPlayed_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.recentlyPlayed_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
-            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 54);
+            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 45);
             this.recentlyPlayed_flowLayoutPanel.Name = "recentlyPlayed_flowLayoutPanel";
-            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 201);
+            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 240);
             this.recentlyPlayed_flowLayoutPanel.TabIndex = 4;
             this.recentlyPlayed_flowLayoutPanel.WrapContents = false;
             // 
@@ -112,87 +93,6 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // playlistContainer1
-            // 
-            this.playlistContainer1.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer1.Location = new System.Drawing.Point(5, 0);
-            this.playlistContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer1.Name = "playlistContainer1";
-            this.playlistContainer1.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer1.TabIndex = 0;
-            // 
-            // playlistContainer2
-            // 
-            this.playlistContainer2.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer2.Location = new System.Drawing.Point(195, 0);
-            this.playlistContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer2.Name = "playlistContainer2";
-            this.playlistContainer2.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer2.TabIndex = 1;
-            // 
-            // playlistContainer3
-            // 
-            this.playlistContainer3.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer3.Location = new System.Drawing.Point(385, 0);
-            this.playlistContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer3.Name = "playlistContainer3";
-            this.playlistContainer3.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer3.TabIndex = 2;
-            // 
-            // playlistContainer4
-            // 
-            this.playlistContainer4.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer4.Location = new System.Drawing.Point(575, 0);
-            this.playlistContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer4.Name = "playlistContainer4";
-            this.playlistContainer4.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer4.TabIndex = 3;
-            // 
-            // playlistContainer5
-            // 
-            this.playlistContainer5.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer5.Location = new System.Drawing.Point(765, 0);
-            this.playlistContainer5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer5.Name = "playlistContainer5";
-            this.playlistContainer5.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer5.TabIndex = 4;
-            // 
-            // playlistContainer6
-            // 
-            this.playlistContainer6.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer6.Location = new System.Drawing.Point(955, 0);
-            this.playlistContainer6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer6.Name = "playlistContainer6";
-            this.playlistContainer6.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer6.TabIndex = 5;
-            // 
-            // playlistContainer7
-            // 
-            this.playlistContainer7.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer7.Location = new System.Drawing.Point(1145, 0);
-            this.playlistContainer7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer7.Name = "playlistContainer7";
-            this.playlistContainer7.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer7.TabIndex = 6;
-            // 
-            // playlistContainer8
-            // 
-            this.playlistContainer8.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer8.Location = new System.Drawing.Point(1335, 0);
-            this.playlistContainer8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer8.Name = "playlistContainer8";
-            this.playlistContainer8.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer8.TabIndex = 7;
-            // 
-            // playlistContainer9
-            // 
-            this.playlistContainer9.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer9.Location = new System.Drawing.Point(1525, 0);
-            this.playlistContainer9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.playlistContainer9.Name = "playlistContainer9";
-            this.playlistContainer9.Size = new System.Drawing.Size(180, 201);
-            this.playlistContainer9.TabIndex = 8;
-            // 
             // HomeItemContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -202,8 +102,7 @@
             this.Controls.Add(this.back_Button);
             this.Controls.Add(this.forward_Button);
             this.Name = "HomeItemContainer";
-            this.Size = new System.Drawing.Size(1045, 255);
-            this.recentlyPlayed_flowLayoutPanel.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1045, 285);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,14 +115,6 @@
         private System.Windows.Forms.FlowLayoutPanel recentlyPlayed_flowLayoutPanel;
         private System.Windows.Forms.Label containerTitle_label;
         private System.Windows.Forms.Timer timer1;
-        private global::Playlist.PlaylistContainer playlistContainer1;
-        private global::Playlist.PlaylistContainer playlistContainer2;
-        private global::Playlist.PlaylistContainer playlistContainer3;
-        private global::Playlist.PlaylistContainer playlistContainer4;
-        private global::Playlist.PlaylistContainer playlistContainer5;
-        private global::Playlist.PlaylistContainer playlistContainer6;
-        private global::Playlist.PlaylistContainer playlistContainer7;
-        private global::Playlist.PlaylistContainer playlistContainer8;
-        private global::Playlist.PlaylistContainer playlistContainer9;
+   
     }
 }

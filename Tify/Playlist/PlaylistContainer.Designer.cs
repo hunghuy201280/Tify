@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlaylistContainer));
             this.numberOfTracks_label = new System.Windows.Forms.Label();
             this.playlistName_label = new System.Windows.Forms.Label();
-            this.playListCover_pictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.playListCover_pictureBox)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // numberOfTracks_label
@@ -40,7 +38,7 @@
             this.numberOfTracks_label.AutoSize = true;
             this.numberOfTracks_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfTracks_label.ForeColor = System.Drawing.Color.White;
-            this.numberOfTracks_label.Location = new System.Drawing.Point(21, 180);
+            this.numberOfTracks_label.Location = new System.Drawing.Point(16, 195);
             this.numberOfTracks_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.numberOfTracks_label.Name = "numberOfTracks_label";
             this.numberOfTracks_label.Size = new System.Drawing.Size(48, 16);
@@ -52,34 +50,32 @@
             this.playlistName_label.AutoSize = true;
             this.playlistName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlistName_label.ForeColor = System.Drawing.Color.White;
-            this.playlistName_label.Location = new System.Drawing.Point(21, 158);
+            this.playlistName_label.Location = new System.Drawing.Point(16, 173);
             this.playlistName_label.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
             this.playlistName_label.Name = "playlistName_label";
             this.playlistName_label.Size = new System.Drawing.Size(109, 17);
             this.playlistName_label.TabIndex = 4;
             this.playlistName_label.Text = "Japan Top 50";
             // 
-            // playListCover_pictureBox
+            // panel1
             // 
-            this.playListCover_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("playListCover_pictureBox.Image")));
-            this.playListCover_pictureBox.Location = new System.Drawing.Point(24, 5);
-            this.playListCover_pictureBox.Name = "playListCover_pictureBox";
-            this.playListCover_pictureBox.Size = new System.Drawing.Size(135, 135);
-            this.playListCover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.playListCover_pictureBox.TabIndex = 3;
-            this.playListCover_pictureBox.TabStop = false;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 172);
+            this.panel1.TabIndex = 6;
             // 
             // PlaylistContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.numberOfTracks_label);
             this.Controls.Add(this.playlistName_label);
-            this.Controls.Add(this.playListCover_pictureBox);
             this.Margin = new System.Windows.Forms.Padding(5, 30, 5, 0);
             this.Name = "PlaylistContainer";
-            this.Size = new System.Drawing.Size(180, 201);
-            ((System.ComponentModel.ISupportInitialize)(this.playListCover_pictureBox)).EndInit();
+            this.Size = new System.Drawing.Size(180, 252);
+            this.Load += new System.EventHandler(this.PlaylistContainer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,6 +85,6 @@
 
         private System.Windows.Forms.Label numberOfTracks_label;
         private System.Windows.Forms.Label playlistName_label;
-        private System.Windows.Forms.PictureBox playListCover_pictureBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }

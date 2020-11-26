@@ -42,5 +42,10 @@ namespace Playlist
         {
             return playListCover_pictureBox.BackgroundImage;
         }
+
+        private void PlaylistContainer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
