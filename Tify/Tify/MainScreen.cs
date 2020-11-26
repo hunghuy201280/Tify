@@ -467,17 +467,24 @@ namespace Tify
                 item.FormBorderStyle = FormBorderStyle.None;
                 item.Dock = DockStyle.Fill;
                 childForm_panel.Controls.Add(item);
-                item.Hide();
+                item.Show();
             }
             
         }
         public void openChildForm(Form childForm)
         {
+          
             if (activeForm != null)
-                activeForm.Hide();
+            {
+                if (activeForm == childForm)
+                    return;
+                activeForm.SendToBack();
+            }
+                
+            
             activeForm = childForm;
+           
             childForm.BringToFront();
-            childForm.Show();
         }
 
         #endregion Mở childForm
