@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -87,6 +88,12 @@
     <Compile Include="ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="HomeItemContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomeItemContainer.Designer.cs">
+      <DependentUpon>HomeItemContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,11 +124,11 @@
     <Compile Include="MyMixContainer.Designer.cs">
       <DependentUpon>MyMixContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayList.cs">
+    <Compile Include="Playlist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayList.Designer.cs">
-      <DependentUpon>PlayList.cs</DependentUpon>
+    <Compile Include="Playlist.Designer.cs">
+      <DependentUpon>Playlist.cs</DependentUpon>
     </Compile>
     <Compile Include="PlaylistContainer.cs">
       <SubType>UserControl</SubType>
@@ -164,6 +171,9 @@
     <EmbeddedResource Include="ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomeItemContainer.resx">
+      <DependentUpon>HomeItemContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,8 +189,8 @@
     <EmbeddedResource Include="MyMixContainer.resx">
       <DependentUpon>MyMixContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayList.resx">
-      <DependentUpon>PlayList.cs</DependentUpon>
+    <EmbeddedResource Include="Playlist.resx">
+      <DependentUpon>Playlist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaylistContainer.resx">
       <DependentUpon>PlaylistContainer.cs</DependentUpon>

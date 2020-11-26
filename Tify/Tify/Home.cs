@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Playlist;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,12 @@ namespace Tify
         private MainScreen callForm = null;
         public Home(MainScreen parentForm)
         {
-            callForm= parentForm;
-            InitializeComponent();
             
+            InitializeComponent();
+            callForm = parentForm;
             /*  flowLayoutPanel1.AutoScrollPosition = new Point(0, 0);
               flowLayoutPanel1.HorizontalScroll.Maximum = 195 * flowLayoutPanel1.Controls.Count + 195 - flowLayoutPanel1.Size.Width;*/
-           
+
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -61,7 +62,7 @@ namespace Tify
 
         //test
 
-
+        
 
       
 
@@ -71,13 +72,19 @@ namespace Tify
             FlowLayoutPanel panel = sender as FlowLayoutPanel;
             foreach (var item in panel.Controls)
             {
-                if (item is GroupBox)
+                if (item is HomeItemContainer)
                 {
-                    GroupBox temp = item as GroupBox;
+                    HomeItemContainer temp = item as HomeItemContainer;
                     temp.Size = new Size(panel.Size.Width, temp.Size.Height);
                 }
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            homeItemContainer1.addItem(new PlaylistContainer());
+                
+        }
     }
 }

@@ -39,9 +39,10 @@ namespace MyMix
             else
             {
                 MyMixArtist_label.Text += MyMixArtist_label.Text + ", ";
-                count++;
+                
             }
-            
+            count++;
+
         }
         public void setPlaylistCover(Image image)
         {

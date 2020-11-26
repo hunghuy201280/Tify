@@ -134,4 +134,13 @@
         QmCC
 </value>
   </data>
+  <data name="sort_button.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAALRJREFUeF7t
+        1T1uwkAUhVFvhFQU7J2A2BcK4mcB5loeCjKD5LgaRedIrzHzvgLBeAAAAAAAAAB4GcfxK3PInMscM9vy
+        8Z9lt+vem4Sm+CXz2/RsU44tlp2ue5VEpm/2k305tlh2uu5VErnPraZrObZYdrruVRJ5zK2mWzm2WHa6
+        7lUSOc2tpjU/2a57lUR2mdYl85NZc2l13WtK6PWamf5vt8x3ZnU8u133AAAAAAAAgP9mGJ4Jzq5xJ2YW
+        RAAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

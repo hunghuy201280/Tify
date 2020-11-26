@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class PlayList : Form
+    public partial class Playlist : Form
     {
-        public PlayList()
+        public Playlist()
         {
             InitializeComponent();
             panel_default_playlist.Location = new Point(
            this.ClientSize.Width / 2 - panel_default_playlist.Size.Width / 2,
            this.ClientSize.Height / 2 - panel_default_playlist.Size.Height / 2);
             panel_default_playlist.Anchor = AnchorStyles.None;
+            /*panel_default_playlist.BringToFront();*/
         }
-
-
-        
     }
 }

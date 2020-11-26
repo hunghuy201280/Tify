@@ -218,10 +218,16 @@ insert into Artist values('Binz',null,'https://chiasenhac.vn/ca-si/binz-zsswvs3b
 insert into ArtistHasTrack values("https://vi.chiasenhac.vn/ca-si/binz-zsswvs3bq924wq.html",@trackID)
 
 select * from Track order by trackID
-select * from ArtistHasTrack
+select * from ArtistHasTrack order by trackID
 select* from Artist
 
 https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
 https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
 
 insert into ArtistHasTrack values('https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html',1631)
+
+select * from Album
+
+
+
+select * from AlbumHasTrack

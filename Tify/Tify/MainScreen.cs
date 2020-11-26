@@ -23,9 +23,14 @@ namespace Tify
 
             songDetail_panel.BringToFront();
             songDetail = new SongDetail(this);
-          
-
+            homeScr = new Home(this);
+            myMixScr = new MyMix();
+            playlistScr = new Playlist();
+            firstLoadChildForm(new Form[] { homeScr, myMixScr, playlistScr });
         }
+        Home homeScr;
+        MyMix myMixScr;
+        Playlist playlistScr;
 
 
 
@@ -151,7 +156,7 @@ namespace Tify
             //demo
 
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -356,15 +361,15 @@ namespace Tify
 
             //Mở childForm
             if (sender == home_button)
-                openChildForm(new Home(this));
+                openChildForm(homeScr);
             else if (sender == myMix_button)
             {
-                bool ismix = true;
-                openChildForm(new MyMix(ismix));
+               
+                openChildForm(myMixScr);
             }
             else if (sender == playlist_button)
             {
-                openChildForm(new PlayList());
+                openChildForm(playlistScr);
             }
             else
 
@@ -455,17 +460,23 @@ namespace Tify
 
          private Form activeForm = null;
 
+        private void firstLoadChildForm(Form[] childForm)
+        {
+            foreach (Form item in childForm)
+            {
+                item.TopLevel = false;
+                item.FormBorderStyle = FormBorderStyle.None;
+                item.Dock = DockStyle.Fill;
+                childForm_panel.Controls.Add(item);
+                item.Hide();
+            }
+            
+        }
         public void openChildForm(Form childForm)
         {
             if (activeForm != null)
-                activeForm.Close();
+                activeForm.Hide();
             activeForm = childForm;
-
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            childForm_panel.Controls.Add(childForm);
-
             childForm.BringToFront();
             childForm.Show();
         }

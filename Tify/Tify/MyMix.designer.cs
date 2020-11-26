@@ -84,7 +84,7 @@
             this.MyMix_GroupBox.Size = new System.Drawing.Size(1128, 688);
             this.MyMix_GroupBox.TabIndex = 2;
             this.MyMix_GroupBox.TabStop = false;
-            this.MyMix_GroupBox.Text = "Check out these album:";
+            this.MyMix_GroupBox.Text = "Check out these mix";
             this.MyMix_GroupBox.Visible = false;
             this.MyMix_GroupBox.Resize += new System.EventHandler(this.groupBox1_Resize);
             // 

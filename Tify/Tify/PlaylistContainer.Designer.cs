@@ -76,7 +76,7 @@
             this.Controls.Add(this.numberOfTracks_label);
             this.Controls.Add(this.playlistName_label);
             this.Controls.Add(this.playListCover_pictureBox);
-            this.Margin = new System.Windows.Forms.Padding(5, 30, 5, 0);
+            this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Name = "PlaylistContainer";
             this.Size = new System.Drawing.Size(180, 201);
             ((System.ComponentModel.ISupportInitialize)(this.playListCover_pictureBox)).EndInit();
