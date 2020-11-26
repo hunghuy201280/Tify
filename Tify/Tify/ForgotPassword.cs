@@ -15,21 +15,26 @@ namespace Tify
         public ForgotPassword()
         {
             InitializeComponent();
-            Forgotpwd_panel.Location = new Point(
-            this.ClientSize.Width / 2 - Forgotpwd_panel.Size.Width / 2,
-            this.ClientSize.Height / 2 - Forgotpwd_panel.Size.Height / 2);
-            Forgotpwd_panel.Anchor = AnchorStyles.None;
+            userName_textBox.Focus();
+
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void phone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            textBox2.MaxLength = 10;
-
-
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private void exit_label_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

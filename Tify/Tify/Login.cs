@@ -19,20 +19,22 @@ namespace Tify
             InitializeComponent();
             string connectionString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             connection = new SqlConnection(connectionString);
-            
-           
+            userName_textBox.Focus();
+
+
 
         }
 
         private void registerLink_label_Click(object sender, EventArgs e)
         {
-            new Register().Show();
+            new Register().ShowDialog();
+
             this.Hide();
         }
 
         private void forgotPassLink_label_Click(object sender, EventArgs e)
         {
-            new ForgotPassword().Show();
+            new ForgotPassword().ShowDialog();
             this.Hide();
         }
 
@@ -67,8 +69,9 @@ namespace Tify
             }
             else //Dang nhap thanh cong
             {
-
+                MessageBox.Show(login.Rows[0]["username"].ToString());
             }
+            login.Clear();
             connection.Close();
         }
 

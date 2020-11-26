@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.forgotPassLink_label = new System.Windows.Forms.Label();
             this.registerLink_label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -98,11 +99,12 @@
             this.Login_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.Login_Button.FlatAppearance.BorderSize = 0;
             this.Login_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Login_Button.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_Button.ForeColor = System.Drawing.Color.White;
             this.Login_Button.Location = new System.Drawing.Point(36, 294);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.Size = new System.Drawing.Size(236, 33);
-            this.Login_Button.TabIndex = 6;
+            this.Login_Button.TabIndex = 3;
             this.Login_Button.Text = "Login";
             this.Login_Button.UseVisualStyleBackColor = false;
             this.Login_Button.Click += new System.EventHandler(this.Login_Button_Click);
@@ -116,7 +118,7 @@
             this.exit_label.Location = new System.Drawing.Point(134, 344);
             this.exit_label.Name = "exit_label";
             this.exit_label.Size = new System.Drawing.Size(33, 16);
-            this.exit_label.TabIndex = 7;
+            this.exit_label.TabIndex = 4;
             this.exit_label.Text = "Exit";
             this.exit_label.Click += new System.EventHandler(this.exit_label_Click);
             // 
@@ -129,7 +131,7 @@
             this.userName_textBox.Location = new System.Drawing.Point(67, 189);
             this.userName_textBox.Name = "userName_textBox";
             this.userName_textBox.Size = new System.Drawing.Size(205, 19);
-            this.userName_textBox.TabIndex = 8;
+            this.userName_textBox.TabIndex = 1;
             // 
             // password_textBox
             // 
@@ -141,14 +143,14 @@
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
             this.password_textBox.Size = new System.Drawing.Size(205, 19);
-            this.password_textBox.TabIndex = 8;
+            this.password_textBox.TabIndex = 2;
             this.password_textBox.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(11, 408);
+            this.label3.Location = new System.Drawing.Point(12, 408);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(186, 13);
@@ -169,28 +171,41 @@
             // forgotPassLink_label
             // 
             this.forgotPassLink_label.AutoSize = true;
+            this.forgotPassLink_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.forgotPassLink_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.forgotPassLink_label.ForeColor = System.Drawing.Color.White;
             this.forgotPassLink_label.Location = new System.Drawing.Point(201, 404);
             this.forgotPassLink_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forgotPassLink_label.Name = "forgotPassLink_label";
             this.forgotPassLink_label.Size = new System.Drawing.Size(43, 19);
-            this.forgotPassLink_label.TabIndex = 13;
+            this.forgotPassLink_label.TabIndex = 6;
             this.forgotPassLink_label.Text = "here";
             this.forgotPassLink_label.Click += new System.EventHandler(this.forgotPassLink_label_Click);
             // 
             // registerLink_label
             // 
             this.registerLink_label.AutoSize = true;
+            this.registerLink_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registerLink_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.registerLink_label.ForeColor = System.Drawing.Color.White;
             this.registerLink_label.Location = new System.Drawing.Point(230, 373);
             this.registerLink_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.registerLink_label.Name = "registerLink_label";
             this.registerLink_label.Size = new System.Drawing.Size(43, 19);
-            this.registerLink_label.TabIndex = 12;
+            this.registerLink_label.TabIndex = 5;
             this.registerLink_label.Text = "here";
             this.registerLink_label.Click += new System.EventHandler(this.registerLink_label_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Nationale Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(104, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 33);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Login";
             // 
             // Login
             // 
@@ -198,6 +213,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(292, 447);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.forgotPassLink_label);
             this.Controls.Add(this.registerLink_label);
             this.Controls.Add(this.label3);
@@ -215,6 +231,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -238,5 +255,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label forgotPassLink_label;
         private System.Windows.Forms.Label registerLink_label;
+        private System.Windows.Forms.Label label2;
     }
 }
