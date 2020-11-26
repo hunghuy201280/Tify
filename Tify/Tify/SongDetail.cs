@@ -83,7 +83,7 @@ namespace Tify
 
         private void songDetailMinimize_button_Click(object sender, EventArgs e)
         {
-            songDetail_panel.Visible = false;
+            songDetail_panel.SendToBack();
             mainscr.MinimumSize = new Size(774, 361);
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,60 +13,68 @@ namespace Tify
 {
     public partial class Login : Form
     {
+        SqlConnection connection;
         public Login()
         {
             InitializeComponent();
-            Login_Panel.Location = new Point(
-            this.ClientSize.Width / 2 - Login_Panel.Size.Width / 2,
-            this.ClientSize.Height / 2 - Login_Panel.Size.Height / 2);
-            Login_Panel.Anchor = AnchorStyles.None;
-
-        }
-
-        
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            label2.ForeColor = Color.Red;
+            string connectionString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connection = new SqlConnection(connectionString);
             
-            Form register = new Register();
-            register.ShowDialog();
-            
+           
 
         }
 
-        private void label2_MouseEnter(object sender, EventArgs e)
+        private void registerLink_label_Click(object sender, EventArgs e)
         {
-            label2.ForeColor = Color.Blue;
+            new Register().Show();
+            this.Hide();
         }
 
-        private void label2_MouseLeave(object sender, EventArgs e)
+        private void forgotPassLink_label_Click(object sender, EventArgs e)
         {
-            label2.ForeColor = Color.White;
+            new ForgotPassword().Show();
+            this.Hide();
         }
 
-
-        private void label4_Click(object sender, EventArgs e)
+        DataTable login = new DataTable();
+        private void Login_Button_Click(object sender, EventArgs e)
         {
-            label4.ForeColor = Color.Red;
+            if (userName_textBox.Text =="" || password_textBox.Text=="")
+            {
+                MessageBox.Show("Please enter your username and password");
+                userName_textBox.Focus();
+                return;
+            }
+            string sqlCommand = "Select * from Account where username=@usrname and password=@passwd";
+            connection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
+            {
+                cmd.Parameters.AddWithValue("@usrname", userName_textBox.Text);
+                cmd.Parameters.AddWithValue("@passwd", password_textBox.Text);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    login.Load(reader);
+                }
 
-            
-            Form forgotpwd = new ForgotPassword();
-            forgotpwd.ShowDialog();
+            }
+            //Ko dang nhap dc
+            if (login.Rows.Count==0)
+            {
+                MessageBox.Show("Wrong username or password, try again");
+                userName_textBox.Clear();
+                password_textBox.Clear();
+                userName_textBox.Focus();
+            }
+            else //Dang nhap thanh cong
+            {
 
-
+            }
+            connection.Close();
         }
 
-        private void label4_MouseEnter(object sender, EventArgs e)
+        private void exit_label_Click(object sender, EventArgs e)
         {
-            label4.ForeColor = Color.Blue;
+            this.Close();
         }
-
-        private void label4_MouseLeave(object sender, EventArgs e)
-        {
-            label4.ForeColor = Color.White;
-        }
-
-       
     }
     }

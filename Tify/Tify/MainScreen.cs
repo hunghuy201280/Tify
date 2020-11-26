@@ -21,7 +21,6 @@ namespace Tify
             searchBar_textBox.LostFocus +=AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
 
-            songDetail_panel.BringToFront();
             songDetail = new SongDetail(this);
             firstLoadChildForm();
         }
@@ -141,7 +140,7 @@ namespace Tify
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-            openChildForm(homeScr);
+            home_button.PerformClick();
 
             volume_trackBar.Anchor = AnchorStyles.Right;
 
@@ -713,8 +712,8 @@ namespace Tify
                 songDetail.Show();
             }
 
-            
-            songDetail_panel.Visible=true;
+
+            songDetail_panel.BringToFront();
             songImgOpacity_panel.Visible = false;
         }
         #endregion

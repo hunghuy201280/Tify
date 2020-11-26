@@ -756,7 +756,6 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
-            this.songDetail_panel.Visible = false;
             // 
             // MainScreen
             // 
