@@ -38,15 +38,12 @@
             this.Register_Pwd = new System.Windows.Forms.Label();
             this.Register_UserName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.Register_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // Register_Panel
             // 
-            this.Register_Panel.Controls.Add(this.trackBar1);
             this.Register_Panel.Controls.Add(this.textBox2);
             this.Register_Panel.Controls.Add(this.maskedTextBox2);
             this.Register_Panel.Controls.Add(this.Register_Phone);
@@ -63,21 +60,27 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.ForeColor = System.Drawing.Color.White;
             this.textBox2.Location = new System.Drawing.Point(143, 206);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.MaxLength = 10;
             this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(165, 26);
+            this.textBox2.Size = new System.Drawing.Size(165, 19);
             this.textBox2.TabIndex = 9;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // maskedTextBox2
             // 
+            this.maskedTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox2.ForeColor = System.Drawing.Color.White;
             this.maskedTextBox2.Location = new System.Drawing.Point(143, 167);
-            this.maskedTextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maskedTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.PasswordChar = '*';
-            this.maskedTextBox2.Size = new System.Drawing.Size(165, 26);
+            this.maskedTextBox2.Size = new System.Drawing.Size(165, 19);
             this.maskedTextBox2.TabIndex = 8;
             // 
             // Register_Phone
@@ -92,8 +95,10 @@
             // 
             // Register_Button
             // 
-            this.Register_Button.BackColor = System.Drawing.Color.White;
+            this.Register_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.Register_Button.FlatAppearance.BorderSize = 0;
+            this.Register_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Register_Button.ForeColor = System.Drawing.Color.White;
             this.Register_Button.Location = new System.Drawing.Point(158, 251);
             this.Register_Button.Name = "Register_Button";
             this.Register_Button.Size = new System.Drawing.Size(76, 30);
@@ -103,9 +108,12 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.Location = new System.Drawing.Point(143, 124);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 26);
+            this.textBox1.Size = new System.Drawing.Size(165, 19);
             this.textBox1.TabIndex = 3;
             // 
             // Register_Pwd
@@ -139,18 +147,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(16, 40);
-            this.trackBar1.Maximum = 999999999;
-            this.trackBar1.Minimum = 111111111;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(325, 45);
-            this.trackBar1.TabIndex = 10;
-            this.trackBar1.Value = 999999999;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,12 +154,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(540, 358);
             this.Controls.Add(this.Register_Panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Register";
             this.Text = "Register";
             this.Register_Panel.ResumeLayout(false);
             this.Register_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,6 +177,5 @@
         private System.Windows.Forms.Label Register_Phone;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
