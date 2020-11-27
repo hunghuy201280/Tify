@@ -21,7 +21,12 @@ namespace Tify
            this.ClientSize.Height / 2 - panel_default_playlist.Size.Height / 2);
             panel_default_playlist.Anchor = AnchorStyles.None;
             /*panel_default_playlist.BringToFront();*/
-            
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
     }
 }

@@ -27,7 +27,15 @@ namespace Tify
             songDetail_panel = mainscr.getSongDetailPanel();
             soundPlayer = mainscr.getSoundPlayer();
             MainScreen.hideScrollBar(suggestedTracks_flowPanel, "flow");
-            
+
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         #region progressBar

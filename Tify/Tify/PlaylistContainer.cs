@@ -15,6 +15,13 @@ namespace Tify
         public PlaylistContainer()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         private void PlaylistContainer_Load(object sender, EventArgs e)

@@ -16,6 +16,12 @@ namespace Tify
         {
             InitializeComponent();
             userName_textBox.Focus();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
 
         }
 

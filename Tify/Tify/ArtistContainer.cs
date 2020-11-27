@@ -16,6 +16,13 @@ namespace Tify
         {
             InitializeComponent();
             opacity_panel.BackColor = Color.FromArgb(125,Color.Black);
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         private void artistCover_panel_MouseHover(object sender, EventArgs e)

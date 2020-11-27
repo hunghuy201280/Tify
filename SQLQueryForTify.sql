@@ -218,8 +218,12 @@ insert into Artist values('Binz',null,'https://chiasenhac.vn/ca-si/binz-zsswvs3b
 insert into ArtistHasTrack values("https://vi.chiasenhac.vn/ca-si/binz-zsswvs3bq924wq.html",@trackID)
 
 select * from Track order by trackID
-select * from ArtistHasTrack order by trackID
+select count(*) from ArtistHasTrack 
 select* from Artist
+
+select * from Track,ArtistHasTrack,Artist where Track.trackID=ArtistHasTrack.trackID and ArtistHasTrack.artistID=Artist.artistID;
+
+
 
 https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
 https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
@@ -231,3 +235,10 @@ select * from Album
 
 
 select * from AlbumHasTrack
+
+alter table Account
+add constraint Unique_Account UNIQue (username);
+
+
+select* from Account
+delete * from Account

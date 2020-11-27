@@ -24,8 +24,11 @@ namespace Tify
             
             InitializeComponent();
             callForm = parentForm;
-            /*  flowLayoutPanel1.AutoScrollPosition = new Point(0, 0);
-              flowLayoutPanel1.HorizontalScroll.Maximum = 195 * flowLayoutPanel1.Controls.Count + 195 - flowLayoutPanel1.Size.Width;*/
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
 
         }
 

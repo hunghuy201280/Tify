@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tify;
 
 namespace RightClickCreatePlayList
 {
@@ -15,6 +16,14 @@ namespace RightClickCreatePlayList
         public RightClickCreatePlayList()
         {
             InitializeComponent();
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
         public string getPlaylistName()
         {

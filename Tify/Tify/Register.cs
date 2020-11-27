@@ -22,6 +22,14 @@ namespace Tify
             connection = new SqlConnection(connectionString);
             userName_textBox.Focus();
 
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
         SqlConnection connection;
 

@@ -15,6 +15,13 @@ namespace Tify
         public Artist_NewCreate()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
     }
 }

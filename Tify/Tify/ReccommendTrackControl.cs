@@ -16,6 +16,13 @@ namespace ReccomendTrackContainer
             InitializeComponent();
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             opacity_panel.Visible = false;
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
         MainScreen mainscr;
         public ReccommendTrackControl(MainScreen param)
@@ -24,6 +31,13 @@ namespace ReccomendTrackContainer
             mainscr = param;
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             opacity_panel.Visible = false;
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         private void songCover_panel_MouseHover(object sender, EventArgs e)

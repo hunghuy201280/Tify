@@ -15,9 +15,16 @@ namespace Tify
         public MyMixContainer()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
-      
+
 
         private void myMixCover_panel_MouseHover(object sender, EventArgs e)
         {

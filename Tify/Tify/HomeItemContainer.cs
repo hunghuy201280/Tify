@@ -18,6 +18,13 @@ namespace Tify
             InitializeComponent();
             hideScrollBar();
             clearItem();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
         public HomeItemContainer(string name)
         {
@@ -25,10 +32,17 @@ namespace Tify
             containerTitle_label.Text = name;
 
             hideScrollBar();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         #region get/set
-        
+
         public void addItem(Control item)
         {
             recentlyPlayed_flowLayoutPanel.Controls.Add(item);

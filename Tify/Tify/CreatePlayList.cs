@@ -26,6 +26,12 @@ namespace Tify
             mainScr = callForm;
             menu_pnl = mainScr.getCreatePlayList_FlowPanel();
             Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
 
         }
 
