@@ -47,11 +47,12 @@ namespace Tify
             this.Close();
         }
 
-        private void forgotPassLink_label_Click(object sender, EventArgs e)
+        private void LoginLink_label_Click(object sender, EventArgs e)
         {
             this.Close();
             new Login().ShowDialog();
         }
+      
 
         private void Register_Button_Click(object sender, EventArgs e)
         {
@@ -81,5 +82,7 @@ namespace Tify
             }
             connection.Close();
         }
+
+     
     }
 }

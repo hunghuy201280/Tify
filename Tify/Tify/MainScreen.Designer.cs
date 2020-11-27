@@ -70,7 +70,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -672,7 +671,6 @@
             // searchBar_panel
             // 
             this.searchBar_panel.BackColor = System.Drawing.Color.Black;
-            this.searchBar_panel.Controls.Add(this.label1);
             this.searchBar_panel.Controls.Add(this.panel1);
             this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
@@ -759,17 +757,6 @@
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(101, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,7 +783,6 @@
             this.menu_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
             this.searchBar_panel.ResumeLayout(false);
-            this.searchBar_panel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
@@ -845,7 +831,6 @@
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
         private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
-        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -28,14 +28,12 @@ namespace Tify
             soundPlayer = mainscr.getSoundPlayer();
             MainScreen.hideScrollBar(suggestedTracks_flowPanel, "flow");
 
-
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
         }
 
         #region progressBar
@@ -183,69 +181,34 @@ namespace Tify
             songCover_detailPictureBox.Image = img;
         }
 
-
         //form resize
         private void SongDetail_Resize(object sender, EventArgs e)
         {
             if (this.Size.Width < 1250)
             {
                 songDetail_rightPanel.Visible = false;
+                separator_panel.Hide();
             }
             else
+            {
                 songDetail_rightPanel.Visible = true;
-
-                           
+                separator_panel.Show();
+            }
         }
-
 
         #region setSuggestedSong
 
         public void setSuggestedSong(string[] songUrl)
         {
-            ReccommendTrackControl[] temp = new ReccommendTrackControl[10];
-            Task t = new Task(() =>
+            suggestedTracks_flowPanel.Controls.Clear();
+            if (loadSuggestedTracks_backgroundWorker.IsBusy==false)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    suggestedTracks_flowPanel.Controls.Clear();
-                    string url = songUrl[i];
-                    temp[i] = new ReccommendTrackControl(mainscr);
-                    string[] artists = GetSongData.GetSongArtist(url);
-                    string name = string.Empty;
-                    foreach (string artist in artists)
-                    {
-                        name += artist + ";";
-                    }
-                    temp[i].setSongArtist(name);
-                    temp[i].Url = url;
-                    PictureBox tempbx = new PictureBox();
-                    tempbx.Load(GetSongData.GetSongCover(url));
-                    temp[i].setSongCover(tempbx.Image);
-                    temp[i].setSongName(GetSongData.GetSongName(url));
-                    
+                loadSuggestedTracks_backgroundWorker.RunWorkerAsync(songUrl);
 
-                }
-            });
-            t.Start();
-            Task ta = new Task(() =>
-              {
-                  t.Wait();
-                  if (firstLoad)
-                    waitHandle.WaitOne();
-                  suggestedTracks_flowPanel.Visible = true;
-                  this.BeginInvoke((Action)delegate ()
-                  {
-                      if (suggestedTracks_flowPanel.Controls.Count!=0)
-                      {
-                          suggestedTracks_flowPanel.Controls.Clear();
-                      }
-                      suggestedTracks_flowPanel.Controls.AddRange(temp);
-                  });
-              });
-            ta.Start();
+            }
         }
 
-        #endregion
+        #endregion setSuggestedSong
 
         private void next_button_Click(object sender, EventArgs e)
         {
@@ -256,13 +219,50 @@ namespace Tify
         {
             mainscr.getPrevious_Button().PerformClick();
         }
-        AutoResetEvent waitHandle = new AutoResetEvent(false);
-        bool firstLoad = true;
+
+ 
 
         private void SongDetail_Load(object sender, EventArgs e)
         {
-            waitHandle.Set();
-            firstLoad = false;
+      
+        }
+
+        private void loadSuggestedTracks_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ReccommendTrackControl[] temp = new ReccommendTrackControl[10];
+            string[] songUrl = e.Argument as string[];
+            for (int i = 0; i < 10; i++)
+            {
+               
+                string url = songUrl[i];
+                temp[i] = new ReccommendTrackControl(mainscr);
+                string[] artists = GetSongData.GetSongArtist(url);
+                string name = string.Empty;
+                foreach (string artist in artists)
+                {
+                    name += artist + ";";
+                }
+                temp[i].setSongArtist(name);
+                temp[i].Url = url;
+                PictureBox tempbx = new PictureBox();
+                tempbx.Load(GetSongData.GetSongCover(url));
+                temp[i].setSongCover(tempbx.Image);
+                temp[i].setSongName(GetSongData.GetSongName(url));
+            }
+            e.Result = temp;
+        }
+
+        private void loadSuggestedTracks_backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error==null)
+            {
+                
+                if (suggestedTracks_flowPanel.Controls.Count != 0)
+                {
+                    suggestedTracks_flowPanel.Controls.Clear();
+                }
+                suggestedTracks_flowPanel.Controls.AddRange(e.Result as ReccommendTrackControl[]);
+            }
         }
     }
 }

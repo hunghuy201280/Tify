@@ -40,7 +40,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.forgotPassLink_label = new System.Windows.Forms.Label();
+            this.LoginLink_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.exit_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -167,19 +167,19 @@
             this.panel3.Size = new System.Drawing.Size(236, 1);
             this.panel3.TabIndex = 20;
             // 
-            // forgotPassLink_label
+            // LoginLink_label
             // 
-            this.forgotPassLink_label.AutoSize = true;
-            this.forgotPassLink_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.forgotPassLink_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.forgotPassLink_label.ForeColor = System.Drawing.Color.White;
-            this.forgotPassLink_label.Location = new System.Drawing.Point(215, 416);
-            this.forgotPassLink_label.Margin = new System.Windows.Forms.Padding(0);
-            this.forgotPassLink_label.Name = "forgotPassLink_label";
-            this.forgotPassLink_label.Size = new System.Drawing.Size(43, 19);
-            this.forgotPassLink_label.TabIndex = 6;
-            this.forgotPassLink_label.Text = "here";
-            this.forgotPassLink_label.Click += new System.EventHandler(this.forgotPassLink_label_Click);
+            this.LoginLink_label.AutoSize = true;
+            this.LoginLink_label.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LoginLink_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.LoginLink_label.ForeColor = System.Drawing.Color.White;
+            this.LoginLink_label.Location = new System.Drawing.Point(215, 416);
+            this.LoginLink_label.Margin = new System.Windows.Forms.Padding(0);
+            this.LoginLink_label.Name = "LoginLink_label";
+            this.LoginLink_label.Size = new System.Drawing.Size(43, 19);
+            this.LoginLink_label.TabIndex = 6;
+            this.LoginLink_label.Text = "here";
+            this.LoginLink_label.Click += new System.EventHandler(this.LoginLink_label_Click);
             // 
             // label3
             // 
@@ -225,7 +225,7 @@
             this.ClientSize = new System.Drawing.Size(292, 481);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.exit_label);
-            this.Controls.Add(this.forgotPassLink_label);
+            this.Controls.Add(this.LoginLink_label);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.password_textBox);
             this.Controls.Add(this.panel3);
@@ -267,7 +267,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label forgotPassLink_label;
+        private System.Windows.Forms.Label LoginLink_label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label exit_label;
         private System.Windows.Forms.Label label2;

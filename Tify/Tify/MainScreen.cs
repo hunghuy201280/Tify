@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -26,6 +27,8 @@ namespace Tify
             {
                 EnableDoubleBuferring(control);
             }
+
+
         }
 
         private Home homeScr;
@@ -33,15 +36,20 @@ namespace Tify
         private Playlist playlistScr;
         private Artist artistScr;
 
-        #region doublebufferd
+        #region doublebuffered
 
        
         public static void EnableDoubleBuferring(Control control)
         {
+           
             foreach (Control item in control.Controls)
             {
                 EnableDoubleBuferring(item);
             }
+            if (control.Name == "volume_trackBar")
+                return;
+
+
             var property = typeof(Control).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             property.SetValue(control, true, null);
         }
@@ -58,7 +66,8 @@ namespace Tify
             currentTrack = Url;
             soundPlayer.URL = GetSongData.GetStreamLink(Url);
 
-            soundPlayer.controls.play();
+          
+
             time = 0;
 
             songPicture.Load(GetSongData.GetSongCover(Url));
@@ -90,6 +99,7 @@ namespace Tify
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(Url);
             songDetail.setSuggestedSong(suggestedSong);
+
         }
 
         #endregion load nhac khi chuyen bai
@@ -163,7 +173,7 @@ namespace Tify
 
             //demo
 
-            //testFunc();
+            testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -566,8 +576,10 @@ namespace Tify
 
         #region progressBar
 
+        private bool isFirstLaunch = true;
         private void SoundPlayer_PlayStateChange(int NewState)
         {
+
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
@@ -583,6 +595,26 @@ namespace Tify
                 onesec.Stop();
                 progressBar.EditValue = 0;
             }
+            else if (soundPlayer.playState == WMPPlayState.wmppsMediaEnded)
+            {
+                next_button.PerformClick();
+                progressBar.EditValue = 0;
+                onesec.Stop();
+            }
+            else if (soundPlayer.playState == WMPPlayState.wmppsReady)
+            {
+                if (soundPlayer.controls.currentItem==null || isFirstLaunch)
+                {
+                    if (isFirstLaunch)
+                    {
+                        isFirstLaunch = false;
+                    }
+                    return;
+                }
+                soundPlayer.controls.play();
+
+            }
+
         }
 
         private string curMin = "0", curSec = "0";

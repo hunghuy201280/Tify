@@ -37,13 +37,13 @@ namespace Tify
         {
             new Register().ShowDialog();
 
-            this.Hide();
+            this.Close();
         }
 
         private void forgotPassLink_label_Click(object sender, EventArgs e)
         {
             new ForgotPassword().ShowDialog();
-            this.Hide();
+            this.Close();
         }
 
         DataTable login = new DataTable();
@@ -78,6 +78,7 @@ namespace Tify
             else //Dang nhap thanh cong
             {
                 MessageBox.Show(login.Rows[0]["username"].ToString());
+                this.Close();
             }
             login.Clear();
             connection.Close();
