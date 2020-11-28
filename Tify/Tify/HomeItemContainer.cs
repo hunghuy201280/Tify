@@ -17,7 +17,6 @@ namespace Tify
         {
             InitializeComponent();
             hideScrollBar();
-            clearItem();
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)

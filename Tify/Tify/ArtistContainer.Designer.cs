@@ -29,35 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistContainer));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.artistName_Label = new System.Windows.Forms.Label();
+            this.artistCover_panel = new System.Windows.Forms.Panel();
             this.opacity_panel = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.artistName_Label = new System.Windows.Forms.Label();
+            this.artistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // artistCover_panel
             // 
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Controls.Add(this.opacity_panel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(170, 170);
-            this.panel1.TabIndex = 0;
-            this.panel1.MouseHover += new System.EventHandler(this.artistCover_panel_MouseHover);
-            // 
-            // artistName_Label
-            // 
-            this.artistName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.artistName_Label.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artistName_Label.ForeColor = System.Drawing.Color.White;
-            this.artistName_Label.Location = new System.Drawing.Point(0, 170);
-            this.artistName_Label.Name = "artistName_Label";
-            this.artistName_Label.Size = new System.Drawing.Size(170, 33);
-            this.artistName_Label.TabIndex = 2;
-            this.artistName_Label.Text = "ArtistName";
-            this.artistName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.artistCover_panel.BackgroundImage = global::Tify.Properties.Resources.dummy_artist;
+            this.artistCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.artistCover_panel.Controls.Add(this.opacity_panel);
+            this.artistCover_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.artistCover_panel.Location = new System.Drawing.Point(0, 0);
+            this.artistCover_panel.Name = "artistCover_panel";
+            this.artistCover_panel.Size = new System.Drawing.Size(170, 170);
+            this.artistCover_panel.TabIndex = 0;
+            this.artistCover_panel.MouseHover += new System.EventHandler(this.artistCover_panel_MouseHover);
             // 
             // opacity_panel
             // 
@@ -73,24 +61,36 @@
             this.opacity_panel.Visible = false;
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
+            // artistName_Label
+            // 
+            this.artistName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artistName_Label.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artistName_Label.ForeColor = System.Drawing.Color.White;
+            this.artistName_Label.Location = new System.Drawing.Point(0, 170);
+            this.artistName_Label.Name = "artistName_Label";
+            this.artistName_Label.Size = new System.Drawing.Size(170, 33);
+            this.artistName_Label.TabIndex = 2;
+            this.artistName_Label.Text = "Uru";
+            this.artistName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ArtistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.artistName_Label);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.artistCover_panel);
             this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 10);
             this.Name = "ArtistContainer";
             this.Size = new System.Drawing.Size(170, 203);
-            this.panel1.ResumeLayout(false);
+            this.artistCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel artistCover_panel;
         private System.Windows.Forms.Label artistName_Label;
         private System.Windows.Forms.Panel opacity_panel;
     }

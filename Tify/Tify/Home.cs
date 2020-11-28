@@ -86,7 +86,7 @@ namespace Tify
         private void button1_Click(object sender, EventArgs e)
         {
             homeItemContainer1.addItem(new PlaylistContainer());
-                
-        }
+            HomeItemContainer a = new HomeItemContainer();
+         }
     }
 }

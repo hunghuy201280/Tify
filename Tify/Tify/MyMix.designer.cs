@@ -30,11 +30,11 @@
         {
             this.MyMix_GroupBox = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.myMixContainer1 = new Tify.MyMixContainer();
             this.myMixContainer2 = new Tify.MyMixContainer();
             this.myMixContainer3 = new Tify.MyMixContainer();
+            this.button1 = new System.Windows.Forms.Button();
+            this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.MyMix_GroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -58,21 +58,45 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.myMixContainer1);
             this.flowLayoutPanel1.Controls.Add(this.myMixContainer2);
             this.flowLayoutPanel1.Controls.Add(this.myMixContainer3);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1122, 649);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // myMixContainer1
+            // 
+            this.myMixContainer1.BackColor = System.Drawing.Color.Black;
+            this.myMixContainer1.Location = new System.Drawing.Point(139, 3);
+            this.myMixContainer1.Name = "myMixContainer1";
+            this.myMixContainer1.Size = new System.Drawing.Size(172, 230);
+            this.myMixContainer1.TabIndex = 20;
+            // 
+            // myMixContainer2
+            // 
+            this.myMixContainer2.BackColor = System.Drawing.Color.Black;
+            this.myMixContainer2.Location = new System.Drawing.Point(317, 3);
+            this.myMixContainer2.Name = "myMixContainer2";
+            this.myMixContainer2.Size = new System.Drawing.Size(172, 230);
+            this.myMixContainer2.TabIndex = 21;
+            // 
+            // myMixContainer3
+            // 
+            this.myMixContainer3.BackColor = System.Drawing.Color.Black;
+            this.myMixContainer3.Location = new System.Drawing.Point(495, 3);
+            this.myMixContainer3.Name = "myMixContainer3";
+            this.myMixContainer3.Size = new System.Drawing.Size(172, 230);
+            this.myMixContainer3.TabIndex = 22;
+            // 
             // button1
             // 
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.DarkRed;
-            this.button1.Location = new System.Drawing.Point(537, 3);
+            this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 43);
             this.button1.TabIndex = 19;
@@ -87,30 +111,6 @@
             this.playlistDetail_panel.Name = "playlistDetail_panel";
             this.playlistDetail_panel.Size = new System.Drawing.Size(1128, 688);
             this.playlistDetail_panel.TabIndex = 19;
-            // 
-            // myMixContainer1
-            // 
-            this.myMixContainer1.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer1.Location = new System.Drawing.Point(3, 3);
-            this.myMixContainer1.Name = "myMixContainer1";
-            this.myMixContainer1.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer1.TabIndex = 20;
-            // 
-            // myMixContainer2
-            // 
-            this.myMixContainer2.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer2.Location = new System.Drawing.Point(181, 3);
-            this.myMixContainer2.Name = "myMixContainer2";
-            this.myMixContainer2.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer2.TabIndex = 21;
-            // 
-            // myMixContainer3
-            // 
-            this.myMixContainer3.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer3.Location = new System.Drawing.Point(359, 3);
-            this.myMixContainer3.Name = "myMixContainer3";
-            this.myMixContainer3.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer3.TabIndex = 22;
             // 
             // MyMix
             // 

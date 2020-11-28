@@ -117,8 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dummy_artist" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dummy_artist.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAk5JREFUeF7t
+        2rtOFVEUxvGjASWxprA2JsZbwjtQ02llTWXvI5hoIhJsfAVfgEDoKGjoRFsbY6Edmlh4OX57z98VLo7A
+        MIudmb1+yQqZb86stVcIyTk5TEIIIYQQwsBMp9Nt1SPVHJEvDSqKYxjiZF/1WrXALR95VEEcwxAftata
+        Vl3jZf3J7QviGIa4zWfVM9VNXn5+uW1BHMMQn+S3akv1QDXLo+OQtjviFz/brPLoOLDUQddVT1Qf8tVx
+        93l0HFjKEKf8smpR9Ub1Q5XscHs8WMwQH6L4huqp6iHReKSlDyKuB3sbYj/MKYZjGGJD7Ic5xXAMQ2yI
+        /TCnGI5hiA2xH+YUwzEMsSGuB3sb4nqwtyGuB3sb4nqwtyGuB3sb4nqwtyH2w5xiOIYhNsR+mFMMxzDE
+        htgPc4rhGIbYEPthTjEcwxAb4nqwtyGuB3sb4nqwtyGuB3sb4vHQTndVK6o91RfqreqF6rbqEB4bPu1y
+        RfVK9TMt1uLYPR73w5y+LdM+03VafjPfOSNa+GFOnz6qrtI+03X6mrsTWvhhTp9WaJ3p+p7qpO/3WtHG
+        D3P6tETrTNdrTdwNbYZLO7xvVumGNsOlHb42q3RDm+HSDt+aVTrZp81waYnz/Ans0Wa4tER6h9fVc9oM
+        l5a4o/rfu7826Z8gbtHGTzOrV/96I/Qy3zmbi/ntM6xvj2mf6XpWtZHvnM66aobHfTXzevdJNc+ITNen
+        /TC0qrq4f33LY32k3/glxhhlfz8Ov1N9p9JH4/xxmJeFEEIIIYTQyWTyBzlitEGBlc5PAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="sort_button.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAALRJREFUeF7t
+        1T1uwkAUhVFvhFQU7J2A2BcK4mcB5loeCjKD5LgaRedIrzHzvgLBeAAAAAAAAAB4GcfxK3PInMscM9vy
+        8Z9lt+vem4Sm+CXz2/RsU44tlp2ue5VEpm/2k305tlh2uu5VErnPraZrObZYdrruVRJ5zK2mWzm2WHa6
+        7lUSOc2tpjU/2a57lUR2mdYl85NZc2l13WtK6PWamf5vt8x3ZnU8u133AAAAAAAAgP9mGJ4Jzq5xJ2YW
+        RAAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

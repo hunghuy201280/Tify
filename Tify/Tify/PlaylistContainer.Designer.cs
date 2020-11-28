@@ -41,7 +41,7 @@
             this.numberOfTracks_label.AutoSize = true;
             this.numberOfTracks_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfTracks_label.ForeColor = System.Drawing.Color.White;
-            this.numberOfTracks_label.Location = new System.Drawing.Point(11, 212);
+            this.numberOfTracks_label.Location = new System.Drawing.Point(11, 202);
             this.numberOfTracks_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.numberOfTracks_label.Name = "numberOfTracks_label";
             this.numberOfTracks_label.Size = new System.Drawing.Size(48, 16);
@@ -54,8 +54,8 @@
             this.playlistName_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.playlistName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlistName_label.ForeColor = System.Drawing.Color.White;
-            this.playlistName_label.Location = new System.Drawing.Point(11, 190);
-            this.playlistName_label.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.playlistName_label.Location = new System.Drawing.Point(11, 180);
+            this.playlistName_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.playlistName_label.Name = "playlistName_label";
             this.playlistName_label.Size = new System.Drawing.Size(78, 17);
             this.playlistName_label.TabIndex = 7;
@@ -97,7 +97,7 @@
             this.Controls.Add(this.playlistName_label);
             this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.Name = "PlaylistContainer";
-            this.Size = new System.Drawing.Size(172, 235);
+            this.Size = new System.Drawing.Size(172, 226);
             this.Load += new System.EventHandler(this.PlaylistContainer_Load);
             this.playlistCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);

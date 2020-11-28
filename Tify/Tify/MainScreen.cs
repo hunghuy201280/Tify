@@ -2,6 +2,7 @@
 using GetData;
 using System;
 using System.Collections;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
 using System.Threading;
@@ -12,6 +13,7 @@ namespace Tify
 {
     public partial class MainScreen : Form
     {
+        SqlConnection connection;
         public MainScreen()
         {
             InitializeComponent();
@@ -27,15 +29,16 @@ namespace Tify
             {
                 EnableDoubleBuferring(control);
             }
-
-
+            string connectString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connection = new SqlConnection(connectString);
+            
         }
 
         private Home homeScr;
         private MyMix myMixScr;
         private Playlist playlistScr;
         private Artist artistScr;
-
+        private Albums albumsScr;
         #region doublebuffered
 
        
@@ -379,6 +382,8 @@ namespace Tify
                 openChildForm(playlistScr);
             else if (sender == artists_button)
                 openChildForm(artistScr);
+            else if (sender == albums_button)
+                openChildForm(albumsScr);
             else
                 MessageBox.Show("Chuaco");
         }
@@ -468,7 +473,8 @@ namespace Tify
             homeScr = new Home(this);
             myMixScr = new MyMix();
             playlistScr = new Playlist();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr };
+            albumsScr = new Albums();
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -530,8 +536,9 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
-        #region placeHolder for search bar
+        #region Searchbar 
 
+        //place holder
         public void RemoveText(object sender, EventArgs e)
         {
             if (searchBar_textBox.Text == "Search")
@@ -550,7 +557,35 @@ namespace Tify
             }
         }
 
-        #endregion placeHolder for search bar
+        //search event
+
+        private void searchBar_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (searchBar_backgroundWorker.IsBusy)
+                searchBar_backgroundWorker.CancelAsync();
+            searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
+        }
+
+        private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            connection.Open();
+            string sqlQuery="select * from Track where "
+        }
+
+        private void searchBar_backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void searchBar_backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        //
+
 
         #region createplaylist
 
@@ -561,6 +596,8 @@ namespace Tify
         }
 
         #endregion createplaylist
+
+
 
         #region mo form login/register khi click vao account button
 
@@ -861,6 +898,7 @@ namespace Tify
             loadNewSong(lastTrack);
         }
 
+       
         private void next_button_Click(object sender, EventArgs e)
         {
             if (previousTracks.Count == 0)

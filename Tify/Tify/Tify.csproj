@@ -70,6 +70,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumContainer.Designer.cs">
+      <DependentUpon>AlbumContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Albums.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Albums.Designer.cs">
+      <DependentUpon>Albums.cs</DependentUpon>
+    </Compile>
     <Compile Include="Artist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +186,12 @@
     <Compile Include="SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlbumContainer.resx">
+      <DependentUpon>AlbumContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Albums.resx">
+      <DependentUpon>Albums.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Artist.resx">
       <DependentUpon>Artist.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +240,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReccommendTrackControl.resx">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
@@ -316,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dummy_artist.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
