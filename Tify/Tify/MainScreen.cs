@@ -568,6 +568,20 @@ namespace Tify
 
         #region Searchbar 
 
+        private void searchBar_textBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            if (e.KeyChar==(char)13)//enter
+            {
+                if (searchBar_backgroundWorker.IsBusy)
+                {
+                    return;
+                }
+                searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
+            }
+        }
+
+
         //place holder
         //Got focus
         public void RemoveText(object sender, EventArgs e)
@@ -650,7 +664,6 @@ namespace Tify
                 }
                 
                 dataGridView1.DataSource = searchTable;
-                dataGridView1.Refresh();
                 dataGridView1.Show();
                 searchNoResult_panel.Hide();
 
@@ -998,8 +1011,7 @@ namespace Tify
             loadNewSong(lastTrack);
         }
 
-      
-
+   
         private void next_button_Click(object sender, EventArgs e)
         {
             if (previousTracks.Count == 0)
