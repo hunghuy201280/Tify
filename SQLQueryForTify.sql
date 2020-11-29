@@ -197,8 +197,8 @@ create table ArtistHasTrack
 	primary key(artistID,trackID)
 )
 
-
-select* from Track
+ 
+select distinct top 5 trackTitle from Track where trackTitle like N'%tình yêu%' 
 select * from Artist
 
 insert into Track values('Big City Boi','https://vi.chiasenhac.vn/mp3/binz-touliver/big-city-boi-tsvwzbwrq91q9a.html')

@@ -2,6 +2,7 @@
 using GetData;
 using System;
 using System.Collections;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
@@ -109,6 +110,25 @@ namespace Tify
 
         #region test
 
+        //popup
+
+        private void button1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button==MouseButtons.Right)
+            {
+                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X, PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
+                playlist_PopupContainer.BringToFront();
+                playlist_PopupContainer.Show();
+            }
+            else
+            {
+                playlist_PopupContainer.Hide();
+            }
+        }
+
+
+
+
         //test
         private string testURL = "https://vi.chiasenhac.vn/mp3/nah/dmcs-tsvrrt5bqaafhq.html";
 
@@ -176,7 +196,7 @@ namespace Tify
 
             //demo
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -563,13 +583,21 @@ namespace Tify
         {
             if (searchBar_backgroundWorker.IsBusy)
                 searchBar_backgroundWorker.CancelAsync();
-            searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
+            //searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
         }
 
+        DataTable searchTable;
         private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             connection.Open();
-            string sqlQuery="select * from Track where "
+            string sqlQuery = "select* from Track where trackTitle like '%"+e.Argument.ToString()+"%'";
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
+            {
+                using (SqlDataReader reader=cmd.ExecuteReader())
+                {
+                    searchTable.Load(reader);
+                }
+            }
         }
 
         private void searchBar_backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -898,6 +926,8 @@ namespace Tify
             loadNewSong(lastTrack);
         }
 
+      
+
        
         private void next_button_Click(object sender, EventArgs e)
         {
@@ -913,5 +943,9 @@ namespace Tify
         }
 
         #endregion next/previous button event
+
+
+
+        
     }
 }
