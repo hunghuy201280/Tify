@@ -204,13 +204,17 @@ namespace Tify
             this.DoubleBuffered = true;
 
             //demo
-            pause_button.Focus();
+            this.ActiveControl = artist_label;
 
             //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
+
+
+         
+            
         }
 
         #endregion Load form
@@ -570,7 +574,7 @@ namespace Tify
 
         private void searchBar_textBox_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            dataGridView1.DataSource = null;
+           // dataGridView1.DataSource = null;
             if (e.KeyChar==(char)13)//enter
             {
                 if (searchBar_backgroundWorker.IsBusy)
@@ -591,7 +595,7 @@ namespace Tify
                 searchBar_textBox.Text = "";
                 searchBar_textBox.ForeColor = Color.White;
             }
-            searchbarContainer_panel.Dock = DockStyle.Top;
+          
             searchBar_PopupContainer.BringToFront();
             searchNoResult_panel.Hide();
         }
@@ -605,8 +609,14 @@ namespace Tify
                 searchBar_textBox.Text = "Search";
                 searchBar_textBox.ForeColor = Color.FromArgb(152, 162, 166);
             }
-            searchbarContainer_panel.Dock = DockStyle.None;
-            searchBar_PopupContainer.SendToBack();
+
+            if (searchBar_PopupContainer.ClientRectangle.Contains(searchBar_PopupContainer.PointToClient(Control.MousePosition)))
+                return;
+            else
+            {
+                searchBar_PopupContainer.SendToBack();
+            }
+            
 
 
         }
@@ -618,7 +628,7 @@ namespace Tify
 
             if (e.KeyChar==(char)13)//enter
             {
-                dataGridView1.DataSource = null;
+               // dataGridView1.DataSource = null;
                 if (searchBar_backgroundWorker.IsBusy)
                     searchBar_backgroundWorker.CancelAsync();
                 searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
@@ -630,7 +640,7 @@ namespace Tify
         {
 
             connection.Open();
-            string sqlQuery = "select distinct top 5 trackTitle from Track where trackTitle like @query";
+            string sqlQuery = "select distinct top 10 trackTitle from Track where trackTitle like @query";
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
             {
@@ -658,21 +668,25 @@ namespace Tify
                
                 if (searchTable.Rows.Count == 0)
                 {
-                    dataGridView1.Hide();
+                    //dataGridView1.Hide();
                     searchNoResult_panel.Show();
                     return;
                 }
                 
-                dataGridView1.DataSource = searchTable;
-                dataGridView1.Show();
+               // dataGridView1.DataSource = searchTable;
+               // dataGridView1.Show();
                 searchNoResult_panel.Hide();
 
 
 
                 searchBar_PopupContainer.BringToFront();
-                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+              //  dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         #endregion
@@ -707,6 +721,8 @@ namespace Tify
                 PlayList_isClicked = false;
             }
         }
+
+
 
         #endregion createplaylist
 
@@ -1011,7 +1027,8 @@ namespace Tify
             loadNewSong(lastTrack);
         }
 
-   
+     
+
         private void next_button_Click(object sender, EventArgs e)
         {
             if (previousTracks.Count == 0)

@@ -73,11 +73,11 @@
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
             this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchNoResult_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -91,7 +91,6 @@
             this.playlist_PopupContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).BeginInit();
             this.searchBar_PopupContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.searchNoResult_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -794,34 +793,19 @@
             // 
             this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
             this.searchBar_PopupContainer.Appearance.Options.UseBackColor = true;
-            this.searchBar_PopupContainer.Controls.Add(this.dataGridView1);
+            this.searchBar_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.searchBar_PopupContainer.Controls.Add(this.listBox1);
             this.searchBar_PopupContainer.Controls.Add(this.searchNoResult_panel);
-            this.searchBar_PopupContainer.Location = new System.Drawing.Point(240, 49);
+            this.searchBar_PopupContainer.Location = new System.Drawing.Point(725, 60);
             this.searchBar_PopupContainer.Name = "searchBar_PopupContainer";
-            this.searchBar_PopupContainer.Size = new System.Drawing.Size(887, 300);
+            this.searchBar_PopupContainer.Size = new System.Drawing.Size(390, 220);
             this.searchBar_PopupContainer.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 300);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.Visible = false;
             // 
             // searchNoResult_panel
             // 
             this.searchNoResult_panel.Controls.Add(this.label1);
             this.searchNoResult_panel.Controls.Add(this.pictureBox1);
-            this.searchNoResult_panel.Location = new System.Drawing.Point(343, 86);
+            this.searchNoResult_panel.Location = new System.Drawing.Point(96, 46);
             this.searchNoResult_panel.Name = "searchNoResult_panel";
             this.searchNoResult_panel.Size = new System.Drawing.Size(200, 128);
             this.searchNoResult_panel.TabIndex = 0;
@@ -855,6 +839,20 @@
             this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
             this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
             this.rightClickCreatePlayList1.TabIndex = 0;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.Color.White;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 19;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(390, 220);
+            this.listBox1.TabIndex = 0;
             // 
             // MainScreen
             // 
@@ -891,7 +889,6 @@
             this.playlist_PopupContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).EndInit();
             this.searchBar_PopupContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.searchNoResult_panel.ResumeLayout(false);
             this.searchNoResult_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -947,7 +944,7 @@
         private System.Windows.Forms.Panel searchNoResult_panel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
