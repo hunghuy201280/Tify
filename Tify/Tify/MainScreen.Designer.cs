@@ -33,59 +33,69 @@
             this.player_panel = new System.Windows.Forms.Panel();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
-            this.songCover_panel = new System.Windows.Forms.Panel();
-            this.songImgOpacity_panel = new System.Windows.Forms.Panel();
-            this.volume_button = new System.Windows.Forms.Button();
             this.play_pause_panel = new System.Windows.Forms.Panel();
-            this.shuffle_button = new System.Windows.Forms.Button();
-            this.previous_button = new System.Windows.Forms.Button();
-            this.next_button = new System.Windows.Forms.Button();
-            this.pause_button = new System.Windows.Forms.Button();
             this.currentTime_label = new System.Windows.Forms.Label();
             this.duration_label = new System.Windows.Forms.Label();
             this.playingFrom_label = new System.Windows.Forms.Label();
             this.artist_label = new System.Windows.Forms.Label();
             this.title_label = new System.Windows.Forms.Label();
             this.menu_panel = new System.Windows.Forms.Panel();
-            this.createNewPlaylist_button = new System.Windows.Forms.Button();
             this.createPlaylist_imgList = new System.Windows.Forms.ImageList(this.components);
             this.myPlaylist_label = new System.Windows.Forms.Label();
-            this.account_button = new System.Windows.Forms.Button();
             this.menu_imgList = new System.Windows.Forms.ImageList(this.components);
             this.myCollection_label = new System.Windows.Forms.Label();
-            this.home_pictureBox = new System.Windows.Forms.PictureBox();
-            this.myMix_button = new System.Windows.Forms.Button();
-            this.albums_button = new System.Windows.Forms.Button();
             this.home_button = new System.Windows.Forms.Button();
-            this.playlist_button = new System.Windows.Forms.Button();
-            this.artists_button = new System.Windows.Forms.Button();
-            this.tracks_button = new System.Windows.Forms.Button();
             this.CreatePlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.searchBar_panel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.searchbarContainer_panel = new System.Windows.Forms.Panel();
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
-            this.searchBar_icon = new System.Windows.Forms.PictureBox();
             this.childForm_panel = new System.Windows.Forms.Panel();
             this.player_imageList = new System.Windows.Forms.ImageList(this.components);
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
             this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
             this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
+            this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.searchNoResult_label = new System.Windows.Forms.Label();
+            this.searchNoResult_panel = new System.Windows.Forms.Panel();
+            this.searchNoResult_pictureBox = new System.Windows.Forms.PictureBox();
+            this.searchBar_icon = new System.Windows.Forms.PictureBox();
+            this.createNewPlaylist_button = new System.Windows.Forms.Button();
+            this.account_button = new System.Windows.Forms.Button();
+            this.home_pictureBox = new System.Windows.Forms.PictureBox();
+            this.myMix_button = new System.Windows.Forms.Button();
+            this.albums_button = new System.Windows.Forms.Button();
+            this.playlist_button = new System.Windows.Forms.Button();
+            this.artists_button = new System.Windows.Forms.Button();
+            this.tracks_button = new System.Windows.Forms.Button();
+            this.songCover_panel = new System.Windows.Forms.Panel();
+            this.songImgOpacity_panel = new System.Windows.Forms.Panel();
+            this.volume_button = new System.Windows.Forms.Button();
+            this.shuffle_button = new System.Windows.Forms.Button();
+            this.previous_button = new System.Windows.Forms.Button();
+            this.next_button = new System.Windows.Forms.Button();
+            this.pause_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
-            this.songCover_panel.SuspendLayout();
             this.play_pause_panel.SuspendLayout();
             this.menu_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
             this.CreatePlayList_FlowPanel.SuspendLayout();
             this.searchBar_panel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
+            this.searchbarContainer_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playlist_PopupContainer)).BeginInit();
             this.playlist_PopupContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).BeginInit();
+            this.searchBar_PopupContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.searchNoResult_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchNoResult_pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
+            this.songCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // player_panel
@@ -174,52 +184,6 @@
             this.progressBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseMove);
             this.progressBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.progressBar_MouseUp);
             // 
-            // songCover_panel
-            // 
-            this.songCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songCover_panel.BackgroundImage")));
-            this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
-            this.songCover_panel.Location = new System.Drawing.Point(12, 20);
-            this.songCover_panel.Name = "songCover_panel";
-            this.songCover_panel.Size = new System.Drawing.Size(65, 65);
-            this.songCover_panel.TabIndex = 0;
-            this.songCover_panel.BackgroundImageChanged += new System.EventHandler(this.songCover_panel_BackgroundImageChanged);
-            this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
-            // 
-            // songImgOpacity_panel
-            // 
-            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
-            this.songImgOpacity_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songImgOpacity_panel.BackgroundImage")));
-            this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
-            this.songImgOpacity_panel.Name = "songImgOpacity_panel";
-            this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
-            this.songImgOpacity_panel.TabIndex = 16;
-            this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
-            this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
-            // 
-            // volume_button
-            // 
-            this.volume_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.volume_button.BackColor = System.Drawing.Color.Transparent;
-            this.volume_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("volume_button.BackgroundImage")));
-            this.volume_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.volume_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.volume_button.FlatAppearance.BorderSize = 0;
-            this.volume_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.volume_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.volume_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.volume_button.Location = new System.Drawing.Point(927, 30);
-            this.volume_button.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.volume_button.Name = "volume_button";
-            this.volume_button.Size = new System.Drawing.Size(44, 40);
-            this.volume_button.TabIndex = 14;
-            this.volume_button.Tag = "on";
-            this.myToolTip.SetToolTip(this.volume_button, "Volume");
-            this.volume_button.UseVisualStyleBackColor = false;
-            this.volume_button.Click += new System.EventHandler(this.volume_button_Click);
-            // 
             // play_pause_panel
             // 
             this.play_pause_panel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -231,84 +195,6 @@
             this.play_pause_panel.Name = "play_pause_panel";
             this.play_pause_panel.Size = new System.Drawing.Size(235, 100);
             this.play_pause_panel.TabIndex = 12;
-            // 
-            // shuffle_button
-            // 
-            this.shuffle_button.BackColor = System.Drawing.Color.Transparent;
-            this.shuffle_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("shuffle_button.BackgroundImage")));
-            this.shuffle_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.shuffle_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.shuffle_button.FlatAppearance.BorderSize = 0;
-            this.shuffle_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.shuffle_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.shuffle_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shuffle_button.Location = new System.Drawing.Point(6, 33);
-            this.shuffle_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.shuffle_button.Name = "shuffle_button";
-            this.shuffle_button.Size = new System.Drawing.Size(28, 32);
-            this.shuffle_button.TabIndex = 11;
-            this.shuffle_button.Tag = "off";
-            this.myToolTip.SetToolTip(this.shuffle_button, "Shuffle");
-            this.shuffle_button.UseVisualStyleBackColor = false;
-            this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
-            // 
-            // previous_button
-            // 
-            this.previous_button.BackColor = System.Drawing.Color.Transparent;
-            this.previous_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previous_button.BackgroundImage")));
-            this.previous_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.previous_button.FlatAppearance.BorderSize = 0;
-            this.previous_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.previous_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previous_button.Location = new System.Drawing.Point(69, 32);
-            this.previous_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.previous_button.Name = "previous_button";
-            this.previous_button.Size = new System.Drawing.Size(28, 32);
-            this.previous_button.TabIndex = 10;
-            this.myToolTip.SetToolTip(this.previous_button, "Previous");
-            this.previous_button.UseVisualStyleBackColor = false;
-            this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
-            // 
-            // next_button
-            // 
-            this.next_button.BackColor = System.Drawing.Color.Transparent;
-            this.next_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("next_button.BackgroundImage")));
-            this.next_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.next_button.FlatAppearance.BorderSize = 0;
-            this.next_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.next_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.next_button.Location = new System.Drawing.Point(207, 32);
-            this.next_button.Margin = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.next_button.Name = "next_button";
-            this.next_button.Size = new System.Drawing.Size(28, 32);
-            this.next_button.TabIndex = 9;
-            this.myToolTip.SetToolTip(this.next_button, "Next");
-            this.next_button.UseVisualStyleBackColor = false;
-            this.next_button.Click += new System.EventHandler(this.next_button_Click);
-            // 
-            // pause_button
-            // 
-            this.pause_button.BackColor = System.Drawing.Color.Transparent;
-            this.pause_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pause_button.BackgroundImage")));
-            this.pause_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pause_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pause_button.FlatAppearance.BorderSize = 0;
-            this.pause_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.pause_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.pause_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pause_button.Location = new System.Drawing.Point(132, 20);
-            this.pause_button.Margin = new System.Windows.Forms.Padding(0);
-            this.pause_button.Name = "pause_button";
-            this.pause_button.Size = new System.Drawing.Size(40, 50);
-            this.pause_button.TabIndex = 8;
-            this.pause_button.Tag = "pause";
-            this.myToolTip.SetToolTip(this.pause_button, "Pause");
-            this.pause_button.UseVisualStyleBackColor = false;
-            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
             // currentTime_label
             // 
@@ -404,31 +290,6 @@
             this.menu_panel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.menu_panel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
-            // createNewPlaylist_button
-            // 
-            this.createNewPlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createNewPlaylist_button.FlatAppearance.BorderSize = 0;
-            this.createNewPlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
-            this.createNewPlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createNewPlaylist_button.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createNewPlaylist_button.ForeColor = System.Drawing.Color.White;
-            this.createNewPlaylist_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createNewPlaylist_button.ImageIndex = 0;
-            this.createNewPlaylist_button.ImageList = this.createPlaylist_imgList;
-            this.createNewPlaylist_button.Location = new System.Drawing.Point(9, 506);
-            this.createNewPlaylist_button.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.createNewPlaylist_button.Name = "createNewPlaylist_button";
-            this.createNewPlaylist_button.Size = new System.Drawing.Size(215, 47);
-            this.createNewPlaylist_button.TabIndex = 23;
-            this.createNewPlaylist_button.Tag = "Create new playlist";
-            this.createNewPlaylist_button.Text = "Create new playlist";
-            this.createNewPlaylist_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createNewPlaylist_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.createNewPlaylist_button.UseVisualStyleBackColor = true;
-            this.createNewPlaylist_button.Click += new System.EventHandler(this.createNewPlaylist_button_Click);
-            this.createNewPlaylist_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
-            this.createNewPlaylist_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
-            // 
             // createPlaylist_imgList
             // 
             this.createPlaylist_imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("createPlaylist_imgList.ImageStream")));
@@ -449,31 +310,6 @@
             this.myPlaylist_label.Text = "MY PLAYLIST";
             this.myPlaylist_label.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.myPlaylist_label.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
-            // 
-            // account_button
-            // 
-            this.account_button.BackColor = System.Drawing.Color.Transparent;
-            this.account_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.account_button.FlatAppearance.BorderSize = 0;
-            this.account_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
-            this.account_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
-            this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.account_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.account_button.ForeColor = System.Drawing.Color.White;
-            this.account_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.account_button.ImageIndex = 10;
-            this.account_button.ImageList = this.menu_imgList;
-            this.account_button.Location = new System.Drawing.Point(9, 14);
-            this.account_button.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.account_button.Name = "account_button";
-            this.account_button.Size = new System.Drawing.Size(215, 45);
-            this.account_button.TabIndex = 18;
-            this.account_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.account_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.account_button.UseVisualStyleBackColor = false;
-            this.account_button.Click += new System.EventHandler(this.account_button_Click);
-            this.account_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
-            this.account_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // menu_imgList
             // 
@@ -506,6 +342,268 @@
             this.myCollection_label.Text = "MY COLLECTION";
             this.myCollection_label.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.myCollection_label.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            // 
+            // home_button
+            // 
+            this.home_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.home_button.FlatAppearance.BorderSize = 0;
+            this.home_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
+            this.home_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.home_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.home_button.ForeColor = System.Drawing.Color.White;
+            this.home_button.Location = new System.Drawing.Point(9, 80);
+            this.home_button.Margin = new System.Windows.Forms.Padding(0, 80, 0, 0);
+            this.home_button.Name = "home_button";
+            this.home_button.Size = new System.Drawing.Size(215, 45);
+            this.home_button.TabIndex = 12;
+            this.home_button.Text = "Home";
+            this.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.home_button.UseVisualStyleBackColor = true;
+            this.home_button.Click += new System.EventHandler(this.menu_button_Click);
+            // 
+            // CreatePlayList_FlowPanel
+            // 
+            this.CreatePlayList_FlowPanel.AutoSize = true;
+            this.CreatePlayList_FlowPanel.Controls.Add(this.button1);
+            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
+            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
+            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
+            this.CreatePlayList_FlowPanel.TabIndex = 24;
+            this.CreatePlayList_FlowPanel.WrapContents = false;
+            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(234, 31);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            // 
+            // searchBar_panel
+            // 
+            this.searchBar_panel.BackColor = System.Drawing.Color.Black;
+            this.searchBar_panel.Controls.Add(this.searchbarContainer_panel);
+            this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
+            this.searchBar_panel.Name = "searchBar_panel";
+            this.searchBar_panel.Size = new System.Drawing.Size(887, 60);
+            this.searchBar_panel.TabIndex = 0;
+            // 
+            // searchbarContainer_panel
+            // 
+            this.searchbarContainer_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.searchbarContainer_panel.Controls.Add(this.searchBar_textBox);
+            this.searchbarContainer_panel.Controls.Add(this.searchBar_icon);
+            this.searchbarContainer_panel.Location = new System.Drawing.Point(485, 14);
+            this.searchbarContainer_panel.Name = "searchbarContainer_panel";
+            this.searchbarContainer_panel.Size = new System.Drawing.Size(390, 40);
+            this.searchbarContainer_panel.TabIndex = 0;
+            // 
+            // searchBar_textBox
+            // 
+            this.searchBar_textBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.searchBar_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
+            this.searchBar_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
+            this.searchBar_textBox.Location = new System.Drawing.Point(40, 0);
+            this.searchBar_textBox.Name = "searchBar_textBox";
+            this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
+            this.searchBar_textBox.TabIndex = 0;
+            this.searchBar_textBox.Text = "Search";
+            this.searchBar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBar_textBox_KeyPress);
+            // 
+            // childForm_panel
+            // 
+            this.childForm_panel.AutoScroll = true;
+            this.childForm_panel.BackColor = System.Drawing.Color.Black;
+            this.childForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
+            this.childForm_panel.Location = new System.Drawing.Point(240, 60);
+            this.childForm_panel.Name = "childForm_panel";
+            this.childForm_panel.Size = new System.Drawing.Size(887, 678);
+            this.childForm_panel.TabIndex = 1;
+            // 
+            // player_imageList
+            // 
+            this.player_imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("player_imageList.ImageStream")));
+            this.player_imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.player_imageList.Images.SetKeyName(0, "pause.png");
+            this.player_imageList.Images.SetKeyName(1, "play.png");
+            this.player_imageList.Images.SetKeyName(2, "volume.png");
+            this.player_imageList.Images.SetKeyName(3, "mute.png");
+            this.player_imageList.Images.SetKeyName(4, "shuffle_on.png");
+            this.player_imageList.Images.SetKeyName(5, "shuffle_off.png");
+            // 
+            // myToolTip
+            // 
+            this.myToolTip.BackColor = System.Drawing.Color.Red;
+            this.myToolTip.ForeColor = System.Drawing.Color.DimGray;
+            // 
+            // onesec
+            // 
+            this.onesec.Interval = 1000;
+            this.onesec.Tick += new System.EventHandler(this.onesec_Tick);
+            // 
+            // songDetail_panel
+            // 
+            this.songDetail_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
+            this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
+            this.songDetail_panel.Name = "songDetail_panel";
+            this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
+            this.songDetail_panel.TabIndex = 0;
+            // 
+            // searchBar_backgroundWorker
+            // 
+            this.searchBar_backgroundWorker.WorkerReportsProgress = true;
+            this.searchBar_backgroundWorker.WorkerSupportsCancellation = true;
+            this.searchBar_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBar_backgroundWorker_DoWork);
+            this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
+            this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
+            // 
+            // playlist_PopupContainer
+            // 
+            this.playlist_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.playlist_PopupContainer.Controls.Add(this.rightClickCreatePlayList1);
+            this.playlist_PopupContainer.Location = new System.Drawing.Point(58, 30);
+            this.playlist_PopupContainer.Name = "playlist_PopupContainer";
+            this.playlist_PopupContainer.Size = new System.Drawing.Size(260, 453);
+            this.playlist_PopupContainer.TabIndex = 25;
+            // 
+            // rightClickCreatePlayList1
+            // 
+            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
+            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
+            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(260, 453);
+            this.rightClickCreatePlayList1.TabIndex = 0;
+            // 
+            // searchBar_PopupContainer
+            // 
+            this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            this.searchBar_PopupContainer.Appearance.Options.UseBackColor = true;
+            this.searchBar_PopupContainer.Controls.Add(this.searchNoResult_panel);
+            this.searchBar_PopupContainer.Controls.Add(this.dataGridView1);
+            this.searchBar_PopupContainer.Location = new System.Drawing.Point(240, 46);
+            this.searchBar_PopupContainer.Name = "searchBar_PopupContainer";
+            this.searchBar_PopupContainer.Size = new System.Drawing.Size(887, 678);
+            this.searchBar_PopupContainer.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(887, 678);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // searchNoResult_label
+            // 
+            this.searchNoResult_label.AutoSize = true;
+            this.searchNoResult_label.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchNoResult_label.ForeColor = System.Drawing.Color.White;
+            this.searchNoResult_label.Location = new System.Drawing.Point(10, 110);
+            this.searchNoResult_label.Name = "searchNoResult_label";
+            this.searchNoResult_label.Size = new System.Drawing.Size(181, 25);
+            this.searchNoResult_label.TabIndex = 1;
+            this.searchNoResult_label.Text = "No Result Found";
+            // 
+            // searchNoResult_panel
+            // 
+            this.searchNoResult_panel.Controls.Add(this.searchNoResult_pictureBox);
+            this.searchNoResult_panel.Controls.Add(this.searchNoResult_label);
+            this.searchNoResult_panel.Location = new System.Drawing.Point(343, 257);
+            this.searchNoResult_panel.Name = "searchNoResult_panel";
+            this.searchNoResult_panel.Size = new System.Drawing.Size(200, 164);
+            this.searchNoResult_panel.TabIndex = 2;
+            this.searchNoResult_panel.Visible = false;
+            // 
+            // searchNoResult_pictureBox
+            // 
+            this.searchNoResult_pictureBox.Image = global::Tify.Properties.Resources.not_found;
+            this.searchNoResult_pictureBox.Location = new System.Drawing.Point(53, 0);
+            this.searchNoResult_pictureBox.Name = "searchNoResult_pictureBox";
+            this.searchNoResult_pictureBox.Size = new System.Drawing.Size(96, 96);
+            this.searchNoResult_pictureBox.TabIndex = 2;
+            this.searchNoResult_pictureBox.TabStop = false;
+            // 
+            // searchBar_icon
+            // 
+            this.searchBar_icon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.searchBar_icon.Image = ((System.Drawing.Image)(resources.GetObject("searchBar_icon.Image")));
+            this.searchBar_icon.Location = new System.Drawing.Point(0, 0);
+            this.searchBar_icon.Name = "searchBar_icon";
+            this.searchBar_icon.Size = new System.Drawing.Size(40, 40);
+            this.searchBar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.searchBar_icon.TabIndex = 1;
+            this.searchBar_icon.TabStop = false;
+            // 
+            // createNewPlaylist_button
+            // 
+            this.createNewPlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createNewPlaylist_button.FlatAppearance.BorderSize = 0;
+            this.createNewPlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
+            this.createNewPlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createNewPlaylist_button.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewPlaylist_button.ForeColor = System.Drawing.Color.White;
+            this.createNewPlaylist_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createNewPlaylist_button.ImageIndex = 0;
+            this.createNewPlaylist_button.ImageList = this.createPlaylist_imgList;
+            this.createNewPlaylist_button.Location = new System.Drawing.Point(9, 506);
+            this.createNewPlaylist_button.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.createNewPlaylist_button.Name = "createNewPlaylist_button";
+            this.createNewPlaylist_button.Size = new System.Drawing.Size(215, 47);
+            this.createNewPlaylist_button.TabIndex = 23;
+            this.createNewPlaylist_button.Tag = "Create new playlist";
+            this.createNewPlaylist_button.Text = "Create new playlist";
+            this.createNewPlaylist_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createNewPlaylist_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.createNewPlaylist_button.UseVisualStyleBackColor = true;
+            this.createNewPlaylist_button.Click += new System.EventHandler(this.createNewPlaylist_button_Click);
+            this.createNewPlaylist_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.createNewPlaylist_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            // 
+            // account_button
+            // 
+            this.account_button.BackColor = System.Drawing.Color.Transparent;
+            this.account_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.account_button.FlatAppearance.BorderSize = 0;
+            this.account_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
+            this.account_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
+            this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.account_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.account_button.ForeColor = System.Drawing.Color.White;
+            this.account_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.account_button.ImageIndex = 10;
+            this.account_button.ImageList = this.menu_imgList;
+            this.account_button.Location = new System.Drawing.Point(9, 14);
+            this.account_button.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.account_button.Name = "account_button";
+            this.account_button.Size = new System.Drawing.Size(215, 45);
+            this.account_button.TabIndex = 18;
+            this.account_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.account_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.account_button.UseVisualStyleBackColor = false;
+            this.account_button.Click += new System.EventHandler(this.account_button_Click);
+            this.account_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
+            this.account_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
             // home_pictureBox
             // 
@@ -570,24 +668,6 @@
             this.albums_button.Click += new System.EventHandler(this.menu_button_Click);
             this.albums_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.albums_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
-            // 
-            // home_button
-            // 
-            this.home_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.home_button.FlatAppearance.BorderSize = 0;
-            this.home_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
-            this.home_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.home_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_button.ForeColor = System.Drawing.Color.White;
-            this.home_button.Location = new System.Drawing.Point(9, 80);
-            this.home_button.Margin = new System.Windows.Forms.Padding(0, 80, 0, 0);
-            this.home_button.Name = "home_button";
-            this.home_button.Size = new System.Drawing.Size(215, 45);
-            this.home_button.TabIndex = 12;
-            this.home_button.Text = "Home";
-            this.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.home_button.UseVisualStyleBackColor = true;
-            this.home_button.Click += new System.EventHandler(this.menu_button_Click);
             // 
             // playlist_button
             // 
@@ -664,155 +744,142 @@
             this.tracks_button.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
             this.tracks_button.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
             // 
-            // CreatePlayList_FlowPanel
+            // songCover_panel
             // 
-            this.CreatePlayList_FlowPanel.AutoSize = true;
-            this.CreatePlayList_FlowPanel.Controls.Add(this.button1);
-            this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
-            this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
-            this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
-            this.CreatePlayList_FlowPanel.TabIndex = 24;
-            this.CreatePlayList_FlowPanel.WrapContents = false;
-            this.CreatePlayList_FlowPanel.MouseLeave += new System.EventHandler(this.menu_panel_MouseLeave);
-            this.CreatePlayList_FlowPanel.MouseHover += new System.EventHandler(this.menu_panel_MouseHover);
+            this.songCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songCover_panel.BackgroundImage")));
+            this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
+            this.songCover_panel.Location = new System.Drawing.Point(12, 20);
+            this.songCover_panel.Name = "songCover_panel";
+            this.songCover_panel.Size = new System.Drawing.Size(65, 65);
+            this.songCover_panel.TabIndex = 0;
+            this.songCover_panel.BackgroundImageChanged += new System.EventHandler(this.songCover_panel_BackgroundImageChanged);
+            this.songCover_panel.MouseHover += new System.EventHandler(this.songCover_panel_MouseHover);
             // 
-            // searchBar_panel
+            // songImgOpacity_panel
             // 
-            this.searchBar_panel.BackColor = System.Drawing.Color.Black;
-            this.searchBar_panel.Controls.Add(this.panel1);
-            this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
-            this.searchBar_panel.Name = "searchBar_panel";
-            this.searchBar_panel.Size = new System.Drawing.Size(887, 60);
-            this.searchBar_panel.TabIndex = 1;
+            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
+            this.songImgOpacity_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songImgOpacity_panel.BackgroundImage")));
+            this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
+            this.songImgOpacity_panel.Name = "songImgOpacity_panel";
+            this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
+            this.songImgOpacity_panel.TabIndex = 16;
+            this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
+            this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
             // 
-            // panel1
+            // volume_button
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
-            this.panel1.Controls.Add(this.searchBar_textBox);
-            this.panel1.Controls.Add(this.searchBar_icon);
-            this.panel1.Location = new System.Drawing.Point(485, 14);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(390, 40);
-            this.panel1.TabIndex = 0;
+            this.volume_button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.volume_button.BackColor = System.Drawing.Color.Transparent;
+            this.volume_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("volume_button.BackgroundImage")));
+            this.volume_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.volume_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.volume_button.FlatAppearance.BorderSize = 0;
+            this.volume_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.volume_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.volume_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.volume_button.Location = new System.Drawing.Point(927, 30);
+            this.volume_button.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.volume_button.Name = "volume_button";
+            this.volume_button.Size = new System.Drawing.Size(44, 40);
+            this.volume_button.TabIndex = 14;
+            this.volume_button.Tag = "on";
+            this.myToolTip.SetToolTip(this.volume_button, "Volume");
+            this.volume_button.UseVisualStyleBackColor = false;
+            this.volume_button.Click += new System.EventHandler(this.volume_button_Click);
             // 
-            // searchBar_textBox
+            // shuffle_button
             // 
-            this.searchBar_textBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.searchBar_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
-            this.searchBar_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchBar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
-            this.searchBar_textBox.Location = new System.Drawing.Point(40, 0);
-            this.searchBar_textBox.Name = "searchBar_textBox";
-            this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
-            this.searchBar_textBox.TabIndex = 2;
-            this.searchBar_textBox.Text = "Search";
-            this.searchBar_textBox.TextChanged += new System.EventHandler(this.searchBar_textBox_TextChanged);
+            this.shuffle_button.BackColor = System.Drawing.Color.Transparent;
+            this.shuffle_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("shuffle_button.BackgroundImage")));
+            this.shuffle_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.shuffle_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.shuffle_button.FlatAppearance.BorderSize = 0;
+            this.shuffle_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.shuffle_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.shuffle_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shuffle_button.Location = new System.Drawing.Point(6, 33);
+            this.shuffle_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.shuffle_button.Name = "shuffle_button";
+            this.shuffle_button.Size = new System.Drawing.Size(28, 32);
+            this.shuffle_button.TabIndex = 11;
+            this.shuffle_button.Tag = "off";
+            this.myToolTip.SetToolTip(this.shuffle_button, "Shuffle");
+            this.shuffle_button.UseVisualStyleBackColor = false;
+            this.shuffle_button.Click += new System.EventHandler(this.shuffle_button_Click);
             // 
-            // searchBar_icon
+            // previous_button
             // 
-            this.searchBar_icon.Dock = System.Windows.Forms.DockStyle.Left;
-            this.searchBar_icon.Image = ((System.Drawing.Image)(resources.GetObject("searchBar_icon.Image")));
-            this.searchBar_icon.Location = new System.Drawing.Point(0, 0);
-            this.searchBar_icon.Name = "searchBar_icon";
-            this.searchBar_icon.Size = new System.Drawing.Size(40, 40);
-            this.searchBar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.searchBar_icon.TabIndex = 1;
-            this.searchBar_icon.TabStop = false;
+            this.previous_button.BackColor = System.Drawing.Color.Transparent;
+            this.previous_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previous_button.BackgroundImage")));
+            this.previous_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previous_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.previous_button.FlatAppearance.BorderSize = 0;
+            this.previous_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.previous_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.previous_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previous_button.Location = new System.Drawing.Point(69, 32);
+            this.previous_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.previous_button.Name = "previous_button";
+            this.previous_button.Size = new System.Drawing.Size(28, 32);
+            this.previous_button.TabIndex = 10;
+            this.myToolTip.SetToolTip(this.previous_button, "Previous");
+            this.previous_button.UseVisualStyleBackColor = false;
+            this.previous_button.Click += new System.EventHandler(this.previous_button_Click);
             // 
-            // childForm_panel
+            // next_button
             // 
-            this.childForm_panel.AutoScroll = true;
-            this.childForm_panel.BackColor = System.Drawing.Color.Black;
-            this.childForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
-            this.childForm_panel.Location = new System.Drawing.Point(240, 60);
-            this.childForm_panel.Name = "childForm_panel";
-            this.childForm_panel.Size = new System.Drawing.Size(887, 678);
-            this.childForm_panel.TabIndex = 26;
+            this.next_button.BackColor = System.Drawing.Color.Transparent;
+            this.next_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("next_button.BackgroundImage")));
+            this.next_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.next_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.next_button.FlatAppearance.BorderSize = 0;
+            this.next_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.next_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.next_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.next_button.Location = new System.Drawing.Point(207, 32);
+            this.next_button.Margin = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.next_button.Name = "next_button";
+            this.next_button.Size = new System.Drawing.Size(28, 32);
+            this.next_button.TabIndex = 9;
+            this.myToolTip.SetToolTip(this.next_button, "Next");
+            this.next_button.UseVisualStyleBackColor = false;
+            this.next_button.Click += new System.EventHandler(this.next_button_Click);
             // 
-            // player_imageList
+            // pause_button
             // 
-            this.player_imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("player_imageList.ImageStream")));
-            this.player_imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.player_imageList.Images.SetKeyName(0, "pause.png");
-            this.player_imageList.Images.SetKeyName(1, "play.png");
-            this.player_imageList.Images.SetKeyName(2, "volume.png");
-            this.player_imageList.Images.SetKeyName(3, "mute.png");
-            this.player_imageList.Images.SetKeyName(4, "shuffle_on.png");
-            this.player_imageList.Images.SetKeyName(5, "shuffle_off.png");
-            // 
-            // myToolTip
-            // 
-            this.myToolTip.BackColor = System.Drawing.Color.Red;
-            this.myToolTip.ForeColor = System.Drawing.Color.DimGray;
-            // 
-            // onesec
-            // 
-            this.onesec.Interval = 1000;
-            this.onesec.Tick += new System.EventHandler(this.onesec_Tick);
-            // 
-            // songDetail_panel
-            // 
-            this.songDetail_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
-            this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
-            this.songDetail_panel.Name = "songDetail_panel";
-            this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
-            this.songDetail_panel.TabIndex = 0;
-            // 
-            // searchBar_backgroundWorker
-            // 
-            this.searchBar_backgroundWorker.WorkerReportsProgress = true;
-            this.searchBar_backgroundWorker.WorkerSupportsCancellation = true;
-            this.searchBar_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBar_backgroundWorker_DoWork);
-            this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
-            this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 31);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            // 
-            // playlist_PopupContainer
-            // 
-            this.playlist_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.playlist_PopupContainer.Controls.Add(this.rightClickCreatePlayList1);
-            this.playlist_PopupContainer.Location = new System.Drawing.Point(58, 30);
-            this.playlist_PopupContainer.Name = "playlist_PopupContainer";
-            this.playlist_PopupContainer.Size = new System.Drawing.Size(260, 453);
-            this.playlist_PopupContainer.TabIndex = 25;
-            // 
-            // rightClickCreatePlayList1
-            // 
-            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
-            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
-            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(260, 453);
-            this.rightClickCreatePlayList1.TabIndex = 0;
+            this.pause_button.BackColor = System.Drawing.Color.Transparent;
+            this.pause_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pause_button.BackgroundImage")));
+            this.pause_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pause_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pause_button.FlatAppearance.BorderSize = 0;
+            this.pause_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.pause_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.pause_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pause_button.Location = new System.Drawing.Point(132, 20);
+            this.pause_button.Margin = new System.Windows.Forms.Padding(0);
+            this.pause_button.Name = "pause_button";
+            this.pause_button.Size = new System.Drawing.Size(40, 50);
+            this.pause_button.TabIndex = 8;
+            this.pause_button.Tag = "pause";
+            this.myToolTip.SetToolTip(this.pause_button, "Pause");
+            this.pause_button.UseVisualStyleBackColor = false;
+            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 838);
-            this.Controls.Add(this.playlist_PopupContainer);
+            this.Controls.Add(this.searchBar_PopupContainer);
             this.Controls.Add(this.childForm_panel);
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.Controls.Add(this.songDetail_panel);
+            this.Controls.Add(this.playlist_PopupContainer);
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(774, 361);
             this.Name = "MainScreen";
@@ -823,18 +890,24 @@
             this.player_panel.ResumeLayout(false);
             this.player_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
-            this.songCover_panel.ResumeLayout(false);
             this.play_pause_panel.ResumeLayout(false);
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
             this.CreatePlayList_FlowPanel.ResumeLayout(false);
             this.searchBar_panel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
+            this.searchbarContainer_panel.ResumeLayout(false);
+            this.searchbarContainer_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playlist_PopupContainer)).EndInit();
             this.playlist_PopupContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).EndInit();
+            this.searchBar_PopupContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.searchNoResult_panel.ResumeLayout(false);
+            this.searchNoResult_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchNoResult_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
+            this.songCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -867,7 +940,7 @@
         public System.Windows.Forms.Button createNewPlaylist_button;
         public System.Windows.Forms.ImageList createPlaylist_imgList;
         private System.Windows.Forms.Panel searchBar_panel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel searchbarContainer_panel;
         private System.Windows.Forms.PictureBox searchBar_icon;
         private System.Windows.Forms.TextBox searchBar_textBox;
         public System.Windows.Forms.Panel childForm_panel;
@@ -884,6 +957,11 @@
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.PopupContainerControl playlist_PopupContainer;
         private RightClickCreatePlayList.RightClickCreatePlayList rightClickCreatePlayList1;
+        private DevExpress.XtraEditors.PopupContainerControl searchBar_PopupContainer;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label searchNoResult_label;
+        private System.Windows.Forms.Panel searchNoResult_panel;
+        private System.Windows.Forms.PictureBox searchNoResult_pictureBox;
     }
 }
 

@@ -21,11 +21,18 @@ namespace Tify
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus += AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
-            home_button.Focus();
             songDetail = new SongDetail(this);
             firstLoadChildForm();
-            this.DoubleBuffered = true;
 
+            //searchbarPopup
+            searchBar_PopupContainer.Show();
+            //
+
+
+            //testpopup
+            playlist_PopupContainer.Show();
+            //
+            this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
                 EnableDoubleBuferring(control);
@@ -33,6 +40,7 @@ namespace Tify
             string connectString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             connection = new SqlConnection(connectString);
             
+
         }
 
         private Home homeScr;
@@ -116,13 +124,14 @@ namespace Tify
         {
             if (e.Button==MouseButtons.Right)
             {
-                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X, PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
+                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X,
+                                                             PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
                 playlist_PopupContainer.BringToFront();
-                playlist_PopupContainer.Show();
+                
             }
             else
             {
-                playlist_PopupContainer.Hide();
+                playlist_PopupContainer.SendToBack();
             }
         }
 
@@ -195,6 +204,7 @@ namespace Tify
             this.DoubleBuffered = true;
 
             //demo
+            pause_button.Focus();
 
             //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
@@ -559,6 +569,7 @@ namespace Tify
         #region Searchbar 
 
         //place holder
+        //Got focus
         public void RemoveText(object sender, EventArgs e)
         {
             if (searchBar_textBox.Text == "Search")
@@ -566,8 +577,13 @@ namespace Tify
                 searchBar_textBox.Text = "";
                 searchBar_textBox.ForeColor = Color.White;
             }
+            searchbarContainer_panel.Dock = DockStyle.Top;
+            searchBar_PopupContainer.BringToFront();
+            searchNoResult_panel.Hide();
         }
 
+
+        //lost focus
         public void AddText(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(searchBar_textBox.Text))
@@ -575,29 +591,44 @@ namespace Tify
                 searchBar_textBox.Text = "Search";
                 searchBar_textBox.ForeColor = Color.FromArgb(152, 162, 166);
             }
+            searchbarContainer_panel.Dock = DockStyle.None;
+            searchBar_PopupContainer.SendToBack();
+
+
         }
 
         //search event
 
-        private void searchBar_textBox_TextChanged(object sender, EventArgs e)
+        private void searchBar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (searchBar_backgroundWorker.IsBusy)
-                searchBar_backgroundWorker.CancelAsync();
-            //searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
-        }
 
-        DataTable searchTable;
+            if (e.KeyChar==(char)13)//enter
+            {
+                dataGridView1.DataSource = null;
+                if (searchBar_backgroundWorker.IsBusy)
+                    searchBar_backgroundWorker.CancelAsync();
+                searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);
+            }
+
+        }
+        DataTable searchTable=new DataTable();
         private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+
             connection.Open();
-            string sqlQuery = "select* from Track where trackTitle like '%"+e.Argument.ToString()+"%'";
+            string sqlQuery = "select distinct top 5 trackTitle from Track where trackTitle like @query";
+
             using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
             {
-                using (SqlDataReader reader=cmd.ExecuteReader())
+                cmd.Parameters.AddWithValue("@query", "%" + e.Argument.ToString() + "%");
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    searchTable.Clear();
                     searchTable.Load(reader);
                 }
             }
+            connection.Close();
         }
 
         private void searchBar_backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -607,7 +638,28 @@ namespace Tify
 
         private void searchBar_backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            if (e.Error == null)
+            {
 
+               
+                if (searchTable.Rows.Count == 0)
+                {
+                    dataGridView1.Hide();
+                    searchNoResult_panel.Show();
+                    return;
+                }
+                
+                dataGridView1.DataSource = searchTable;
+                dataGridView1.Refresh();
+                dataGridView1.Show();
+                searchNoResult_panel.Hide();
+
+
+
+                searchBar_PopupContainer.BringToFront();
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            }
         }
 
         #endregion
@@ -928,7 +980,6 @@ namespace Tify
 
       
 
-       
         private void next_button_Click(object sender, EventArgs e)
         {
             if (previousTracks.Count == 0)
