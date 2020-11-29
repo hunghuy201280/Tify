@@ -71,7 +71,6 @@
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
             this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
             this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
             this.player_panel.SuspendLayout();
@@ -80,7 +79,6 @@
             this.play_pause_panel.SuspendLayout();
             this.menu_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).BeginInit();
-            this.CreatePlayList_FlowPanel.SuspendLayout();
             this.searchBar_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
@@ -667,7 +665,6 @@
             // CreatePlayList_FlowPanel
             // 
             this.CreatePlayList_FlowPanel.AutoSize = true;
-            this.CreatePlayList_FlowPanel.Controls.Add(this.button1);
             this.CreatePlayList_FlowPanel.Location = new System.Drawing.Point(0, 556);
             this.CreatePlayList_FlowPanel.Name = "CreatePlayList_FlowPanel";
             this.CreatePlayList_FlowPanel.Size = new System.Drawing.Size(240, 42);
@@ -774,23 +771,13 @@
             this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
             this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 31);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            // 
             // playlist_PopupContainer
             // 
             this.playlist_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.playlist_PopupContainer.Controls.Add(this.rightClickCreatePlayList1);
             this.playlist_PopupContainer.Location = new System.Drawing.Point(58, 30);
             this.playlist_PopupContainer.Name = "playlist_PopupContainer";
-            this.playlist_PopupContainer.Size = new System.Drawing.Size(260, 453);
+            this.playlist_PopupContainer.Size = new System.Drawing.Size(238, 432);
             this.playlist_PopupContainer.TabIndex = 25;
             // 
             // rightClickCreatePlayList1
@@ -799,7 +786,7 @@
             this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
             this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
             this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
-            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(260, 453);
+            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
             this.rightClickCreatePlayList1.TabIndex = 0;
             // 
             // MainScreen
@@ -828,7 +815,6 @@
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.home_pictureBox)).EndInit();
-            this.CreatePlayList_FlowPanel.ResumeLayout(false);
             this.searchBar_panel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -881,7 +867,6 @@
         private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
         private System.ComponentModel.BackgroundWorker searchBar_backgroundWorker;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.PopupContainerControl playlist_PopupContainer;
         private RightClickCreatePlayList.RightClickCreatePlayList rightClickCreatePlayList1;
     }
