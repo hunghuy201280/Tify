@@ -41,6 +41,7 @@
             this.PlayList_AddToPlayList = new System.Windows.Forms.Button();
             this.PlayList_EditPL = new System.Windows.Forms.Button();
             this.PlayList_Delete = new System.Windows.Forms.Button();
+            this.CreatePL_Exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl2)).BeginInit();
@@ -50,7 +51,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 45);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 75);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,7 +63,7 @@
             this.PlayList_Name.AutoSize = true;
             this.PlayList_Name.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayList_Name.ForeColor = System.Drawing.Color.White;
-            this.PlayList_Name.Location = new System.Drawing.Point(95, 23);
+            this.PlayList_Name.Location = new System.Drawing.Point(95, 54);
             this.PlayList_Name.Name = "PlayList_Name";
             this.PlayList_Name.Size = new System.Drawing.Size(123, 19);
             this.PlayList_Name.TabIndex = 1;
@@ -73,7 +74,7 @@
             this.PlayList_cntItems.AutoSize = true;
             this.PlayList_cntItems.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayList_cntItems.ForeColor = System.Drawing.Color.Silver;
-            this.PlayList_cntItems.Location = new System.Drawing.Point(95, 61);
+            this.PlayList_cntItems.Location = new System.Drawing.Point(95, 92);
             this.PlayList_cntItems.Name = "PlayList_cntItems";
             this.PlayList_cntItems.Size = new System.Drawing.Size(128, 19);
             this.PlayList_cntItems.TabIndex = 2;
@@ -83,7 +84,7 @@
             // 
             this.separatorControl1.AutoSizeMode = true;
             this.separatorControl1.LineAlignment = DevExpress.XtraEditors.Alignment.Center;
-            this.separatorControl1.Location = new System.Drawing.Point(-3, 105);
+            this.separatorControl1.Location = new System.Drawing.Point(-3, 136);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(249, 19);
             this.separatorControl1.TabIndex = 3;
@@ -94,7 +95,7 @@
             this.PlayList_PlayNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_PlayNow.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_PlayNow.ForeColor = System.Drawing.Color.White;
-            this.PlayList_PlayNow.Location = new System.Drawing.Point(-3, 119);
+            this.PlayList_PlayNow.Location = new System.Drawing.Point(-3, 150);
             this.PlayList_PlayNow.Name = "PlayList_PlayNow";
             this.PlayList_PlayNow.Size = new System.Drawing.Size(249, 39);
             this.PlayList_PlayNow.TabIndex = 4;
@@ -108,7 +109,7 @@
             this.PlayList_Shuffle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_Shuffle.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_Shuffle.ForeColor = System.Drawing.Color.White;
-            this.PlayList_Shuffle.Location = new System.Drawing.Point(-3, 164);
+            this.PlayList_Shuffle.Location = new System.Drawing.Point(-3, 195);
             this.PlayList_Shuffle.Name = "PlayList_Shuffle";
             this.PlayList_Shuffle.Size = new System.Drawing.Size(249, 39);
             this.PlayList_Shuffle.TabIndex = 5;
@@ -120,7 +121,7 @@
             // 
             this.separatorControl2.AutoSizeMode = true;
             this.separatorControl2.LineAlignment = DevExpress.XtraEditors.Alignment.Center;
-            this.separatorControl2.Location = new System.Drawing.Point(-3, 209);
+            this.separatorControl2.Location = new System.Drawing.Point(-3, 240);
             this.separatorControl2.Name = "separatorControl2";
             this.separatorControl2.Size = new System.Drawing.Size(249, 19);
             this.separatorControl2.TabIndex = 6;
@@ -131,7 +132,7 @@
             this.PlayList_PlayNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_PlayNext.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_PlayNext.ForeColor = System.Drawing.Color.White;
-            this.PlayList_PlayNext.Location = new System.Drawing.Point(-3, 234);
+            this.PlayList_PlayNext.Location = new System.Drawing.Point(-3, 265);
             this.PlayList_PlayNext.Name = "PlayList_PlayNext";
             this.PlayList_PlayNext.Size = new System.Drawing.Size(249, 39);
             this.PlayList_PlayNext.TabIndex = 7;
@@ -143,7 +144,7 @@
             // 
             this.separatorControl3.AutoSizeMode = true;
             this.separatorControl3.LineAlignment = DevExpress.XtraEditors.Alignment.Center;
-            this.separatorControl3.Location = new System.Drawing.Point(-3, 279);
+            this.separatorControl3.Location = new System.Drawing.Point(-3, 310);
             this.separatorControl3.Name = "separatorControl3";
             this.separatorControl3.Size = new System.Drawing.Size(249, 19);
             this.separatorControl3.TabIndex = 8;
@@ -154,7 +155,7 @@
             this.PlayList_AddToPlayList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_AddToPlayList.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_AddToPlayList.ForeColor = System.Drawing.Color.White;
-            this.PlayList_AddToPlayList.Location = new System.Drawing.Point(-3, 304);
+            this.PlayList_AddToPlayList.Location = new System.Drawing.Point(-3, 335);
             this.PlayList_AddToPlayList.Name = "PlayList_AddToPlayList";
             this.PlayList_AddToPlayList.Size = new System.Drawing.Size(249, 39);
             this.PlayList_AddToPlayList.TabIndex = 9;
@@ -168,7 +169,7 @@
             this.PlayList_EditPL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_EditPL.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_EditPL.ForeColor = System.Drawing.Color.White;
-            this.PlayList_EditPL.Location = new System.Drawing.Point(-3, 349);
+            this.PlayList_EditPL.Location = new System.Drawing.Point(-3, 380);
             this.PlayList_EditPL.Name = "PlayList_EditPL";
             this.PlayList_EditPL.Size = new System.Drawing.Size(249, 39);
             this.PlayList_EditPL.TabIndex = 10;
@@ -182,7 +183,7 @@
             this.PlayList_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayList_Delete.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold);
             this.PlayList_Delete.ForeColor = System.Drawing.Color.White;
-            this.PlayList_Delete.Location = new System.Drawing.Point(-3, 394);
+            this.PlayList_Delete.Location = new System.Drawing.Point(-3, 425);
             this.PlayList_Delete.Name = "PlayList_Delete";
             this.PlayList_Delete.Size = new System.Drawing.Size(249, 39);
             this.PlayList_Delete.TabIndex = 11;
@@ -190,11 +191,26 @@
             this.PlayList_Delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PlayList_Delete.UseVisualStyleBackColor = true;
             // 
+            // CreatePL_Exit
+            // 
+            this.CreatePL_Exit.BackColor = System.Drawing.Color.Red;
+            this.CreatePL_Exit.FlatAppearance.BorderSize = 0;
+            this.CreatePL_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreatePL_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePL_Exit.Location = new System.Drawing.Point(209, 0);
+            this.CreatePL_Exit.Name = "CreatePL_Exit";
+            this.CreatePL_Exit.Size = new System.Drawing.Size(30, 30);
+            this.CreatePL_Exit.TabIndex = 12;
+            this.CreatePL_Exit.Text = "X";
+            this.CreatePL_Exit.UseVisualStyleBackColor = false;
+            this.CreatePL_Exit.Click += new System.EventHandler(this.CreatePL_Exit_Click);
+            // 
             // RightClickCreatePlayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.Controls.Add(this.CreatePL_Exit);
             this.Controls.Add(this.PlayList_Delete);
             this.Controls.Add(this.PlayList_EditPL);
             this.Controls.Add(this.PlayList_AddToPlayList);
@@ -208,7 +224,7 @@
             this.Controls.Add(this.PlayList_Name);
             this.Controls.Add(this.pictureBox1);
             this.Name = "RightClickCreatePlayList";
-            this.Size = new System.Drawing.Size(246, 437);
+            this.Size = new System.Drawing.Size(246, 464);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl2)).EndInit();
@@ -232,5 +248,6 @@
         private System.Windows.Forms.Button PlayList_AddToPlayList;
         private System.Windows.Forms.Button PlayList_EditPL;
         private System.Windows.Forms.Button PlayList_Delete;
+        private System.Windows.Forms.Button CreatePL_Exit;
     }
 }

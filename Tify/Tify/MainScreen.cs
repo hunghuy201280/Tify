@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
+using RightClickCreatePlayList;
 
 namespace Tify
 {
@@ -212,10 +213,11 @@ namespace Tify
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
+            //Set Main Screen for RightClickUC
+            rightClickCreatePlayList1.setMainScreen(this);
 
 
-         
-            
+
         }
 
         #endregion Load form
@@ -724,6 +726,13 @@ namespace Tify
                 playlist_PopupContainer.Hide();
                 PlayList_isClicked = false;
             }
+        }
+   
+
+        public void ExitFormCreatePlayList()
+        {
+                playlist_PopupContainer.Hide();
+            PlayList_isClicked = false;
         }
 
 
