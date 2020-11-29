@@ -675,6 +675,26 @@ namespace Tify
             myForm.ShowDialog();
         }
 
+        //test 
+
+        bool PlayList_isClicked=false;
+        public void PlayListClick(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right&& PlayList_isClicked==false)
+            {
+                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X, PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
+                playlist_PopupContainer.BringToFront();
+                playlist_PopupContainer.Show();
+                PlayList_isClicked = true;
+            }
+            else
+            {
+                playlist_PopupContainer.Hide();
+                PlayList_isClicked = false;
+            }
+        }
+
         #endregion createplaylist
 
 
