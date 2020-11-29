@@ -25,6 +25,9 @@ namespace Tify
 
         }
 
+
+
+        //hover
         private void artistCover_panel_MouseHover(object sender, EventArgs e)
         {
             opacity_panel.Visible = true;

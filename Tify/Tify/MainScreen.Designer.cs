@@ -72,12 +72,12 @@
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
+            this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
             this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.searchNoResult_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -157,7 +157,7 @@
             this.volume_trackBar.TrackShadow = false;
             this.volume_trackBar.TrackShadowColor = System.Drawing.Color.DarkGray;
             this.volume_trackBar.TrackStyle = MediaSlider.MediaSlider.TrackType.Value;
-            this.volume_trackBar.Value = 0;
+            this.volume_trackBar.Value = 50;
             this.volume_trackBar.ValueChanged += new MediaSlider.MediaSlider.ValueChangedDelegate(this.volume_trackBar_ValueChanged);
             // 
             // progressBar
@@ -195,14 +195,16 @@
             // 
             // songImgOpacity_panel
             // 
-            this.songImgOpacity_panel.BackColor = System.Drawing.Color.White;
+            this.songImgOpacity_panel.BackColor = System.Drawing.Color.Transparent;
             this.songImgOpacity_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("songImgOpacity_panel.BackgroundImage")));
+            this.songImgOpacity_panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
             this.songImgOpacity_panel.Name = "songImgOpacity_panel";
             this.songImgOpacity_panel.Size = new System.Drawing.Size(65, 65);
             this.songImgOpacity_panel.TabIndex = 16;
+            this.songImgOpacity_panel.Visible = false;
             this.songImgOpacity_panel.Click += new System.EventHandler(this.ShowSongDetailWhenClickPlayerPanel);
             this.songImgOpacity_panel.MouseLeave += new System.EventHandler(this.songCover_panel_MouseLeave);
             // 
@@ -789,6 +791,15 @@
             this.playlist_PopupContainer.Size = new System.Drawing.Size(238, 432);
             this.playlist_PopupContainer.TabIndex = 25;
             // 
+            // rightClickCreatePlayList1
+            // 
+            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
+            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
+            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
+            this.rightClickCreatePlayList1.TabIndex = 0;
+            // 
             // searchBar_PopupContainer
             // 
             this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
@@ -800,6 +811,20 @@
             this.searchBar_PopupContainer.Name = "searchBar_PopupContainer";
             this.searchBar_PopupContainer.Size = new System.Drawing.Size(390, 220);
             this.searchBar_PopupContainer.TabIndex = 0;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.Color.White;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 19;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(390, 220);
+            this.listBox1.TabIndex = 0;
             // 
             // searchNoResult_panel
             // 
@@ -831,41 +856,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // rightClickCreatePlayList1
-            // 
-            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
-            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
-            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
-            this.rightClickCreatePlayList1.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(390, 220);
-            this.listBox1.TabIndex = 0;
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 838);
-            this.Controls.Add(this.searchBar_PopupContainer);
             this.Controls.Add(this.childForm_panel);
             this.Controls.Add(this.searchBar_panel);
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.Controls.Add(this.songDetail_panel);
             this.Controls.Add(this.playlist_PopupContainer);
+            this.Controls.Add(this.searchBar_PopupContainer);
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(774, 361);
             this.Name = "MainScreen";

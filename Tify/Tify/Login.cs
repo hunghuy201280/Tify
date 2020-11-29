@@ -35,15 +35,17 @@ namespace Tify
 
         private void registerLink_label_Click(object sender, EventArgs e)
         {
+            this.Close();
             new Register().ShowDialog();
 
-            this.Close();
+           
         }
 
         private void forgotPassLink_label_Click(object sender, EventArgs e)
         {
-            new ForgotPassword().ShowDialog();
             this.Close();
+            new ForgotPassword().ShowDialog();
+            
         }
 
         DataTable login = new DataTable();

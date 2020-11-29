@@ -186,6 +186,18 @@
     <Compile Include="SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="trackContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="trackContainer.Designer.cs">
+      <DependentUpon>trackContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tracks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tracks.Designer.cs">
+      <DependentUpon>Tracks.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AlbumContainer.resx">
       <DependentUpon>AlbumContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SongDetail.resx">
       <DependentUpon>SongDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="trackContainer.resx">
+      <DependentUpon>trackContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tracks.resx">
+      <DependentUpon>Tracks.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />
     <None Include="packages.config" />

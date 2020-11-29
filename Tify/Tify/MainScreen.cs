@@ -48,6 +48,7 @@ namespace Tify
         private Playlist playlistScr;
         private Artist artistScr;
         private Albums albumsScr;
+        private Tracks tracksScr;
         #region doublebuffered
 
        
@@ -139,7 +140,7 @@ namespace Tify
 
 
         //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/nah/dmcs-tsvrrt5bqaafhq.html";
+        private string testURL = "https://chiasenhac.vn/nhac-hot/us-uk.html?playlist=8";
 
         private PictureBox songPicture = new PictureBox();
 
@@ -206,7 +207,7 @@ namespace Tify
             //demo
             this.ActiveControl = artist_label;
 
-            //testFunc();
+            testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -418,6 +419,8 @@ namespace Tify
                 openChildForm(artistScr);
             else if (sender == albums_button)
                 openChildForm(albumsScr);
+            else if (sender == tracks_button)
+                openChildForm(tracksScr);
             else
                 MessageBox.Show("Chuaco");
         }
@@ -508,7 +511,8 @@ namespace Tify
             myMixScr = new MyMix();
             playlistScr = new Playlist();
             albumsScr = new Albums();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr };
+            tracksScr = new Tracks();
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
