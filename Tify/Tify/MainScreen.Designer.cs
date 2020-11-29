@@ -72,12 +72,12 @@
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
-            this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
             this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchNoResult_panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
             this.player_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.songCover_panel.SuspendLayout();
@@ -790,15 +790,6 @@
             this.playlist_PopupContainer.Size = new System.Drawing.Size(238, 432);
             this.playlist_PopupContainer.TabIndex = 25;
             // 
-            // rightClickCreatePlayList1
-            // 
-            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
-            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
-            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
-            this.rightClickCreatePlayList1.TabIndex = 0;
-            // 
             // searchBar_PopupContainer
             // 
             this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
@@ -824,6 +815,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(887, 300);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.Visible = false;
             // 
             // searchNoResult_panel
             // 
@@ -854,6 +846,15 @@
             this.pictureBox1.Size = new System.Drawing.Size(96, 96);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // rightClickCreatePlayList1
+            // 
+            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
+            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
+            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
+            this.rightClickCreatePlayList1.TabIndex = 0;
             // 
             // MainScreen
             // 
