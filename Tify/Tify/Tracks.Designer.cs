@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.top_panel = new System.Windows.Forms.Panel();
+            this.format_label = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.formTitle_label = new System.Windows.Forms.Label();
             this.bottom_panel = new System.Windows.Forms.Panel();
             this.track_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.format_label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             this.track_tableLayoutPanel.SuspendLayout();
@@ -54,6 +54,28 @@
             this.top_panel.Size = new System.Drawing.Size(887, 61);
             this.top_panel.TabIndex = 1;
             // 
+            // format_label
+            // 
+            this.format_label.AutoSize = true;
+            this.format_label.BackColor = System.Drawing.Color.White;
+            this.format_label.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.format_label.Location = new System.Drawing.Point(805, 9);
+            this.format_label.Name = "format_label";
+            this.format_label.Size = new System.Drawing.Size(119, 24);
+            this.format_label.TabIndex = 7;
+            this.format_label.Text = "format_label";
+            this.format_label.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(515, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "add_test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // formTitle_label
             // 
             this.formTitle_label.AutoSize = true;
@@ -67,6 +89,7 @@
             // 
             // bottom_panel
             // 
+            this.bottom_panel.AutoScroll = true;
             this.bottom_panel.Controls.Add(this.track_tableLayoutPanel);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_panel.Location = new System.Drawing.Point(0, 61);
@@ -95,29 +118,17 @@
             this.track_tableLayoutPanel.Size = new System.Drawing.Size(887, 38);
             this.track_tableLayoutPanel.TabIndex = 0;
             // 
-            // label4
+            // label3
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
-            this.label4.Location = new System.Drawing.Point(686, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 38);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "TIME";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 38);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "TITLE";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
+            this.label3.Location = new System.Drawing.Point(495, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 38);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "DATE ADDED";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -131,44 +142,35 @@
             this.label2.Text = "ARTIST";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // label1
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
-            this.label3.Location = new System.Drawing.Point(495, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 38);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "DATE ADDED";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(332, 38);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "TITLE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(515, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // format_label
-            // 
-            this.format_label.AutoSize = true;
-            this.format_label.BackColor = System.Drawing.Color.White;
-            this.format_label.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.format_label.Location = new System.Drawing.Point(805, 9);
-            this.format_label.Name = "format_label";
-            this.format_label.Size = new System.Drawing.Size(119, 24);
-            this.format_label.TabIndex = 7;
-            this.format_label.Text = "format_label";
-            this.format_label.Visible = false;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(143)))), ((int)(((byte)(153)))));
+            this.label4.Location = new System.Drawing.Point(686, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 38);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "TIME";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Tracks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(887, 678);
             this.Controls.Add(this.bottom_panel);

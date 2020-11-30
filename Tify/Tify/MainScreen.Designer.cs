@@ -868,11 +868,12 @@
             this.Controls.Add(this.songDetail_panel);
             this.Controls.Add(this.playlist_PopupContainer);
             this.Controls.Add(this.searchBar_PopupContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(774, 361);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Tify";
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.player_panel.ResumeLayout(false);
