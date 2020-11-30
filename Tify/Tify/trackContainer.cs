@@ -17,6 +17,12 @@ namespace Tify
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
         private string title;
         private string artist;
