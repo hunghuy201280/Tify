@@ -25,6 +25,13 @@ namespace RightClickCreatePlayList
             }
 
         }
+        MainScreen mainscr;
+        public void setMainScreen(MainScreen input)
+        {
+            mainscr = input;
+        }
+
+
         public string getPlaylistName()
         {
             return PlayList_Name.Text;
@@ -71,5 +78,9 @@ namespace RightClickCreatePlayList
             PlayList_cntItems.Text = cnt.ToString() + "items "+"("+time+")";
         }
 
+        private void CreatePL_Exit_Click(object sender, EventArgs e)
+        {
+            mainscr.ExitFormCreatePlayList();
+        }
     }
 }
