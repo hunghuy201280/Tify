@@ -57,6 +57,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -70,58 +71,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlbumContainer.cs">
+    <Compile Include="Account.cs" />
+    <Compile Include="Album\AlbumContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AlbumContainer.Designer.cs">
+    <Compile Include="Album\AlbumContainer.Designer.cs">
       <DependentUpon>AlbumContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Albums.cs">
+    <Compile Include="Album\Albums.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Albums.Designer.cs">
+    <Compile Include="Album\Albums.Designer.cs">
       <DependentUpon>Albums.cs</DependentUpon>
     </Compile>
-    <Compile Include="Artist.cs">
+    <Compile Include="Artist\Artist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Artist.Designer.cs">
+    <Compile Include="Artist\Artist.Designer.cs">
       <DependentUpon>Artist.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArtistContainer.cs">
+    <Compile Include="Artist\ArtistContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ArtistContainer.Designer.cs">
+    <Compile Include="Artist\ArtistContainer.Designer.cs">
       <DependentUpon>ArtistContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatePlayList.cs">
+    <Compile Include="Playlist\CreatePlayList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatePlayList.Designer.cs">
+    <Compile Include="Playlist\CreatePlayList.Designer.cs">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Artist_NewCreate.cs">
+    <Compile Include="Artist\Artist_NewCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Artist_NewCreate.Designer.cs">
+    <Compile Include="Artist\Artist_NewCreate.Designer.cs">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForgotPassword.cs">
+    <Compile Include="Login\ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForgotPassword.Designer.cs">
+    <Compile Include="Login\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="HomeItemContainer.cs">
+    <Compile Include="Home\HomeItemContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HomeItemContainer.Designer.cs">
+    <Compile Include="Home\HomeItemContainer.Designer.cs">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MainScreen.cs">
@@ -130,117 +132,123 @@
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Home\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Home\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyMix.cs">
+    <Compile Include="MyMix\MyMix.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyMix.designer.cs">
+    <Compile Include="MyMix\MyMix.designer.cs">
       <DependentUpon>MyMix.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyMixContainer.cs">
+    <Compile Include="MyMix\MyMixContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MyMixContainer.Designer.cs">
+    <Compile Include="MyMix\MyMixContainer.Designer.cs">
       <DependentUpon>MyMixContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Playlist.cs">
+    <Compile Include="Playlist\Playlist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Playlist.Designer.cs">
+    <Compile Include="Playlist\Playlist.Designer.cs">
       <DependentUpon>Playlist.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlaylistContainer.cs">
+    <Compile Include="Playlist\PlaylistContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PlaylistContainer.Designer.cs">
+    <Compile Include="Playlist\PlaylistContainer.Designer.cs">
       <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReccommendTrackControl.cs">
+    <Compile Include="SongDetail\ReccommendTrackControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ReccommendTrackControl.Designer.cs">
+    <Compile Include="SongDetail\ReccommendTrackControl.Designer.cs">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Register.cs">
+    <Compile Include="Login\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Register.Designer.cs">
+    <Compile Include="Login\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="RightClickCreatePlayList.cs">
+    <Compile Include="Login\resetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\resetPassword.Designer.cs">
+      <DependentUpon>resetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\RightClickCreatePlayList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RightClickCreatePlayList.Designer.cs">
+    <Compile Include="Playlist\RightClickCreatePlayList.Designer.cs">
       <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
     </Compile>
-    <Compile Include="SongDetail.cs">
+    <Compile Include="SongDetail\SongDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SongDetail.Designer.cs">
+    <Compile Include="SongDetail\SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="trackContainer.cs">
+    <Compile Include="Track\trackContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="trackContainer.Designer.cs">
+    <Compile Include="Track\trackContainer.Designer.cs">
       <DependentUpon>trackContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tracks.cs">
+    <Compile Include="Track\Tracks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tracks.Designer.cs">
+    <Compile Include="Track\Tracks.Designer.cs">
       <DependentUpon>Tracks.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AlbumContainer.resx">
+    <EmbeddedResource Include="Album\AlbumContainer.resx">
       <DependentUpon>AlbumContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Albums.resx">
+    <EmbeddedResource Include="Album\Albums.resx">
       <DependentUpon>Albums.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Artist.resx">
+    <EmbeddedResource Include="Artist\Artist.resx">
       <DependentUpon>Artist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArtistContainer.resx">
+    <EmbeddedResource Include="Artist\ArtistContainer.resx">
       <DependentUpon>ArtistContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Artist_NewCreate.resx">
+    <EmbeddedResource Include="Artist\Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatePlayList.resx">
+    <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForgotPassword.resx">
+    <EmbeddedResource Include="Login\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomeItemContainer.resx">
+    <EmbeddedResource Include="Home\HomeItemContainer.resx">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Home\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyMix.resx">
+    <EmbeddedResource Include="MyMix\MyMix.resx">
       <DependentUpon>MyMix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyMixContainer.resx">
+    <EmbeddedResource Include="MyMix\MyMixContainer.resx">
       <DependentUpon>MyMixContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Playlist.resx">
+    <EmbeddedResource Include="Playlist\Playlist.resx">
       <DependentUpon>Playlist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlaylistContainer.resx">
+    <EmbeddedResource Include="Playlist\PlaylistContainer.resx">
       <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -254,22 +262,25 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReccommendTrackControl.resx">
+    <EmbeddedResource Include="SongDetail\ReccommendTrackControl.resx">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Register.resx">
+    <EmbeddedResource Include="Login\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RightClickCreatePlayList.resx">
+    <EmbeddedResource Include="Login\resetPassword.resx">
+      <DependentUpon>resetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\RightClickCreatePlayList.resx">
       <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SongDetail.resx">
+    <EmbeddedResource Include="SongDetail\SongDetail.resx">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="trackContainer.resx">
+    <EmbeddedResource Include="Track\trackContainer.resx">
       <DependentUpon>trackContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tracks.resx">
+    <EmbeddedResource Include="Track\Tracks.resx">
       <DependentUpon>Tracks.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />

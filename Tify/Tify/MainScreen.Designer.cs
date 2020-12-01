@@ -467,7 +467,7 @@
             this.account_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.account_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.account_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.account_button.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.account_button.ForeColor = System.Drawing.Color.White;
             this.account_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.account_button.ImageIndex = 10;
@@ -477,7 +477,6 @@
             this.account_button.Name = "account_button";
             this.account_button.Size = new System.Drawing.Size(215, 45);
             this.account_button.TabIndex = 18;
-            this.account_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.account_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.account_button.UseVisualStyleBackColor = false;
             this.account_button.Click += new System.EventHandler(this.account_button_Click);

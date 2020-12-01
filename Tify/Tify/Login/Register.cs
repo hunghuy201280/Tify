@@ -31,6 +31,27 @@ namespace Tify
             }
 
         }
+
+        MainScreen mainScr;
+        public Register(MainScreen callFm)
+        {
+            InitializeComponent();
+
+            this.BringToFront();
+            string connectionString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connection = new SqlConnection(connectionString);
+            userName_textBox.Focus();
+
+            mainScr = callFm;
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
+        }
         SqlConnection connection;
 
 
@@ -50,7 +71,7 @@ namespace Tify
         private void LoginLink_label_Click(object sender, EventArgs e)
         {
             this.Close();
-            new Login().ShowDialog();
+            new Login(mainScr).ShowDialog();
         }
       
 
@@ -73,7 +94,7 @@ namespace Tify
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Sign up successfully!\nPlease login your new account!");
                     this.Close();
-                    new Login().ShowDialog();
+                    new Login(mainScr).ShowDialog();
                 }
                 catch (SqlException ex) when (ex.Number==2627)
                 {

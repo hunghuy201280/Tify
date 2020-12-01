@@ -11,84 +11,87 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class Login : Form
+    public partial class ForgotPassword : Form
     {
+
         SqlConnection connection;
-        public Login()
+
+        public ForgotPassword()
         {
             InitializeComponent();
-            string connectionString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            connection = new SqlConnection(connectionString);
             userName_textBox.Focus();
-
-
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
-
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            connection = new SqlConnection(connectionString);
 
         }
 
-        private void registerLink_label_Click(object sender, EventArgs e)
+        private void phone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.Close();
-            new Register().ShowDialog();
-
-           
-        }
-
-        private void forgotPassLink_label_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new ForgotPassword().ShowDialog();
-            
-        }
-
-        DataTable login = new DataTable();
-        private void Login_Button_Click(object sender, EventArgs e)
-        {
-            if (userName_textBox.Text =="" || password_textBox.Text=="")
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                MessageBox.Show("Please enter your username and password");
-                userName_textBox.Focus();
-                return;
+                e.Handled = true;
             }
-            string sqlCommand = "Select * from Account where username=@usrname and password=@passwd";
-            connection.Open();
-            using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
-            {
-                cmd.Parameters.AddWithValue("@usrname", userName_textBox.Text);
-                cmd.Parameters.AddWithValue("@passwd", password_textBox.Text);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    login.Load(reader);
-                }
-
-            }
-            //Ko dang nhap dc
-            if (login.Rows.Count==0)
-            {
-                MessageBox.Show("Wrong username or password, try again");
-                userName_textBox.Clear();
-                password_textBox.Clear();
-                userName_textBox.Focus();
-            }
-            else //Dang nhap thanh cong
-            {
-                MessageBox.Show(login.Rows[0]["username"].ToString());
-                this.Close();
-            }
-            login.Clear();
-            connection.Close();
         }
 
         private void exit_label_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        DataTable login = new DataTable();
+        Account account=new Account();
+        private void done_button_Click(object sender, EventArgs e)
+        {
+            if (userName_textBox.Text == "" || phone_textBox.Text == "")
+            {
+                MessageBox.Show("Please enter your username and phone");
+                userName_textBox.Focus();
+                return;
+            }
+            string sqlCommand = "Select * from Account where username=@usrname and phone=@phone";
+            connection.Open();
+            string username;
+            string phone;
+
+            using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
+            {
+                cmd.Parameters.AddWithValue("@usrname", userName_textBox.Text);
+
+                cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    login.Load(reader);
+                  
+
+                }
+
+            }
+            //Ko dang nhap dc
+            if (login.Rows.Count == 0)
+            {
+                MessageBox.Show("Wrong username or password, try again");
+                userName_textBox.Clear();
+                phone_textBox.Clear();
+                userName_textBox.Focus();
+
+            }
+            else //Dang nhap thanh cong
+            {
+                username = login.Rows[0]["username"].ToString();
+                phone = login.Rows[0]["phone"].ToString();
+                account.Phone = phone;
+                account.Username = username;
+                this.Close();
+                new resetPassword(account);
+            }
+            login.Clear();
+            connection.Close();
+        }
     }
-    }
+}

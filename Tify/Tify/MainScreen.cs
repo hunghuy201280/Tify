@@ -40,8 +40,9 @@ namespace Tify
             }
             string connectString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             connection = new SqlConnection(connectString);
-            
 
+            loginForm = new Login(this);
+            currentUser = new Account();
         }
 
         private Home homeScr;
@@ -50,9 +51,13 @@ namespace Tify
         private Artist artistScr;
         private Albums albumsScr;
         private Tracks tracksScr;
+        private Account currentUser;
+        public Account CurrentUser { get => currentUser; set => currentUser = value; }
+
+
         #region doublebuffered
 
-       
+
         public static void EnableDoubleBuferring(Control control)
         {
            
@@ -744,7 +749,7 @@ namespace Tify
 
         #region mo form login/register khi click vao account button
 
-        private Login loginForm = new Login();
+        private Login loginForm;
 
         private void account_button_Click(object sender, EventArgs e)
         {
@@ -1024,11 +1029,17 @@ namespace Tify
             return progressBar;
         }
 
+        public void setAccountButtonUsername(string usrn)
+        {
+            account_button.Text = usrn;
+        }
+
         #endregion get/set control, perform event
 
         #region next/previous button event
 
         public Stack previousTracks = new Stack();
+
 
         private void previous_button_Click(object sender, EventArgs e)
         {
