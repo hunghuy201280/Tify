@@ -723,7 +723,7 @@ namespace Tify
             }
             else
             {
-                playlist_PopupContainer.Hide();
+                //playlist_PopupContainer.Hide();
                 PlayList_isClicked = false;
             }
         }
@@ -731,8 +731,9 @@ namespace Tify
 
         public void ExitFormCreatePlayList()
         {
-                playlist_PopupContainer.Hide();
-            PlayList_isClicked = false;
+            //playlist_PopupContainer.Hide();
+        PlayList_isClicked = false;
+            playlist_PopupContainer.SendToBack();
         }
 
 

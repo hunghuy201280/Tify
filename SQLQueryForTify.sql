@@ -241,4 +241,31 @@ add constraint Unique_Account UNIQue (username);
 
 
 select* from Account
-delete * from Account
+
+insert into Account values('admin','admin','1');
+
+insert into UserLikeTrack ("trackID","userID") values(130,8);
+
+
+select * from  (Account join UserLikeTrack on Account.userID=UserLikeTrack.userID ) 
+join Track on Track.trackID=UserLikeTrack.trackID;
+
+select * from Artist
+select * from Track where trackTitle like '%tao%'
+
+
+ALTER TABLE Album ALTER COLUMN albumTitle nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AI
+
+alter table Album drop UNique_Album
+
+
+alter table Album add constraint Unique_album unique(albumTitle,albumLink)
+select * from ArtistHasTrack
+
+
+alter table Track add constraint Unique_Track unique(trackTitle,trackLink)
+
+ALTER TABLE Track ALTER COLUMN trackTitle nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AI
+
+
+alter table Track drop UN_Track
