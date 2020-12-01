@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -29,6 +30,12 @@ namespace Tify
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
 
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
 
         private void phone_KeyPress(object sender, KeyPressEventArgs e)
@@ -75,7 +82,7 @@ namespace Tify
             //Ko dang nhap dc
             if (login.Rows.Count == 0)
             {
-                MessageBox.Show("Wrong username or password, try again");
+                MessageBox.Show("Wrong username or phone, try again");
                 userName_textBox.Clear();
                 phone_textBox.Clear();
                 userName_textBox.Focus();
@@ -87,8 +94,9 @@ namespace Tify
                 phone = login.Rows[0]["phone"].ToString();
                 account.Phone = phone;
                 account.Username = username;
+                new resetPassword(account).ShowDialog();
+
                 this.Close();
-                new resetPassword(account);
             }
             login.Clear();
             connection.Close();
