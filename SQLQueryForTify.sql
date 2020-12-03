@@ -272,3 +272,5 @@ alter table Track drop UN_Track
 delete from Account where username='admin01'
 
 select* from Account
+
+select * from Track
