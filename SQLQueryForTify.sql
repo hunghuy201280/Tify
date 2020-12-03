@@ -240,7 +240,6 @@ alter table Account
 add constraint Unique_Account UNIQue (username);
 
 
-select* from Account
 
 insert into Account values('admin','admin','1');
 
@@ -269,3 +268,7 @@ ALTER TABLE Track ALTER COLUMN trackTitle nvarchar(200) COLLATE SQL_Latin1_Gener
 
 
 alter table Track drop UN_Track
+
+delete from Account where username='admin01'
+
+select* from Account
