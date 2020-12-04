@@ -213,7 +213,7 @@ namespace Tify
             //demo
             this.ActiveControl = artist_label;
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);

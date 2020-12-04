@@ -56,7 +56,7 @@ namespace Tify
             {
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
                 {
-                    cmd.Parameters.AddWithValue("@id", trackID);
+                    cmd.Parameters.AddWithValue("@id",trackID);
                     using (SqlDataReader reader=cmd.ExecuteReader())
                     {
                         trackTable.Load(reader);
@@ -69,7 +69,7 @@ namespace Tify
                 }
                 else
                 {
-                    DataGridViewRow temp = dataGridView1.RowTemplate;
+                    DataGridViewRow temp = (DataGridViewRow)dataGridView1.Rows[0].Clone();
                     using (PictureBox pb=new PictureBox())
                     {
                         pb.Load(GetSongData.GetSongCover(trackTable.Rows[0]["trackLink"].ToString()));
@@ -93,6 +93,8 @@ namespace Tify
             /*  dataGridView1.Rows.Add(Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"), "Hole in the heart", "Yorushika",
                                       DateTime.Now.Date.ToString(), "3:42", Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"),
                                       Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"));*/
+            dataGridView1.Rows.Add();
+            dataGridView1.Rows[0].Visible = false;
             loadTrack(textBox1.Text);
             dataGridView1.Rows.AddRange(rows.ToArray());
         }
