@@ -26,11 +26,7 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
 
-            //
-            container.Artist = "Yorushika";
-            container.Time = "4:02";
-            container.DateAdded = "29/11/2020";
-
+           
             //addTrack(new trackContainer());
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
@@ -48,14 +44,18 @@ namespace Tify
             //dummy row
             dataGridView1.Rows.Add();
             dataGridView1.Rows[0].Visible = false;
+
+            //MessageBox.Show(dataGridView1.Font.ToString());
+            
         }
-        trackContainer container = new trackContainer();
+       
 
        
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable=new DataTable();
         public void loadTrack(string trackID)
         {
+            trackTable.Clear();
             string sqlQuery = "Select Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
                 "join Artist on Artist.artistID = ArtistHasTrack.artistID where Track.trackID = @id";
             connection.Open();
@@ -94,6 +94,8 @@ namespace Tify
                     temp.Cells[1].Value = trackTable.Rows[0]["trackTitle"].ToString();
                     temp.Cells[2].Value = artist;
                     temp.Cells[3].Value = DateTime.Now.ToShortDateString();
+                    temp.Cells[5].Value = rightIconImgList.Images["add.png"];
+                    temp.Cells[6].Value = rightIconImgList.Images["liked.png"];
                     int[] duration = GetSongData.GetSongDuration(trackTable.Rows[0]["trackLink"].ToString());
                     if (duration[1]<10)
                         temp.Cells[4].Value = duration[0].ToString() + ":0" + duration[1].ToString();
@@ -108,7 +110,9 @@ namespace Tify
             }
             catch (Exception e)
             {
+                connection.Close();
                 MessageBox.Show(e.Message);
+                 
             }
 
             connection.Close();
@@ -121,7 +125,22 @@ namespace Tify
             loadTrack(textBox1.Text);
             try
             {
-                dataGridView1.Rows.AddRange(rows.ToArray());
+                foreach (DataGridViewRow item in rows.ToArray())
+                {
+                    try
+                    {
+                        dataGridView1.Rows.Add(item);
+
+                    }
+                    catch (Exception)
+                    {
+
+                        
+                    }
+                }
+
+                //change to addrange
+                //dataGridView1.Rows.AddRange(rows.ToArray());
 
             }
             catch (Exception ex)
@@ -131,12 +150,36 @@ namespace Tify
             }
         }
 
-        public void addTrack(trackContainer track)
+      
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-
+            if (e.RowIndex<=0)
+                return;
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.FromArgb(19, 19, 20);
+            }
         }
 
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= 0)
+                return;
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.Black;
+            }
+        }
+
+        
     }
 }

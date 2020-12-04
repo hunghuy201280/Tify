@@ -848,11 +848,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Tify.Properties.Resources.not_found;
-            this.pictureBox1.Location = new System.Drawing.Point(52, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 96);
-            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // MainScreen
@@ -944,9 +943,9 @@
         private RightClickCreatePlayList.RightClickCreatePlayList rightClickCreatePlayList1;
         private DevExpress.XtraEditors.PopupContainerControl searchBar_PopupContainer;
         private System.Windows.Forms.Panel searchNoResult_panel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
