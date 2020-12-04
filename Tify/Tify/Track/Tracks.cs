@@ -36,12 +36,18 @@ namespace Tify
             connection = new SqlConnection(connectionString);
 
 
+            //enable doublebuffered
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+
+
+            //dummy row
+            dataGridView1.Rows.Add();
+            dataGridView1.Rows[0].Visible = false;
         }
         trackContainer container = new trackContainer();
 
@@ -50,7 +56,8 @@ namespace Tify
         private DataTable trackTable=new DataTable();
         public void loadTrack(string trackID)
         {
-            string sqlQuery = "Select * from Track where trackID=@id";
+            string sqlQuery = "Select Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
+                "join Artist on Artist.artistID = ArtistHasTrack.artistID where Track.trackID = @id";
             connection.Open();
             try
             {
@@ -70,14 +77,33 @@ namespace Tify
                 else
                 {
                     DataGridViewRow temp = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+                    string trackLink = trackTable.Rows[0]["trackLink"].ToString();
                     using (PictureBox pb=new PictureBox())
                     {
-                        pb.Load(GetSongData.GetSongCover(trackTable.Rows[0]["trackLink"].ToString()));
+                        pb.Load(GetSongData.GetSongCover(trackLink));
                         temp.Cells[0].Value = pb.Image;
                     }
-                    rows.Add(temp);
+
                     
                    
+                    string artist="";
+                    foreach (DataRow item in trackTable.Rows)
+                    {
+                        artist += item["artistName"].ToString() + ";";
+                    }
+                    temp.Cells[1].Value = trackTable.Rows[0]["trackTitle"].ToString();
+                    temp.Cells[2].Value = artist;
+                    temp.Cells[3].Value = DateTime.Now.ToShortDateString();
+                    int[] duration = GetSongData.GetSongDuration(trackTable.Rows[0]["trackLink"].ToString());
+                    if (duration[1]<10)
+                        temp.Cells[4].Value = duration[0].ToString() + ":0" + duration[1].ToString();
+                    else
+                        temp.Cells[4].Value = duration[0].ToString() + ":" + duration[1].ToString();
+
+                    temp.Visible = true;
+                    rows.Add(temp);
+                 
+
                 }
             }
             catch (Exception e)
@@ -90,13 +116,19 @@ namespace Tify
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            /*  dataGridView1.Rows.Add(Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"), "Hole in the heart", "Yorushika",
-                                      DateTime.Now.Date.ToString(), "3:42", Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"),
-                                      Image.FromFile(@"C:\Users\Admin\Downloads\Tailieu\C#\Tify\dummy_music_pic.png"));*/
-            dataGridView1.Rows.Add();
-            dataGridView1.Rows[0].Visible = false;
+            
+            
             loadTrack(textBox1.Text);
-            dataGridView1.Rows.AddRange(rows.ToArray());
+            try
+            {
+                dataGridView1.Rows.AddRange(rows.ToArray());
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void addTrack(trackContainer track)
