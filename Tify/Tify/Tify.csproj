@@ -101,6 +101,12 @@
     </Compile>
     <Compile Include="Class\GetData.cs" />
     <Compile Include="Class\TiengVietKhongDau.cs" />
+    <Compile Include="Home\SuggestSong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home\SuggestSong.designer.cs">
+      <DependentUpon>SuggestSong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\CreatePlayList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Artist\Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\SuggestSong.resx">
+      <DependentUpon>SuggestSong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
