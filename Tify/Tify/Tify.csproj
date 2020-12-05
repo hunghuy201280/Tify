@@ -33,31 +33,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsQuery, Version=1.3.3.249, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="GetData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\GetData\GetData.dll</HintPath>
-    </Reference>
     <Reference Include="MediaSlider">
       <HintPath>..\..\MediaSlider.dll</HintPath>
     </Reference>
     <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="progressBar">
       <HintPath>..\..\progressBar.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,28 +74,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreatePlayList.cs">
+    <Compile Include="Class\Account.cs" />
+    <Compile Include="Album\AlbumContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Album\AlbumContainer.Designer.cs">
+      <DependentUpon>AlbumContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Album\Albums.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatePlayList.Designer.cs">
+    <Compile Include="Album\Albums.Designer.cs">
+      <DependentUpon>Albums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Artist\Artist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Artist\Artist.Designer.cs">
+      <DependentUpon>Artist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Artist\ArtistContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Artist\ArtistContainer.Designer.cs">
+      <DependentUpon>ArtistContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\GetData.cs" />
+    <Compile Include="Class\TiengVietKhongDau.cs" />
+    <Compile Include="Playlist\CreatePlayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Playlist\CreatePlayList.Designer.cs">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Artist_NewCreate.cs">
+    <Compile Include="Artist\Artist_NewCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Artist_NewCreate.Designer.cs">
+    <Compile Include="Artist\Artist_NewCreate.Designer.cs">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForgotPassword.cs">
+    <Compile Include="Login\ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForgotPassword.Designer.cs">
+    <Compile Include="Login\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Home\HomeItemContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Home\HomeItemContainer.Designer.cs">
+      <DependentUpon>HomeItemContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MainScreen.cs">
@@ -99,77 +137,156 @@
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Home\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Home\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyMix.cs">
+    <Compile Include="MyMix\MyMix.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyMix.designer.cs">
+    <Compile Include="MyMix\MyMix.designer.cs">
       <DependentUpon>MyMix.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayList.cs">
+    <Compile Include="MyMix\MyMixContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyMix\MyMixContainer.Designer.cs">
+      <DependentUpon>MyMixContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\Playlist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayList.Designer.cs">
-      <DependentUpon>PlayList.cs</DependentUpon>
+    <Compile Include="Playlist\Playlist.Designer.cs">
+      <DependentUpon>Playlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\PlaylistContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Playlist\PlaylistContainer.Designer.cs">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SongDetail\ReccommendTrackControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SongDetail\ReccommendTrackControl.Designer.cs">
+      <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Register.Designer.cs">
+    <Compile Include="Login\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="SongDetail.cs">
+    <Compile Include="Login\resetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SongDetail.Designer.cs">
+    <Compile Include="Login\resetPassword.Designer.cs">
+      <DependentUpon>resetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Playlist\RightClickCreatePlayList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Playlist\RightClickCreatePlayList.Designer.cs">
+      <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SongDetail\SongDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongDetail\SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Artist_NewCreate.resx">
+    <Compile Include="Track\trackContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Track\trackContainer.Designer.cs">
+      <DependentUpon>trackContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Track\Tracks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Track\Tracks.Designer.cs">
+      <DependentUpon>Tracks.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Album\AlbumContainer.resx">
+      <DependentUpon>AlbumContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Album\Albums.resx">
+      <DependentUpon>Albums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Artist\Artist.resx">
+      <DependentUpon>Artist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Artist\ArtistContainer.resx">
+      <DependentUpon>ArtistContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Artist\Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatePlayList.resx">
+    <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForgotPassword.resx">
+    <EmbeddedResource Include="Login\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Home\HomeItemContainer.resx">
+      <DependentUpon>HomeItemContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Home\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyMix.resx">
+    <EmbeddedResource Include="MyMix\MyMix.resx">
       <DependentUpon>MyMix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayList.resx">
-      <DependentUpon>PlayList.cs</DependentUpon>
+    <EmbeddedResource Include="MyMix\MyMixContainer.resx">
+      <DependentUpon>MyMixContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\Playlist.resx">
+      <DependentUpon>Playlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\PlaylistContainer.resx">
+      <DependentUpon>PlaylistContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Register.resx">
+    <EmbeddedResource Include="SongDetail\ReccommendTrackControl.resx">
+      <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SongDetail.resx">
+    <EmbeddedResource Include="Login\resetPassword.resx">
+      <DependentUpon>resetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\RightClickCreatePlayList.resx">
+      <DependentUpon>RightClickCreatePlayList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongDetail\SongDetail.resx">
       <DependentUpon>SongDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Track\trackContainer.resx">
+      <DependentUpon>trackContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Track\Tracks.resx">
+      <DependentUpon>Tracks.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />
     <None Include="packages.config" />
@@ -254,10 +371,136 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Playlist\Playlist.csproj">
-      <Project>{658BFAC3-0B79-408D-A308-236BB5C3B66B}</Project>
-      <Name>Playlist</Name>
-    </ProjectReference>
+    <None Include="Resources\dummy_artist.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\album.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\album_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\artist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\artist_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dummy_artist1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dummy_cover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimumUI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\my_mix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\my_mix_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\normalUI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\not_found.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_artist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playlist_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\region_global_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\region_jp_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\track_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\like.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\liked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
