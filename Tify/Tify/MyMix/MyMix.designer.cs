@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.MyMix_GroupBox = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mix_Flowpanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.myMixContainer1 = new Tify.MyMixContainer();
             this.myMixContainer2 = new Tify.MyMixContainer();
             this.myMixContainer3 = new Tify.MyMixContainer();
-            this.button1 = new System.Windows.Forms.Button();
             this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.MyMix_GroupBox.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.mix_Flowpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MyMix_GroupBox
             // 
-            this.MyMix_GroupBox.Controls.Add(this.flowLayoutPanel1);
+            this.MyMix_GroupBox.Controls.Add(this.mix_Flowpanel);
             this.MyMix_GroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyMix_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MyMix_GroupBox.ForeColor = System.Drawing.Color.White;
@@ -54,19 +54,31 @@
             this.MyMix_GroupBox.Visible = false;
             this.MyMix_GroupBox.Resize += new System.EventHandler(this.groupBox1_Resize);
             // 
-            // flowLayoutPanel1
+            // mix_Flowpanel
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.myMixContainer1);
-            this.flowLayoutPanel1.Controls.Add(this.myMixContainer2);
-            this.flowLayoutPanel1.Controls.Add(this.myMixContainer3);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1122, 649);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.mix_Flowpanel.AutoScroll = true;
+            this.mix_Flowpanel.AutoSize = true;
+            this.mix_Flowpanel.Controls.Add(this.button1);
+            this.mix_Flowpanel.Controls.Add(this.myMixContainer1);
+            this.mix_Flowpanel.Controls.Add(this.myMixContainer2);
+            this.mix_Flowpanel.Controls.Add(this.myMixContainer3);
+            this.mix_Flowpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mix_Flowpanel.Location = new System.Drawing.Point(3, 36);
+            this.mix_Flowpanel.Name = "mix_Flowpanel";
+            this.mix_Flowpanel.Size = new System.Drawing.Size(1122, 649);
+            this.mix_Flowpanel.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 43);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add Mix";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // myMixContainer1
             // 
@@ -92,18 +104,6 @@
             this.myMixContainer3.Size = new System.Drawing.Size(172, 230);
             this.myMixContainer3.TabIndex = 22;
             // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.DarkRed;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 43);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add Mix";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // playlistDetail_panel
             // 
             this.playlistDetail_panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,15 +125,15 @@
             this.Load += new System.EventHandler(this.MyMix_Load);
             this.MyMix_GroupBox.ResumeLayout(false);
             this.MyMix_GroupBox.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.mix_Flowpanel.ResumeLayout(false);
+            this.mix_Flowpanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.GroupBox MyMix_GroupBox;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel mix_Flowpanel;
         private System.Windows.Forms.Panel playlistDetail_panel;
         private System.Windows.Forms.Button button1;
         private MyMixContainer myMixContainer1;

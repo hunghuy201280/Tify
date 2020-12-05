@@ -23,6 +23,19 @@ namespace Tify
             }
 
         }
+        Playlist playlist;
+        public PlaylistContainer(Playlist callform)
+        {
+            InitializeComponent();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            playlist = callform;
+            opacity_panel.Click += callform.opacity_panel_Click;
+        }
 
         private void PlaylistContainer_Load(object sender, EventArgs e)
         {

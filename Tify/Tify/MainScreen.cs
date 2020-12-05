@@ -52,6 +52,7 @@ namespace Tify
         private Albums albumsScr;
         private Tracks tracksScr;
         private Account currentUser;
+        
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
 
@@ -515,14 +516,14 @@ namespace Tify
 
         #region Mở childForm
 
-        private Form activeForm = null;
+        public Form activeForm = null;
 
         private void firstLoadChildForm()
         {
             artistScr = new Artist();
             homeScr = new Home(this);
-            myMixScr = new MyMix();
-            playlistScr = new Playlist();
+            myMixScr = new MyMix(this);
+            playlistScr = new Playlist(this);
             albumsScr = new Albums();
             tracksScr = new Tracks();
             Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr };

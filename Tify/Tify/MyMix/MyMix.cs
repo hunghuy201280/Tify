@@ -24,14 +24,59 @@ namespace Tify
         }
          bool Mixed ;
 
-        public MyMix(bool hasMix)
+        private MainScreen mainScr;
+        public MyMix(MainScreen callform)
         {
-            Mixed = hasMix;
-
             InitializeComponent();
 
+            mainScr = callform;
 
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            firstLoadChildForm();
+
+            test = new MyMixContainer(this);
+            mix_Flowpanel.Controls.Add(test);
         }
+
+        private MyMixContainer test;
+
+
+
+
+
+        #region Mở childForm
+
+
+        private MixDetail mixDetail;
+        private void firstLoadChildForm()
+        {
+            mixDetail = new MixDetail();
+            mixDetail.TopLevel = false;
+            mixDetail.FormBorderStyle = FormBorderStyle.None;
+            mixDetail.Dock = DockStyle.Fill;
+            mainScr.childForm_panel.Controls.Add(mixDetail);
+            mixDetail.Show();
+        }
+
+        public void openChildForm(Form childForm)
+        {
+            if (mainScr.activeForm != null)
+            {
+                if (mainScr.activeForm == childForm)
+                    return;
+                mainScr.activeForm.SendToBack();
+            }
+
+            mainScr.activeForm = childForm;
+
+            childForm.BringToFront();
+        }
+
+        #endregion Mở childForm
 
         private void MyMix_Load(object sender, EventArgs e)
         {
@@ -57,7 +102,7 @@ namespace Tify
            
             
             
-            flowLayoutPanel1.Controls.Add(mix);
+            mix_Flowpanel.Controls.Add(mix);
             
             
         }
@@ -65,6 +110,11 @@ namespace Tify
         private void button1_Click(object sender, EventArgs e)
         {
             addMix();
+        }
+
+        public void opacity_panel_Click(object sender, EventArgs e)
+        {
+            openChildForm(mixDetail);
         }
     }
 }

@@ -24,6 +24,18 @@ namespace Tify
 
         }
 
+        public MyMixContainer(MyMix callform)
+        {
+            InitializeComponent();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            opacity_panel.Click += callform.opacity_panel_Click;
+        }
+
 
 
         private void myMixCover_panel_MouseHover(object sender, EventArgs e)

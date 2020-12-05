@@ -141,7 +141,8 @@
             // playlistContainer1
             // 
             this.playlistContainer1.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer1.Location = new System.Drawing.Point(3, 3);
+            this.playlistContainer1.Location = new System.Drawing.Point(5, 0);
+            this.playlistContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.playlistContainer1.Name = "playlistContainer1";
             this.playlistContainer1.Size = new System.Drawing.Size(172, 235);
             this.playlistContainer1.TabIndex = 0;
@@ -149,7 +150,8 @@
             // playlistContainer2
             // 
             this.playlistContainer2.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer2.Location = new System.Drawing.Point(181, 3);
+            this.playlistContainer2.Location = new System.Drawing.Point(187, 0);
+            this.playlistContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.playlistContainer2.Name = "playlistContainer2";
             this.playlistContainer2.Size = new System.Drawing.Size(172, 235);
             this.playlistContainer2.TabIndex = 1;
@@ -157,7 +159,8 @@
             // playlistContainer3
             // 
             this.playlistContainer3.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer3.Location = new System.Drawing.Point(359, 3);
+            this.playlistContainer3.Location = new System.Drawing.Point(369, 0);
+            this.playlistContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.playlistContainer3.Name = "playlistContainer3";
             this.playlistContainer3.Size = new System.Drawing.Size(172, 235);
             this.playlistContainer3.TabIndex = 2;
@@ -165,7 +168,8 @@
             // playlistContainer4
             // 
             this.playlistContainer4.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer4.Location = new System.Drawing.Point(537, 3);
+            this.playlistContainer4.Location = new System.Drawing.Point(551, 0);
+            this.playlistContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.playlistContainer4.Name = "playlistContainer4";
             this.playlistContainer4.Size = new System.Drawing.Size(172, 235);
             this.playlistContainer4.TabIndex = 3;
