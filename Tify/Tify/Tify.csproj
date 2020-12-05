@@ -174,6 +174,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SearchBox\SearchBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBox\SearchBox.Designer.cs">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchBox\SearchBox_childForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchBox\SearchBox_childForm.Designer.cs">
+      <DependentUpon>SearchBox_childForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SongDetail\ReccommendTrackControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -266,6 +278,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchBox\SearchBox.resx">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchBox\SearchBox_childForm.resx">
+      <DependentUpon>SearchBox_childForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SongDetail\ReccommendTrackControl.resx">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>

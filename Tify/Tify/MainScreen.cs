@@ -52,6 +52,7 @@ namespace Tify
         private Albums albumsScr;
         private Tracks tracksScr;
         private Account currentUser;
+        private SearchBox SrchBox;
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
 
@@ -519,7 +520,8 @@ namespace Tify
             playlistScr = new Playlist();
             albumsScr = new Albums();
             tracksScr = new Tracks();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr };
+            SrchBox = new SearchBox();
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr,SrchBox };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -631,6 +633,7 @@ namespace Tify
                     return;
                 }
                 searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);*/
+                openChildForm(SrchBox);
             }
 
         }
