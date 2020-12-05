@@ -113,6 +113,12 @@
     <Compile Include="MyMix\MixDetail.Designer.cs">
       <DependentUpon>MixDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Playlist\PlaylistDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Playlist\PlaylistDetail.Designer.cs">
+      <DependentUpon>PlaylistDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\CreatePlayList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\PlaylistContainer.resx">
       <DependentUpon>PlaylistContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\PlaylistDetail.resx">
+      <DependentUpon>PlaylistDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -519,6 +528,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\liked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
