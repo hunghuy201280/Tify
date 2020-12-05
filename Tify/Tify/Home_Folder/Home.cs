@@ -20,6 +20,9 @@ namespace Tify
             InitializeComponent();
             
         }
+
+        private DateTimePicker dateTimePicker1;
+        private ComboBox comboBox1;
         private MainScreen callForm = null;
         public Home(MainScreen parentForm)
         {
@@ -83,5 +86,36 @@ namespace Tify
             home_flowLayoutPanel.AutoScroll = true;
         }
         #endregion
+
+        private void InitializeComponent()
+        {
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(148, 153);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(93, 109);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // Home
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Name = "Home";
+            this.ResumeLayout(false);
+
+        }
     }
 }
