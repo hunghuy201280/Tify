@@ -33,6 +33,8 @@
             this.recentlyPlayed = new Tify.HomeItemContainer();
             this.mixesForYou = new Tify.HomeItemContainer();
             this.theCharts = new Tify.HomeItemContainer();
+            this.suggestSong1 = new Tify.SuggestSong();
+            this.suggestSong2 = new Tify.SuggestSong();
             this.home_flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +45,8 @@
             this.home_flowLayoutPanel.Controls.Add(this.recentlyPlayed);
             this.home_flowLayoutPanel.Controls.Add(this.mixesForYou);
             this.home_flowLayoutPanel.Controls.Add(this.theCharts);
+            this.home_flowLayoutPanel.Controls.Add(this.suggestSong1);
+            this.home_flowLayoutPanel.Controls.Add(this.suggestSong2);
             this.home_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.home_flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.home_flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -86,6 +90,22 @@
             this.theCharts.Size = new System.Drawing.Size(1045, 285);
             this.theCharts.TabIndex = 4;
             // 
+            // suggestSong1
+            // 
+            this.suggestSong1.BackColor = System.Drawing.Color.Black;
+            this.suggestSong1.Location = new System.Drawing.Point(3, 905);
+            this.suggestSong1.Name = "suggestSong1";
+            this.suggestSong1.Size = new System.Drawing.Size(1045, 340);
+            this.suggestSong1.TabIndex = 5;
+            // 
+            // suggestSong2
+            // 
+            this.suggestSong2.BackColor = System.Drawing.Color.Black;
+            this.suggestSong2.Location = new System.Drawing.Point(3, 1251);
+            this.suggestSong2.Name = "suggestSong2";
+            this.suggestSong2.Size = new System.Drawing.Size(1045, 340);
+            this.suggestSong2.TabIndex = 6;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,5 +128,7 @@
         private HomeItemContainer recentlyPlayed;
         private HomeItemContainer mixesForYou;
         private HomeItemContainer theCharts;
+        private SuggestSong suggestSong1;
+        private SuggestSong suggestSong2;
     }
 }
