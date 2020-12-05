@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
-using RightClickCreatePlayList;
+
 
 namespace Tify
 {
@@ -31,7 +31,7 @@ namespace Tify
 
 
             //testpopup
-            playlist_PopupContainer.Show();
+           
             //
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
@@ -52,7 +52,8 @@ namespace Tify
         private Albums albumsScr;
         private Tracks tracksScr;
         private Account currentUser;
-        
+        private SearchBox srchBox;
+
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
 
@@ -126,22 +127,8 @@ namespace Tify
 
         #region test
 
-        //popup
+  
 
-        private void button1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button==MouseButtons.Right)
-            {
-                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X,
-                                                             PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
-                playlist_PopupContainer.BringToFront();
-                
-            }
-            else
-            {
-                playlist_PopupContainer.SendToBack();
-            } 
-        }
 
         
 
@@ -220,7 +207,7 @@ namespace Tify
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
             //Set Main Screen for RightClickUC
-            rightClickCreatePlayList1.setMainScreen(this);
+            
 
 
 
@@ -526,7 +513,8 @@ namespace Tify
             playlistScr = new Playlist(this);
             albumsScr = new Albums();
             tracksScr = new Tracks();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr };
+            srchBox = new SearchBox();
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr, srchBox };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -638,6 +626,7 @@ namespace Tify
                     return;
                 }
                 searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);*/
+                openChildForm(srchBox);
             }
 
         }
@@ -707,32 +696,7 @@ namespace Tify
 
         //test 
 
-        bool PlayList_isClicked=false;
-        public void PlayListClick(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Right&& PlayList_isClicked==false)
-            {
-                playlist_PopupContainer.Location = new Point(PointToClient(Cursor.Position).X, PointToClient(Cursor.Position).Y - playlist_PopupContainer.Size.Height);
-                playlist_PopupContainer.BringToFront();
-                playlist_PopupContainer.Show();
-                PlayList_isClicked = true;
-            }
-            else
-            {
-                //playlist_PopupContainer.Hide();
-                PlayList_isClicked = false;
-            }
-        }
-   
-
-        public void ExitFormCreatePlayList()
-        {
-            //playlist_PopupContainer.Hide();
-        PlayList_isClicked = false;
-            playlist_PopupContainer.SendToBack();
-        }
-
+     
 
 
         #endregion createplaylist

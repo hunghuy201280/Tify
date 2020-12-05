@@ -22,7 +22,7 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
         }
-         bool Mixed ;
+         
 
         private MainScreen mainScr;
         public MyMix(MainScreen callform)

@@ -61,7 +61,7 @@ namespace Tify
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             menu_pnl.Controls.Add(newbutton);
 
-            newbutton.MouseDown += mainScr.PlayListClick;
+            
 
 
 

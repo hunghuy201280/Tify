@@ -74,8 +74,6 @@
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.playlist_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
-            this.rightClickCreatePlayList1 = new RightClickCreatePlayList.RightClickCreatePlayList();
             this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.searchNoResult_panel = new System.Windows.Forms.Panel();
@@ -91,8 +89,6 @@
             this.searchBar_panel.SuspendLayout();
             this.searchbarContainer_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playlist_PopupContainer)).BeginInit();
-            this.playlist_PopupContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).BeginInit();
             this.searchBar_PopupContainer.SuspendLayout();
             this.searchNoResult_panel.SuspendLayout();
@@ -822,24 +818,6 @@
             this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
             this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
             // 
-            // playlist_PopupContainer
-            // 
-            this.playlist_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.playlist_PopupContainer.Controls.Add(this.rightClickCreatePlayList1);
-            this.playlist_PopupContainer.Location = new System.Drawing.Point(58, 30);
-            this.playlist_PopupContainer.Name = "playlist_PopupContainer";
-            this.playlist_PopupContainer.Size = new System.Drawing.Size(238, 432);
-            this.playlist_PopupContainer.TabIndex = 25;
-            // 
-            // rightClickCreatePlayList1
-            // 
-            this.rightClickCreatePlayList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
-            this.rightClickCreatePlayList1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightClickCreatePlayList1.Location = new System.Drawing.Point(0, 0);
-            this.rightClickCreatePlayList1.Name = "rightClickCreatePlayList1";
-            this.rightClickCreatePlayList1.Size = new System.Drawing.Size(238, 432);
-            this.rightClickCreatePlayList1.TabIndex = 0;
-            // 
             // searchBar_PopupContainer
             // 
             this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
@@ -905,7 +883,6 @@
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.Controls.Add(this.songDetail_panel);
-            this.Controls.Add(this.playlist_PopupContainer);
             this.Controls.Add(this.searchBar_PopupContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -928,8 +905,6 @@
             this.searchbarContainer_panel.ResumeLayout(false);
             this.searchbarContainer_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playlist_PopupContainer)).EndInit();
-            this.playlist_PopupContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).EndInit();
             this.searchBar_PopupContainer.ResumeLayout(false);
             this.searchNoResult_panel.ResumeLayout(false);
@@ -981,8 +956,7 @@
         private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
         private System.ComponentModel.BackgroundWorker searchBar_backgroundWorker;
-        private DevExpress.XtraEditors.PopupContainerControl playlist_PopupContainer;
-        private RightClickCreatePlayList.RightClickCreatePlayList rightClickCreatePlayList1;
+ 
         private DevExpress.XtraEditors.PopupContainerControl searchBar_PopupContainer;
         private System.Windows.Forms.Panel searchNoResult_panel;
         private System.Windows.Forms.Label label1;
