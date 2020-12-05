@@ -27,7 +27,6 @@ namespace Tify
             }
 
            
-            //addTrack(new trackContainer());
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
 

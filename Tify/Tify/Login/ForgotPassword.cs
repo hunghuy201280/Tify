@@ -52,7 +52,6 @@ namespace Tify
         }
 
         DataTable login = new DataTable();
-        Account account=new Account();
         private void done_button_Click(object sender, EventArgs e)
         {
             if (userName_textBox.Text == "" || phone_textBox.Text == "")
@@ -79,7 +78,7 @@ namespace Tify
                 }
 
             }
-            //Ko dang nhap dc
+            //sai username,phone
             if (login.Rows.Count == 0)
             {
                 MessageBox.Show("Wrong username or phone, try again");
@@ -88,12 +87,14 @@ namespace Tify
                 userName_textBox.Focus();
 
             }
-            else //Dang nhap thanh cong
+            else //Đúng username,phone
             {
                 username = login.Rows[0]["username"].ToString();
                 phone = login.Rows[0]["phone"].ToString();
-                account.Phone = phone;
-                account.Username = username;
+                Account account = new Account(login.Rows[0]["username"].ToString(), int.Parse(login.Rows[0]["userID"].ToString()),
+                                                login.Rows[0]["phone"].ToString(), login.Rows[0]["name"].ToString(),
+                                                login.Rows[0]["DOB"].ToString()
+                                               );
                 new resetPassword(account).ShowDialog();
 
                 this.Close();

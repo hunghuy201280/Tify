@@ -83,8 +83,7 @@ namespace Tify
             }
             string sqlCommand = "Select * from Account where username=@usrname and password=@passwd";
             connection.Open();
-            string username;
-            int userID;
+        
 
             using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
             {
@@ -109,12 +108,13 @@ namespace Tify
             }
             else //Dang nhap thanh cong
             {
-                username = login.Rows[0]["username"].ToString();
-                userID = int.Parse(login.Rows[0]["userID"].ToString());
+                Account account = new Account(login.Rows[0]["username"].ToString(), int.Parse(login.Rows[0]["userID"].ToString()),
+                                              login.Rows[0]["phone"].ToString(), login.Rows[0]["name"].ToString(),
+                                              login.Rows[0]["DOB"].ToString()
+                                             );
                 MessageBox.Show("Login successfully !");
-                mainScr.CurrentUser.UserID = userID;
-                mainScr.CurrentUser.Username = username;
-                mainScr.setAccountButtonUsername(username);
+                mainScr.setAccount(account);
+                mainScr.setAccountButtonUsername(login.Rows[0]["username"].ToString());
                 this.Close();
             }
             login.Clear();

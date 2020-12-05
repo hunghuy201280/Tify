@@ -42,7 +42,7 @@ namespace Tify
             connection = new SqlConnection(connectString);
 
             loginForm = new Login(this);
-            currentUser = new Account();
+            
         }
 
         private Home homeScr;
@@ -354,6 +354,9 @@ namespace Tify
 
                 //Chỉnh vị trí nút play/pause/shuffle...
                 play_pause_panel.Location = new Point(200, 0);
+
+                //Ẩn like,add button
+                add_like_panel.Hide();
             }
             else if (this.Size.Width > 975 && checkResize == true)
             {
@@ -368,6 +371,9 @@ namespace Tify
                 //center 3 nut play/pause/shuffle
                 play_pause_panel.Left = (player_panel.ClientSize.Width - play_pause_panel.Width) / 2;
                 play_pause_panel.Top = (player_panel.ClientSize.Height - play_pause_panel.Height) / 2;
+
+                //Hiện like,add button
+                add_like_panel.Show();
             }
 
          
@@ -683,10 +689,7 @@ namespace Tify
 
             }
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         #endregion
 
@@ -1022,7 +1025,15 @@ namespace Tify
             account_button.Text = usrn;
         }
 
+        public void setAccount(Account account)
+        {
+            currentUser = account;
+        }
+
         #endregion get/set control, perform event
+
+        //
+
 
         #region next/previous button event
 
@@ -1054,7 +1065,7 @@ namespace Tify
             }
             loadNewSong(suggestedSong[0]);
         }
-
+        
         #endregion next/previous button event
 
 

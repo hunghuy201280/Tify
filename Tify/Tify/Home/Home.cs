@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Tify
 {
+    //Recently,chart,mix for you,
+    //2 cai because you listened to
     public partial class Home : Form
     {
         public Home()
@@ -38,28 +40,10 @@ namespace Tify
             //MainScreen.hideScrollBar(flowLayoutPanel1, "flow");
             DoubleBuffered = true;
 
-            foreach (var item in home_flowLayoutPanel.Controls)
-            {
-                if (item is GroupBox)
-                {
-                    GroupBox groupBox = (GroupBox)item;
-                    foreach (var flow in groupBox.Controls)
-                    {
-                        if (flow is FlowLayoutPanel)
-                        {
-                            FlowLayoutPanel flowLayoutPanel = flow as FlowLayoutPanel;
-                            flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
-                            flowLayoutPanel.HorizontalScroll.Maximum = 195 * flowLayoutPanel.Controls.Count +
-                                195 - flowLayoutPanel.Size.Width;
-                            typeof(FlowLayoutPanel).InvokeMember("DoubleBuffered",
-            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-            null, flowLayoutPanel, new object[] { true });
-                        }
+            mixesForYou.setContainerName("Mixes For You");
+            theCharts.setContainerName("The Charts");
 
-                    }
-
-                }
-            }
+            hideScrollBar();
         }
 
         //test
@@ -77,7 +61,7 @@ namespace Tify
                 if (item is HomeItemContainer)
                 {
                     HomeItemContainer temp = item as HomeItemContainer;
-                    temp.Size = new Size(panel.Size.Width, temp.Size.Height);
+                    temp.Size = new Size(panel.Size.Width-15, temp.Size.Height);
                 }
             }
         }
@@ -85,8 +69,19 @@ namespace Tify
 
         private void button1_Click(object sender, EventArgs e)
         {
-            homeItemContainer1.addItem(new PlaylistContainer());
+            recentlyPlayed.addItem(new PlaylistContainer());
             HomeItemContainer a = new HomeItemContainer();
          }
+
+        #region hideScrollBar
+
+        private void hideScrollBar()
+        {
+            home_flowLayoutPanel.AutoScroll = false;
+            home_flowLayoutPanel.HorizontalScroll.Maximum = 0;
+            home_flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
+            home_flowLayoutPanel.AutoScroll = true;
+        }
+        #endregion
     }
 }

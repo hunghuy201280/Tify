@@ -30,14 +30,19 @@
         {
             this.home_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.homeItemContainer1 = new Tify.HomeItemContainer();
+            this.recentlyPlayed = new Tify.HomeItemContainer();
+            this.mixesForYou = new Tify.HomeItemContainer();
+            this.theCharts = new Tify.HomeItemContainer();
             this.home_flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // home_flowLayoutPanel
             // 
+            this.home_flowLayoutPanel.AutoScroll = true;
             this.home_flowLayoutPanel.Controls.Add(this.button1);
-            this.home_flowLayoutPanel.Controls.Add(this.homeItemContainer1);
+            this.home_flowLayoutPanel.Controls.Add(this.recentlyPlayed);
+            this.home_flowLayoutPanel.Controls.Add(this.mixesForYou);
+            this.home_flowLayoutPanel.Controls.Add(this.theCharts);
             this.home_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.home_flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.home_flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -57,13 +62,29 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // homeItemContainer1
+            // recentlyPlayed
             // 
-            this.homeItemContainer1.BackColor = System.Drawing.Color.Black;
-            this.homeItemContainer1.Location = new System.Drawing.Point(3, 32);
-            this.homeItemContainer1.Name = "homeItemContainer1";
-            this.homeItemContainer1.Size = new System.Drawing.Size(1045, 285);
-            this.homeItemContainer1.TabIndex = 2;
+            this.recentlyPlayed.BackColor = System.Drawing.Color.Black;
+            this.recentlyPlayed.Location = new System.Drawing.Point(3, 32);
+            this.recentlyPlayed.Name = "recentlyPlayed";
+            this.recentlyPlayed.Size = new System.Drawing.Size(1045, 285);
+            this.recentlyPlayed.TabIndex = 2;
+            // 
+            // mixesForYou
+            // 
+            this.mixesForYou.BackColor = System.Drawing.Color.Black;
+            this.mixesForYou.Location = new System.Drawing.Point(3, 323);
+            this.mixesForYou.Name = "mixesForYou";
+            this.mixesForYou.Size = new System.Drawing.Size(1045, 285);
+            this.mixesForYou.TabIndex = 3;
+            // 
+            // theCharts
+            // 
+            this.theCharts.BackColor = System.Drawing.Color.Black;
+            this.theCharts.Location = new System.Drawing.Point(3, 614);
+            this.theCharts.Name = "theCharts";
+            this.theCharts.Size = new System.Drawing.Size(1045, 285);
+            this.theCharts.TabIndex = 4;
             // 
             // Home
             // 
@@ -84,6 +105,8 @@
         #endregion
         private System.Windows.Forms.FlowLayoutPanel home_flowLayoutPanel;
         private System.Windows.Forms.Button button1;
-        private HomeItemContainer homeItemContainer1;
+        private HomeItemContainer recentlyPlayed;
+        private HomeItemContainer mixesForYou;
+        private HomeItemContainer theCharts;
     }
 }
