@@ -583,11 +583,6 @@ namespace Tify
 
         #region Searchbar 
 
-        private void searchBar_textBox_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
 
         //place holder
         //Got focus
@@ -626,7 +621,19 @@ namespace Tify
 
         //search event
 
-      
+        private void searchBar_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // dataGridView1.DataSource = null;
+            if (e.KeyChar == (char)13)//enter
+            {
+                /*if (searchBar_backgroundWorker.IsBusy)
+                {
+                    return;
+                }
+                searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);*/
+            }
+
+        }
         DataTable searchTable=new DataTable();
         private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -1033,10 +1040,7 @@ namespace Tify
             loadNewSong(lastTrack);
         }
 
-        private void searchBar_textBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
+     
 
         private void next_button_Click(object sender, EventArgs e)
         {
