@@ -107,6 +107,12 @@
     <Compile Include="Home\SuggestSong.designer.cs">
       <DependentUpon>SuggestSong.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyMix\MixDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyMix\MixDetail.Designer.cs">
+      <DependentUpon>MixDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\CreatePlayList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home\SuggestSong.resx">
       <DependentUpon>SuggestSong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyMix\MixDetail.resx">
+      <DependentUpon>MixDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
