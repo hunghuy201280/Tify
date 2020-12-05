@@ -101,11 +101,17 @@
     </Compile>
     <Compile Include="Class\GetData.cs" />
     <Compile Include="Class\TiengVietKhongDau.cs" />
-    <Compile Include="Home_Folder\SuggestSong.cs">
+    <Compile Include="Home\SuggestSong.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Home_Folder\SuggestSong.Designer.cs">
+    <Compile Include="Home\SuggestSong.designer.cs">
       <DependentUpon>SuggestSong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyMix\MixDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyMix\MixDetail.Designer.cs">
+      <DependentUpon>MixDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Playlist\CreatePlayList.cs">
       <SubType>Form</SubType>
@@ -125,10 +131,10 @@
     <Compile Include="Login\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home_Folder\HomeItemContainer.cs">
+    <Compile Include="Home\HomeItemContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Home_Folder\HomeItemContainer.Designer.cs">
+    <Compile Include="Home\HomeItemContainer.Designer.cs">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
@@ -143,8 +149,11 @@
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home_Folder\Home.cs">
+    <Compile Include="Home\Home.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="MyMix\MyMix.cs">
       <SubType>Form</SubType>
@@ -234,8 +243,11 @@
     <EmbeddedResource Include="Artist\Artist_NewCreate.resx">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home_Folder\SuggestSong.resx">
+    <EmbeddedResource Include="Home\SuggestSong.resx">
       <DependentUpon>SuggestSong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyMix\MixDetail.resx">
+      <DependentUpon>MixDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
@@ -243,13 +255,13 @@
     <EmbeddedResource Include="Login\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home_Folder\HomeItemContainer.resx">
+    <EmbeddedResource Include="Home\HomeItemContainer.resx">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home_Folder\Home.resx">
+    <EmbeddedResource Include="Home\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
