@@ -717,7 +717,7 @@
             this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
             this.searchBar_textBox.TabIndex = 2;
             this.searchBar_textBox.Text = "Search";
-            this.searchBar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBar_textBox_KeyPress_1);
+            this.searchBar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBar_textBox_KeyPress);
             // 
             // searchBar_icon
             // 
