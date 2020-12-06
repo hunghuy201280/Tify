@@ -110,6 +110,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Tracks_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Tracks_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Tracks_dataGridView.EnableHeadersVisualStyles = false;
             this.Tracks_dataGridView.GridColor = System.Drawing.Color.Black;
             this.Tracks_dataGridView.Location = new System.Drawing.Point(0, 0);
@@ -140,6 +141,7 @@
             this.Tracks_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Tracks_dataGridView.Size = new System.Drawing.Size(827, 450);
             this.Tracks_dataGridView.TabIndex = 1;
+            this.Tracks_dataGridView.Tag = "track_button";
             // 
             // Album_dataGridView
             // 
@@ -173,9 +175,10 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Album_dataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Album_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Album_dataGridView.EnableHeadersVisualStyles = false;
             this.Album_dataGridView.GridColor = System.Drawing.Color.Black;
-            this.Album_dataGridView.Location = new System.Drawing.Point(12, 71);
+            this.Album_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.Album_dataGridView.Name = "Album_dataGridView";
             this.Album_dataGridView.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -203,6 +206,7 @@
             this.Album_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Album_dataGridView.Size = new System.Drawing.Size(827, 450);
             this.Album_dataGridView.TabIndex = 2;
+            this.Album_dataGridView.Tag = "album_button";
             // 
             // Artists_dataGridView
             // 
@@ -236,9 +240,10 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Artists_dataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Artists_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Artists_dataGridView.EnableHeadersVisualStyles = false;
             this.Artists_dataGridView.GridColor = System.Drawing.Color.Black;
-            this.Artists_dataGridView.Location = new System.Drawing.Point(0, 154);
+            this.Artists_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.Artists_dataGridView.Name = "Artists_dataGridView";
             this.Artists_dataGridView.ReadOnly = true;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -266,6 +271,7 @@
             this.Artists_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Artists_dataGridView.Size = new System.Drawing.Size(827, 450);
             this.Artists_dataGridView.TabIndex = 3;
+            this.Artists_dataGridView.Tag = "artist_button";
             // 
             // PlayLists_dataGridView
             // 
@@ -299,9 +305,10 @@
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PlayLists_dataGridView.DefaultCellStyle = dataGridViewCellStyle14;
+            this.PlayLists_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayLists_dataGridView.EnableHeadersVisualStyles = false;
             this.PlayLists_dataGridView.GridColor = System.Drawing.Color.Black;
-            this.PlayLists_dataGridView.Location = new System.Drawing.Point(0, 222);
+            this.PlayLists_dataGridView.Location = new System.Drawing.Point(0, 0);
             this.PlayLists_dataGridView.Name = "PlayLists_dataGridView";
             this.PlayLists_dataGridView.ReadOnly = true;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -329,6 +336,7 @@
             this.PlayLists_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PlayLists_dataGridView.Size = new System.Drawing.Size(827, 450);
             this.PlayLists_dataGridView.TabIndex = 4;
+            this.PlayLists_dataGridView.Tag = "playlist_button";
             // 
             // img
             // 
@@ -493,7 +501,7 @@
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn10.HeaderText = "ARTIST";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ARTIST**";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 

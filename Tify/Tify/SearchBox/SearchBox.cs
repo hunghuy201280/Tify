@@ -12,6 +12,7 @@ namespace Tify
 {
     public partial class SearchBox : Form
     {
+        private SearchBox_childForm kid;
         public SearchBox()
         {
             InitializeComponent();
@@ -20,69 +21,36 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            //mouseenter
-          /*  SearchBox_Tracks.MouseHover += MouseHover;
+
+            kid = new SearchBox_childForm();
+            kid.TopLevel = false;
+            kid.FormBorderStyle = FormBorderStyle.None;
+            kid.Dock = DockStyle.Fill;
+            //mousehovver
+
+            /*SearchBox_Tracks.MouseHover += MouseHover;
             SearchBox_Artists.MouseHover += MouseHover;
             SearchBox_Album.MouseHover += MouseHover;
             SearchBox_PlayLists.MouseHover += MouseHover;*/
 
-            //mouseleave
-            /*   SearchBox_Tracks.MouseLeave += MouseLeave;
-               SearchBox_Artists.MouseLeave += MouseLeave;
-               SearchBox_Album.MouseLeave += MouseLeave;
-               SearchBox_PlayLists.MouseLeave += MouseLeave;
-   */
+
+
 
 
         }
 
 
-      /*  private void MouseHover(object sender, EventArgs e)
+        /*private void MouseHover(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             btn.BackColor = Color.White;
             btn.ForeColor = Color.Black;
 
         }*/
-        /* private void MouseLeave(object sender, EventArgs e)
-         {
-             Button btn = (Button)sender;
-             btn.ForeColor = Color.White;
-             btn.BackColor = Color.Black;
-
-         }
- */
-        private SearchBox_childForm kid;
-
-        /*  private void loadForm(object sender, EventArgs e)
-          {
-              kid = new SearchBox_childForm();
-              kid.TopLevel = false;
-              kid.FormBorderStyle = FormBorderStyle.None;
-              kid.Dock = DockStyle.Fill;
-              ChildForm_panel.Controls.Add(kid);
-              kid.Show();
-          }*/
-
-       
-        /*   kid = new SearchBox_childForm();
-           kid.TopLevel = false;
-           kid.FormBorderStyle = FormBorderStyle.None;
-           kid.Dock = DockStyle.Fill;
-           ChildForm_panel.Controls.Add(kid);
 
 
-           foreach (DataGridView item in kid.Controls) 
-           {
-               if (item != kid.Artists_dataGridView)
-               {
-                   item.SendToBack();
-               }
-           }
-           kid.Artists_dataGridView.BringToFront();
-           kid.Artists_dataGridView.Dock = DockStyle.Fill;
+      
 
-           kid.Show();*/
     
 
      
@@ -98,6 +66,25 @@ namespace Tify
 
                     item.BackColor = Color.White;
                     item.ForeColor = Color.Black;
+                    //add childform
+                    
+                    ChildForm_panel.Controls.Add(kid);
+                    kid.Show();
+
+                    foreach (DataGridView data in kid.Controls)
+                    {
+                        if (data.Tag == btn.Tag)
+                        {
+                            data.BringToFront();
+                          
+                        }
+                        else 
+                        {
+                            data.SendToBack();
+                        }
+                    }
+                    
+
                 }
                 else
                 {
