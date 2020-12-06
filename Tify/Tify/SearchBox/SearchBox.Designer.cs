@@ -51,6 +51,8 @@
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.search_worker = new System.ComponentModel.BackgroundWorker();
+            this.albumResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.playlistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -156,6 +158,8 @@
             // 
             // bottom_panel
             // 
+            this.bottom_panel.Controls.Add(this.playlistResult_flowPanel);
+            this.bottom_panel.Controls.Add(this.albumResult_flowPanel);
             this.bottom_panel.Controls.Add(this.track_gridView);
             this.bottom_panel.Controls.Add(this.artistResult_flowPanel);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -298,6 +302,24 @@
             this.search_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.search_worker_DoWork);
             this.search_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.search_worker_RunWorkerCompleted);
             // 
+            // albumResult_flowPanel
+            // 
+            this.albumResult_flowPanel.AutoScroll = true;
+            this.albumResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.albumResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.albumResult_flowPanel.Name = "albumResult_flowPanel";
+            this.albumResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.albumResult_flowPanel.TabIndex = 3;
+            // 
+            // playlistResult_flowPanel
+            // 
+            this.playlistResult_flowPanel.AutoScroll = true;
+            this.playlistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.playlistResult_flowPanel.Name = "playlistResult_flowPanel";
+            this.playlistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.playlistResult_flowPanel.TabIndex = 4;
+            // 
             // SearchBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,5 +356,7 @@
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
         private System.ComponentModel.BackgroundWorker search_worker;
+        private System.Windows.Forms.FlowLayoutPanel albumResult_flowPanel;
+        private System.Windows.Forms.FlowLayoutPanel playlistResult_flowPanel;
     }
 }

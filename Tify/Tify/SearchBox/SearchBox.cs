@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using TiengVietKhongDau;
+
 namespace Tify
 {
     public partial class SearchBox : Form
@@ -19,14 +19,13 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
-           
         }
 
         private string searchKeyWord;
-        SqlConnection connection;
-        MainScreen mainScr;
-        public SearchBox(string keyword,MainScreen callForm)
+        private SqlConnection connection;
+        private MainScreen mainScr;
+
+        public SearchBox(string keyword, MainScreen callForm)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -43,7 +42,6 @@ namespace Tify
             search_worker.RunWorkerAsync();
         }
 
-
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
@@ -52,14 +50,13 @@ namespace Tify
         {
             trackTable.Clear();
             string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
-                "from Track where trackTitle like '%"+searchKeyWord+"%') as temp where rn = 1";
+                "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
 
             connection.Open();
             try
             {
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
                 {
-                
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         trackTable.Load(reader);
@@ -82,7 +79,7 @@ namespace Tify
                             temp.Cells[0].Value = pb.Image;
                         }
                         string artistQuery = "select artistName from ArtistHasTrack join Artist on Artist.artistID" +
-                            " = ArtistHasTrack.artistID where trackID ="+item["trackID"].ToString();
+                            " = ArtistHasTrack.artistID where trackID =" + item["trackID"].ToString();
                         using (SqlCommand cmd = new SqlCommand(artistQuery, connection))
                         {
                             artistTable.Clear();
@@ -91,7 +88,6 @@ namespace Tify
                                 artistTable.Load(reader);
                             }
                         }
-
 
                         string artist = "";
                         foreach (DataRow artistName in artistTable.Rows)
@@ -112,21 +108,17 @@ namespace Tify
                         temp.Visible = true;
                         rows.Add(temp);
                     }
-                 
-
-
                 }
             }
             catch (Exception e)
             {
                 connection.Close();
                 MessageBox.Show(e.Message);
-
             }
 
             connection.Close();
-
         }
+
         private void search_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
@@ -136,6 +128,7 @@ namespace Tify
         {
             track_gridView.Rows.AddRange(rows.ToArray());
         }
+
         private void SearchBox_Button_Click(object sender, EventArgs e)
         {
             //top button
@@ -159,13 +152,19 @@ namespace Tify
                 }
             }
 
-            //track tab
-            track_gridView.BringToFront();
-
-
+            if (btn.Tag.ToString()=="track_button")
+                track_gridView.BringToFront();
+            else if (btn.Tag.ToString()=="artist_button")
+                artistResult_flowPanel.BringToFront();
+            else if (btn.Tag.ToString() == "album_button")
+                albumResult_flowPanel.BringToFront();
+            else if (btn.Tag.ToString() == "playlist_button")
+                playlistResult_flowPanel.BringToFront();
+            
         }
 
-        #region enter,leave row 
+        #region enter,leave row
+
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex <= 0)
@@ -193,7 +192,8 @@ namespace Tify
                 cell.Style.BackColor = Color.Black;
             }
         }
-        #endregion
+
+        #endregion enter,leave row
 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
