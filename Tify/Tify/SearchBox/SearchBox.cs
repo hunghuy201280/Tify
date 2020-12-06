@@ -42,10 +42,58 @@ namespace Tify
             search_worker.RunWorkerAsync();
         }
 
+
+
+        #region load artist
+
+        private DataTable artistTab_Table = new DataTable();
+        private List<ArtistContainer> artists = new List<ArtistContainer>();
+        private void loadArtist()
+        {
+           
+            artistTab_Table.Clear();
+            string sqlQuery = "select * from Artist";
+
+            connection.Open();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        trackTable.Load(reader);
+                    }
+                }
+                if (trackTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("Empty");
+                    return;
+                }
+                else
+                {
+                    foreach (DataRow item in artistTab_Table.Rows)
+                    {
+                     /*  ArtistContainer container=new ArtistContainer(,item["artistName"].ToString())
+                       artists.Add()*/
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                MessageBox.Show(e.Message);
+            }
+
+            connection.Close();
+        }
+
+        #endregion
+
+
+        #region load track
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
-
         public void loadTrack()
         {
             trackTable.Clear();
@@ -119,6 +167,7 @@ namespace Tify
             connection.Close();
         }
 
+
         private void search_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
@@ -128,7 +177,7 @@ namespace Tify
         {
             track_gridView.Rows.AddRange(rows.ToArray());
         }
-
+        #endregion
         private void SearchBox_Button_Click(object sender, EventArgs e)
         {
             //top button
