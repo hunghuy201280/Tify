@@ -73,7 +73,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -801,14 +800,6 @@
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
             // 
-            // searchBar_backgroundWorker
-            // 
-            this.searchBar_backgroundWorker.WorkerReportsProgress = true;
-            this.searchBar_backgroundWorker.WorkerSupportsCancellation = true;
-            this.searchBar_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBar_backgroundWorker_DoWork);
-            this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
-            this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -885,7 +876,6 @@
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
         private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
-        private System.ComponentModel.BackgroundWorker searchBar_backgroundWorker;
         private System.Windows.Forms.Panel add_like_panel;
         private System.Windows.Forms.Button addToPlaylist_Player_Button;
         private System.Windows.Forms.Button like_Player_Button;

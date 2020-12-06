@@ -74,8 +74,7 @@ where artistID=0;
 ALTER TABLE Artist
 ALTER COLUMN artistID nvarchar(200) NOT NULL;
 
-ALTER TABLE Artist
-add  artistID
+
 
 ALTER TABLE Artist
 drop column artistID 
@@ -225,8 +224,6 @@ select * from Track,ArtistHasTrack,Artist where Track.trackID=ArtistHasTrack.tra
 
 
 
-https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
-https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html
 
 insert into ArtistHasTrack values('https://chiasenhac.vn/ca-si/anh-tu-zsswztvzq91f21.html',1631)
 
@@ -278,6 +275,11 @@ select * from Track where trackTitle like '%rap%'
 Select Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID 
 join Artist on Artist.artistID=ArtistHasTrack.artistID
 where Track.trackID='14'
-            
-			Select Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID
-                join Artist on Artist.artistID = ArtistHasTrack.artistID where Track.trackID = 14
+
+select * from 
+(Select distinct Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID 
+join Artist on Artist.artistID = ArtistHasTrack.artistID where Track.trackTitle like '%rap viet%' ) temp
+where (select count(*) from temp)=1
+
+select * from Track where trackTitle like '%rap viet%'
+

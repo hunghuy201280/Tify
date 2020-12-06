@@ -184,7 +184,7 @@ namespace Tify
             //demo
             this.ActiveControl = artist_label;
 
-            //testFunc();
+            testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -590,14 +590,15 @@ namespace Tify
         {
             if (e.KeyChar == (char)13)//enter
             {
-                
+                srchBox = new SearchBox(searchBar_textBox.Text,this);
+                loadSingleChildForm(srchBox);
+                openChildForm(srchBox);
               
             }
         }
 
-        private DataTable trackTable = new DataTable();
 
-        private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+       /* private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             connection.Open();
             string sqlQuery = "select distinct top 10 trackTitle,trackLink from Track where trackTitle like @query";
@@ -628,7 +629,7 @@ namespace Tify
                 openChildForm(srchBox);
             }
         }
-
+*/
         #endregion Searchbar
 
         //
@@ -939,7 +940,7 @@ namespace Tify
 
         //
 
-        #region next/previous button event
+        #region next/previous button event, chuyen bai
 
         public Stack previousTracks = new Stack();
 
@@ -966,7 +967,18 @@ namespace Tify
             }
             loadNewSong(suggestedSong[0]);
         }
-
+        public void changeSong(string url)
+        {
+            if (previousTracks.Count == 0)
+            {
+                previousTracks.Push(testURL);
+            }
+            else
+            {
+                previousTracks.Push(currentTrack);
+            }
+            loadNewSong(url);
+        }
         #endregion next/previous button event
     }
 }
