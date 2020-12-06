@@ -21,58 +21,148 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
             //mouseenter
-            SearchBox_Tracks.MouseEnter += MouseEnter;
-            SearchBox_Artists.MouseEnter += MouseEnter;
-            SearchBox_Album.MouseEnter += MouseEnter;
-            SearchBox_PlayLists.MouseEnter += MouseEnter;
+          /*  SearchBox_Tracks.MouseHover += MouseHover;
+            SearchBox_Artists.MouseHover += MouseHover;
+            SearchBox_Album.MouseHover += MouseHover;
+            SearchBox_PlayLists.MouseHover += MouseHover;*/
 
             //mouseleave
-            SearchBox_Tracks.MouseLeave += MouseLeave;
-            SearchBox_Artists.MouseLeave += MouseLeave;
-            SearchBox_Album.MouseLeave += MouseLeave;
-            SearchBox_PlayLists.MouseLeave += MouseLeave;
+            /*   SearchBox_Tracks.MouseLeave += MouseLeave;
+               SearchBox_Artists.MouseLeave += MouseLeave;
+               SearchBox_Album.MouseLeave += MouseLeave;
+               SearchBox_PlayLists.MouseLeave += MouseLeave;
+   */
 
-            //mouseclick
-            SearchBox_Tracks.MouseClick += MouseClick;
-            SearchBox_Artists.MouseClick += MouseClick;
-            SearchBox_Album.MouseClick += MouseClick;
-            SearchBox_PlayLists.MouseClick += MouseClick;
+
         }
 
 
-        private void MouseEnter(object sender, EventArgs e)
+      /*  private void MouseHover(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             btn.BackColor = Color.White;
             btn.ForeColor = Color.Black;
-            
-        }
-        private void MouseLeave(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.ForeColor = Color.White;
-            btn.BackColor = Color.Black;
 
-        }
-        private void MouseClick(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.Click += loadForm;
+        }*/
+        /* private void MouseLeave(object sender, EventArgs e)
+         {
+             Button btn = (Button)sender;
+             btn.ForeColor = Color.White;
+             btn.BackColor = Color.Black;
 
-
-        }
+         }
+ */
         private SearchBox_childForm kid;
 
-        private void loadForm(object sender, EventArgs e)
+        /*  private void loadForm(object sender, EventArgs e)
+          {
+              kid = new SearchBox_childForm();
+              kid.TopLevel = false;
+              kid.FormBorderStyle = FormBorderStyle.None;
+              kid.Dock = DockStyle.Fill;
+              ChildForm_panel.Controls.Add(kid);
+              kid.Show();
+          }*/
+
+        private void SearchBox_PlayLists_Click(object sender, EventArgs e)
         {
-            kid = new SearchBox_childForm();
-            kid.TopLevel = false;
-            kid.FormBorderStyle = FormBorderStyle.None;
-            kid.Dock = DockStyle.Fill;
-            ChildForm_panel.Controls.Add(kid);
-            kid.Show();
-        }
+            Button btn = (Button)sender;
         
+            foreach (Button item in top_panel.Controls)
+            {
+                if (item == SearchBox_PlayLists)
+                {
+                    btn.BackColor = Color.White;
+                    btn.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btn.BackColor = Color.Black;
+                    btn.ForeColor = Color.White;
+                }
+            }
+        
+
        
+        }
+       
+        private void SearchBox_Artists_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+          
+            foreach (Button item in top_panel.Controls)
+            {
+                if (item == SearchBox_Artists)
+                {
+                    btn.BackColor = Color.White;
+                    btn.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btn.BackColor = Color.Black;
+                    btn.ForeColor = Color.White;
+                }
+            }
+        }
+        /*   kid = new SearchBox_childForm();
+           kid.TopLevel = false;
+           kid.FormBorderStyle = FormBorderStyle.None;
+           kid.Dock = DockStyle.Fill;
+           ChildForm_panel.Controls.Add(kid);
+
+
+           foreach (DataGridView item in kid.Controls) 
+           {
+               if (item != kid.Artists_dataGridView)
+               {
+                   item.SendToBack();
+               }
+           }
+           kid.Artists_dataGridView.BringToFront();
+           kid.Artists_dataGridView.Dock = DockStyle.Fill;
+
+           kid.Show();*/
+    
+
+        private void SearchBox_Album_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+           
+            foreach (Button item in top_panel.Controls)
+            {
+                if (item == SearchBox_Album)
+                {
+                    btn.BackColor = Color.White;
+                    btn.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btn.BackColor = Color.Black;
+                    btn.ForeColor = Color.White;
+                }
+            }
+        }
+    
+
+        private void SearchBox_Tracks_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            foreach (Button item in top_panel.Controls)
+            {
+                if (item == SearchBox_Tracks)
+                {
+
+                    btn.BackColor = Color.White;
+                    btn.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btn.BackColor = Color.Black;
+                    btn.ForeColor = Color.White;
+                }
+
+
+            }
+        }
     }
 }

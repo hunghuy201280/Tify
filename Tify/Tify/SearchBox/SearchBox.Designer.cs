@@ -64,6 +64,7 @@
             this.SearchBox_PlayLists.TabIndex = 9;
             this.SearchBox_PlayLists.Text = "PlayLists";
             this.SearchBox_PlayLists.UseVisualStyleBackColor = true;
+            this.SearchBox_PlayLists.Click += new System.EventHandler(this.SearchBox_PlayLists_Click);
             // 
             // SearchBox_Album
             // 
@@ -77,6 +78,7 @@
             this.SearchBox_Album.TabIndex = 8;
             this.SearchBox_Album.Text = "Album";
             this.SearchBox_Album.UseVisualStyleBackColor = true;
+            this.SearchBox_Album.Click += new System.EventHandler(this.SearchBox_Album_Click);
             // 
             // SearchBox_Artists
             // 
@@ -90,6 +92,7 @@
             this.SearchBox_Artists.TabIndex = 7;
             this.SearchBox_Artists.Text = "Artists";
             this.SearchBox_Artists.UseVisualStyleBackColor = true;
+            this.SearchBox_Artists.Click += new System.EventHandler(this.SearchBox_Artists_Click);
             // 
             // SearchBox_Tracks
             // 
@@ -103,6 +106,7 @@
             this.SearchBox_Tracks.TabIndex = 6;
             this.SearchBox_Tracks.Text = "Tracks";
             this.SearchBox_Tracks.UseVisualStyleBackColor = true;
+            this.SearchBox_Tracks.Click += new System.EventHandler(this.SearchBox_Tracks_Click);
             // 
             // rightIconImgList
             // 
@@ -120,7 +124,7 @@
             this.ChildForm_panel.Size = new System.Drawing.Size(871, 472);
             this.ChildForm_panel.TabIndex = 4;
             // 
-            // SearchBox1
+            // SearchBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +133,7 @@
             this.Controls.Add(this.ChildForm_panel);
             this.Controls.Add(this.top_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SearchBox1";
+            this.Name = "SearchBox";
             this.Text = "SearchBox";
             this.top_panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -137,12 +141,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.ImageList rightIconImgList;
         private System.Windows.Forms.Panel ChildForm_panel;
         private System.Windows.Forms.Button SearchBox_Tracks;
         private System.Windows.Forms.Button SearchBox_PlayLists;
         private System.Windows.Forms.Button SearchBox_Album;
         private System.Windows.Forms.Button SearchBox_Artists;
+        public System.Windows.Forms.Panel top_panel;
     }
 }

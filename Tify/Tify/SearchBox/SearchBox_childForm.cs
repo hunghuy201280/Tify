@@ -24,11 +24,11 @@ namespace Tify
         {
             if (e.RowIndex <= 0)
                 return;
-            if (SearchBox_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            if (Tracks_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
             {
                 return;
             }
-            foreach (DataGridViewCell cell in SearchBox_dataGridView.Rows[e.RowIndex].Cells)
+            foreach (DataGridViewCell cell in Tracks_dataGridView.Rows[e.RowIndex].Cells)
             {
                 cell.Style.BackColor = Color.FromArgb(19, 19, 20);
             }
@@ -38,11 +38,11 @@ namespace Tify
         {
             if (e.RowIndex <= 0)
                 return;
-            if (SearchBox_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            if (Tracks_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
             {
                 return;
             }
-            foreach (DataGridViewCell cell in SearchBox_dataGridView.Rows[e.RowIndex].Cells)
+            foreach (DataGridViewCell cell in Tracks_dataGridView.Rows[e.RowIndex].Cells)
             {
                 cell.Style.BackColor = Color.Black;
             }
