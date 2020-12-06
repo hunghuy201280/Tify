@@ -38,8 +38,10 @@ namespace Tify
             track_gridView.Rows.Add();
             track_gridView.Rows[0].Visible = false;
             searchKeyWord = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(keyword);
+            connection.Open();
 
             search_worker.RunWorkerAsync();
+            artist_worker.RunWorkerAsync();
         }
 
 
@@ -52,19 +54,18 @@ namespace Tify
         {
            
             artistTab_Table.Clear();
-            string sqlQuery = "select * from Artist";
+            string sqlQuery = "select * from Artist where artistName like '%"+searchKeyWord+"%'";
 
-            connection.Open();
             try
             {
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
+                using (SqlCommand artist_cmd = new SqlCommand(sqlQuery, connection))
                 {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader artist_reader = artist_cmd.ExecuteReader())
                     {
-                        trackTable.Load(reader);
+                        artistTab_Table.Load(artist_reader);
                     }
                 }
-                if (trackTable.Rows.Count == 0)
+                if (artistTab_Table.Rows.Count == 0)
                 {
                     MessageBox.Show("Empty");
                     return;
@@ -73,18 +74,30 @@ namespace Tify
                 {
                     foreach (DataRow item in artistTab_Table.Rows)
                     {
-                     /*  ArtistContainer container=new ArtistContainer(,item["artistName"].ToString())
-                       artists.Add()*/
+                        ArtistContainer container = new ArtistContainer(GetSongData.getArtistCover(item["artistName"].ToString())
+                            , item["artistName"].ToString());
+                        artists.Add(container);
                     }
                 }
             }
             catch (Exception e)
             {
-                connection.Close();
                 MessageBox.Show(e.Message);
             }
 
-            connection.Close();
+        }
+        private void artist_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            loadArtist();
+        }
+
+        private void artist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            artistResult_flowPanel.Controls.AddRange(artists.ToArray());
+            if (!search_worker.IsBusy)
+            {
+                connection.Close();
+            }
         }
 
         #endregion
@@ -100,14 +113,14 @@ namespace Tify
             string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
                 "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
 
-            connection.Open();
+           
             try
             {
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
+                using (SqlCommand track_cmd = new SqlCommand(sqlQuery, connection))
                 {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader track_reader = track_cmd.ExecuteReader())
                     {
-                        trackTable.Load(reader);
+                        trackTable.Load(track_reader);
                     }
                 }
                 if (trackTable.Rows.Count == 0)
@@ -160,11 +173,9 @@ namespace Tify
             }
             catch (Exception e)
             {
-                connection.Close();
                 MessageBox.Show(e.Message);
             }
 
-            connection.Close();
         }
 
 
@@ -176,6 +187,10 @@ namespace Tify
         private void search_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             track_gridView.Rows.AddRange(rows.ToArray());
+            if (!artist_worker.IsBusy)
+            {
+                connection.Close();
+            }
         }
         #endregion
         private void SearchBox_Button_Click(object sender, EventArgs e)
@@ -248,5 +263,7 @@ namespace Tify
         {
             mainScr.changeSong(track_gridView.Rows[e.RowIndex].Tag.ToString());
         }
+
+        
     }
 }

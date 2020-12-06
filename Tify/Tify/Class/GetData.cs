@@ -49,6 +49,17 @@ namespace GetData
         }
 
 
+        static public string getArtistCover(string name)
+        {
+            string url = "https://musicroamer.com/api/v1/spotify?artist=" +
+         HttpUtility.UrlEncode(TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(name), Encoding.UTF8);
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            JObject json = JObject.Parse(responseString);
+            string pictureLink = Convert.ToString(json["artists"]["items"][0]["images"][0]["url"]);
+            return pictureLink;
+        }
         static private JObject getResponseJObject(string url)
         {
             try

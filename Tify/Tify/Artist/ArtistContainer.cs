@@ -25,7 +25,7 @@ namespace Tify
 
         }
 
-        public ArtistContainer(Image cover,string name)
+        public ArtistContainer(string coverLink,string name)
         {
             InitializeComponent();
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -35,8 +35,9 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
-            artistCover_panel.BackgroundImage = cover;
+            PictureBox temp = new PictureBox();
+            temp.Load(coverLink);
+            artistCover_panel.BackgroundImage = temp.Image;
             artistName_Label.Text = name;
         }
 
