@@ -64,46 +64,7 @@ namespace Tify
               kid.Show();
           }*/
 
-        private void SearchBox_PlayLists_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-        
-            foreach (Button item in top_panel.Controls)
-            {
-                if (item == SearchBox_PlayLists)
-                {
-                    btn.BackColor = Color.White;
-                    btn.ForeColor = Color.Black;
-                }
-                else
-                {
-                    btn.BackColor = Color.Black;
-                    btn.ForeColor = Color.White;
-                }
-            }
-        
-
        
-        }
-       
-        private void SearchBox_Artists_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-          
-            foreach (Button item in top_panel.Controls)
-            {
-                if (item == SearchBox_Artists)
-                {
-                    btn.BackColor = Color.White;
-                    btn.ForeColor = Color.Black;
-                }
-                else
-                {
-                    btn.BackColor = Color.Black;
-                    btn.ForeColor = Color.White;
-                }
-            }
-        }
         /*   kid = new SearchBox_childForm();
            kid.TopLevel = false;
            kid.FormBorderStyle = FormBorderStyle.None;
@@ -124,41 +85,24 @@ namespace Tify
            kid.Show();*/
     
 
-        private void SearchBox_Album_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-           
-            foreach (Button item in top_panel.Controls)
-            {
-                if (item == SearchBox_Album)
-                {
-                    btn.BackColor = Color.White;
-                    btn.ForeColor = Color.Black;
-                }
-                else
-                {
-                    btn.BackColor = Color.Black;
-                    btn.ForeColor = Color.White;
-                }
-            }
-        }
+     
     
 
-        private void SearchBox_Tracks_Click(object sender, EventArgs e)
+        private void SearchBox_Button_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             foreach (Button item in top_panel.Controls)
             {
-                if (item == SearchBox_Tracks)
+                if (item.Tag == btn.Tag)
                 {
 
-                    btn.BackColor = Color.White;
-                    btn.ForeColor = Color.Black;
+                    item.BackColor = Color.White;
+                    item.ForeColor = Color.Black;
                 }
                 else
                 {
-                    btn.BackColor = Color.Black;
-                    btn.ForeColor = Color.White;
+                    item.BackColor = Color.Black;
+                    item.ForeColor = Color.White;
                 }
 
 

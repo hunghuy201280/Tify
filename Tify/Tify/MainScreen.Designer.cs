@@ -74,11 +74,6 @@
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
             this.searchBar_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.searchBar_PopupContainer = new DevExpress.XtraEditors.PopupContainerControl();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.searchNoResult_panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -89,10 +84,6 @@
             this.searchBar_panel.SuspendLayout();
             this.searchbarContainer_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).BeginInit();
-            this.searchBar_PopupContainer.SuspendLayout();
-            this.searchNoResult_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // player_panel
@@ -818,61 +809,6 @@
             this.searchBar_backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBar_backgroundWorker_ProgressChanged);
             this.searchBar_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBar_backgroundWorker_RunWorkerCompleted);
             // 
-            // searchBar_PopupContainer
-            // 
-            this.searchBar_PopupContainer.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            this.searchBar_PopupContainer.Appearance.Options.UseBackColor = true;
-            this.searchBar_PopupContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.searchBar_PopupContainer.Controls.Add(this.listBox1);
-            this.searchBar_PopupContainer.Controls.Add(this.searchNoResult_panel);
-            this.searchBar_PopupContainer.Location = new System.Drawing.Point(725, 60);
-            this.searchBar_PopupContainer.Name = "searchBar_PopupContainer";
-            this.searchBar_PopupContainer.Size = new System.Drawing.Size(390, 220);
-            this.searchBar_PopupContainer.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(390, 220);
-            this.listBox1.TabIndex = 0;
-            // 
-            // searchNoResult_panel
-            // 
-            this.searchNoResult_panel.Controls.Add(this.label1);
-            this.searchNoResult_panel.Controls.Add(this.pictureBox1);
-            this.searchNoResult_panel.Location = new System.Drawing.Point(96, 46);
-            this.searchNoResult_panel.Name = "searchNoResult_panel";
-            this.searchNoResult_panel.Size = new System.Drawing.Size(200, 128);
-            this.searchNoResult_panel.TabIndex = 0;
-            this.searchNoResult_panel.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "No Result found";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,7 +819,6 @@
             this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.player_panel);
             this.Controls.Add(this.songDetail_panel);
-            this.Controls.Add(this.searchBar_PopupContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(774, 361);
@@ -905,11 +840,6 @@
             this.searchbarContainer_panel.ResumeLayout(false);
             this.searchbarContainer_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchBar_icon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchBar_PopupContainer)).EndInit();
-            this.searchBar_PopupContainer.ResumeLayout(false);
-            this.searchNoResult_panel.ResumeLayout(false);
-            this.searchNoResult_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -956,12 +886,6 @@
         private System.Windows.Forms.FlowLayoutPanel CreatePlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
         private System.ComponentModel.BackgroundWorker searchBar_backgroundWorker;
- 
-        private DevExpress.XtraEditors.PopupContainerControl searchBar_PopupContainer;
-        private System.Windows.Forms.Panel searchNoResult_panel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel add_like_panel;
         private System.Windows.Forms.Button addToPlaylist_Player_Button;
         private System.Windows.Forms.Button like_Player_Button;

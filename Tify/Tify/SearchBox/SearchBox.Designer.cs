@@ -62,9 +62,10 @@
             this.SearchBox_PlayLists.Name = "SearchBox_PlayLists";
             this.SearchBox_PlayLists.Size = new System.Drawing.Size(90, 30);
             this.SearchBox_PlayLists.TabIndex = 9;
+            this.SearchBox_PlayLists.Tag = "playlist_button";
             this.SearchBox_PlayLists.Text = "PlayLists";
             this.SearchBox_PlayLists.UseVisualStyleBackColor = true;
-            this.SearchBox_PlayLists.Click += new System.EventHandler(this.SearchBox_PlayLists_Click);
+            this.SearchBox_PlayLists.Click += new System.EventHandler(this.SearchBox_Button_Click);
             // 
             // SearchBox_Album
             // 
@@ -76,9 +77,10 @@
             this.SearchBox_Album.Name = "SearchBox_Album";
             this.SearchBox_Album.Size = new System.Drawing.Size(90, 30);
             this.SearchBox_Album.TabIndex = 8;
+            this.SearchBox_Album.Tag = "album_button";
             this.SearchBox_Album.Text = "Album";
             this.SearchBox_Album.UseVisualStyleBackColor = true;
-            this.SearchBox_Album.Click += new System.EventHandler(this.SearchBox_Album_Click);
+            this.SearchBox_Album.Click += new System.EventHandler(this.SearchBox_Button_Click);
             // 
             // SearchBox_Artists
             // 
@@ -90,9 +92,10 @@
             this.SearchBox_Artists.Name = "SearchBox_Artists";
             this.SearchBox_Artists.Size = new System.Drawing.Size(90, 30);
             this.SearchBox_Artists.TabIndex = 7;
+            this.SearchBox_Artists.Tag = "artist_button";
             this.SearchBox_Artists.Text = "Artists";
             this.SearchBox_Artists.UseVisualStyleBackColor = true;
-            this.SearchBox_Artists.Click += new System.EventHandler(this.SearchBox_Artists_Click);
+            this.SearchBox_Artists.Click += new System.EventHandler(this.SearchBox_Button_Click);
             // 
             // SearchBox_Tracks
             // 
@@ -104,9 +107,10 @@
             this.SearchBox_Tracks.Name = "SearchBox_Tracks";
             this.SearchBox_Tracks.Size = new System.Drawing.Size(90, 30);
             this.SearchBox_Tracks.TabIndex = 6;
+            this.SearchBox_Tracks.Tag = "track_button";
             this.SearchBox_Tracks.Text = "Tracks";
             this.SearchBox_Tracks.UseVisualStyleBackColor = true;
-            this.SearchBox_Tracks.Click += new System.EventHandler(this.SearchBox_Tracks_Click);
+            this.SearchBox_Tracks.Click += new System.EventHandler(this.SearchBox_Button_Click);
             // 
             // rightIconImgList
             // 

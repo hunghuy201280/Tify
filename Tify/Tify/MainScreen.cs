@@ -26,7 +26,6 @@ namespace Tify
             firstLoadChildForm();
 
             //searchbarPopup
-            searchBar_PopupContainer.Show();
             //
 
 
@@ -576,6 +575,7 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
+
         #region Searchbar 
 
 
@@ -589,8 +589,7 @@ namespace Tify
                 searchBar_textBox.ForeColor = Color.White;
             }
           
-            searchBar_PopupContainer.BringToFront();
-            searchNoResult_panel.Hide();
+          
         }
 
 
@@ -603,13 +602,7 @@ namespace Tify
                 searchBar_textBox.ForeColor = Color.FromArgb(152, 162, 166);
             }
 
-            if (searchBar_PopupContainer.ClientRectangle.Contains(searchBar_PopupContainer.PointToClient(Control.MousePosition)))
-                return;
-            else
-            {
-                searchBar_PopupContainer.SendToBack();
-            }
-            
+         
 
 
         }
@@ -660,22 +653,7 @@ namespace Tify
             if (e.Error == null)
             {
 
-               
-                if (searchTable.Rows.Count == 0)
-                {
-                    //dataGridView1.Hide();
-                    searchNoResult_panel.Show();
-                    return;
-                }
-                
-               // dataGridView1.DataSource = searchTable;
-               // dataGridView1.Show();
-                searchNoResult_panel.Hide();
-
-
-
-                searchBar_PopupContainer.BringToFront();
-              //  dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+             
 
             }
         }
