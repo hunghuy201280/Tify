@@ -6,16 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
-
 
 namespace Tify
 {
     public partial class MainScreen : Form
     {
-        SqlConnection connection;
+        private SqlConnection connection;
+
         public MainScreen()
         {
             InitializeComponent();
@@ -28,9 +27,8 @@ namespace Tify
             //searchbarPopup
             //
 
-
             //testpopup
-           
+
             //
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
@@ -41,7 +39,6 @@ namespace Tify
             connection = new SqlConnection(connectString);
 
             loginForm = new Login(this);
-            
         }
 
         private Home homeScr;
@@ -55,13 +52,10 @@ namespace Tify
 
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
-
         #region doublebuffered
-
 
         public static void EnableDoubleBuferring(Control control)
         {
-           
             foreach (Control item in control.Controls)
             {
                 EnableDoubleBuferring(item);
@@ -69,12 +63,11 @@ namespace Tify
             if (control.Name == "volume_trackBar")
                 return;
 
-
             var property = typeof(Control).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             property.SetValue(control, true, null);
         }
 
-        #endregion doublebufferd
+        #endregion doublebuffered
 
         #region load nhac khi chuyen bai
 
@@ -85,8 +78,6 @@ namespace Tify
         {
             currentTrack = Url;
             soundPlayer.URL = GetSongData.GetStreamLink(Url);
-
-          
 
             time = 0;
 
@@ -119,18 +110,11 @@ namespace Tify
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(Url);
             songDetail.setSuggestedSong(suggestedSong);
-
         }
 
         #endregion load nhac khi chuyen bai
 
         #region test
-
-  
-
-
-        
-
 
         //test
         private string testURL = "https://vi.chiasenhac.vn/mp3/blackpink/love-to-hate-me-tsvmccb6q8vvqk.html";
@@ -206,10 +190,6 @@ namespace Tify
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
             //Set Main Screen for RightClickUC
-            
-
-
-
         }
 
         #endregion Load form
@@ -363,8 +343,6 @@ namespace Tify
                 add_like_panel.Show();
             }
 
-         
-
             //Chỉnh lại vị trí của menu bar bên trái
             if (this.Size.Width >= 860 && checkResize1 == false)
             {
@@ -504,6 +482,15 @@ namespace Tify
 
         public Form activeForm = null;
 
+        private void loadSingleChildForm(Form fm)
+        {
+            fm.TopLevel = false;
+            fm.FormBorderStyle = FormBorderStyle.None;
+            fm.Dock = DockStyle.Fill;
+            childForm_panel.Controls.Add(fm);
+            fm.Show();
+        }
+
         private void firstLoadChildForm()
         {
             artistScr = new Artist();
@@ -512,8 +499,7 @@ namespace Tify
             playlistScr = new Playlist(this);
             albumsScr = new Albums();
             tracksScr = new Tracks();
-            srchBox = new SearchBox();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr,tracksScr, srchBox };
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -575,9 +561,7 @@ namespace Tify
 
         #endregion hide scrollbar for control
 
-
-        #region Searchbar 
-
+        #region Searchbar
 
         //place holder
         //Got focus
@@ -588,10 +572,7 @@ namespace Tify
                 searchBar_textBox.Text = "";
                 searchBar_textBox.ForeColor = Color.White;
             }
-          
-          
         }
-
 
         //lost focus
         public void AddText(object sender, EventArgs e)
@@ -601,34 +582,25 @@ namespace Tify
                 searchBar_textBox.Text = "Search";
                 searchBar_textBox.ForeColor = Color.FromArgb(152, 162, 166);
             }
-
-         
-
-
         }
 
         //search event
 
         private void searchBar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // dataGridView1.DataSource = null;
             if (e.KeyChar == (char)13)//enter
             {
-                /*if (searchBar_backgroundWorker.IsBusy)
-                {
-                    return;
-                }
-                searchBar_backgroundWorker.RunWorkerAsync(searchBar_textBox.Text);*/
-                openChildForm(srchBox);
+                
+              
             }
-
         }
-        DataTable searchTable=new DataTable();
+
+        private DataTable trackTable = new DataTable();
+
         private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-
             connection.Open();
-            string sqlQuery = "select distinct top 10 trackTitle from Track where trackTitle like @query";
+            string sqlQuery = "select distinct top 10 trackTitle,trackLink from Track where trackTitle like @query";
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
             {
@@ -636,8 +608,8 @@ namespace Tify
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    searchTable.Clear();
-                    searchTable.Load(reader);
+                    trackTable.Clear();
+                    trackTable.Load(reader);
                 }
             }
             connection.Close();
@@ -645,24 +617,21 @@ namespace Tify
 
         private void searchBar_backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-
         }
 
         private void searchBar_backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if (e.Error == null)
             {
-
-             
-
+                srchBox = new SearchBox(trackTable);
+                loadSingleChildForm(srchBox);
+                openChildForm(srchBox);
             }
         }
 
-
-        #endregion
+        #endregion Searchbar
 
         //
-
 
         #region createplaylist
 
@@ -672,14 +641,9 @@ namespace Tify
             myForm.ShowDialog();
         }
 
-        //test 
-
-     
-
+        //test
 
         #endregion createplaylist
-
-
 
         #region mo form login/register khi click vao account button
 
@@ -696,9 +660,9 @@ namespace Tify
         #region progressBar
 
         private bool isFirstLaunch = true;
+
         private void SoundPlayer_PlayStateChange(int NewState)
         {
-
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
@@ -722,7 +686,7 @@ namespace Tify
             }
             else if (soundPlayer.playState == WMPPlayState.wmppsReady)
             {
-                if (soundPlayer.controls.currentItem==null || isFirstLaunch)
+                if (soundPlayer.controls.currentItem == null || isFirstLaunch)
                 {
                     if (isFirstLaunch)
                     {
@@ -731,9 +695,7 @@ namespace Tify
                     return;
                 }
                 soundPlayer.controls.play();
-
             }
-
         }
 
         private string curMin = "0", curSec = "0";
@@ -977,11 +939,9 @@ namespace Tify
 
         //
 
-
         #region next/previous button event
 
         public Stack previousTracks = new Stack();
-
 
         private void previous_button_Click(object sender, EventArgs e)
         {
@@ -993,8 +953,6 @@ namespace Tify
             string lastTrack = previousTracks.Pop() as string;
             loadNewSong(lastTrack);
         }
-
-     
 
         private void next_button_Click(object sender, EventArgs e)
         {
@@ -1008,11 +966,7 @@ namespace Tify
             }
             loadNewSong(suggestedSong[0]);
         }
-        
+
         #endregion next/previous button event
-
-
-
-        
     }
 }

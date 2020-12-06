@@ -25,6 +25,21 @@ namespace Tify
 
         }
 
+        public ArtistContainer(Image cover,string name)
+        {
+            InitializeComponent();
+            opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
+            artistCover_panel.BackgroundImage = cover;
+            artistName_Label.Text = name;
+        }
+
 
 
         //hover

@@ -41,8 +41,8 @@ namespace Tify
 
 
             //dummy row
-            dataGridView1.Rows.Add();
-            dataGridView1.Rows[0].Visible = false;
+            track_gridView.Rows.Add();
+            track_gridView.Rows[0].Visible = false;
 
             //MessageBox.Show(dataGridView1.Font.ToString());
             
@@ -75,7 +75,7 @@ namespace Tify
                 }
                 else
                 {
-                    DataGridViewRow temp = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+                    DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
                     string trackLink = trackTable.Rows[0]["trackLink"].ToString();
                     using (PictureBox pb=new PictureBox())
                     {
@@ -128,7 +128,7 @@ namespace Tify
                 {
                     try
                     {
-                        dataGridView1.Rows.Add(item);
+                        track_gridView.Rows.Add(item);
 
                     }
                     catch (Exception)
@@ -151,34 +151,44 @@ namespace Tify
 
       
 
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void trackGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex<=0)
+            if (e.ColumnIndex==6)//like
+            {
+
+            }
+            else if (e.ColumnIndex==5)//add to playlist
+            {
+
+            }
+        }
+
+        private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= 0)
                 return;
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
             {
                 return;
             }
-            foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)
+            foreach (DataGridViewCell cell in track_gridView.Rows[e.RowIndex].Cells)
             {
                 cell.Style.BackColor = Color.FromArgb(19, 19, 20);
             }
         }
 
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex <= 0)
                 return;
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
             {
                 return;
             }
-            foreach (DataGridViewCell cell in dataGridView1.Rows[e.RowIndex].Cells)
+            foreach (DataGridViewCell cell in track_gridView.Rows[e.RowIndex].Cells)
             {
                 cell.Style.BackColor = Color.Black;
             }
         }
-
-        
     }
 }

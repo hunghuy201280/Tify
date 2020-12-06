@@ -30,18 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBox));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.top_panel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SearchBox_PlayLists = new System.Windows.Forms.Button();
             this.SearchBox_Album = new System.Windows.Forms.Button();
             this.SearchBox_Artists = new System.Windows.Forms.Button();
             this.SearchBox_Tracks = new System.Windows.Forms.Button();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
-            this.ChildForm_panel = new System.Windows.Forms.Panel();
+            this.bottom_panel = new System.Windows.Forms.Panel();
+            this.artistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.track_gridView = new System.Windows.Forms.DataGridView();
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.top_panel.SuspendLayout();
+            this.bottom_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // top_panel
             // 
+            this.top_panel.Controls.Add(this.panel1);
             this.top_panel.Controls.Add(this.SearchBox_PlayLists);
             this.top_panel.Controls.Add(this.SearchBox_Album);
             this.top_panel.Controls.Add(this.SearchBox_Artists);
@@ -52,9 +69,20 @@
             this.top_panel.Size = new System.Drawing.Size(871, 59);
             this.top_panel.TabIndex = 3;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 58);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(871, 1);
+            this.panel1.TabIndex = 0;
+            // 
             // SearchBox_PlayLists
             // 
+            this.SearchBox_PlayLists.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SearchBox_PlayLists.FlatAppearance.BorderSize = 0;
+            this.SearchBox_PlayLists.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(51)))));
             this.SearchBox_PlayLists.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBox_PlayLists.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox_PlayLists.ForeColor = System.Drawing.Color.White;
@@ -69,7 +97,9 @@
             // 
             // SearchBox_Album
             // 
+            this.SearchBox_Album.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SearchBox_Album.FlatAppearance.BorderSize = 0;
+            this.SearchBox_Album.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(51)))));
             this.SearchBox_Album.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBox_Album.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox_Album.ForeColor = System.Drawing.Color.White;
@@ -84,7 +114,9 @@
             // 
             // SearchBox_Artists
             // 
+            this.SearchBox_Artists.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SearchBox_Artists.FlatAppearance.BorderSize = 0;
+            this.SearchBox_Artists.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(51)))));
             this.SearchBox_Artists.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBox_Artists.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox_Artists.ForeColor = System.Drawing.Color.White;
@@ -99,7 +131,9 @@
             // 
             // SearchBox_Tracks
             // 
+            this.SearchBox_Tracks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SearchBox_Tracks.FlatAppearance.BorderSize = 0;
+            this.SearchBox_Tracks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(51)))));
             this.SearchBox_Tracks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBox_Tracks.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox_Tracks.ForeColor = System.Drawing.Color.White;
@@ -120,13 +154,144 @@
             this.rightIconImgList.Images.SetKeyName(1, "like.png");
             this.rightIconImgList.Images.SetKeyName(2, "liked.png");
             // 
-            // ChildForm_panel
+            // bottom_panel
             // 
-            this.ChildForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChildForm_panel.Location = new System.Drawing.Point(0, 59);
-            this.ChildForm_panel.Name = "ChildForm_panel";
-            this.ChildForm_panel.Size = new System.Drawing.Size(871, 472);
-            this.ChildForm_panel.TabIndex = 4;
+            this.bottom_panel.Controls.Add(this.artistResult_flowPanel);
+            this.bottom_panel.Controls.Add(this.track_gridView);
+            this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bottom_panel.Location = new System.Drawing.Point(0, 59);
+            this.bottom_panel.Name = "bottom_panel";
+            this.bottom_panel.Size = new System.Drawing.Size(871, 472);
+            this.bottom_panel.TabIndex = 4;
+            // 
+            // artistResult_flowPanel
+            // 
+            this.artistResult_flowPanel.AutoScroll = true;
+            this.artistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.artistResult_flowPanel.Name = "artistResult_flowPanel";
+            this.artistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.artistResult_flowPanel.TabIndex = 2;
+            // 
+            // track_gridView
+            // 
+            this.track_gridView.AllowUserToAddRows = false;
+            this.track_gridView.AllowUserToDeleteRows = false;
+            this.track_gridView.BackgroundColor = System.Drawing.Color.Black;
+            this.track_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.track_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.track_gridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.track_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.track_gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.img,
+            this.title,
+            this.artist,
+            this.dateAdded,
+            this.time,
+            this.addToPlaylist,
+            this.remove});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.track_gridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.track_gridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.track_gridView.EnableHeadersVisualStyles = false;
+            this.track_gridView.GridColor = System.Drawing.Color.Black;
+            this.track_gridView.Location = new System.Drawing.Point(0, 0);
+            this.track_gridView.Name = "track_gridView";
+            this.track_gridView.ReadOnly = true;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.track_gridView.RowHeadersVisible = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.track_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.track_gridView.RowTemplate.Height = 42;
+            this.track_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.track_gridView.Size = new System.Drawing.Size(871, 472);
+            this.track_gridView.TabIndex = 1;
+            // 
+            // img
+            // 
+            this.img.HeaderText = "";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.img.MinimumWidth = 42;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
+            this.img.Width = 42;
+            // 
+            // title
+            // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.title.HeaderText = "TITLE";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // artist
+            // 
+            this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artist.HeaderText = "ARTIST";
+            this.artist.Name = "artist";
+            this.artist.ReadOnly = true;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateAdded.HeaderText = "DATE ADDED";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.time.HeaderText = "TIME";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // addToPlaylist
+            // 
+            this.addToPlaylist.HeaderText = "";
+            this.addToPlaylist.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.addToPlaylist.MinimumWidth = 20;
+            this.addToPlaylist.Name = "addToPlaylist";
+            this.addToPlaylist.ReadOnly = true;
+            this.addToPlaylist.Width = 20;
+            // 
+            // remove
+            // 
+            this.remove.HeaderText = "";
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 20;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 20;
             // 
             // SearchBox
             // 
@@ -134,23 +299,35 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(871, 531);
-            this.Controls.Add(this.ChildForm_panel);
+            this.Controls.Add(this.bottom_panel);
             this.Controls.Add(this.top_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SearchBox";
             this.Text = "SearchBox";
             this.top_panel.ResumeLayout(false);
+            this.bottom_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.ImageList rightIconImgList;
-        private System.Windows.Forms.Panel ChildForm_panel;
+        private System.Windows.Forms.Panel bottom_panel;
         private System.Windows.Forms.Button SearchBox_Tracks;
         private System.Windows.Forms.Button SearchBox_PlayLists;
         private System.Windows.Forms.Button SearchBox_Album;
         private System.Windows.Forms.Button SearchBox_Artists;
         public System.Windows.Forms.Panel top_panel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView track_gridView;
+        private System.Windows.Forms.DataGridViewImageColumn img;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
+        private System.Windows.Forms.DataGridViewImageColumn remove;
+        private System.Windows.Forms.FlowLayoutPanel artistResult_flowPanel;
     }
 }
