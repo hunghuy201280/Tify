@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class PlaylistDetail : Form
+    public partial class AlbumDetail : Form
     {
-        public PlaylistDetail()
+        public AlbumDetail()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -21,6 +21,27 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+        }
+
+        private string albumID;
+        public AlbumDetail(string id)
+        {
+            InitializeComponent();
+
+            albumID = id;
+
+
+
+
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
+            
         }
     }
 }

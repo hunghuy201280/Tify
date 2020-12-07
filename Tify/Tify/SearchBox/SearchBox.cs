@@ -42,9 +42,63 @@ namespace Tify
 
             search_worker.RunWorkerAsync();
             artist_worker.RunWorkerAsync();
+            album_worker.RunWorkerAsync();
         }
 
 
+        #region load album
+
+        private DataTable albumTab_Table = new DataTable();
+        private List<AlbumContainer> albums = new List<AlbumContainer>();
+
+        private void loadAlbum()
+        {
+
+            albumTab_Table.Clear();
+            string sqlQuery = "select top 20 Album.*,artistName from Album join Artist on Album.artistID=Artist.artistID" +
+                " where albumTitle like '%" + searchKeyWord + "%'";
+
+            try
+            {
+                using (SqlCommand album_cmd = new SqlCommand(sqlQuery, connection))
+                {
+                    using (SqlDataReader album_reader = album_cmd.ExecuteReader())
+                    {
+                        albumTab_Table.Load(album_reader);
+                    }
+                }
+                if (albumTab_Table.Rows.Count == 0)
+                {
+                    MessageBox.Show("Empty");
+                    return;
+                }
+                else
+                {
+                    foreach (DataRow item in albumTab_Table.Rows)
+                    {
+                        AlbumContainer container = new AlbumContainer(GetSongData.GetSongCover(item["albumLink"].ToString()), item["albumTitle"].ToString(),
+                                     item["artistName"].ToString(), item["albumYear"].ToString());
+                        albums.Add(container);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message+"album");
+            }
+
+        }
+        private void album_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            loadAlbum();
+        }
+
+        private void album_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            albumResult_flowPanel.Controls.AddRange(albums.ToArray());
+        }
+
+        #endregion
 
         #region load artist
 
@@ -54,7 +108,7 @@ namespace Tify
         {
            
             artistTab_Table.Clear();
-            string sqlQuery = "select * from Artist where artistName like '%"+searchKeyWord+"%'";
+            string sqlQuery = "select top 20 * from Artist where artistName like '%"+searchKeyWord+"%'";
 
             try
             {
@@ -82,7 +136,7 @@ namespace Tify
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message+"artist");
             }
 
         }
@@ -173,7 +227,7 @@ namespace Tify
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message+"track");
             }
 
         }
@@ -264,6 +318,5 @@ namespace Tify
             mainScr.changeSong(track_gridView.Rows[e.RowIndex].Tag.ToString());
         }
 
-        
     }
 }

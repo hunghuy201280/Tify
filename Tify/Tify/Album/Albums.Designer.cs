@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Albums));
             this.bottom_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.albumContainer1 = new Tify.AlbumContainer();
+            this.albumContainer2 = new Tify.AlbumContainer();
+            this.albumContainer3 = new Tify.AlbumContainer();
+            this.albumContainer4 = new Tify.AlbumContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Playlist_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -37,10 +41,6 @@
             this.formTitle_label = new System.Windows.Forms.Label();
             this.sort_button = new System.Windows.Forms.Button();
             this.panel_default_playlist = new System.Windows.Forms.Panel();
-            this.albumContainer1 = new Tify.AlbumContainer();
-            this.albumContainer2 = new Tify.AlbumContainer();
-            this.albumContainer3 = new Tify.AlbumContainer();
-            this.albumContainer4 = new Tify.AlbumContainer();
             this.bottom_flowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,6 +59,42 @@
             this.bottom_flowPanel.Name = "bottom_flowPanel";
             this.bottom_flowPanel.Size = new System.Drawing.Size(887, 621);
             this.bottom_flowPanel.TabIndex = 8;
+            // 
+            // albumContainer1
+            // 
+            this.albumContainer1.BackColor = System.Drawing.Color.Black;
+            this.albumContainer1.Location = new System.Drawing.Point(5, 0);
+            this.albumContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.albumContainer1.Name = "albumContainer1";
+            this.albumContainer1.Size = new System.Drawing.Size(172, 233);
+            this.albumContainer1.TabIndex = 0;
+            // 
+            // albumContainer2
+            // 
+            this.albumContainer2.BackColor = System.Drawing.Color.Black;
+            this.albumContainer2.Location = new System.Drawing.Point(187, 0);
+            this.albumContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.albumContainer2.Name = "albumContainer2";
+            this.albumContainer2.Size = new System.Drawing.Size(172, 233);
+            this.albumContainer2.TabIndex = 1;
+            // 
+            // albumContainer3
+            // 
+            this.albumContainer3.BackColor = System.Drawing.Color.Black;
+            this.albumContainer3.Location = new System.Drawing.Point(369, 0);
+            this.albumContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.albumContainer3.Name = "albumContainer3";
+            this.albumContainer3.Size = new System.Drawing.Size(172, 233);
+            this.albumContainer3.TabIndex = 2;
+            // 
+            // albumContainer4
+            // 
+            this.albumContainer4.BackColor = System.Drawing.Color.Black;
+            this.albumContainer4.Location = new System.Drawing.Point(551, 0);
+            this.albumContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.albumContainer4.Name = "albumContainer4";
+            this.albumContainer4.Size = new System.Drawing.Size(172, 233);
+            this.albumContainer4.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -137,42 +173,6 @@
             this.panel_default_playlist.Name = "panel_default_playlist";
             this.panel_default_playlist.Size = new System.Drawing.Size(610, 346);
             this.panel_default_playlist.TabIndex = 5;
-            // 
-            // albumContainer1
-            // 
-            this.albumContainer1.BackColor = System.Drawing.Color.Black;
-            this.albumContainer1.Location = new System.Drawing.Point(5, 0);
-            this.albumContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer1.Name = "albumContainer1";
-            this.albumContainer1.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer1.TabIndex = 0;
-            // 
-            // albumContainer2
-            // 
-            this.albumContainer2.BackColor = System.Drawing.Color.Black;
-            this.albumContainer2.Location = new System.Drawing.Point(187, 0);
-            this.albumContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer2.Name = "albumContainer2";
-            this.albumContainer2.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer2.TabIndex = 1;
-            // 
-            // albumContainer3
-            // 
-            this.albumContainer3.BackColor = System.Drawing.Color.Black;
-            this.albumContainer3.Location = new System.Drawing.Point(369, 0);
-            this.albumContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer3.Name = "albumContainer3";
-            this.albumContainer3.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer3.TabIndex = 2;
-            // 
-            // albumContainer4
-            // 
-            this.albumContainer4.BackColor = System.Drawing.Color.Black;
-            this.albumContainer4.Location = new System.Drawing.Point(551, 0);
-            this.albumContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer4.Name = "albumContainer4";
-            this.albumContainer4.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer4.TabIndex = 3;
             // 
             // Albums
             // 
