@@ -57,8 +57,17 @@ namespace GetData
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             JObject json = JObject.Parse(responseString);
-            string pictureLink = Convert.ToString(json["artists"]["items"][0]["images"][0]["url"]);
-            return pictureLink;
+            try
+            {
+                string pictureLink = Convert.ToString(json["artists"]["items"][0]["images"][0]["url"]);
+                return pictureLink;
+
+
+            }
+            catch (Exception)
+            {
+                return "http://cdn.wearevl.com/IMAGEBANK/-9009/bl/an/blank.jpg";
+            }
         }
         static private JObject getResponseJObject(string url)
         {

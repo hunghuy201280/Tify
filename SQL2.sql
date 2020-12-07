@@ -7,3 +7,12 @@ select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER 
 from Track where trackTitle like '%bua yeu%') as temp
 where rn=1
 
+use Tify
+
+select * from Artist
+select * from Album
+
+alter table Artist
+add spotifyID nvarchar(200)
+
+update Artist set spotifyID=null where artistName='2B'

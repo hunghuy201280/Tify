@@ -33,6 +33,7 @@
             this.opacity_panel = new System.Windows.Forms.Panel();
             this.albumArtist_label = new System.Windows.Forms.Label();
             this.albumName_label = new System.Windows.Forms.Label();
+            this.albumYear_label = new System.Windows.Forms.Label();
             this.albumCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,17 +88,30 @@
             this.albumName_label.TabIndex = 11;
             this.albumName_label.Text = "Ghost In A Flower";
             // 
+            // albumYear_label
+            // 
+            this.albumYear_label.AutoSize = true;
+            this.albumYear_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.albumYear_label.ForeColor = System.Drawing.Color.White;
+            this.albumYear_label.Location = new System.Drawing.Point(0, 220);
+            this.albumYear_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.albumYear_label.Name = "albumYear_label";
+            this.albumYear_label.Size = new System.Drawing.Size(36, 16);
+            this.albumYear_label.TabIndex = 12;
+            this.albumYear_label.Text = "2020";
+            // 
             // AlbumContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.albumYear_label);
             this.Controls.Add(this.albumArtist_label);
             this.Controls.Add(this.albumName_label);
             this.Controls.Add(this.albumCover_panel);
             this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.Name = "AlbumContainer";
-            this.Size = new System.Drawing.Size(172, 226);
+            this.Size = new System.Drawing.Size(172, 236);
             this.Load += new System.EventHandler(this.AlbumContainer_Load);
             this.albumCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -111,5 +125,6 @@
         private System.Windows.Forms.Panel opacity_panel;
         private System.Windows.Forms.Label albumArtist_label;
         private System.Windows.Forms.Label albumName_label;
+        private System.Windows.Forms.Label albumYear_label;
     }
 }
