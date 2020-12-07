@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.playlistCover_pictureBox = new System.Windows.Forms.Panel();
             this.top_panel = new System.Windows.Forms.Panel();
+            this.createdBy_label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +52,6 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).BeginInit();
@@ -181,7 +181,7 @@
             this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
             this.top_panel.Controls.Add(this.play_button);
-            this.top_panel.Controls.Add(this.label3);
+            this.top_panel.Controls.Add(this.createdBy_label);
             this.top_panel.Controls.Add(this.label2);
             this.top_panel.Controls.Add(this.label1);
             this.top_panel.Controls.Add(this.playlistCover_pictureBox);
@@ -190,6 +190,17 @@
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 270);
             this.top_panel.TabIndex = 2;
+            // 
+            // createdBy_label
+            // 
+            this.createdBy_label.AutoSize = true;
+            this.createdBy_label.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createdBy_label.ForeColor = System.Drawing.Color.Gray;
+            this.createdBy_label.Location = new System.Drawing.Point(222, 124);
+            this.createdBy_label.Name = "createdBy_label";
+            this.createdBy_label.Size = new System.Drawing.Size(263, 20);
+            this.createdBy_label.TabIndex = 2;
+            this.createdBy_label.Text = "Created by me - 10 Tracks - 1:24:00";
             // 
             // dataGridView1
             // 
@@ -311,17 +322,6 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(222, 124);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(263, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Created by me - 10 Tracks - 1:24:00";
-            // 
             // PlaylistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -365,6 +365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label createdBy_label;
     }
 }
