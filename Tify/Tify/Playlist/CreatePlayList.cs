@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Tify
 {
     public partial class CreatePlayList : Form
     {
+        private string strcon= @"Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        SqlConnection sqlcon = null;
         public CreatePlayList()
         {
             InitializeComponent();
@@ -44,7 +47,7 @@ namespace Tify
 
         private void CreatePlayList_Button_Click(object sender, EventArgs e)
         {
-            
+
             Button newbutton = new Button();
             newbutton.FlatStyle = FlatStyle.Flat;
             newbutton.FlatAppearance.BorderSize = 0;
@@ -61,10 +64,27 @@ namespace Tify
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             menu_pnl.Controls.Add(newbutton);
 
+            //create sql connection
+            SqlConnection connection = new SqlConnection(strcon);
+            connection.Open();
+            string playlistname= Title_TextBox.Text;
             
-
-
-
+            using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT Inserted.playlistID VALUES('"+playlistname+"'); ", connection))
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                
+                if (reader.HasRows)
+                {
+                   
+                    while (reader.Read())
+                    {
+                        int id = Int32.Parse(reader[0].ToString());
+                        using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values("+mainScr.CurrentUser.UserID+",'" + id.ToString() + "'); ", connection)) ;
+                    }
+                }
+            }
+            connection.Close();
+           
         }
     }
 }
