@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tify.Playlist
+namespace Tify
 {
     public partial class AddToPlayList : Form
     {

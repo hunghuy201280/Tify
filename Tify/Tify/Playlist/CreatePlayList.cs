@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Tify
 {
     public partial class CreatePlayList : Form
     {
-        private string strcon= @"Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        SqlConnection sqlcon = null;
+        SqlConnection sqlcon;
         public CreatePlayList()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
+            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
 
@@ -65,9 +65,8 @@ namespace Tify
             menu_pnl.Controls.Add(newbutton);
 
             //create sql connection
-            SqlConnection connection = new SqlConnection(strcon);
+            /*SqlConnection connection = new SqlConnection(strcon);
             connection.Open();
-            string playlistname= Title_TextBox.Text;
             
             using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT Inserted.playlistID VALUES('"+playlistname+"'); ", connection))
             using (SqlDataReader reader = command.ExecuteReader())
@@ -83,8 +82,31 @@ namespace Tify
                     }
                 }
             }
-            connection.Close();
-           
+            connection.Close();*/
+            sqlcon.Open();
+            string playlistname = Title_TextBox.Text;
+
+            using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')", sqlcon))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    if (reader.HasRows)
+                    {
+
+                        if (reader.Read())
+                        {
+                            string id = reader[0].ToString();
+                            using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values(" + mainScr.CurrentUser.UserID + ",'" + id.ToString() + "')", sqlcon))
+                            {
+                                command1.ExecuteNonQuery();
+                            }
+                        }
+
+                    }
+                }
+            }
+            sqlcon.Close();
         }
     }
 }

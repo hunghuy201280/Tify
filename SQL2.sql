@@ -59,3 +59,26 @@ create table UserHasMix
 
 alter table UserHasMix
 add constraint FK_myMixID_MyMix foreign key (myMixID) references MyMix(myMixID)
+
+alter table UserHasMix
+add constraint PK_UserHasMix primary key(myMixID,userID)
+
+alter table UserHasMix
+add constraint FK_userID_UserHasMix foreign key(userID) references Account(userID)
+
+
+select * from Album join AlbumHasTrack on Album.albumID=AlbumHasTrack.albumID
+join Track on AlbumHasTrack.trackID=Track.trackID
+
+select * from Album where albumLink like'%hac-ngot-moi-tr%'
+select * from Track where trackLink not like '%nghe-album%'
+
+/*	https://vi.chiasenhac.vn/nghe-album/3-tuyen-tap-nhac-ngot-moi-tre-soi-dong-2019-xss7773tqtttwf.html?playlist=6
+
+	https://vi.chiasenhac.vn/nghe-album/2017-battle-choi-b-ray-full-xss7qr5vqteah2.html?playlist=6
+*/
+select albumTitle,trackTitle from AlbumHasTrack join Album on AlbumHasTrack.albumID=Album.albumID join
+Track on Track.trackID=AlbumHasTrack.trackID
+
+select * from Album,Track where trackLink like '%nghe-album%' and  albumLink like 
+(select substring(trackLink,36,10))

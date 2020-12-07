@@ -1,4 +1,4 @@
-﻿namespace Tify.Playlist
+﻿namespace Tify
 {
     partial class AddToPlayList
     {
