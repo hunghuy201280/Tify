@@ -38,17 +38,18 @@
             this.artist_track_time__label = new System.Windows.Forms.Label();
             this.releaseYear_label = new System.Windows.Forms.Label();
             this.albumName_label = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.top_panel = new System.Windows.Forms.Panel();
-            this.albumCover_pictureBox = new System.Windows.Forms.PictureBox();
-            this.addToAlbum_button = new System.Windows.Forms.Button();
+            this.album_gridView = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.top_panel = new System.Windows.Forms.Panel();
+            this.addToAlbum_button = new System.Windows.Forms.Button();
+            this.albumCover_pictureBox = new System.Windows.Forms.PictureBox();
+            this.album_worker = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.album_gridView)).BeginInit();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumCover_pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -128,14 +129,14 @@
             this.albumName_label.TabIndex = 1;
             this.albumName_label.Text = "Album Name";
             // 
-            // dataGridView1
+            // album_gridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.album_gridView.AllowUserToAddRows = false;
+            this.album_gridView.AllowUserToDeleteRows = false;
+            this.album_gridView.BackgroundColor = System.Drawing.Color.Black;
+            this.album_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.album_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.album_gridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,9 +144,9 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.album_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.album_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.album_gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
             this.title,
             this.artist,
@@ -159,13 +160,13 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.Black;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 270);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.album_gridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.album_gridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.album_gridView.EnableHeadersVisualStyles = false;
+            this.album_gridView.GridColor = System.Drawing.Color.Black;
+            this.album_gridView.Location = new System.Drawing.Point(0, 270);
+            this.album_gridView.Name = "album_gridView";
+            this.album_gridView.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,65 +174,24 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.RowHeadersVisible = false;
+            this.album_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.album_gridView.RowHeadersVisible = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowTemplate.Height = 42;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 300);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // top_panel
-            // 
-            this.top_panel.Controls.Add(this.addToAlbum_button);
-            this.top_panel.Controls.Add(this.albumCover_pictureBox);
-            this.top_panel.Controls.Add(this.addToPlaylist_Button);
-            this.top_panel.Controls.Add(this.playShuffle_Button);
-            this.top_panel.Controls.Add(this.play_button);
-            this.top_panel.Controls.Add(this.releaseYear_label);
-            this.top_panel.Controls.Add(this.artist_track_time__label);
-            this.top_panel.Controls.Add(this.albumName_label);
-            this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.top_panel.Location = new System.Drawing.Point(0, 0);
-            this.top_panel.Name = "top_panel";
-            this.top_panel.Size = new System.Drawing.Size(887, 270);
-            this.top_panel.TabIndex = 4;
-            // 
-            // albumCover_pictureBox
-            // 
-            this.albumCover_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
-            this.albumCover_pictureBox.Location = new System.Drawing.Point(12, 12);
-            this.albumCover_pictureBox.Name = "albumCover_pictureBox";
-            this.albumCover_pictureBox.Size = new System.Drawing.Size(200, 200);
-            this.albumCover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.albumCover_pictureBox.TabIndex = 0;
-            this.albumCover_pictureBox.TabStop = false;
-            // 
-            // addToAlbum_button
-            // 
-            this.addToAlbum_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.addToAlbum_button.BackgroundImage = global::Tify.Properties.Resources.like;
-            this.addToAlbum_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.addToAlbum_button.FlatAppearance.BorderSize = 0;
-            this.addToAlbum_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.addToAlbum_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToAlbum_button.ForeColor = System.Drawing.Color.White;
-            this.addToAlbum_button.Location = new System.Drawing.Point(627, 162);
-            this.addToAlbum_button.Name = "addToAlbum_button";
-            this.addToAlbum_button.Size = new System.Drawing.Size(57, 50);
-            this.addToAlbum_button.TabIndex = 4;
-            this.addToAlbum_button.UseVisualStyleBackColor = false;
+            this.album_gridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.album_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.album_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.album_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.album_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.album_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.album_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.album_gridView.RowTemplate.Height = 42;
+            this.album_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.album_gridView.Size = new System.Drawing.Size(887, 300);
+            this.album_gridView.TabIndex = 5;
             // 
             // No
             // 
@@ -280,18 +240,64 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
+            // top_panel
+            // 
+            this.top_panel.Controls.Add(this.addToAlbum_button);
+            this.top_panel.Controls.Add(this.albumCover_pictureBox);
+            this.top_panel.Controls.Add(this.addToPlaylist_Button);
+            this.top_panel.Controls.Add(this.playShuffle_Button);
+            this.top_panel.Controls.Add(this.play_button);
+            this.top_panel.Controls.Add(this.releaseYear_label);
+            this.top_panel.Controls.Add(this.artist_track_time__label);
+            this.top_panel.Controls.Add(this.albumName_label);
+            this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.top_panel.Location = new System.Drawing.Point(0, 0);
+            this.top_panel.Name = "top_panel";
+            this.top_panel.Size = new System.Drawing.Size(887, 270);
+            this.top_panel.TabIndex = 4;
+            // 
+            // addToAlbum_button
+            // 
+            this.addToAlbum_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToAlbum_button.BackgroundImage = global::Tify.Properties.Resources.like;
+            this.addToAlbum_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addToAlbum_button.FlatAppearance.BorderSize = 0;
+            this.addToAlbum_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.addToAlbum_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToAlbum_button.ForeColor = System.Drawing.Color.White;
+            this.addToAlbum_button.Location = new System.Drawing.Point(627, 162);
+            this.addToAlbum_button.Name = "addToAlbum_button";
+            this.addToAlbum_button.Size = new System.Drawing.Size(57, 50);
+            this.addToAlbum_button.TabIndex = 4;
+            this.addToAlbum_button.UseVisualStyleBackColor = false;
+            // 
+            // albumCover_pictureBox
+            // 
+            this.albumCover_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
+            this.albumCover_pictureBox.Location = new System.Drawing.Point(12, 12);
+            this.albumCover_pictureBox.Name = "albumCover_pictureBox";
+            this.albumCover_pictureBox.Size = new System.Drawing.Size(200, 200);
+            this.albumCover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.albumCover_pictureBox.TabIndex = 0;
+            this.albumCover_pictureBox.TabStop = false;
+            // 
+            // album_worker
+            // 
+            this.album_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.album_worker_DoWork);
+            this.album_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.album_worker_RunWorkerCompleted);
+            // 
             // AlbumDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(887, 570);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.album_gridView);
             this.Controls.Add(this.top_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AlbumDetail";
             this.Text = "AlbumDetail";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.album_gridView)).EndInit();
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.albumCover_pictureBox)).EndInit();
@@ -306,7 +312,7 @@
         private System.Windows.Forms.Label artist_track_time__label;
         private System.Windows.Forms.Label releaseYear_label;
         private System.Windows.Forms.Label albumName_label;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView album_gridView;
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.PictureBox albumCover_pictureBox;
         private System.Windows.Forms.Button addToAlbum_button;
@@ -316,5 +322,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private System.ComponentModel.BackgroundWorker album_worker;
     }
 }

@@ -22,5 +22,60 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
         }
+
+        private MainScreen mainScr;
+
+        public Albums(MainScreen callFm)
+        {
+            InitializeComponent();
+
+
+            mainScr = callFm;
+
+
+            firstLoadChildForm();
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+        }
+
+        #region Mở childForm
+
+
+        private AlbumDetail albumDetail;
+        private void firstLoadChildForm()
+        {
+            //change album ID here
+            albumDetail = new AlbumDetail(25.ToString());
+            albumDetail.TopLevel = false;
+            albumDetail.FormBorderStyle = FormBorderStyle.None;
+            albumDetail.Dock = DockStyle.Fill;
+            mainScr.childForm_panel.Controls.Add(albumDetail);
+            albumDetail.Show();
+        }
+
+        public void openChildForm(Form childForm)
+        {
+            if (mainScr.activeForm != null)
+            {
+                if (mainScr.activeForm == childForm)
+                    return;
+            }
+
+            mainScr.activeForm = childForm;
+
+            childForm.BringToFront();
+        }
+
+        #endregion Mở childForm
+
+        public void opacity_panel_Click(object sender, EventArgs e)
+        {
+            openChildForm(albumDetail);
+        }
+
     }
 }
