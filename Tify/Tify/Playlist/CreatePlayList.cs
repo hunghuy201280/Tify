@@ -18,7 +18,7 @@ namespace Tify
         public CreatePlayList()
         {
             InitializeComponent();
-            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
+         
 
         }
         private FlowLayoutPanel menu_pnl;
@@ -28,8 +28,15 @@ namespace Tify
             InitializeComponent();
             mainScr = callForm;
             menu_pnl = mainScr.getCreatePlayList_FlowPanel();
-            Text_PlayList_Count.Text = Description_TextBox.Text.Length.ToString() + "/ 500";
+            
             this.DoubleBuffered = true;
+            Description_TextBox.GotFocus += Description_TextBox_GotFocus;
+            Description_TextBox.LostFocus += Description_TextBox_LostFocus;
+            Title_TextBox.GotFocus += Title_TextBox_GotFocus;
+            Title_TextBox.LostFocus += Title_TextBox_LostFocus;
+            
+           
+
 
             foreach (Control control in this.Controls)
             {
@@ -38,12 +45,36 @@ namespace Tify
             sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
-
-        private void Description_TextBox_TextChanged(object sender, EventArgs e)
+        private void Title_TextBox_LostFocus(object sender, EventArgs e)
         {
-            Description_TextBox.MaxLength = 500;
-            Text_PlayList_Count.Text = (Description_TextBox.Text.Length).ToString() + "/ 500";
+            panel_title_underline.BackColor = Color.FromArgb(56, 57, 61);
+            if (string.IsNullOrWhiteSpace(Title_TextBox.Text))
+                Title_TextBox.Text = "Give it a name ...";
         }
+
+        private void Title_TextBox_GotFocus(object sender, EventArgs e)
+        {
+            panel_title_underline.BackColor = Color.Cyan;
+            if (Title_TextBox.Text == "Give it a name ...")
+            { Title_TextBox.Text = ""; }
+            
+        }
+
+        private void Description_TextBox_LostFocus(object sender, EventArgs e)
+        {
+            panel_description_underline.BackColor = Color.FromArgb(56, 57, 61);
+            if (string.IsNullOrWhiteSpace(Description_TextBox.Text))
+            Description_TextBox.Text = "Describe something ...";
+        }
+
+        private void Description_TextBox_GotFocus(object sender, EventArgs e)
+        {
+            panel_description_underline.BackColor = Color.Cyan;
+            if (Description_TextBox.Text == "Describe something ...")
+                Description_TextBox.Text = "";
+
+        }
+
 
         private void CreatePlayList_Button_Click(object sender, EventArgs e)
         {
@@ -107,6 +138,42 @@ namespace Tify
                 }
             }
             sqlcon.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CreatePlayList_Load(object sender, EventArgs e)
+        {
+            Description_TextBox.Text = "Describe something ...";
+            Description_TextBox.ForeColor = Color.Gray;
+            Title_TextBox.Text = "Give it a name ..."; 
+            Title_TextBox.ForeColor= Color.Gray; ;
+            panel_description_underline.BackColor = Color.FromArgb(56, 57, 61);
+            panel_title_underline.BackColor = Color.FromArgb(56, 57, 61);
+
+
+        }
+
+        private void Description_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Description_TextBox.ForeColor = Color.White;
+            if (Description_TextBox.Text == "Describe something ...")
+            {
+                Description_TextBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void Title_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Title_TextBox.ForeColor = Color.White;
+            if (Title_TextBox.Text == "Give it a name ...")
+            {
+                Title_TextBox.ForeColor = Color.Gray; ;
+            }
+
         }
     }
 }
