@@ -116,12 +116,16 @@ namespace Tify
                     string artist = track["artistName"].ToString();
                     int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
                     string time;
-
+                 
                     //neu giay >=10
                     if (duration[1] >= 10)
                         time = duration[0] + ":" + duration[1];
                     else
                         time = duration[0] + ":0" + duration[1];
+                    if (time=="0:00")
+                    {
+                        continue;
+                    }
                     tempRow.Cells[0].Value = title;
                     tempRow.Cells[1].Value = artist;
                     tempRow.Cells[2].Value = time;

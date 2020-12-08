@@ -152,6 +152,7 @@ namespace Tify
                     break;
                 }
             }
+            //index in mixcontainers
             opacity_panel.Tag = index - 1;
         }
 
