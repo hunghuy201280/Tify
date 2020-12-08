@@ -22,16 +22,12 @@ namespace Tify
             connection = new SqlConnection(connectionString);
             userName_textBox.Focus();
 
-
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
-
-
         }
 
         MainScreen mainScr;
@@ -115,7 +111,12 @@ namespace Tify
                 MessageBox.Show("Login successfully !");
                 mainScr.setAccount(account);
                 mainScr.setAccountButtonUsername(login.Rows[0]["username"].ToString());
+                /*this.Hide();
+                var temp = new MainScreen(account);
+                temp.Show();*/
                 this.Close();
+               
+
             }
             login.Clear();
             connection.Close();

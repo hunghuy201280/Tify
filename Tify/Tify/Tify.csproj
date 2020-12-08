@@ -544,5 +544,17 @@
   <ItemGroup>
     <None Include="Resources\add_white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mymix1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mymix2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mymix3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mymix4.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

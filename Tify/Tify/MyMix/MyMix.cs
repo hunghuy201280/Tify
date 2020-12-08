@@ -25,11 +25,14 @@ namespace Tify
          
 
         private MainScreen mainScr;
+        int countMix;
         public MyMix(MainScreen callform)
         {
             InitializeComponent();
 
             mainScr = callform;
+            
+
 
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
@@ -93,27 +96,11 @@ namespace Tify
             MyMix_GroupBox.Width = this.Width - 12;
             MyMix_GroupBox.Height = this.Height - 12;
         }
-        
-        private void addMix()
-        {
 
-
-             MyMixContainer mix = new MyMixContainer();
-           
-            
-            
-            mix_Flowpanel.Controls.Add(mix);
-            
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            addMix();
-        }
 
         public void opacity_panel_Click(object sender, EventArgs e)
         {
+           
             openChildForm(mixDetail);
         }
     }

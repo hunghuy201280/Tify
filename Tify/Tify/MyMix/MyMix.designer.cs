@@ -30,7 +30,6 @@
         {
             this.MyMix_GroupBox = new System.Windows.Forms.GroupBox();
             this.mix_Flowpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.myMixContainer1 = new Tify.MyMixContainer();
             this.myMixContainer2 = new Tify.MyMixContainer();
             this.myMixContainer3 = new Tify.MyMixContainer();
@@ -58,7 +57,6 @@
             // 
             this.mix_Flowpanel.AutoScroll = true;
             this.mix_Flowpanel.AutoSize = true;
-            this.mix_Flowpanel.Controls.Add(this.button1);
             this.mix_Flowpanel.Controls.Add(this.myMixContainer1);
             this.mix_Flowpanel.Controls.Add(this.myMixContainer2);
             this.mix_Flowpanel.Controls.Add(this.myMixContainer3);
@@ -68,22 +66,10 @@
             this.mix_Flowpanel.Size = new System.Drawing.Size(1122, 649);
             this.mix_Flowpanel.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.DarkRed;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 43);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add Mix";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // myMixContainer1
             // 
             this.myMixContainer1.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer1.Location = new System.Drawing.Point(139, 3);
+            this.myMixContainer1.Location = new System.Drawing.Point(3, 3);
             this.myMixContainer1.Name = "myMixContainer1";
             this.myMixContainer1.Size = new System.Drawing.Size(172, 230);
             this.myMixContainer1.TabIndex = 20;
@@ -91,7 +77,7 @@
             // myMixContainer2
             // 
             this.myMixContainer2.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer2.Location = new System.Drawing.Point(317, 3);
+            this.myMixContainer2.Location = new System.Drawing.Point(181, 3);
             this.myMixContainer2.Name = "myMixContainer2";
             this.myMixContainer2.Size = new System.Drawing.Size(172, 230);
             this.myMixContainer2.TabIndex = 21;
@@ -99,7 +85,7 @@
             // myMixContainer3
             // 
             this.myMixContainer3.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer3.Location = new System.Drawing.Point(495, 3);
+            this.myMixContainer3.Location = new System.Drawing.Point(359, 3);
             this.myMixContainer3.Name = "myMixContainer3";
             this.myMixContainer3.Size = new System.Drawing.Size(172, 230);
             this.myMixContainer3.TabIndex = 22;
@@ -126,7 +112,6 @@
             this.MyMix_GroupBox.ResumeLayout(false);
             this.MyMix_GroupBox.PerformLayout();
             this.mix_Flowpanel.ResumeLayout(false);
-            this.mix_Flowpanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,7 +120,6 @@
         private System.Windows.Forms.GroupBox MyMix_GroupBox;
         private System.Windows.Forms.FlowLayoutPanel mix_Flowpanel;
         private System.Windows.Forms.Panel playlistDetail_panel;
-        private System.Windows.Forms.Button button1;
         private MyMixContainer myMixContainer1;
         private MyMixContainer myMixContainer2;
         private MyMixContainer myMixContainer3;

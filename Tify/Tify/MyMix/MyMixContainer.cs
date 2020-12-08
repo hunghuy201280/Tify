@@ -35,8 +35,26 @@ namespace Tify
             }
             opacity_panel.Click += callform.opacity_panel_Click;
         }
+        string mixID;
+        public MyMixContainer(MyMix callform,string id)
+        {
+            InitializeComponent();
 
 
+            mixID = id;
+
+
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            opacity_panel.Click += callform.opacity_panel_Click;
+        }
+
+        
 
         private void myMixCover_panel_MouseHover(object sender, EventArgs e)
         {

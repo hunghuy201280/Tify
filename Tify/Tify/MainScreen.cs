@@ -2,6 +2,7 @@
 using GetData;
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,9 +16,14 @@ namespace Tify
     {
         private SqlConnection connection;
 
+       
         public MainScreen()
         {
             InitializeComponent();
+            //Dang nhap
+            loginForm = new Login(this);
+            loginForm.ShowDialog();
+
             searchBar_textBox.GotFocus += RemoveText;
             searchBar_textBox.LostFocus += AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
@@ -35,10 +41,9 @@ namespace Tify
             {
                 EnableDoubleBuferring(control);
             }
-            string connectString = "Server=tcp:hunghuy2009.database.windows.net,1433;Initial Catalog=Tify;Persist Security Info=False;User ID=hunghuy2009;Password=Hunghuy123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string connectString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectString);
 
-            loginForm = new Login(this);
         }
 
         private Home homeScr;
@@ -47,7 +52,7 @@ namespace Tify
         private Artist artistScr;
         private Albums albumsScr;
         private Tracks tracksScr;
-        private Account currentUser;
+        public Account currentUser;
         private SearchBox srchBox;
 
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
@@ -184,12 +189,13 @@ namespace Tify
             //demo
             this.ActiveControl = artist_label;
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
             //Set Main Screen for RightClickUC
+           
         }
 
         #endregion Load form
