@@ -42,8 +42,9 @@ namespace Tify
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
-        string mixID;
-        int coverNum;
+        private string mixID;
+        private int coverNum;
+        public bool isLoaded;
         public void loadMixDetailContent(string id,int num)
         {
             mixID = id;
@@ -122,6 +123,7 @@ namespace Tify
 
                 }
             }
+            isLoaded = true;
 
         }
 
