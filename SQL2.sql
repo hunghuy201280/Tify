@@ -77,8 +77,23 @@ select * from Track where trackLink not like '%nghe-album%'
 
 	https://vi.chiasenhac.vn/nghe-album/2017-battle-choi-b-ray-full-xss7qr5vqteah2.html?playlist=6
 */
-select albumTitle,trackTitle from AlbumHasTrack join Album on AlbumHasTrack.albumID=Album.albumID join
-Track on Track.trackID=AlbumHasTrack.trackID
+select Album.albumTitle,Album.albumYear,Album.albumID,Track.*,Artist.*,albumArt.artistName from AlbumHasTrack join Album on AlbumHasTrack.albumID=Album.albumID
+join Track on Track.trackID=AlbumHasTrack.trackID 
+join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID
+join Artist on Artist.artistID=ArtistHasTrack.artistID
+join Artist as albumArt on albumArt.artistID=Album.artistID
+where Album.albumID=25
 
-select * from Album,Track where trackLink like '%nghe-album%' and  albumLink like 
-(select substring(trackLink,36,10))
+select * from UserHasPlaylist
+select * from Playlist
+
+delete from UserHasPlaylist
+delete from Playlist
+
+select top 5000 * from Track where trackID='40998'
+
+select count(*) from AlbumHasTrack
+/*
+12046
+117588
+*/
