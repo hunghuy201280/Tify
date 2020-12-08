@@ -47,6 +47,10 @@ namespace Tify
         public bool isLoaded;
         public void loadMixDetailContent(string id,int num)
         {
+            if (isLoaded)
+            {
+                return;
+            }
             mixID = id;
             coverNum = num;
             load_worker.RunWorkerAsync();
@@ -74,8 +78,7 @@ namespace Tify
             }
 
             //
-            DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
-            tempRow.Visible = true;
+           
             string sqlQuery = "select * from  " +
                 "MyMix join MyMixHasTrack on MyMix.myMixID = MyMixHasTrack.myMixID " +
                 "join Track on Track.trackID = MyMixHasTrack.trackID " +
@@ -84,6 +87,7 @@ namespace Tify
                 "where MyMix.myMixID = @id order by trackTitle; ";
             trackTable.Clear();
             //load trackTable
+            connection.Open();
             using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
             {
                 cmd.Parameters.AddWithValue("@id", mixID);
@@ -97,6 +101,9 @@ namespace Tify
             string lastTrackID = "";
             foreach (DataRow track in trackTable.Rows)
             {
+                DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
+                tempRow.Visible = true;
+
                 //neu trung trackID thi add them artist
                 if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
                 {
@@ -111,7 +118,7 @@ namespace Tify
                     string time;
 
                     //neu giay >=10
-                    if (duration[10] >= 10)
+                    if (duration[1] >= 10)
                         time = duration[0] + ":" + duration[1];
                     else
                         time = duration[0] + ":0" + duration[1];
@@ -120,7 +127,8 @@ namespace Tify
                     tempRow.Cells[2].Value = time;
                     tempRow.Cells[3].Value = Properties.Resources.add;
                     tempRow.Cells[4].Value = Properties.Resources.like;
-
+                    rows.Add(tempRow);
+                    lastTrackID = track["trackID"].ToString();
                 }
             }
             isLoaded = true;

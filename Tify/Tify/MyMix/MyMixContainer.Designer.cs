@@ -31,8 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMixContainer));
             this.myMixCover_panel = new System.Windows.Forms.Panel();
             this.opacity_panel = new System.Windows.Forms.Panel();
-            this.numberOfTracks_label = new System.Windows.Forms.Label();
+            this.artist_label = new System.Windows.Forms.Label();
             this.playlistName_label = new System.Windows.Forms.Label();
+            this.cover_worker = new System.ComponentModel.BackgroundWorker();
+            this.artist_worker = new System.ComponentModel.BackgroundWorker();
             this.myMixCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,17 +64,18 @@
             this.opacity_panel.Visible = false;
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
-            // numberOfTracks_label
+            // artist_label
             // 
-            this.numberOfTracks_label.AutoSize = true;
-            this.numberOfTracks_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberOfTracks_label.ForeColor = System.Drawing.Color.White;
-            this.numberOfTracks_label.Location = new System.Drawing.Point(13, 207);
-            this.numberOfTracks_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.numberOfTracks_label.Name = "numberOfTracks_label";
-            this.numberOfTracks_label.Size = new System.Drawing.Size(48, 16);
-            this.numberOfTracks_label.TabIndex = 11;
-            this.numberOfTracks_label.Text = "Playlist";
+            this.artist_label.AutoSize = true;
+            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.ForeColor = System.Drawing.Color.White;
+            this.artist_label.Location = new System.Drawing.Point(13, 207);
+            this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.artist_label.MaximumSize = new System.Drawing.Size(148, 0);
+            this.artist_label.Name = "artist_label";
+            this.artist_label.Size = new System.Drawing.Size(38, 16);
+            this.artist_label.TabIndex = 11;
+            this.artist_label.Text = "Artist";
             // 
             // playlistName_label
             // 
@@ -87,15 +90,25 @@
             this.playlistName_label.TabIndex = 10;
             this.playlistName_label.Text = "Japan Top 50";
             // 
+            // cover_worker
+            // 
+            this.cover_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.cover_worker_DoWork);
+            this.cover_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.cover_worker_RunWorkerCompleted);
+            // 
+            // artist_worker
+            // 
+            this.artist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artist_worker_DoWork);
+            this.artist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artist_worker_RunWorkerCompleted);
+            // 
             // MyMixContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.myMixCover_panel);
-            this.Controls.Add(this.numberOfTracks_label);
+            this.Controls.Add(this.artist_label);
             this.Controls.Add(this.playlistName_label);
             this.Name = "MyMixContainer";
-            this.Size = new System.Drawing.Size(172, 230);
+            this.Size = new System.Drawing.Size(172, 246);
             this.Load += new System.EventHandler(this.MyMixContainer_Load);
             this.myMixCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -107,7 +120,9 @@
 
         private System.Windows.Forms.Panel myMixCover_panel;
         private System.Windows.Forms.Panel opacity_panel;
-        private System.Windows.Forms.Label numberOfTracks_label;
+        private System.Windows.Forms.Label artist_label;
         private System.Windows.Forms.Label playlistName_label;
+        private System.ComponentModel.BackgroundWorker cover_worker;
+        private System.ComponentModel.BackgroundWorker artist_worker;
     }
 }

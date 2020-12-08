@@ -30,12 +30,8 @@
         {
             this.MyMix_GroupBox = new System.Windows.Forms.GroupBox();
             this.mix_Flowpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.myMixContainer1 = new Tify.MyMixContainer();
-            this.myMixContainer2 = new Tify.MyMixContainer();
-            this.myMixContainer3 = new Tify.MyMixContainer();
             this.playlistDetail_panel = new System.Windows.Forms.Panel();
             this.MyMix_GroupBox.SuspendLayout();
-            this.mix_Flowpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MyMix_GroupBox
@@ -57,38 +53,11 @@
             // 
             this.mix_Flowpanel.AutoScroll = true;
             this.mix_Flowpanel.AutoSize = true;
-            this.mix_Flowpanel.Controls.Add(this.myMixContainer1);
-            this.mix_Flowpanel.Controls.Add(this.myMixContainer2);
-            this.mix_Flowpanel.Controls.Add(this.myMixContainer3);
             this.mix_Flowpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mix_Flowpanel.Location = new System.Drawing.Point(3, 36);
             this.mix_Flowpanel.Name = "mix_Flowpanel";
             this.mix_Flowpanel.Size = new System.Drawing.Size(1122, 649);
             this.mix_Flowpanel.TabIndex = 0;
-            // 
-            // myMixContainer1
-            // 
-            this.myMixContainer1.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer1.Location = new System.Drawing.Point(3, 3);
-            this.myMixContainer1.Name = "myMixContainer1";
-            this.myMixContainer1.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer1.TabIndex = 20;
-            // 
-            // myMixContainer2
-            // 
-            this.myMixContainer2.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer2.Location = new System.Drawing.Point(181, 3);
-            this.myMixContainer2.Name = "myMixContainer2";
-            this.myMixContainer2.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer2.TabIndex = 21;
-            // 
-            // myMixContainer3
-            // 
-            this.myMixContainer3.BackColor = System.Drawing.Color.Black;
-            this.myMixContainer3.Location = new System.Drawing.Point(359, 3);
-            this.myMixContainer3.Name = "myMixContainer3";
-            this.myMixContainer3.Size = new System.Drawing.Size(172, 230);
-            this.myMixContainer3.TabIndex = 22;
             // 
             // playlistDetail_panel
             // 
@@ -111,7 +80,6 @@
             this.Load += new System.EventHandler(this.MyMix_Load);
             this.MyMix_GroupBox.ResumeLayout(false);
             this.MyMix_GroupBox.PerformLayout();
-            this.mix_Flowpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -120,8 +88,5 @@
         private System.Windows.Forms.GroupBox MyMix_GroupBox;
         private System.Windows.Forms.FlowLayoutPanel mix_Flowpanel;
         private System.Windows.Forms.Panel playlistDetail_panel;
-        private MyMixContainer myMixContainer1;
-        private MyMixContainer myMixContainer2;
-        private MyMixContainer myMixContainer3;
     }
 }

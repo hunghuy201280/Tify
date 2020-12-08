@@ -28,8 +28,8 @@ namespace Tify
 
         SqlConnection connection;
 
-        private MainScreen mainScr;
-        int countMix;
+        public MainScreen mainScr;
+        private DataTable mixTable = new DataTable();        
         public MyMix(MainScreen callform)
         {
             InitializeComponent();
@@ -39,26 +39,23 @@ namespace Tify
             mainScr = callform;
             //Get number of mixs from user
             connection.Open();
-            using (SqlCommand cmd= new SqlCommand("select count(*) from UserHasMix where userID=@userID",connection))
+            using (SqlCommand cmd= new SqlCommand("select * from UserHasMix where userID=8 order by myMixID asc;", connection))
             {
                 cmd.Parameters.AddWithValue("@userID", mainScr.currentUser.UserID);
                 using (SqlDataReader reader=cmd.ExecuteReader())
                 {
-                    if (reader.Read())
-                    {
-                        countMix =int.Parse(reader[0].ToString());
-                    }
+                    mixTable.Load(reader);
                 }
             }
             connection.Close();
 
 
-            for (int i = 0; i < countMix; i++)
+            for (int i = 0; i < mixTable.Rows.Count; i++)
             {
-                mixContainers.Add(new MyMixContainer(this));
+                mixContainers.Add(new MyMixContainer(this,mixTable.Rows[i]["myMixID"].ToString()));
                 mixDetails.Add(new MixDetail());
             }
-
+            mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
@@ -81,7 +78,7 @@ namespace Tify
 
         private void firstLoadChildForm()
         {
-            for (int i = 0; i < countMix; i++)
+            for (int i = 0; i < mixTable.Rows.Count; i++)
             {
                 //mixDetails[i] = new MixDetail();
                 mixDetails[i].TopLevel = false;
@@ -128,9 +125,9 @@ namespace Tify
 
         public void opacity_panel_Click(object sender, EventArgs e)
         {
-            MyMixContainer parent = (sender as Panel).Parent as MyMixContainer;
-            int index = mixContainers.IndexOf(parent);
 
+            int index = int.Parse((sender as Panel).Tag.ToString());
+            mixDetails[index].loadMixDetailContent(mixContainers[index].mixID, mixContainers[index].index);
             openChildForm(mixDetails[index]);
         }
     }
