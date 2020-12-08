@@ -37,7 +37,7 @@ namespace Tify
             connection = new SqlConnection(connectionString);
 
             mainScr = callform;
-            //Get number of mixs from user
+            //Get user has mix table
             connection.Open();
             using (SqlCommand cmd= new SqlCommand("select * from UserHasMix where userID=8 order by myMixID asc;", connection))
             {
@@ -49,7 +49,7 @@ namespace Tify
             }
             connection.Close();
 
-
+            // initialize container and mixdetail
             for (int i = 0; i < mixTable.Rows.Count; i++)
             {
                 mixContainers.Add(new MyMixContainer(this,mixTable.Rows[i]["myMixID"].ToString()));
@@ -123,6 +123,7 @@ namespace Tify
         }
 
 
+        //open mixdetail of each mix container
         public void opacity_panel_Click(object sender, EventArgs e)
         {
 
