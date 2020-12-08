@@ -95,49 +95,37 @@ namespace Tify
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             menu_pnl.Controls.Add(newbutton);
 
-            //create sql connection
-            /*SqlConnection connection = new SqlConnection(strcon);
-            connection.Open();
-            
-            using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT Inserted.playlistID VALUES('"+playlistname+"'); ", connection))
-            using (SqlDataReader reader = command.ExecuteReader())
+            if (string.IsNullOrWhiteSpace(Title_TextBox.Text)|| Title_TextBox.ForeColor==Color.Gray)
             {
-                
-                if (reader.HasRows)
-                {
-                   
-                    while (reader.Read())
-                    {
-                        int id = Int32.Parse(reader[0].ToString());
-                        using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values("+mainScr.CurrentUser.UserID+",'" + id.ToString() + "'); ", connection)) ;
-                    }
-                }
+                MessageBox.Show("PlayList name cannot be a blank");
             }
-            connection.Close();*/
-            sqlcon.Open();
-            string playlistname = Title_TextBox.Text;
-
-            using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')", sqlcon))
+            else
             {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
+                sqlcon.Open();
+                string playlistname = Title_TextBox.Text;
 
-                    if (reader.HasRows)
+                using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')", sqlcon))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
-                        if (reader.Read())
+                        if (reader.HasRows)
                         {
-                            string id = reader[0].ToString();
-                            using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values(" + mainScr.CurrentUser.UserID + ",'" + id.ToString() + "')", sqlcon))
-                            {
-                                command1.ExecuteNonQuery();
-                            }
-                        }
 
+                            if (reader.Read())
+                            {
+                                string id = reader[0].ToString();
+                                using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values(" + mainScr.CurrentUser.UserID + ",'" + id.ToString() + "')", sqlcon))
+                                {
+                                    command1.ExecuteNonQuery();
+                                }
+                            }
+
+                        }
                     }
                 }
+                sqlcon.Close();
             }
-            sqlcon.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
