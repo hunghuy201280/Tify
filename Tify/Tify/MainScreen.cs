@@ -54,6 +54,7 @@ namespace Tify
         private Tracks tracksScr;
         public Account currentUser;
         private SearchBox srchBox;
+        private AddtoPlaylistForm add2PL;
 
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
@@ -505,7 +506,8 @@ namespace Tify
             playlistScr = new Playlist(this);
             albumsScr = new Albums();
             tracksScr = new Tracks();
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr };
+            
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr};
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -973,6 +975,9 @@ namespace Tify
             }
             loadNewSong(suggestedSong[0]);
         }
+
+        
+
         public void changeSong(string url)
         {
             if (previousTracks.Count == 0)
@@ -986,5 +991,12 @@ namespace Tify
             loadNewSong(url);
         }
         #endregion next/previous button event
+        #region addplaylist
+        private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
+        {
+            add2PL = new AddtoPlaylistForm(this);
+            add2PL.Show();
+        }
+        #endregion
     }
 }

@@ -28,52 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddtoPlaylistForm));
+            this.button1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel_showPL = new System.Windows.Forms.FlowLayoutPanel();
+            this.Btn_createnewPL = new System.Windows.Forms.Button();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nationale", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(252, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Chose Your Play List";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Nationale", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Cyan;
+            this.button1.Location = new System.Drawing.Point(270, -1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel_showPL
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 66);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 384);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel_showPL.AutoScroll = true;
+            this.flowLayoutPanel_showPL.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel_showPL.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel_showPL.Location = new System.Drawing.Point(0, 139);
+            this.flowLayoutPanel_showPL.Name = "flowLayoutPanel_showPL";
+            this.flowLayoutPanel_showPL.Size = new System.Drawing.Size(310, 267);
+            this.flowLayoutPanel_showPL.TabIndex = 1;
+            this.flowLayoutPanel_showPL.WrapContents = false;
+            // 
+            // Btn_createnewPL
+            // 
+            this.Btn_createnewPL.FlatAppearance.BorderSize = 0;
+            this.Btn_createnewPL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_createnewPL.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_createnewPL.ForeColor = System.Drawing.Color.White;
+            this.Btn_createnewPL.Image = ((System.Drawing.Image)(resources.GetObject("Btn_createnewPL.Image")));
+            this.Btn_createnewPL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_createnewPL.Location = new System.Drawing.Point(0, 35);
+            this.Btn_createnewPL.Name = "Btn_createnewPL";
+            this.Btn_createnewPL.Size = new System.Drawing.Size(310, 57);
+            this.Btn_createnewPL.TabIndex = 3;
+            this.Btn_createnewPL.Text = "Create new playlist";
+            this.Btn_createnewPL.UseVisualStyleBackColor = true;
+            this.Btn_createnewPL.Click += new System.EventHandler(this.Btn_createnewPL_Click);
+            // 
+            // separatorControl1
+            // 
+            this.separatorControl1.Location = new System.Drawing.Point(0, 110);
+            this.separatorControl1.Name = "separatorControl1";
+            this.separatorControl1.Size = new System.Drawing.Size(310, 23);
+            this.separatorControl1.TabIndex = 4;
             // 
             // AddtoPlaylistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
+            this.ClientSize = new System.Drawing.Size(310, 406);
+            this.Controls.Add(this.separatorControl1);
+            this.Controls.Add(this.Btn_createnewPL);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.flowLayoutPanel_showPL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddtoPlaylistForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddtoPlaylistForm";
+            this.Load += new System.EventHandler(this.AddtoPlaylistForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_showPL;
+        private System.Windows.Forms.Button Btn_createnewPL;
+        private DevExpress.XtraEditors.SeparatorControl separatorControl1;
     }
 }

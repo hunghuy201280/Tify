@@ -145,6 +145,7 @@
             this.addToPlaylist_Player_Button.Size = new System.Drawing.Size(32, 30);
             this.addToPlaylist_Player_Button.TabIndex = 0;
             this.addToPlaylist_Player_Button.UseVisualStyleBackColor = true;
+            this.addToPlaylist_Player_Button.Click += new System.EventHandler(this.addToPlaylist_Player_Button_Click);
             // 
             // volume_trackBar
             // 
