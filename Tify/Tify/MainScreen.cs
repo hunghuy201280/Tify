@@ -54,6 +54,7 @@ namespace Tify
         private Tracks tracksScr;
         public Account currentUser;
         private SearchBox srchBox;
+        private CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
 
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
@@ -196,6 +197,10 @@ namespace Tify
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
             songImgOpacity_panel.Hide();
             //Set Main Screen for RightClickUC
+
+
+            //add playlist on low-left conner
+            CreatePL.readdatabse(CreatePlayList_FlowPanel);
            
         }
 
@@ -506,8 +511,9 @@ namespace Tify
             playlistScr = new Playlist(this);
             albumsScr = new Albums();
             tracksScr = new Tracks();
+            CreatePL = new CreatePlayList(this);
             
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr};
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, CreatePL };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -991,6 +997,7 @@ namespace Tify
             loadNewSong(url);
         }
         #endregion next/previous button event
+        //
         #region addplaylist
         private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
         {
@@ -998,5 +1005,6 @@ namespace Tify
             add2PL.Show();
         }
         #endregion
+        
     }
 }

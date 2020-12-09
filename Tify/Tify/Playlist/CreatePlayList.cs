@@ -160,5 +160,56 @@ namespace Tify
             }
 
         }
+
+        public void readdatabse(FlowLayoutPanel input)
+        {
+            sqlcon.Open();
+            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    if (reader.HasRows)
+                    {
+
+                        while (reader.Read())
+                        {
+                            Button newbutton = new Button();
+                            newbutton.Width = 210;
+                            newbutton.Height = 46;
+                            newbutton.BackColor = Color.FromArgb(36, 37, 40);
+                            newbutton.ForeColor = Color.White;
+                            newbutton.FlatStyle = FlatStyle.Flat;
+
+                            newbutton.FlatAppearance.BorderSize = 0;
+                            newbutton.Font = new Font("Nationale", 12);
+                            newbutton.TextAlign = ContentAlignment.MiddleLeft;
+                            newbutton.Text = reader[0].ToString();
+                            input.FlowDirection = FlowDirection.TopDown;
+                            hideScrollBar(input);
+                            input.Controls.Add(newbutton);
+                        }
+                    }
+                    else MessageBox.Show("No playlist found");
+                }
+            }
+            sqlcon.Close();
+        }
+        static public void hideScrollBar(Control needHide)
+        {
+
+            {
+                FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.VerticalScroll.Visible = false;
+
+                flowpanel.VerticalScroll.Maximum = 0;
+                flowpanel.AutoScroll = false;
+                flowpanel.HorizontalScroll.Visible = false;
+                flowpanel.AutoScroll = true;
+            }
+        }
     }
 }
