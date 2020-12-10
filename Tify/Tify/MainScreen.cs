@@ -513,7 +513,7 @@ namespace Tify
             myMixScr = new MyMix(this);
             playlistScr = new Playlist(this);
             albumsScr = new Albums();
-            tracksScr = new Tracks();
+            tracksScr = new Tracks(this);
             CreatePL = new CreatePlayList(this);
             
             Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, CreatePL };

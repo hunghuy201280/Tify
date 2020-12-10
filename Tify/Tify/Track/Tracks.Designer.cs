@@ -35,8 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tracks));
             this.top_panel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.formTitle_label = new System.Windows.Forms.Label();
             this.bottom_panel = new System.Windows.Forms.Panel();
             this.track_gridView = new System.Windows.Forms.DataGridView();
@@ -48,6 +46,7 @@
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
+            this.load_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -55,31 +54,12 @@
             // 
             // top_panel
             // 
-            this.top_panel.Controls.Add(this.textBox1);
-            this.top_panel.Controls.Add(this.button1);
             this.top_panel.Controls.Add(this.formTitle_label);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 61);
             this.top_panel.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(539, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 31);
-            this.textBox1.TabIndex = 9;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(342, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // formTitle_label
             // 
@@ -127,6 +107,7 @@
             this.time,
             this.addToPlaylist,
             this.remove});
+            this.track_gridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,6 +148,7 @@
             this.track_gridView.Size = new System.Drawing.Size(887, 509);
             this.track_gridView.TabIndex = 0;
             this.track_gridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellClick);
+            this.track_gridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.track_gridView_CellDoubleClick);
             this.track_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
@@ -233,6 +215,11 @@
             this.rightIconImgList.Images.SetKeyName(1, "like.png");
             this.rightIconImgList.Images.SetKeyName(2, "liked.png");
             // 
+            // load_worker
+            // 
+            this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
+            this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
+            // 
             // Tracks
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -259,8 +246,6 @@
         private System.Windows.Forms.Label formTitle_label;
         private System.Windows.Forms.Panel bottom_panel;
         private System.Windows.Forms.DataGridView track_gridView;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ImageList rightIconImgList;
         private System.Windows.Forms.DataGridViewImageColumn img;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
@@ -269,5 +254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private System.ComponentModel.BackgroundWorker load_worker;
     }
 }

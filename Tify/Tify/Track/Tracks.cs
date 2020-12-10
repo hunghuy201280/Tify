@@ -1,21 +1,18 @@
 ﻿using GetData;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tify
 {
     public partial class Tracks : Form
     {
-        SqlConnection connection;
+        private SqlConnection connection;
+
         public Tracks()
         {
             InitializeComponent();
@@ -26,10 +23,8 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
 
-           
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
-
 
             //enable doublebuffered
             this.DoubleBuffered = true;
@@ -39,127 +34,121 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
 
+            //dummy row
+            track_gridView.Rows.Add();
+            track_gridView.Rows[0].Visible = false;
+
+            //MessageBox.Show(dataGridView1.Font.ToString());
+        }
+
+        private MainScreen mainScr;
+
+        public Tracks(MainScreen callFm)
+        {
+            InitializeComponent();
+            mainScr = callFm;
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+
+            //enable doublebuffered
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
 
             //dummy row
             track_gridView.Rows.Add();
             track_gridView.Rows[0].Visible = false;
 
             //MessageBox.Show(dataGridView1.Font.ToString());
-            
+            load_worker.RunWorkerAsync();
         }
-       
 
-       
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
-        private DataTable trackTable=new DataTable();
-        public void loadTrack(string trackID)
+        private DataTable trackTable = new DataTable();
+        private DataTable artistTable = new DataTable();
+        private void load_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            trackTable.Clear();
-            string sqlQuery = "Select Track.*,Artist.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
-                "join Artist on Artist.artistID = ArtistHasTrack.artistID where Track.trackID = @id";
-            connection.Open();
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
-                {
-                    cmd.Parameters.AddWithValue("@id",trackID);
-                    using (SqlDataReader reader=cmd.ExecuteReader())
-                    {
-                        trackTable.Load(reader);
-                    }
-                }
-                if (trackTable.Rows.Count==0)
-                {
-                    MessageBox.Show("Empty");
-                    return;
-                }
-                else
-                {
-                    DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
-                    string trackLink = trackTable.Rows[0]["trackLink"].ToString();
-                    using (PictureBox pb=new PictureBox())
-                    {
-                        pb.Load(GetSongData.GetSongCover(trackLink));
-                        temp.Cells[0].Value = pb.Image;
-                    }
+            loadTrack();
+        }
 
-                    
-                   
-                    string artist="";
-                    foreach (DataRow item in trackTable.Rows)
-                    {
-                        artist += item["artistName"].ToString() + ";";
-                    }
-                    temp.Cells[1].Value = trackTable.Rows[0]["trackTitle"].ToString();
-                    temp.Cells[2].Value = artist;
-                    temp.Cells[3].Value = DateTime.Now.ToShortDateString();
-                    temp.Cells[5].Value = rightIconImgList.Images["add.png"];
-                    temp.Cells[6].Value = rightIconImgList.Images["liked.png"];
-                    int[] duration = GetSongData.GetSongDuration(trackTable.Rows[0]["trackLink"].ToString());
-                    if (duration[1]<10)
-                        temp.Cells[4].Value = duration[0].ToString() + ":0" + duration[1].ToString();
+        private void load_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error==null)
+            {
+                track_gridView.Rows.AddRange(rows.ToArray());
+            }
+        }
+        public void loadTrack()
+        {
+            trackTable = Database.loadTrackTableInTracks(mainScr.currentUser.UserID);
+            foreach (DataRow item in trackTable.Rows)
+            {
+                TrackInfo tempTrack = new TrackInfo();
+                string trackLink = item["trackLink"].ToString();
+                using (PictureBox pb = new PictureBox())
+                {
+                    pb.Load(GetSongData.GetSongCover(trackLink));
+                    tempTrack.Cover = pb.Image;
+                }
+
+                string artistName = "";
+                artistTable = Database.getArtistOfTrack(item["trackID"].ToString());
+                foreach (DataRow artist in artistTable.Rows)
+                {
+                    if(artist!=artistTable.Rows[artistTable.Rows.Count-1])
+                    artistName += artist["artistName"].ToString() + ";";
                     else
-                        temp.Cells[4].Value = duration[0].ToString() + ":" + duration[1].ToString();
-
-                    temp.Visible = true;
-                    rows.Add(temp);
-                 
+                        artistName += artist["artistName"].ToString() ;
 
                 }
-            }
-            catch (Exception e)
-            {
-                connection.Close();
-                MessageBox.Show(e.Message);
-                 
+                tempTrack.Title = item["trackTitle"].ToString();
+                tempTrack.Artist = artistName;
+                tempTrack.DateAdded = item["dateAdded"].ToString();
+
+                int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
+                if (duration[1] < 10)
+                    tempTrack.Time = duration[0].ToString() + ":0" + duration[1].ToString();
+                else
+                    tempTrack.Time = duration[0].ToString() + ":" + duration[1].ToString();
+
+
+                addTrackInfoToRow(tempTrack);
             }
 
-            connection.Close();
-           
+
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void addTrackInfoToRow(TrackInfo track)
         {
-            
-            
-            loadTrack(textBox1.Text);
-            try
-            {
-                foreach (DataGridViewRow item in rows.ToArray())
-                {
-                    try
-                    {
-                        track_gridView.Rows.Add(item);
+            DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
+            temp.Visible = true;
 
-                    }
-                    catch (Exception)
-                    {
-
-                        
-                    }
-                }
-
-                //change to addrange
-                //dataGridView1.Rows.AddRange(rows.ToArray());
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+            temp.Cells[0].Value = track.Cover;
+            temp.Cells[1].Value = track.Title;
+            temp.Cells[2].Value = track.Artist;
+            temp.Cells[3].Value = track.DateAdded;
+            temp.Cells[5].Value = rightIconImgList.Images["add.png"];
+            temp.Cells[6].Value = rightIconImgList.Images["liked.png"];
+            temp.Cells[4].Value = track.Time;
+            rows.Add(temp);
         }
-
-      
 
         private void trackGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex==6)//like
+            if (e.ColumnIndex == 6)//like
             {
-
             }
-            else if (e.ColumnIndex==5)//add to playlist
+            else if (e.ColumnIndex == 5)//add to playlist
             {
-
             }
         }
 
@@ -189,6 +178,11 @@ namespace Tify
             {
                 cell.Style.BackColor = Color.Black;
             }
+        }
+
+        private void track_gridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

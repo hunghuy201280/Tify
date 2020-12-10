@@ -12,6 +12,54 @@ namespace Tify
     class Database
     {
 
+        static public DataTable getArtistOfTrack(string trackID)
+        {
+            string sqlQuery = "select artistName from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
+                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
+                "where Track.trackID = @id";
+
+            DataTable artistTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@id", trackID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    artistTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return artistTable;
+
+        }
+
+        static public DataTable loadTrackTableInTracks(int userID)
+        {
+            string sqlQuery = "select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID " +
+               "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID  " +
+               "join Artist on ArtistHasTrack.artistID = Artist.artistID   " +
+               "where userID = @id";
+
+            DataTable trackTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@id", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    trackTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return trackTable;
+
+        }
         static public void addTrackToUserLikeTrack(int userID,string trackID)
         {
 

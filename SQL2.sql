@@ -12,10 +12,8 @@ use Tify
 select * from Artist where artistID='https://chiasenhac.vn/ca-si/ho-trung-dung-zsswzc36q91vwk.html'
 select * from Album
 
-alter table Artist
-drop column albumID
 
-update Artist set spotifyID=null where artistName='2B'
+
 
 alter table Album 
 add constraint FK_Album_Artist foreign key (artistID) references Artist(artistID)
@@ -87,8 +85,7 @@ where Album.albumID=25
 select * from UserHasPlaylist
 select * from Playlist
 
-delete from UserHasPlaylist
-delete from Playlist
+
 
 select top 5000 * from Track where trackID='40998'
 
@@ -169,5 +166,19 @@ add constraint FK_myMixID_MyMix foreign key (myMixID) references MyMix(myMixID)
 */
 
 select * from UserHasPlaylist
+--delete  from UserHasPlaylist where userID=8
 select * from Playlist
+-- delete from Playlist
+
 select * from PlaylistHasTrack
+
+insert into UserLikeTrack values(9,25)
+
+
+select * from Track where trackLink='https://vi.chiasenhac.vn/mp3/k-icm-jack/song-gio-tsvwts3bq9f4wq.html'
+
+select * from Album
+
+select * from Artist where artistName='2B'
+
+--INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')
