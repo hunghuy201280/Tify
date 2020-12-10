@@ -1,14 +1,10 @@
-﻿using System;
+﻿using GetData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace Tify
 {
@@ -23,7 +19,6 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
         }
 
         public MyMixContainer(MyMix callform)
@@ -35,29 +30,25 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            opacity_panel.Click += callform.opacity_panel_Click;
         }
+
         public string mixID;
-        SqlConnection connection;
-        DataTable mixTable = new DataTable();
+
+        private DataTable mixTable = new DataTable();
         private MyMix mixForm;
         public int index = 1;//row index
+        private MixDetail mixDetail;
 
-        public MyMixContainer(MyMix callform,string id)
+        public MyMixContainer(MyMix callform, string id)
         {
             InitializeComponent();
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            connection = new SqlConnection(connectionString);
+
+            //mixForm to get userID from mainscreen
             mixForm = callform;
             mixID = id;
-            connection.Open();
+
             cover_worker.RunWorkerAsync();
             artist_worker.RunWorkerAsync();
-            
-
-          
-
-
 
             this.DoubleBuffered = true;
 
@@ -65,10 +56,31 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            opacity_panel.Click += callform.opacity_panel_Click;
+            //opacity_panel.Click += callform.opacity_panel_Click;
         }
 
-        
+        public MyMixContainer(MyMix callform, string id, MixDetail detail)
+        {
+            InitializeComponent();
+
+            //mixForm to get userID from mainscreen
+            mixForm = callform;
+            mixID = id;
+            //load mixdetail on clicking opacity panel
+            mixDetail = detail;
+
+            cover_worker.RunWorkerAsync();
+            artist_worker.RunWorkerAsync();
+
+            artist_label.Text = "";
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+        }
 
         private void myMixCover_panel_MouseHover(object sender, EventArgs e)
         {
@@ -84,39 +96,22 @@ namespace Tify
         {
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
         }
-        DataTable artistTable = new DataTable();
+
+        private DataTable artistTable = new DataTable();
+
         private void artist_worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string query= "select distinct artistName from  " +
-                "MyMix join MyMixHasTrack on MyMix.myMixID = MyMixHasTrack.myMixID " +
-                "join Track on Track.trackID = MyMixHasTrack.trackID " +
-                "join ArtistHasTrack on Track.trackID = ArtistHasTrack.trackID " +
-                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
-                "where MyMix.myMixID = @id; ";
-
-            artist_label.Text = "";
-            //connection.Open();
-            using (SqlCommand cmd = new SqlCommand(query,connection))
-            {
-                cmd.Parameters.AddWithValue("@id", mixID);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    artistTable.Load(reader);
-                }
-            }
-            //connection.Close();
-          
-
+            artistTable = Database.getArtistInMyMixContainer(mixID);
         }
 
         private void artist_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Error !=null)
+            if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message + "My mix container, artist");
                 return;
             }
-            int maximum = 30;//max char in artist label
+            //max char in artist label
             foreach (DataRow row in artistTable.Rows)
             {
                 if ((artist_label.Text + row["artistName"].ToString()).Length > 30)
@@ -133,32 +128,13 @@ namespace Tify
 
         private void cover_worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //connection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserHasMix where userID=@userid order by myMixID asc ",connection))
-            {
-                cmd.Parameters.AddWithValue("@userid", mixForm.mainScr.CurrentUser.UserID);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    mixTable.Load(reader);
-                }
-            }
-            //connection.Close();
-
-            for (int i = 0; i < mixTable.Rows.Count; i++)
-            {
-                if (mixTable.Rows[i]["myMixID"].ToString() == mixID)
-                {
-                    index = i + 1;
-                    break;
-                }
-            }
+            index = Database.getMyMixOrder(mixForm.mainScr.CurrentUser.UserID, mixID);
             //index in mixcontainers
             opacity_panel.Tag = index - 1;
         }
 
         private void cover_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message + "My mix container, cover");
@@ -169,20 +145,94 @@ namespace Tify
                 case 1:
                     myMixCover_panel.BackgroundImage = Properties.Resources.mymix1;
                     break;
+
                 case 2:
                     myMixCover_panel.BackgroundImage = Properties.Resources.mymix2;
                     break;
+
                 case 3:
                     myMixCover_panel.BackgroundImage = Properties.Resources.mymix3;
                     break;
+
                 case 4:
                     myMixCover_panel.BackgroundImage = Properties.Resources.mymix4;
                     break;
+
                 default:
                     break;
             }
             playlistName_label.Text = "My Mix " + index;
+        }
 
+        private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
+        {
+            loadMixDetailContent(mixID);
+        }
+
+        private bool isLoaded = false;
+        private int coverNum;
+
+        public void loadMixDetailContent(string id)
+        {
+            if (isLoaded)
+            {
+                mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage);
+                return;
+            }
+            mixID = id;
+            if (load_worker.IsBusy)
+            {
+                return;
+            }
+            load_worker.RunWorkerAsync();
+        }
+
+        private DataTable trackTable = new DataTable();
+        private List<TrackInfo> trackInfos = new List<TrackInfo>();
+
+        private void load_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            trackTable.Clear();
+            //load trackTable
+            trackTable = Database.getTrackInMyMix(mixID);
+
+            //duyet tung track trong trackTable
+            string lastTrackID = "";
+            foreach (DataRow track in trackTable.Rows)
+            {
+                //neu trung trackID thi add them artist
+                if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
+                {
+                    trackInfos[trackInfos.Count - 1].Artist += ";" + track["artistName"].ToString();
+                }
+                else
+                {
+                    TrackInfo temp = new TrackInfo();
+                    temp.TrackID = track["trackID"].ToString();
+                    temp.Artist = track["artistName"].ToString();
+                    temp.Title = track["trackTitle"].ToString();
+                    int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
+
+                    //neu giay >=10
+                    if (duration[1] >= 10)
+                        temp.Time = duration[0] + ":" + duration[1];
+                    else
+                        temp.Time = duration[0] + ":0" + duration[1];
+                    if (temp.Time == "0:00")
+                    {
+                        continue;
+                    }
+
+                    trackInfos.Add(temp);
+                    lastTrackID = track["trackID"].ToString();
+                }
+            }
+            isLoaded = true;
+        }
+
+        private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage);
         }
     }
 }

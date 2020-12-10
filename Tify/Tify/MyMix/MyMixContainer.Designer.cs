@@ -35,6 +35,7 @@
             this.playlistName_label = new System.Windows.Forms.Label();
             this.cover_worker = new System.ComponentModel.BackgroundWorker();
             this.artist_worker = new System.ComponentModel.BackgroundWorker();
+            this.load_worker = new System.ComponentModel.BackgroundWorker();
             this.myMixCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             this.opacity_panel.Size = new System.Drawing.Size(172, 172);
             this.opacity_panel.TabIndex = 0;
             this.opacity_panel.Visible = false;
+            this.opacity_panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opacity_panel_MouseClick);
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
             // artist_label
@@ -100,6 +102,11 @@
             this.artist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artist_worker_DoWork);
             this.artist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artist_worker_RunWorkerCompleted);
             // 
+            // load_worker
+            // 
+            this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
+            this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
+            // 
             // MyMixContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -124,5 +131,6 @@
         private System.Windows.Forms.Label playlistName_label;
         private System.ComponentModel.BackgroundWorker cover_worker;
         private System.ComponentModel.BackgroundWorker artist_worker;
+        private System.ComponentModel.BackgroundWorker load_worker;
     }
 }

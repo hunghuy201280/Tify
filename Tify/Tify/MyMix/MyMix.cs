@@ -38,36 +38,30 @@ namespace Tify
 
             mainScr = callform;
             //Get user has mix table
-            connection.Open();
-            using (SqlCommand cmd= new SqlCommand("select * from UserHasMix where userID=8 order by myMixID asc;", connection))
-            {
-                cmd.Parameters.AddWithValue("@userID", mainScr.currentUser.UserID);
-                using (SqlDataReader reader=cmd.ExecuteReader())
-                {
-                    mixTable.Load(reader);
-                }
-            }
-            connection.Close();
+            mixTable = Database.getMyMixTableInMyMix(mainScr.CurrentUser.UserID);
+            mixDetail = new MixDetail(this);
+
+            firstLoadChildForm();
 
             // initialize container and mixdetail
             for (int i = 0; i < mixTable.Rows.Count; i++)
             {
-                mixContainers.Add(new MyMixContainer(this,mixTable.Rows[i]["myMixID"].ToString()));
-                mixDetails.Add(new MixDetail());
+                mixContainers.Add(new MyMixContainer(this,mixTable.Rows[i]["myMixID"].ToString(),mixDetail));
             }
             mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
+
+
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            firstLoadChildForm();
 
             
         }
 
         private List<MyMixContainer> mixContainers=new List<MyMixContainer>();
-        private List<MixDetail> mixDetails=new List<MixDetail>();
+        private MixDetail mixDetail;
 
 
 
@@ -78,15 +72,13 @@ namespace Tify
 
         private void firstLoadChildForm()
         {
-            for (int i = 0; i < mixTable.Rows.Count; i++)
-            {
-                //mixDetails[i] = new MixDetail();
-                mixDetails[i].TopLevel = false;
-                mixDetails[i].FormBorderStyle = FormBorderStyle.None;
-                mixDetails[i].Dock = DockStyle.Fill;
-                mainScr.childForm_panel.Controls.Add(mixDetails[i]);
-                mixDetails[i].Show();
-            }
+          
+                mixDetail.TopLevel = false;
+                mixDetail.FormBorderStyle = FormBorderStyle.None;
+                mixDetail.Dock = DockStyle.Fill;
+                mainScr.childForm_panel.Controls.Add(mixDetail);
+                mixDetail.Show();
+            
            
         }
 
@@ -123,13 +115,6 @@ namespace Tify
         }
 
 
-        //open mixdetail of each mix container
-        public void opacity_panel_Click(object sender, EventArgs e)
-        {
-
-            int index = int.Parse((sender as Panel).Tag.ToString());
-            mixDetails[index].loadMixDetailContent(mixContainers[index].mixID, mixContainers[index].index);
-            openChildForm(mixDetails[index]);
-        }
+        
     }
 }

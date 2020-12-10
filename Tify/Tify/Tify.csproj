@@ -113,6 +113,8 @@
     </Compile>
     <Compile Include="Class\GetData.cs" />
     <Compile Include="Class\TiengVietKhongDau.cs" />
+    <Compile Include="Class\Database.cs" />
+    <Compile Include="Class\TrackInfo.cs" />
     <Compile Include="Home\SuggestSong.cs">
       <SubType>UserControl</SubType>
     </Compile>
