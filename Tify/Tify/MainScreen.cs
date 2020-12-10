@@ -81,7 +81,7 @@ namespace Tify
 
         private string[] suggestedSong;
         public string currentTrack;
-        public string currentTrackID=25;
+        public string currentTrackID="25";
         public void loadNewSong(string Url)
         {
             currentTrack = Url;
