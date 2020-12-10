@@ -132,8 +132,7 @@ namespace Tify
         {
             //volume
 
-            volume_trackBar.Maximum = 100;
-            volume_trackBar.Value = 50;
+            
             //
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
@@ -182,6 +181,9 @@ namespace Tify
             home_button.PerformClick();
 
             volume_trackBar.Anchor = AnchorStyles.Right;
+
+            volume_trackBar.Maximum = 100;
+            volume_trackBar.Value = 50;
 
             //Hide  ScrollBar so menu_panel
             hideScrollBar(menu_panel, "panel");

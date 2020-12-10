@@ -72,7 +72,7 @@ namespace Tify
             {
                 DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
                 tempRow.Visible = true;
-
+                tempRow.Tag = track;
                 tempRow.Cells[0].Value = track.Title;
                 tempRow.Cells[1].Value = track.Artist;
                 tempRow.Cells[2].Value = track.Time;
@@ -84,6 +84,50 @@ namespace Tify
             track_dataGridView.Rows.AddRange(rows.ToArray());
             cover_pictureBox.Image = cover;
             myMix.openChildForm(this);
+        }
+
+
+        //datagridview Event
+    
+       
+        #region enter,leave row
+
+        private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= 0)
+                return;
+            if (track_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in track_dataGridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.FromArgb(19, 19, 20);
+            }
+        }
+
+        private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= 0)
+                return;
+            if (track_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in track_dataGridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.Black;
+            }
+        }
+
+        #endregion enter,leave row
+
+        //play
+        private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
+           myMix.mainScr.changeSong(trackToPlay.TrackLink);
+
         }
     }
 }

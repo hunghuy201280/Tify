@@ -21,16 +21,6 @@ namespace Tify
             }
         }
 
-        public MyMixContainer(MyMix callform)
-        {
-            InitializeComponent();
-            this.DoubleBuffered = true;
-
-            foreach (Control control in this.Controls)
-            {
-                MainScreen.EnableDoubleBuferring(control);
-            }
-        }
 
         public string mixID;
 
@@ -39,26 +29,7 @@ namespace Tify
         public int index = 1;//row index
         private MixDetail mixDetail;
 
-        public MyMixContainer(MyMix callform, string id)
-        {
-            InitializeComponent();
-
-            //mixForm to get userID from mainscreen
-            mixForm = callform;
-            mixID = id;
-
-            cover_worker.RunWorkerAsync();
-            artist_worker.RunWorkerAsync();
-
-            this.DoubleBuffered = true;
-
-            foreach (Control control in this.Controls)
-            {
-                MainScreen.EnableDoubleBuferring(control);
-            }
-            //opacity_panel.Click += callform.opacity_panel_Click;
-        }
-
+      
         public MyMixContainer(MyMix callform, string id, MixDetail detail)
         {
             InitializeComponent();
@@ -170,7 +141,6 @@ namespace Tify
         }
 
         private bool isLoaded = false;
-        private int coverNum;
 
         public void loadMixDetailContent(string id)
         {
@@ -211,6 +181,7 @@ namespace Tify
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
+                    temp.TrackLink = track["trackLink"].ToString();
                     int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
 
                     //neu giay >=10

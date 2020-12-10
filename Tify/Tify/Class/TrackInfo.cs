@@ -9,7 +9,7 @@ namespace Tify
 {
     public class TrackInfo
     {
-        private string title, artist, time,trackID;
+        private string title, artist, time,trackID,trackLink;
 
         private Bitmap cover;
         public TrackInfo(string title,string artist,string time)
@@ -28,5 +28,6 @@ namespace Tify
         public string Time { get => time; set => time = value; }
         public string TrackID { get => trackID; set => trackID = value; }
         public Bitmap Cover { get => cover; set => cover = value; }
+        public string TrackLink { get => trackLink; set => trackLink = value; }
     }
 }

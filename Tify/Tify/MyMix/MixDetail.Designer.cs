@@ -201,6 +201,9 @@
             this.track_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.track_dataGridView.Size = new System.Drawing.Size(887, 300);
             this.track_dataGridView.TabIndex = 1;
+            this.track_dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
+            this.track_dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
+            this.track_dataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
             // title
             // 
