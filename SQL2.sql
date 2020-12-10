@@ -167,3 +167,7 @@ add constraint FK_myMixID_MyMix foreign key (myMixID) references MyMix(myMixID)
 12046
 117588
 */
+
+select * from UserHasPlaylist
+select * from Playlist
+select * from PlaylistHasTrack

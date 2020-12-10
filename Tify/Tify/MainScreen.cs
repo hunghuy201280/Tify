@@ -57,6 +57,7 @@ namespace Tify
         private CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
 
+
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
         #region doublebuffered
@@ -80,7 +81,7 @@ namespace Tify
 
         private string[] suggestedSong;
         public string currentTrack;
-
+        public string currentTrackID=25;
         public void loadNewSong(string Url)
         {
             currentTrack = Url;
@@ -981,11 +982,22 @@ namespace Tify
             {
                 previousTracks.Push(currentTrack);
             }
-            loadNewSong(suggestedSong[0]);
+            if (nextTrack.Count==0)
+            {
+                loadNewSong(suggestedSong[0]);
+            }
+            else
+            {
+                loadNewSong(nextTrack.Dequeue() as string);
+            }
         }
 
-        
 
+        public Queue nextTrack = new Queue();
+        public void addTrackToQueue (string track)
+        {
+            nextTrack.Enqueue(track);
+        }
         public void changeSong(string url)
         {
             if (previousTracks.Count == 0)
