@@ -11,6 +11,25 @@ namespace Tify
 {
     class Database
     {
+
+        static public void addTrackToUserLikeTrack(int userID,string trackID)
+        {
+
+
+            string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID)";
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+
+            
+        }
         static public DataTable getTrackInMyMix(string mixID)
         {
             DataTable trackTable = new DataTable();

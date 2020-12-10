@@ -57,6 +57,7 @@ namespace Tify
         private CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
 
+
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
         #region doublebuffered
@@ -79,29 +80,29 @@ namespace Tify
         #region load nhac khi chuyen bai
 
         private string[] suggestedSong;
-        public string currentTrack;
-
-        public void loadNewSong(string Url)
+        public TrackInfo currentTrack;
+        public string currentTrackID="25";
+        public void loadNewSong(TrackInfo track)
         {
-            currentTrack = Url;
-            soundPlayer.URL = GetSongData.GetStreamLink(Url);
+            currentTrack = track;
+            soundPlayer.URL = GetSongData.GetStreamLink(track.TrackLink);
 
             time = 0;
 
-            songPicture.Load(GetSongData.GetSongCover(Url));
+            songPicture.Load(GetSongData.GetSongCover(track.TrackLink));
             songCover_panel.BackgroundImage = songPicture.Image;
-            string[] artists = GetSongData.GetSongArtist(Url);
+            string[] artists = GetSongData.GetSongArtist(track.TrackLink);
             artist_label.Text = string.Empty;
             foreach (string artist in artists)
             {
                 artist_label.Text += artist + ";";
             }
 
-            title_label.Text = GetSongData.GetSongName(Url);
+            title_label.Text = GetSongData.GetSongName(track.TrackLink);
 
             //timer
             currentTime_label.Text = "0:00 /";
-            int[] duration = GetSongData.GetSongDuration(Url);
+            int[] duration = GetSongData.GetSongDuration(track.TrackLink);
             int durationMin = duration[0];
             int durationSec = duration[1];
 
@@ -115,7 +116,7 @@ namespace Tify
             }
 
             //lay suggest song
-            suggestedSong = GetSongData.GetSuggetSongs(Url);
+            suggestedSong = GetSongData.GetSuggetSongs(track.TrackLink);
             songDetail.setSuggestedSong(suggestedSong);
         }
 
@@ -167,7 +168,7 @@ namespace Tify
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(testURL);
             songDetail.setSuggestedSong(suggestedSong);
-            currentTrack = testURL;
+            currentTrack = new TrackInfo() { TrackLink = testURL, TrackID = "99999" };
         }
 
         #endregion test
@@ -967,7 +968,7 @@ namespace Tify
                 MessageBox.Show("There is no previous track");
                 return;
             }
-            string lastTrack = previousTracks.Pop() as string;
+            TrackInfo lastTrack = previousTracks.Pop() as TrackInfo;
             loadNewSong(lastTrack);
         }
 
@@ -975,18 +976,29 @@ namespace Tify
         {
             if (previousTracks.Count == 0)
             {
-                previousTracks.Push(testURL);
+                previousTracks.Push(new TrackInfo() {TrackLink=testURL,TrackID="99999" });
             }
             else
             {
                 previousTracks.Push(currentTrack);
             }
-            loadNewSong(suggestedSong[0]);
+            if (nextTrack.Count==0)
+            {
+                loadNewSong(new TrackInfo() { TrackLink=suggestedSong[0] });
+            }
+            else
+            {
+                loadNewSong(nextTrack.Dequeue() as TrackInfo);
+            }
         }
 
-        
 
-        public void changeSong(string url)
+        public Queue nextTrack = new Queue();
+        public void addTrackToQueue (TrackInfo track)
+        {
+            nextTrack.Enqueue(track);
+        }
+        public void changeSong(TrackInfo track)
         {
             if (previousTracks.Count == 0)
             {
@@ -996,7 +1008,7 @@ namespace Tify
             {
                 previousTracks.Push(currentTrack);
             }
-            loadNewSong(url);
+            loadNewSong(track);
         }
         #endregion next/previous button event
         //

@@ -126,8 +126,47 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
-           myMix.mainScr.changeSong(trackToPlay.TrackLink);
+           myMix.mainScr.changeSong(trackToPlay);
 
         }
+
+        #region play button
+        private void play_button_Click(object sender, EventArgs e)
+        {
+            myMix.mainScr.nextTrack.Clear();
+            foreach (DataGridViewRow track in track_dataGridView.Rows)
+            {
+                
+                TrackInfo trackToPlay = track.Tag as TrackInfo;
+                myMix.mainScr.addTrackToQueue(trackToPlay);
+              
+            }
+            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+        }
+        #endregion
+
+        #region shuffle button
+        private void playShuffle_Button_Click(object sender, EventArgs e)
+        {
+            myMix.mainScr.nextTrack.Clear();
+            Random rnd = new Random(DateTime.Now.Second);
+            int numOfTracks = track_dataGridView.Rows.Count;
+           
+            
+            List<int> numbers = new List<int>();
+            for (int i = 0; i < numOfTracks; i++)
+            {
+                int num = rnd.Next(0, numOfTracks );
+                while (numbers.Contains(num))
+                {
+                    num = rnd.Next(0, numOfTracks );
+                }
+                numbers.Add(num);
+                TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
+                myMix.mainScr.addTrackToQueue(trackToPlay);
+            }
+            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+        }
+        #endregion 
     }
 }
