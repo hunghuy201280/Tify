@@ -90,11 +90,15 @@ namespace Tify
             newbutton.Height = 46;
             menu_pnl.FlowDirection = FlowDirection.TopDown;
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
-            menu_pnl.Controls.Add(newbutton);
+            
 
             if (string.IsNullOrWhiteSpace(Title_TextBox.Text)|| Title_TextBox.ForeColor==Color.Gray)
             {
                 MessageBox.Show("PlayList name cannot be a blank");
+            }
+            if (checkexisted() == 1)
+            {
+                MessageBox.Show("Name existed , may be try another name ?");
             }
             else
             {
@@ -121,8 +125,34 @@ namespace Tify
                         }
                     }
                 }
+                menu_pnl.Controls.Add(newbutton);
                 sqlcon.Close();
             }
+        }
+
+        private int checkexisted()
+        {
+            sqlcon.Open();
+            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    if (reader.HasRows)
+                    {
+
+                        while (reader.Read())
+                        {
+                            if (Title_TextBox.Text == reader[0].ToString())
+                            {
+                                return 1;
+                            }
+                        }
+                    }
+                }
+            }
+            sqlcon.Close();
+            return 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
