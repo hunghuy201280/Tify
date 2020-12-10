@@ -126,7 +126,7 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
-           myMix.mainScr.changeSong(trackToPlay.TrackLink);
+           myMix.mainScr.changeSong(trackToPlay);
 
         }
 
@@ -138,10 +138,10 @@ namespace Tify
             {
                 
                 TrackInfo trackToPlay = track.Tag as TrackInfo;
-                myMix.mainScr.addTrackToQueue(trackToPlay.TrackLink);
+                myMix.mainScr.addTrackToQueue(trackToPlay);
               
             }
-            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as string);
+            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
         #endregion
 
@@ -163,9 +163,9 @@ namespace Tify
                 }
                 numbers.Add(num);
                 TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
-                myMix.mainScr.addTrackToQueue(trackToPlay.TrackLink);
+                myMix.mainScr.addTrackToQueue(trackToPlay);
             }
-            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as string);
+            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
         #endregion 
     }

@@ -315,7 +315,7 @@ namespace Tify
 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            mainScr.changeSong(track_gridView.Rows[e.RowIndex].Tag.ToString());
+            //mainScr.changeSong(track_gridView.Rows[e.RowIndex].Tag.ToString());
         }
 
     }
