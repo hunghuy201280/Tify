@@ -96,6 +96,12 @@ namespace Tify
 
             
         }
+
+        internal static void AddTrackToPlaylist()
+        {
+            throw new NotImplementedException();
+        }
+
         static public DataTable getTrackInMyMix(string mixID)
         {
             DataTable trackTable = new DataTable();

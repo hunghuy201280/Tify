@@ -10,10 +10,14 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 
+
+
+
 namespace Tify
 {
     public partial class AddtoPlaylistForm : Form
     {
+        
         SqlConnection sqlcon;
         private MainScreen mainScr;
         private CreatePlayList CreatePL;
@@ -22,6 +26,7 @@ namespace Tify
             InitializeComponent();
 
             sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            
         }
         public AddtoPlaylistForm(MainScreen callForm)
         {
@@ -55,9 +60,12 @@ namespace Tify
                             newbutton.Font = new Font("Nationale Light", 12);
                             newbutton.TextAlign = ContentAlignment.MiddleLeft;
                             newbutton.Text = reader[0].ToString();
+                            newbutton.Click += Newbutton_Click;
                             flowLayoutPanel_showPL.FlowDirection = FlowDirection.TopDown;
                             hideScrollBar(flowLayoutPanel_showPL);
+                            
                             flowLayoutPanel_showPL.Controls.Add(newbutton);
+                            
                         }
                     }
                     else MessageBox.Show("No playlist found");
@@ -65,6 +73,42 @@ namespace Tify
             }
             sqlcon.Close();
         }
+        //get choosenPL, playlist that clicked
+       
+        private void Newbutton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            string choosenPL = button.Text;
+            playlistchoseevent(choosenPL);
+            this.Close();
+            
+        }
+        //convert string choosenPL to ID
+        string choosenPLID;
+        void convert(string input)
+        {
+            sqlcon.Open();
+            using (SqlCommand command = new SqlCommand("select playlistTitle,Playlist.playlistID,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    if (reader.HasRows)
+                    {
+
+                        while (reader.Read())
+                        {
+                            if (input.Trim() == reader[0].ToString())
+                                choosenPLID= reader[1].ToString();
+
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+
         static public void hideScrollBar(Control needHide)
         {
            
@@ -90,6 +134,13 @@ namespace Tify
         {
             CreatePL = new CreatePlayList(mainScr);
             CreatePL.ShowDialog();
+        }
+        //add to playlist event
+
+        void playlistchoseevent(string input)
+        {
+            convert(input);
+            Database.AddTrackToPlaylist(mainScr.currentTrackID,choosenPLID);
         }
     }
 }
