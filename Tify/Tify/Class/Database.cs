@@ -12,6 +12,24 @@ namespace Tify
     class Database
     {
 
+
+        static public void AddTrackToPlaylist(string trackID,string playlistID)
+        {
+            string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID)";
+
+            
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
         static public DataTable getArtistOfTrack(string trackID)
         {
             string sqlQuery = "select artistName from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
