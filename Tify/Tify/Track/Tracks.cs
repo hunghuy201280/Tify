@@ -12,6 +12,8 @@ namespace Tify
     public partial class Tracks : Form
     {
         private SqlConnection connection;
+        private AddtoPlaylistForm add2PL;
+        
 
         public Tracks()
         {
@@ -212,6 +214,8 @@ namespace Tify
             }
             else if (e.ColumnIndex == 5)//add to playlist
             {
+                add2PL = new AddtoPlaylistForm(mainScr);
+                add2PL.ShowDialog();
             }
         }
         private void track_gridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
