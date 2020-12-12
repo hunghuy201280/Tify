@@ -89,8 +89,15 @@ namespace Tify
 
             time = 0;
 
-            songPicture.Load(GetSongData.GetSongCover(track.TrackLink));
-            songCover_panel.BackgroundImage = songPicture.Image;
+            if (track.Cover==null)
+            {
+                songPicture.Load(GetSongData.GetSongCover(track.TrackLink));
+                songCover_panel.BackgroundImage = songPicture.Image;
+            }
+            else
+            {
+                songCover_panel.BackgroundImage = track.Cover;
+            }
             string[] artists = GetSongData.GetSongArtist(track.TrackLink);
             artist_label.Text = string.Empty;
             foreach (string artist in artists)
@@ -125,7 +132,7 @@ namespace Tify
         #region test
 
         //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/blackpink/love-to-hate-me-tsvmccb6q8vvqk.html";
+        private string testURL = "https://vi.chiasenhac.vn/mp3/hoa-minzy-tung-acoustic/con-mua-ngang-qua-acoustic-version-ts3sr30dq4awnm.html";
 
         private PictureBox songPicture = new PictureBox();
 

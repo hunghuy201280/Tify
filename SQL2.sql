@@ -182,3 +182,10 @@ select * from Album
 select * from Artist where artistName='2B'
 
 --INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')
+
+
+select * from PlaylistHastrack
+
+insert into PlaylistHastrack values(25,38)
+
+select * from Playlist

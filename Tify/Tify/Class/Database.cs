@@ -12,6 +12,29 @@ namespace Tify
     class Database
     {
 
+        static public DataTable getTrackTable_Search(string searchKeyWord)
+        {
+            string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
+                "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
+
+
+            DataTable trackTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+              
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    trackTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return trackTable;
+
+        }
 
         static public void AddTrackToPlaylist(string trackID,string playlistID)
         {

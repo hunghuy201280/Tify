@@ -51,6 +51,7 @@ namespace Tify
         private DataTable albumTab_Table = new DataTable();
         private List<AlbumContainer> albums = new List<AlbumContainer>();
 
+
         private void loadAlbum()
         {
 
@@ -161,67 +162,54 @@ namespace Tify
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
+        private List<TrackInfo> trackInfos = new List<TrackInfo>();
         public void loadTrack()
         {
-            trackTable.Clear();
-            string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
-                "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
-
            
             try
             {
-                using (SqlCommand track_cmd = new SqlCommand(sqlQuery, connection))
-                {
-                    using (SqlDataReader track_reader = track_cmd.ExecuteReader())
-                    {
-                        trackTable.Load(track_reader);
-                    }
-                }
+                trackTable = Database.getTrackTable_Search(searchKeyWord);
+
+
                 if (trackTable.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty");
+                    MessageBox.Show("Empty track");
                     return;
                 }
                 else
                 {
                     foreach (DataRow item in trackTable.Rows)
                     {
-                        DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
+                        TrackInfo tempTrack=new TrackInfo();
+
+                       
+
                         string trackLink = item["trackLink"].ToString();
+                        tempTrack.TrackLink = trackLink;
                         using (PictureBox pb = new PictureBox())
-                        {
+                        {   
                             pb.Load(GetSongData.GetSongCover(trackLink));
-                            temp.Cells[0].Value = pb.Image;
-                        }
-                        string artistQuery = "select artistName from ArtistHasTrack join Artist on Artist.artistID" +
-                            " = ArtistHasTrack.artistID where trackID =" + item["trackID"].ToString();
-                        using (SqlCommand cmd = new SqlCommand(artistQuery, connection))
-                        {
-                            artistTable.Clear();
-                            using (SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                artistTable.Load(reader);
-                            }
+                            tempTrack.Cover = pb.Image;
                         }
 
+                        artistTable = Database.getArtistOfTrack(item["trackID"].ToString());
                         string artist = "";
                         foreach (DataRow artistName in artistTable.Rows)
                         {
                             artist += artistName["artistName"].ToString() + ";";
                         }
-                        temp.Cells[1].Value = item["trackTitle"].ToString();
-                        temp.Cells[2].Value = artist;
-                        temp.Cells[4].Value = rightIconImgList.Images["add.png"];
-                        temp.Cells[5].Value = rightIconImgList.Images["liked.png"];
-                        temp.Tag = item["trackLink"].ToString();
+                        tempTrack.Title= item["trackTitle"].ToString();
+                        tempTrack.Artist = artist;
+                        
+                        
+                        
                         int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
                         if (duration[1] < 10)
-                            temp.Cells[3].Value = duration[0].ToString() + ":0" + duration[1].ToString();
+                            tempTrack.Time = duration[0].ToString() + ":0" + duration[1].ToString();
                         else
-                            temp.Cells[3].Value = duration[0].ToString() + ":" + duration[1].ToString();
+                            tempTrack.Time = duration[0].ToString() + ":" + duration[1].ToString();
 
-                        temp.Visible = true;
-                        rows.Add(temp);
+                        trackInfos.Add(tempTrack);
                     }
                 }
             }
@@ -231,6 +219,27 @@ namespace Tify
             }
 
         }
+        public void SetGridViewRows(List<TrackInfo> trackInfos)
+        {
+            rows.Clear();
+            foreach (TrackInfo track in trackInfos)
+            {
+                DataGridViewRow tempRow = (DataGridViewRow)track_gridView.Rows[0].Clone();
+                tempRow.Visible = true;
+                tempRow.Tag = track;
+                tempRow.Cells[0].Value = track.Cover;
+                tempRow.Cells[1].Value = track.Title;
+                tempRow.Cells[2].Value = track.Artist;
+                tempRow.Cells[3].Value = track.Time;
+                tempRow.Cells[4].Value = Properties.Resources.add;
+                tempRow.Cells[5].Value = Properties.Resources.like;
+                rows.Add(tempRow);
+            }
+            track_gridView.Rows.Clear();
+            track_gridView.Rows.AddRange(rows.ToArray());
+            
+        }
+
 
 
         private void search_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -240,13 +249,14 @@ namespace Tify
 
         private void search_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            track_gridView.Rows.AddRange(rows.ToArray());
-            if (!artist_worker.IsBusy)
-            {
-                connection.Close();
-            }
+            SetGridViewRows(trackInfos);
         }
+
+
         #endregion
+
+
+
         private void SearchBox_Button_Click(object sender, EventArgs e)
         {
             //top button
@@ -315,7 +325,8 @@ namespace Tify
 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //mainScr.changeSong(track_gridView.Rows[e.RowIndex].Tag.ToString());
+            TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
+            mainScr.changeSong(trackToPlay);
         }
 
     }
