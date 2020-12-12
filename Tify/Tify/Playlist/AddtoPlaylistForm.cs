@@ -140,7 +140,7 @@ namespace Tify
         void playlistchoseevent(string input)
         {
             convert(input);
-            Database.AddTrackToPlaylist(mainScr.currentTrackID,choosenPLID);
+            Database.AddTrackToPlaylist(mainScr.currentTrack.TrackID,choosenPLID);
         }
     }
 }

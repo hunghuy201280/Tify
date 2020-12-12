@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\PlaylistInfo.cs" />
     <Compile Include="Playlist\AddtoPlaylistForm.cs">
       <SubType>Form</SubType>
     </Compile>

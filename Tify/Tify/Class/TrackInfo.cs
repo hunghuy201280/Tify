@@ -10,7 +10,7 @@ namespace Tify
     public class TrackInfo
     {
         private string title, artist, time,trackID,trackLink,dateAdded;
-
+        private bool isLoved;
         private Image cover;
         public TrackInfo(string title,string artist,string time)
         {
@@ -33,5 +33,6 @@ namespace Tify
 
         //use in track tab
         public string DateAdded { get => dateAdded; set => dateAdded = value; }
+        public bool IsLoved { get => isLoved; set => isLoved = value; }
     }
 }

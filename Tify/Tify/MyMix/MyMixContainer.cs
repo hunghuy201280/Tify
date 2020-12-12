@@ -182,6 +182,15 @@ namespace Tify
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
+                    if (Database.checkIfTrackLoved(temp.TrackID,mixForm.mainScr.CurrentUser.UserID))
+                    {
+                        temp.IsLoved = true;
+                    }
+                    else
+                    {
+                        temp.IsLoved = false;
+                    }
+
                     int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
 
                     //neu giay >=10

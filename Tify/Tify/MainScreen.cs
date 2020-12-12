@@ -51,7 +51,7 @@ namespace Tify
         private Playlist playlistScr;
         private Artist artistScr;
         private Albums albumsScr;
-        private Tracks tracksScr;
+        public Tracks tracksScr;
         public Account currentUser;
         private SearchBox srchBox;
         private CreatePlayList CreatePL;

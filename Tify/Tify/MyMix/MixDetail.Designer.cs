@@ -145,6 +145,7 @@
             // 
             this.track_dataGridView.AllowUserToAddRows = false;
             this.track_dataGridView.AllowUserToDeleteRows = false;
+            this.track_dataGridView.AllowUserToResizeRows = false;
             this.track_dataGridView.BackgroundColor = System.Drawing.Color.Black;
             this.track_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -204,6 +205,7 @@
             this.track_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.track_dataGridView.Size = new System.Drawing.Size(887, 300);
             this.track_dataGridView.TabIndex = 1;
+            this.track_dataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseClick);
             this.track_dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
             this.track_dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_dataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);

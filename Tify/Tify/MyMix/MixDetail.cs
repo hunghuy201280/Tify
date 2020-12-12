@@ -77,7 +77,14 @@ namespace Tify
                 tempRow.Cells[1].Value = track.Artist;
                 tempRow.Cells[2].Value = track.Time;
                 tempRow.Cells[3].Value = Properties.Resources.add;
-                tempRow.Cells[4].Value = Properties.Resources.like;
+                if (track.IsLoved)
+                {
+                    tempRow.Cells[4].Value = Properties.Resources.liked;
+                }
+                else
+                {
+                    tempRow.Cells[4].Value = Properties.Resources.like;
+                }
                 rows.Add(tempRow);
             }
             track_dataGridView.Rows.Clear();
@@ -86,10 +93,40 @@ namespace Tify
             myMix.openChildForm(this);
         }
 
+        #region like,add to playlist
+        private void track_dataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex==-1)
+                return;
+            DataGridViewRow selectedRow = track_dataGridView.Rows[e.RowIndex];
+            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+            //love
+            if (e.ColumnIndex==4)
+            {
+                if (selectedTrack.IsLoved==false)
+                {
+                    Database.addTrackToUserLikeTrack(myMix.mainScr.currentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = true;
+                    selectedRow.Cells[4].Value = Properties.Resources.liked;
+                    selectedRow.Tag = selectedTrack;
+                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
+                    myMix.mainScr.tracksScr.addRow(selectedTrack);
+                }
+                else
+                {
+                    Database.deleteTrackInUserLikeTrack(myMix.mainScr.currentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = false;
+                    selectedRow.Cells[4].Value = Properties.Resources.like;
+                    selectedRow.Tag = selectedTrack;
+                    myMix.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
+                }
+            }
+        }
+        #endregion
 
         //datagridview Event
-    
-       
+
+
         #region enter,leave row
 
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -126,7 +163,7 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
-           myMix.mainScr.changeSong(trackToPlay);
+            myMix.mainScr.changeSong(trackToPlay);
 
         }
 
@@ -167,6 +204,8 @@ namespace Tify
             }
             myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
-        #endregion 
+        #endregion
+
+      
     }
 }

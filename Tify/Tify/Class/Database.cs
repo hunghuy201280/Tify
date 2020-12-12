@@ -12,6 +12,71 @@ namespace Tify
     class Database
     {
 
+        static public bool checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
+        {
+            string sqlQuery = "select count(*) from UserLikeTrack  " +
+                "join UserHasMix on UserLikeTrack.userID = UserHasMix.userID " +
+                "join MyMixHasTrack  on MyMixHasTrack.trackID = UserLikeTrack.trackID and UserHasMix.myMixID = MyMixHasTrack.myMixID " +
+                "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
+
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            if (checkTable.Rows[0][0].ToString() == "0")
+                return false;
+            return true;
+        }
+        static public void deleteTrackInUserLikeTrack(int userID, string trackID)
+        {
+            string sqlQuery = "delete from UserLikeTrack where userID=@userID and trackID=@trackID";
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+        static public bool checkIfTrackLoved(string trackID,int userID)
+        {
+            string sqlQuery = "select count(*) from UserLikeTrack where trackID=@trackID and userID=@userID";
+
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            if (checkTable.Rows[0][0].ToString()=="0")
+                return false;
+            return true;
+        }
         static public DataTable getTrackTable_Search(string searchKeyWord)
         {
             string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
@@ -105,7 +170,7 @@ namespace Tify
         {
 
 
-            string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID)";
+            string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID,@dateAdded)";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -113,11 +178,10 @@ namespace Tify
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now.ToShortDateString());
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
-
-            
         }
 
         internal static void AddTrackToPlaylist()

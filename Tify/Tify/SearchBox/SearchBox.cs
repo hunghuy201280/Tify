@@ -186,6 +186,7 @@ namespace Tify
 
                         string trackLink = item["trackLink"].ToString();
                         tempTrack.TrackLink = trackLink;
+                        tempTrack.TrackID = item["trackID"].ToString();
                         using (PictureBox pb = new PictureBox())
                         {   
                             pb.Load(GetSongData.GetSongCover(trackLink));

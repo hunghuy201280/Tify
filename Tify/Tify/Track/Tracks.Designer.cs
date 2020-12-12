@@ -86,6 +86,7 @@
             // 
             this.track_gridView.AllowUserToAddRows = false;
             this.track_gridView.AllowUserToDeleteRows = false;
+            this.track_gridView.AllowUserToResizeRows = false;
             this.track_gridView.BackgroundColor = System.Drawing.Color.Black;
             this.track_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
