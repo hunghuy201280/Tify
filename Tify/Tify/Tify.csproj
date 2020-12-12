@@ -74,10 +74,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddtoPlaylistForm.cs">
+    <Compile Include="Playlist\AddtoPlaylistForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddtoPlaylistForm.Designer.cs">
+    <Compile Include="Playlist\AddtoPlaylistForm.Designer.cs">
       <DependentUpon>AddtoPlaylistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Album\AlbumDetail.cs">
@@ -242,7 +242,7 @@
     <Compile Include="Track\Tracks.Designer.cs">
       <DependentUpon>Tracks.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddtoPlaylistForm.resx">
+    <EmbeddedResource Include="Playlist\AddtoPlaylistForm.resx">
       <DependentUpon>AddtoPlaylistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Album\AlbumContainer.resx">
