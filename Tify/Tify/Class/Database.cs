@@ -261,18 +261,18 @@ namespace Tify
         {
             DataTable trackTable = new DataTable();
 
-            string sqlQuery = "select * from  " +
-              "MyMix join MyMixHasTrack on MyMix.myMixID = MyMixHasTrack.myMixID " +
-              "join Track on Track.trackID = MyMixHasTrack.trackID " +
-              "join ArtistHasTrack on Track.trackID = ArtistHasTrack.trackID " +
-              "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
-              "where MyMix.myMixID = @id order by trackTitle; ";
+            string sqlQuery = "select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album " +
+                "join AlbumHasTrack on Album.albumID = AlbumHasTrack.albumID " +
+                "join Track on Track.trackID = AlbumHasTrack.trackID " +
+                "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
+                "join Artist on ArtistHasTrack.artistID = Artist.artistID " +
+                "where Album.albumID = @albumID order by Track.trackID";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-                cmd.Parameters.AddWithValue("@id", mixID);
+                cmd.Parameters.AddWithValue("@albumID", albumID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     trackTable.Load(reader);
