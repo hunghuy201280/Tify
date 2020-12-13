@@ -43,19 +43,23 @@ namespace Tify
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
         {
+            int indexCount = 1;
             track_dataGridView.Rows.Clear();
             track_dataGridView.Rows.Add();
             track_dataGridView.Rows[0].Visible = false;
             rows.Clear();
             foreach (TrackInfo track in trackInfos)
             {
+                
                 DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
                 tempRow.Visible = true;
                 tempRow.Tag = track;
-                tempRow.Cells[0].Value = track.Title;
-                tempRow.Cells[1].Value = track.Artist;
-                tempRow.Cells[2].Value = track.Time;
-                tempRow.Cells[3].Value = Properties.Resources.add;
+                tempRow.Cells[0].Value = indexCount++;
+                tempRow.Cells[1].Value = track.Title;
+                tempRow.Cells[2].Value = track.Artist;
+                tempRow.Cells[3].Value = track.DateAdded;
+                tempRow.Cells[4].Value = track.Time;
+                tempRow.Cells[5].Value = Properties.Resources.add;
                 if (track.IsLoved)
                 {
                     tempRow.Cells[4].Value = Properties.Resources.liked;
@@ -66,7 +70,7 @@ namespace Tify
                 }
                 rows.Add(tempRow);
             }
-            track_dataGridView.Rows.Clear();
+            
             track_dataGridView.Rows.AddRange(rows.ToArray());
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
             {

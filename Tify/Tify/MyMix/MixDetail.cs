@@ -89,7 +89,7 @@ namespace Tify
                 }
                 rows.Add(tempRow);
             }
-            track_dataGridView.Rows.Clear();
+            
             track_dataGridView.Rows.AddRange(rows.ToArray());
             cover_pictureBox.Image = cover;
             mixTitle_label.Text = callFm.playlistName_label.Text;

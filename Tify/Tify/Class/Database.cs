@@ -257,12 +257,38 @@ namespace Tify
             return trackTable;
         }
 
+        static public DataTable getTrack_Album(string albumID)
+        {
+            DataTable trackTable = new DataTable();
+
+            string sqlQuery = "select * from  " +
+              "MyMix join MyMixHasTrack on MyMix.myMixID = MyMixHasTrack.myMixID " +
+              "join Track on Track.trackID = MyMixHasTrack.trackID " +
+              "join ArtistHasTrack on Track.trackID = ArtistHasTrack.trackID " +
+              "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
+              "where MyMix.myMixID = @id order by trackTitle; ";
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@id", mixID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    trackTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return trackTable;
+        }
+
 
         static public DataTable getTrackInPlaylist(string playlistID)
         {
             DataTable trackTable = new DataTable();
 
-            string sqlQuery = "select Playlist.*,Track.*,Artist.*,Account.* from Playlist " +
+            string sqlQuery = "select Playlist.*,Track.*,Artist.*,Account.*,dateAdded from Playlist " +
                 "join PlaylistHasTrack  on PlaylistHasTrack.playlistID = Playlist.playlistID " +
                 "join Track on Track.trackID = PlaylistHasTrack.trackID " +
                 "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
@@ -355,7 +381,7 @@ namespace Tify
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserHasMix where userID=8 order by myMixID asc;", sqlconnection))
+            using (SqlCommand cmd = new SqlCommand("select * from UserHasMix where userID=@userID order by myMixID asc;", sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -366,6 +392,27 @@ namespace Tify
             sqlconnection.Close();
 
             return mixTable;
+        }
+
+        static public DataTable getAlbumTable_Album(int userID)
+        {
+            DataTable albumTable = new DataTable();
+
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand("select * from UserLikeAlbum where userID=@userID order by myMixID asc;", sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    albumTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return albumTable;
         }
 
         static public DataTable getPlaylistTable_Playlist(int userID)

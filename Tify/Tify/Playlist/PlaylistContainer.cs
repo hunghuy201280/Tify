@@ -31,12 +31,11 @@ namespace Tify
         public PlaylistContainer(Playlist callform,string PLAYLIST_ID)
         {
             InitializeComponent();
-
+            playlistID = PLAYLIST_ID;
             playlistFm = callform;
             opacity_panel.Click += callform.opacity_panel_Click;
 
 
-            loadInfo(PLAYLIST_ID);
 
             this.DoubleBuffered = true;
 
@@ -46,10 +45,12 @@ namespace Tify
             }
         }
 
-
+        private void opacity_panel_Paint(object sender, PaintEventArgs e)
+        {
+            loadInfo(playlistID);
+        }
         public void loadInfo(string playlistid)
         {
-            playlistID = playlistid;
             load_worker.RunWorkerAsync();
         }
         private DataTable trackTable = new DataTable();
@@ -74,6 +75,8 @@ namespace Tify
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
+                    DateTime dateAdded = DateTime.Parse(track["dateAdded"].ToString());
+                    temp.DateAdded = dateAdded.ToShortDateString();
                     if (Database.checkIfTrackLoved(temp.TrackID, playlistFm.mainScr.CurrentUser.UserID))
                     {
                         temp.IsLoved = true;
@@ -103,7 +106,7 @@ namespace Tify
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            
         }
 
 
@@ -122,6 +125,6 @@ namespace Tify
             opacity_panel.Visible = false;
         }
 
-       
+      
     }
 }
