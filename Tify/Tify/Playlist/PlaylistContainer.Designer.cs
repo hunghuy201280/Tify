@@ -87,7 +87,7 @@
             this.opacity_panel.Size = new System.Drawing.Size(172, 172);
             this.opacity_panel.TabIndex = 0;
             this.opacity_panel.Visible = false;
-            this.opacity_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.opacity_panel_Paint);
+            this.opacity_panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opacity_panel_MouseClick);
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
             // load_worker

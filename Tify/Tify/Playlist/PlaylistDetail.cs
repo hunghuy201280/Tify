@@ -62,21 +62,33 @@ namespace Tify
                 tempRow.Cells[5].Value = Properties.Resources.add;
                 if (track.IsLoved)
                 {
-                    tempRow.Cells[4].Value = Properties.Resources.liked;
+                    tempRow.Cells[6].Value = Properties.Resources.liked;
                 }
                 else
                 {
-                    tempRow.Cells[4].Value = Properties.Resources.like;
+                    tempRow.Cells[6].Value = Properties.Resources.like;
                 }
                 rows.Add(tempRow);
             }
             
             track_dataGridView.Rows.AddRange(rows.ToArray());
-            for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
-            {
-                PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
-                tempPb.Image = cover[i];
-            }
+          
+                for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
+                {
+                try
+                {
+                    PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
+                    tempPb.Image = cover[i];
+                }
+                catch (Exception)
+                {
+
+                    
+                }
+                  
+                }
+            
+         
             createdBy_label.Text="Created by "+callFm.owner + " - "+trackInfos.Count+" Tracks";
             //Created by me - 10 Tracks - 1:24:00
      

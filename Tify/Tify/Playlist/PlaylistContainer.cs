@@ -43,10 +43,21 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+            
         }
-
-        private void opacity_panel_Paint(object sender, PaintEventArgs e)
+        private bool isLoaded = false;
+        private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
+            if (isLoaded)
+            {
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
+                return;
+            }
+            
+            if (load_worker.IsBusy)
+            {
+                return;
+            }
             loadInfo(playlistID);
         }
         public void loadInfo(string playlistid)
@@ -73,7 +84,7 @@ namespace Tify
                 {
                     TrackInfo temp = new TrackInfo();
 
-                    if (cover.Count<=4)
+                    if (cover.Count<4)
                     {
                         using (PictureBox pb = new PictureBox())
                         {
@@ -114,10 +125,15 @@ namespace Tify
                     lastTrackID = track["trackID"].ToString();
                 }
             }
+            isLoaded = true;
         }
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (e.Error != null)
+            {
+                return;
+            }
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
         }
 
@@ -137,6 +153,6 @@ namespace Tify
             opacity_panel.Visible = false;
         }
 
-      
+       
     }
 }
