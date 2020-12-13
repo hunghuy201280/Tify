@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Tify
 {
@@ -24,6 +26,56 @@ namespace Tify
         }
 
         private MainScreen mainScr;
+
+        SqlConnection connection;
+
+        
+        private DataTable AlbumTable = new DataTable();
+        public Albums(MainScreen callform)
+        {
+            InitializeComponent();
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+
+            mainScr = callform;
+            //Get user has mix table
+            AlbumTable = Database.getMyMixTableInMyMix(mainScr.CurrentUser.UserID);
+            albumDetail = new AlbumDetail(this);
+
+            firstLoadChildForm();
+
+            // initialize container and mixdetail
+            for (int i = 0; i < mixTable.Rows.Count; i++)
+            {
+                mixContainers.Add(new MyMixContainer(this, mixTable.Rows[i]["myMixID"].ToString(), mixDetail));
+            }
+            mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
+
+
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
+
+        }
+
+        private List<MyMixContainer> mixContainers = new List<MyMixContainer>();
+        private MixDetail mixDetail;
+
+
+        public void reloadMixContainer(string MIXID)
+        {
+            foreach (MyMixContainer container in mixContainers)
+            {
+                if (container.mixID == MIXID)
+                {
+                    container.reloadStatus();
+                    break;
+                }
+            }
+        }
 
         public Albums(MainScreen callFm)
         {
