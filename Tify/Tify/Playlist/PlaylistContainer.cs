@@ -55,6 +55,7 @@ namespace Tify
         }
         private DataTable trackTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
+        private List<Image> cover = new List<Image>();
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             trackTable = Database.getTrackInPlaylist(playlistID);
@@ -71,6 +72,17 @@ namespace Tify
                 else
                 {
                     TrackInfo temp = new TrackInfo();
+
+                    if (cover.Count<=4)
+                    {
+                        using (PictureBox pb = new PictureBox())
+                        {
+                            pb.Load(GetSongData.GetSongCover(track["trackLink"].ToString()));
+                            cover.Add(pb.Image);
+                        }
+                    }
+                 
+
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
@@ -106,7 +118,7 @@ namespace Tify
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
         }
 
 

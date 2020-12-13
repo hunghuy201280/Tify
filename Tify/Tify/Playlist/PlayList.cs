@@ -64,7 +64,7 @@ namespace Tify
         #region Mở childForm
 
       
-        private PlaylistDetail playlistDetail;
+        public PlaylistDetail playlistDetail;
         private void firstLoadChildForm()
         {
             playlistDetail.TopLevel = false;
