@@ -35,6 +35,7 @@
             this.opacity_panel = new System.Windows.Forms.Panel();
             this.load_worker = new System.ComponentModel.BackgroundWorker();
             this.createdBy_label = new System.Windows.Forms.Label();
+            this.trackTable_woker = new System.ComponentModel.BackgroundWorker();
             this.playlistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             // 
             // playlistCover_panel
             // 
-            this.playlistCover_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playlistCover_panel.BackgroundImage")));
+            this.playlistCover_panel.BackgroundImage = global::Tify.Properties.Resources.emptyplaylist;
             this.playlistCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.playlistCover_panel.Controls.Add(this.opacity_panel);
             this.playlistCover_panel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -107,6 +108,11 @@
             this.createdBy_label.TabIndex = 8;
             this.createdBy_label.Text = "0 tracks";
             // 
+            // trackTable_woker
+            // 
+            this.trackTable_woker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.trackTable_woker_DoWork);
+            this.trackTable_woker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.trackTable_woker_RunWorkerCompleted);
+            // 
             // PlaylistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,12 +133,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label numberOfTracks_label;
-        private System.Windows.Forms.Label playlistName_label;
         private System.Windows.Forms.Panel playlistCover_panel;
         private System.Windows.Forms.Panel opacity_panel;
         private System.ComponentModel.BackgroundWorker load_worker;
-        private System.Windows.Forms.Label createdBy_label;
+        public System.Windows.Forms.Label numberOfTracks_label;
+        public System.Windows.Forms.Label playlistName_label;
+        public System.Windows.Forms.Label createdBy_label;
+        private System.ComponentModel.BackgroundWorker trackTable_woker;
     }
 }

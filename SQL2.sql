@@ -212,17 +212,52 @@ select * from Artist Where artistID='https://chiasenhac.vn/ca-si/quynh-giao-zssm
 
 
 
-select Playlist.*,Track.*,Artist.* from Playlist
+select Playlist.*,Track.*,Artist.*,Account.*,dateAdded from Playlist
 join PlaylistHasTrack  on PlaylistHasTrack.playlistID=Playlist.playlistID
 join Track on Track.trackID=PlaylistHasTrack.trackID
 join ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
 join Artist on Artist.artistID=ArtistHasTrack.artistID
+join Account on Account.userID=Playlist.owner
 where Playlist.playlistID=39 order by trackTitle
 
 
 select * from PlaylistHasTrack join Playlist on PlaylistHasTrack.playlistID=Playlist.playlistID
 
-select * from Playlist
+select * from UserLikeTrack
 
-update Playlist
-set description='đây là playlist test'
+alter table Playlist
+add owner int references Account(userID)
+
+alter table PlaylistHasTrack
+add dateAdded date
+
+
+select * from UserHasPlaylist
+join Account on Account.userID=UserHasPlaylist.userID
+
+
+where playlistID=39
+
+select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album
+join AlbumHasTrack on Album.albumID=AlbumHasTrack.albumID
+join Track on Track.trackID=AlbumHasTrack.trackID
+join ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
+join Artist on ArtistHasTrack.artistID=Artist.artistID
+where Album.albumID=570 order by Track.trackID
+
+
+select Album.*,Track.* from Album
+join AlbumHasTrack on Album.albumID=AlbumHasTrack.albumID
+join Track on Track.trackID=AlbumHasTrack.trackID
+where Album.albumID=570 order by Track.trackID asc
+
+
+select * from 
+(select trackID from Track except
+select Track.trackID from Track  join
+ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID ) A
+join Track on A.trackID=Track.trackID
+
+select * from PlaylistHasTrack
+
+

@@ -43,7 +43,7 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            
+            trackTable_woker.RunWorkerAsync();
         }
         private bool isLoaded = false;
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
@@ -60,6 +60,23 @@ namespace Tify
             }
             loadInfo(playlistID);
         }
+
+
+        private void trackTable_woker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            trackTable = Database.getTrackInPlaylist(playlistID);
+        }
+
+        private void trackTable_woker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (trackTable.Rows.Count != 0)
+            {
+                owner = trackTable.Rows[0]["name"].ToString();
+                playlistName_label.Text = trackTable.Rows[0]["playlistTitle"].ToString();
+                numberOfTracks_label.Text = trackTable.Rows.Count.ToString() + " Tracks";
+                createdBy_label.Text = "Created by " + owner;
+            }
+        }
         public void loadInfo(string playlistid)
         {
             load_worker.RunWorkerAsync();
@@ -69,16 +86,15 @@ namespace Tify
         private List<Image> cover = new List<Image>();
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            trackTable = Database.getTrackInPlaylist(playlistID);
-            if (trackTable.Rows.Count != 0)
-                owner = trackTable.Rows[0]["name"].ToString();
+            string lastTrackID = "";
+          
             foreach (DataRow track in trackTable.Rows)
             {
 
-                string lastTrackID = "";
                 if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
                 {
                     trackInfos[trackInfos.Count - 1].Artist += ";" + track["artistName"].ToString();
+                    
                 }
                 else
                 {
@@ -125,6 +141,10 @@ namespace Tify
                     lastTrackID = track["trackID"].ToString();
                 }
             }
+            while (cover.Count < 4)
+            {
+                cover.Add(Properties.Resources.emptyplaylist);
+            }
             isLoaded = true;
         }
 
@@ -137,6 +157,7 @@ namespace Tify
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
         }
 
+       
 
         private void PlaylistContainer_Load(object sender, EventArgs e)
         {

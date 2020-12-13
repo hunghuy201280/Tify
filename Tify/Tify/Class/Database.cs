@@ -148,7 +148,7 @@ namespace Tify
 
         static public void AddTrackToPlaylist(string trackID,string playlistID)
         {
-            string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID)";
+            string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID,getdate())";
 
             
 
@@ -418,8 +418,6 @@ namespace Tify
         static public DataTable getPlaylistTable_Playlist(int userID)
         {
             DataTable mixTable = new DataTable();
-
-
 
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
