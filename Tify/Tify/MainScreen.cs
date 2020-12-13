@@ -988,14 +988,26 @@ namespace Tify
             }
             else
             {
-                loadNewSong(nextTrack.Dequeue() as TrackInfo);
+                if (shuffle_button.Tag.ToString() == "on")
+                {
+                    int maxshuffer = nextTrack.Count;
+                    Random r = new Random();
+                    int id = r.Next(0, maxshuffer -1);
+                    loadNewSong(new TrackInfo() { TrackLink = suggestedSong[id] });
+
+                }
+                else
+                {
+                    loadNewSong(nextTrack.Dequeue() as TrackInfo);
+                }
+                
             }
         }
 
 
         public Queue nextTrack = new Queue();
         public void addTrackToQueue (TrackInfo track)
-        {
+         {
             nextTrack.Enqueue(track);
         }
         public void changeSong(TrackInfo track)
@@ -1019,6 +1031,16 @@ namespace Tify
             add2PL.Show();
         }
         #endregion
-        
+
+        #region get ramdom trackinfo
+        private TrackInfo get_ramdom_trackinfo(TrackInfo[] trackInfoList)
+        {
+            int length = trackInfoList.Length;
+            Random r = new Random();
+
+            int id = r.Next(0, length);
+            return trackInfoList[id];
+        }
+        #endregion
     }
 }
