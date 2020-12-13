@@ -105,7 +105,7 @@ namespace Tify
                 sqlcon.Open();
                 string playlistname = Title_TextBox.Text;
 
-                using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle) OUTPUT inserted.playlistID VALUES('" + playlistname + "')", sqlcon))
+                using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle,description,owner) OUTPUT inserted.playlistID VALUES('" + playlistname + "','"+Description_TextBox.Text +"',"+mainScr.CurrentUser.UserID+")", sqlcon))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -127,6 +127,7 @@ namespace Tify
                 }
                 menu_pnl.Controls.Add(newbutton);
                 sqlcon.Close();
+                this.Close();
             }
         }
 
