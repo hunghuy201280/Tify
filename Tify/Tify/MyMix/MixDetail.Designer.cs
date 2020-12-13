@@ -37,8 +37,8 @@
             this.addToPlaylist_Button = new System.Windows.Forms.Button();
             this.playShuffle_Button = new System.Windows.Forms.Button();
             this.play_button = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.mixArtist_label = new System.Windows.Forms.Label();
+            this.mixTitle_label = new System.Windows.Forms.Label();
             this.track_dataGridView = new System.Windows.Forms.DataGridView();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +57,8 @@
             this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
             this.top_panel.Controls.Add(this.play_button);
-            this.top_panel.Controls.Add(this.label2);
-            this.top_panel.Controls.Add(this.label1);
+            this.top_panel.Controls.Add(this.mixArtist_label);
+            this.top_panel.Controls.Add(this.mixTitle_label);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
@@ -119,27 +119,27 @@
             this.play_button.UseVisualStyleBackColor = false;
             this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
-            // label2
+            // mixArtist_label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
-            this.label2.Location = new System.Drawing.Point(222, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Artist 1, Artist 2, Artist 3 and more";
+            this.mixArtist_label.AutoSize = true;
+            this.mixArtist_label.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mixArtist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.mixArtist_label.Location = new System.Drawing.Point(222, 95);
+            this.mixArtist_label.Name = "mixArtist_label";
+            this.mixArtist_label.Size = new System.Drawing.Size(252, 20);
+            this.mixArtist_label.TabIndex = 2;
+            this.mixArtist_label.Text = "Artist 1, Artist 2, Artist 3 and more";
             // 
-            // label1
+            // mixTitle_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(218, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 43);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "My Mix 1";
+            this.mixTitle_label.AutoSize = true;
+            this.mixTitle_label.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mixTitle_label.ForeColor = System.Drawing.Color.White;
+            this.mixTitle_label.Location = new System.Drawing.Point(218, 41);
+            this.mixTitle_label.Name = "mixTitle_label";
+            this.mixTitle_label.Size = new System.Drawing.Size(177, 43);
+            this.mixTitle_label.TabIndex = 1;
+            this.mixTitle_label.Text = "My Mix 1";
             // 
             // track_dataGridView
             // 
@@ -271,8 +271,8 @@
         #endregion
 
         private System.Windows.Forms.Panel top_panel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label mixTitle_label;
+        private System.Windows.Forms.Label mixArtist_label;
         private System.Windows.Forms.Button play_button;
         private System.Windows.Forms.Button playShuffle_Button;
         private System.Windows.Forms.Button addToPlaylist_Button;

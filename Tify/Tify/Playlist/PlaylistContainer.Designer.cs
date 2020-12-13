@@ -33,6 +33,8 @@
             this.playlistName_label = new System.Windows.Forms.Label();
             this.playlistCover_panel = new System.Windows.Forms.Panel();
             this.opacity_panel = new System.Windows.Forms.Panel();
+            this.load_worker = new System.ComponentModel.BackgroundWorker();
+            this.createdBy_label = new System.Windows.Forms.Label();
             this.playlistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,9 +46,9 @@
             this.numberOfTracks_label.Location = new System.Drawing.Point(11, 202);
             this.numberOfTracks_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.numberOfTracks_label.Name = "numberOfTracks_label";
-            this.numberOfTracks_label.Size = new System.Drawing.Size(48, 16);
+            this.numberOfTracks_label.Size = new System.Drawing.Size(51, 16);
             this.numberOfTracks_label.TabIndex = 8;
-            this.numberOfTracks_label.Text = "Playlist";
+            this.numberOfTracks_label.Text = "0 tracks";
             // 
             // playlistName_label
             // 
@@ -87,17 +89,35 @@
             this.opacity_panel.Visible = false;
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
+            // load_worker
+            // 
+            this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
+            this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
+            // 
+            // createdBy_label
+            // 
+            this.createdBy_label.AutoSize = true;
+            this.createdBy_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createdBy_label.ForeColor = System.Drawing.Color.White;
+            this.createdBy_label.Location = new System.Drawing.Point(11, 223);
+            this.createdBy_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.createdBy_label.Name = "createdBy_label";
+            this.createdBy_label.Size = new System.Drawing.Size(51, 16);
+            this.createdBy_label.TabIndex = 8;
+            this.createdBy_label.Text = "0 tracks";
+            // 
             // PlaylistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.playlistCover_panel);
+            this.Controls.Add(this.createdBy_label);
             this.Controls.Add(this.numberOfTracks_label);
             this.Controls.Add(this.playlistName_label);
             this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.Name = "PlaylistContainer";
-            this.Size = new System.Drawing.Size(172, 226);
+            this.Size = new System.Drawing.Size(172, 248);
             this.Load += new System.EventHandler(this.PlaylistContainer_Load);
             this.playlistCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -111,5 +131,7 @@
         private System.Windows.Forms.Label playlistName_label;
         private System.Windows.Forms.Panel playlistCover_panel;
         private System.Windows.Forms.Panel opacity_panel;
+        private System.ComponentModel.BackgroundWorker load_worker;
+        private System.Windows.Forms.Label createdBy_label;
     }
 }

@@ -526,8 +526,8 @@ namespace Tify
             albumsScr = new Albums();
             tracksScr = new Tracks(this);
             CreatePL = new CreatePlayList(this);
-            
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, CreatePL };
+            srchBox = new SearchBox(this);
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, CreatePL, srchBox };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -618,7 +618,7 @@ namespace Tify
         {
             if (e.KeyChar == (char)13)//enter
             {
-                srchBox = new SearchBox(searchBar_textBox.Text,this);
+                srchBox.doSearch(searchBar_textBox.Text);
                 loadSingleChildForm(srchBox);
                 openChildForm(srchBox);
               
@@ -626,38 +626,7 @@ namespace Tify
         }
 
 
-       /* private void searchBar_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            connection.Open();
-            string sqlQuery = "select distinct top 10 trackTitle,trackLink from Track where trackTitle like @query";
-
-            using (SqlCommand cmd = new SqlCommand(sqlQuery, connection))
-            {
-                cmd.Parameters.AddWithValue("@query", "%" + e.Argument.ToString() + "%");
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    trackTable.Clear();
-                    trackTable.Load(reader);
-                }
-            }
-            connection.Close();
-        }
-
-        private void searchBar_backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-        }
-
-        private void searchBar_backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                srchBox = new SearchBox(trackTable);
-                loadSingleChildForm(srchBox);
-                openChildForm(srchBox);
-            }
-        }
-*/
+  
         #endregion Searchbar
 
         //

@@ -22,10 +22,9 @@ namespace Tify
         }
 
         private string searchKeyWord;
-        private SqlConnection connection;
         private MainScreen mainScr;
 
-        public SearchBox(string keyword, MainScreen callForm)
+        public SearchBox(MainScreen callForm)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -33,44 +32,34 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             mainScr = callForm;
-            track_gridView.Rows.Add();
-            track_gridView.Rows[0].Visible = false;
+
+           
+        }
+
+        public void doSearch(string keyword)
+        {
             searchKeyWord = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(keyword);
-            connection.Open();
 
             search_worker.RunWorkerAsync();
             artist_worker.RunWorkerAsync();
             album_worker.RunWorkerAsync();
         }
 
-
         #region load album
 
         private DataTable albumTab_Table = new DataTable();
         private List<AlbumContainer> albums = new List<AlbumContainer>();
 
-
         private void loadAlbum()
         {
-
-            albumTab_Table.Clear();
-            string sqlQuery = "select top 20 Album.*,artistName from Album join Artist on Album.artistID=Artist.artistID" +
-                " where albumTitle like '%" + searchKeyWord + "%'";
-
+          
             try
             {
-                using (SqlCommand album_cmd = new SqlCommand(sqlQuery, connection))
-                {
-                    using (SqlDataReader album_reader = album_cmd.ExecuteReader())
-                    {
-                        albumTab_Table.Load(album_reader);
-                    }
-                }
+                albumTab_Table = Database.getAlbumTable_Search(searchKeyWord);
                 if (albumTab_Table.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty");
+                    MessageBox.Show("Empty album");
                     return;
                 }
                 else
@@ -85,10 +74,10 @@ namespace Tify
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message+"album");
+                MessageBox.Show(e.Message + "album");
             }
-
         }
+
         private void album_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadAlbum();
@@ -99,30 +88,24 @@ namespace Tify
             albumResult_flowPanel.Controls.AddRange(albums.ToArray());
         }
 
-        #endregion
+        #endregion load album
 
         #region load artist
 
         private DataTable artistTab_Table = new DataTable();
         private List<ArtistContainer> artists = new List<ArtistContainer>();
+
         private void loadArtist()
         {
-           
-            artistTab_Table.Clear();
-            string sqlQuery = "select top 20 * from Artist where artistName like '%"+searchKeyWord+"%'";
+         
 
             try
             {
-                using (SqlCommand artist_cmd = new SqlCommand(sqlQuery, connection))
-                {
-                    using (SqlDataReader artist_reader = artist_cmd.ExecuteReader())
-                    {
-                        artistTab_Table.Load(artist_reader);
-                    }
-                }
+
+                artistTab_Table = Database.getArtistTable_Search(searchKeyWord);
                 if (artistTab_Table.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty");
+                    MessageBox.Show("Empty artist");
                     return;
                 }
                 else
@@ -137,10 +120,10 @@ namespace Tify
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message+"artist");
+                MessageBox.Show(e.Message + "artist");
             }
-
         }
+
         private void artist_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadArtist();
@@ -149,27 +132,23 @@ namespace Tify
         private void artist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             artistResult_flowPanel.Controls.AddRange(artists.ToArray());
-            if (!search_worker.IsBusy)
-            {
-                connection.Close();
-            }
+            
         }
 
-        #endregion
-
+        #endregion load artist
 
         #region load track
+
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
+
         public void loadTrack()
         {
-           
             try
             {
                 trackTable = Database.getTrackTable_Search(searchKeyWord);
-
 
                 if (trackTable.Rows.Count == 0)
                 {
@@ -180,15 +159,13 @@ namespace Tify
                 {
                     foreach (DataRow item in trackTable.Rows)
                     {
-                        TrackInfo tempTrack=new TrackInfo();
-
-                       
+                        TrackInfo tempTrack = new TrackInfo();
 
                         string trackLink = item["trackLink"].ToString();
                         tempTrack.TrackLink = trackLink;
                         tempTrack.TrackID = item["trackID"].ToString();
                         using (PictureBox pb = new PictureBox())
-                        {   
+                        {
                             pb.Load(GetSongData.GetSongCover(trackLink));
                             tempTrack.Cover = pb.Image;
                         }
@@ -199,16 +176,20 @@ namespace Tify
                         {
                             artist += artistName["artistName"].ToString() + ";";
                         }
-                        tempTrack.Title= item["trackTitle"].ToString();
+                        tempTrack.Title = item["trackTitle"].ToString();
                         tempTrack.Artist = artist;
-                        
-                        
-                        
+
                         int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
                         if (duration[1] < 10)
                             tempTrack.Time = duration[0].ToString() + ":0" + duration[1].ToString();
                         else
                             tempTrack.Time = duration[0].ToString() + ":" + duration[1].ToString();
+
+                        //check if loved
+                        if (Database.checkIfTrackLoved(tempTrack.TrackID, mainScr.CurrentUser.UserID))
+                            tempTrack.IsLoved = true;
+                        else
+                            tempTrack.IsLoved = false;
 
                         trackInfos.Add(tempTrack);
                     }
@@ -216,12 +197,15 @@ namespace Tify
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message+"track");
+                MessageBox.Show(e.Message + "track");
             }
-
         }
+
         public void SetGridViewRows(List<TrackInfo> trackInfos)
         {
+            track_gridView.Rows.Clear();
+            track_gridView.Rows.Add();
+            track_gridView.Rows[0].Visible = false;
             rows.Clear();
             foreach (TrackInfo track in trackInfos)
             {
@@ -233,15 +217,14 @@ namespace Tify
                 tempRow.Cells[2].Value = track.Artist;
                 tempRow.Cells[3].Value = track.Time;
                 tempRow.Cells[4].Value = Properties.Resources.add;
-                tempRow.Cells[5].Value = Properties.Resources.like;
+                if (track.IsLoved)
+                    tempRow.Cells[5].Value = Properties.Resources.liked;
+                else
+                    tempRow.Cells[5].Value = Properties.Resources.like;
                 rows.Add(tempRow);
             }
-            track_gridView.Rows.Clear();
             track_gridView.Rows.AddRange(rows.ToArray());
-            
         }
-
-
 
         private void search_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -254,10 +237,7 @@ namespace Tify
             SetGridViewRows(trackInfos);
         }
 
-
-        #endregion
-
-
+        #endregion load track
 
         private void SearchBox_Button_Click(object sender, EventArgs e)
         {
@@ -282,15 +262,14 @@ namespace Tify
                 }
             }
 
-            if (btn.Tag.ToString()=="track_button")
+            if (btn.Tag.ToString() == "track_button")
                 track_gridView.BringToFront();
-            else if (btn.Tag.ToString()=="artist_button")
+            else if (btn.Tag.ToString() == "artist_button")
                 artistResult_flowPanel.BringToFront();
             else if (btn.Tag.ToString() == "album_button")
                 albumResult_flowPanel.BringToFront();
             else if (btn.Tag.ToString() == "playlist_button")
                 playlistResult_flowPanel.BringToFront();
-            
         }
 
         #region enter,leave row
@@ -327,7 +306,7 @@ namespace Tify
 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex==-1)
+            if (e.RowIndex == -1)
             {
                 return;
             }
@@ -337,14 +316,30 @@ namespace Tify
 
         private void track_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             if (e.RowIndex == -1)
-            {
                 return;
-            }
-            if (e.ColumnIndex==5)//add to tracks
+            DataGridViewRow selectedRow = track_gridView.Rows[e.RowIndex];
+            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+            //love
+            if (e.ColumnIndex == 5)
             {
-                
+                if (selectedTrack.IsLoved == false)
+                {
+                    Database.addTrackToUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = true;
+                    selectedRow.Cells[5].Value = Properties.Resources.liked;
+                    selectedRow.Tag = selectedTrack;
+                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
+                    mainScr.tracksScr.addRow(selectedTrack);
+                }
+                else
+                {
+                    Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = false;
+                    selectedRow.Cells[5].Value = Properties.Resources.like;
+                    selectedRow.Tag = selectedTrack;
+                    mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
+                }
             }
         }
     }

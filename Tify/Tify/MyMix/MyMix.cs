@@ -26,15 +26,14 @@ namespace Tify
         }
 
 
-        SqlConnection connection;
+        
 
         public MainScreen mainScr;
         private DataTable mixTable = new DataTable();        
         public MyMix(MainScreen callform)
         {
             InitializeComponent();
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            connection = new SqlConnection(connectionString);
+           
 
             mainScr = callform;
             //Get user has mix table

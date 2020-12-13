@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,9 +24,11 @@ namespace Tify
 
         }
 
-        private MainScreen mainScr;
+        public MainScreen mainScr;
 
         private PlaylistContainer test;
+        private DataTable playlistTable = new DataTable();
+        private List<PlaylistContainer> playlistContainers = new List<PlaylistContainer>();
         public Playlist(MainScreen callForm)
         {
             InitializeComponent();
@@ -33,16 +37,28 @@ namespace Tify
            this.ClientSize.Height / 2 - panel_default_playlist.Size.Height / 2);
             panel_default_playlist.Anchor = AnchorStyles.None;
             /*panel_default_playlist.BringToFront();*/
+           
+            mainScr = callForm;
+
+            //get user has playlist table
+            playlistTable = Database.getPlaylistTable_Playlist(mainScr.CurrentUser.UserID);
+            playlistDetail = new PlaylistDetail(this);
+
+
+
+            firstLoadChildForm();
+           
+            for (int i = 0; i < playlistTable.Rows.Count; i++)
+            {
+                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
+            }
+            bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            mainScr = callForm;
-           
-            test = new PlaylistContainer(this);
-            bottom_flowPanel.Controls.Add(test);
-            firstLoadChildForm();
         }
 
         #region Mở childForm
@@ -51,7 +67,6 @@ namespace Tify
         private PlaylistDetail playlistDetail;
         private void firstLoadChildForm()
         {
-            playlistDetail = new PlaylistDetail();
             playlistDetail.TopLevel = false;
             playlistDetail.FormBorderStyle = FormBorderStyle.None;
             playlistDetail.Dock = DockStyle.Fill;
@@ -65,7 +80,6 @@ namespace Tify
             {
                 if (mainScr.activeForm == childForm)
                     return;
-                mainScr.activeForm.SendToBack();
             }
 
             mainScr.activeForm = childForm;

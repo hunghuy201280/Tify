@@ -133,11 +133,11 @@
 
         private System.Windows.Forms.Panel myMixCover_panel;
         private System.Windows.Forms.Panel opacity_panel;
-        private System.Windows.Forms.Label artist_label;
-        private System.Windows.Forms.Label playlistName_label;
         private System.ComponentModel.BackgroundWorker cover_worker;
         private System.ComponentModel.BackgroundWorker artist_worker;
         private System.ComponentModel.BackgroundWorker load_worker;
         private System.ComponentModel.BackgroundWorker reload_worker;
+        public System.Windows.Forms.Label playlistName_label;
+        public System.Windows.Forms.Label artist_label;
     }
 }

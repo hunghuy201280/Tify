@@ -37,14 +37,9 @@
             this.top_panel = new System.Windows.Forms.Panel();
             this.formTitle_label = new System.Windows.Forms.Label();
             this.sort_button = new System.Windows.Forms.Button();
-            this.playlistContainer1 = new Tify.PlaylistContainer();
-            this.playlistContainer2 = new Tify.PlaylistContainer();
-            this.playlistContainer3 = new Tify.PlaylistContainer();
-            this.playlistContainer4 = new Tify.PlaylistContainer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_default_playlist.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.bottom_flowPanel.SuspendLayout();
             this.top_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,10 +89,6 @@
             // 
             // bottom_flowPanel
             // 
-            this.bottom_flowPanel.Controls.Add(this.playlistContainer1);
-            this.bottom_flowPanel.Controls.Add(this.playlistContainer2);
-            this.bottom_flowPanel.Controls.Add(this.playlistContainer3);
-            this.bottom_flowPanel.Controls.Add(this.playlistContainer4);
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
@@ -138,42 +129,6 @@
             this.sort_button.TabIndex = 6;
             this.sort_button.UseVisualStyleBackColor = true;
             // 
-            // playlistContainer1
-            // 
-            this.playlistContainer1.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer1.Location = new System.Drawing.Point(5, 0);
-            this.playlistContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.playlistContainer1.Name = "playlistContainer1";
-            this.playlistContainer1.Size = new System.Drawing.Size(172, 235);
-            this.playlistContainer1.TabIndex = 0;
-            // 
-            // playlistContainer2
-            // 
-            this.playlistContainer2.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer2.Location = new System.Drawing.Point(187, 0);
-            this.playlistContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.playlistContainer2.Name = "playlistContainer2";
-            this.playlistContainer2.Size = new System.Drawing.Size(172, 235);
-            this.playlistContainer2.TabIndex = 1;
-            // 
-            // playlistContainer3
-            // 
-            this.playlistContainer3.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer3.Location = new System.Drawing.Point(369, 0);
-            this.playlistContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.playlistContainer3.Name = "playlistContainer3";
-            this.playlistContainer3.Size = new System.Drawing.Size(172, 235);
-            this.playlistContainer3.TabIndex = 2;
-            // 
-            // playlistContainer4
-            // 
-            this.playlistContainer4.BackColor = System.Drawing.Color.Black;
-            this.playlistContainer4.Location = new System.Drawing.Point(551, 0);
-            this.playlistContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.playlistContainer4.Name = "playlistContainer4";
-            this.playlistContainer4.Size = new System.Drawing.Size(172, 235);
-            this.playlistContainer4.TabIndex = 3;
-            // 
             // Playlist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,7 +144,6 @@
             this.panel_default_playlist.ResumeLayout(false);
             this.panel_default_playlist.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.bottom_flowPanel.ResumeLayout(false);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -206,9 +160,5 @@
         private System.Windows.Forms.Button sort_button;
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.FlowLayoutPanel bottom_flowPanel;
-        private PlaylistContainer playlistContainer1;
-        private PlaylistContainer playlistContainer2;
-        private PlaylistContainer playlistContainer3;
-        private PlaylistContainer playlistContainer4;
     }
 }

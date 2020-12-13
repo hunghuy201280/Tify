@@ -64,7 +64,7 @@ namespace Tify
       
 
         
-        public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open)
+        public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open,MyMixContainer callFm)
         {
             track_dataGridView.Rows.Clear();
             track_dataGridView.Rows.Add();
@@ -92,6 +92,10 @@ namespace Tify
             track_dataGridView.Rows.Clear();
             track_dataGridView.Rows.AddRange(rows.ToArray());
             cover_pictureBox.Image = cover;
+            mixTitle_label.Text = callFm.playlistName_label.Text;
+            mixArtist_label.Text = callFm.artist_label.Text;
+
+
             if(open)
             myMix.openChildForm(this);
         }
@@ -167,7 +171,6 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             myMix.mainScr.changeSong(trackToPlay);
-
         }
 
         #region play button

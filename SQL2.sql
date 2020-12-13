@@ -199,9 +199,30 @@ select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trac
 select * from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID
 where userID=8
 
-select * from UserLikeTrack 
+select UserHasMix.myMixID from UserLikeTrack 
 join UserHasMix on UserLikeTrack.userID=UserHasMix.userID
 join MyMixHasTrack  on MyMixHasTrack.trackID=UserLikeTrack.trackID and UserHasMix.myMixID=MyMixHasTrack.myMixID
 where UserLikeTrack.userID=8 and UserLikeTrack.trackID=25
 
 select * from UserHasMix join MyMixHasTrack on UserHasMix.myMixID=MyMixHasTrack.myMixID
+
+select * from Track where trackTitle like '%chang con mua xuan%'
+
+select * from Artist Where artistID='https://chiasenhac.vn/ca-si/quynh-giao-zssmtddrq8fmma.html'
+
+
+
+select Playlist.*,Track.*,Artist.* from Playlist
+join PlaylistHasTrack  on PlaylistHasTrack.playlistID=Playlist.playlistID
+join Track on Track.trackID=PlaylistHasTrack.trackID
+join ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
+join Artist on Artist.artistID=ArtistHasTrack.artistID
+where Playlist.playlistID=39 order by trackTitle
+
+
+select * from PlaylistHasTrack join Playlist on PlaylistHasTrack.playlistID=Playlist.playlistID
+
+select * from Playlist
+
+update Playlist
+set description='đây là playlist test'

@@ -214,10 +214,10 @@ namespace Tify
                     {
                         mainScr.myMixScr.reloadMixContainer(mixID[0].ToString());
                     }
-                    selectedTrack.IsLoved = false;
-                    track_gridView.Rows.Remove(selectedRow);
-                    Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                 }
+                selectedTrack.IsLoved = false;
+                track_gridView.Rows.Remove(selectedRow);
+                Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
             }
             else if (e.ColumnIndex == 5)//add to playlist
             {

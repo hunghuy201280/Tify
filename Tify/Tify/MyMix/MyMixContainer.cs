@@ -92,7 +92,12 @@ namespace Tify
                 }
                 else
                 {
-                    artist_label.Text += row["artistName"].ToString() + ", ";
+                    if (row==artistTable.Rows[artistTable.Rows.Count-1])
+                    {
+                        artist_label.Text += row["artistName"].ToString() ;
+                    }
+                    else
+                        artist_label.Text += row["artistName"].ToString() + ", ";
                 }
             }
         }
@@ -148,7 +153,7 @@ namespace Tify
         {
             if (isLoaded)
             {
-                mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,true);
+                mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,true,this);
                 return;
             }
             mixID = id;
@@ -214,7 +219,7 @@ namespace Tify
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,true);
+            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,true,this);
         }
 
 
@@ -238,7 +243,7 @@ namespace Tify
 
         private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,false);
+            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,false,this);
         }
         #endregion
 
