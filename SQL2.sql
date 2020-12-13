@@ -189,3 +189,19 @@ select * from PlaylistHastrack
 insert into PlaylistHastrack values(25,38)
 
 select * from Playlist
+
+select * from ArtistHasTrack join Artist on Artist.artistID=ArtistHasTrack.artistID
+join Track on ArtistHasTrack.trackID=Track.trackID
+where trackTitle like '%con mua ngang qua%'
+
+select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trackID
+
+select * from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID
+where userID=8
+
+select * from UserLikeTrack 
+join UserHasMix on UserLikeTrack.userID=UserHasMix.userID
+join MyMixHasTrack  on MyMixHasTrack.trackID=UserLikeTrack.trackID and UserHasMix.myMixID=MyMixHasTrack.myMixID
+where UserLikeTrack.userID=8 and UserLikeTrack.trackID=25
+
+select * from UserHasMix join MyMixHasTrack on UserHasMix.myMixID=MyMixHasTrack.myMixID

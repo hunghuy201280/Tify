@@ -250,6 +250,7 @@ namespace Tify
 
         private void search_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            SearchBox_Tracks.PerformClick();
             SetGridViewRows(trackInfos);
         }
 
@@ -326,9 +327,25 @@ namespace Tify
 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex==-1)
+            {
+                return;
+            }
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             mainScr.changeSong(trackToPlay);
         }
 
+        private void track_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            if (e.ColumnIndex==5)//add to tracks
+            {
+                
+            }
+        }
     }
 }

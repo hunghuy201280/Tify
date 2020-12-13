@@ -47,12 +47,12 @@ namespace Tify
         }
 
         private Home homeScr;
-        private MyMix myMixScr;
+        public MyMix myMixScr;
         private Playlist playlistScr;
         private Artist artistScr;
         private Albums albumsScr;
         public Tracks tracksScr;
-        public Account currentUser;
+        private Account currentUser;
         private SearchBox srchBox;
         private CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
@@ -121,6 +121,10 @@ namespace Tify
             {
                 duration_label.Text = " " + durationMin + ":" + durationSec;
             }
+
+            //check play/pause button
+
+            
 
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(track.TrackLink);
@@ -690,6 +694,8 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
+                if (pause_button.Tag.ToString() == "pause")
+                    soundPlayer.controls.pause();
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
                 songDetail.setProgressBar_Maximum(progressBar.Properties.Maximum);
                 onesec.Start();

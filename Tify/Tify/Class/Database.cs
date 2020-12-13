@@ -12,9 +12,9 @@ namespace Tify
     class Database
     {
 
-        static public bool checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
+        static public DataTable checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
         {
-            string sqlQuery = "select count(*) from UserLikeTrack  " +
+            string sqlQuery = "select UserHasMix.myMixID from UserLikeTrack  " +
                 "join UserHasMix on UserLikeTrack.userID = UserHasMix.userID " +
                 "join MyMixHasTrack  on MyMixHasTrack.trackID = UserLikeTrack.trackID and UserHasMix.myMixID = MyMixHasTrack.myMixID " +
                 "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
@@ -35,9 +35,7 @@ namespace Tify
                 }
             }
             sqlconnection.Close();
-            if (checkTable.Rows[0][0].ToString() == "0")
-                return false;
-            return true;
+            return checkTable;
         }
         static public void deleteTrackInUserLikeTrack(int userID, string trackID)
         {
@@ -170,7 +168,7 @@ namespace Tify
         {
 
 
-            string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID,@dateAdded)";
+            string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID,getdate())";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -178,7 +176,7 @@ namespace Tify
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 cmd.Parameters.AddWithValue("@trackID", trackID);
-                cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now.ToShortDateString());
+                
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();

@@ -119,7 +119,7 @@ namespace Tify
         }
         public void loadTrack()
         {
-            trackTable = Database.loadTrackTableInTracks(mainScr.currentUser.UserID);
+            trackTable = Database.loadTrackTableInTracks(mainScr.CurrentUser.UserID);
             foreach (DataRow item in trackTable.Rows)
             {
                 TrackInfo tempTrack = new TrackInfo();
@@ -207,9 +207,16 @@ namespace Tify
             TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
             if (e.ColumnIndex == 6)//unlike
             {
-                if (Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID,mainScr.CurrentUser.UserID))
+                DataTable checkMixChangesTable = Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID, mainScr.CurrentUser.UserID);
+                if (checkMixChangesTable.Rows.Count!=0)
                 {
-                    //chinh lai cai ham o tren
+                    foreach (DataRow mixID in checkMixChangesTable.Rows)
+                    {
+                        mainScr.myMixScr.reloadMixContainer(mixID[0].ToString());
+                    }
+                    selectedTrack.IsLoved = false;
+                    track_gridView.Rows.Remove(selectedRow);
+                    Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                 }
             }
             else if (e.ColumnIndex == 5)//add to playlist

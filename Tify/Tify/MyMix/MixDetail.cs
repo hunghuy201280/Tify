@@ -53,8 +53,7 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            track_dataGridView.Rows.Add();
-            track_dataGridView.Rows[0].Visible = false;
+           
 
         }
 
@@ -65,8 +64,11 @@ namespace Tify
       
 
         
-        public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover)
+        public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open)
         {
+            track_dataGridView.Rows.Clear();
+            track_dataGridView.Rows.Add();
+            track_dataGridView.Rows[0].Visible = false;
             rows.Clear();
             foreach (TrackInfo track in trackInfos)
             {
@@ -90,6 +92,7 @@ namespace Tify
             track_dataGridView.Rows.Clear();
             track_dataGridView.Rows.AddRange(rows.ToArray());
             cover_pictureBox.Image = cover;
+            if(open)
             myMix.openChildForm(this);
         }
 
@@ -105,7 +108,7 @@ namespace Tify
             {
                 if (selectedTrack.IsLoved==false)
                 {
-                    Database.addTrackToUserLikeTrack(myMix.mainScr.currentUser.UserID, selectedTrack.TrackID);
+                    Database.addTrackToUserLikeTrack(myMix.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                     selectedTrack.IsLoved = true;
                     selectedRow.Cells[4].Value = Properties.Resources.liked;
                     selectedRow.Tag = selectedTrack;
@@ -114,7 +117,7 @@ namespace Tify
                 }
                 else
                 {
-                    Database.deleteTrackInUserLikeTrack(myMix.mainScr.currentUser.UserID, selectedTrack.TrackID);
+                    Database.deleteTrackInUserLikeTrack(myMix.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                     selectedTrack.IsLoved = false;
                     selectedRow.Cells[4].Value = Properties.Resources.like;
                     selectedRow.Tag = selectedTrack;

@@ -36,6 +36,7 @@
             this.cover_worker = new System.ComponentModel.BackgroundWorker();
             this.artist_worker = new System.ComponentModel.BackgroundWorker();
             this.load_worker = new System.ComponentModel.BackgroundWorker();
+            this.reload_worker = new System.ComponentModel.BackgroundWorker();
             this.myMixCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +108,11 @@
             this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
             this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
             // 
+            // reload_worker
+            // 
+            this.reload_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reload_worker_DoWork);
+            this.reload_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reload_worker_RunWorkerCompleted);
+            // 
             // MyMixContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -132,5 +138,6 @@
         private System.ComponentModel.BackgroundWorker cover_worker;
         private System.ComponentModel.BackgroundWorker artist_worker;
         private System.ComponentModel.BackgroundWorker load_worker;
+        private System.ComponentModel.BackgroundWorker reload_worker;
     }
 }
