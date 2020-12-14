@@ -51,14 +51,32 @@ namespace Tify
             {
                 albumYear_label.Text = "Unknown";
             }
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            track_worker.RunWorkerAsync();
         }
         string albumid1;
         public AlbumContainer(string inputid)
         {
+            InitializeComponent();
 
-            track_worker.RunWorkerAsync();
             albumid1 = inputid;
 
+            track_worker.RunWorkerAsync();
+
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            track_worker.RunWorkerAsync();
         }
 
 
