@@ -58,7 +58,11 @@ namespace Tify
         {
 
             albumTab_Table.Clear();
+
+
             albumTab_Table = Database.getTrack_Album(albumID);
+
+
             try
             {
              
