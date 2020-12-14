@@ -58,25 +58,10 @@ namespace Tify
         {
 
             albumTab_Table.Clear();
-            string sqlQuery = "select Album.albumTitle,Album.albumYear,Album.albumID,Track.*,Artist.*,albumArt.artistName from AlbumHasTrack join Album on AlbumHasTrack.albumID=Album.albumID " +
-                "join Track on Track.trackID = AlbumHasTrack.trackID " +
-                "join ArtistHasTrack on Track.trackID = ArtistHasTrack.trackID " +
-                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
-                "join Artist as albumArt on albumArt.artistID = Album.artistID " +
-                "where Album.albumID = @albumID";
-            
-
+            albumTab_Table = Database.getTrack_Album(albumID);
             try
             {
-                using (SqlCommand album_cmd = new SqlCommand(sqlQuery, connection))
-                {
-                    album_cmd.Parameters.AddWithValue("@albumID", albumID);
-                    using (SqlDataReader album_reader = album_cmd.ExecuteReader())
-                    {
-
-                        albumTab_Table.Load(album_reader);
-                    }
-                }
+             
                 if (albumTab_Table.Rows.Count == 0)
                 {
                     MessageBox.Show("Empty");
