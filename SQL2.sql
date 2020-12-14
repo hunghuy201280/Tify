@@ -172,7 +172,7 @@ select * from Playlist
 
 select * from PlaylistHasTrack
 
-insert into UserLikeTrack values(9,25)
+
 
 
 select * from Track where trackLink='https://vi.chiasenhac.vn/mp3/k-icm-jack/song-gio-tsvwts3bq9f4wq.html'
@@ -261,3 +261,7 @@ join Track on A.trackID=Track.trackID
 select * from PlaylistHasTrack
 
 
+select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID
+               join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID 
+               join Artist on ArtistHasTrack.artistID = Artist.artistID   
+               where userID = 8 order by trackTitle
