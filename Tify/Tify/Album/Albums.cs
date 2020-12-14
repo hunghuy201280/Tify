@@ -37,7 +37,7 @@ namespace Tify
         {
             InitializeComponent();
 
-
+            temp = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
             mainScr = callform;
             
             for (int i = 0; i < temp.Rows.Count; i++)
