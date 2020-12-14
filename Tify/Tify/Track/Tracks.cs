@@ -49,11 +49,7 @@ namespace Tify
         {
             InitializeComponent();
             mainScr = callFm;
-            this.DoubleBuffered = true;
-            foreach (Control control in this.Controls)
-            {
-                MainScreen.EnableDoubleBuferring(control);
-            }
+        
 
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
@@ -82,7 +78,7 @@ namespace Tify
                 pb.Load(GetSongData.GetSongCover(track.TrackLink));
                 track.Cover = pb.Image;
             }
-            addTrackInfoToRow(track);
+            addTrackInfoToRow(new TrackInfo[1] { track });
             track_gridView.Rows.Add(rows[rows.Count - 1]);
         }
         public void deleteRow(string trackID)
@@ -105,6 +101,7 @@ namespace Tify
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
+        private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private void load_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
@@ -119,78 +116,82 @@ namespace Tify
         }
         public void loadTrack()
         {
+            string lastTrackID = "";
             trackTable = Database.loadTrackTableInTracks(mainScr.CurrentUser.UserID);
             foreach (DataRow item in trackTable.Rows)
             {
-                TrackInfo tempTrack = new TrackInfo();
-                string trackLink = item["trackLink"].ToString();
-                tempTrack.TrackLink = trackLink;
-                tempTrack.TrackID = item["trackID"].ToString();
-                using (PictureBox pb = new PictureBox())
+                if (lastTrackID==item["trackID"].ToString() && lastTrackID!="")
                 {
-                    pb.Load(GetSongData.GetSongCover(trackLink));
-                    tempTrack.Cover = pb.Image;
+                    trackInfos[trackInfos.Count - 1].Artist += "; " + item["artistName"].ToString();
                 }
-
-                string artistName = "";
-                artistTable = Database.getArtistOfTrack(item["trackID"].ToString());
-                foreach (DataRow artist in artistTable.Rows)
+                else
                 {
-                    if(artist!=artistTable.Rows[artistTable.Rows.Count-1])
-                    artistName += artist["artistName"].ToString() + ";";
+                    TrackInfo tempTrack = new TrackInfo();
+                    string trackLink = item["trackLink"].ToString();
+                    tempTrack.TrackLink = trackLink;
+                    tempTrack.TrackID = item["trackID"].ToString();
+                    using (PictureBox pb = new PictureBox())
+                    {
+                        pb.Load(GetSongData.GetSongCover(trackLink));
+                        tempTrack.Cover = pb.Image;
+                    }
+
+                    tempTrack.Title = item["trackTitle"].ToString();
+                    tempTrack.Artist = item["artistName"].ToString();
+                    DateTime dateAdded = DateTime.Parse(item["dateAdded"].ToString());
+                    tempTrack.DateAdded = dateAdded.ToShortDateString();
+
+
+                    if (Database.checkIfTrackLoved(tempTrack.TrackID, mainScr.CurrentUser.UserID))
+                    {
+                        tempTrack.IsLoved = true;
+                    }
                     else
-                        artistName += artist["artistName"].ToString() ;
+                    {
+                        tempTrack.IsLoved = false;
+                    }
 
+                    int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
+                    if (duration[1] < 10)
+                        tempTrack.Time = duration[0].ToString() + ":0" + duration[1].ToString();
+                    else
+                        tempTrack.Time = duration[0].ToString() + ":" + duration[1].ToString();
+
+                    lastTrackID = tempTrack.TrackID;
+                    trackInfos.Add(tempTrack);
                 }
-                tempTrack.Title = item["trackTitle"].ToString();
-                tempTrack.Artist = artistName;
-                DateTime dateAdded = DateTime.Parse(item["dateAdded"].ToString());
-                tempTrack.DateAdded = dateAdded.ToShortDateString();
-
-
-                if (Database.checkIfTrackLoved(tempTrack.TrackID,mainScr.CurrentUser.UserID))
-                {
-                    tempTrack.IsLoved = true;
-                }
-                else
-                {
-                    tempTrack.IsLoved = false;
-                }
-
-                int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
-                if (duration[1] < 10)
-                    tempTrack.Time = duration[0].ToString() + ":0" + duration[1].ToString();
-                else
-                    tempTrack.Time = duration[0].ToString() + ":" + duration[1].ToString();
-
-
-                addTrackInfoToRow(tempTrack);
+              
             }
+            addTrackInfoToRow(trackInfos.ToArray());
 
 
         }
 
-        private void addTrackInfoToRow(TrackInfo track)
+        private void addTrackInfoToRow(TrackInfo[] trackinfos)
         {
-            DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
-            temp.Visible = true;
+            foreach (var track in trackinfos)
+            {
+                DataGridViewRow temp = (DataGridViewRow)track_gridView.Rows[0].Clone();
+                temp.Visible = true;
 
-            temp.Tag = track;
-            temp.Cells[0].Value = track.Cover;
-            temp.Cells[1].Value = track.Title;
-            temp.Cells[2].Value = track.Artist;
-            temp.Cells[3].Value = track.DateAdded;
-            temp.Cells[5].Value = rightIconImgList.Images["add.png"];
-            if (track.IsLoved)
-            {
-                temp.Cells[6].Value = rightIconImgList.Images["liked.png"];
+                temp.Tag = track;
+                temp.Cells[0].Value = track.Cover;
+                temp.Cells[1].Value = track.Title;
+                temp.Cells[2].Value = track.Artist;
+                temp.Cells[3].Value = track.DateAdded;
+                temp.Cells[5].Value = rightIconImgList.Images["add.png"];
+                if (track.IsLoved)
+                {
+                    temp.Cells[6].Value = rightIconImgList.Images["liked.png"];
+                }
+                else
+                {
+                    temp.Cells[6].Value = rightIconImgList.Images["like.png"];
+                }
+                temp.Cells[4].Value = track.Time;
+                rows.Add(temp);
             }
-            else
-            {
-                temp.Cells[6].Value = rightIconImgList.Images["like.png"];
-            }
-            temp.Cells[4].Value = track.Time;
-            rows.Add(temp);
+          
         }
 
         #endregion  

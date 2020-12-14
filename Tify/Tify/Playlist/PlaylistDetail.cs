@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tify
@@ -24,14 +19,13 @@ namespace Tify
         }
 
         private Playlist playlistForm;
+
         public PlaylistDetail(Playlist callFm)
         {
             InitializeComponent();
 
             playlistForm = callFm;
-            
-            
-            
+
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
@@ -41,6 +35,7 @@ namespace Tify
         }
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
+
         public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
         {
             int indexCount = 1;
@@ -50,7 +45,6 @@ namespace Tify
             rows.Clear();
             foreach (TrackInfo track in trackInfos)
             {
-                
                 DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
                 tempRow.Visible = true;
                 tempRow.Tag = track;
@@ -70,11 +64,11 @@ namespace Tify
                 }
                 rows.Add(tempRow);
             }
-            
+
             track_dataGridView.Rows.AddRange(rows.ToArray());
-          
-                for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
-                {
+
+            for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
+            {
                 try
                 {
                     PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
@@ -82,22 +76,17 @@ namespace Tify
                 }
                 catch (Exception)
                 {
+                }
+            }
 
-                    
-                }
-                  
-                }
-            
-         
-            createdBy_label.Text="Created by "+callFm.owner + " - "+trackInfos.Count+" Tracks";
+            description_label.Text = callFm.description;
+            playlistTitle_label.Text = callFm.playlistName;
+            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks";
             //Created by me - 10 Tracks - 1:24:00
-     
 
             if (open)
                 playlistForm.openChildForm(this);
         }
-
-
 
         #region enter,leave row
 

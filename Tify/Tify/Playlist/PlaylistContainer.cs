@@ -27,13 +27,14 @@ namespace Tify
         public Playlist playlistFm;
         private string playlistID;
         public string description;
+        public string playlistName;
         public string owner;
         public PlaylistContainer(Playlist callform,string PLAYLIST_ID)
         {
             InitializeComponent();
             playlistID = PLAYLIST_ID;
             playlistFm = callform;
-            opacity_panel.Click += callform.opacity_panel_Click;
+         
 
 
 
@@ -72,9 +73,12 @@ namespace Tify
             if (trackTable.Rows.Count != 0)
             {
                 owner = trackTable.Rows[0]["name"].ToString();
-                playlistName_label.Text = trackTable.Rows[0]["playlistTitle"].ToString();
+                
                 numberOfTracks_label.Text = trackTable.Rows.Count.ToString() + " Tracks";
                 createdBy_label.Text = "Created by " + owner;
+                playlistName= trackTable.Rows[0]["playlistTitle"].ToString();
+                playlistName_label.Text = playlistName;
+                description = trackTable.Rows[0]["description"].ToString();
             }
         }
         public void loadInfo(string playlistid)

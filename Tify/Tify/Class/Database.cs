@@ -154,7 +154,7 @@ namespace Tify
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-
+            
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@trackID", trackID);
@@ -192,7 +192,7 @@ namespace Tify
             string sqlQuery = "select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID " +
                "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID  " +
                "join Artist on ArtistHasTrack.artistID = Artist.artistID   " +
-               "where userID = @id";
+               "where userID = @id order by trackTitle";
 
             DataTable trackTable = new DataTable();
 

@@ -89,9 +89,6 @@ namespace Tify
 
         #endregion Mở childForm
 
-        public void opacity_panel_Click(object sender, EventArgs e)
-        {
-            openChildForm(playlistDetail);
-        }
+        
     }
 }
