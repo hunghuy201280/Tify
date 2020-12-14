@@ -45,6 +45,8 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+
+            //load trước track table
             trackTable_woker.RunWorkerAsync();
         }
         private bool isLoaded = false;
