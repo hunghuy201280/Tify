@@ -207,7 +207,7 @@ namespace Tify
             #endregion
             else if (e.ColumnIndex == 6)//like track
             {
-               /* if (selectedTrack.IsLoved == false)
+                if (selectedTrack.IsLoved == false)
                 {
                     Database.addTrackToUserLikeTrack(playlistForm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                     selectedTrack.IsLoved = true;
@@ -223,11 +223,15 @@ namespace Tify
                     selectedRow.Cells[6].Value = Properties.Resources.like;
                     selectedRow.Tag = selectedTrack;
                     playlistForm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
-                }*/
+                }
+                playlistForm.reloadPlaylistContainer();
+                playlistForm.mainScr.myMixScr.reloadMixContainer();
+
             }
             else if (e.ColumnIndex == 5)// add to playlist
             {
-
+                AddtoPlaylistForm addFm = new AddtoPlaylistForm(playlistForm.mainScr, selectedTrack.TrackID);
+                addFm.ShowDialog();
             }
         }
     }

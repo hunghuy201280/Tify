@@ -261,5 +261,30 @@ namespace Tify
         }
         #endregion
 
+        #region reload when unlike track
+        public void reloadStatus()
+        {
+            reload_worker.RunWorkerAsync();
+        }
+        private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            foreach (var track in trackInfos)
+            {
+                if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = true;
+                }
+                else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = false;
+                }
+            }
+        }
+
+        private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

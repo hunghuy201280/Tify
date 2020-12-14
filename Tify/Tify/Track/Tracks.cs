@@ -13,7 +13,6 @@ namespace Tify
     {
         private SqlConnection connection;
         private AddtoPlaylistForm add2PL;
-        
 
         public Tracks()
         {
@@ -49,7 +48,6 @@ namespace Tify
         {
             InitializeComponent();
             mainScr = callFm;
-        
 
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
@@ -72,7 +70,7 @@ namespace Tify
 
         public void addRow(TrackInfo track)
         {
-            if (track.Cover==null)
+            if (track.Cover == null)
             {
                 PictureBox pb = new PictureBox();
                 pb.Load(GetSongData.GetSongCover(track.TrackLink));
@@ -81,15 +79,16 @@ namespace Tify
             addTrackInfoToRow(new TrackInfo[1] { track });
             track_gridView.Rows.Add(rows[rows.Count - 1]);
         }
+
         public void deleteRow(string trackID)
         {
             foreach (DataGridViewRow row in track_gridView.Rows)
             {
                 if (row.Index == 0)
                     continue;
-                TrackInfo temp=row.Tag as TrackInfo;
+                TrackInfo temp = row.Tag as TrackInfo;
 
-                if (temp.TrackID==trackID)
+                if (temp.TrackID == trackID)
                 {
                     track_gridView.Rows.Remove(row);
                     break;
@@ -98,10 +97,12 @@ namespace Tify
         }
 
         #region load track
+
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         private DataTable trackTable = new DataTable();
         private DataTable artistTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
+
         private void load_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
@@ -109,18 +110,19 @@ namespace Tify
 
         private void load_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            if (e.Error==null)
+            if (e.Error == null)
             {
                 track_gridView.Rows.AddRange(rows.ToArray());
             }
         }
+
         public void loadTrack()
         {
             string lastTrackID = "";
             trackTable = Database.loadTrackTableInTracks(mainScr.CurrentUser.UserID);
             foreach (DataRow item in trackTable.Rows)
             {
-                if (lastTrackID==item["trackID"].ToString() && lastTrackID!="")
+                if (lastTrackID == item["trackID"].ToString() && lastTrackID != "")
                 {
                     trackInfos[trackInfos.Count - 1].Artist += "; " + item["artistName"].ToString();
                 }
@@ -141,7 +143,6 @@ namespace Tify
                     DateTime dateAdded = DateTime.Parse(item["dateAdded"].ToString());
                     tempTrack.DateAdded = dateAdded.ToShortDateString();
 
-
                     if (Database.checkIfTrackLoved(tempTrack.TrackID, mainScr.CurrentUser.UserID))
                     {
                         tempTrack.IsLoved = true;
@@ -160,11 +161,8 @@ namespace Tify
                     lastTrackID = tempTrack.TrackID;
                     trackInfos.Add(tempTrack);
                 }
-              
             }
             addTrackInfoToRow(trackInfos.ToArray());
-
-
         }
 
         private void addTrackInfoToRow(TrackInfo[] trackinfos)
@@ -191,41 +189,65 @@ namespace Tify
                 temp.Cells[4].Value = track.Time;
                 rows.Add(temp);
             }
-          
         }
 
-        #endregion  
+        #endregion load track
+
+        #region event cell click
+
+        private void checkChanges(DataGridViewRow selectedRow, TrackInfo selectedTrack)
+        {
+            Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+            //unlike in mymix
+            /*  DataTable checkMixChangesTable = Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID,
+                                                                                                  mainScr.CurrentUser.UserID);
+              
+
+              foreach (DataRow mixID in checkMixChangesTable.Rows)
+              {
+                  mainScr.myMixScr.reloadMixContainer(mixID[0].ToString());
+              }*/
+            mainScr.myMixScr.reloadMixContainer();
+
+            //unlike in playlist,
+           /* DataTable checkPlaylistChangesTable = Database.checkRelationshipWithPlaylistWhenDeleteLovedTrack(selectedTrack.TrackID,
+                                                                                                        mainScr.CurrentUser.UserID);*/
+           /* foreach (DataRow playlistID in checkPlaylistChangesTable.Rows)
+            {*/
+                mainScr.playlistScr.reloadPlaylistContainer(/*playlistID[0].ToString()*/);
+            /*}*/
 
 
-        #region event cell click 
+        }
+        private void check_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            checkChanges(selectedRow, selectedTrack);
+        }
+        private DataGridViewRow selectedRow;
+        private TrackInfo selectedTrack;
         private void trackGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex==-1)
+            if (e.RowIndex == -1)
             {
                 return;
             }
-            DataGridViewRow selectedRow = track_gridView.Rows[e.RowIndex];
-            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+
+
+             selectedRow = track_gridView.Rows[e.RowIndex];
+             selectedTrack = selectedRow.Tag as TrackInfo;
             if (e.ColumnIndex == 6)//unlike
             {
-                DataTable checkMixChangesTable = Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID, mainScr.CurrentUser.UserID);
-                Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
-                if (checkMixChangesTable.Rows.Count!=0)
-                {
-                    foreach (DataRow mixID in checkMixChangesTable.Rows)
-                    {
-                        mainScr.myMixScr.reloadMixContainer(mixID[0].ToString());
-                    }
-                }
+                check_worker.RunWorkerAsync();
                 selectedTrack.IsLoved = false;
                 track_gridView.Rows.Remove(selectedRow);
             }
             else if (e.ColumnIndex == 5)//add to playlist
             {
-                add2PL = new AddtoPlaylistForm(mainScr,selectedTrack.TrackID);
+                add2PL = new AddtoPlaylistForm(mainScr, selectedTrack.TrackID);
                 add2PL.ShowDialog();
             }
         }
+
         private void track_gridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -233,7 +255,9 @@ namespace Tify
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             mainScr.changeSong(trackToPlay);
         }
-        #endregion
+
+        #endregion event cell click
+
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex <= 0)

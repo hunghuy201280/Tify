@@ -63,15 +63,15 @@ namespace Tify
         private MixDetail mixDetail;
 
 
-        public void reloadMixContainer(string MIXID)
+        public void reloadMixContainer(/*string MIXID*/)
         {
             foreach (MyMixContainer container in mixContainers)
             {
-                if (container.mixID==MIXID)
-                {
+               /* if (container.mixID==MIXID)
+                {*/
                     container.reloadStatus();
-                    break;
-                }
+                   /* break;*/
+               /* }*/
             }
         }
 

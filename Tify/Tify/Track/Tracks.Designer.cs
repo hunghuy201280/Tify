@@ -47,6 +47,7 @@
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
             this.load_worker = new System.ComponentModel.BackgroundWorker();
+            this.check_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -221,6 +222,10 @@
             this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
             this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
             // 
+            // check_worker
+            // 
+            this.check_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.check_worker_DoWork);
+            // 
             // Tracks
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -256,5 +261,6 @@
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
         private System.ComponentModel.BackgroundWorker load_worker;
+        private System.ComponentModel.BackgroundWorker check_worker;
     }
 }

@@ -61,6 +61,19 @@ namespace Tify
             }
         }
 
+        #region reload after delete in loved tracks
+        public void reloadPlaylistContainer(/*string PLAYLISTID*/)
+        {
+            foreach (var container in playlistContainers)
+            {
+              /*  if (container.playlistID == PLAYLISTID)
+                {*/
+                    container.reloadStatus();
+               /*     break;
+                }*/
+            }
+        }
+        #endregion
 
         #region addrow to playlist 
 

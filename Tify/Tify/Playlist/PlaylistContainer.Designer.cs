@@ -36,6 +36,7 @@
             this.load_worker = new System.ComponentModel.BackgroundWorker();
             this.createdBy_label = new System.Windows.Forms.Label();
             this.trackTable_woker = new System.ComponentModel.BackgroundWorker();
+            this.reload_worker = new System.ComponentModel.BackgroundWorker();
             this.playlistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +114,11 @@
             this.trackTable_woker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.trackTable_woker_DoWork);
             this.trackTable_woker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.trackTable_woker_RunWorkerCompleted);
             // 
+            // reload_worker
+            // 
+            this.reload_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reload_worker_DoWork);
+            this.reload_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reload_worker_RunWorkerCompleted);
+            // 
             // PlaylistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,5 +146,6 @@
         public System.Windows.Forms.Label playlistName_label;
         public System.Windows.Forms.Label createdBy_label;
         private System.ComponentModel.BackgroundWorker trackTable_woker;
+        private System.ComponentModel.BackgroundWorker reload_worker;
     }
 }

@@ -12,9 +12,35 @@ namespace Tify
     class Database
     {
 
+        static public DataTable checkRelationshipWithPlaylistWhenDeleteLovedTrack(string trackID, int userID)
+        {
+            string sqlQuery = "select distinct UserHasPlaylist.playlistID from UserLikeTrack " +
+                "join UserHasPlaylist on UserLikeTrack.userID = UserHasPlaylist.userID " +
+                "join PlaylistHasTrack  on PlaylistHasTrack.trackID = UserLikeTrack.trackID " +
+                "and UserHasPlaylist.playlistID = PlaylistHasTrack.playlistID " +
+                "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
+
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return checkTable;
+        }
         static public DataTable checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
         {
-            string sqlQuery = "select UserHasMix.myMixID from UserLikeTrack  " +
+            string sqlQuery = "select distinct UserHasMix.myMixID from UserLikeTrack  " +
                 "join UserHasMix on UserLikeTrack.userID = UserHasMix.userID " +
                 "join MyMixHasTrack  on MyMixHasTrack.trackID = UserLikeTrack.trackID and UserHasMix.myMixID = MyMixHasTrack.myMixID " +
                 "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";

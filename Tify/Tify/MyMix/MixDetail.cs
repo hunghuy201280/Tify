@@ -130,10 +130,14 @@ namespace Tify
                     selectedRow.Tag = selectedTrack;
                     myMix.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
+
+                myMix.mainScr.playlistScr.reloadPlaylistContainer();
+                myMix.reloadMixContainer();
             }
             else if (e.ColumnIndex==3)// add to playlist
             {
-
+                AddtoPlaylistForm addFm = new AddtoPlaylistForm(myMix.mainScr, selectedTrack.TrackID);
+                addFm.ShowDialog();
             }
         }
         #endregion
