@@ -100,16 +100,17 @@ namespace Tify
             temp1 = Database.getTrack_Album(albumid1); 
             
         }
-        int trackCount;
+        
         PictureBox PB;
         private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (temp1.Rows.Count != 0)
-            {
+           
+            
                 albumName_label.Text = temp1.Rows[0]["albumTitle"].ToString();
                 albumYear_label.Text = temp1.Rows[0]["albumYear"].ToString();
                 PB.Load(GetData.GetSongData.GetSongCover(temp1.Rows[0]["albumLink"].ToString()));
                 albumCover_panel.BackgroundImage = PB.Image;
+                MessageBox.Show("1");
                 if (temp1.Rows[0]["albumTitle"].ToString() == null)
                 {
                     albumArtist_label.Text = "unknown";
@@ -119,7 +120,7 @@ namespace Tify
 
 
 
-            }
+            
         }
 
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
