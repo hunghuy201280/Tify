@@ -399,7 +399,6 @@ namespace Tify
             DataTable albumTable = new DataTable();
 
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
             using (SqlCommand cmd = new SqlCommand("select * from UserLikeAlbum where userID=@userID;", sqlconnection))
@@ -459,6 +458,25 @@ namespace Tify
 
             return tempTable;
         }
+
+
+        static public void deleteTrackFromPlaylist(string playlistID, string trackID)
+        {
+            string sqlQuery = "delete from PlaylistHasTrack where playlistID=@playlistID and trackID=@trackID";
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+
+
     }
   
 

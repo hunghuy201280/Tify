@@ -562,5 +562,8 @@
   <ItemGroup>
     <None Include="Resources\emptyplaylist.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
