@@ -550,8 +550,7 @@ namespace Tify
             homeScr = new Home(this);
             myMixScr = new MyMix(this);
             playlistScr = new Playlist(this);
-            albumsScr = new Albums();
-          
+            albumsScr = new Albums(this);
             tracksScr = new Tracks(this);
             CreatePL = new CreatePlayList(this);
             srchBox = new SearchBox(this);
