@@ -67,6 +67,7 @@ namespace Tify
         public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open,MyMixContainer callFm)
         {
             track_dataGridView.Rows.Clear();
+            //create template row
             track_dataGridView.Rows.Add();
             track_dataGridView.Rows[0].Visible = false;
             rows.Clear();
@@ -98,6 +99,8 @@ namespace Tify
 
             if(open)
             myMix.openChildForm(this);
+            //remove template row
+            track_dataGridView.Rows.Remove(track_dataGridView.Rows[0]);
         }
 
         #region like,add to playlist
@@ -128,6 +131,10 @@ namespace Tify
                     myMix.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
             }
+            else if (e.ColumnIndex==3)// add to playlist
+            {
+
+            }
         }
         #endregion
 
@@ -138,8 +145,14 @@ namespace Tify
 
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= 0)
+            if (e.RowIndex < 0)
                 return;
+
+            //change cursor
+
+            track_dataGridView.Cursor = Cursors.Hand;
+
+            //change back color
             if (track_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
             {
                 return;
@@ -152,8 +165,13 @@ namespace Tify
 
         private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= 0)
+            if (e.RowIndex < 0)
                 return;
+            //change cursor
+
+            track_dataGridView.Cursor = Cursors.Default;
+
+            //change back color
             if (track_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
             {
                 return;
@@ -166,12 +184,15 @@ namespace Tify
 
         #endregion enter,leave row
 
-        //play
+        #region play track on clicking row
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             myMix.mainScr.changeSong(trackToPlay);
         }
+
+
+        #endregion
 
         #region play button
         private void play_button_Click(object sender, EventArgs e)

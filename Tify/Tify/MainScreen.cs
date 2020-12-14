@@ -98,29 +98,56 @@ namespace Tify
             {
                 songCover_panel.BackgroundImage = track.Cover;
             }
-            string[] artists = GetSongData.GetSongArtist(track.TrackLink);
-            artist_label.Text = string.Empty;
-            foreach (string artist in artists)
+
+            //artist
+            if (track.Artist==null)
             {
-                artist_label.Text += artist + ";";
-            }
-
-            title_label.Text = GetSongData.GetSongName(track.TrackLink);
-
-            //timer
-            currentTime_label.Text = "0:00 /";
-            int[] duration = GetSongData.GetSongDuration(track.TrackLink);
-            int durationMin = duration[0];
-            int durationSec = duration[1];
-
-            if (durationSec < 10)
-            {
-                duration_label.Text = " " + durationMin + ":0" + durationSec;
+                string[] artists = GetSongData.GetSongArtist(track.TrackLink);
+                artist_label.Text = string.Empty;
+                foreach (string artist in artists)
+                {
+                    artist_label.Text += artist + ";";
+                }
             }
             else
             {
-                duration_label.Text = " " + durationMin + ":" + durationSec;
+                artist_label.Text = track.Artist;
             }
+
+            //title
+
+            if (track.Title== null)
+            {
+                title_label.Text = GetSongData.GetSongName(track.TrackLink);
+            }
+            else
+            {
+                title_label.Text = track.Title;
+            }
+
+            //time
+            currentTime_label.Text = "0:00 /";
+
+            if (track.Time== null)
+            {
+                int[] duration = GetSongData.GetSongDuration(track.TrackLink);
+                int durationMin = duration[0];
+                int durationSec = duration[1];
+
+                if (durationSec < 10)
+                {
+                    duration_label.Text = " " + durationMin + ":0" + durationSec;
+                }
+                else
+                {
+                    duration_label.Text = " " + durationMin + ":" + durationSec;
+                }
+            }
+            else
+            {
+                duration_label.Text = track.Time;
+            }
+            
 
             //check play/pause button
 
@@ -663,8 +690,8 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                if (pause_button.Tag.ToString() == "pause")
-                    soundPlayer.controls.pause();
+                /*if (pause_button.Tag.ToString() == "pause")
+                    soundPlayer.controls.pause();*/
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
                 songDetail.setProgressBar_Maximum(progressBar.Properties.Maximum);
                 onesec.Start();

@@ -84,6 +84,7 @@
             // playShuffle_Button
             // 
             this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.playShuffle_Button.FlatAppearance.BorderSize = 0;
             this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -94,6 +95,7 @@
             this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
             this.playShuffle_Button.TabIndex = 3;
             this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
             // 
             // Cover2_pictureBox
             // 
@@ -118,6 +120,7 @@
             // addToPlaylist_Button
             // 
             this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
             this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -132,6 +135,7 @@
             // play_button
             // 
             this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.play_button.FlatAppearance.BorderSize = 0;
             this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -142,6 +146,7 @@
             this.play_button.Size = new System.Drawing.Size(145, 50);
             this.play_button.TabIndex = 3;
             this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // description_label
             // 
@@ -206,6 +211,7 @@
             // 
             this.track_dataGridView.AllowUserToAddRows = false;
             this.track_dataGridView.AllowUserToDeleteRows = false;
+            this.track_dataGridView.AllowUserToResizeRows = false;
             this.track_dataGridView.BackgroundColor = System.Drawing.Color.Black;
             this.track_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -266,6 +272,7 @@
             this.track_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.track_dataGridView.Size = new System.Drawing.Size(887, 300);
             this.track_dataGridView.TabIndex = 3;
+            this.track_dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
             this.track_dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_dataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 

@@ -158,6 +158,7 @@ namespace Tify
             {
                 return;
             }
+
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
         }
 
