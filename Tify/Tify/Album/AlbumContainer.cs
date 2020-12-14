@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Tify
 {
     public partial class AlbumContainer : UserControl
     {
+        SqlConnection sqlcon;
+        DataTable temp1 = new DataTable();
+        string inputalbumid;
         public AlbumContainer()
         {
             InitializeComponent();
@@ -21,9 +26,10 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+            track_worker.RunWorkerAsync();
         }
 
-        public AlbumContainer(string imgUrl,string title,string artist,string year)
+        public AlbumContainer(string imgUrl, string title, string artist, string year)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -37,7 +43,7 @@ namespace Tify
             albumCover_panel.BackgroundImage = temp.Image;
             albumName_label.Text = title;
             albumArtist_label.Text = artist;
-            if (year!="0")
+            if (year != "0")
             {
                 albumYear_label.Text = year;
             }
@@ -46,6 +52,16 @@ namespace Tify
                 albumYear_label.Text = "Unknown";
             }
         }
+        string albumid1;
+        public AlbumContainer(string inputid)
+        {
+
+            track_worker.RunWorkerAsync();
+            albumid1 = inputid;
+
+        }
+
+
         private void AlbumContainer_Load(object sender, EventArgs e)
         {
             opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -59,6 +75,43 @@ namespace Tify
         private void opacity_panel_MouseLeave(object sender, EventArgs e)
         {
             opacity_panel.Visible = false;
+        }
+
+        private void track_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            temp1 = Database.getTrack_Album(albumid1); 
+            
+        }
+        int trackCount;
+        PictureBox PB;
+        private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (temp1.Rows.Count != 0)
+            {
+                albumName_label.Text = temp1.Rows[0]["albumTitle"].ToString();
+                albumYear_label.Text = temp1.Rows[0]["albumYear"].ToString();
+                PB.Load(GetData.GetSongData.GetSongCover(temp1.Rows[0]["albumLink"].ToString()));
+                albumCover_panel.BackgroundImage = PB.Image;
+                if (temp1.Rows[0]["albumTitle"].ToString() == null)
+                {
+                    albumArtist_label.Text = "unknown";
+                }
+                else
+                    albumArtist_label.Text = temp1.Rows[0]["artistname"].ToString();
+
+
+
+            }
+        }
+
+        private void load_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

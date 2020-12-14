@@ -14,6 +14,7 @@ namespace Tify
 {
     public partial class Albums : Form
     {
+        SqlConnection sqlcon;
         public Albums()
         {
             InitializeComponent();
@@ -23,11 +24,12 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
+            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         private MainScreen mainScr;
 
-        SqlConnection connection;
+        private DataTable temp = new DataTable();
         private DataTable AlbumTable = new DataTable();
         private List<AlbumContainer> AlbumContainers = new List<AlbumContainer>();
         private AlbumDetail AlbumDetail;
@@ -37,12 +39,21 @@ namespace Tify
 
 
             mainScr = callform;
-            //Get user has album
-            AlbumTable = Database.getAlbumTable_Album(mainScr.CurrentUser.UserID);
-            AlbumDetail = new AlbumDetail(mainScr.CurrentUser.UserID.ToString());
-            firstLoadChildForm();
+            
+            for (int i = 0; i < temp.Rows.Count; i++)
+            {
+                AlbumContainers.Add(new AlbumContainer(mainScr.CurrentUser.UserID.ToString()));
+            }
+            bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
 
         }
+
+        
+
+
+
+
+
         #region Mở childForm
 
 
