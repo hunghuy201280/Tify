@@ -29,7 +29,7 @@ namespace Tify
         public string description;
         public string playlistName;
         public string owner;
-        private int trackCount;
+        public int trackCount;
         public PlaylistContainer(Playlist callform,string PLAYLIST_ID)
         {
             InitializeComponent();
@@ -218,6 +218,14 @@ namespace Tify
                 {
                     TrackInfo temp = new TrackInfo();
 
+                    if (cover.Count < 4)
+                    {
+                        using (PictureBox pb = new PictureBox())
+                        {
+                            pb.Load(GetSongData.GetSongCover(track["trackLink"].ToString()));
+                            cover.Add(pb.Image);
+                        }
+                    }
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();

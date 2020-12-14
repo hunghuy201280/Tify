@@ -32,19 +32,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
-            this.playShuffle_Button = new System.Windows.Forms.Button();
-            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
-            this.addToPlaylist_Button = new System.Windows.Forms.Button();
-            this.play_button = new System.Windows.Forms.Button();
             this.description_label = new System.Windows.Forms.Label();
             this.playlistTitle_label = new System.Windows.Forms.Label();
             this.playlistCover_pictureBox = new System.Windows.Forms.Panel();
             this.top_panel = new System.Windows.Forms.Panel();
             this.createdBy_label = new System.Windows.Forms.Label();
             this.track_dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.addToPlaylist_Button = new System.Windows.Forms.Button();
+            this.playShuffle_Button = new System.Windows.Forms.Button();
+            this.play_button = new System.Windows.Forms.Button();
+            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,101 +53,15 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.playlistCover_pictureBox.SuspendLayout();
+            this.top_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover1_pictureBox)).BeginInit();
-            this.playlistCover_pictureBox.SuspendLayout();
-            this.top_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Cover4_pictureBox
-            // 
-            this.Cover4_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
-            this.Cover4_pictureBox.Location = new System.Drawing.Point(100, 100);
-            this.Cover4_pictureBox.Name = "Cover4_pictureBox";
-            this.Cover4_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover4_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover4_pictureBox.TabIndex = 3;
-            this.Cover4_pictureBox.TabStop = false;
-            // 
-            // Cover3_pictureBox
-            // 
-            this.Cover3_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist1;
-            this.Cover3_pictureBox.Location = new System.Drawing.Point(3, 100);
-            this.Cover3_pictureBox.Name = "Cover3_pictureBox";
-            this.Cover3_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover3_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover3_pictureBox.TabIndex = 2;
-            this.Cover3_pictureBox.TabStop = false;
-            // 
-            // playShuffle_Button
-            // 
-            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
-            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
-            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
-            this.playShuffle_Button.Location = new System.Drawing.Point(390, 162);
-            this.playShuffle_Button.Name = "playShuffle_Button";
-            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
-            this.playShuffle_Button.TabIndex = 3;
-            this.playShuffle_Button.UseVisualStyleBackColor = false;
-            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
-            // 
-            // Cover2_pictureBox
-            // 
-            this.Cover2_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist;
-            this.Cover2_pictureBox.Location = new System.Drawing.Point(100, 3);
-            this.Cover2_pictureBox.Name = "Cover2_pictureBox";
-            this.Cover2_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover2_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover2_pictureBox.TabIndex = 1;
-            this.Cover2_pictureBox.TabStop = false;
-            // 
-            // Cover1_pictureBox
-            // 
-            this.Cover1_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
-            this.Cover1_pictureBox.Location = new System.Drawing.Point(3, 3);
-            this.Cover1_pictureBox.Name = "Cover1_pictureBox";
-            this.Cover1_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover1_pictureBox.TabIndex = 0;
-            this.Cover1_pictureBox.TabStop = false;
-            // 
-            // addToPlaylist_Button
-            // 
-            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
-            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
-            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
-            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 162);
-            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
-            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
-            this.addToPlaylist_Button.TabIndex = 3;
-            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
-            // 
-            // play_button
-            // 
-            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.play_button.FlatAppearance.BorderSize = 0;
-            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.play_button.ForeColor = System.Drawing.Color.White;
-            this.play_button.Image = global::Tify.Properties.Resources.play;
-            this.play_button.Location = new System.Drawing.Point(226, 162);
-            this.play_button.Name = "play_button";
-            this.play_button.Size = new System.Drawing.Size(145, 50);
-            this.play_button.TabIndex = 3;
-            this.play_button.UseVisualStyleBackColor = false;
-            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // description_label
             // 
@@ -232,7 +147,8 @@
             this.dateAdded,
             this.time,
             this.addToPlaylist,
-            this.remove});
+            this.remove,
+            this.delete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,9 +188,104 @@
             this.track_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.track_dataGridView.Size = new System.Drawing.Size(887, 300);
             this.track_dataGridView.TabIndex = 3;
+            this.track_dataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseClick);
             this.track_dataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
             this.track_dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_dataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::Tify.Properties.Resources.delete;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // addToPlaylist_Button
+            // 
+            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
+            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
+            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
+            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 162);
+            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
+            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
+            this.addToPlaylist_Button.TabIndex = 3;
+            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
+            // 
+            // playShuffle_Button
+            // 
+            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
+            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
+            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
+            this.playShuffle_Button.Location = new System.Drawing.Point(390, 162);
+            this.playShuffle_Button.Name = "playShuffle_Button";
+            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
+            this.playShuffle_Button.TabIndex = 3;
+            this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
+            // 
+            // play_button
+            // 
+            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.play_button.FlatAppearance.BorderSize = 0;
+            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.play_button.ForeColor = System.Drawing.Color.White;
+            this.play_button.Image = global::Tify.Properties.Resources.play;
+            this.play_button.Location = new System.Drawing.Point(226, 162);
+            this.play_button.Name = "play_button";
+            this.play_button.Size = new System.Drawing.Size(145, 50);
+            this.play_button.TabIndex = 3;
+            this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
+            // 
+            // Cover4_pictureBox
+            // 
+            this.Cover4_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
+            this.Cover4_pictureBox.Location = new System.Drawing.Point(100, 100);
+            this.Cover4_pictureBox.Name = "Cover4_pictureBox";
+            this.Cover4_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover4_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover4_pictureBox.TabIndex = 3;
+            this.Cover4_pictureBox.TabStop = false;
+            // 
+            // Cover3_pictureBox
+            // 
+            this.Cover3_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist1;
+            this.Cover3_pictureBox.Location = new System.Drawing.Point(3, 100);
+            this.Cover3_pictureBox.Name = "Cover3_pictureBox";
+            this.Cover3_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover3_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover3_pictureBox.TabIndex = 2;
+            this.Cover3_pictureBox.TabStop = false;
+            // 
+            // Cover2_pictureBox
+            // 
+            this.Cover2_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist;
+            this.Cover2_pictureBox.Location = new System.Drawing.Point(100, 3);
+            this.Cover2_pictureBox.Name = "Cover2_pictureBox";
+            this.Cover2_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover2_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover2_pictureBox.TabIndex = 1;
+            this.Cover2_pictureBox.TabStop = false;
+            // 
+            // Cover1_pictureBox
+            // 
+            this.Cover1_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
+            this.Cover1_pictureBox.Location = new System.Drawing.Point(3, 3);
+            this.Cover1_pictureBox.Name = "Cover1_pictureBox";
+            this.Cover1_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover1_pictureBox.TabIndex = 0;
+            this.Cover1_pictureBox.TabStop = false;
             // 
             // no
             // 
@@ -330,6 +341,16 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
+            // delete
+            // 
+            this.delete.HeaderText = "";
+            this.delete.Image = global::Tify.Properties.Resources.delete;
+            this.delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.delete.MinimumWidth = 20;
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 20;
+            // 
             // PlaylistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -341,14 +362,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlaylistDetail";
             this.Text = "PlaylistDetail";
-            ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Cover1_pictureBox)).EndInit();
             this.playlistCover_pictureBox.ResumeLayout(false);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cover1_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,6 +388,7 @@
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.DataGridView track_dataGridView;
         private System.Windows.Forms.Label createdBy_label;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn artist;
@@ -374,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }

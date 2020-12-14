@@ -19,7 +19,8 @@ namespace Tify
         }
 
         private Playlist playlistForm;
-
+        private PlaylistContainer playlistContainer;
+        private List<TrackInfo> trackInfo;
         public PlaylistDetail(Playlist callFm)
         {
             InitializeComponent();
@@ -38,6 +39,8 @@ namespace Tify
 
         public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
         {
+            this.trackInfo = trackInfos;
+            playlistContainer = callFm;
             int indexCount = 1;
             track_dataGridView.Rows.Clear();
             track_dataGridView.Rows.Add();
@@ -182,6 +185,26 @@ namespace Tify
             }
         }
 
+
+
         #endregion enter,leave row
+
+        private void track_dataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            DataGridViewRow selectedRow = track_dataGridView.Rows[e.RowIndex];
+            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+            #region delete track from playlist
+            if (e.ColumnIndex==7)
+            {
+                Database.deleteTrackFromPlaylist(playlistContainer.playlistID, selectedTrack.TrackID);
+                trackInfo.Remove(selectedTrack);
+                track_dataGridView.Rows.Remove(selectedRow);
+                createdBy_label.Text = "Created by " + playlistContainer.owner + " - " + trackInfo.Count + " Tracks";
+                playlistContainer.numberOfTracks_label.Text=--playlistContainer.trackCount + " Tracks";
+            }
+            #endregion
+        }
     }
 }
