@@ -23,6 +23,7 @@ namespace Tify
 
         private string searchKeyWord;
         private MainScreen mainScr;
+        private AddtoPlaylistForm add2PL;
 
         public SearchBox(MainScreen callForm)
         {
@@ -340,6 +341,13 @@ namespace Tify
                     selectedRow.Tag = selectedTrack;
                     mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
+            }
+            //add to playlist
+            if (e.ColumnIndex == 4)
+            {
+
+                add2PL = new AddtoPlaylistForm(mainScr);
+                add2PL.ShowDialog();
             }
         }
     }
