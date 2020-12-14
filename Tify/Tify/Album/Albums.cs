@@ -24,7 +24,6 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         private MainScreen mainScr;
@@ -42,10 +41,17 @@ namespace Tify
             
             for (int i = 0; i < temp.Rows.Count; i++)
             {
-                AlbumContainers.Add(new AlbumContainer(mainScr.CurrentUser.UserID.ToString()));
+                AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString()));
             }
             bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
 
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
 
         

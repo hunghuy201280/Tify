@@ -26,7 +26,7 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            track_worker.RunWorkerAsync();
+           
         }
 
         public AlbumContainer(string imgUrl, string title, string artist, string year)
@@ -58,7 +58,6 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            track_worker.RunWorkerAsync();
         }
         string albumid1;
         public AlbumContainer(string inputid)
@@ -67,7 +66,7 @@ namespace Tify
 
             albumid1 = inputid;
 
-            track_worker.RunWorkerAsync();
+            
 
 
             this.DoubleBuffered = true;
@@ -101,7 +100,7 @@ namespace Tify
             
         }
         
-        PictureBox PB;
+        PictureBox PB=new PictureBox();
         private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
            
