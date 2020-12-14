@@ -41,6 +41,7 @@ namespace Tify
             AlbumTable = Database.getAlbumTable_Album(mainScr.CurrentUser.UserID);
             AlbumDetail = new AlbumDetail(mainScr.CurrentUser.UserID.ToString());
             firstLoadChildForm();
+
         }
         #region Mở childForm
 
