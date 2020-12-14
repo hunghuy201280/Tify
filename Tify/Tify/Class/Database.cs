@@ -402,7 +402,7 @@ namespace Tify
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserLikeAlbum where userID=@userID order by myMixID asc;", sqlconnection))
+            using (SqlCommand cmd = new SqlCommand("select * from UserLikeAlbum where userID=@userID;", sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
