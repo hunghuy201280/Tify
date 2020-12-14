@@ -21,6 +21,7 @@ namespace Tify
         SqlConnection sqlcon;
         private MainScreen mainScr;
         private CreatePlayList CreatePL;
+        private string trackID;
         public AddtoPlaylistForm()
         {
             InitializeComponent();
@@ -28,10 +29,11 @@ namespace Tify
             sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             
         }
-        public AddtoPlaylistForm(MainScreen callForm)
+        public AddtoPlaylistForm(MainScreen callForm,string trackid)
         {
             InitializeComponent();
             mainScr = callForm;
+            trackID = trackid;
             sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
@@ -79,7 +81,7 @@ namespace Tify
         {
             Button button = sender as Button;
             string choosenPL = button.Text;
-            playlistchoseevent(choosenPL);
+            playlistchoseevent(choosenPL,trackID);
             this.Close();
             
         }
@@ -137,10 +139,13 @@ namespace Tify
         }
         //add to playlist event
 
-        void playlistchoseevent(string input)
+        void playlistchoseevent(string input,string trackID)
         {
             convert(input);
-            Database.AddTrackToPlaylist(mainScr.currentTrack.TrackID,choosenPLID);
+            Database.AddTrackToPlaylist(trackID,choosenPLID);
+
+            //add row to playlist
+            mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPLID);
         }
     }
 }

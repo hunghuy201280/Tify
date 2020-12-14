@@ -232,18 +232,20 @@ namespace Tify
         {
             foreach (var track in trackInfos)
             {
-                if (Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID) && track.IsLoved == false)
+                if (Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID) )
                 {
                     track.IsLoved = true;
                 }
-                else if (!Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID) && track.IsLoved == true)
+                else if (!Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID))
+                {
                     track.IsLoved = false;
+                }
             }
         }
 
         private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,false,this);
+          
         }
         #endregion
 

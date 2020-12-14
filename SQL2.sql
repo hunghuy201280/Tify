@@ -265,3 +265,23 @@ select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack jo
                join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID 
                join Artist on ArtistHasTrack.artistID = Artist.artistID   
                where userID = 8 order by trackTitle
+
+
+select * from UserLikeAlbum
+
+
+/*
+Em	2003	https://chiasenhac.vn/nghe-album/em-xssmv750q82thn.html	8	https://chiasenhac.vn/ca-si/5-dong-ke-zssmmz5zq881h1.html
+Mùa Noel Đó	2008	https://chiasenhac.vn/nghe-album/mua-noel-do-xssmm30tq88wnf.html	10	https://chiasenhac.vn/ca-si/dam-vinh-hung-zsswz57mq91ht8.html
+Chắc Anh Phải Tu Ngàn Kiếp Mới Được Em Yêu (Single)	2020	https://chiasenhac.vn/nghe-album/chac-anh-phai-tu-ngan-kiep-moi-duoc-em-yeu-single-xss7vq0sqt2en4.html	53	https://chiasenhac.vn/ca-si/akira-phan-zssmtwz0q8f91n.html
+*/
+select * from Album
+
+select * from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID
+
+select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trackID order by playlistID
+
+select Track.*,Artist.* from Track join 
+ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
+join Artist on Artist.artistID=ArtistHasTrack.artistID
+where Track.trackID=25

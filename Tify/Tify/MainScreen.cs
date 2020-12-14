@@ -48,7 +48,7 @@ namespace Tify
 
         private Home homeScr;
         public MyMix myMixScr;
-        private Playlist playlistScr;
+        public Playlist playlistScr;
         private Artist artistScr;
         private Albums albumsScr;
         public Tracks tracksScr;
@@ -81,7 +81,6 @@ namespace Tify
 
         private string[] suggestedSong;
         public TrackInfo currentTrack;
-        public string currentTrackID="25";
         public void loadNewSong(TrackInfo track)
         {
             currentTrack = track;
@@ -1024,7 +1023,7 @@ namespace Tify
         #region addplaylist
         private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
         {
-            add2PL = new AddtoPlaylistForm(this);
+            add2PL = new AddtoPlaylistForm(this,currentTrack.TrackID);
             add2PL.Show();
         }
         #endregion

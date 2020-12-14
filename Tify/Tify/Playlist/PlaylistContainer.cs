@@ -25,10 +25,11 @@ namespace Tify
 
         }
         public Playlist playlistFm;
-        private string playlistID;
+        public string playlistID;
         public string description;
         public string playlistName;
         public string owner;
+        private int trackCount;
         public PlaylistContainer(Playlist callform,string PLAYLIST_ID)
         {
             InitializeComponent();
@@ -47,6 +48,8 @@ namespace Tify
             trackTable_woker.RunWorkerAsync();
         }
         private bool isLoaded = false;
+
+        //khi click vào opacity panel mới bắt đầu load các track trong playlist
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
             if (isLoaded)
@@ -68,19 +71,30 @@ namespace Tify
             trackTable = Database.getTrackInPlaylist(playlistID);
         }
 
+        //load cover, tên playlist lúc chưa click vào
         private void trackTable_woker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (trackTable.Rows.Count != 0)
             {
                 owner = trackTable.Rows[0]["name"].ToString();
-                
-                numberOfTracks_label.Text = trackTable.Rows.Count.ToString() + " Tracks";
+                //number of tracks
+                trackCount = trackTable
+       .AsEnumerable()
+       .Select(r => r.Field<string>("trackTitle"))
+       .Distinct()
+       .Count();
+                numberOfTracks_label.Text = trackCount + " Tracks";
+
+
                 createdBy_label.Text = "Created by " + owner;
                 playlistName= trackTable.Rows[0]["playlistTitle"].ToString();
                 playlistName_label.Text = playlistName;
                 description = trackTable.Rows[0]["description"].ToString();
             }
         }
+
+
+        //load các track trong playlist vào list trackinfos
         public void loadInfo(string playlistid)
         {
             load_worker.RunWorkerAsync();
@@ -88,6 +102,8 @@ namespace Tify
         private DataTable trackTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private List<Image> cover = new List<Image>();
+
+        //load các track trong playlist vào list trackinfos
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             string lastTrackID = "";
@@ -152,6 +168,9 @@ namespace Tify
             isLoaded = true;
         }
 
+
+
+        //sau khi load xong thì kiểm tra xem có lỗi không, nếu không thì set data vào playlist detail rồi mở form detail lên
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
@@ -179,6 +198,58 @@ namespace Tify
             opacity_panel.Visible = false;
         }
 
-       
+        #region addtrack to playlist
+        DataTable tempTrackTable = new DataTable();
+        public void addTrack(string trackID)
+        {
+            tempTrackTable = Database.getTrackBaseOnID(trackID);
+            string lastTrackID = "";
+            foreach (DataRow track in tempTrackTable.Rows)
+            {
+
+                if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
+                {
+                    trackInfos[trackInfos.Count - 1].Artist += ";" + track["artistName"].ToString();
+
+                }
+                else
+                {
+                    TrackInfo temp = new TrackInfo();
+
+                    temp.TrackID = track["trackID"].ToString();
+                    temp.Artist = track["artistName"].ToString();
+                    temp.Title = track["trackTitle"].ToString();
+                    temp.TrackLink = track["trackLink"].ToString();
+
+                    temp.DateAdded = DateTime.Now.ToShortDateString();
+                    if (Database.checkIfTrackLoved(temp.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+                    {
+                        temp.IsLoved = true;
+                    }
+                    else
+                    {
+                        temp.IsLoved = false;
+                    }
+
+                    int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
+
+                    //neu giay >=10
+                    if (duration[1] >= 10)
+                        temp.Time = duration[0] + ":" + duration[1];
+                    else
+                        temp.Time = duration[0] + ":0" + duration[1];
+                    if (temp.Time == "0:00")
+                    {
+                        continue;
+                    }
+
+                    trackInfos.Add(temp);
+                    lastTrackID = track["trackID"].ToString();
+                }
+            }
+            numberOfTracks_label.Text = ++trackCount + " Tracks";
+        }
+        #endregion
+
     }
 }

@@ -434,6 +434,31 @@ namespace Tify
 
             return mixTable;
         }
+
+
+        static public DataTable getTrackBaseOnID(string trackID)
+        {
+            DataTable tempTable = new DataTable();
+            
+            string sqlQuery= "select Track.*,Artist.* from Track join  " +
+                "ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
+                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
+                "where Track.trackID = @trackID";
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    tempTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return tempTable;
+        }
     }
   
 

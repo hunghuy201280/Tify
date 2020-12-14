@@ -40,6 +40,10 @@ namespace Tify
 
         public void doSearch(string keyword)
         {
+            if (search_worker.IsBusy || artist_worker.IsBusy || album_worker.IsBusy)
+            {
+                return;
+            }
             searchKeyWord = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(keyword);
 
             search_worker.RunWorkerAsync();
@@ -346,7 +350,7 @@ namespace Tify
             if (e.ColumnIndex == 4)
             {
 
-                add2PL = new AddtoPlaylistForm(mainScr);
+                add2PL = new AddtoPlaylistForm(mainScr,selectedTrack.TrackID);
                 add2PL.ShowDialog();
             }
         }

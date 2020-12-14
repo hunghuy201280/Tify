@@ -61,9 +61,28 @@ namespace Tify
             }
         }
 
+
+        #region addrow to playlist 
+
+        public void addTrackToPlaylistContainer(string trackID,string playlistID)
+        {
+            foreach (var playlist in playlistContainers)
+            {
+                if (playlist.playlistID== playlistID)
+                {
+                    playlist.addTrack(trackID);
+                }
+            }
+        }
+
+        #endregion
+
+
         #region Mở childForm
 
-      
+
+
+
         public PlaylistDetail playlistDetail;
         private void firstLoadChildForm()
         {

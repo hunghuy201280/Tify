@@ -209,6 +209,7 @@ namespace Tify
             if (e.ColumnIndex == 6)//unlike
             {
                 DataTable checkMixChangesTable = Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID, mainScr.CurrentUser.UserID);
+                Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
                 if (checkMixChangesTable.Rows.Count!=0)
                 {
                     foreach (DataRow mixID in checkMixChangesTable.Rows)
@@ -218,11 +219,10 @@ namespace Tify
                 }
                 selectedTrack.IsLoved = false;
                 track_gridView.Rows.Remove(selectedRow);
-                Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
             }
             else if (e.ColumnIndex == 5)//add to playlist
             {
-                add2PL = new AddtoPlaylistForm(mainScr);
+                add2PL = new AddtoPlaylistForm(mainScr,selectedTrack.TrackID);
                 add2PL.ShowDialog();
             }
         }
@@ -238,6 +238,12 @@ namespace Tify
         {
             if (e.RowIndex <= 0)
                 return;
+
+            //change cursor
+
+            track_gridView.Cursor = Cursors.Hand;
+
+            //change back color
             if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
             {
                 return;
@@ -252,6 +258,12 @@ namespace Tify
         {
             if (e.RowIndex <= 0)
                 return;
+
+            //change cursor
+
+            track_gridView.Cursor = Cursors.Default;
+
+            //change back color
             if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
             {
                 return;
