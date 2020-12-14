@@ -200,8 +200,7 @@ namespace Tify
             myMix.mainScr.nextTrack.Clear();
             foreach (DataGridViewRow track in track_dataGridView.Rows)
             {
-                if (track.Index == 0)
-                    continue;
+             
                 TrackInfo trackToPlay = track.Tag as TrackInfo;
                 myMix.mainScr.addTrackToQueue(trackToPlay);
               
