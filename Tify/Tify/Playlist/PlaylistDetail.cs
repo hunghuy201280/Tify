@@ -205,6 +205,30 @@ namespace Tify
                 playlistContainer.numberOfTracks_label.Text=--playlistContainer.trackCount + " Tracks";
             }
             #endregion
+            else if (e.ColumnIndex == 6)//like track
+            {
+               /* if (selectedTrack.IsLoved == false)
+                {
+                    Database.addTrackToUserLikeTrack(playlistForm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = true;
+                    selectedRow.Cells[6].Value = Properties.Resources.liked;
+                    selectedRow.Tag = selectedTrack;
+                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
+                    playlistForm.mainScr.tracksScr.addRow(selectedTrack);
+                }
+                else
+                {
+                    Database.deleteTrackInUserLikeTrack(playlistForm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = false;
+                    selectedRow.Cells[6].Value = Properties.Resources.like;
+                    selectedRow.Tag = selectedTrack;
+                    playlistForm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
+                }*/
+            }
+            else if (e.ColumnIndex == 5)// add to playlist
+            {
+
+            }
         }
     }
 }
