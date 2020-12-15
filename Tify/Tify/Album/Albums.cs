@@ -69,8 +69,8 @@ namespace Tify
         
         private void firstLoadChildForm()
         {
-            //change album ID here
-            albumDetail = new AlbumDetail(25.ToString());
+        
+            albumDetail = new AlbumDetail(this);
             albumDetail.TopLevel = false;
             albumDetail.FormBorderStyle = FormBorderStyle.None;
             albumDetail.Dock = DockStyle.Fill;

@@ -29,11 +29,12 @@ namespace Tify
         }
 
         private string albumID;
-        public AlbumDetail(string id)
+        private Albums albumsFm;
+        public AlbumDetail(Albums albums)
         {
             InitializeComponent();
 
-            albumID = id;
+            albumsFm = albums;
 
 
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
