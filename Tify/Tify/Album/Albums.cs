@@ -26,12 +26,12 @@ namespace Tify
             }
         }
 
-        private MainScreen mainScr;
-
+        public MainScreen mainScr;
+        public AlbumDetail albumDetail;
         private DataTable temp = new DataTable();
         private DataTable AlbumTable = new DataTable();
         private List<AlbumContainer> AlbumContainers = new List<AlbumContainer>();
-        private AlbumDetail AlbumDetail;
+    
         public Albums(MainScreen callform)
         {
             InitializeComponent();
@@ -41,10 +41,10 @@ namespace Tify
             
             for (int i = 0; i < temp.Rows.Count; i++)
             {
-                AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString()));
+                AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString(), this));
             }
             bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
-
+            
 
             this.DoubleBuffered = true;
 
@@ -63,7 +63,7 @@ namespace Tify
         #region Mở childForm
 
 
-        private AlbumDetail albumDetail;
+        
         private void firstLoadChildForm()
         {
             //change album ID here
