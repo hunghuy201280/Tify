@@ -21,7 +21,7 @@ namespace Tify
 
 
 
-            track_worker.RunWorkerAsync();
+           
 
             this.DoubleBuffered = true;
 
