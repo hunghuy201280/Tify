@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -16,9 +17,13 @@ namespace Tify
     {
         private SqlConnection connection;
 
-       
+        public Thread loading_thread;
+        Loading loadingScr = new Loading();
         public MainScreen()
         {
+            loading_thread = new Thread(new ThreadStart(loadingFunc));
+            
+             
             InitializeComponent();
             //Dang nhap
             loginForm = new Login(this);
@@ -44,6 +49,11 @@ namespace Tify
             string connectString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectString);
 
+        }
+
+        private void loadingFunc()
+        {
+            Application.Run(loadingScr);
         }
 
         private Home homeScr;
@@ -241,6 +251,11 @@ namespace Tify
 
             //add playlist on low-left conner
             CreatePL.readdatabse(CreatePlayList_FlowPanel);
+
+            //finish loading
+
+            loadingScr.changePic();
+            Thread.Sleep(2600);
            
         }
 

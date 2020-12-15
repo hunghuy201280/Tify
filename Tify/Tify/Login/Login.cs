@@ -109,6 +109,7 @@ namespace Tify
                                               login.Rows[0]["DOB"].ToString()
                                              );
                 MessageBox.Show("Login successfully !");
+                mainScr.loading_thread.Start();
                 mainScr.setAccount(account);
                 mainScr.setAccountButtonUsername(login.Rows[0]["username"].ToString());
                 /*this.Hide();
