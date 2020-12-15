@@ -256,6 +256,7 @@ namespace Tify
 
             loadingScr.changePic();
             Thread.Sleep(2600);
+            loading_thread.Abort();
            
         }
 
