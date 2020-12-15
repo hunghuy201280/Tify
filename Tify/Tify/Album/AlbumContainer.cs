@@ -191,7 +191,6 @@ namespace Tify
         {
             
             loadInfo();
-            album.albumDetail.setDetailInfo(trackInfos, PB, this);
         }
     }
 }

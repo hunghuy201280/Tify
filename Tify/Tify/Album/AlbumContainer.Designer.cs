@@ -46,9 +46,8 @@
             this.albumCover_panel.Controls.Add(this.opacity_panel);
             this.albumCover_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.albumCover_panel.Location = new System.Drawing.Point(0, 0);
-            this.albumCover_panel.Margin = new System.Windows.Forms.Padding(4);
             this.albumCover_panel.Name = "albumCover_panel";
-            this.albumCover_panel.Size = new System.Drawing.Size(229, 212);
+            this.albumCover_panel.Size = new System.Drawing.Size(172, 172);
             this.albumCover_panel.TabIndex = 10;
             this.albumCover_panel.MouseHover += new System.EventHandler(this.albumCover_panel_MouseHover);
             // 
@@ -60,9 +59,8 @@
             this.opacity_panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.opacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.opacity_panel.Location = new System.Drawing.Point(0, 0);
-            this.opacity_panel.Margin = new System.Windows.Forms.Padding(4);
             this.opacity_panel.Name = "opacity_panel";
-            this.opacity_panel.Size = new System.Drawing.Size(229, 212);
+            this.opacity_panel.Size = new System.Drawing.Size(172, 172);
             this.opacity_panel.TabIndex = 0;
             this.opacity_panel.Visible = false;
             this.opacity_panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opacity_panel_MouseClick);
@@ -73,10 +71,10 @@
             this.albumArtist_label.AutoSize = true;
             this.albumArtist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumArtist_label.ForeColor = System.Drawing.Color.White;
-            this.albumArtist_label.Location = new System.Drawing.Point(0, 249);
-            this.albumArtist_label.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.albumArtist_label.Location = new System.Drawing.Point(0, 202);
+            this.albumArtist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.albumArtist_label.Name = "albumArtist_label";
-            this.albumArtist_label.Size = new System.Drawing.Size(83, 22);
+            this.albumArtist_label.Size = new System.Drawing.Size(64, 16);
             this.albumArtist_label.TabIndex = 12;
             this.albumArtist_label.Text = "Yorushika";
             // 
@@ -86,10 +84,10 @@
             this.albumName_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.albumName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumName_label.ForeColor = System.Drawing.Color.White;
-            this.albumName_label.Location = new System.Drawing.Point(0, 222);
-            this.albumName_label.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.albumName_label.Location = new System.Drawing.Point(0, 180);
+            this.albumName_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.albumName_label.Name = "albumName_label";
-            this.albumName_label.Size = new System.Drawing.Size(179, 23);
+            this.albumName_label.Size = new System.Drawing.Size(143, 17);
             this.albumName_label.TabIndex = 11;
             this.albumName_label.Text = "Ghost In A Flower";
             // 
@@ -98,12 +96,17 @@
             this.albumYear_label.AutoSize = true;
             this.albumYear_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumYear_label.ForeColor = System.Drawing.Color.White;
-            this.albumYear_label.Location = new System.Drawing.Point(0, 271);
-            this.albumYear_label.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.albumYear_label.Location = new System.Drawing.Point(0, 220);
+            this.albumYear_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.albumYear_label.Name = "albumYear_label";
-            this.albumYear_label.Size = new System.Drawing.Size(50, 22);
+            this.albumYear_label.Size = new System.Drawing.Size(36, 16);
             this.albumYear_label.TabIndex = 12;
             this.albumYear_label.Text = "2020";
+            // 
+            // load_worker
+            // 
+            this.load_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.load_worker_DoWork);
+            this.load_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.load_worker_RunWorkerCompleted);
             // 
             // track_worker
             // 
@@ -112,16 +115,16 @@
             // 
             // AlbumContainer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.albumYear_label);
             this.Controls.Add(this.albumArtist_label);
             this.Controls.Add(this.albumName_label);
             this.Controls.Add(this.albumCover_panel);
-            this.Margin = new System.Windows.Forms.Padding(7, 0, 7, 6);
+            this.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.Name = "AlbumContainer";
-            this.Size = new System.Drawing.Size(229, 290);
+            this.Size = new System.Drawing.Size(172, 236);
             this.Load += new System.EventHandler(this.AlbumContainer_Load);
             this.albumCover_panel.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -14,7 +14,6 @@ namespace Tify
 {
     public partial class Albums : Form
     {
-        SqlConnection sqlcon;
         public Albums()
         {
             InitializeComponent();
@@ -36,6 +35,9 @@ namespace Tify
         {
             InitializeComponent();
 
+
+
+
             temp = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
             mainScr = callform;
             
@@ -44,7 +46,8 @@ namespace Tify
                 AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString(), this));
             }
             bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
-            
+            firstLoadChildForm();
+
 
             this.DoubleBuffered = true;
 

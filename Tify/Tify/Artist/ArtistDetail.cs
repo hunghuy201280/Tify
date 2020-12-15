@@ -17,10 +17,6 @@ namespace Tify
             InitializeComponent();
 
 
-
-
-
-
            
 
             this.DoubleBuffered = true;

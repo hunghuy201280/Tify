@@ -149,7 +149,8 @@ namespace Tify
 
             album_gridView.Rows.AddRange(rows.ToArray());
             albumCover_pictureBox = inputcover;
-           
+            callFm.album.openChildForm(this);
+
         }
 
     }
