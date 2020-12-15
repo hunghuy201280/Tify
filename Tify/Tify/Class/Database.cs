@@ -11,8 +11,33 @@ namespace Tify
 {
     class Database
     {
+  
 
-        static public DataTable checkRelationshipWithPlaylistWhenDeleteLovedTrack(string trackID, int userID)
+
+        static public DataTable getPlaylistInfo_NotIncludeDetail(string playlistID)
+        {
+            string sqlQuery = "select Account.name,Playlist.* from UserHasPlaylist join Playlist on Playlist.playlistID=UserHasPlaylist.playlistID  " +
+                "join Account on Account.userID = UserHasPlaylist.userID " +
+                "where Playlist.playlistID = @playlistID ";
+
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return checkTable;
+        }
+       /* static public DataTable checkRelationshipWithPlaylistWhenDeleteLovedTrack(string trackID, int userID)
         {
             string sqlQuery = "select distinct UserHasPlaylist.playlistID from UserLikeTrack " +
                 "join UserHasPlaylist on UserLikeTrack.userID = UserHasPlaylist.userID " +
@@ -62,7 +87,7 @@ namespace Tify
             }
             sqlconnection.Close();
             return checkTable;
-        }
+        }*/
         static public void deleteTrackInUserLikeTrack(int userID, string trackID)
         {
             string sqlQuery = "delete from UserLikeTrack where userID=@userID and trackID=@trackID";

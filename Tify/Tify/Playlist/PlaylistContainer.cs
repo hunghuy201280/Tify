@@ -93,6 +93,20 @@ namespace Tify
                 playlistName_label.Text = playlistName;
                 description = trackTable.Rows[0]["description"].ToString();
             }
+            else if (trackTable.Rows.Count==0)
+            {
+                DataTable PlaylistInfoTable = Database.getPlaylistInfo_NotIncludeDetail(playlistID);
+                owner = PlaylistInfoTable.Rows[0]["name"].ToString();
+                //number of tracks
+             
+                numberOfTracks_label.Text = 0 + " Tracks";
+
+
+                createdBy_label.Text = "Created by " + owner;
+                playlistName = PlaylistInfoTable.Rows[0]["playlistTitle"].ToString();
+                playlistName_label.Text = playlistName;
+                description = PlaylistInfoTable.Rows[0]["description"].ToString();
+            }
         }
 
 

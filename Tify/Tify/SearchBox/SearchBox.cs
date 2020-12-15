@@ -47,8 +47,8 @@ namespace Tify
             searchKeyWord = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(keyword);
 
             search_worker.RunWorkerAsync();
-            artist_worker.RunWorkerAsync();
-            album_worker.RunWorkerAsync();
+            //artist_worker.RunWorkerAsync();
+            //album_worker.RunWorkerAsync();
         }
 
         #region load album

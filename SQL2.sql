@@ -246,9 +246,11 @@ join Artist on ArtistHasTrack.artistID=Artist.artistID
 where Album.albumID=570 order by Track.trackID
 
 
-select Album.*,Track.* from Album
+select Album.*,Track.*,Artist.artistName from Album
 join AlbumHasTrack on Album.albumID=AlbumHasTrack.albumID
 join Track on Track.trackID=AlbumHasTrack.trackID
+join ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
+join Artist on ArtistHasTrack.artistID=Artist.artistID
 where Album.albumID=570 order by Track.trackID asc
 
 
@@ -259,6 +261,7 @@ ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID ) A
 join Track on A.trackID=Track.trackID
 
 select * from PlaylistHasTrack
+
 
 
 select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID
@@ -285,3 +288,12 @@ select Track.*,Artist.* from Track join
 ArtistHasTrack on ArtistHasTrack.trackID=Track.trackID
 join Artist on Artist.artistID=ArtistHasTrack.artistID
 where Track.trackID=25
+
+select * from UserLikeAlbum where userID=8
+
+
+select distinct UserHasPlaylist.playlistID from UserLikeTrack  
+                join UserHasPlaylist on UserLikeTrack.userID = UserHasPlaylist.userID 
+                join PlaylistHasTrack  on PlaylistHasTrack.trackID = UserLikeTrack.trackID 
+				and UserHasPlaylist.playlistID = PlaylistHasTrack.playlistID 
+                where UserLikeTrack.userID = 8 and UserLikeTrack.trackID = 25
