@@ -26,7 +26,6 @@ namespace Tify
 
         public MainScreen mainScr;
 
-        private PlaylistContainer test;
         private DataTable playlistTable = new DataTable();
         private List<PlaylistContainer> playlistContainers = new List<PlaylistContainer>();
         public Playlist(MainScreen callForm)

@@ -74,7 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\PlaylistInfo.cs" />
+    <Compile Include="Artist\ArtistDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Artist\ArtistDetail.Designer.cs">
+      <DependentUpon>ArtistDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +254,9 @@
     <Compile Include="Track\Tracks.Designer.cs">
       <DependentUpon>Tracks.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Artist\ArtistDetail.resx">
+      <DependentUpon>ArtistDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>

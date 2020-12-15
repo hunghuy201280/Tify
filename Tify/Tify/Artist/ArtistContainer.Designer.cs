@@ -32,6 +32,8 @@
             this.artistCover_panel = new System.Windows.Forms.Panel();
             this.opacity_panel = new System.Windows.Forms.Panel();
             this.artistName_Label = new System.Windows.Forms.Label();
+            this.info_worker = new System.ComponentModel.BackgroundWorker();
+            this.detail_worker = new System.ComponentModel.BackgroundWorker();
             this.artistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +61,7 @@
             this.opacity_panel.Size = new System.Drawing.Size(170, 170);
             this.opacity_panel.TabIndex = 0;
             this.opacity_panel.Visible = false;
+            this.opacity_panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opacity_panel_MouseClick);
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
             // artistName_Label
@@ -72,6 +75,16 @@
             this.artistName_Label.TabIndex = 2;
             this.artistName_Label.Text = "Uru";
             this.artistName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // info_worker
+            // 
+            this.info_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.info_worker_DoWork);
+            this.info_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.info_worker_RunWorkerCompleted);
+            // 
+            // detail_worker
+            // 
+            this.detail_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.detail_worker_DoWork);
+            this.detail_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.detail_worker_RunWorkerCompleted);
             // 
             // ArtistContainer
             // 
@@ -93,5 +106,7 @@
         private System.Windows.Forms.Panel artistCover_panel;
         private System.Windows.Forms.Label artistName_Label;
         private System.Windows.Forms.Panel opacity_panel;
+        private System.ComponentModel.BackgroundWorker info_worker;
+        private System.ComponentModel.BackgroundWorker detail_worker;
     }
 }

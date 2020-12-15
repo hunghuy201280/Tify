@@ -36,12 +36,7 @@ namespace Tify
             this.formTitle_label = new System.Windows.Forms.Label();
             this.sort_button = new System.Windows.Forms.Button();
             this.bottom_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.artistContainer1 = new Tify.ArtistContainer();
-            this.artistContainer2 = new Tify.ArtistContainer();
-            this.artistContainer3 = new Tify.ArtistContainer();
-            this.artistContainer4 = new Tify.ArtistContainer();
             this.top_panel.SuspendLayout();
-            this.bottom_flowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // top_panel
@@ -93,51 +88,11 @@ namespace Tify
             // 
             // bottom_flowPanel
             // 
-            this.bottom_flowPanel.Controls.Add(this.artistContainer1);
-            this.bottom_flowPanel.Controls.Add(this.artistContainer2);
-            this.bottom_flowPanel.Controls.Add(this.artistContainer3);
-            this.bottom_flowPanel.Controls.Add(this.artistContainer4);
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
             this.bottom_flowPanel.Size = new System.Drawing.Size(887, 621);
             this.bottom_flowPanel.TabIndex = 2;
-            // 
-            // artistContainer1
-            // 
-            this.artistContainer1.BackColor = System.Drawing.Color.Black;
-            this.artistContainer1.Location = new System.Drawing.Point(5, 0);
-            this.artistContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 10);
-            this.artistContainer1.Name = "artistContainer1";
-            this.artistContainer1.Size = new System.Drawing.Size(170, 203);
-            this.artistContainer1.TabIndex = 0;
-            // 
-            // artistContainer2
-            // 
-            this.artistContainer2.BackColor = System.Drawing.Color.Black;
-            this.artistContainer2.Location = new System.Drawing.Point(185, 0);
-            this.artistContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 10);
-            this.artistContainer2.Name = "artistContainer2";
-            this.artistContainer2.Size = new System.Drawing.Size(170, 203);
-            this.artistContainer2.TabIndex = 1;
-            // 
-            // artistContainer3
-            // 
-            this.artistContainer3.BackColor = System.Drawing.Color.Black;
-            this.artistContainer3.Location = new System.Drawing.Point(365, 0);
-            this.artistContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 10);
-            this.artistContainer3.Name = "artistContainer3";
-            this.artistContainer3.Size = new System.Drawing.Size(170, 203);
-            this.artistContainer3.TabIndex = 2;
-            // 
-            // artistContainer4
-            // 
-            this.artistContainer4.BackColor = System.Drawing.Color.Black;
-            this.artistContainer4.Location = new System.Drawing.Point(545, 0);
-            this.artistContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 10);
-            this.artistContainer4.Name = "artistContainer4";
-            this.artistContainer4.Size = new System.Drawing.Size(170, 203);
-            this.artistContainer4.TabIndex = 3;
             // 
             // Artist
             // 
@@ -151,7 +106,6 @@ namespace Tify
             this.Text = "Artist";
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
-            this.bottom_flowPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -163,10 +117,6 @@ namespace Tify
         private System.Windows.Forms.Button sort_button;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel bottom_flowPanel;
-        private ArtistContainer artistContainer1;
-        private ArtistContainer artistContainer2;
-        private ArtistContainer artistContainer3;
-        private ArtistContainer artistContainer4;
         
     }
 }

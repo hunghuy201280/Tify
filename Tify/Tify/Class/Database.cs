@@ -11,7 +11,78 @@ namespace Tify
 {
     class Database
     {
-  
+
+        static public DataTable getTrack_Artist(string artistID)
+        {
+            string sqlQuery = "select Artist.*,Track.* from Artist " +
+                "join ArtistHasTrack on Artist.artistID = ArtistHasTrack.artistID " +
+                "join Track on Track.trackID = ArtistHasTrack.trackID " +
+                "where Artist.artistID =@artistID ";
+
+
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@artistID", artistID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return Table;
+
+        }
+
+
+        static public DataTable getArtistInfo_Artist(string artistID)
+        {
+            string sqlQuery = "select * from Artist where artistID=@artistID";
+
+
+            DataTable artistTab_Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@artistID", artistID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    artistTab_Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return artistTab_Table;
+
+        }
+        static public DataTable getArtistThatUserFollow(int userID)
+        {
+            string sqlQuery = "select * from UserFollowArtist where userID=@userID";
+
+
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return Table;
+        }
+
 
 
         static public DataTable getPlaylistInfo_NotIncludeDetail(string playlistID)

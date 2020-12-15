@@ -65,7 +65,7 @@ namespace Tify
             {
                 return;
             }
-            loadInfo(playlistID);
+            loadInfo();
         }
 
 
@@ -112,7 +112,7 @@ namespace Tify
 
 
         //load các track trong playlist vào list trackinfos
-        public void loadInfo(string playlistid)
+        public void loadInfo()
         {
             load_worker.RunWorkerAsync();
         }
@@ -169,10 +169,7 @@ namespace Tify
                         temp.Time = duration[0] + ":" + duration[1];
                     else
                         temp.Time = duration[0] + ":0" + duration[1];
-                    if (temp.Time == "0:00")
-                    {
-                        continue;
-                    }
+                  
 
                     trackInfos.Add(temp);
                     lastTrackID = track["trackID"].ToString();

@@ -561,7 +561,7 @@ namespace Tify
 
         private void firstLoadChildForm()
         {
-            artistScr = new Artist();
+            artistScr = new Artist(this);
             homeScr = new Home(this);
             myMixScr = new MyMix(this);
             playlistScr = new Playlist(this);

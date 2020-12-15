@@ -14,7 +14,6 @@ namespace Tify
 {
     public partial class AlbumContainer : UserControl
     {
-        SqlConnection sqlcon;
         DataTable temp1 = new DataTable();
         string inputalbumid;
         public AlbumContainer()

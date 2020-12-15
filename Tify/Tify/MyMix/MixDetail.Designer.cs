@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.top_panel = new System.Windows.Forms.Panel();
-            this.cover_pictureBox = new System.Windows.Forms.PictureBox();
-            this.addToPlaylist_Button = new System.Windows.Forms.Button();
-            this.playShuffle_Button = new System.Windows.Forms.Button();
-            this.play_button = new System.Windows.Forms.Button();
             this.mixArtist_label = new System.Windows.Forms.Label();
             this.mixTitle_label = new System.Windows.Forms.Label();
             this.track_dataGridView = new System.Windows.Forms.DataGridView();
@@ -46,9 +42,13 @@
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.load_worker = new System.ComponentModel.BackgroundWorker();
+            this.cover_pictureBox = new System.Windows.Forms.PictureBox();
+            this.addToPlaylist_Button = new System.Windows.Forms.Button();
+            this.playShuffle_Button = new System.Windows.Forms.Button();
+            this.play_button = new System.Windows.Forms.Button();
             this.top_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cover_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cover_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // top_panel
@@ -64,60 +64,6 @@
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 270);
             this.top_panel.TabIndex = 0;
-            // 
-            // cover_pictureBox
-            // 
-            this.cover_pictureBox.Image = global::Tify.Properties.Resources.mymix1;
-            this.cover_pictureBox.Location = new System.Drawing.Point(12, 12);
-            this.cover_pictureBox.Name = "cover_pictureBox";
-            this.cover_pictureBox.Size = new System.Drawing.Size(200, 200);
-            this.cover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.cover_pictureBox.TabIndex = 4;
-            this.cover_pictureBox.TabStop = false;
-            // 
-            // addToPlaylist_Button
-            // 
-            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
-            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
-            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
-            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 133);
-            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
-            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
-            this.addToPlaylist_Button.TabIndex = 3;
-            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
-            // 
-            // playShuffle_Button
-            // 
-            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
-            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
-            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
-            this.playShuffle_Button.Location = new System.Drawing.Point(390, 133);
-            this.playShuffle_Button.Name = "playShuffle_Button";
-            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
-            this.playShuffle_Button.TabIndex = 3;
-            this.playShuffle_Button.UseVisualStyleBackColor = false;
-            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
-            // 
-            // play_button
-            // 
-            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.play_button.FlatAppearance.BorderSize = 0;
-            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.play_button.ForeColor = System.Drawing.Color.White;
-            this.play_button.Image = global::Tify.Properties.Resources.play;
-            this.play_button.Location = new System.Drawing.Point(226, 133);
-            this.play_button.Name = "play_button";
-            this.play_button.Size = new System.Drawing.Size(145, 50);
-            this.play_button.TabIndex = 3;
-            this.play_button.UseVisualStyleBackColor = false;
-            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // mixArtist_label
             // 
@@ -249,6 +195,63 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
+            // cover_pictureBox
+            // 
+            this.cover_pictureBox.Image = global::Tify.Properties.Resources.mymix1;
+            this.cover_pictureBox.Location = new System.Drawing.Point(12, 12);
+            this.cover_pictureBox.Name = "cover_pictureBox";
+            this.cover_pictureBox.Size = new System.Drawing.Size(200, 200);
+            this.cover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.cover_pictureBox.TabIndex = 4;
+            this.cover_pictureBox.TabStop = false;
+            // 
+            // addToPlaylist_Button
+            // 
+            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
+            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
+            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
+            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 133);
+            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
+            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
+            this.addToPlaylist_Button.TabIndex = 3;
+            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
+            // 
+            // playShuffle_Button
+            // 
+            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
+            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
+            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
+            this.playShuffle_Button.Location = new System.Drawing.Point(390, 133);
+            this.playShuffle_Button.Name = "playShuffle_Button";
+            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
+            this.playShuffle_Button.TabIndex = 3;
+            this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
+            // 
+            // play_button
+            // 
+            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.play_button.FlatAppearance.BorderSize = 0;
+            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.play_button.ForeColor = System.Drawing.Color.White;
+            this.play_button.Image = global::Tify.Properties.Resources.play;
+            this.play_button.Location = new System.Drawing.Point(226, 133);
+            this.play_button.Name = "play_button";
+            this.play_button.Size = new System.Drawing.Size(145, 50);
+            this.play_button.TabIndex = 3;
+            this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
+            // 
             // MixDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -262,8 +265,8 @@
             this.Text = "MixDetail";
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cover_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cover_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
