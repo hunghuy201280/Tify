@@ -54,7 +54,6 @@ namespace Tify
 
         private DataTable albumTab_Table = new DataTable();
         private List<DataGridViewRow> tracks = new List<DataGridViewRow>();
-        int countRow = 1;
     
         private List<TrackInfo> albumInfo;
         private AlbumContainer AlbumContainer;
@@ -91,7 +90,7 @@ namespace Tify
 
             album_gridView.Rows.AddRange(rows.ToArray());
             albumCover_pictureBox = inputcover;
-            callFm.album.openChildForm(this);
+            callFm.AlbumForm.openChildForm(this);
 
         }
 

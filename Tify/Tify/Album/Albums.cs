@@ -37,7 +37,7 @@ namespace Tify
 
 
 
-
+            // get album id that user like
             temp = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
             mainScr = callform;
             
@@ -93,10 +93,7 @@ namespace Tify
 
         #endregion Mở childForm
 
-        public void opacity_panel_Click(object sender, EventArgs e)
-        {
-            openChildForm(albumDetail);
-        }
+       
 
     }
 }
