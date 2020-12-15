@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GetData;
+using System.Threading;
 
 namespace Tify
 {
@@ -278,7 +279,25 @@ namespace Tify
         #region reload when unlike track
         public void reloadStatus()
         {
-            reload_worker.RunWorkerAsync();
+            //reload_worker.RunWorkerAsync();
+            new Thread(() => {
+                reload();
+            }).Start();
+        }
+
+        private void reload()
+        {
+            foreach (var track in trackInfos)
+            {
+                if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = true;
+                }
+                else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = false;
+                }
+            }
         }
         private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
         {

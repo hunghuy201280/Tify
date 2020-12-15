@@ -28,14 +28,38 @@ namespace Tify
             mainScr = callForm;
             menu_pnl = mainScr.getCreatePlayList_FlowPanel();
             
-            this.DoubleBuffered = true;
             Description_TextBox.GotFocus += Description_TextBox_GotFocus;
             Description_TextBox.LostFocus += Description_TextBox_LostFocus;
             Title_TextBox.GotFocus += Title_TextBox_GotFocus;
             Title_TextBox.LostFocus += Title_TextBox_LostFocus;
-            
-           
 
+
+
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+        }
+
+        private AddtoPlaylistForm addtoPlaylistForm=null;
+        public CreatePlayList(MainScreen callForm,AddtoPlaylistForm addtoPlaylistForm)
+        {
+            InitializeComponent();
+            mainScr = callForm;
+            this.addtoPlaylistForm = addtoPlaylistForm;
+            menu_pnl = mainScr.getCreatePlayList_FlowPanel();
+
+            Description_TextBox.GotFocus += Description_TextBox_GotFocus;
+            Description_TextBox.LostFocus += Description_TextBox_LostFocus;
+            Title_TextBox.GotFocus += Title_TextBox_GotFocus;
+            Title_TextBox.LostFocus += Title_TextBox_LostFocus;
+
+
+
+            this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
             {
@@ -125,8 +149,17 @@ namespace Tify
                         }
                     }
                 }
-                menu_pnl.Controls.Add(newbutton);
                 sqlcon.Close();
+
+                menu_pnl.Controls.Add(newbutton);
+
+                //reload playlist form when created new playlist
+                if (addtoPlaylistForm!=null)
+                {
+                    addtoPlaylistForm.loadPlaylist_InFlowPanel();
+                }
+                mainScr.playlistScr.reload_createNew();
+
                 this.Close();
             }
         }

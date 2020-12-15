@@ -39,9 +39,14 @@ namespace Tify
 
         private void AddtoPlaylistForm_Load(object sender, EventArgs e)
         {
+            loadPlaylist_InFlowPanel();
+        }
 
+        public void loadPlaylist_InFlowPanel()
+        {
+            flowLayoutPanel_showPL.Controls.Clear();
             sqlcon.Open();
-            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID ="+mainScr.CurrentUser.UserID+"", sqlcon))
+            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -57,7 +62,7 @@ namespace Tify
                             newbutton.BackColor = Color.FromArgb(36, 37, 40);
                             newbutton.ForeColor = Color.White;
                             newbutton.FlatStyle = FlatStyle.Flat;
-                            
+
                             newbutton.FlatAppearance.BorderSize = 0;
                             newbutton.Font = new Font("Nationale Light", 12);
                             newbutton.TextAlign = ContentAlignment.MiddleLeft;
@@ -65,9 +70,9 @@ namespace Tify
                             newbutton.Click += Newbutton_Click;
                             flowLayoutPanel_showPL.FlowDirection = FlowDirection.TopDown;
                             hideScrollBar(flowLayoutPanel_showPL);
-                            
+
                             flowLayoutPanel_showPL.Controls.Add(newbutton);
-                            
+
                         }
                     }
                     else MessageBox.Show("No playlist found");
@@ -134,7 +139,7 @@ namespace Tify
 
         private void Btn_createnewPL_Click(object sender, EventArgs e)
         {
-            CreatePL = new CreatePlayList(mainScr);
+            CreatePL = new CreatePlayList(mainScr,this);
             CreatePL.ShowDialog();
         }
         //add to playlist event

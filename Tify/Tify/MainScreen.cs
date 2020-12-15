@@ -661,8 +661,7 @@ namespace Tify
 
         private void createNewPlaylist_button_Click(object sender, EventArgs e)
         {
-            var myForm = new CreatePlayList(this);
-            myForm.ShowDialog();
+            CreatePL.ShowDialog();
         }
 
         //test

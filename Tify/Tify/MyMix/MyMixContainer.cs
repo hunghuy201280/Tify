@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Tify
@@ -226,7 +227,27 @@ namespace Tify
         #region reload when unlike track
         public void reloadStatus()
         {
-            reload_worker.RunWorkerAsync();
+            //reload_worker.RunWorkerAsync();
+            new Thread(() =>
+            {
+                reload();
+            }).Start();
+        }
+
+        private void reload()
+        {
+            foreach (var track in trackInfos)
+            {
+                if (Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = true;
+                }
+                else if (!Database.checkIfTrackLoved(track.TrackID, mixForm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = false;
+                }
+            }
+
         }
         private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
         {

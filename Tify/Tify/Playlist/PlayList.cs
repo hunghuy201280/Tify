@@ -61,6 +61,22 @@ namespace Tify
             }
         }
 
+        #region reload when create new playlist
+        public void reload_createNew()
+        {
+            playlistTable = Database.getPlaylistTable_Playlist(mainScr.CurrentUser.UserID);
+
+            playlistContainers.Clear();
+            bottom_flowPanel.Controls.Clear();
+
+            for (int i = 0; i < playlistTable.Rows.Count; i++)
+            {
+                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
+            }
+            bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+        }
+        #endregion
+
         #region reload after delete in loved tracks
         public void reloadPlaylistContainer(/*string PLAYLISTID*/)
         {
