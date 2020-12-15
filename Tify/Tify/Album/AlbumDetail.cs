@@ -28,7 +28,6 @@ namespace Tify
             }
         }
 
-        private string albumID;
         private Albums albumsFm;
         public AlbumDetail(Albums albums)
         {
@@ -36,12 +35,13 @@ namespace Tify
 
             albumsFm = albums;
 
-
+           
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
 
             album_gridView.Rows.Add();
             album_gridView.Rows[0].Visible = false;
+
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
@@ -49,72 +49,13 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
 
-            album_worker.RunWorkerAsync();
+     
         }
 
         private DataTable albumTab_Table = new DataTable();
         private List<DataGridViewRow> tracks = new List<DataGridViewRow>();
         int countRow = 1;
-        private void loadAlbum()
-        {
-
-            albumTab_Table.Clear();
-
-
-            albumTab_Table = Database.getTrack_Album(albumID);
-
-
-            try
-            {
-
-                if (albumTab_Table.Rows.Count == 0)
-                {
-                    MessageBox.Show("Empty");
-                    return;
-                }
-                else
-                {
-                    foreach (DataRow item in albumTab_Table.Rows)
-                    {
-                        DataGridViewRow row = (DataGridViewRow)album_gridView.Rows[0].Clone();
-                        row.Visible = true;
-                        //#
-                        row.Cells[0].Value = countRow++;
-                        //title
-                        row.Cells[1].Value = item["trackTitle"].ToString();
-                        //artist
-                        row.Cells[2].Value = item["artistName"].ToString();
-                        //time
-                        int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
-                        if (duration[1] < 10)
-                            row.Cells[3].Value = duration[0] + ":0" + duration[1];
-                        else
-                            row.Cells[3].Value = duration[0] + ":" + duration[1];
-                        //add pic
-                        row.Cells[4].Value = Properties.Resources.add_white;
-                        //like pic
-                        row.Cells[5].Value = Properties.Resources.like;
-
-
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message + "album");
-            }
-
-        }
-
-        private void album_worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            loadAlbum();
-        }
-
-        private void album_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            album_gridView.Rows.AddRange(tracks.ToArray());
-        }
+    
         private List<TrackInfo> albumInfo;
         private AlbumContainer AlbumContainer;
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();

@@ -102,11 +102,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel artistCover_panel;
-        private System.Windows.Forms.Label artistName_Label;
         private System.Windows.Forms.Panel opacity_panel;
         private System.ComponentModel.BackgroundWorker info_worker;
         private System.ComponentModel.BackgroundWorker detail_worker;
+        public System.Windows.Forms.Panel artistCover_panel;
+        public System.Windows.Forms.Label artistName_Label;
     }
 }

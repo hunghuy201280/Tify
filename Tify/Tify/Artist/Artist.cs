@@ -59,5 +59,18 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
         }
+
+        public void openChildForm(Form childForm)
+        {
+            if (mainScr.activeForm != null)
+            {
+                if (mainScr.activeForm == childForm)
+                    return;
+            }
+
+            mainScr.activeForm = childForm;
+
+            childForm.BringToFront();
+        }
     }
 }

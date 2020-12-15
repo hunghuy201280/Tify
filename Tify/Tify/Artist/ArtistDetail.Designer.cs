@@ -28,21 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.top_panel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.cover_pictureBox = new System.Windows.Forms.PictureBox();
             this.addToPlaylist_Button = new System.Windows.Forms.Button();
             this.playShuffle_Button = new System.Windows.Forms.Button();
             this.play_button = new System.Windows.Forms.Button();
-            this.mixArtist_label = new System.Windows.Forms.Label();
-            this.mixTitle_label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.artistName_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.viewAll_button = new System.Windows.Forms.Button();
             this.track_gridView = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +47,8 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.viewAll_button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover_pictureBox)).BeginInit();
             this.panel1.SuspendLayout();
@@ -63,17 +62,32 @@
             this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
             this.top_panel.Controls.Add(this.play_button);
-            this.top_panel.Controls.Add(this.mixArtist_label);
-            this.top_panel.Controls.Add(this.mixTitle_label);
+            this.top_panel.Controls.Add(this.artistName_label);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 270);
             this.top_panel.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.button1.BackgroundImage = global::Tify.Properties.Resources.like;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(553, 133);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(57, 50);
+            this.button1.TabIndex = 5;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // cover_pictureBox
             // 
-            this.cover_pictureBox.Image = global::Tify.Properties.Resources.mymix1;
+            this.cover_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist;
             this.cover_pictureBox.Location = new System.Drawing.Point(12, 12);
             this.cover_pictureBox.Name = "cover_pictureBox";
             this.cover_pictureBox.Size = new System.Drawing.Size(200, 200);
@@ -126,43 +140,16 @@
             this.play_button.TabIndex = 3;
             this.play_button.UseVisualStyleBackColor = false;
             // 
-            // mixArtist_label
+            // artistName_label
             // 
-            this.mixArtist_label.AutoSize = true;
-            this.mixArtist_label.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mixArtist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
-            this.mixArtist_label.Location = new System.Drawing.Point(222, 95);
-            this.mixArtist_label.Name = "mixArtist_label";
-            this.mixArtist_label.Size = new System.Drawing.Size(252, 20);
-            this.mixArtist_label.TabIndex = 2;
-            this.mixArtist_label.Text = "Artist 1, Artist 2, Artist 3 and more";
-            // 
-            // mixTitle_label
-            // 
-            this.mixTitle_label.AutoSize = true;
-            this.mixTitle_label.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mixTitle_label.ForeColor = System.Drawing.Color.White;
-            this.mixTitle_label.Location = new System.Drawing.Point(218, 41);
-            this.mixTitle_label.Name = "mixTitle_label";
-            this.mixTitle_label.Size = new System.Drawing.Size(177, 43);
-            this.mixTitle_label.TabIndex = 1;
-            this.mixTitle_label.Text = "My Mix 1";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.button1.BackgroundImage = global::Tify.Properties.Resources.like;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(553, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 50);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = false;
+            this.artistName_label.AutoSize = true;
+            this.artistName_label.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artistName_label.ForeColor = System.Drawing.Color.White;
+            this.artistName_label.Location = new System.Drawing.Point(218, 41);
+            this.artistName_label.Name = "artistName_label";
+            this.artistName_label.Size = new System.Drawing.Size(177, 43);
+            this.artistName_label.TabIndex = 1;
+            this.artistName_label.Text = "My Mix 1";
             // 
             // panel1
             // 
@@ -175,29 +162,6 @@
             this.panel1.Size = new System.Drawing.Size(887, 228);
             this.panel1.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tracks";
-            // 
-            // viewAll_button
-            // 
-            this.viewAll_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(30)))));
-            this.viewAll_button.FlatAppearance.BorderSize = 0;
-            this.viewAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewAll_button.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAll_button.Location = new System.Drawing.Point(809, 0);
-            this.viewAll_button.Name = "viewAll_button";
-            this.viewAll_button.Size = new System.Drawing.Size(75, 23);
-            this.viewAll_button.TabIndex = 1;
-            this.viewAll_button.Text = "VIEW ALL";
-            this.viewAll_button.UseVisualStyleBackColor = false;
-            // 
             // track_gridView
             // 
             this.track_gridView.AllowUserToAddRows = false;
@@ -207,14 +171,14 @@
             this.track_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.track_gridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.track_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.track_gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.img,
@@ -224,35 +188,35 @@
             this.addToPlaylist,
             this.remove});
             this.track_gridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.track_gridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.track_gridView.DefaultCellStyle = dataGridViewCellStyle10;
             this.track_gridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.track_gridView.EnableHeadersVisualStyles = false;
             this.track_gridView.GridColor = System.Drawing.Color.Black;
             this.track_gridView.Location = new System.Drawing.Point(0, 47);
             this.track_gridView.Name = "track_gridView";
             this.track_gridView.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.track_gridView.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,6 +276,29 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
+            // viewAll_button
+            // 
+            this.viewAll_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(30)))));
+            this.viewAll_button.FlatAppearance.BorderSize = 0;
+            this.viewAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewAll_button.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewAll_button.Location = new System.Drawing.Point(809, 0);
+            this.viewAll_button.Name = "viewAll_button";
+            this.viewAll_button.Size = new System.Drawing.Size(75, 23);
+            this.viewAll_button.TabIndex = 1;
+            this.viewAll_button.Text = "VIEW ALL";
+            this.viewAll_button.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tracks";
+            // 
             // ArtistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -341,8 +328,7 @@
         private System.Windows.Forms.Button addToPlaylist_Button;
         private System.Windows.Forms.Button playShuffle_Button;
         private System.Windows.Forms.Button play_button;
-        private System.Windows.Forms.Label mixArtist_label;
-        private System.Windows.Forms.Label mixTitle_label;
+        private System.Windows.Forms.Label artistName_label;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

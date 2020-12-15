@@ -47,61 +47,48 @@ namespace Tify
 
         }
         private Artist artistForm;
-
-        /*public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
+        private List<TrackInfo> trackInfos = new List<TrackInfo>();
+        private List<DataGridViewRow> rows = new List<DataGridViewRow>();
+        public void setDetailInfo(List<TrackInfo> trackInfos, ArtistContainer callFm)
         {
-            this.trackInfo = trackInfos;
-            playlistContainer = callFm;
-            int indexCount = 1;
-            track_dataGridView.Rows.Clear();
-            track_dataGridView.Rows.Add();
-            track_dataGridView.Rows[0].Visible = false;
+            this.trackInfos = trackInfos;
+        
+            track_gridView.Rows.Clear();
+            track_gridView.Rows.Add();
+            track_gridView.Rows[0].Visible = false;
             rows.Clear();
             foreach (TrackInfo track in trackInfos)
             {
-                DataGridViewRow tempRow = (DataGridViewRow)track_dataGridView.Rows[0].Clone();
+                DataGridViewRow tempRow = (DataGridViewRow)track_gridView.Rows[0].Clone();
                 tempRow.Visible = true;
                 tempRow.Tag = track;
-                tempRow.Cells[0].Value = indexCount++;
+                tempRow.Cells[0].Value = track.Cover;
                 tempRow.Cells[1].Value = track.Title;
                 tempRow.Cells[2].Value = track.Artist;
-                tempRow.Cells[3].Value = track.DateAdded;
-                tempRow.Cells[4].Value = track.Time;
-                tempRow.Cells[5].Value = Properties.Resources.add;
+                tempRow.Cells[3].Value = track.Time;
+                tempRow.Cells[4].Value = Properties.Resources.add;
                 if (track.IsLoved)
                 {
-                    tempRow.Cells[6].Value = Properties.Resources.liked;
+                    tempRow.Cells[5].Value = Properties.Resources.liked;
                 }
                 else
                 {
-                    tempRow.Cells[6].Value = Properties.Resources.like;
+                    tempRow.Cells[5].Value = Properties.Resources.like;
                 }
                 rows.Add(tempRow);
             }
 
-            track_dataGridView.Rows.AddRange(rows.ToArray());
+            track_gridView.Rows.AddRange(rows.ToArray());
 
-            for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
-            {
-                try
-                {
-                    PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
-                    tempPb.Image = cover[i];
-                }
-                catch (Exception)
-                {
-                }
-            }
 
-            description_label.Text = callFm.description;
-            playlistTitle_label.Text = callFm.playlistName;
-            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks";
-            //Created by me - 10 Tracks - 1:24:00
+            artistName_label.Text = callFm.artistName_Label.Text;
+            cover_pictureBox.Image = callFm.artistCover_panel.BackgroundImage;
+           
+        
 
-            if (open)
-                playlistForm.openChildForm(this);
-            track_dataGridView.Rows.Remove(track_dataGridView.Rows[0]);
-        }*/
+            artistForm.openChildForm(this);
+            track_gridView.Rows.Remove(track_gridView.Rows[0]);
+        }
 
     }
 }

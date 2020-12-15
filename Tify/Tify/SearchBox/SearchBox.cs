@@ -71,9 +71,9 @@ namespace Tify
                 {
                     foreach (DataRow item in albumTab_Table.Rows)
                     {
-                        AlbumContainer container = new AlbumContainer(GetSongData.GetSongCover(item["albumLink"].ToString()), item["albumTitle"].ToString(),
+                        /*AlbumContainer container = new AlbumContainer(GetSongData.GetSongCover(item["albumLink"].ToString()), item["albumTitle"].ToString(),
                                      item["artistName"].ToString(), item["albumYear"].ToString());
-                        albums.Add(container);
+                        albums.Add(container);*/
                     }
                 }
             }

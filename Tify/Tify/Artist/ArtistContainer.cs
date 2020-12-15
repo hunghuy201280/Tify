@@ -123,6 +123,10 @@ namespace Tify
             #region load track detail
             foreach (DataRow track in trackTable.Rows)
             {
+                if (trackTable.Rows[4]==track)
+                {
+                    break;
+                }
                 TrackInfo tempTrack = new TrackInfo();
                 tempTrack.Title = track["trackTitle"].ToString();
                 tempTrack.Artist = track["artistName"].ToString();
@@ -157,11 +161,16 @@ namespace Tify
             }
             #endregion
 
-
         }
 
         private void detail_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
+            if (e.Error != null)
+            {
+                return;
+            }
+            artistFm.artistDetail.setDetailInfo(trackInfos, this);
 
         }
         #endregion
