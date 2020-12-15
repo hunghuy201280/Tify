@@ -38,7 +38,7 @@ namespace Tify
             playlistFm = callform;
          
 
-
+           
 
             this.DoubleBuffered = true;
 
@@ -53,7 +53,7 @@ namespace Tify
         private bool isLoaded = false;
 
         //khi click vào opacity panel mới bắt đầu load các track trong playlist
-        private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
+        public void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
             if (isLoaded)
             {
@@ -119,6 +119,7 @@ namespace Tify
         private DataTable trackTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private List<Image> cover = new List<Image>();
+        public int timeInSec = 0;
 
         //load các track trong playlist vào list trackinfos
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
@@ -169,8 +170,8 @@ namespace Tify
                         temp.Time = duration[0] + ":" + duration[1];
                     else
                         temp.Time = duration[0] + ":0" + duration[1];
-                  
 
+                    timeInSec += duration[1] + duration[0] * 60;
                     trackInfos.Add(temp);
                     lastTrackID = track["trackID"].ToString();
                 }

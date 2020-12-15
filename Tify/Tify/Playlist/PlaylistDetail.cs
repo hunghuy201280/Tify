@@ -84,7 +84,13 @@ namespace Tify
 
             description_label.Text = callFm.description;
             playlistTitle_label.Text = callFm.playlistName;
-            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks";
+
+
+            TimeSpan time = TimeSpan.FromSeconds(callFm.timeInSec);
+
+            
+            string str = time.ToString(@"hh\:mm\:ss");
+            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks - "+str;
             //Created by me - 10 Tracks - 1:24:00
 
             if (open)
@@ -189,6 +195,8 @@ namespace Tify
 
         #endregion enter,leave row
 
+
+        #region cell click event
         private void track_dataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -226,6 +234,7 @@ namespace Tify
                 }
                 playlistForm.reloadPlaylistContainer();
                 playlistForm.mainScr.myMixScr.reloadMixContainer();
+                playlistForm.mainScr.albumsScr.reloadAlbumContainer();
 
             }
             else if (e.ColumnIndex == 5)// add to playlist
@@ -234,5 +243,6 @@ namespace Tify
                 addFm.ShowDialog();
             }
         }
+        #endregion
     }
 }

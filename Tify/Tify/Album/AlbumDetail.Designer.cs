@@ -132,6 +132,7 @@
             // 
             this.album_gridView.AllowUserToAddRows = false;
             this.album_gridView.AllowUserToDeleteRows = false;
+            this.album_gridView.AllowUserToResizeRows = false;
             this.album_gridView.BackgroundColor = System.Drawing.Color.Black;
             this.album_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.album_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -191,6 +192,9 @@
             this.album_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.album_gridView.Size = new System.Drawing.Size(887, 300);
             this.album_gridView.TabIndex = 5;
+            this.album_gridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.album_gridView_CellMouseClick);
+            this.album_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
+            this.album_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
             // No
             // 

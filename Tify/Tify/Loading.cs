@@ -12,11 +12,11 @@ namespace Tify
 {
     public partial class Loading : Form
     {
+
         public Loading()
         {
             InitializeComponent();
         }
-
 
         public void changePic()
         {

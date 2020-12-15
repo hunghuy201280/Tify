@@ -199,23 +199,10 @@ namespace Tify
         {
             Database.deleteTrackInUserLikeTrack(mainScr.CurrentUser.UserID, selectedTrack.TrackID);
             //unlike in mymix
-            /*  DataTable checkMixChangesTable = Database.checkRelationshipWithMyMixWhenDeleteLovedTrack(selectedTrack.TrackID,
-                                                                                                  mainScr.CurrentUser.UserID);
-              
-
-              foreach (DataRow mixID in checkMixChangesTable.Rows)
-              {
-                  mainScr.myMixScr.reloadMixContainer(mixID[0].ToString());
-              }*/
+          
             mainScr.myMixScr.reloadMixContainer();
-
-            //unlike in playlist,
-           /* DataTable checkPlaylistChangesTable = Database.checkRelationshipWithPlaylistWhenDeleteLovedTrack(selectedTrack.TrackID,
-                                                                                                        mainScr.CurrentUser.UserID);*/
-           /* foreach (DataRow playlistID in checkPlaylistChangesTable.Rows)
-            {*/
-                mainScr.playlistScr.reloadPlaylistContainer(/*playlistID[0].ToString()*/);
-            /*}*/
+            mainScr.playlistScr.reloadPlaylistContainer();
+            mainScr.albumsScr.reloadAlbumContainer();
 
 
         }

@@ -225,7 +225,7 @@ namespace Tify
 
         }
 
-        public void readdatabse(FlowLayoutPanel input)
+        public void AddPlaylistButtonToMenuPanel(FlowLayoutPanel CreatePlayList_FlowPanel)
         {
             sqlcon.Open();
             using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
@@ -249,9 +249,11 @@ namespace Tify
                             newbutton.Font = new Font("Nationale", 12);
                             newbutton.TextAlign = ContentAlignment.MiddleLeft;
                             newbutton.Text = reader[0].ToString();
-                            input.FlowDirection = FlowDirection.TopDown;
-                            hideScrollBar(input);
-                            input.Controls.Add(newbutton);
+                            newbutton.Cursor = Cursors.Hand;
+                            newbutton.MouseClick += mainScr.menuPanelPlaylists_button_MouseClick;
+                            CreatePlayList_FlowPanel.FlowDirection = FlowDirection.TopDown;
+                            hideScrollBar(CreatePlayList_FlowPanel);
+                            CreatePlayList_FlowPanel.Controls.Add(newbutton);
                         }
                     }
                     else MessageBox.Show("No playlist found");

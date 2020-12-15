@@ -56,12 +56,12 @@ namespace Tify
         private List<DataGridViewRow> tracks = new List<DataGridViewRow>();
     
         private List<TrackInfo> albumInfo;
-        private AlbumContainer AlbumContainer;
+        private AlbumContainer albumContainer;
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
         public void setDetailInfo(List<TrackInfo> trackInfos, PictureBox inputcover, AlbumContainer callFm)
         {
             this.albumInfo = trackInfos;
-            AlbumContainer = callFm;
+            albumContainer = callFm;
             int indexCount = 1;
             album_gridView.Rows.Clear();
             album_gridView.Rows.Add();
@@ -94,5 +94,93 @@ namespace Tify
 
         }
 
+
+        #region enter,leave row
+
+        private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //change cursor
+            album_gridView.Cursor = Cursors.Hand;
+
+
+            //change back color
+            if (album_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in album_gridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.FromArgb(19, 19, 20);
+            }
+        }
+
+        private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //change cursor
+
+            album_gridView.Cursor = Cursors.Default;
+
+            //change back color
+
+            if (album_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in album_gridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.Black;
+            }
+        }
+
+
+
+        #endregion enter,leave row
+
+        #region cell click event
+        private void album_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            DataGridViewRow selectedRow = album_gridView.Rows[e.RowIndex];
+            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+           
+            if (e.ColumnIndex == 5)//like track
+            {
+                if (selectedTrack.IsLoved == false)
+                {
+                    Database.addTrackToUserLikeTrack(albumsFm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = true;
+                    selectedRow.Cells[5].Value = Properties.Resources.liked;
+                    selectedRow.Tag = selectedTrack;
+                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
+                    albumsFm.mainScr.tracksScr.addRow(selectedTrack);
+                }
+                else
+                {
+                    Database.deleteTrackInUserLikeTrack(albumsFm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = false;
+                    selectedRow.Cells[5].Value = Properties.Resources.like;
+                    selectedRow.Tag = selectedTrack;
+                    albumsFm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
+                }
+                albumsFm.reloadAlbumContainer();
+                albumsFm.mainScr.myMixScr.reloadMixContainer();
+                albumsFm.mainScr.playlistScr.reloadPlaylistContainer();
+                
+
+            }
+            else if (e.ColumnIndex == 4)// add to playlist
+            {
+                AddtoPlaylistForm addFm = new AddtoPlaylistForm(albumsFm.mainScr, selectedTrack.TrackID);
+                addFm.ShowDialog();
+            }
+        }
+        #endregion
     }
 }

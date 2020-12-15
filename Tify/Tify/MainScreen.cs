@@ -21,6 +21,8 @@ namespace Tify
         Loading loadingScr = new Loading();
         public MainScreen()
         {
+            
+
             loading_thread = new Thread(new ThreadStart(loadingFunc));
             
              
@@ -35,12 +37,7 @@ namespace Tify
             songDetail = new SongDetail(this);
             firstLoadChildForm();
 
-            //searchbarPopup
-            //
-
-            //testpopup
-
-            //
+          
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
@@ -59,8 +56,8 @@ namespace Tify
         private Home homeScr;
         public MyMix myMixScr;
         public Playlist playlistScr;
-        private Artist artistScr;
-        private Albums albumsScr;
+        public Artist artistScr;
+        public Albums albumsScr;
         public Tracks tracksScr;
         private Account currentUser;
         private SearchBox srchBox;
@@ -250,16 +247,20 @@ namespace Tify
 
 
             //add playlist on low-left conner
-            CreatePL.readdatabse(CreatePlayList_FlowPanel);
+            CreatePL.AddPlaylistButtonToMenuPanel(PlayList_FlowPanel);
+            playlistScr.attachPlaylistContainerToPlaylistButtonInMenuPanel(PlayList_FlowPanel);
 
             //finish loading
 
+            
             loadingScr.changePic();
             Thread.Sleep(2600);
             loading_thread.Abort();
-           
         }
 
+
+
+     
         #endregion Load form
 
         #region Đổi icon khi nhấn vào nút play/pause
@@ -891,7 +892,7 @@ namespace Tify
 
         public FlowLayoutPanel getCreatePlayList_FlowPanel()
         {
-            return CreatePlayList_FlowPanel;
+            return PlayList_FlowPanel;
         }
 
         public WindowsMediaPlayer getSoundPlayer()
@@ -1033,6 +1034,8 @@ namespace Tify
             }
             loadNewSong(track);
         }
+
+
         #endregion next/previous button event
         //
         #region addplaylist
@@ -1042,6 +1045,15 @@ namespace Tify
             add2PL.Show();
         }
         #endregion
-        
+
+
+        #region click event for playlist button
+
+        public void menuPanelPlaylists_button_MouseClick(object sender, MouseEventArgs e)
+        {
+            PlaylistContainer playlistContainer = (sender as Button).Tag as PlaylistContainer;
+            playlistContainer.opacity_panel_MouseClick(playlistContainer.opacity_panel, e);
+        }
+        #endregion
     }
 }

@@ -131,6 +131,8 @@ namespace Tify
                     myMix.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
 
+
+                myMix.mainScr.albumsScr.reloadAlbumContainer();
                 myMix.mainScr.playlistScr.reloadPlaylistContainer();
                 myMix.reloadMixContainer();
             }

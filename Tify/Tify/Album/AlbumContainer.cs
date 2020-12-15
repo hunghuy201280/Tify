@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Tify
@@ -130,6 +131,7 @@ namespace Tify
                     lastTrackID = track["trackID"].ToString();
                 }
             }
+            isLoaded = true;
         }
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -141,10 +143,50 @@ namespace Tify
             AlbumForm.albumDetail.setDetailInfo(trackInfos, PB, this);
         }
 
+        private bool isLoaded = false;
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
             //load cac track trong album khi click vao
+
+            if (isLoaded)
+            {
+                AlbumForm.albumDetail.setDetailInfo(trackInfos,PB, this);
+                return;
+            }
+
+            if (load_worker.IsBusy)
+            {
+                return;
+            }
             loadInfo();
         }
+
+
+
+        #region reload when delete or add track to loved track
+
+        public void reloadStatus()
+        {
+            //reload_worker.RunWorkerAsync();
+            new Thread(() => {
+                reload();
+            }).Start();
+        }
+
+        private void reload()
+        {
+            foreach (var track in trackInfos)
+            {
+                if (Database.checkIfTrackLoved(track.TrackID, AlbumForm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = true;
+                }
+                else if (!Database.checkIfTrackLoved(track.TrackID, AlbumForm.mainScr.CurrentUser.UserID))
+                {
+                    track.IsLoved = false;
+                }
+            }
+        }
+        #endregion
     }
 }

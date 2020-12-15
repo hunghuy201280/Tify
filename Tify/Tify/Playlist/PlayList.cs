@@ -77,15 +77,11 @@ namespace Tify
         #endregion
 
         #region reload after delete in loved tracks
-        public void reloadPlaylistContainer(/*string PLAYLISTID*/)
+        public void reloadPlaylistContainer()
         {
             foreach (var container in playlistContainers)
             {
-              /*  if (container.playlistID == PLAYLISTID)
-                {*/
                     container.reloadStatus();
-               /*     break;
-                }*/
             }
         }
         #endregion
@@ -107,8 +103,16 @@ namespace Tify
 
 
         #region Mở childForm
-
-
+        
+        public void attachPlaylistContainerToPlaylistButtonInMenuPanel(FlowLayoutPanel playlist_panel)
+        {
+            int countButton = playlist_panel.Controls.Count;
+            for (int i = 0; i < countButton; i++)
+            {
+                Button button = playlist_panel.Controls[i] as Button;
+                button.Tag = playlistContainers[i];
+            }
+        }
 
 
         public PlaylistDetail playlistDetail;

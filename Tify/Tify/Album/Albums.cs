@@ -57,16 +57,25 @@ namespace Tify
             }
         }
 
-        
 
 
 
+
+        #region reload after delete or add in loved tracks
+        public void reloadAlbumContainer()
+        {
+            foreach (var container in AlbumContainers)
+            {
+                container.reloadStatus();
+            }
+        }
+        #endregion
 
 
         #region Mở childForm
 
 
-        
+
         private void firstLoadChildForm()
         {
         
