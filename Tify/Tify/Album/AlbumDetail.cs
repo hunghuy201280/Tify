@@ -16,7 +16,7 @@ namespace Tify
     public partial class AlbumDetail : Form
     {
         SqlConnection connection;
-        
+
         public AlbumDetail()
         {
             InitializeComponent();
@@ -65,7 +65,7 @@ namespace Tify
 
             try
             {
-             
+
                 if (albumTab_Table.Rows.Count == 0)
                 {
                     MessageBox.Show("Empty");
@@ -85,8 +85,8 @@ namespace Tify
                         row.Cells[2].Value = item["artistName"].ToString();
                         //time
                         int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
-                        if (duration[1]<10)
-                            row.Cells[3].Value = duration[0]+":0"+duration[1];
+                        if (duration[1] < 10)
+                            row.Cells[3].Value = duration[0] + ":0" + duration[1];
                         else
                             row.Cells[3].Value = duration[0] + ":" + duration[1];
                         //add pic
@@ -114,5 +114,43 @@ namespace Tify
         {
             album_gridView.Rows.AddRange(tracks.ToArray());
         }
+        private List<TrackInfo> albumInfo;
+        private AlbumContainer AlbumContainer;
+        private List<DataGridViewRow> rows = new List<DataGridViewRow>();
+        public void setDetailInfo(List<TrackInfo> trackInfos, PictureBox inputcover, AlbumContainer callFm)
+        {
+            this.albumInfo = trackInfos;
+            AlbumContainer = callFm;
+            int indexCount = 1;
+            album_gridView.Rows.Clear();
+            album_gridView.Rows.Add();
+            album_gridView.Rows[0].Visible = false;
+            rows.Clear();
+            foreach (TrackInfo track in trackInfos)
+            {
+                DataGridViewRow tempRow = (DataGridViewRow)album_gridView.Rows[0].Clone();
+                tempRow.Visible = true;
+                tempRow.Tag = track;
+                tempRow.Cells[0].Value = indexCount++;
+                tempRow.Cells[1].Value = track.Title;
+                tempRow.Cells[2].Value = track.Artist;
+                tempRow.Cells[3].Value = track.Time;
+                tempRow.Cells[4].Value = Properties.Resources.add;
+                if (track.IsLoved)
+                {
+                    tempRow.Cells[5].Value = Properties.Resources.liked;
+                }
+                else
+                {
+                    tempRow.Cells[5].Value = Properties.Resources.like;
+                }
+                rows.Add(tempRow);
+            }
+
+            album_gridView.Rows.AddRange(rows.ToArray());
+            albumCover_pictureBox = inputcover;
+           
+        }
+
     }
 }

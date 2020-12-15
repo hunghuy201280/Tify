@@ -65,6 +65,7 @@
             this.opacity_panel.Size = new System.Drawing.Size(229, 212);
             this.opacity_panel.TabIndex = 0;
             this.opacity_panel.Visible = false;
+            this.opacity_panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opacity_panel_MouseClick);
             this.opacity_panel.MouseLeave += new System.EventHandler(this.opacity_panel_MouseLeave);
             // 
             // albumArtist_label
