@@ -58,6 +58,7 @@ namespace Tify
         private List<TrackInfo> albumInfo;
         private AlbumContainer albumContainer;
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
+        
         public void setDetailInfo(List<TrackInfo> trackInfos, PictureBox inputcover, AlbumContainer callFm)
         {
             this.albumInfo = trackInfos;
@@ -76,6 +77,7 @@ namespace Tify
                 tempRow.Cells[1].Value = track.Title;
                 tempRow.Cells[2].Value = track.Artist;
                 tempRow.Cells[3].Value = track.Time;
+                
                 tempRow.Cells[4].Value = Properties.Resources.add;
                 if (track.IsLoved)
                 {
@@ -92,8 +94,18 @@ namespace Tify
             albumCover_pictureBox = inputcover;
             callFm.AlbumForm.openChildForm(this);
 
-        }
+            //set upper detail
+            TimeSpan time = TimeSpan.FromSeconds(callFm.timeInSec);
+            string str = time.ToString(@"hh\:mm\:ss");
+            string artist = albumContainer.albumArtist_label.Text;
+            string year = albumContainer.albumYear_label.Text;
+            artist_track_time__label.Text = "by " + artist + "—" + albumInfo.Count +" tracks — " + str;
+            albumName_label.Text = albumContainer.albumName_label.Text;
+            albumCover_pictureBox.Image = albumContainer.albumCover_panel.BackgroundImage;
+            releaseYear_label.Text ="released "+year ;
 
+        }
+      
 
         #region enter,leave row
 

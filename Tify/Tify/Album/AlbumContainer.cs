@@ -24,7 +24,7 @@ namespace Tify
 
         private string albumID;
         public Albums AlbumForm;
-
+        public int timeInSec = 0;
         public AlbumContainer(string albumID, Albums AlbumForm)
         {
             InitializeComponent();
@@ -126,7 +126,7 @@ namespace Tify
                     {
                         continue;
                     }
-
+                    timeInSec += duration[1] + duration[0] * 60;
                     trackInfos.Add(temp);
                     lastTrackID = track["trackID"].ToString();
                 }
