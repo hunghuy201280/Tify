@@ -167,9 +167,27 @@ namespace Tify
 
                     //neu giay >=10
                     if (duration[1] >= 10)
-                        temp.Time = duration[0] + ":" + duration[1];
+                    {
+                        if (duration[0] >= 10)
+                        {
+                            temp.Time = duration[0] + ":" + duration[1];
+                        }
+                        else
+                        {
+                            temp.Time = "0" + duration[0] + ":" + duration[1];
+                        }
+                    }
                     else
-                        temp.Time = duration[0] + ":0" + duration[1];
+                    {
+                        if (duration[0] >= 10)
+                        {
+                            temp.Time = duration[0] + ":0" + duration[1];
+                        }
+                        else
+                        {
+                            temp.Time = "0" + duration[0] + ":0" + duration[1];
+                        }
+                    }
 
                     timeInSec += duration[1] + duration[0] * 60;
                     trackInfos.Add(temp);

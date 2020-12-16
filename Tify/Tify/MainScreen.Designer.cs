@@ -875,11 +875,11 @@
         private System.Windows.Forms.Panel songCover_panel;
         private System.Windows.Forms.Panel songDetail_panel;
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
-        private System.Windows.Forms.FlowLayoutPanel PlayList_FlowPanel;
         public MediaSlider.MediaSlider volume_trackBar;
         private System.Windows.Forms.Panel add_like_panel;
         private System.Windows.Forms.Button addToPlaylist_Player_Button;
         private System.Windows.Forms.Button like_Player_Button;
+        public System.Windows.Forms.FlowLayoutPanel PlayList_FlowPanel;
     }
 }
 

@@ -12,6 +12,50 @@ namespace Tify
     class Database
     {
 
+
+        static public void deletePlaylist(string playlistID)
+        {
+          
+            /*
+             delete from UserHasPlaylist where playlistID=50
+
+delete From PlaylistHasTrack where playlistID=50
+
+delete From Playlist where playlistID=50
+             */
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            string sqlQuery = "delete from UserHasPlaylist where playlistID=@playlistID";
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.ExecuteNonQuery();
+
+             
+            }
+
+            sqlQuery = "delete from PlaylistHasTrack where playlistID=@playlistID";
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.ExecuteNonQuery();
+
+              
+            }
+            sqlQuery = "delete from Playlist where playlistID=@playlistID";
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+           
+
+        }
         static public DataTable getTrack_Artist(string artistID)
         {
             string sqlQuery = "select Artist.*,Track.* from Artist " +

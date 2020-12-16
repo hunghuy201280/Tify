@@ -35,7 +35,11 @@ namespace Tify
             searchBar_textBox.LostFocus += AddText;
             soundPlayer.PlayStateChange += SoundPlayer_PlayStateChange;
             songDetail = new SongDetail(this);
+
+            CreatePL = new CreatePlayList(this);
+
             firstLoadChildForm();
+
 
           
             this.DoubleBuffered = true;
@@ -61,7 +65,7 @@ namespace Tify
         public Tracks tracksScr;
         private Account currentUser;
         private SearchBox srchBox;
-        private CreatePlayList CreatePL;
+        public CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
 
 
@@ -566,11 +570,12 @@ namespace Tify
             homeScr = new Home(this);
             myMixScr = new MyMix(this);
             playlistScr = new Playlist(this);
+            
             albumsScr = new Albums(this);
             tracksScr = new Tracks(this);
-            CreatePL = new CreatePlayList(this);
+            
             srchBox = new SearchBox(this);
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, CreatePL, srchBox };
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, srchBox };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;

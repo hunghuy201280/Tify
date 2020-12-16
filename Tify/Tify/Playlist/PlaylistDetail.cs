@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Tify
@@ -209,7 +210,15 @@ namespace Tify
                 Database.deleteTrackFromPlaylist(playlistContainer.playlistID, selectedTrack.TrackID);
                 trackInfo.Remove(selectedTrack);
                 track_dataGridView.Rows.Remove(selectedRow);
-                createdBy_label.Text = "Created by " + playlistContainer.owner + " - " + trackInfo.Count + " Tracks";
+
+                TimeSpan duration = TimeSpan.ParseExact(selectedTrack.Time, "mm\\:ss", CultureInfo.InvariantCulture);
+                int seconds = (int)duration.TotalSeconds; 
+                playlistContainer.timeInSec -= seconds;
+                TimeSpan time = TimeSpan.FromSeconds(playlistContainer.timeInSec);
+
+
+                string str = time.ToString(@"hh\:mm\:ss");
+                createdBy_label.Text = "Created by " + playlistContainer.owner + " - " + trackInfo.Count + " Tracks - " + str;
                 playlistContainer.numberOfTracks_label.Text=--playlistContainer.trackCount + " Tracks";
             }
             #endregion
@@ -244,5 +253,18 @@ namespace Tify
             }
         }
         #endregion
+
+        private void deletePlaylist_button_Click(object sender, EventArgs e)
+        {
+           DialogResult result= MessageBox.Show("Are you sure you want to delete this playlist ?", "Delete Playlist", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result==DialogResult.Yes)
+            {
+                Database.deletePlaylist(playlistContainer.playlistID);
+                playlistForm.reload_createNew();
+                playlistForm.mainScr.CreatePL.AddPlaylistButtonToMenuPanel(playlistForm.mainScr.PlayList_FlowPanel);
+            }
+        }
+
     }
 }

@@ -38,14 +38,6 @@
             this.top_panel = new System.Windows.Forms.Panel();
             this.createdBy_label = new System.Windows.Forms.Label();
             this.track_dataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.addToPlaylist_Button = new System.Windows.Forms.Button();
-            this.playShuffle_Button = new System.Windows.Forms.Button();
-            this.play_button = new System.Windows.Forms.Button();
-            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +45,16 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deletePlaylist_button = new System.Windows.Forms.Button();
+            this.addToPlaylist_Button = new System.Windows.Forms.Button();
+            this.playShuffle_Button = new System.Windows.Forms.Button();
+            this.play_button = new System.Windows.Forms.Button();
+            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
             this.playlistCover_pictureBox.SuspendLayout();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
@@ -98,6 +99,7 @@
             // 
             // top_panel
             // 
+            this.top_panel.Controls.Add(this.deletePlaylist_button);
             this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
             this.top_panel.Controls.Add(this.play_button);
@@ -193,12 +195,94 @@
             this.track_dataGridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_dataGridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
+            // no
+            // 
+            this.no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.no.FillWeight = 10F;
+            this.no.HeaderText = "#";
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.title.HeaderText = "TITLE";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // artist
+            // 
+            this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artist.HeaderText = "ARTIST";
+            this.artist.Name = "artist";
+            this.artist.ReadOnly = true;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateAdded.HeaderText = "DATE ADDED";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.time.HeaderText = "TIME";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // addToPlaylist
+            // 
+            this.addToPlaylist.HeaderText = "";
+            this.addToPlaylist.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.addToPlaylist.MinimumWidth = 20;
+            this.addToPlaylist.Name = "addToPlaylist";
+            this.addToPlaylist.ReadOnly = true;
+            this.addToPlaylist.Width = 20;
+            // 
+            // remove
+            // 
+            this.remove.HeaderText = "";
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 20;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 20;
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "";
             this.dataGridViewImageColumn1.Image = global::Tify.Properties.Resources.delete;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 20;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 20;
+            // 
+            // delete
+            // 
+            this.delete.HeaderText = "";
+            this.delete.Image = global::Tify.Properties.Resources.delete;
+            this.delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.delete.MinimumWidth = 20;
+            this.delete.Name = "delete";
+            this.delete.ReadOnly = true;
+            this.delete.Width = 20;
+            // 
+            // deletePlaylist_button
+            // 
+            this.deletePlaylist_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.deletePlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletePlaylist_button.FlatAppearance.BorderSize = 0;
+            this.deletePlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.deletePlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletePlaylist_button.ForeColor = System.Drawing.Color.White;
+            this.deletePlaylist_button.Image = global::Tify.Properties.Resources.delete_playlist;
+            this.deletePlaylist_button.Location = new System.Drawing.Point(628, 162);
+            this.deletePlaylist_button.Name = "deletePlaylist_button";
+            this.deletePlaylist_button.Size = new System.Drawing.Size(57, 50);
+            this.deletePlaylist_button.TabIndex = 4;
+            this.deletePlaylist_button.UseVisualStyleBackColor = false;
+            this.deletePlaylist_button.Click += new System.EventHandler(this.deletePlaylist_button_Click);
             // 
             // addToPlaylist_Button
             // 
@@ -287,70 +371,6 @@
             this.Cover1_pictureBox.TabIndex = 0;
             this.Cover1_pictureBox.TabStop = false;
             // 
-            // no
-            // 
-            this.no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.no.FillWeight = 10F;
-            this.no.HeaderText = "#";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            // 
-            // title
-            // 
-            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.title.HeaderText = "TITLE";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // artist
-            // 
-            this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.artist.HeaderText = "ARTIST";
-            this.artist.Name = "artist";
-            this.artist.ReadOnly = true;
-            // 
-            // dateAdded
-            // 
-            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateAdded.HeaderText = "DATE ADDED";
-            this.dateAdded.Name = "dateAdded";
-            this.dateAdded.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.time.HeaderText = "TIME";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // addToPlaylist
-            // 
-            this.addToPlaylist.HeaderText = "";
-            this.addToPlaylist.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.addToPlaylist.MinimumWidth = 20;
-            this.addToPlaylist.Name = "addToPlaylist";
-            this.addToPlaylist.ReadOnly = true;
-            this.addToPlaylist.Width = 20;
-            // 
-            // remove
-            // 
-            this.remove.HeaderText = "";
-            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.remove.MinimumWidth = 20;
-            this.remove.Name = "remove";
-            this.remove.ReadOnly = true;
-            this.remove.Width = 20;
-            // 
-            // delete
-            // 
-            this.delete.HeaderText = "";
-            this.delete.Image = global::Tify.Properties.Resources.delete;
-            this.delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.delete.MinimumWidth = 20;
-            this.delete.Name = "delete";
-            this.delete.ReadOnly = true;
-            this.delete.Width = 20;
-            // 
             // PlaylistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -397,5 +417,6 @@
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.Button deletePlaylist_button;
     }
 }

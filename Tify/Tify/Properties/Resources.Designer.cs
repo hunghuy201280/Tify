@@ -153,6 +153,16 @@ namespace Tify.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_playlist {
+            get {
+                object obj = ResourceManager.GetObject("delete_playlist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dummy_artist {
             get {
                 object obj = ResourceManager.GetObject("dummy_artist", resourceCulture);
