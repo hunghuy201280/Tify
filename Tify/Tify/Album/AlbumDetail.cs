@@ -91,7 +91,6 @@ namespace Tify
             }
 
             album_gridView.Rows.AddRange(rows.ToArray());
-            albumCover_pictureBox = inputcover;
             callFm.AlbumForm.openChildForm(this);
 
             //set upper detail
@@ -101,7 +100,7 @@ namespace Tify
             string year = albumContainer.albumYear_label.Text;
             artist_track_time__label.Text = "by " + artist + "—" + albumInfo.Count +" tracks — " + str;
             albumName_label.Text = albumContainer.albumName_label.Text;
-            albumCover_pictureBox.Image = albumContainer.albumCover_panel.BackgroundImage;
+            albumCover_pictureBox.Image = inputcover.Image;
             releaseYear_label.Text ="released "+year ;
 
         }
