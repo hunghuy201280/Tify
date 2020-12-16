@@ -38,6 +38,21 @@ namespace Tify
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
 
+
+        public void setCover(Image[] cover)
+        {
+            for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
+            {
+                try
+                {
+                    PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
+                    tempPb.Image = cover[i];
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
         public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
         {
             this.trackInfo = trackInfos;
@@ -209,6 +224,7 @@ namespace Tify
             {
                 Database.deleteTrackFromPlaylist(playlistContainer.playlistID, selectedTrack.TrackID);
                 trackInfo.Remove(selectedTrack);
+                
                 track_dataGridView.Rows.Remove(selectedRow);
 
                 TimeSpan duration = TimeSpan.ParseExact(selectedTrack.Time, "mm\\:ss", CultureInfo.InvariantCulture);
@@ -220,6 +236,7 @@ namespace Tify
                 string str = time.ToString(@"hh\:mm\:ss");
                 createdBy_label.Text = "Created by " + playlistContainer.owner + " - " + trackInfo.Count + " Tracks - " + str;
                 playlistContainer.numberOfTracks_label.Text=--playlistContainer.trackCount + " Tracks";
+                playlistContainer.loadCover(true);
             }
             #endregion
             else if (e.ColumnIndex == 6)//like track
@@ -254,6 +271,7 @@ namespace Tify
         }
         #endregion
 
+        #region delete playlist button click
         private void deletePlaylist_button_Click(object sender, EventArgs e)
         {
            DialogResult result= MessageBox.Show("Are you sure you want to delete this playlist ?", "Delete Playlist", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -261,10 +279,14 @@ namespace Tify
             if (result==DialogResult.Yes)
             {
                 Database.deletePlaylist(playlistContainer.playlistID);
-                playlistForm.reload_createNew();
+
                 playlistForm.mainScr.CreatePL.AddPlaylistButtonToMenuPanel(playlistForm.mainScr.PlayList_FlowPanel);
+
+                playlistForm.reload_createNew();
             }
         }
+
+        #endregion
 
     }
 }

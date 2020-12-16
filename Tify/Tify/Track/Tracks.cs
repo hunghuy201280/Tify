@@ -152,29 +152,12 @@ namespace Tify
                         tempTrack.IsLoved = false;
                     }
 
-                    int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
-                    if (duration[1] >= 10)
-                    {
-                        if (duration[0] >= 10)
-                        {
-                            tempTrack.Time = duration[0] + ":" + duration[1];
-                        }
-                        else
-                        {
-                            tempTrack.Time = "0" + duration[0] + ":" + duration[1];
-                        }
-                    }
-                    else
-                    {
-                        if (duration[0] >= 10)
-                        {
-                            tempTrack.Time = duration[0] + ":0" + duration[1];
-                        }
-                        else
-                        {
-                            tempTrack.Time = "0" + duration[0] + ":0" + duration[1];
-                        }
-                    }
+
+                    TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
+
+
+                    string timeString = time.ToString(@"mm\:ss");
+                    tempTrack.Time = timeString;
 
                     lastTrackID = tempTrack.TrackID;
                     trackInfos.Add(tempTrack);

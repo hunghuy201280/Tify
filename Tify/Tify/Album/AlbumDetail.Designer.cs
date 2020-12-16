@@ -56,6 +56,7 @@
             // playShuffle_Button
             // 
             this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.playShuffle_Button.FlatAppearance.BorderSize = 0;
             this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -70,6 +71,7 @@
             // addToPlaylist_Button
             // 
             this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
             this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -84,6 +86,7 @@
             // play_button
             // 
             this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.play_button.FlatAppearance.BorderSize = 0;
             this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -264,6 +267,7 @@
             this.addToAlbum_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
             this.addToAlbum_button.BackgroundImage = global::Tify.Properties.Resources.like;
             this.addToAlbum_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addToAlbum_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addToAlbum_button.FlatAppearance.BorderSize = 0;
             this.addToAlbum_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
             this.addToAlbum_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

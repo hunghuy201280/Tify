@@ -132,13 +132,14 @@ namespace Tify
                 tempTrack.Artist = track["artistName"].ToString();
                 tempTrack.TrackLink = track["trackLink"].ToString();
                 tempTrack.TrackID = track["trackID"].ToString();
-                int[] duration = GetSongData.GetSongDuration(tempTrack.TrackLink);
 
-                //neu giay >=10
-                if (duration[1] >= 10)
-                    tempTrack.Time = duration[0] + ":" + duration[1];
-                else
-                    tempTrack.Time = duration[0] + ":0" + duration[1];
+                TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
+
+
+                string timeString = time.ToString(@"mm\:ss");
+                tempTrack.Time = timeString;
+
+               
 
 
                 using (PictureBox pb = new PictureBox())

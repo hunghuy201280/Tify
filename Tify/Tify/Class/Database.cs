@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tify
 {
-    class Database
+    internal class Database
     {
-
-
         static public void deletePlaylist(string playlistID)
         {
-          
             /*
              delete from UserHasPlaylist where playlistID=50
 
@@ -29,21 +21,15 @@ delete From Playlist where playlistID=50
             string sqlQuery = "delete from UserHasPlaylist where playlistID=@playlistID";
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-                
                 cmd.Parameters.AddWithValue("@playlistID", playlistID);
                 cmd.ExecuteNonQuery();
-
-             
             }
 
             sqlQuery = "delete from PlaylistHasTrack where playlistID=@playlistID";
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-
                 cmd.Parameters.AddWithValue("@playlistID", playlistID);
                 cmd.ExecuteNonQuery();
-
-              
             }
             sqlQuery = "delete from Playlist where playlistID=@playlistID";
 
@@ -53,16 +39,14 @@ delete From Playlist where playlistID=50
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
-           
-
         }
+
         static public DataTable getTrack_Artist(string artistID)
         {
             string sqlQuery = "select Artist.*,Track.* from Artist " +
                 "join ArtistHasTrack on Artist.artistID = ArtistHasTrack.artistID " +
                 "join Track on Track.trackID = ArtistHasTrack.trackID " +
                 "where Artist.artistID =@artistID ";
-
 
             DataTable Table = new DataTable();
 
@@ -79,14 +63,11 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return Table;
-
         }
-
 
         static public DataTable getArtistInfo_Artist(string artistID)
         {
             string sqlQuery = "select * from Artist where artistID=@artistID";
-
 
             DataTable artistTab_Table = new DataTable();
 
@@ -103,12 +84,11 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return artistTab_Table;
-
         }
+
         static public DataTable getArtistThatUserFollow(int userID)
         {
             string sqlQuery = "select * from UserFollowArtist where userID=@userID";
-
 
             DataTable Table = new DataTable();
 
@@ -127,14 +107,11 @@ delete From Playlist where playlistID=50
             return Table;
         }
 
-
-
         static public DataTable getPlaylistInfo_NotIncludeDetail(string playlistID)
         {
             string sqlQuery = "select Account.name,Playlist.* from UserHasPlaylist join Playlist on Playlist.playlistID=UserHasPlaylist.playlistID  " +
                 "join Account on Account.userID = UserHasPlaylist.userID " +
                 "where Playlist.playlistID = @playlistID ";
-
 
             DataTable checkTable = new DataTable();
 
@@ -152,57 +129,57 @@ delete From Playlist where playlistID=50
             sqlconnection.Close();
             return checkTable;
         }
-       /* static public DataTable checkRelationshipWithPlaylistWhenDeleteLovedTrack(string trackID, int userID)
-        {
-            string sqlQuery = "select distinct UserHasPlaylist.playlistID from UserLikeTrack " +
-                "join UserHasPlaylist on UserLikeTrack.userID = UserHasPlaylist.userID " +
-                "join PlaylistHasTrack  on PlaylistHasTrack.trackID = UserLikeTrack.trackID " +
-                "and UserHasPlaylist.playlistID = PlaylistHasTrack.playlistID " +
-                "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
 
+        /* static public DataTable checkRelationshipWithPlaylistWhenDeleteLovedTrack(string trackID, int userID)
+         {
+             string sqlQuery = "select distinct UserHasPlaylist.playlistID from UserLikeTrack " +
+                 "join UserHasPlaylist on UserLikeTrack.userID = UserHasPlaylist.userID " +
+                 "join PlaylistHasTrack  on PlaylistHasTrack.trackID = UserLikeTrack.trackID " +
+                 "and UserHasPlaylist.playlistID = PlaylistHasTrack.playlistID " +
+                 "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
 
-            DataTable checkTable = new DataTable();
+             DataTable checkTable = new DataTable();
 
-            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
-            sqlconnection.Open();
+             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+             sqlconnection.Open();
 
-            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
-            {
-                cmd.Parameters.AddWithValue("@trackID", trackID);
-                cmd.Parameters.AddWithValue("@userID", userID);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    checkTable.Load(reader);
-                }
-            }
-            sqlconnection.Close();
-            return checkTable;
-        }
-        static public DataTable checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
-        {
-            string sqlQuery = "select distinct UserHasMix.myMixID from UserLikeTrack  " +
-                "join UserHasMix on UserLikeTrack.userID = UserHasMix.userID " +
-                "join MyMixHasTrack  on MyMixHasTrack.trackID = UserLikeTrack.trackID and UserHasMix.myMixID = MyMixHasTrack.myMixID " +
-                "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
+             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+             {
+                 cmd.Parameters.AddWithValue("@trackID", trackID);
+                 cmd.Parameters.AddWithValue("@userID", userID);
+                 using (SqlDataReader reader = cmd.ExecuteReader())
+                 {
+                     checkTable.Load(reader);
+                 }
+             }
+             sqlconnection.Close();
+             return checkTable;
+         }
+         static public DataTable checkRelationshipWithMyMixWhenDeleteLovedTrack(string trackID, int userID)
+         {
+             string sqlQuery = "select distinct UserHasMix.myMixID from UserLikeTrack  " +
+                 "join UserHasMix on UserLikeTrack.userID = UserHasMix.userID " +
+                 "join MyMixHasTrack  on MyMixHasTrack.trackID = UserLikeTrack.trackID and UserHasMix.myMixID = MyMixHasTrack.myMixID " +
+                 "where UserLikeTrack.userID = @userID and UserLikeTrack.trackID = @trackID";
 
+             DataTable checkTable = new DataTable();
 
-            DataTable checkTable = new DataTable();
+             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+             sqlconnection.Open();
 
-            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
-            sqlconnection.Open();
+             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+             {
+                 cmd.Parameters.AddWithValue("@trackID", trackID);
+                 cmd.Parameters.AddWithValue("@userID", userID);
+                 using (SqlDataReader reader = cmd.ExecuteReader())
+                 {
+                     checkTable.Load(reader);
+                 }
+             }
+             sqlconnection.Close();
+             return checkTable;
+         }*/
 
-            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
-            {
-                cmd.Parameters.AddWithValue("@trackID", trackID);
-                cmd.Parameters.AddWithValue("@userID", userID);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    checkTable.Load(reader);
-                }
-            }
-            sqlconnection.Close();
-            return checkTable;
-        }*/
         static public void deleteTrackInUserLikeTrack(int userID, string trackID)
         {
             string sqlQuery = "delete from UserLikeTrack where userID=@userID and trackID=@trackID";
@@ -217,10 +194,10 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
         }
-        static public bool checkIfTrackLoved(string trackID,int userID)
+
+        static public bool checkIfTrackLoved(string trackID, int userID)
         {
             string sqlQuery = "select count(*) from UserLikeTrack where trackID=@trackID and userID=@userID";
-
 
             DataTable checkTable = new DataTable();
 
@@ -237,15 +214,15 @@ delete From Playlist where playlistID=50
                 }
             }
             sqlconnection.Close();
-            if (checkTable.Rows[0][0].ToString()=="0")
+            if (checkTable.Rows[0][0].ToString() == "0")
                 return false;
             return true;
         }
+
         static public DataTable getTrackTable_Search(string searchKeyWord)
         {
             string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
                 "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
-
 
             DataTable trackTable = new DataTable();
 
@@ -254,7 +231,6 @@ delete From Playlist where playlistID=50
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-              
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     trackTable.Load(reader);
@@ -262,14 +238,12 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return trackTable;
-
         }
 
         static public DataTable getAlbumTable_Search(string searchKeyWord)
         {
             string sqlQuery = "select top 20 Album.*,artistName from Album join Artist on Album.artistID=Artist.artistID" +
                     " where albumTitle like '%" + searchKeyWord + "%'";
-
 
             DataTable albumTab_Table = new DataTable();
 
@@ -278,7 +252,6 @@ delete From Playlist where playlistID=50
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     albumTab_Table.Load(reader);
@@ -286,13 +259,11 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return albumTab_Table;
-
         }
 
         static public DataTable getArtistTable_Search(string searchKeyWord)
         {
             string sqlQuery = "select top 20 * from Artist where artistName like '%" + searchKeyWord + "%'";
-
 
             DataTable artistTab_Table = new DataTable();
 
@@ -301,7 +272,6 @@ delete From Playlist where playlistID=50
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     artistTab_Table.Load(reader);
@@ -309,26 +279,25 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return artistTab_Table;
-
         }
 
-        static public void AddTrackToPlaylist(string trackID,string playlistID)
+        static public void AddTrackToPlaylist(string trackID, string playlistID)
         {
             string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID,getdate())";
 
-            
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            
+
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@trackID", trackID);
                 cmd.Parameters.AddWithValue("@playlistID", playlistID);
+
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
         }
+
         static public DataTable getArtistOfTrack(string trackID)
         {
             string sqlQuery = "select artistName from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID " +
@@ -350,7 +319,6 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return artistTable;
-
         }
 
         static public DataTable loadTrackTableInTracks(int userID)
@@ -375,12 +343,10 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
             return trackTable;
-
         }
-        static public void addTrackToUserLikeTrack(int userID,string trackID)
+
+        static public void addTrackToUserLikeTrack(int userID, string trackID)
         {
-
-
             string sqlQuery = "insert into UserLikeTrack values(@userID,@trackID,getdate())";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
@@ -389,13 +355,11 @@ delete From Playlist where playlistID=50
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 cmd.Parameters.AddWithValue("@trackID", trackID);
-                
+
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
         }
-
-   
 
         static public DataTable getTrackInMyMix(string mixID)
         {
@@ -449,7 +413,6 @@ delete From Playlist where playlistID=50
             return trackTable;
         }
 
-
         static public DataTable getTrackInPlaylist(string playlistID)
         {
             DataTable trackTable = new DataTable();
@@ -477,10 +440,6 @@ delete From Playlist where playlistID=50
             return trackTable;
         }
 
-        
-
-
-
         static public DataTable getArtistInMyMixContainer(string mixID)
         {
             DataTable artistTable = new DataTable();
@@ -507,11 +466,9 @@ delete From Playlist where playlistID=50
             return artistTable;
         }
 
-        static public int getMyMixOrder(int userID,string mixID)
+        static public int getMyMixOrder(int userID, string mixID)
         {
             DataTable mixTable = new DataTable();
-
-
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -524,7 +481,7 @@ delete From Playlist where playlistID=50
                 }
             }
 
-            int index=0;
+            int index = 0;
             for (int i = 0; i < mixTable.Rows.Count; i++)
             {
                 if (mixTable.Rows[i]["myMixID"].ToString() == mixID)
@@ -538,12 +495,9 @@ delete From Playlist where playlistID=50
             return index;
         }
 
-
         static public DataTable getMyMixTableInMyMix(int userID)
         {
             DataTable mixTable = new DataTable();
-
-
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -564,7 +518,6 @@ delete From Playlist where playlistID=50
         {
             DataTable albumTable = new DataTable();
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
             using (SqlCommand cmd = new SqlCommand("select * from UserLikeAlbum where userID=@userID;", sqlconnection))
@@ -584,7 +537,6 @@ delete From Playlist where playlistID=50
         {
             DataTable mixTable = new DataTable();
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
             using (SqlCommand cmd = new SqlCommand("select * from UserHasPlaylist where userID=@userID order by playlistID asc;", sqlconnection))
@@ -600,12 +552,11 @@ delete From Playlist where playlistID=50
             return mixTable;
         }
 
-
         static public DataTable getTrackBaseOnID(string trackID)
         {
             DataTable tempTable = new DataTable();
-            
-            string sqlQuery= "select Track.*,Artist.* from Track join  " +
+
+            string sqlQuery = "select Track.*,Artist.* from Track join  " +
                 "ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
                 "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
                 "where Track.trackID = @trackID";
@@ -625,7 +576,6 @@ delete From Playlist where playlistID=50
             return tempTable;
         }
 
-
         static public void deleteTrackFromPlaylist(string playlistID, string trackID)
         {
             string sqlQuery = "delete from PlaylistHasTrack where playlistID=@playlistID and trackID=@trackID";
@@ -640,10 +590,5 @@ delete From Playlist where playlistID=50
             }
             sqlconnection.Close();
         }
-
-
-
     }
-  
-
 }

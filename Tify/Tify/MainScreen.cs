@@ -140,18 +140,9 @@ namespace Tify
 
             if (track.Time== null)
             {
-                int[] duration = GetSongData.GetSongDuration(track.TrackLink);
-                int durationMin = duration[0];
-                int durationSec = duration[1];
-
-                if (durationSec < 10)
-                {
-                    duration_label.Text = " " + durationMin + ":0" + durationSec;
-                }
-                else
-                {
-                    duration_label.Text = " " + durationMin + ":" + durationSec;
-                }
+                TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(track.TrackLink));
+                string timeString = time.ToString(@"mm\:ss");
+                duration_label.Text = timeString;
             }
             else
             {
@@ -185,7 +176,7 @@ namespace Tify
             //
             soundPlayer.URL = GetSongData.GetStreamLink(testURL);
             soundPlayer.controls.stop();
-            time = 0;
+            
 
             songPicture.Load(GetSongData.GetSongCover(testURL));
             songCover_panel.BackgroundImage = songPicture.Image;
@@ -200,18 +191,12 @@ namespace Tify
 
             //timer
             currentTime_label.Text = "0:00 /";
-            int[] duration = GetSongData.GetSongDuration(testURL);
-            int durationMin = duration[0];
-            int durationSec = duration[1];
+            TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(testURL));
 
-            if (durationSec < 10)
-            {
-                duration_label.Text = " " + durationMin + ":0" + durationSec;
-            }
-            else
-            {
-                duration_label.Text = " " + durationMin + ":" + durationSec;
-            }
+
+            string timeString = time.ToString(@"mm\:ss");
+            duration_label.Text = timeString;
+
 
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(testURL);

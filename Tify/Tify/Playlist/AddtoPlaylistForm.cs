@@ -1,35 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
-
-
-
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Tify
 {
     public partial class AddtoPlaylistForm : Form
     {
-        
-        SqlConnection sqlcon;
+        private SqlConnection sqlcon;
         private MainScreen mainScr;
         private CreatePlayList CreatePL;
         private string trackID;
+
         public AddtoPlaylistForm()
         {
             InitializeComponent();
 
             sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
-            
         }
-        public AddtoPlaylistForm(MainScreen callForm,string trackid)
+
+        public AddtoPlaylistForm(MainScreen callForm, string trackid)
         {
             InitializeComponent();
             mainScr = callForm;
@@ -50,10 +41,8 @@ namespace Tify
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-
                     if (reader.HasRows)
                     {
-
                         while (reader.Read())
                         {
                             Button newbutton = new Button();
@@ -72,7 +61,6 @@ namespace Tify
                             hideScrollBar(flowLayoutPanel_showPL);
 
                             flowLayoutPanel_showPL.Controls.Add(newbutton);
-
                         }
                     }
                     else MessageBox.Show("No playlist found");
@@ -80,45 +68,41 @@ namespace Tify
             }
             sqlcon.Close();
         }
+
         //get choosenPL, playlist that clicked
-       
+
         private void Newbutton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             string choosenPL = button.Text;
-            playlistchoseevent(choosenPL,trackID);
+            playlistchoseevent(choosenPL, trackID);
             this.Close();
-            
         }
+
         //convert string choosenPL to ID
-        string choosenPLID;
-        void convert(string input)
+        private string choosenPLID;
+
+        private void convert(string input)
         {
             sqlcon.Open();
             using (SqlCommand command = new SqlCommand("select playlistTitle,Playlist.playlistID,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-
                     if (reader.HasRows)
                     {
-
                         while (reader.Read())
                         {
                             if (input.Trim() == reader[0].ToString())
-                                choosenPLID= reader[1].ToString();
-
+                                choosenPLID = reader[1].ToString();
                         }
                     }
                 }
             }
-            
-            
         }
 
         static public void hideScrollBar(Control needHide)
         {
-           
             {
                 FlowLayoutPanel flowpanel = needHide as FlowLayoutPanel;
                 flowpanel.AutoScroll = false;
@@ -132,25 +116,40 @@ namespace Tify
                 flowpanel.AutoScroll = true;
             }
         }
-            private void button1_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void Btn_createnewPL_Click(object sender, EventArgs e)
         {
-            CreatePL = new CreatePlayList(mainScr,this);
+            CreatePL = new CreatePlayList(mainScr, this);
             CreatePL.ShowDialog();
         }
+
         //add to playlist event
 
-        void playlistchoseevent(string input,string trackID)
+        private void playlistchoseevent(string input, string trackID)
         {
             convert(input);
-            Database.AddTrackToPlaylist(trackID,choosenPLID);
+            try
+            {
+                Database.AddTrackToPlaylist(trackID, choosenPLID);
+                //add row to playlist
+                mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPLID);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                {
+                    //Violation of primary key. Handle Exception
+                    MessageBox.Show("This track already exist in this playlist");
+                }
+                else throw;
+            }
 
-            //add row to playlist
-            mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPLID);
+           
         }
     }
 }
