@@ -193,5 +193,15 @@ namespace Tify
             }
         }
         #endregion
+
+
+        #region play track on clicking row
+        private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            TrackInfo trackToPlay = album_gridView.Rows[e.RowIndex].Tag as TrackInfo;
+            albumsFm.mainScr.changeSong(trackToPlay);
+        }
+
+        #endregion
     }
 }

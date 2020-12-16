@@ -196,6 +196,7 @@
             this.album_gridView.Size = new System.Drawing.Size(887, 300);
             this.album_gridView.TabIndex = 5;
             this.album_gridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.album_gridView_CellMouseClick);
+            this.album_gridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
             this.album_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.album_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
