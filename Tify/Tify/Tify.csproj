@@ -588,5 +588,8 @@
   <ItemGroup>
     <None Include="Resources\finish_load.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_playlist.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

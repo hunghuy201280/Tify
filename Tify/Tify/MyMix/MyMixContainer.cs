@@ -203,12 +203,26 @@ namespace Tify
 
                     //neu giay >=10
                     if (duration[1] >= 10)
-                        temp.Time = duration[0] + ":" + duration[1];
-                    else
-                        temp.Time = duration[0] + ":0" + duration[1];
-                    if (temp.Time == "0:00")
                     {
-                        continue;
+                        if (duration[0] >= 10)
+                        {
+                            temp.Time = duration[0] + ":" + duration[1];
+                        }
+                        else
+                        {
+                            temp.Time = "0" + duration[0] + ":" + duration[1];
+                        }
+                    }
+                    else
+                    {
+                        if (duration[0] >= 10)
+                        {
+                            temp.Time = duration[0] + ":0" + duration[1];
+                        }
+                        else
+                        {
+                            temp.Time = "0" + duration[0] + ":0" + duration[1];
+                        }
                     }
 
                     trackInfos.Add(temp);

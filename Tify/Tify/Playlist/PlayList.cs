@@ -73,6 +73,7 @@ namespace Tify
                 playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+            attachPlaylistContainerToPlaylistButtonInMenuPanel(mainScr.PlayList_FlowPanel);
         }
         #endregion
 

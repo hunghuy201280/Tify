@@ -20,13 +20,13 @@ namespace Tify
             InitializeComponent();
            
         }
-        private FlowLayoutPanel menu_pnl;
+        private FlowLayoutPanel PlaylistMenu_panel;
         private MainScreen mainScr;
         public CreatePlayList(MainScreen callForm)
         {
             InitializeComponent();
             mainScr = callForm;
-            menu_pnl = mainScr.getCreatePlayList_FlowPanel();
+            PlaylistMenu_panel = mainScr.getCreatePlayList_FlowPanel();
             
             Description_TextBox.GotFocus += Description_TextBox_GotFocus;
             Description_TextBox.LostFocus += Description_TextBox_LostFocus;
@@ -50,7 +50,7 @@ namespace Tify
             InitializeComponent();
             mainScr = callForm;
             this.addtoPlaylistForm = addtoPlaylistForm;
-            menu_pnl = mainScr.getCreatePlayList_FlowPanel();
+            PlaylistMenu_panel = mainScr.getCreatePlayList_FlowPanel();
 
             Description_TextBox.GotFocus += Description_TextBox_GotFocus;
             Description_TextBox.LostFocus += Description_TextBox_LostFocus;
@@ -108,11 +108,13 @@ namespace Tify
             newbutton.Text = Title_TextBox.Text;
             newbutton.Font = new Font("Nationale", 12);
             newbutton.AutoSize = false;
+            newbutton.Cursor = Cursors.Hand;
             newbutton.TextAlign = ContentAlignment.MiddleLeft;
             newbutton.ForeColor = Color.White;
             newbutton.Width = 210;
             newbutton.Height = 46;
-            menu_pnl.FlowDirection = FlowDirection.TopDown;
+            PlaylistMenu_panel.FlowDirection = FlowDirection.TopDown;
+            newbutton.MouseClick += mainScr.menuPanelPlaylists_button_MouseClick;
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             
 
@@ -151,7 +153,9 @@ namespace Tify
                 }
                 sqlcon.Close();
 
-                menu_pnl.Controls.Add(newbutton);
+
+                PlaylistMenu_panel.Controls.Add(newbutton);
+                
 
                 //reload playlist form when created new playlist
                 if (addtoPlaylistForm!=null)
@@ -159,7 +163,6 @@ namespace Tify
                     addtoPlaylistForm.loadPlaylist_InFlowPanel();
                 }
                 mainScr.playlistScr.reload_createNew();
-
                 this.Close();
             }
         }
@@ -227,7 +230,9 @@ namespace Tify
 
         public void AddPlaylistButtonToMenuPanel(FlowLayoutPanel CreatePlayList_FlowPanel)
         {
+            CreatePlayList_FlowPanel.Controls.Clear();
             sqlcon.Open();
+           
             using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
             {
                 using (SqlDataReader reader = command.ExecuteReader())

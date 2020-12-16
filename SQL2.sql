@@ -297,3 +297,15 @@ select distinct UserHasPlaylist.playlistID from UserLikeTrack
                 join PlaylistHasTrack  on PlaylistHasTrack.trackID = UserLikeTrack.trackID 
 				and UserHasPlaylist.playlistID = PlaylistHasTrack.playlistID 
                 where UserLikeTrack.userID = 8 and UserLikeTrack.trackID = 25
+
+
+select Artist.*,Track.* from Artist
+join ArtistHasTrack on Artist.artistID=ArtistHasTrack.artistID
+join Track on Track.trackID=ArtistHasTrack.trackID
+where Artist.artistID='https://chiasenhac.vn/ca-si/khac-viet-zsswvzdcq921mv.html'
+
+insert into UserFollowArtist values(8,'https://chiasenhac.vn/ca-si/khac-viet-zsswvzdcq921mv.html')
+
+select * from UserFollowArtist
+
+select * from Artist 
