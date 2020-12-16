@@ -98,10 +98,10 @@ namespace Tify
             string str = time.ToString(@"hh\:mm\:ss");
             string artist = albumContainer.albumArtist_label.Text;
             string year = albumContainer.albumYear_label.Text;
-            artist_track_time__label.Text = "by " + artist + "—" + albumInfo.Count +" tracks — " + str;
+            artist_track_time__label.Text = "by " + artist + " — " + albumInfo.Count +" Tracks — " + str;
             albumName_label.Text = albumContainer.albumName_label.Text;
             albumCover_pictureBox.Image = inputcover.Image;
-            releaseYear_label.Text ="released "+year ;
+            releaseYear_label.Text ="Released "+year ;
 
         }
       
@@ -202,6 +202,46 @@ namespace Tify
             albumsFm.mainScr.changeSong(trackToPlay);
         }
 
+        #endregion
+
+        #region play button
+        private void play_button_Click(object sender, EventArgs e)
+        {
+            albumsFm.mainScr.nextTrack.Clear();
+            foreach (DataGridViewRow track in album_gridView.Rows)
+            {
+
+                TrackInfo trackToPlay = track.Tag as TrackInfo;
+                albumsFm.mainScr.addTrackToQueue(trackToPlay);
+
+            }
+            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+        }
+        #endregion
+
+
+        #region shuffle button
+        private void playShuffle_Button_Click(object sender, EventArgs e)
+        {
+            albumsFm.mainScr.nextTrack.Clear();
+            Random rnd = new Random(DateTime.Now.Second);
+            int numOfTracks = album_gridView.Rows.Count;
+
+
+            List<int> numbers = new List<int>();
+            for (int i = 0; i < numOfTracks; i++)
+            {
+                int num = rnd.Next(0, numOfTracks);
+                while (numbers.Contains(num))
+                {
+                    num = rnd.Next(0, numOfTracks);
+                }
+                numbers.Add(num);
+                TrackInfo trackToPlay = album_gridView.Rows[num].Tag as TrackInfo;
+                albumsFm.mainScr.addTrackToQueue(trackToPlay);
+            }
+            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+        }
         #endregion
     }
 }
