@@ -184,30 +184,11 @@ namespace Tify
                         tempTrack.Title = item["trackTitle"].ToString();
                         tempTrack.Artist = artist;
 
-                        int[] duration = GetSongData.GetSongDuration(item["trackLink"].ToString());
-                        //neu giay >=10
-                        if (duration[1] >= 10)
-                        {
-                            if (duration[0] >= 10)
-                            {
-                                tempTrack.Time = duration[0] + ":" + duration[1];
-                            }
-                            else
-                            {
-                                tempTrack.Time = "0" + duration[0] + ":" + duration[1];
-                            }
-                        }
-                        else
-                        {
-                            if (duration[0] >= 10)
-                            {
-                                tempTrack.Time = duration[0] + ":0" + duration[1];
-                            }
-                            else
-                            {
-                                tempTrack.Time = "0" + duration[0] + ":0" + duration[1];
-                            }
-                        }
+                        TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
+
+
+                        string timeString = time.ToString(@"mm\:ss");
+                        tempTrack.Time = timeString;
                         //check if loved
                         if (Database.checkIfTrackLoved(tempTrack.TrackID, mainScr.CurrentUser.UserID))
                             tempTrack.IsLoved = true;

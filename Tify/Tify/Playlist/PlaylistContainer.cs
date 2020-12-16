@@ -1,14 +1,12 @@
-﻿using System;
+﻿using GetData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using GetData;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Tify
 {
@@ -23,22 +21,20 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
         }
+
         public Playlist playlistFm;
         public string playlistID;
         public string description;
         public string playlistName;
         public string owner;
         public int trackCount;
-        public PlaylistContainer(Playlist callform,string PLAYLIST_ID)
+
+        public PlaylistContainer(Playlist callform, string PLAYLIST_ID)
         {
             InitializeComponent();
             playlistID = PLAYLIST_ID;
             playlistFm = callform;
-         
-
-           
 
             this.DoubleBuffered = true;
 
@@ -50,6 +46,7 @@ namespace Tify
             //load trước track table
             trackTable_woker.RunWorkerAsync();
         }
+
         private bool isLoaded = false;
 
         //khi click vào opacity panel mới bắt đầu load các track trong playlist
@@ -60,14 +57,13 @@ namespace Tify
                 playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
                 return;
             }
-            
+
             if (load_worker.IsBusy)
             {
                 return;
             }
             loadInfo();
         }
-
 
         private void trackTable_woker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -88,20 +84,18 @@ namespace Tify
        .Count();
                 numberOfTracks_label.Text = trackCount + " Tracks";
 
-
                 createdBy_label.Text = "Created by " + owner;
-                playlistName= trackTable.Rows[0]["playlistTitle"].ToString();
+                playlistName = trackTable.Rows[0]["playlistTitle"].ToString();
                 playlistName_label.Text = playlistName;
                 description = trackTable.Rows[0]["description"].ToString();
             }
-            else if (trackTable.Rows.Count==0)
+            else if (trackTable.Rows.Count == 0)
             {
                 DataTable PlaylistInfoTable = Database.getPlaylistInfo_NotIncludeDetail(playlistID);
                 owner = PlaylistInfoTable.Rows[0]["name"].ToString();
                 //number of tracks
-             
-                numberOfTracks_label.Text = 0 + " Tracks";
 
+                numberOfTracks_label.Text = 0 + " Tracks";
 
                 createdBy_label.Text = "Created by " + owner;
                 playlistName = PlaylistInfoTable.Rows[0]["playlistTitle"].ToString();
@@ -110,12 +104,12 @@ namespace Tify
             }
         }
 
-
         //load các track trong playlist vào list trackinfos
         public void loadInfo()
         {
             load_worker.RunWorkerAsync();
         }
+
         private DataTable trackTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private List<Image> cover = new List<Image>();
@@ -125,28 +119,16 @@ namespace Tify
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             string lastTrackID = "";
-          
+
             foreach (DataRow track in trackTable.Rows)
             {
-
                 if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
                 {
                     trackInfos[trackInfos.Count - 1].Artist += ";" + track["artistName"].ToString();
-                    
                 }
                 else
                 {
                     TrackInfo temp = new TrackInfo();
-
-                    if (cover.Count<4)
-                    {
-                        using (PictureBox pb = new PictureBox())
-                        {
-                            pb.Load(GetSongData.GetSongCover(track["trackLink"].ToString()));
-                            cover.Add(pb.Image);
-                        }
-                    }
-                 
 
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
@@ -163,45 +145,19 @@ namespace Tify
                         temp.IsLoved = false;
                     }
 
-                    int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
+                    TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(temp.TrackLink));
 
-                    //neu giay >=10
-                    if (duration[1] >= 10)
-                    {
-                        if (duration[0] >= 10)
-                        {
-                            temp.Time = duration[0] + ":" + duration[1];
-                        }
-                        else
-                        {
-                            temp.Time = "0" + duration[0] + ":" + duration[1];
-                        }
-                    }
-                    else
-                    {
-                        if (duration[0] >= 10)
-                        {
-                            temp.Time = duration[0] + ":0" + duration[1];
-                        }
-                        else
-                        {
-                            temp.Time = "0" + duration[0] + ":0" + duration[1];
-                        }
-                    }
+                    string timeString = time.ToString(@"mm\:ss");
+                    temp.Time = timeString;
 
-                    timeInSec += duration[1] + duration[0] * 60;
+                    timeInSec += (int)time.TotalSeconds;
                     trackInfos.Add(temp);
                     lastTrackID = track["trackID"].ToString();
                 }
             }
-            while (cover.Count < 4)
-            {
-                cover.Add(Properties.Resources.emptyplaylist);
-            }
+            loadCover(true);
             isLoaded = true;
         }
-
-
 
         //sau khi load xong thì kiểm tra xem có lỗi không, nếu không thì set data vào playlist detail rồi mở form detail lên
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -213,8 +169,6 @@ namespace Tify
 
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
         }
-
-       
 
         private void PlaylistContainer_Load(object sender, EventArgs e)
         {
@@ -231,32 +185,65 @@ namespace Tify
             opacity_panel.Visible = false;
         }
 
+        #region load 4 cover
+
+        public void loadCover(bool set)
+        {
+            cover.Clear();
+
+            while (loadCover_worker.IsBusy) { }
+       
+            loadCover_worker.RunWorkerAsync(set);
+        }
+
+        private void loadCover_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            int trackInfosIndex = 0;
+
+            while (cover.Count < 4 && trackInfosIndex < trackInfos.Count)
+            {
+                using (PictureBox pb = new PictureBox())
+                {
+                    pb.Load(GetSongData.GetSongCover(trackInfos[trackInfosIndex++].TrackLink));
+                    cover.Add(pb.Image);
+                }
+            }
+            while (cover.Count < 4)
+            {
+                cover.Add(Properties.Resources.emptyplaylist);
+            }
+            e.Result = e.Argument;
+        }
+
+        private void loadCover_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result.ToString()=="True")
+            {
+                playlistFm.playlistDetail.setCover(cover.ToArray());
+            }
+        }
+
+        #endregion load 4 cover
+
         #region addtrack to playlist
-        DataTable tempTrackTable = new DataTable();
+
+        private DataTable tempTrackTable = new DataTable();
+
         public void addTrack(string trackID)
         {
             tempTrackTable = Database.getTrackBaseOnID(trackID);
             string lastTrackID = "";
             foreach (DataRow track in tempTrackTable.Rows)
             {
-
                 if (track["trackID"].ToString() == lastTrackID && lastTrackID != "")
                 {
                     trackInfos[trackInfos.Count - 1].Artist += ";" + track["artistName"].ToString();
-
                 }
                 else
                 {
                     TrackInfo temp = new TrackInfo();
 
-                    if (cover.Count < 4)
-                    {
-                        using (PictureBox pb = new PictureBox())
-                        {
-                            pb.Load(GetSongData.GetSongCover(track["trackLink"].ToString()));
-                            cover.Add(pb.Image);
-                        }
-                    }
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
@@ -272,31 +259,28 @@ namespace Tify
                         temp.IsLoved = false;
                     }
 
-                    int[] duration = GetSongData.GetSongDuration(track["trackLink"].ToString());
+                    TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(temp.TrackLink));
 
-                    //neu giay >=10
-                    if (duration[1] >= 10)
-                        temp.Time = duration[0] + ":" + duration[1];
-                    else
-                        temp.Time = duration[0] + ":0" + duration[1];
-                    if (temp.Time == "0:00")
-                    {
-                        continue;
-                    }
-
+                    string timeString = time.ToString(@"mm\:ss");
+                    temp.Time = timeString;
+                    timeInSec += (int)time.TotalSeconds;
                     trackInfos.Add(temp);
                     lastTrackID = track["trackID"].ToString();
                 }
             }
+            loadCover(false);
             numberOfTracks_label.Text = ++trackCount + " Tracks";
         }
-        #endregion
+
+        #endregion addtrack to playlist
 
         #region reload when unlike track
+
         public void reloadStatus()
         {
             //reload_worker.RunWorkerAsync();
-            new Thread(() => {
+            new Thread(() =>
+            {
                 reload();
             }).Start();
         }
@@ -315,6 +299,7 @@ namespace Tify
                 }
             }
         }
+
         private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             foreach (var track in trackInfos)
@@ -332,8 +317,8 @@ namespace Tify
 
         private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
         }
-        #endregion
+
+        #endregion reload when unlike track
     }
 }

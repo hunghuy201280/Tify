@@ -137,24 +137,24 @@ namespace GetData
             }
         }
 
-        static public int[] GetSongDuration(string url)
+        static public int GetSongDuration(string url)
         {
-            //duration[0]=minute, duration[1]=second
-            int[] duration = new int[2];
+            int time;
+          
             try
             {
                 MediaFoundationReader temp1 = new MediaFoundationReader(GetStreamLink(url));
-                int minute = ((int)temp1.TotalTime.TotalMinutes);
-                int second = ((int)temp1.TotalTime.TotalSeconds) % (60);
-                duration[0] = minute;
-                duration[1] = second;
+                
+                time=(int)temp1.TotalTime.TotalSeconds;
+              
 
             }
             catch (Exception)
             {
-
+                return 0;
             }
-            return duration;
+
+            return time;
         }
 
         static public string GetSongCover(string url)

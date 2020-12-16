@@ -123,22 +123,25 @@ namespace Tify
             #region load track detail
             foreach (DataRow track in trackTable.Rows)
             {
-                if (trackTable.Rows[4]==track)
+                //stop add at
+                if (trackTable.Rows[10]==track)
                 {
                     break;
                 }
+
                 TrackInfo tempTrack = new TrackInfo();
                 tempTrack.Title = track["trackTitle"].ToString();
                 tempTrack.Artist = track["artistName"].ToString();
                 tempTrack.TrackLink = track["trackLink"].ToString();
                 tempTrack.TrackID = track["trackID"].ToString();
-                int[] duration = GetSongData.GetSongDuration(tempTrack.TrackLink);
 
-                //neu giay >=10
-                if (duration[1] >= 10)
-                    tempTrack.Time = duration[0] + ":" + duration[1];
-                else
-                    tempTrack.Time = duration[0] + ":0" + duration[1];
+                TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
+
+
+                string timeString = time.ToString(@"mm\:ss");
+                tempTrack.Time = timeString;
+
+               
 
 
                 using (PictureBox pb = new PictureBox())
@@ -161,6 +164,8 @@ namespace Tify
             }
             #endregion
 
+
+            isLoaded = true;
         }
 
         private void detail_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -176,8 +181,21 @@ namespace Tify
         #endregion
 
         //open artist detail on click
+
+        private bool isLoaded = false;
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
+            if (isLoaded)
+            {
+                artistFm.artistDetail.setDetailInfo(trackInfos, this);
+                return;
+            }
+
+            if (detail_worker.IsBusy)
+            {
+                return;
+            }
+           
             detail_worker.RunWorkerAsync();
         }
     }

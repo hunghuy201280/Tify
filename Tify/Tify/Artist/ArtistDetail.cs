@@ -49,6 +49,9 @@ namespace Tify
         private Artist artistForm;
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
+
+
+        #region set detail info
         public void setDetailInfo(List<TrackInfo> trackInfos, ArtistContainer callFm)
         {
             this.trackInfos = trackInfos;
@@ -89,6 +92,106 @@ namespace Tify
             artistForm.openChildForm(this);
             track_gridView.Rows.Remove(track_gridView.Rows[0]);
         }
+        #endregion
 
+
+        #region enter,leave row
+
+        private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //change cursor
+            track_gridView.Cursor = Cursors.Hand;
+
+
+            //change back color
+            if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in track_gridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.FromArgb(19, 19, 20);
+            }
+        }
+
+        private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //change cursor
+
+            track_gridView.Cursor = Cursors.Default;
+
+            //change back color
+
+            if (track_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
+            {
+                return;
+            }
+            foreach (DataGridViewCell cell in track_gridView.Rows[e.RowIndex].Cells)
+            {
+                cell.Style.BackColor = Color.Black;
+            }
+        }
+
+
+
+        #endregion enter,leave row
+
+        #region cell click event
+
+        private void track_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            DataGridViewRow selectedRow = track_gridView.Rows[e.RowIndex];
+            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+         
+            if (e.ColumnIndex == 5)//like track
+            {
+                if (selectedTrack.IsLoved == false)
+                {
+                    Database.addTrackToUserLikeTrack(artistForm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = true;
+                    selectedRow.Cells[5].Value = Properties.Resources.liked;
+                    selectedRow.Tag = selectedTrack;
+                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
+                    artistForm.mainScr.tracksScr.addRow(selectedTrack);
+                }
+                else
+                {
+                    Database.deleteTrackInUserLikeTrack(artistForm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
+                    selectedTrack.IsLoved = false;
+                    selectedRow.Cells[5].Value = Properties.Resources.like;
+                    selectedRow.Tag = selectedTrack;
+                    artistForm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
+                }
+                //write this
+                //artistForm.reloadPlaylistContainer();
+                artistForm.mainScr.myMixScr.reloadMixContainer();
+                artistForm.mainScr.albumsScr.reloadAlbumContainer();
+
+            }
+            else if (e.ColumnIndex == 4)// add to playlist
+            {
+                AddtoPlaylistForm addFm = new AddtoPlaylistForm(artistForm.mainScr, selectedTrack.TrackID);
+                addFm.ShowDialog();
+            }
+        }
+        #endregion
+
+
+        #region play track on clicking row
+        private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
+            artistForm.mainScr.changeSong(trackToPlay);
+        }
+
+        #endregion
     }
 }

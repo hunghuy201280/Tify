@@ -37,6 +37,7 @@
             this.createdBy_label = new System.Windows.Forms.Label();
             this.trackTable_woker = new System.ComponentModel.BackgroundWorker();
             this.reload_worker = new System.ComponentModel.BackgroundWorker();
+            this.loadCover_worker = new System.ComponentModel.BackgroundWorker();
             this.playlistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,6 +120,11 @@
             this.reload_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reload_worker_DoWork);
             this.reload_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reload_worker_RunWorkerCompleted);
             // 
+            // loadCover_worker
+            // 
+            this.loadCover_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loadCover_worker_DoWork);
+            this.loadCover_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loadCover_worker_RunWorkerCompleted);
+            // 
             // PlaylistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +153,6 @@
         private System.ComponentModel.BackgroundWorker trackTable_woker;
         private System.ComponentModel.BackgroundWorker reload_worker;
         public System.Windows.Forms.Panel opacity_panel;
+        private System.ComponentModel.BackgroundWorker loadCover_worker;
     }
 }
