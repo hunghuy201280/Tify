@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -77,31 +78,41 @@ namespace Tify
 
         private void Register_Button_Click(object sender, EventArgs e)
         {
+            
             if (userName_textBox.Text==""||password_textBox.Text==""||phone_textBox.Text=="")
             {
                 MessageBox.Show("Please enter your information ");
             }
-         
-            string sqlCommand = "insert into Account values(@username,@password,@phone)";
-            connection.Open();
-            using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
+            var match = new Regex(@"/^[a-zA-Z0-9_-]{3,16}$/");
+
+            if (!match.IsMatch(userName_textBox.Text))
             {
-                try
-                {
-                    cmd.Parameters.AddWithValue("@username", userName_textBox.Text);
-                    cmd.Parameters.AddWithValue("@password", password_textBox.Text);
-                    cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Sign up successfully!\nPlease login your new account!");
-                    this.Close();
-                    new Login(mainScr).ShowDialog();
-                }
-                catch (SqlException ex) when (ex.Number==2627)
-                {
-                    MessageBox.Show("Your username already exists, please choose another one");
-                }
+                MessageBox.Show("User name is string between 3 and 16 characters, allowing alphanumeric characters and hyphens and underscores");
+
             }
-            connection.Close();
+            else
+            {
+                string sqlCommand = "insert into Account values(@username,@password,@phone)";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@username", userName_textBox.Text);
+                        cmd.Parameters.AddWithValue("@password", password_textBox.Text);
+                        cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Sign up successfully!\nPlease login your new account!");
+                        this.Close();
+                        new Login(mainScr).ShowDialog();
+                    }
+                    catch (SqlException ex) when (ex.Number == 2627)
+                    {
+                        MessageBox.Show("Your username already exists, please choose another one");
+                    }
+                }
+                connection.Close();
+            }
         }
 
      
