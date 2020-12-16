@@ -83,7 +83,7 @@ namespace Tify
             {
                 MessageBox.Show("Please enter your information ");
             }
-            var match = new Regex(@"/^[a-zA-Z0-9_-]{3,16}$/");
+            var match = new Regex(@"^[a-zA-Z0-9_-]{3,16}$");
 
             if (!match.IsMatch(userName_textBox.Text))
             {
@@ -92,7 +92,7 @@ namespace Tify
             }
             else
             {
-                string sqlCommand = "insert into Account values(@username,@password,@phone)";
+                string sqlCommand = "insert into Account values(@username,@password,@phone,null,null)";
                 connection.Open();
                 using (SqlCommand cmd = new SqlCommand(sqlCommand, connection))
                 {
