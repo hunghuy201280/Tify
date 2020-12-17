@@ -48,25 +48,31 @@ namespace Tify
         private void button_save_Click(object sender, EventArgs e)
         {
             int myAge =DateTime.Today.Year - dateTimePicker1.Value.Year;
-            string theDate = dateTimePicker1.Value.ToShortDateString();
-            if (String.IsNullOrEmpty(label_password.Text) && String.IsNullOrEmpty(label_phonenumber.Text) && String.IsNullOrEmpty(label_password.Text)&&myAge<=6)
+            if (myAge<=6)
+            {
+                MessageBox.Show("Wrong age");
+                return;
+            }
+            else
+            {
+                string theDate = dateTimePicker1.Value.ToShortDateString();
+                Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
+            }
+            if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text) && String.IsNullOrEmpty(textBox_pwd.Text))
             {
                 MessageBox.Show("Notthing to save.");
             }
             else
             {
-                if (!String.IsNullOrEmpty(Label_name.Text))
+                if (!String.IsNullOrEmpty(textbox_name.Text))
                 {
-                    Database.updateName(mainscr.CurrentUser.UserID, Label_name.Text);
+                    Database.updateName(mainscr.CurrentUser.UserID, textbox_name.Text);
                 }
                 if (!String.IsNullOrEmpty(textBox_Phone.Text))
                 {
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
                 }
-                if (myAge > 6)
-                {
-                    Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
-                }
+               
                 if (!String.IsNullOrEmpty(textBox_pwd.Text))
                 {
                     if (textBox_retypepwd.Text == textBox_pwd.Text)
