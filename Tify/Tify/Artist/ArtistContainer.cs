@@ -191,6 +191,7 @@ namespace Tify
             if (isLoaded)
             {
                 artistFm.artistDetail.setTrackDetailInfo(trackInfos, this);
+                artistFm.artistDetail.setAlbumInfo(albumContainers, this);
                 return;
             }
 
@@ -200,31 +201,29 @@ namespace Tify
             }
             
             detail_worker.RunWorkerAsync();
-            album_worker.RunWorkerAsync();
+            loadAlbum();
         }
 
 
         #region load artist's albums
 
-        private DataTable albumTalbe;
-        List<AlbumContainer> albumContainers = new List<AlbumContainer>();
-        private void album_worker_DoWork(object sender, DoWorkEventArgs e)
+
+        private void loadAlbum()
         {
             for (int i = 0; i < albumTalbe.Rows.Count; i++)
             {
-                albumContainers.Add(new AlbumContainer(albumTalbe.Rows[0]["albumID"].ToString(), artistFm.mainScr.albumsScr));
-            }
-        }
-
-        private void album_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-            if (e.Error != null)
-            {
-                return;
+                if (i==7)
+                {
+                    break;
+                }
+                albumContainers.Add(new AlbumContainer(albumTalbe.Rows[i]["albumID"].ToString(), artistFm.mainScr.albumsScr));
             }
             artistFm.artistDetail.setAlbumInfo(albumContainers, this);
+
         }
+        private DataTable albumTalbe;
+        List<AlbumContainer> albumContainers = new List<AlbumContainer>();
+        
 
         #endregion
     }

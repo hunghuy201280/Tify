@@ -97,6 +97,8 @@ namespace Tify
 
         public void setAlbumInfo(List<AlbumContainer> albumContainers, ArtistContainer callFm)
         {
+            artistAlbum_container.recentlyPlayed_flowLayoutPanel.Controls.Clear();
+            artistAlbum_container.setContainerName("Albums");
             artistAlbum_container.addRangeItem(albumContainers.ToArray());
         }
         #endregion

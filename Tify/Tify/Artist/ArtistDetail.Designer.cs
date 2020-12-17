@@ -67,7 +67,7 @@
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
-            this.top_panel.Size = new System.Drawing.Size(870, 270);
+            this.top_panel.Size = new System.Drawing.Size(904, 270);
             this.top_panel.TabIndex = 1;
             // 
             // button1
@@ -160,7 +160,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 228);
+            this.panel1.Size = new System.Drawing.Size(904, 228);
             this.panel1.TabIndex = 2;
             // 
             // track_gridView
@@ -226,7 +226,7 @@
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.Height = 42;
             this.track_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.track_gridView.Size = new System.Drawing.Size(870, 181);
+            this.track_gridView.Size = new System.Drawing.Size(904, 181);
             this.track_gridView.TabIndex = 2;
             this.track_gridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_gridView_CellMouseClick);
             this.track_gridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
@@ -310,7 +310,7 @@
             this.artistAlbum_container.Dock = System.Windows.Forms.DockStyle.Top;
             this.artistAlbum_container.Location = new System.Drawing.Point(0, 498);
             this.artistAlbum_container.Name = "artistAlbum_container";
-            this.artistAlbum_container.Size = new System.Drawing.Size(870, 296);
+            this.artistAlbum_container.Size = new System.Drawing.Size(904, 296);
             this.artistAlbum_container.TabIndex = 3;
             // 
             // ArtistDetail
@@ -318,7 +318,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(887, 570);
+            this.ClientSize = new System.Drawing.Size(921, 570);
             this.Controls.Add(this.artistAlbum_container);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.top_panel);
