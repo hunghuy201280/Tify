@@ -1,10 +1,9 @@
 ﻿using GetData;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Tify
@@ -34,12 +33,12 @@ namespace Tify
                 MainScreen.EnableDoubleBuferring(control);
             }
             mainScr = callForm;
-
-           
         }
 
         public void doSearch(string keyword)
         {
+            track_gridView.Rows.Clear();
+            trackInfos.Clear();
             if (search_worker.IsBusy || artist_worker.IsBusy || album_worker.IsBusy)
             {
                 return;
@@ -58,7 +57,6 @@ namespace Tify
 
         private void loadAlbum()
         {
-          
             try
             {
                 albumTab_Table = Database.getAlbumTable_Search(searchKeyWord);
@@ -102,11 +100,8 @@ namespace Tify
 
         private void loadArtist()
         {
-         
-
             try
             {
-
                 artistTab_Table = Database.getArtistTable_Search(searchKeyWord);
                 if (artistTab_Table.Rows.Count == 0)
                 {
@@ -137,7 +132,6 @@ namespace Tify
         private void artist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             artistResult_flowPanel.Controls.AddRange(artists.ToArray());
-            
         }
 
         #endregion load artist
@@ -149,6 +143,8 @@ namespace Tify
         private DataTable artistTable = new DataTable();
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
 
+
+        
         public void loadTrack()
         {
             try
@@ -169,11 +165,18 @@ namespace Tify
                         string trackLink = item["trackLink"].ToString();
                         tempTrack.TrackLink = trackLink;
                         tempTrack.TrackID = item["trackID"].ToString();
-                        using (PictureBox pb = new PictureBox())
-                        {
-                            pb.Load(GetSongData.GetSongCover(trackLink));
-                            tempTrack.Cover = pb.Image;
-                        }
+                        
+                            using (PictureBox pb = new PictureBox())
+                            {
+                                pb.Load(GetSongData.GetSongCover(tempTrack.TrackLink));
+                                tempTrack.Cover = pb.Image;
+                            }
+                            TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
+                            string timeString = time.ToString(@"mm\:ss");
+                            tempTrack.Time = timeString;
+                        
+
+
 
                         artistTable = Database.getArtistOfTrack(item["trackID"].ToString());
                         string artist = "";
@@ -184,11 +187,7 @@ namespace Tify
                         tempTrack.Title = item["trackTitle"].ToString();
                         tempTrack.Artist = artist;
 
-                        TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(tempTrack.TrackLink));
 
-
-                        string timeString = time.ToString(@"mm\:ss");
-                        tempTrack.Time = timeString;
                         //check if loved
                         if (Database.checkIfTrackLoved(tempTrack.TrackID, mainScr.CurrentUser.UserID))
                             tempTrack.IsLoved = true;
@@ -205,9 +204,9 @@ namespace Tify
             }
         }
 
+
         public void SetGridViewRows(List<TrackInfo> trackInfos)
         {
-            track_gridView.Rows.Clear();
             track_gridView.Rows.Add();
             track_gridView.Rows[0].Visible = false;
             rows.Clear();
@@ -216,6 +215,7 @@ namespace Tify
                 DataGridViewRow tempRow = (DataGridViewRow)track_gridView.Rows[0].Clone();
                 tempRow.Visible = true;
                 tempRow.Tag = track;
+               
                 tempRow.Cells[0].Value = track.Cover;
                 tempRow.Cells[1].Value = track.Title;
                 tempRow.Cells[2].Value = track.Artist;
@@ -227,7 +227,7 @@ namespace Tify
                     tempRow.Cells[5].Value = Properties.Resources.like;
                 rows.Add(tempRow);
             }
-            track_gridView.Rows.AddRange(rows.ToArray());
+                track_gridView.Rows.AddRange(rows.ToArray());
         }
 
         private void search_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -237,8 +237,9 @@ namespace Tify
 
         private void search_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            SearchBox_Tracks.PerformClick();
             SetGridViewRows(trackInfos);
+            SearchBox_Tracks.PerformClick();
+          
         }
 
         #endregion load track
@@ -348,10 +349,11 @@ namespace Tify
             //add to playlist
             if (e.ColumnIndex == 4)
             {
-
-                add2PL = new AddtoPlaylistForm(mainScr,selectedTrack.TrackID);
+                add2PL = new AddtoPlaylistForm(mainScr, selectedTrack.TrackID);
                 add2PL.ShowDialog();
             }
         }
+
+       
     }
 }

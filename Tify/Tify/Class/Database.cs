@@ -404,6 +404,8 @@ delete From Playlist where playlistID=50
             string sqlQuery = "select top 20 * from (select *, ROW_NUMBER() OVER(PARTITION BY trackTitle ORDER BY trackID DESC) rn " +
                 "from Track where trackTitle like '%" + searchKeyWord + "%') as temp where rn = 1";
 
+            /* string sqlQuery = "select top 20 *  " +
+                "from Track where trackTitle like '%" + searchKeyWord + "%' order by trackID";*/
             DataTable trackTable = new DataTable();
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);

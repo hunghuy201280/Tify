@@ -654,8 +654,9 @@ namespace Tify
         {
             if (e.KeyChar == (char)13)//enter
             {
+
                 srchBox.doSearch(searchBar_textBox.Text);
-                loadSingleChildForm(srchBox);
+                /*loadSingleChildForm(srchBox);*/
                 openChildForm(srchBox);
               
             }
