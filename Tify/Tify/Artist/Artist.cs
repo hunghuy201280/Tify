@@ -60,6 +60,18 @@ namespace Tify
             }
         }
 
+
+
+        #region reload after add or delete in loved tracks
+        public void reloadArtistContainer()
+        {
+            foreach (var container in artistContainers)
+            {
+                container.reloadStatus();
+            }
+        }
+        #endregion
+
         public void openChildForm(Form childForm)
         {
             if (mainScr.activeForm != null)

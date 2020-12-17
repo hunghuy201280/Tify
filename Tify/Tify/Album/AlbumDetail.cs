@@ -183,7 +183,7 @@ namespace Tify
                 albumsFm.reloadAlbumContainer();
                 albumsFm.mainScr.myMixScr.reloadMixContainer();
                 albumsFm.mainScr.playlistScr.reloadPlaylistContainer();
-                
+                albumsFm.mainScr.artistScr.reloadArtistContainer();
 
             }
             else if (e.ColumnIndex == 4)// add to playlist

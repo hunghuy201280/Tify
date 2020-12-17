@@ -77,7 +77,7 @@ namespace Tify
         }
         #endregion
 
-        #region reload after delete in loved tracks
+        #region reload after add or delete in loved tracks
         public void reloadPlaylistContainer()
         {
             foreach (var container in playlistContainers)

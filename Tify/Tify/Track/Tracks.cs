@@ -204,6 +204,7 @@ namespace Tify
             mainScr.myMixScr.reloadMixContainer();
             mainScr.playlistScr.reloadPlaylistContainer();
             mainScr.albumsScr.reloadAlbumContainer();
+            mainScr.artistScr.reloadArtistContainer();
 
 
         }

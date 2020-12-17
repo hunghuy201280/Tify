@@ -97,7 +97,7 @@ namespace Tify
 
         public void setAlbumInfo(List<AlbumContainer> albumContainers, ArtistContainer callFm)
         {
-            artistAlbum_container.recentlyPlayed_flowLayoutPanel.Controls.Clear();
+            artistAlbum_container.clearItem();
             artistAlbum_container.setContainerName("Albums");
             artistAlbum_container.addRangeItem(albumContainers.ToArray());
         }
@@ -179,10 +179,11 @@ namespace Tify
                     selectedRow.Tag = selectedTrack;
                     artistForm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
-                //write this
-                //artistForm.reloadPlaylistContainer();
+                
+                artistForm.reloadArtistContainer();
                 artistForm.mainScr.myMixScr.reloadMixContainer();
                 artistForm.mainScr.albumsScr.reloadAlbumContainer();
+                artistForm.mainScr.playlistScr.reloadPlaylistContainer();
 
             }
             else if (e.ColumnIndex == 4)// add to playlist

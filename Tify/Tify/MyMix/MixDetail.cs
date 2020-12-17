@@ -135,6 +135,7 @@ namespace Tify
                 myMix.mainScr.albumsScr.reloadAlbumContainer();
                 myMix.mainScr.playlistScr.reloadPlaylistContainer();
                 myMix.reloadMixContainer();
+                myMix.mainScr.artistScr.reloadArtistContainer();
             }
             else if (e.ColumnIndex==3)// add to playlist
             {

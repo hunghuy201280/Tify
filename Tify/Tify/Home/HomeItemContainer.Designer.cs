@@ -71,9 +71,9 @@
             // 
             this.recentlyPlayed_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.recentlyPlayed_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
-            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 48);
+            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 47);
             this.recentlyPlayed_flowLayoutPanel.Name = "recentlyPlayed_flowLayoutPanel";
-            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 248);
+            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 273);
             this.recentlyPlayed_flowLayoutPanel.TabIndex = 4;
             this.recentlyPlayed_flowLayoutPanel.WrapContents = false;
             // 
@@ -101,8 +101,9 @@
             this.Controls.Add(this.recentlyPlayed_flowLayoutPanel);
             this.Controls.Add(this.back_Button);
             this.Controls.Add(this.forward_Button);
+            this.MinimumSize = new System.Drawing.Size(0, 320);
             this.Name = "HomeItemContainer";
-            this.Size = new System.Drawing.Size(1045, 296);
+            this.Size = new System.Drawing.Size(1045, 320);
             this.ResumeLayout(false);
             this.PerformLayout();
 
