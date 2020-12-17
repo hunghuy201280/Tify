@@ -308,4 +308,15 @@ insert into UserFollowArtist values(8,'https://chiasenhac.vn/ca-si/khac-viet-zss
 
 select * from UserFollowArtist
 
-select * from Artist 
+select * from UserHasPlaylist
+
+/* command to delete playlist
+delete from UserHasPlaylist where playlistID=50
+
+delete From PlaylistHasTrack where playlistID=50
+
+delete From Playlist where playlistID=50
+*/
+select * from Account
+
+select * from Track

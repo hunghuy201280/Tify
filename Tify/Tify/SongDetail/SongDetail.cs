@@ -248,6 +248,7 @@ namespace Tify
                 tempbx.Load(GetSongData.GetSongCover(url));
                 temp[i].setSongCover(tempbx.Image);
                 temp[i].setSongName(GetSongData.GetSongName(url));
+                mainscr.debug.richTextBox1.Text += songUrl[i]+"\n\n";
             }
             e.Result = temp;
         }
