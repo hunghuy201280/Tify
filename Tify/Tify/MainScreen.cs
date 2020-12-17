@@ -50,7 +50,7 @@ namespace Tify
             string connectString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectString);
 
-            debug.Show();
+            //debug.Show();
         }
         public DebugForm debug = new DebugForm();
         private void loadingFunc()

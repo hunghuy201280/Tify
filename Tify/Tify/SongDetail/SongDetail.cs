@@ -235,10 +235,10 @@ namespace Tify
             {
                 //debug
 
-                mainscr.debug.BeginInvoke((Action)delegate () {
+              /*  mainscr.debug.BeginInvoke((Action)delegate () {
                     mainscr.debug.richTextBox1.Text += songUrl[i] + "\n\n";
 
-                });
+                });*/
 
                 //
                 string url = songUrl[i];

@@ -366,12 +366,12 @@
             this.duration_label.AutoSize = true;
             this.duration_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duration_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.duration_label.Location = new System.Drawing.Point(862, 40);
+            this.duration_label.Location = new System.Drawing.Point(864, 40);
             this.duration_label.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
             this.duration_label.Name = "duration_label";
-            this.duration_label.Size = new System.Drawing.Size(44, 19);
+            this.duration_label.Size = new System.Drawing.Size(53, 19);
             this.duration_label.TabIndex = 10;
-            this.duration_label.Text = " 3:23";
+            this.duration_label.Text = " 03:23";
             this.duration_label.TextChanged += new System.EventHandler(this.duration_label_TextChanged);
             // 
             // playingFrom_label

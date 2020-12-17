@@ -7,7 +7,67 @@ namespace Tify
 {
     internal class Database
     {
+        static public bool checkIfPlaylistExisted(string playlistTitle, int userID)
+        {
+            string sqlQuery = "select * from UserHasPlaylist join Playlist on Playlist.playlistID=UserHasPlaylist.playlistID" +
+           " where playlistTitle=@playlistTitle and userID=@userID";
 
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@playlistTitle", playlistTitle);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            if (Table.Rows.Count == 0)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        static public void createPlaylist(int userID, string playlistName, string description)
+        {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            string sqlQuery = "INSERT INTO Playlist (playlistTitle,description,owner) OUTPUT inserted.playlistID VALUES(@playlistName,@description,@userID)";
+
+            using (SqlCommand command = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                command.Parameters.AddWithValue("@playlistName", playlistName);
+                command.Parameters.AddWithValue("@description", description);
+                command.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            string newPlaylistID = reader[0].ToString();
+                            sqlQuery = "insert into UserHasPlaylist values(@userID,@newPlaylistID)";
+                            using (SqlCommand command1 = new SqlCommand(sqlQuery, sqlconnection))
+                            {
+                                command1.Parameters.AddWithValue("@userID", userID);
+                                command1.Parameters.AddWithValue("@newPlaylistID", newPlaylistID);
+                                command1.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+            sqlconnection.Close();
+        }
 
         static public void updateDOB(int userID, string newDOB)
         {
@@ -38,7 +98,6 @@ namespace Tify
         {
             string sqlQuery = "update Account set phone=@newPhone where userID=@userID";
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
 
@@ -55,7 +114,6 @@ namespace Tify
         {
             string sqlQuery = "update Account set name=@newName where userID=@userID";
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
 
@@ -68,10 +126,9 @@ namespace Tify
             sqlconnection.Close();
         }
 
-        static public void updatePassword(int userID,string newPassword)
+        static public void updatePassword(int userID, string newPassword)
         {
             string sqlQuery = "update Account set password=@newPassword where userID=@userID";
-
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -84,8 +141,6 @@ namespace Tify
             }
             sqlconnection.Close();
         }
-
-
 
         static public void deletePlaylist(string playlistID)
         {
@@ -618,9 +673,12 @@ delete From Playlist where playlistID=50
         {
             DataTable mixTable = new DataTable();
 
+            string sqlQuery = "select Playlist.*from UserHasPlaylist " +
+                "join Playlist on Playlist.playlistID = UserHasPlaylist.playlistID " +
+                "where userID = @userID order by Playlist.playlistID asc; ";
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserHasPlaylist where userID=@userID order by playlistID asc;", sqlconnection))
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 using (SqlDataReader reader = cmd.ExecuteReader())

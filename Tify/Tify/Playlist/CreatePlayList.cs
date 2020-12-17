@@ -14,7 +14,6 @@ namespace Tify
 {
     public partial class CreatePlayList : Form
     {
-        SqlConnection sqlcon;
         public CreatePlayList()
         {
             InitializeComponent();
@@ -41,7 +40,6 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         private AddtoPlaylistForm addtoPlaylistForm=null;
@@ -65,7 +63,6 @@ namespace Tify
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         private void Title_TextBox_LostFocus(object sender, EventArgs e)
@@ -122,41 +119,14 @@ namespace Tify
             {
                 MessageBox.Show("PlayList name cannot be a blank");
             }
-            if (checkexisted() == 1)
+            if (!Database.checkIfPlaylistExisted(Title_TextBox.Text,mainScr.CurrentUser.UserID))
             {
                 MessageBox.Show("Name existed , may be try another name ?");
             }
             else
             {
-                sqlcon.Open();
-                string playlistname = Title_TextBox.Text;
-
-                using (SqlCommand command = new SqlCommand("INSERT INTO Playlist (playlistTitle,description,owner) OUTPUT inserted.playlistID VALUES('" + playlistname + "','"+Description_TextBox.Text +"',"+mainScr.CurrentUser.UserID+")", sqlcon))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-
-                        if (reader.HasRows)
-                        {
-
-                            if (reader.Read())
-                            {
-                                string id = reader[0].ToString();
-                                using (SqlCommand command1 = new SqlCommand("insert into UserHasPlaylist values(" + mainScr.CurrentUser.UserID + ",'" + id.ToString() + "')", sqlcon))
-                                {
-                                    command1.ExecuteNonQuery();
-                                }
-                            }
-
-                        }
-                    }
-                }
-                sqlcon.Close();
-
-
+                Database.createPlaylist(mainScr.CurrentUser.UserID, Title_TextBox.Text, Description_TextBox.Text);
                 PlaylistMenu_panel.Controls.Add(newbutton);
-                
-
                 //reload playlist form when created new playlist
                 if (addtoPlaylistForm!=null)
                 {
@@ -167,30 +137,7 @@ namespace Tify
             }
         }
 
-        private int checkexisted()
-        {
-            sqlcon.Open();
-            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-
-                    if (reader.HasRows)
-                    {
-
-                        while (reader.Read())
-                        {
-                            if (Title_TextBox.Text == reader[0].ToString())
-                            {
-                                return 1;
-                            }
-                        }
-                    }
-                }
-            }
-            sqlcon.Close();
-            return 0;
-        }
+ 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -231,40 +178,30 @@ namespace Tify
         public void AddPlaylistButtonToMenuPanel(FlowLayoutPanel CreatePlayList_FlowPanel)
         {
             CreatePlayList_FlowPanel.Controls.Clear();
-            sqlcon.Open();
-           
-            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
+
+            DataTable playlisTable = Database.getPlaylistTable_Playlist(mainScr.CurrentUser.UserID);
+
+            foreach (DataRow playlist in playlisTable.Rows)
             {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
+                Button newbutton = new Button();
+                newbutton.Width = 210;
+                newbutton.Height = 46;
+                newbutton.BackColor = Color.FromArgb(36, 37, 40);
+                newbutton.ForeColor = Color.White;
+                newbutton.FlatStyle = FlatStyle.Flat;
 
-                    if (reader.HasRows)
-                    {
-
-                        while (reader.Read())
-                        {
-                            Button newbutton = new Button();
-                            newbutton.Width = 210;
-                            newbutton.Height = 46;
-                            newbutton.BackColor = Color.FromArgb(36, 37, 40);
-                            newbutton.ForeColor = Color.White;
-                            newbutton.FlatStyle = FlatStyle.Flat;
-
-                            newbutton.FlatAppearance.BorderSize = 0;
-                            newbutton.Font = new Font("Nationale", 12);
-                            newbutton.TextAlign = ContentAlignment.MiddleLeft;
-                            newbutton.Text = reader[0].ToString();
-                            newbutton.Cursor = Cursors.Hand;
-                            newbutton.MouseClick += mainScr.menuPanelPlaylists_button_MouseClick;
-                            CreatePlayList_FlowPanel.FlowDirection = FlowDirection.TopDown;
-                            hideScrollBar(CreatePlayList_FlowPanel);
-                            CreatePlayList_FlowPanel.Controls.Add(newbutton);
-                        }
-                    }
-                    else MessageBox.Show("No playlist found");
-                }
+                newbutton.FlatAppearance.BorderSize = 0;
+                newbutton.Font = new Font("Nationale", 12);
+                newbutton.TextAlign = ContentAlignment.MiddleLeft;
+                newbutton.Text = playlist["playlistTitle"].ToString();
+                newbutton.Cursor = Cursors.Hand;
+                newbutton.MouseClick += mainScr.menuPanelPlaylists_button_MouseClick;
+                CreatePlayList_FlowPanel.FlowDirection = FlowDirection.TopDown;
+                hideScrollBar(CreatePlayList_FlowPanel);
+                CreatePlayList_FlowPanel.Controls.Add(newbutton);
             }
-            sqlcon.Close();
+           
+            
         }
         static public void hideScrollBar(Control needHide)
         {
