@@ -47,6 +47,11 @@ namespace Tify
         
         private void button_save_Click(object sender, EventArgs e)
         {
+            bool changedAge = false;
+            string Name = "";
+            string Phone = "";
+            string DOB = "";
+            string Pwd = "";
             int myAge =DateTime.Today.Year - dateTimePicker1.Value.Year;
             if (myAge<=6)
             {
@@ -57,6 +62,8 @@ namespace Tify
             {
                 string theDate = dateTimePicker1.Value.ToShortDateString();
                 Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
+               
+                changedAge = true;
             }
             if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text) && String.IsNullOrEmpty(textBox_pwd.Text))
             {
@@ -67,10 +74,12 @@ namespace Tify
                 if (!String.IsNullOrEmpty(textbox_name.Text))
                 {
                     Database.updateName(mainscr.CurrentUser.UserID, textbox_name.Text);
+                     Name = "name";
                 }
                 if (!String.IsNullOrEmpty(textBox_Phone.Text))
                 {
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
+                     Phone = ", phone";
                 }
                
                 if (!String.IsNullOrEmpty(textBox_pwd.Text))
@@ -78,11 +87,15 @@ namespace Tify
                     if (textBox_retypepwd.Text == textBox_pwd.Text)
                     {
                         Database.updatePassword(mainscr.CurrentUser.UserID, textBox_retypepwd.Text);
+                        Pwd = ", pass word";
                     }
                     else
                         MessageBox.Show("Oops ,seem that your password didnt match,may be give it a check?");
 
                 }
+                if (changedAge == true)
+                    DOB = ", date of birth";
+                MessageBox.Show("Changed " + Name  + Phone +  DOB  + Phone + " succesfully");
             }
             
 

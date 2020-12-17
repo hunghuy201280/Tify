@@ -11,6 +11,7 @@ namespace Tify
 {
     public partial class AlbumContainer : UserControl
     {
+        public LoadingContainer loadcontainer = new LoadingContainer();
         public AlbumContainer()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace Tify
 
             //load track in album
             track_worker.RunWorkerAsync();
+            AlbumForm.Controls.Add(loadcontainer);
         }
 
         private void AlbumContainer_Load(object sender, EventArgs e)
@@ -102,7 +104,11 @@ namespace Tify
         public void loadInfo()
         {
             //load cac track trong album khi click vao
-            load_worker.RunWorkerAsync();
+            load_worker.RunWorkerAsync(); 
+            loadcontainer.Location = new Point(AlbumForm.ClientSize.Width / 2 - loadcontainer.Size.Width / 2, AlbumForm.ClientSize.Height / 2 - loadcontainer.Size.Height / 2);
+            loadcontainer.Anchor = AnchorStyles.None;
+            loadcontainer.Dock = DockStyle.Fill;
+            loadcontainer.BringToFront();
         }
 
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
@@ -169,6 +175,7 @@ namespace Tify
                 return;
             }
             AlbumForm.albumDetail.setDetailInfo(trackInfos, PB, this);
+            loadcontainer.SendToBack();
         }
 
         private bool isLoaded = false;

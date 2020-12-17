@@ -29,7 +29,7 @@ namespace Tify
         public string playlistName;
         public string owner;
         public int trackCount;
-
+        public LoadingContainer loadcontainer = new LoadingContainer();
         public PlaylistContainer(Playlist callform, string PLAYLIST_ID)
         {
             InitializeComponent();
@@ -45,6 +45,8 @@ namespace Tify
 
             //load trước track table
             trackTable_woker.RunWorkerAsync();
+            playlistFm.Controls.Add(loadcontainer);
+           
         }
 
         private bool isLoaded = false;
@@ -73,6 +75,7 @@ namespace Tify
         //load cover, tên playlist lúc chưa click vào
         private void trackTable_woker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            loadcontainer.SendToBack();
             if (trackTable.Rows.Count != 0)
             {
                 owner = trackTable.Rows[0]["name"].ToString();
@@ -108,6 +111,10 @@ namespace Tify
         public void loadInfo()
         {
             load_worker.RunWorkerAsync();
+            loadcontainer.Location = new Point(playlistFm.ClientSize.Width / 2 - loadcontainer.Size.Width / 2, playlistFm.ClientSize.Height / 2 - loadcontainer.Size.Height / 2);
+            loadcontainer.Anchor = AnchorStyles.None;
+            loadcontainer.Dock = DockStyle.Fill;
+            loadcontainer.BringToFront();
         }
 
         private DataTable trackTable = new DataTable();
@@ -168,6 +175,7 @@ namespace Tify
             }
 
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), true, this);
+            loadcontainer.SendToBack();
         }
 
         private void PlaylistContainer_Load(object sender, EventArgs e)

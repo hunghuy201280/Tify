@@ -92,6 +92,12 @@
     <Compile Include="Loading.Designer.cs">
       <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadingContainer.Designer.cs">
+      <DependentUpon>LoadingContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Playlist\AddtoPlaylistForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingContainer.resx">
+      <DependentUpon>LoadingContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\AddtoPlaylistForm.resx">
       <DependentUpon>AddtoPlaylistForm.cs</DependentUpon>

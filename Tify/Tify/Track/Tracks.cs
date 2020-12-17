@@ -13,7 +13,7 @@ namespace Tify
     {
         private SqlConnection connection;
         private AddtoPlaylistForm add2PL;
-
+        private LoadingContainer loadcontainer = new LoadingContainer();
         public Tracks()
         {
             InitializeComponent();
@@ -66,6 +66,10 @@ namespace Tify
 
             //MessageBox.Show(dataGridView1.Font.ToString());
             load_worker.RunWorkerAsync();
+            this.Controls.Add(loadcontainer);
+            loadcontainer.Location = new Point(this.ClientSize.Width / 2 - loadcontainer.Size.Width / 2, this.ClientSize.Height / 2 - loadcontainer.Size.Height / 2);
+            loadcontainer.Anchor = AnchorStyles.None;
+            loadcontainer.BringToFront();
         }
 
         public void addRow(TrackInfo track)
@@ -106,6 +110,9 @@ namespace Tify
         private void load_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
+           
+            
+              
         }
 
         private void load_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
@@ -114,6 +121,8 @@ namespace Tify
             {
                 track_gridView.Rows.AddRange(rows.ToArray());
             }
+            loadcontainer.SendToBack();
+           
         }
 
         public void loadTrack()
