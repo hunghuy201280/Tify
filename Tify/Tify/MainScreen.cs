@@ -68,7 +68,7 @@ namespace Tify
         private SearchBox srchBox;
         public CreatePlayList CreatePL;
         private AddtoPlaylistForm add2PL;
-
+        private UpdateInfo updatein4;
 
         public Account CurrentUser { get => currentUser; set => currentUser = value; }
 
@@ -561,7 +561,9 @@ namespace Tify
             tracksScr = new Tracks(this);
             
             srchBox = new SearchBox(this);
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, srchBox };
+
+            updatein4 = new UpdateInfo(this);
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, srchBox,updatein4 };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -682,8 +684,7 @@ namespace Tify
 
         private void account_button_Click(object sender, EventArgs e)
         {
-            loginForm.StartPosition = FormStartPosition.CenterParent;
-            loginForm.ShowDialog();
+            openChildForm(updatein4);
         }
 
         #endregion mo form login/register khi click vao account button
