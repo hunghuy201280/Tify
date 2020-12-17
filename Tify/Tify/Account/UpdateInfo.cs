@@ -190,20 +190,24 @@ namespace Tify
                 {
                     Database.updateName(mainscr.CurrentUser.UserID, Label_name.Text);
                 }
-                if (!String.IsNullOrEmpty(label_phonenumber.Text))
+                if (!String.IsNullOrEmpty(textBox_Phone.Text))
                 {
-                    Database.updatePhone(mainscr.CurrentUser.UserID, label_phonenumber.Text);
+                    Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
                 }
-                var Date = textBox_days.Text + "/" + textBox_month.Text + "/" + textBox_year.Text;
-                DateTime tesst;
-                var DOB = DateTime.TryParse(Date, out tesst);
-                if (!String.IsNullOrEmpty(textBox_days.Text))
+                
+                if (!String.IsNullOrEmpty(textBox_days.Text) && !String.IsNullOrEmpty(textBox_month.Text)&& !String.IsNullOrEmpty(textBox_year.Text))
                 {
-                    Database.updateDOB(mainscr.CurrentUser.UserID, DOB.ToString());
+                    var Date = textBox_days.Text + "/" + textBox_month.Text + "/" + textBox_year.Text;
+                    DateTime DOB;
+                    if (DateTime.TryParse(Date, out DOB))
+                    {
+                        Database.updateDOB(mainscr.CurrentUser.UserID, DOB.ToString());
+                    }
+
                 }
-                if (!String.IsNullOrEmpty(label_password.Text))
+                if (!String.IsNullOrEmpty(textBox_pwd.Text))
                 {
-                    if (textBox_retypepwd.Text == label_password.Text)
+                    if (textBox_retypepwd.Text == textBox_pwd.Text)
                     {
                         Database.updatePassword(mainscr.CurrentUser.UserID, textBox_retypepwd.Text);
                     }
