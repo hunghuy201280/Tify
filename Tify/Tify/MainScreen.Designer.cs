@@ -103,7 +103,7 @@
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.player_panel.Location = new System.Drawing.Point(0, 908);
-            this.player_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.player_panel.Margin = new System.Windows.Forms.Padding(4);
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1503, 123);
             this.player_panel.TabIndex = 1;
@@ -115,7 +115,7 @@
             this.add_like_panel.Controls.Add(this.like_Player_Button);
             this.add_like_panel.Controls.Add(this.addToPlaylist_Player_Button);
             this.add_like_panel.Location = new System.Drawing.Point(340, 49);
-            this.add_like_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.add_like_panel.Margin = new System.Windows.Forms.Padding(4);
             this.add_like_panel.Name = "add_like_panel";
             this.add_like_panel.Size = new System.Drawing.Size(83, 30);
             this.add_like_panel.TabIndex = 16;
@@ -127,7 +127,7 @@
             this.like_Player_Button.FlatAppearance.BorderSize = 0;
             this.like_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.like_Player_Button.Location = new System.Drawing.Point(45, 1);
-            this.like_Player_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.like_Player_Button.Margin = new System.Windows.Forms.Padding(4);
             this.like_Player_Button.Name = "like_Player_Button";
             this.like_Player_Button.Size = new System.Drawing.Size(32, 30);
             this.like_Player_Button.TabIndex = 1;
@@ -140,7 +140,7 @@
             this.addToPlaylist_Player_Button.FlatAppearance.BorderSize = 0;
             this.addToPlaylist_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addToPlaylist_Player_Button.Location = new System.Drawing.Point(4, 0);
-            this.addToPlaylist_Player_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addToPlaylist_Player_Button.Margin = new System.Windows.Forms.Padding(4);
             this.addToPlaylist_Player_Button.Name = "addToPlaylist_Player_Button";
             this.addToPlaylist_Player_Button.Size = new System.Drawing.Size(32, 30);
             this.addToPlaylist_Player_Button.TabIndex = 0;
@@ -194,7 +194,7 @@
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
             this.progressBar.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.progressBar.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -218,7 +218,7 @@
             this.songCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.songCover_panel.Controls.Add(this.songImgOpacity_panel);
             this.songCover_panel.Location = new System.Drawing.Point(16, 25);
-            this.songCover_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.songCover_panel.Margin = new System.Windows.Forms.Padding(4);
             this.songCover_panel.Name = "songCover_panel";
             this.songCover_panel.Size = new System.Drawing.Size(87, 80);
             this.songCover_panel.TabIndex = 0;
@@ -233,7 +233,7 @@
             this.songImgOpacity_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songImgOpacity_panel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.songImgOpacity_panel.Location = new System.Drawing.Point(0, 0);
-            this.songImgOpacity_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.songImgOpacity_panel.Margin = new System.Windows.Forms.Padding(4);
             this.songImgOpacity_panel.Name = "songImgOpacity_panel";
             this.songImgOpacity_panel.Size = new System.Drawing.Size(87, 80);
             this.songImgOpacity_panel.TabIndex = 16;
@@ -270,7 +270,7 @@
             this.play_pause_panel.Controls.Add(this.next_button);
             this.play_pause_panel.Controls.Add(this.pause_button);
             this.play_pause_panel.Location = new System.Drawing.Point(595, 0);
-            this.play_pause_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.play_pause_panel.Margin = new System.Windows.Forms.Padding(4);
             this.play_pause_panel.Name = "play_pause_panel";
             this.play_pause_panel.Size = new System.Drawing.Size(313, 123);
             this.play_pause_panel.TabIndex = 12;
@@ -441,7 +441,7 @@
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu_panel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
-            this.menu_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menu_panel.Margin = new System.Windows.Forms.Padding(4);
             this.menu_panel.Name = "menu_panel";
             this.menu_panel.Size = new System.Drawing.Size(320, 908);
             this.menu_panel.TabIndex = 2;
@@ -711,7 +711,7 @@
             // 
             this.PlayList_FlowPanel.AutoSize = true;
             this.PlayList_FlowPanel.Location = new System.Drawing.Point(0, 684);
-            this.PlayList_FlowPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PlayList_FlowPanel.Margin = new System.Windows.Forms.Padding(4);
             this.PlayList_FlowPanel.Name = "PlayList_FlowPanel";
             this.PlayList_FlowPanel.Size = new System.Drawing.Size(320, 52);
             this.PlayList_FlowPanel.TabIndex = 24;
@@ -725,7 +725,7 @@
             this.searchBar_panel.Controls.Add(this.searchbarContainer_panel);
             this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchBar_panel.Location = new System.Drawing.Point(320, 0);
-            this.searchBar_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_panel.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_panel.Name = "searchBar_panel";
             this.searchBar_panel.Size = new System.Drawing.Size(1183, 74);
             this.searchBar_panel.TabIndex = 1;
@@ -737,7 +737,7 @@
             this.searchbarContainer_panel.Controls.Add(this.searchBar_textBox);
             this.searchbarContainer_panel.Controls.Add(this.searchBar_icon);
             this.searchbarContainer_panel.Location = new System.Drawing.Point(647, 17);
-            this.searchbarContainer_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchbarContainer_panel.Margin = new System.Windows.Forms.Padding(4);
             this.searchbarContainer_panel.Name = "searchbarContainer_panel";
             this.searchbarContainer_panel.Size = new System.Drawing.Size(520, 49);
             this.searchbarContainer_panel.TabIndex = 0;
@@ -751,7 +751,7 @@
             this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
             this.searchBar_textBox.Location = new System.Drawing.Point(53, 0);
-            this.searchBar_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_textBox.Name = "searchBar_textBox";
             this.searchBar_textBox.Size = new System.Drawing.Size(467, 46);
             this.searchBar_textBox.TabIndex = 2;
@@ -763,7 +763,7 @@
             this.searchBar_icon.Dock = System.Windows.Forms.DockStyle.Left;
             this.searchBar_icon.Image = ((System.Drawing.Image)(resources.GetObject("searchBar_icon.Image")));
             this.searchBar_icon.Location = new System.Drawing.Point(0, 0);
-            this.searchBar_icon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBar_icon.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar_icon.Name = "searchBar_icon";
             this.searchBar_icon.Size = new System.Drawing.Size(53, 49);
             this.searchBar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -777,7 +777,7 @@
             this.childForm_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.childForm_panel.ForeColor = System.Drawing.Color.Coral;
             this.childForm_panel.Location = new System.Drawing.Point(320, 74);
-            this.childForm_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.childForm_panel.Margin = new System.Windows.Forms.Padding(4);
             this.childForm_panel.Name = "childForm_panel";
             this.childForm_panel.Size = new System.Drawing.Size(1183, 834);
             this.childForm_panel.TabIndex = 26;
@@ -812,7 +812,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.songDetail_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
             this.songDetail_panel.Location = new System.Drawing.Point(0, 0);
-            this.songDetail_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.songDetail_panel.Margin = new System.Windows.Forms.Padding(4);
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1503, 1031);
             this.songDetail_panel.TabIndex = 0;
@@ -829,7 +829,7 @@
             this.Controls.Add(this.songDetail_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1026, 427);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
