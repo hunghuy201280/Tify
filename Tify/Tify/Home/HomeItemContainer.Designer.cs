@@ -35,11 +35,6 @@
             this.recentlyPlayed_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.containerTitle_label = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.albumContainer1 = new Tify.AlbumContainer();
-            this.albumContainer2 = new Tify.AlbumContainer();
-            this.albumContainer3 = new Tify.AlbumContainer();
-            this.albumContainer4 = new Tify.AlbumContainer();
-            this.recentlyPlayed_flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // forward_Button
@@ -74,15 +69,11 @@
             // 
             // recentlyPlayed_flowLayoutPanel
             // 
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.albumContainer1);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.albumContainer2);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.albumContainer3);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.albumContainer4);
             this.recentlyPlayed_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.recentlyPlayed_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
-            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 45);
+            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 48);
             this.recentlyPlayed_flowLayoutPanel.Name = "recentlyPlayed_flowLayoutPanel";
-            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 240);
+            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 248);
             this.recentlyPlayed_flowLayoutPanel.TabIndex = 4;
             this.recentlyPlayed_flowLayoutPanel.WrapContents = false;
             // 
@@ -102,42 +93,6 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // albumContainer1
-            // 
-            this.albumContainer1.BackColor = System.Drawing.Color.Black;
-            this.albumContainer1.Location = new System.Drawing.Point(5, 0);
-            this.albumContainer1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer1.Name = "albumContainer1";
-            this.albumContainer1.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer1.TabIndex = 0;
-            // 
-            // albumContainer2
-            // 
-            this.albumContainer2.BackColor = System.Drawing.Color.Black;
-            this.albumContainer2.Location = new System.Drawing.Point(187, 0);
-            this.albumContainer2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer2.Name = "albumContainer2";
-            this.albumContainer2.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer2.TabIndex = 1;
-            // 
-            // albumContainer3
-            // 
-            this.albumContainer3.BackColor = System.Drawing.Color.Black;
-            this.albumContainer3.Location = new System.Drawing.Point(369, 0);
-            this.albumContainer3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer3.Name = "albumContainer3";
-            this.albumContainer3.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer3.TabIndex = 2;
-            // 
-            // albumContainer4
-            // 
-            this.albumContainer4.BackColor = System.Drawing.Color.Black;
-            this.albumContainer4.Location = new System.Drawing.Point(551, 0);
-            this.albumContainer4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.albumContainer4.Name = "albumContainer4";
-            this.albumContainer4.Size = new System.Drawing.Size(172, 226);
-            this.albumContainer4.TabIndex = 3;
-            // 
             // HomeItemContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -147,8 +102,7 @@
             this.Controls.Add(this.back_Button);
             this.Controls.Add(this.forward_Button);
             this.Name = "HomeItemContainer";
-            this.Size = new System.Drawing.Size(1045, 285);
-            this.recentlyPlayed_flowLayoutPanel.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1045, 296);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,9 +115,5 @@
         private System.Windows.Forms.FlowLayoutPanel recentlyPlayed_flowLayoutPanel;
         private System.Windows.Forms.Label containerTitle_label;
         private System.Windows.Forms.Timer timer1;
-        private AlbumContainer albumContainer1;
-        private AlbumContainer albumContainer2;
-        private AlbumContainer albumContainer3;
-        private AlbumContainer albumContainer4;
     }
 }

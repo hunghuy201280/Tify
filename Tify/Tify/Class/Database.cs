@@ -8,6 +8,28 @@ namespace Tify
     internal class Database
     {
 
+        static public DataTable getAlbumOfArtist(string artistID)
+        {
+            string sqlQuery = "select Album.* from Album where artistID=@artistID";
+
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@artistID", artistID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return Table;
+        }
+
         static public DataTable getArtistBaseOnID(string artistID)
         {
             string sqlQuery = "select * from Artist where artistID=@artistID;";

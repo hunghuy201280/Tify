@@ -63,9 +63,14 @@ namespace Tify
         private void track_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             trackTable = Database.getTrack_Album(albumID);
+            this.BeginInvoke((Action)delegate () {
+                setContainerUI();
+                
+            });
         }
         private PictureBox PB = new PictureBox();
-        private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+
+        private void setContainerUI()
         {
             //load cover,name,... cho album container
             albumName_label.Text = trackTable.Rows[0]["albumTitle"].ToString();
@@ -82,9 +87,16 @@ namespace Tify
             {
                 DataTable albumArtistTable = Database.getArtistBaseOnID(trackTable.Rows[0]["artistID"].ToString());
                 albumArtist_label.Text = trackTable.Rows[0]["artistname"].ToString();
-
+            }
+        }
+        private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error!=null)
+            {
+                return;
             }
 
+          
 
         }
 

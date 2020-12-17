@@ -52,7 +52,7 @@ namespace Tify
 
 
         #region set detail info
-        public void setDetailInfo(List<TrackInfo> trackInfos, ArtistContainer callFm)
+        public void setTrackDetailInfo(List<TrackInfo> trackInfos, ArtistContainer callFm)
         {
             this.trackInfos = trackInfos;
         
@@ -91,6 +91,13 @@ namespace Tify
 
             artistForm.openChildForm(this);
             track_gridView.Rows.Remove(track_gridView.Rows[0]);
+        }
+
+
+
+        public void setAlbumInfo(List<AlbumContainer> albumContainers, ArtistContainer callFm)
+        {
+            artistAlbum_container.addRangeItem(albumContainers.ToArray());
         }
         #endregion
 

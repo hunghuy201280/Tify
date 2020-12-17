@@ -59,7 +59,17 @@ namespace Tify
 
 
             info_worker.RunWorkerAsync();
-            loadTrackTable();
+            
+            //load tracktable
+            new Thread(() => {
+                trackTable = Database.getTrack_Artist(artistID);
+            }).Start();
+
+            //load album table
+            new Thread(() => {
+                albumTalbe = Database.getAlbumOfArtist(artistID);
+            }).Start();
+
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
@@ -71,12 +81,7 @@ namespace Tify
 
         #region load tracktable
         private DataTable trackTable = new DataTable();
-        public void loadTrackTable()
-        {
-            new Thread(() => {
-                trackTable = Database.getTrack_Artist(artistID);
-            }).Start();
-        }
+     
         #endregion
 
         #region load cover,name
@@ -116,7 +121,7 @@ namespace Tify
         #endregion
 
 
-        #region load  detail
+        #region load  track
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
         private void detail_worker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -163,8 +168,6 @@ namespace Tify
                 
             }
             #endregion
-
-
             isLoaded = true;
         }
 
@@ -175,7 +178,7 @@ namespace Tify
             {
                 return;
             }
-            artistFm.artistDetail.setDetailInfo(trackInfos, this);
+            artistFm.artistDetail.setTrackDetailInfo(trackInfos, this);
 
         }
         #endregion
@@ -187,7 +190,7 @@ namespace Tify
         {
             if (isLoaded)
             {
-                artistFm.artistDetail.setDetailInfo(trackInfos, this);
+                artistFm.artistDetail.setTrackDetailInfo(trackInfos, this);
                 return;
             }
 
@@ -195,8 +198,34 @@ namespace Tify
             {
                 return;
             }
-           
+            
             detail_worker.RunWorkerAsync();
+            album_worker.RunWorkerAsync();
         }
+
+
+        #region load artist's albums
+
+        private DataTable albumTalbe;
+        List<AlbumContainer> albumContainers = new List<AlbumContainer>();
+        private void album_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i < albumTalbe.Rows.Count; i++)
+            {
+                albumContainers.Add(new AlbumContainer(albumTalbe.Rows[0]["albumID"].ToString(), artistFm.mainScr.albumsScr));
+            }
+        }
+
+        private void album_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            if (e.Error != null)
+            {
+                return;
+            }
+            artistFm.artistDetail.setAlbumInfo(albumContainers, this);
+        }
+
+        #endregion
     }
 }

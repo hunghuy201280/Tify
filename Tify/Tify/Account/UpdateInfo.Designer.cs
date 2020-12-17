@@ -94,7 +94,7 @@
             this.comboBox_day.Font = new System.Drawing.Font("Nationale Light", 9F);
             this.comboBox_day.FormattingEnabled = true;
             this.comboBox_day.Location = new System.Drawing.Point(208, 239);
-            this.comboBox_day.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_day.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_day.Name = "comboBox_day";
             this.comboBox_day.Size = new System.Drawing.Size(71, 23);
             this.comboBox_day.TabIndex = 3;
@@ -109,7 +109,7 @@
             this.comboBox_month.ForeColor = System.Drawing.Color.White;
             this.comboBox_month.FormattingEnabled = true;
             this.comboBox_month.Location = new System.Drawing.Point(296, 239);
-            this.comboBox_month.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_month.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_month.Name = "comboBox_month";
             this.comboBox_month.Size = new System.Drawing.Size(108, 23);
             this.comboBox_month.TabIndex = 4;
@@ -122,7 +122,7 @@
             this.txtbox_name.Font = new System.Drawing.Font("Nationale Light", 10.2F);
             this.txtbox_name.ForeColor = System.Drawing.Color.White;
             this.txtbox_name.Location = new System.Drawing.Point(203, 145);
-            this.txtbox_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtbox_name.Margin = new System.Windows.Forms.Padding(2);
             this.txtbox_name.Name = "txtbox_name";
             this.txtbox_name.Size = new System.Drawing.Size(291, 17);
             this.txtbox_name.TabIndex = 5;
@@ -134,7 +134,7 @@
             this.textBox_pwd.Font = new System.Drawing.Font("Nationale Light", 10.2F);
             this.textBox_pwd.ForeColor = System.Drawing.Color.White;
             this.textBox_pwd.Location = new System.Drawing.Point(202, 197);
-            this.textBox_pwd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_pwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_pwd.Name = "textBox_pwd";
             this.textBox_pwd.Size = new System.Drawing.Size(291, 17);
             this.textBox_pwd.TabIndex = 6;
@@ -146,7 +146,7 @@
             this.textBox_year.Font = new System.Drawing.Font("Nationale Light", 11F);
             this.textBox_year.ForeColor = System.Drawing.Color.White;
             this.textBox_year.Location = new System.Drawing.Point(426, 240);
-            this.textBox_year.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_year.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_year.Name = "textBox_year";
             this.textBox_year.Size = new System.Drawing.Size(66, 19);
             this.textBox_year.TabIndex = 7;
@@ -171,9 +171,9 @@
             this.textBox_Phone.Font = new System.Drawing.Font("Nationale Light", 10.2F);
             this.textBox_Phone.ForeColor = System.Drawing.Color.White;
             this.textBox_Phone.Location = new System.Drawing.Point(201, 294);
-            this.textBox_Phone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Phone.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.Size = new System.Drawing.Size(263, 17);
+            this.textBox_Phone.Size = new System.Drawing.Size(291, 17);
             this.textBox_Phone.TabIndex = 9;
             this.textBox_Phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Phone_KeyPress);
             // 
@@ -185,7 +185,7 @@
             this.button_save.Font = new System.Drawing.Font("Nationale", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_save.ForeColor = System.Drawing.Color.White;
             this.button_save.Location = new System.Drawing.Point(393, 392);
-            this.button_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_save.Margin = new System.Windows.Forms.Padding(2);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(90, 43);
             this.button_save.TabIndex = 10;
@@ -200,7 +200,7 @@
             this.button_quit.Font = new System.Drawing.Font("Nationale", 13.8F, System.Drawing.FontStyle.Bold);
             this.button_quit.ForeColor = System.Drawing.Color.White;
             this.button_quit.Location = new System.Drawing.Point(493, 392);
-            this.button_quit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_quit.Margin = new System.Windows.Forms.Padding(2);
             this.button_quit.Name = "button_quit";
             this.button_quit.Size = new System.Drawing.Size(90, 43);
             this.button_quit.TabIndex = 11;
@@ -211,7 +211,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(258, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -222,7 +222,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(203, 167);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(291, 1);
             this.panel1.TabIndex = 14;
@@ -231,7 +231,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Location = new System.Drawing.Point(202, 220);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(291, 1);
             this.panel2.TabIndex = 15;
@@ -240,7 +240,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(201, 263);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(291, 1);
             this.panel3.TabIndex = 16;
@@ -249,9 +249,9 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(201, 317);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(263, 1);
+            this.panel4.Size = new System.Drawing.Size(291, 1);
             this.panel4.TabIndex = 17;
             // 
             // UpdateInfo
@@ -277,7 +277,7 @@
             this.Controls.Add(this.label_DOB);
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.Label_name);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UpdateInfo";
             this.Text = "UpdateInfo";
             this.Load += new System.EventHandler(this.UpdateInfo_Load);

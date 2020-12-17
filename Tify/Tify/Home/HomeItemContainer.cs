@@ -40,12 +40,18 @@ namespace Tify
 
         }
 
-        #region get/set
 
         public void addItem(Control item)
         {
             recentlyPlayed_flowLayoutPanel.Controls.Add(item);
         }
+        public void addRangeItem(Control[] item)
+        {
+            recentlyPlayed_flowLayoutPanel.Controls.AddRange(item);
+        }
+
+        #region get/set
+
         public void setContainerName(string name)
         {
             containerTitle_label.Text = name;
