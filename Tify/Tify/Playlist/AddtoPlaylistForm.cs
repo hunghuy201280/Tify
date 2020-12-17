@@ -73,24 +73,7 @@ namespace Tify
         //convert string choosenPL to ID
         private string choosenPlaylistID;//ten playlist
 
-        private void convert(string input)
-        {
-            sqlcon.Open();
-            using (SqlCommand command = new SqlCommand("select playlistTitle,Playlist.playlistID,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            if (input.Trim() == reader[0].ToString())
-                                choosenPlaylistID = reader[1].ToString();
-                        }
-                    }
-                }
-            }
-        }
+    
 
         static public void hideScrollBar(Control needHide)
         {

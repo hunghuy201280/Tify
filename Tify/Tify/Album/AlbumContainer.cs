@@ -73,12 +73,19 @@ namespace Tify
 
             PB.Load(GetData.GetSongData.GetSongCover(trackTable.Rows[0]["albumLink"].ToString()));
             albumCover_panel.BackgroundImage = PB.Image;
-            if (trackTable.Rows[0]["albumTitle"].ToString() == null)
+            if (trackTable.Rows[0]["artistID"].ToString() == "")
             {
-                albumArtist_label.Text = "unknown";
+                string[] artistArr = GetSongData.GetSongArtist(trackTable.Rows[0]["albumLink"].ToString());
+                albumArtist_label.Text = artistArr[0];
             }
             else
+            {
+                DataTable albumArtistTable = Database.getArtistBaseOnID(trackTable.Rows[0]["artistID"].ToString());
                 albumArtist_label.Text = trackTable.Rows[0]["artistname"].ToString();
+
+            }
+
+
         }
 
         private List<TrackInfo> trackInfos = new List<TrackInfo>();
@@ -104,8 +111,25 @@ namespace Tify
                     TrackInfo temp = new TrackInfo();
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
+                   
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
+
+                    if (temp.Artist == "")
+                    {
+                        string[] artists = GetSongData.GetSongArtist(temp.TrackLink);
+                        for (int i = 0; i < artists.Length; i++)
+                        {
+                            if (i!=artists.Length-1)
+                            {
+                                temp.Artist += artists[i] + "; ";
+                            }
+                            else
+                            {
+                                temp.Artist += artists[i];
+                            }
+                        }
+                    }
                     if (Database.checkIfTrackLoved(temp.TrackID, AlbumForm.mainScr.CurrentUser.UserID))
                     {
                         temp.IsLoved = true;

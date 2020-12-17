@@ -7,6 +7,28 @@ namespace Tify
 {
     internal class Database
     {
+
+        static public DataTable getArtistBaseOnID(string artistID)
+        {
+            string sqlQuery = "select * from Artist where artistID=@artistID;";
+
+            DataTable artistTab_Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@artistID", artistID);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    artistTab_Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return artistTab_Table;
+        }
         static public bool checkIfPlaylistExisted(string playlistTitle, int userID)
         {
             string sqlQuery = "select * from UserHasPlaylist join Playlist on Playlist.playlistID=UserHasPlaylist.playlistID" +
@@ -530,8 +552,8 @@ delete From Playlist where playlistID=50
             string sqlQuery = "select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album " +
                 "join AlbumHasTrack on Album.albumID = AlbumHasTrack.albumID " +
                 "join Track on Track.trackID = AlbumHasTrack.trackID " +
-                "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
-                "join Artist on ArtistHasTrack.artistID = Artist.artistID " +
+                "left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
+                "left join Artist on ArtistHasTrack.artistID = Artist.artistID " +
                 "where Album.albumID = @albumID order by Track.trackID";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
