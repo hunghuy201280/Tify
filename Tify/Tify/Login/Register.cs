@@ -84,11 +84,15 @@ namespace Tify
                 MessageBox.Show("Please enter your information ");
             }
             var match = new Regex(@"^[a-zA-Z0-9_-]{3,16}$");
-
+            var std = new Regex(@"^\+?(\d.*){10,}$");
             if (!match.IsMatch(userName_textBox.Text))
             {
                 MessageBox.Show("User name is string between 3 and 16 characters, allowing alphanumeric characters and hyphens and underscores");
 
+            }
+            if (!std.IsMatch(phone_textBox.Text))
+            {
+                MessageBox.Show("Oops, check your phone number again ?");
             }
             else
             {
