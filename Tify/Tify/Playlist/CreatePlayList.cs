@@ -194,6 +194,7 @@ namespace Tify
                 newbutton.Font = new Font("Nationale", 12);
                 newbutton.TextAlign = ContentAlignment.MiddleLeft;
                 newbutton.Text = playlist["playlistTitle"].ToString();
+                newbutton.Tag= playlist["playlistID"].ToString();
                 newbutton.Cursor = Cursors.Hand;
                 newbutton.MouseClick += mainScr.menuPanelPlaylists_button_MouseClick;
                 CreatePlayList_FlowPanel.FlowDirection = FlowDirection.TopDown;

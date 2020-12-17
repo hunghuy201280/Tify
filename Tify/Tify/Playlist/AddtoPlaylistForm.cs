@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,7 +9,6 @@ namespace Tify
 {
     public partial class AddtoPlaylistForm : Form
     {
-        private SqlConnection sqlcon;
         private MainScreen mainScr;
         private CreatePlayList CreatePL;
         private string trackID;
@@ -17,7 +17,6 @@ namespace Tify
         {
             InitializeComponent();
 
-            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         public AddtoPlaylistForm(MainScreen callForm, string trackid)
@@ -25,7 +24,6 @@ namespace Tify
             InitializeComponent();
             mainScr = callForm;
             trackID = trackid;
-            sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
         }
 
         private void AddtoPlaylistForm_Load(object sender, EventArgs e)
@@ -36,37 +34,29 @@ namespace Tify
         public void loadPlaylist_InFlowPanel()
         {
             flowLayoutPanel_showPL.Controls.Clear();
-            sqlcon.Open();
-            using (SqlCommand command = new SqlCommand("select playlistTitle,userID  from Playlist,UserHasPlaylist where Playlist.playlistID=UserHasPlaylist.playlistID and userID =" + mainScr.CurrentUser.UserID + "", sqlcon))
+
+            DataTable playlisTable = Database.getPlaylistTable_Playlist(mainScr.CurrentUser.UserID);
+
+            foreach (DataRow playlist in playlisTable.Rows)
             {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            Button newbutton = new Button();
-                            newbutton.Width = 233;
-                            newbutton.Height = 45;
-                            newbutton.BackColor = Color.FromArgb(36, 37, 40);
-                            newbutton.ForeColor = Color.White;
-                            newbutton.FlatStyle = FlatStyle.Flat;
+                Button newbutton = new Button();
+                newbutton.Width = 233;
+                newbutton.Height = 45;
+                newbutton.BackColor = Color.FromArgb(36, 37, 40);
+                newbutton.ForeColor = Color.White;
+                newbutton.FlatStyle = FlatStyle.Flat;
 
-                            newbutton.FlatAppearance.BorderSize = 0;
-                            newbutton.Font = new Font("Nationale Light", 12);
-                            newbutton.TextAlign = ContentAlignment.MiddleLeft;
-                            newbutton.Text = reader[0].ToString();
-                            newbutton.Click += Newbutton_Click;
-                            flowLayoutPanel_showPL.FlowDirection = FlowDirection.TopDown;
-                            hideScrollBar(flowLayoutPanel_showPL);
+                newbutton.FlatAppearance.BorderSize = 0;
+                newbutton.Font = new Font("Nationale Light", 12);
+                newbutton.TextAlign = ContentAlignment.MiddleLeft;
+                newbutton.Text = playlist["playlistTitle"].ToString();
+                newbutton.Tag= playlist["playlistID"].ToString();
+                newbutton.Click += Newbutton_Click;
+                flowLayoutPanel_showPL.FlowDirection = FlowDirection.TopDown;
+                hideScrollBar(flowLayoutPanel_showPL);
 
-                            flowLayoutPanel_showPL.Controls.Add(newbutton);
-                        }
-                    }
-                    else MessageBox.Show("No playlist found");
-                }
+                flowLayoutPanel_showPL.Controls.Add(newbutton);
             }
-            sqlcon.Close();
         }
 
         //get choosenPL, playlist that clicked
@@ -74,13 +64,14 @@ namespace Tify
         private void Newbutton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            string choosenPL = button.Text;
-            playlistchoseevent(choosenPL, trackID);
+            //ten playlist
+            choosenPlaylistID = button.Tag as string;
+            playlistchoseevent(choosenPlaylistID, trackID);
             this.Close();
         }
 
         //convert string choosenPL to ID
-        private string choosenPLID;
+        private string choosenPlaylistID;//ten playlist
 
         private void convert(string input)
         {
@@ -94,7 +85,7 @@ namespace Tify
                         while (reader.Read())
                         {
                             if (input.Trim() == reader[0].ToString())
-                                choosenPLID = reader[1].ToString();
+                                choosenPlaylistID = reader[1].ToString();
                         }
                     }
                 }
@@ -117,6 +108,8 @@ namespace Tify
             }
         }
 
+
+        //exit button
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -132,12 +125,12 @@ namespace Tify
 
         private void playlistchoseevent(string input, string trackID)
         {
-            convert(input);
+           
             try
             {
-                Database.AddTrackToPlaylist(trackID, choosenPLID);
+                Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
                 //add row to playlist
-                mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPLID);
+                mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPlaylistID);
             }
             catch (SqlException ex)
             {
