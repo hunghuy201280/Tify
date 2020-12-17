@@ -163,10 +163,10 @@
     <Compile Include="Artist\Artist_NewCreate.Designer.cs">
       <DependentUpon>Artist_NewCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\ForgotPassword.cs">
+    <Compile Include="Account\ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\ForgotPassword.Designer.cs">
+    <Compile Include="Account\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Home\HomeItemContainer.cs">
@@ -175,10 +175,10 @@
     <Compile Include="Home\HomeItemContainer.Designer.cs">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Login.cs">
+    <Compile Include="Account\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Login.Designer.cs">
+    <Compile Include="Account\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MainScreen.cs">
@@ -236,16 +236,16 @@
     <Compile Include="SongDetail\ReccommendTrackControl.Designer.cs">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Register.cs">
+    <Compile Include="Account\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Register.Designer.cs">
+    <Compile Include="Account\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\resetPassword.cs">
+    <Compile Include="Account\resetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\resetPassword.Designer.cs">
+    <Compile Include="Account\resetPassword.Designer.cs">
       <DependentUpon>resetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="SongDetail\SongDetail.cs">
@@ -260,10 +260,10 @@
     <Compile Include="Track\Tracks.Designer.cs">
       <DependentUpon>Tracks.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateInfo.cs">
+    <Compile Include="Account\UpdateInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateInfo.Designer.cs">
+    <Compile Include="Account\UpdateInfo.Designer.cs">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Artist\ArtistDetail.resx">
@@ -305,13 +305,13 @@
     <EmbeddedResource Include="Playlist\CreatePlayList.resx">
       <DependentUpon>CreatePlayList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\ForgotPassword.resx">
+    <EmbeddedResource Include="Account\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home\HomeItemContainer.resx">
       <DependentUpon>HomeItemContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\Login.resx">
+    <EmbeddedResource Include="Account\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home\Home.resx">
@@ -347,10 +347,10 @@
     <EmbeddedResource Include="SongDetail\ReccommendTrackControl.resx">
       <DependentUpon>ReccommendTrackControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\Register.resx">
+    <EmbeddedResource Include="Account\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\resetPassword.resx">
+    <EmbeddedResource Include="Account\resetPassword.resx">
       <DependentUpon>resetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SongDetail\SongDetail.resx">
@@ -359,7 +359,7 @@
     <EmbeddedResource Include="Track\Tracks.resx">
       <DependentUpon>Tracks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateInfo.resx">
+    <EmbeddedResource Include="Account\UpdateInfo.resx">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />

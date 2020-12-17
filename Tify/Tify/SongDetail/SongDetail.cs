@@ -233,7 +233,14 @@ namespace Tify
             string[] songUrl = e.Argument as string[];
             for (int i = 0; i < 10; i++)
             {
-               
+                //debug
+
+                mainscr.debug.BeginInvoke((Action)delegate () {
+                    mainscr.debug.richTextBox1.Text += songUrl[i] + "\n\n";
+
+                });
+
+                //
                 string url = songUrl[i];
                 temp[i] = new ReccommendTrackControl(mainscr);
                 string[] artists = GetSongData.GetSongArtist(url);
@@ -248,7 +255,9 @@ namespace Tify
                 tempbx.Load(GetSongData.GetSongCover(url));
                 temp[i].setSongCover(tempbx.Image);
                 temp[i].setSongName(GetSongData.GetSongName(url));
-                mainscr.debug.richTextBox1.Text += songUrl[i]+"\n\n";
+
+
+               
             }
             e.Result = temp;
         }

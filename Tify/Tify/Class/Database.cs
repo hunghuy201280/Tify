@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -6,6 +7,86 @@ namespace Tify
 {
     internal class Database
     {
+
+
+        static public void updateDOB(int userID, string newDOB)
+        {
+            string sqlQuery = "update Account set DOB=@newDOB where userID=@userID";
+            DateTime dob;
+            try
+            {
+                dob = DateTime.Parse(newDOB);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@newDOB", dob.ToShortDateString());
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+        static public void updatePhone(int userID, string newPhone)
+        {
+            string sqlQuery = "update Account set phone=@newPhone where userID=@userID";
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@newPhone", newPhone);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+        static public void updateName(int userID, string newName)
+        {
+            string sqlQuery = "update Account set name=@newName where userID=@userID";
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@newName", newName);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+        static public void updatePassword(int userID,string newPassword)
+        {
+            string sqlQuery = "update Account set password=@newPassword where userID=@userID";
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@newPassword", newPassword);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+
+
         static public void deletePlaylist(string playlistID)
         {
             /*
