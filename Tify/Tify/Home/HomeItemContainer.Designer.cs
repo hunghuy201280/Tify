@@ -112,8 +112,8 @@
 
         private System.Windows.Forms.Button forward_Button;
         private System.Windows.Forms.Button back_Button;
-        private System.Windows.Forms.FlowLayoutPanel recentlyPlayed_flowLayoutPanel;
         private System.Windows.Forms.Label containerTitle_label;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.FlowLayoutPanel recentlyPlayed_flowLayoutPanel;
     }
 }

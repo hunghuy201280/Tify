@@ -63,10 +63,7 @@ namespace Tify
         private void track_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             trackTable = Database.getTrack_Album(albumID);
-            this.BeginInvoke((Action)delegate () {
-                setContainerUI();
-                
-            });
+            
         }
         private PictureBox PB = new PictureBox();
 
@@ -96,7 +93,7 @@ namespace Tify
                 return;
             }
 
-          
+            setContainerUI();
 
         }
 

@@ -34,7 +34,6 @@
             this.artistName_Label = new System.Windows.Forms.Label();
             this.info_worker = new System.ComponentModel.BackgroundWorker();
             this.detail_worker = new System.ComponentModel.BackgroundWorker();
-            this.album_worker = new System.ComponentModel.BackgroundWorker();
             this.artistCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,11 +86,6 @@
             this.detail_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.detail_worker_DoWork);
             this.detail_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.detail_worker_RunWorkerCompleted);
             // 
-            // album_worker
-            // 
-            this.album_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.album_worker_DoWork);
-            this.album_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.album_worker_RunWorkerCompleted);
-            // 
             // ArtistContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +107,5 @@
         private System.ComponentModel.BackgroundWorker detail_worker;
         public System.Windows.Forms.Panel artistCover_panel;
         public System.Windows.Forms.Label artistName_Label;
-        private System.ComponentModel.BackgroundWorker album_worker;
     }
 }
