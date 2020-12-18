@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace Tify
 {
-    public partial class LoadingContainer : UserControl
+    public partial class Loading_SplashScreen : UserControl
     {
-        public LoadingContainer()
+        public Loading_SplashScreen()
         {
             InitializeComponent();
-           
-            panel1.Location = new Point(this.ClientSize.Width / 2 - this.Size.Width / 2, this.ClientSize.Height / 2 - this.Size.Height / 2);
-            panel1.Anchor = AnchorStyles.None;
         }
     }
 }

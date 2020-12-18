@@ -320,3 +320,49 @@ delete From Playlist where playlistID=50
 select * from Account
 
 select * from Track
+
+select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album 
+                join AlbumHasTrack on Album.albumID = AlbumHasTrack.albumID
+                join Track on Track.trackID = AlbumHasTrack.trackID
+                left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID
+                left join Artist on ArtistHasTrack.artistID = Artist.artistID
+               where Album.albumTitle like '%ai cho toi%' order by Album.albumID
+
+			   select * from UserLikeAlbum
+
+
+			   select * from Album join AlbumHasTrack on AlbumHasTrack.albumID=Album.albumID
+			   join Track on Track.trackID=AlbumHasTrack.trackID where albumTitle like '%ai cho toi%'
+			   left join ArtistHasTrack
+			   select * from Album where albumTitle like '%ai cho toi%'
+
+
+select Track.* from Track except select Track.* from Track join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID
+
+select Track.*,Artist.* from Track left join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID
+left join Artist on Artist.artistID=ArtistHasTrack.artistID 
+where Track.trackID=115084
+--2729
+select * from UserLikeAlbum
+
+select * from Artist where artistID='https://chiasenhac.vn/ca-si/bao-yen-zsswzwqtq919ef.html';
+
+select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album 
+                join AlbumHasTrack on Album.albumID = AlbumHasTrack.albumID
+                join Track on Track.trackID = AlbumHasTrack.trackID
+                left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID
+                left join Artist on ArtistHasTrack.artistID = Artist.artistID
+               where Album.artistID='https://chiasenhac.vn/ca-si/binz-zsswvs3bq924wq.html' order by Album.albumID
+
+select Album.* from Album where artistID='https://chiasenhac.vn/ca-si/son-tung-m-tp-zssw0b3tq9nqwf.html'
+
+select * from Artist where artistName like '%son tung%'
+
+select Album.*,Track.*,Artist.artistName,Artist.artistID artistLink,spotifyID from Album 
+                join AlbumHasTrack on Album.albumID = AlbumHasTrack.albumID 
+                join Track on Track.trackID = AlbumHasTrack.trackID 
+                left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID 
+                left join Artist on ArtistHasTrack.artistID = Artist.artistID 
+                where Album.albumID = 4559 order by Track.trackID
+
+

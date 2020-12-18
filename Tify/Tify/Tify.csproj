@@ -92,11 +92,11 @@
     <Compile Include="Loading.Designer.cs">
       <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoadingContainer.cs">
+    <Compile Include="Loading_SplashScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LoadingContainer.Designer.cs">
-      <DependentUpon>LoadingContainer.cs</DependentUpon>
+    <Compile Include="Loading_SplashScreen.Designer.cs">
+      <DependentUpon>Loading_SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Playlist\AddtoPlaylistForm.cs">
       <SubType>Form</SubType>
@@ -281,8 +281,8 @@
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoadingContainer.resx">
-      <DependentUpon>LoadingContainer.cs</DependentUpon>
+    <EmbeddedResource Include="Loading_SplashScreen.resx">
+      <DependentUpon>Loading_SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Playlist\AddtoPlaylistForm.resx">
       <DependentUpon>AddtoPlaylistForm.cs</DependentUpon>

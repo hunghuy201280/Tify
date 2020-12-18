@@ -53,7 +53,16 @@ namespace Tify
                 }
             }
         }
-        public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, bool open, PlaylistContainer callFm)
+
+        public void showLoading()
+        {
+            loading_SplashScreen1.BringToFront();
+        }
+        public void hideLoading()
+        {
+            loading_SplashScreen1.SendToBack();
+        }
+        public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, PlaylistContainer callFm)
         {
             this.trackInfo = trackInfos;
             playlistContainer = callFm;
@@ -109,9 +118,9 @@ namespace Tify
             createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks - "+str;
             //Created by me - 10 Tracks - 1:24:00
 
-            if (open)
-                playlistForm.openChildForm(this);
+                
             track_dataGridView.Rows.Remove(track_dataGridView.Rows[0]);
+            hideLoading();
         }
 
 
