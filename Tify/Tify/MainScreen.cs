@@ -420,8 +420,33 @@ namespace Tify
 
         #region Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
 
+        private void changeMenuButtonForeColor(Button btt)
+        {
+            if (btt.Image != null)
+            {
+                if (btt.ImageIndex % 2 == 0)
+                    btt.ImageIndex += 1;
+            }
+            btt.ForeColor = Color.FromArgb(0, 255, 255);
+            Button temp;
+            foreach (var item in menu_panel.Controls)
+            {
+                if (item is Button && item != btt)
+                {
+                    temp = item as Button;
+
+                    if (temp.Image != null)
+                    {
+                        if (temp.ImageIndex % 2 == 1)
+                            temp.ImageIndex -= 1;
+                    }
+                    temp.ForeColor = Color.FromArgb(255, 255, 255);
+                }
+            }
+        }
         private void menu_button_Click(object sender, EventArgs e)
         {
+            nextFormStack.Clear();
             Button btt = sender as Button;
             if (btt.Image != null)
             {
@@ -458,8 +483,7 @@ namespace Tify
                 openChildForm(albumsScr);
             else if (sender == tracks_button)
                 openChildForm(tracksScr);
-            else
-                MessageBox.Show("Chuaco");
+            
         }
 
         #endregion Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
@@ -541,14 +565,7 @@ namespace Tify
 
         public Form activeForm = null;
 
-        private void loadSingleChildForm(Form fm)
-        {
-            fm.TopLevel = false;
-            fm.FormBorderStyle = FormBorderStyle.None;
-            fm.Dock = DockStyle.Fill;
-            childForm_panel.Controls.Add(fm);
-            fm.Show();
-        }
+      
 
         private void firstLoadChildForm()
         {
@@ -573,18 +590,47 @@ namespace Tify
                 item.Show();
             }
         }
+        Stack previousFormStack = new Stack();
+        Stack nextFormStack = new Stack();
 
+        private bool pushToPrevious = true;
         public void openChildForm(Form childForm)
         {
             if (activeForm != null)
             {
                 if (activeForm == childForm)
                     return;
-                activeForm.SendToBack();
+                if (pushToPrevious)
+                {
+                    previousFormStack.Push(activeForm);
+                }
             }
 
+            if (childForm == homeScr)
+            {
+                changeMenuButtonForeColor(home_button);
+            }
+            else if (childForm == myMixScr)
+            {
+                changeMenuButtonForeColor(myMix_button);
+            }
+            else if (childForm == playlistScr)
+            {
+                changeMenuButtonForeColor(playlist_button);
+            }
+            else if (childForm == artistScr)
+            {
+                changeMenuButtonForeColor(artists_button);
+            }
+            else if (childForm == albumsScr)
+            {
+                changeMenuButtonForeColor(albums_button);
+            }
+            else if (childForm == tracksScr)
+            {
+                changeMenuButtonForeColor(tracks_button);
+            }
             activeForm = childForm;
-
             childForm.BringToFront();
         }
 
@@ -993,6 +1039,7 @@ namespace Tify
         {
             if (previousTracks.Count == 0)
             {
+                
                 previousTracks.Push(new TrackInfo() {TrackLink=testURL,TrackID="99999" });
             }
             else
@@ -1037,8 +1084,9 @@ namespace Tify
             add2PL = new AddtoPlaylistForm(this,currentTrack.TrackID);
             add2PL.Show();
         }
-        #endregion
 
+     
+        #endregion
 
         #region click event for playlist button
 
@@ -1047,6 +1095,41 @@ namespace Tify
             PlaylistContainer playlistContainer = (sender as Button).Tag as PlaylistContainer;
             playlistContainer.opacity_panel_MouseClick(playlistContainer.opacity_panel, e);
         }
+
+       
+
+
+        #endregion
+
+        #region next,back form button
+        private void forwardForm_button_Click(object sender, EventArgs e)
+        {
+            if (nextFormStack.Count!=0)
+            {
+                if (activeForm != null)
+                {
+                    previousFormStack.Push(activeForm);
+                }
+                pushToPrevious = false;
+                openChildForm(nextFormStack.Pop() as Form);
+                pushToPrevious = true;
+            }
+        }
+        private void backForm_button_Click(object sender, EventArgs e)
+        {
+            if (previousFormStack.Count == 0)
+            {
+                return;
+            }
+            if (activeForm!=null)
+            {
+                nextFormStack.Push(activeForm);
+            }
+            pushToPrevious = false;
+            openChildForm(previousFormStack.Pop() as Form);
+            pushToPrevious = true;
+        }
+
         #endregion
     }
 }

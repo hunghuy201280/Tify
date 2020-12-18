@@ -158,7 +158,7 @@ namespace Tify
             foreach (DataRow track in trackTable.Rows)
             {
                 //stop add at
-                if (trackTable.Rows[10] == track)
+                if (trackTable.Rows.Count>10 &&trackTable.Rows[10] == track)
                 {
                     break;
                 }

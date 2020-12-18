@@ -47,7 +47,7 @@ namespace Tify
 
             loading_SplashScreen1.BringToFront();
             search_worker.RunWorkerAsync();
-            //artist_worker.RunWorkerAsync();
+            artist_worker.RunWorkerAsync();
             album_worker.RunWorkerAsync();
         }
 
