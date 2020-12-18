@@ -65,6 +65,7 @@
             this.tracks_button = new System.Windows.Forms.Button();
             this.PlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.searchBar_panel = new System.Windows.Forms.Panel();
+            this.forwardForm_button = new System.Windows.Forms.Button();
             this.searchbarContainer_panel = new System.Windows.Forms.Panel();
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
             this.searchBar_icon = new System.Windows.Forms.PictureBox();
@@ -73,6 +74,7 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
+            this.backForm_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -712,12 +714,27 @@
             // searchBar_panel
             // 
             this.searchBar_panel.BackColor = System.Drawing.Color.Black;
+            this.searchBar_panel.Controls.Add(this.backForm_button);
+            this.searchBar_panel.Controls.Add(this.forwardForm_button);
             this.searchBar_panel.Controls.Add(this.searchbarContainer_panel);
             this.searchBar_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchBar_panel.Location = new System.Drawing.Point(240, 0);
             this.searchBar_panel.Name = "searchBar_panel";
             this.searchBar_panel.Size = new System.Drawing.Size(887, 60);
             this.searchBar_panel.TabIndex = 1;
+            // 
+            // forwardForm_button
+            // 
+            this.forwardForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forwardForm_button.BackgroundImage")));
+            this.forwardForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.forwardForm_button.FlatAppearance.BorderSize = 0;
+            this.forwardForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forwardForm_button.Location = new System.Drawing.Point(49, 11);
+            this.forwardForm_button.Name = "forwardForm_button";
+            this.forwardForm_button.Size = new System.Drawing.Size(40, 40);
+            this.forwardForm_button.TabIndex = 1;
+            this.forwardForm_button.UseVisualStyleBackColor = true;
+            this.forwardForm_button.Click += new System.EventHandler(this.forwardForm_button_Click);
             // 
             // searchbarContainer_panel
             // 
@@ -801,6 +818,19 @@
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
             // 
+            // backForm_button
+            // 
+            this.backForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("backForm_button.BackgroundImage")));
+            this.backForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.backForm_button.FlatAppearance.BorderSize = 0;
+            this.backForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backForm_button.Location = new System.Drawing.Point(6, 11);
+            this.backForm_button.Name = "backForm_button";
+            this.backForm_button.Size = new System.Drawing.Size(40, 40);
+            this.backForm_button.TabIndex = 1;
+            this.backForm_button.UseVisualStyleBackColor = true;
+            this.backForm_button.Click += new System.EventHandler(this.backForm_button_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,6 +910,8 @@
         private System.Windows.Forms.Button addToPlaylist_Player_Button;
         private System.Windows.Forms.Button like_Player_Button;
         public System.Windows.Forms.FlowLayoutPanel PlayList_FlowPanel;
+        private System.Windows.Forms.Button forwardForm_button;
+        private System.Windows.Forms.Button backForm_button;
     }
 }
 

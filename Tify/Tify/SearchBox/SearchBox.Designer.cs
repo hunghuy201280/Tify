@@ -42,6 +42,7 @@
             this.SearchBox_Tracks = new System.Windows.Forms.Button();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
             this.bottom_panel = new System.Windows.Forms.Panel();
+            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.track_gridView = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +57,7 @@
             this.artist_worker = new System.ComponentModel.BackgroundWorker();
             this.album_worker = new System.ComponentModel.BackgroundWorker();
             this.playlist_worker = new System.ComponentModel.BackgroundWorker();
+            this.pic_time_Track_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -161,6 +163,7 @@
             // 
             // bottom_panel
             // 
+            this.bottom_panel.Controls.Add(this.loading_SplashScreen1);
             this.bottom_panel.Controls.Add(this.track_gridView);
             this.bottom_panel.Controls.Add(this.playlistResult_flowPanel);
             this.bottom_panel.Controls.Add(this.albumResult_flowPanel);
@@ -170,6 +173,15 @@
             this.bottom_panel.Name = "bottom_panel";
             this.bottom_panel.Size = new System.Drawing.Size(871, 472);
             this.bottom_panel.TabIndex = 4;
+            // 
+            // loading_SplashScreen1
+            // 
+            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
+            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
+            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
+            this.loading_SplashScreen1.Size = new System.Drawing.Size(871, 472);
+            this.loading_SplashScreen1.TabIndex = 0;
             // 
             // track_gridView
             // 
@@ -343,6 +355,13 @@
             this.playlist_worker.WorkerReportsProgress = true;
             this.playlist_worker.WorkerSupportsCancellation = true;
             // 
+            // pic_time_Track_worker
+            // 
+            this.pic_time_Track_worker.WorkerReportsProgress = true;
+            this.pic_time_Track_worker.WorkerSupportsCancellation = true;
+            this.pic_time_Track_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.pic_time_Track_worker_DoWork);
+            this.pic_time_Track_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.pic_time_Track_worker_RunWorkerCompleted);
+            // 
             // SearchBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +403,7 @@
         private System.ComponentModel.BackgroundWorker artist_worker;
         private System.ComponentModel.BackgroundWorker album_worker;
         private System.ComponentModel.BackgroundWorker playlist_worker;
+        private Loading_SplashScreen loading_SplashScreen1;
+        private System.ComponentModel.BackgroundWorker pic_time_Track_worker;
     }
 }

@@ -89,15 +89,7 @@ namespace Tify
 
         public void openChildForm(Form childForm)
         {
-            if (mainScr.activeForm != null)
-            {
-                if (mainScr.activeForm == childForm)
-                    return;
-            }
-
-            mainScr.activeForm = childForm;
-
-            childForm.BringToFront();
+            mainScr.openChildForm(childForm);
         }
 
         #endregion Mở childForm

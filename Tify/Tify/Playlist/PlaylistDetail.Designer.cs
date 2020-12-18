@@ -74,7 +74,7 @@
             this.description_label.ForeColor = System.Drawing.Color.White;
             this.description_label.Location = new System.Drawing.Point(222, 95);
             this.description_label.Name = "description_label";
-            this.description_label.Size = new System.Drawing.Size(118, 25);
+            this.description_label.Size = new System.Drawing.Size(93, 20);
             this.description_label.TabIndex = 2;
             this.description_label.Text = "Description";
             // 
@@ -85,7 +85,7 @@
             this.playlistTitle_label.ForeColor = System.Drawing.Color.White;
             this.playlistTitle_label.Location = new System.Drawing.Point(218, 41);
             this.playlistTitle_label.Name = "playlistTitle_label";
-            this.playlistTitle_label.Size = new System.Drawing.Size(320, 53);
+            this.playlistTitle_label.Size = new System.Drawing.Size(256, 43);
             this.playlistTitle_label.TabIndex = 1;
             this.playlistTitle_label.Text = "Playlist Name";
             // 
@@ -226,7 +226,7 @@
             this.createdBy_label.ForeColor = System.Drawing.Color.Gray;
             this.createdBy_label.Location = new System.Drawing.Point(222, 124);
             this.createdBy_label.Name = "createdBy_label";
-            this.createdBy_label.Size = new System.Drawing.Size(328, 25);
+            this.createdBy_label.Size = new System.Drawing.Size(263, 20);
             this.createdBy_label.TabIndex = 2;
             this.createdBy_label.Text = "Created by me - 10 Tracks - 1:24:00";
             // 
@@ -280,7 +280,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.track_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.track_dataGridView.RowHeadersVisible = false;
-            this.track_dataGridView.RowHeadersWidth = 51;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
@@ -307,7 +306,6 @@
             this.no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.no.FillWeight = 10F;
             this.no.HeaderText = "#";
-            this.no.MinimumWidth = 6;
             this.no.Name = "no";
             this.no.ReadOnly = true;
             // 
@@ -315,7 +313,6 @@
             // 
             this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.title.HeaderText = "TITLE";
-            this.title.MinimumWidth = 6;
             this.title.Name = "title";
             this.title.ReadOnly = true;
             // 
@@ -323,7 +320,6 @@
             // 
             this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.artist.HeaderText = "ARTIST";
-            this.artist.MinimumWidth = 6;
             this.artist.Name = "artist";
             this.artist.ReadOnly = true;
             // 
@@ -331,7 +327,6 @@
             // 
             this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dateAdded.HeaderText = "DATE ADDED";
-            this.dateAdded.MinimumWidth = 6;
             this.dateAdded.Name = "dateAdded";
             this.dateAdded.ReadOnly = true;
             // 
@@ -339,7 +334,6 @@
             // 
             this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.time.HeaderText = "TIME";
-            this.time.MinimumWidth = 6;
             this.time.Name = "time";
             this.time.ReadOnly = true;
             // 
@@ -404,8 +398,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(887, 570);
-            this.Controls.Add(this.loading_SplashScreen1);
             this.Controls.Add(this.BigPanel);
+            this.Controls.Add(this.loading_SplashScreen1);
             this.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlaylistDetail";
