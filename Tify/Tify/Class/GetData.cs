@@ -159,15 +159,24 @@ namespace GetData
 
         static public string GetSongCover(string url)
         {
-            if (Uri.TryCreate(url, UriKind.Absolute, out link))
+            try
             {
-                var dom = CQ.CreateFromUrl(link.ToString());
-                return dom[@"div#companion_cover img"].Attr("src");
+                if (Uri.TryCreate(url, UriKind.Absolute, out link))
+                {
+                    var dom = CQ.CreateFromUrl(link.ToString());
+                    return dom[@"div#companion_cover img"].Attr("src");
+                }
+                else
+                {
+                    return string.Empty;
+                }
             }
-            else
+            catch (Exception)
             {
+
                 return string.Empty;
             }
+          
 
 
         }

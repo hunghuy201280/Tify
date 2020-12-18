@@ -73,18 +73,38 @@ namespace Tify
             albumName_label.Text = trackTable.Rows[0]["albumTitle"].ToString();
             albumYear_label.Text = trackTable.Rows[0]["albumYear"].ToString();
 
-            PB.Load(GetData.GetSongData.GetSongCover(trackTable.Rows[0]["albumLink"].ToString()));
-            albumCover_panel.BackgroundImage = PB.Image;
-            if (trackTable.Rows[0]["artistID"].ToString() == "")
-            {
-                string[] artistArr = GetSongData.GetSongArtist(trackTable.Rows[0]["albumLink"].ToString());
-                albumArtist_label.Text = artistArr[0];
-            }
-            else
-            {
-                DataTable albumArtistTable = Database.getArtistBaseOnID(trackTable.Rows[0]["artistID"].ToString());
-                albumArtist_label.Text = trackTable.Rows[0]["artistname"].ToString();
-            }
+            ThreadPool.QueueUserWorkItem(delegate {
+
+                PB.Load(GetData.GetSongData.GetSongCover(trackTable.Rows[0]["albumLink"].ToString()));
+                string artistText="";
+                DataTable albumArtistTable;
+                if (trackTable.Rows[0]["artistID"].ToString() == "")
+                {
+                    string[] artistArr = GetSongData.GetSongArtist(trackTable.Rows[0]["albumLink"].ToString());
+                    foreach (string art in artistArr)
+                    {
+                        if (art!=artistArr[artistArr.Length-1])
+                        {
+                            artistText += art + ";";
+                        }
+                        else
+                        {
+                            artistText += art;
+                        }
+                    }
+                   
+                }
+                else
+                {
+                    albumArtistTable = Database.getArtistBaseOnID(trackTable.Rows[0]["artistID"].ToString());
+                    artistText = trackTable.Rows[0]["artistname"].ToString();
+                }
+                this.BeginInvoke((Action)delegate {
+                    albumCover_panel.BackgroundImage = PB.Image;
+                    albumArtist_label.Text = artistText;
+                });
+            });
+           
         }
         private void track_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

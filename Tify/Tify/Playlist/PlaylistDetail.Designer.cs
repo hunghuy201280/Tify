@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.description_label = new System.Windows.Forms.Label();
             this.playlistTitle_label = new System.Windows.Forms.Label();
             this.playlistCover_pictureBox = new System.Windows.Forms.Panel();
+            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
             this.top_panel = new System.Windows.Forms.Panel();
+            this.deletePlaylist_button = new System.Windows.Forms.Button();
+            this.addToPlaylist_Button = new System.Windows.Forms.Button();
+            this.playShuffle_Button = new System.Windows.Forms.Button();
+            this.play_button = new System.Windows.Forms.Button();
             this.createdBy_label = new System.Windows.Forms.Label();
             this.track_dataGridView = new System.Windows.Forms.DataGridView();
             this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,25 +53,17 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deletePlaylist_button = new System.Windows.Forms.Button();
-            this.addToPlaylist_Button = new System.Windows.Forms.Button();
-            this.playShuffle_Button = new System.Windows.Forms.Button();
-            this.play_button = new System.Windows.Forms.Button();
-            this.Cover4_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
-            this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.BigPanel = new System.Windows.Forms.Panel();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.playlistCover_pictureBox.SuspendLayout();
-            this.top_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover1_pictureBox)).BeginInit();
+            this.top_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).BeginInit();
             this.BigPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,46 @@
             this.playlistCover_pictureBox.Size = new System.Drawing.Size(200, 200);
             this.playlistCover_pictureBox.TabIndex = 0;
             // 
+            // Cover4_pictureBox
+            // 
+            this.Cover4_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
+            this.Cover4_pictureBox.Location = new System.Drawing.Point(100, 100);
+            this.Cover4_pictureBox.Name = "Cover4_pictureBox";
+            this.Cover4_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover4_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover4_pictureBox.TabIndex = 3;
+            this.Cover4_pictureBox.TabStop = false;
+            // 
+            // Cover3_pictureBox
+            // 
+            this.Cover3_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist1;
+            this.Cover3_pictureBox.Location = new System.Drawing.Point(3, 100);
+            this.Cover3_pictureBox.Name = "Cover3_pictureBox";
+            this.Cover3_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover3_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover3_pictureBox.TabIndex = 2;
+            this.Cover3_pictureBox.TabStop = false;
+            // 
+            // Cover2_pictureBox
+            // 
+            this.Cover2_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist;
+            this.Cover2_pictureBox.Location = new System.Drawing.Point(100, 3);
+            this.Cover2_pictureBox.Name = "Cover2_pictureBox";
+            this.Cover2_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover2_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover2_pictureBox.TabIndex = 1;
+            this.Cover2_pictureBox.TabStop = false;
+            // 
+            // Cover1_pictureBox
+            // 
+            this.Cover1_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
+            this.Cover1_pictureBox.Location = new System.Drawing.Point(3, 3);
+            this.Cover1_pictureBox.Name = "Cover1_pictureBox";
+            this.Cover1_pictureBox.Size = new System.Drawing.Size(100, 100);
+            this.Cover1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Cover1_pictureBox.TabIndex = 0;
+            this.Cover1_pictureBox.TabStop = false;
+            // 
             // top_panel
             // 
             this.top_panel.Controls.Add(this.deletePlaylist_button);
@@ -115,6 +155,69 @@
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 270);
             this.top_panel.TabIndex = 2;
+            // 
+            // deletePlaylist_button
+            // 
+            this.deletePlaylist_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.deletePlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletePlaylist_button.FlatAppearance.BorderSize = 0;
+            this.deletePlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.deletePlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletePlaylist_button.ForeColor = System.Drawing.Color.White;
+            this.deletePlaylist_button.Image = global::Tify.Properties.Resources.delete_playlist;
+            this.deletePlaylist_button.Location = new System.Drawing.Point(628, 162);
+            this.deletePlaylist_button.Name = "deletePlaylist_button";
+            this.deletePlaylist_button.Size = new System.Drawing.Size(57, 50);
+            this.deletePlaylist_button.TabIndex = 4;
+            this.deletePlaylist_button.UseVisualStyleBackColor = false;
+            this.deletePlaylist_button.Click += new System.EventHandler(this.deletePlaylist_button_Click);
+            // 
+            // addToPlaylist_Button
+            // 
+            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
+            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
+            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
+            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 162);
+            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
+            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
+            this.addToPlaylist_Button.TabIndex = 3;
+            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
+            // 
+            // playShuffle_Button
+            // 
+            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
+            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
+            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
+            this.playShuffle_Button.Location = new System.Drawing.Point(390, 162);
+            this.playShuffle_Button.Name = "playShuffle_Button";
+            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
+            this.playShuffle_Button.TabIndex = 3;
+            this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
+            // 
+            // play_button
+            // 
+            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.play_button.FlatAppearance.BorderSize = 0;
+            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.play_button.ForeColor = System.Drawing.Color.White;
+            this.play_button.Image = global::Tify.Properties.Resources.play;
+            this.play_button.Location = new System.Drawing.Point(226, 162);
+            this.play_button.Name = "play_button";
+            this.play_button.Size = new System.Drawing.Size(145, 50);
+            this.play_button.TabIndex = 3;
+            this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // createdBy_label
             // 
@@ -136,14 +239,14 @@
             this.track_dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.track_dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.track_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.track_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -154,35 +257,35 @@
             this.addToPlaylist,
             this.remove,
             this.delete});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.track_dataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.track_dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.track_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.track_dataGridView.EnableHeadersVisualStyles = false;
             this.track_dataGridView.GridColor = System.Drawing.Color.Black;
             this.track_dataGridView.Location = new System.Drawing.Point(0, 270);
             this.track_dataGridView.Name = "track_dataGridView";
             this.track_dataGridView.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.track_dataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.track_dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.track_dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -252,15 +355,6 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::Tify.Properties.Resources.delete;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.MinimumWidth = 20;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 20;
-            // 
             // delete
             // 
             this.delete.HeaderText = "";
@@ -271,108 +365,14 @@
             this.delete.ReadOnly = true;
             this.delete.Width = 20;
             // 
-            // deletePlaylist_button
+            // dataGridViewImageColumn1
             // 
-            this.deletePlaylist_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.deletePlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deletePlaylist_button.FlatAppearance.BorderSize = 0;
-            this.deletePlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.deletePlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deletePlaylist_button.ForeColor = System.Drawing.Color.White;
-            this.deletePlaylist_button.Image = global::Tify.Properties.Resources.delete_playlist;
-            this.deletePlaylist_button.Location = new System.Drawing.Point(628, 162);
-            this.deletePlaylist_button.Name = "deletePlaylist_button";
-            this.deletePlaylist_button.Size = new System.Drawing.Size(57, 50);
-            this.deletePlaylist_button.TabIndex = 4;
-            this.deletePlaylist_button.UseVisualStyleBackColor = false;
-            this.deletePlaylist_button.Click += new System.EventHandler(this.deletePlaylist_button_Click);
-            // 
-            // addToPlaylist_Button
-            // 
-            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
-            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
-            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
-            this.addToPlaylist_Button.Location = new System.Drawing.Point(554, 162);
-            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
-            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
-            this.addToPlaylist_Button.TabIndex = 3;
-            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
-            // 
-            // playShuffle_Button
-            // 
-            this.playShuffle_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.playShuffle_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playShuffle_Button.FlatAppearance.BorderSize = 0;
-            this.playShuffle_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.playShuffle_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playShuffle_Button.ForeColor = System.Drawing.Color.White;
-            this.playShuffle_Button.Image = global::Tify.Properties.Resources.shuffle_white;
-            this.playShuffle_Button.Location = new System.Drawing.Point(390, 162);
-            this.playShuffle_Button.Name = "playShuffle_Button";
-            this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
-            this.playShuffle_Button.TabIndex = 3;
-            this.playShuffle_Button.UseVisualStyleBackColor = false;
-            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
-            // 
-            // play_button
-            // 
-            this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.play_button.FlatAppearance.BorderSize = 0;
-            this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.play_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.play_button.ForeColor = System.Drawing.Color.White;
-            this.play_button.Image = global::Tify.Properties.Resources.play;
-            this.play_button.Location = new System.Drawing.Point(226, 162);
-            this.play_button.Name = "play_button";
-            this.play_button.Size = new System.Drawing.Size(145, 50);
-            this.play_button.TabIndex = 3;
-            this.play_button.UseVisualStyleBackColor = false;
-            this.play_button.Click += new System.EventHandler(this.play_button_Click);
-            // 
-            // Cover4_pictureBox
-            // 
-            this.Cover4_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
-            this.Cover4_pictureBox.Location = new System.Drawing.Point(100, 100);
-            this.Cover4_pictureBox.Name = "Cover4_pictureBox";
-            this.Cover4_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover4_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover4_pictureBox.TabIndex = 3;
-            this.Cover4_pictureBox.TabStop = false;
-            // 
-            // Cover3_pictureBox
-            // 
-            this.Cover3_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist1;
-            this.Cover3_pictureBox.Location = new System.Drawing.Point(3, 100);
-            this.Cover3_pictureBox.Name = "Cover3_pictureBox";
-            this.Cover3_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover3_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover3_pictureBox.TabIndex = 2;
-            this.Cover3_pictureBox.TabStop = false;
-            // 
-            // Cover2_pictureBox
-            // 
-            this.Cover2_pictureBox.Image = global::Tify.Properties.Resources.dummy_artist;
-            this.Cover2_pictureBox.Location = new System.Drawing.Point(100, 3);
-            this.Cover2_pictureBox.Name = "Cover2_pictureBox";
-            this.Cover2_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover2_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover2_pictureBox.TabIndex = 1;
-            this.Cover2_pictureBox.TabStop = false;
-            // 
-            // Cover1_pictureBox
-            // 
-            this.Cover1_pictureBox.Image = global::Tify.Properties.Resources.dummy_cover;
-            this.Cover1_pictureBox.Location = new System.Drawing.Point(3, 3);
-            this.Cover1_pictureBox.Name = "Cover1_pictureBox";
-            this.Cover1_pictureBox.Size = new System.Drawing.Size(100, 100);
-            this.Cover1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Cover1_pictureBox.TabIndex = 0;
-            this.Cover1_pictureBox.TabStop = false;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::Tify.Properties.Resources.delete;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 20;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 20;
             // 
             // BigPanel
             // 
@@ -398,20 +398,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(887, 570);
-            this.Controls.Add(this.loading_SplashScreen1);
             this.Controls.Add(this.BigPanel);
+            this.Controls.Add(this.loading_SplashScreen1);
             this.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlaylistDetail";
             this.Text = "PlaylistDetail";
             this.playlistCover_pictureBox.ResumeLayout(false);
-            this.top_panel.ResumeLayout(false);
-            this.top_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover2_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover1_pictureBox)).EndInit();
+            this.top_panel.ResumeLayout(false);
+            this.top_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.track_dataGridView)).EndInit();
             this.BigPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

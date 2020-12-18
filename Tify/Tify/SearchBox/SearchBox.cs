@@ -45,21 +45,21 @@ namespace Tify
             }
             searchKeyWord = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(keyword);
 
+            loading_SplashScreen1.BringToFront();
             search_worker.RunWorkerAsync();
             //artist_worker.RunWorkerAsync();
-            //album_worker.RunWorkerAsync();
+            album_worker.RunWorkerAsync();
         }
 
         #region load album
 
         private DataTable albumTab_Table = new DataTable();
-        private List<AlbumContainer> albums = new List<AlbumContainer>();
+        private List<AlbumContainer> albumContainers = new List<AlbumContainer>();
 
         private void loadAlbum()
         {
             try
             {
-                albumTab_Table = Database.getAlbumTable_Search(searchKeyWord);
                 if (albumTab_Table.Rows.Count == 0)
                 {
                     MessageBox.Show("Empty album");
@@ -69,11 +69,11 @@ namespace Tify
                 {
                     foreach (DataRow item in albumTab_Table.Rows)
                     {
-                        /*AlbumContainer container = new AlbumContainer(GetSongData.GetSongCover(item["albumLink"].ToString()), item["albumTitle"].ToString(),
-                                     item["artistName"].ToString(), item["albumYear"].ToString());
-                        albums.Add(container);*/
+                        albumContainers.Add(new AlbumContainer(item["albumID"].ToString(), mainScr.albumsScr));
                     }
                 }
+                albumResult_flowPanel.Controls.AddRange(albumContainers.ToArray());
+
             }
             catch (Exception e)
             {
@@ -83,12 +83,13 @@ namespace Tify
 
         private void album_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            loadAlbum();
+            albumTab_Table = Database.getAlbumTable_Search(searchKeyWord);
         }
 
         private void album_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            albumResult_flowPanel.Controls.AddRange(albums.ToArray());
+            loadAlbum();
+
         }
 
         #endregion load album
@@ -96,13 +97,12 @@ namespace Tify
         #region load artist
 
         private DataTable artistTab_Table = new DataTable();
-        private List<ArtistContainer> artists = new List<ArtistContainer>();
+        private List<ArtistContainer> artistContainers = new List<ArtistContainer>();
 
         private void loadArtist()
         {
             try
             {
-                artistTab_Table = Database.getArtistTable_Search(searchKeyWord);
                 if (artistTab_Table.Rows.Count == 0)
                 {
                     MessageBox.Show("Empty artist");
@@ -112,26 +112,27 @@ namespace Tify
                 {
                     foreach (DataRow item in artistTab_Table.Rows)
                     {
-                        ArtistContainer container = new ArtistContainer(GetSongData.getArtistCover(item["artistName"].ToString())
-                            , item["artistName"].ToString());
-                        artists.Add(container);
+                        artistContainers.Add(new ArtistContainer(mainScr.artistScr, item["artistID"].ToString()));
                     }
                 }
+                artistResult_flowPanel.Controls.AddRange(artistContainers.ToArray());
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message + "artist");
             }
+
         }
 
         private void artist_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            loadArtist();
+            artistTab_Table = Database.getArtistTable_Search(searchKeyWord);
         }
 
         private void artist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            artistResult_flowPanel.Controls.AddRange(artists.ToArray());
+            loadArtist();
         }
 
         #endregion load artist
@@ -185,6 +186,15 @@ namespace Tify
                             artist += artistName["artistName"].ToString() + ";";
                         }
                         tempTrack.Title = item["trackTitle"].ToString();
+
+                        if (artist=="")
+                        {
+                            string[] artists = GetSongData.GetSongArtist(tempTrack.TrackLink);
+                            foreach (string artistName in artists)
+                            {
+                                artist += artistName + ";";
+                            }
+                        }
                         tempTrack.Artist = artist;
 
 
@@ -238,15 +248,18 @@ namespace Tify
         private void search_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             SetGridViewRows(trackInfos);
+            loading_SplashScreen1.SendToBack();
             SearchBox_Tracks.PerformClick();
-          
         }
 
         #endregion load track
 
+
+        #region category button click 
         private void SearchBox_Button_Click(object sender, EventArgs e)
         {
             //top button
+
             Button btn = (Button)sender;
             foreach (var item in top_panel.Controls)
             {
@@ -275,8 +288,12 @@ namespace Tify
                 albumResult_flowPanel.BringToFront();
             else if (btn.Tag.ToString() == "playlist_button")
                 playlistResult_flowPanel.BringToFront();
+            if (search_worker.IsBusy)
+            {
+                loading_SplashScreen1.BringToFront();
+            }
         }
-
+        #endregion
         #region enter,leave row
 
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -309,6 +326,7 @@ namespace Tify
 
         #endregion enter,leave row
 
+        #region track datagridview cell click 
         private void track_gridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -353,7 +371,7 @@ namespace Tify
                 add2PL.ShowDialog();
             }
         }
+        #endregion
 
-       
     }
 }

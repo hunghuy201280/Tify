@@ -23,22 +23,7 @@ namespace Tify
             }
         }
 
-        public ArtistContainer(string coverLink, string name)
-        {
-            InitializeComponent();
-            opacity_panel.BackColor = Color.FromArgb(125, Color.Black);
-            this.DoubleBuffered = true;
-
-            foreach (Control control in this.Controls)
-            {
-                MainScreen.EnableDoubleBuferring(control);
-            }
-            PictureBox temp = new PictureBox();
-            temp.Load(coverLink);
-            artistCover_panel.BackgroundImage = temp.Image;
-            artistName_Label.Text = name;
-        }
-
+        
         public string artistID;
         public Artist artistFm;
         public string spotifyID;
@@ -54,16 +39,23 @@ namespace Tify
             info_worker.RunWorkerAsync();
 
             //load tracktable
-            new Thread(() =>
-            {
+            ThreadPool.QueueUserWorkItem(delegate {
                 trackTable = Database.getTrack_Artist(artistID);
-            }).Start();
+            });
+            /*   new Thread(() =>
+               {
+                   trackTable = Database.getTrack_Artist(artistID);
+               }).Start();*/
 
             //load album table
-            new Thread(() =>
+
+            ThreadPool.QueueUserWorkItem(delegate {
+                albumTalbe = Database.getAlbumOfArtist(artistID);
+            });
+         /*   new Thread(() =>
             {
                 albumTalbe = Database.getAlbumOfArtist(artistID);
-            }).Start();
+            }).Start();*/
 
             this.DoubleBuffered = true;
 
@@ -78,6 +70,8 @@ namespace Tify
         public void reloadStatus()
         {
             //reload in track
+
+        
             new Thread(() =>
             {
                 foreach (var track in trackInfos)
@@ -125,9 +119,15 @@ namespace Tify
             if (infoTable.Rows.Count != 0)
             {
                 artistName_Label.Text = infoTable.Rows[0]["artistName"].ToString();
-                PictureBox pb = new PictureBox();
-                pb.Load(GetSongData.getArtistCover(artistName_Label.Text));
-                artistCover_panel.BackgroundImage = pb.Image;
+
+                ThreadPool.QueueUserWorkItem(delegate {
+                    PictureBox pb = new PictureBox();
+                    pb.Load(GetSongData.getArtistCover(artistName_Label.Text));
+                    this.BeginInvoke((Action)delegate {
+                    artistCover_panel.BackgroundImage = pb.Image;
+                    });
+                });
+               
             }
         }
 
@@ -246,6 +246,7 @@ namespace Tify
         }
 
         private DataTable albumTalbe;
+        
         private List<AlbumContainer> albumContainers = new List<AlbumContainer>();
 
         #endregion load artist's albums
