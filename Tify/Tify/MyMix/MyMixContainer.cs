@@ -43,6 +43,7 @@ namespace Tify
 
             cover_worker.RunWorkerAsync();
             artist_worker.RunWorkerAsync();
+            
 
             artist_label.Text = "";
 
@@ -143,7 +144,10 @@ namespace Tify
 
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
+            mixForm.openChildForm(mixForm.mixDetail);
             loadMixDetailContent(mixID);
+            
+
         }
 
         private bool isLoaded = false;
@@ -163,6 +167,11 @@ namespace Tify
                 return;
             }
             load_worker.RunWorkerAsync();
+            mixDetail.showLoading();
+
+
+
+
         }
 
         private DataTable trackTable = new DataTable();
@@ -211,11 +220,14 @@ namespace Tify
                 }
             }
             isLoaded = true;
+           
         }
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             mixDetail.SetDetailInfo(trackInfos, myMixCover_panel.BackgroundImage,true,this);
+           
+            mixDetail.hideLoading();
         }
 
 

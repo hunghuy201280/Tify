@@ -101,8 +101,10 @@ namespace Tify
 
         public void loadInfo()
         {
+            AlbumForm.albumDetail.showLoading();
             //load cac track trong album khi click vao
-            load_worker.RunWorkerAsync(); 
+            load_worker.RunWorkerAsync();
+           
         }
 
         private void load_worker_DoWork(object sender, DoWorkEventArgs e)
@@ -160,6 +162,7 @@ namespace Tify
                 }
             }
             isLoaded = true;
+            
         }
 
         private void load_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -169,13 +172,15 @@ namespace Tify
                 return;
             }
             AlbumForm.albumDetail.setDetailInfo(trackInfos, PB, this);
+            AlbumForm.albumDetail.hideLoading();
+
         }
 
         private bool isLoaded = false;
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
             //load cac track trong album khi click vao
-
+            AlbumForm.openChildForm(AlbumForm.albumDetail);
             if (isLoaded)
             {
                 AlbumForm.albumDetail.setDetailInfo(trackInfos,PB, this);

@@ -204,6 +204,7 @@ namespace Tify
                 return;
             }
             artistFm.artistDetail.setTrackDetailInfo(trackInfos, this);
+
         }
 
         #endregion load  track
@@ -214,6 +215,7 @@ namespace Tify
 
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
+            artistFm.openChildForm(artistFm.artistDetail);
             if (isLoaded)
             {
                 artistFm.artistDetail.setTrackDetailInfo(trackInfos, this);
@@ -225,7 +227,7 @@ namespace Tify
             {
                 return;
             }
-
+            artistFm.artistDetail.showLoading();
             detail_worker.RunWorkerAsync();
             loadAlbum();
         }

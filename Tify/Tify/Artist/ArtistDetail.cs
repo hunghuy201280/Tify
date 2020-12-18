@@ -27,6 +27,14 @@ namespace Tify
             }
 
         }
+        public void showLoading()
+        {
+            loading_SplashScreen1.BringToFront();
+        }
+        public void hideLoading()
+        {
+            loading_SplashScreen1.SendToBack();
+        }
         public ArtistDetail(Artist artistFm)
         {
             InitializeComponent();
@@ -91,6 +99,7 @@ namespace Tify
 
             artistForm.openChildForm(this);
             track_gridView.Rows.Remove(track_gridView.Rows[0]);
+            hideLoading();
         }
 
 

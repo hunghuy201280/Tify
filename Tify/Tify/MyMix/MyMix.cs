@@ -60,7 +60,7 @@ namespace Tify
         }
 
         private List<MyMixContainer> mixContainers=new List<MyMixContainer>();
-        private MixDetail mixDetail;
+        public MixDetail mixDetail;
 
 
         public void reloadMixContainer(/*string MIXID*/)

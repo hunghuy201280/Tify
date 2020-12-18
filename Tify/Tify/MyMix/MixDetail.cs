@@ -58,12 +58,19 @@ namespace Tify
         }
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
-  
-       
 
-      
 
-        
+        public void showLoading()
+        {
+            loading_SplashScreen1.BringToFront();
+        }
+        public void hideLoading()
+        {
+            loading_SplashScreen1.SendToBack();
+        }
+
+
+
         public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open,MyMixContainer callFm)
         {
             track_dataGridView.Rows.Clear();

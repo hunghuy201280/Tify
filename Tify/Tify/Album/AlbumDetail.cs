@@ -58,7 +58,15 @@ namespace Tify
         private List<TrackInfo> albumInfo;
         private AlbumContainer albumContainer;
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
-        
+
+        public void showLoading()
+        {
+            loading_SplashScreen1.BringToFront();
+        }
+        public void hideLoading()
+        {
+            loading_SplashScreen1.SendToBack();
+        }
         public void setDetailInfo(List<TrackInfo> trackInfos, PictureBox inputcover, AlbumContainer callFm)
         {
             this.albumInfo = trackInfos;
@@ -110,43 +118,12 @@ namespace Tify
 
         private void trackGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
-                return;
 
-            //change cursor
-            album_gridView.Cursor = Cursors.Hand;
-
-
-            //change back color
-            if (album_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
-            {
-                return;
-            }
-            foreach (DataGridViewCell cell in album_gridView.Rows[e.RowIndex].Cells)
-            {
-                cell.Style.BackColor = Color.FromArgb(19, 19, 20);
-            }
         }
 
         private void trackGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
-                return;
 
-            //change cursor
-
-            album_gridView.Cursor = Cursors.Default;
-
-            //change back color
-
-            if (album_gridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.Black)
-            {
-                return;
-            }
-            foreach (DataGridViewCell cell in album_gridView.Rows[e.RowIndex].Cells)
-            {
-                cell.Style.BackColor = Color.Black;
-            }
         }
 
 
@@ -156,41 +133,7 @@ namespace Tify
         #region cell click event
         private void album_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex == -1)
-                return;
-            DataGridViewRow selectedRow = album_gridView.Rows[e.RowIndex];
-            TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
-           
-            if (e.ColumnIndex == 5)//like track
-            {
-                if (selectedTrack.IsLoved == false)
-                {
-                    Database.addTrackToUserLikeTrack(albumsFm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
-                    selectedTrack.IsLoved = true;
-                    selectedRow.Cells[5].Value = Properties.Resources.liked;
-                    selectedRow.Tag = selectedTrack;
-                    selectedTrack.DateAdded = DateTime.Now.ToShortDateString();
-                    albumsFm.mainScr.tracksScr.addRow(selectedTrack);
-                }
-                else
-                {
-                    Database.deleteTrackInUserLikeTrack(albumsFm.mainScr.CurrentUser.UserID, selectedTrack.TrackID);
-                    selectedTrack.IsLoved = false;
-                    selectedRow.Cells[5].Value = Properties.Resources.like;
-                    selectedRow.Tag = selectedTrack;
-                    albumsFm.mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
-                }
-                albumsFm.reloadAlbumContainer();
-                albumsFm.mainScr.myMixScr.reloadMixContainer();
-                albumsFm.mainScr.playlistScr.reloadPlaylistContainer();
-                albumsFm.mainScr.artistScr.reloadArtistContainer();
 
-            }
-            else if (e.ColumnIndex == 4)// add to playlist
-            {
-                AddtoPlaylistForm addFm = new AddtoPlaylistForm(albumsFm.mainScr, selectedTrack.TrackID);
-                addFm.ShowDialog();
-            }
         }
         #endregion
 
@@ -198,8 +141,7 @@ namespace Tify
         #region play track on clicking row
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            TrackInfo trackToPlay = album_gridView.Rows[e.RowIndex].Tag as TrackInfo;
-            albumsFm.mainScr.changeSong(trackToPlay);
+
         }
 
         #endregion
@@ -207,15 +149,7 @@ namespace Tify
         #region play button
         private void play_button_Click(object sender, EventArgs e)
         {
-            albumsFm.mainScr.nextTrack.Clear();
-            foreach (DataGridViewRow track in album_gridView.Rows)
-            {
 
-                TrackInfo trackToPlay = track.Tag as TrackInfo;
-                albumsFm.mainScr.addTrackToQueue(trackToPlay);
-
-            }
-            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
         #endregion
 
@@ -223,24 +157,7 @@ namespace Tify
         #region shuffle button
         private void playShuffle_Button_Click(object sender, EventArgs e)
         {
-            albumsFm.mainScr.nextTrack.Clear();
-            Random rnd = new Random(DateTime.Now.Second);
-            int numOfTracks = album_gridView.Rows.Count;
 
-
-            List<int> numbers = new List<int>();
-            for (int i = 0; i < numOfTracks; i++)
-            {
-                int num = rnd.Next(0, numOfTracks);
-                while (numbers.Contains(num))
-                {
-                    num = rnd.Next(0, numOfTracks);
-                }
-                numbers.Add(num);
-                TrackInfo trackToPlay = album_gridView.Rows[num].Tag as TrackInfo;
-                albumsFm.mainScr.addTrackToQueue(trackToPlay);
-            }
-            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
         #endregion
     }

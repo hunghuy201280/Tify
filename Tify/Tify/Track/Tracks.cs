@@ -37,7 +37,7 @@ namespace Tify
             //dummy row
             track_gridView.Rows.Add();
             track_gridView.Rows[0].Visible = false;
-
+            
             //MessageBox.Show(dataGridView1.Font.ToString());
         }
 
@@ -105,6 +105,7 @@ namespace Tify
         private void load_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             loadTrack();
+            showLoading();
            
             
               
@@ -115,8 +116,12 @@ namespace Tify
             if (e.Error == null)
             {
                 track_gridView.Rows.AddRange(rows.ToArray());
+               
             }
-           
+            hideLoading();
+            
+            
+
         }
 
         public void loadTrack()
@@ -167,6 +172,7 @@ namespace Tify
                 }
             }
             addTrackInfoToRow(trackInfos.ToArray());
+            
         }
 
         private void addTrackInfoToRow(TrackInfo[] trackinfos)
@@ -193,6 +199,7 @@ namespace Tify
                 temp.Cells[4].Value = track.Time;
                 rows.Add(temp);
             }
+            
         }
 
         #endregion load track
@@ -290,6 +297,15 @@ namespace Tify
             }
         }
 
-       
+        public void showLoading()
+        {
+            panel_loading.BringToFront();
+        }
+        public void hideLoading()
+        {
+            panel_loading.SendToBack();
+        }
+
+
     }
 }
