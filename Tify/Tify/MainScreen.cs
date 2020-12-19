@@ -95,6 +95,14 @@ namespace Tify
         public TrackInfo currentTrack;
         public void loadNewSong(TrackInfo track)
         {
+            //kiểm tra track có trong dtb chưa nếu chưa add vào.
+            if (!Database.checkTrackExisted(track.TrackLink))
+            {
+                track.TrackID=Database.addTrackToDatabase(track.TrackLink);
+                track.IsLoved = false;
+
+            }
+            //
             currentTrack = track;
             soundPlayer.URL = GetSongData.GetStreamLink(track.TrackLink);
 
@@ -149,10 +157,10 @@ namespace Tify
             {
                 duration_label.Text = track.Time;
             }
-            
+
 
             //check play/pause button
-
+            checkLoved();
             
 
             //lay suggest song
@@ -1115,6 +1123,8 @@ namespace Tify
                 pushToPrevious = true;
             }
         }
+
+
         private void backForm_button_Click(object sender, EventArgs e)
         {
             if (previousFormStack.Count == 0)
@@ -1130,6 +1140,52 @@ namespace Tify
             pushToPrevious = true;
         }
 
+        #endregion
+
+        #region add to loved track
+        private void like_Player_Button_Click(object sender, EventArgs e)
+        {
+
+
+            if (currentTrack.IsLoved == false)
+            {
+                Database.addTrackToUserLikeTrack(CurrentUser.UserID, currentTrack.TrackID);
+                currentTrack.IsLoved = true;
+                like_Player_Button.BackgroundImage = Properties.Resources.liked;
+                currentTrack.DateAdded = DateTime.Now.ToShortDateString();
+                tracksScr.addRow(currentTrack);
+            }
+            else
+            {
+                Database.deleteTrackInUserLikeTrack(CurrentUser.UserID, currentTrack.TrackID);
+                currentTrack.IsLoved = false;
+                like_Player_Button.BackgroundImage = Properties.Resources.like;
+                tracksScr.deleteRow(currentTrack.TrackID);
+            }
+
+
+            //sau khi add vao track reload lai cac track trong  cacform
+            myMixScr.reloadMixContainer();
+            playlistScr.reloadPlaylistContainer();
+            albumsScr.reloadAlbumContainer();
+            artistScr.reloadArtistContainer();
+
+
+        }
+        
+        public void checkLoved()
+        {
+            if (Database.checkIfTrackLoved(currentTrack.TrackID,CurrentUser.UserID))
+            {
+                currentTrack.IsLoved = true;
+                like_Player_Button.BackgroundImage = Properties.Resources.liked;
+            }
+            else
+            {
+                currentTrack.IsLoved = false;
+                like_Player_Button.BackgroundImage = Properties.Resources.like;
+            }
+        }
         #endregion
     }
 }

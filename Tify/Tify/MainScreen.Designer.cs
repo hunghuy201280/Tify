@@ -65,6 +65,7 @@
             this.tracks_button = new System.Windows.Forms.Button();
             this.PlayList_FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.searchBar_panel = new System.Windows.Forms.Panel();
+            this.backForm_button = new System.Windows.Forms.Button();
             this.forwardForm_button = new System.Windows.Forms.Button();
             this.searchbarContainer_panel = new System.Windows.Forms.Panel();
             this.searchBar_textBox = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.backForm_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -131,6 +131,7 @@
             this.like_Player_Button.Size = new System.Drawing.Size(24, 24);
             this.like_Player_Button.TabIndex = 1;
             this.like_Player_Button.UseVisualStyleBackColor = true;
+            this.like_Player_Button.Click += new System.EventHandler(this.like_Player_Button_Click);
             // 
             // addToPlaylist_Player_Button
             // 
@@ -723,6 +724,19 @@
             this.searchBar_panel.Size = new System.Drawing.Size(887, 60);
             this.searchBar_panel.TabIndex = 1;
             // 
+            // backForm_button
+            // 
+            this.backForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("backForm_button.BackgroundImage")));
+            this.backForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.backForm_button.FlatAppearance.BorderSize = 0;
+            this.backForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backForm_button.Location = new System.Drawing.Point(6, 11);
+            this.backForm_button.Name = "backForm_button";
+            this.backForm_button.Size = new System.Drawing.Size(40, 40);
+            this.backForm_button.TabIndex = 1;
+            this.backForm_button.UseVisualStyleBackColor = true;
+            this.backForm_button.Click += new System.EventHandler(this.backForm_button_Click);
+            // 
             // forwardForm_button
             // 
             this.forwardForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forwardForm_button.BackgroundImage")));
@@ -817,19 +831,6 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
-            // 
-            // backForm_button
-            // 
-            this.backForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("backForm_button.BackgroundImage")));
-            this.backForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.backForm_button.FlatAppearance.BorderSize = 0;
-            this.backForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backForm_button.Location = new System.Drawing.Point(6, 11);
-            this.backForm_button.Name = "backForm_button";
-            this.backForm_button.Size = new System.Drawing.Size(40, 40);
-            this.backForm_button.TabIndex = 1;
-            this.backForm_button.UseVisualStyleBackColor = true;
-            this.backForm_button.Click += new System.EventHandler(this.backForm_button_Click);
             // 
             // MainScreen
             // 

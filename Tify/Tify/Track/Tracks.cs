@@ -215,7 +215,7 @@ namespace Tify
             mainScr.playlistScr.reloadPlaylistContainer();
             mainScr.albumsScr.reloadAlbumContainer();
             mainScr.artistScr.reloadArtistContainer();
-
+            mainScr.checkLoved();
 
         }
         private void check_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)

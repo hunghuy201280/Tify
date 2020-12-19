@@ -67,11 +67,9 @@ namespace Tify
         {
             foreach (MyMixContainer container in mixContainers)
             {
-               /* if (container.mixID==MIXID)
-                {*/
+               
                     container.reloadStatus();
-                   /* break;*/
-               /* }*/
+              
             }
         }
 

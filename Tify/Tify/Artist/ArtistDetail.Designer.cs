@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_loading = new System.Windows.Forms.Panel();
+            this.artistAlbum_container = new Tify.HomeItemContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.track_gridView = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
@@ -51,7 +52,6 @@
             this.play_button = new System.Windows.Forms.Button();
             this.artistName_label = new System.Windows.Forms.Label();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
-            this.artistAlbum_container = new Tify.HomeItemContainer();
             this.panel_loading.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -71,6 +71,16 @@
             this.panel_loading.Size = new System.Drawing.Size(938, 570);
             this.panel_loading.TabIndex = 0;
             // 
+            // artistAlbum_container
+            // 
+            this.artistAlbum_container.BackColor = System.Drawing.Color.Black;
+            this.artistAlbum_container.Dock = System.Windows.Forms.DockStyle.Top;
+            this.artistAlbum_container.Location = new System.Drawing.Point(0, 498);
+            this.artistAlbum_container.MinimumSize = new System.Drawing.Size(0, 320);
+            this.artistAlbum_container.Name = "artistAlbum_container";
+            this.artistAlbum_container.Size = new System.Drawing.Size(921, 320);
+            this.artistAlbum_container.TabIndex = 6;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.track_gridView);
@@ -79,7 +89,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(917, 228);
+            this.panel1.Size = new System.Drawing.Size(921, 228);
             this.panel1.TabIndex = 5;
             // 
             // track_gridView
@@ -146,7 +156,7 @@
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.Height = 42;
             this.track_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.track_gridView.Size = new System.Drawing.Size(917, 181);
+            this.track_gridView.Size = new System.Drawing.Size(921, 181);
             this.track_gridView.TabIndex = 2;
             // 
             // img
@@ -219,7 +229,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 29);
+            this.label1.Size = new System.Drawing.Size(72, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tracks";
             // 
@@ -234,7 +244,7 @@
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
-            this.top_panel.Size = new System.Drawing.Size(917, 270);
+            this.top_panel.Size = new System.Drawing.Size(921, 270);
             this.top_panel.TabIndex = 4;
             // 
             // button1
@@ -315,7 +325,7 @@
             this.artistName_label.ForeColor = System.Drawing.Color.White;
             this.artistName_label.Location = new System.Drawing.Point(218, 41);
             this.artistName_label.Name = "artistName_label";
-            this.artistName_label.Size = new System.Drawing.Size(221, 53);
+            this.artistName_label.Size = new System.Drawing.Size(177, 43);
             this.artistName_label.TabIndex = 1;
             this.artistName_label.Text = "My Mix 1";
             // 
@@ -328,24 +338,14 @@
             this.loading_SplashScreen1.Size = new System.Drawing.Size(938, 570);
             this.loading_SplashScreen1.TabIndex = 6;
             // 
-            // artistAlbum_container
-            // 
-            this.artistAlbum_container.BackColor = System.Drawing.Color.Black;
-            this.artistAlbum_container.Dock = System.Windows.Forms.DockStyle.Top;
-            this.artistAlbum_container.Location = new System.Drawing.Point(0, 498);
-            this.artistAlbum_container.MinimumSize = new System.Drawing.Size(0, 320);
-            this.artistAlbum_container.Name = "artistAlbum_container";
-            this.artistAlbum_container.Size = new System.Drawing.Size(917, 320);
-            this.artistAlbum_container.TabIndex = 6;
-            // 
             // ArtistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(938, 570);
-            this.Controls.Add(this.loading_SplashScreen1);
             this.Controls.Add(this.panel_loading);
+            this.Controls.Add(this.loading_SplashScreen1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArtistDetail";

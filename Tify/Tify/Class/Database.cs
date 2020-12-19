@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GetData;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +8,58 @@ namespace Tify
 {
     internal class Database
     {
+
+        static public bool checkTrackExisted (string trackLink)
+        {
+            string sqlQuery = "select count(*) from Track where trackLink=@trackLink";
+
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackLink", trackLink);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            if (Table.Rows[0][0].ToString()=="0")
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        static public string addTrackToDatabase(string trackUrl)
+        {
+            //string[0]=title,[1]=link
+            string[] title_link = GetSongData.getTrackTitle_Link(trackUrl);
+            string sqlQuery = "insert into Track output inserted.trackID values(@trackTitle,@trackLink)";
+
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackTitle", title_link[0]);
+                cmd.Parameters.AddWithValue("@trackLink", title_link[1]);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return Table.Rows[0][0].ToString();
+        }
+
 
         static public DataTable getAlbumOfArtist(string artistID)
         {

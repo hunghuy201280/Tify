@@ -17,6 +17,15 @@ namespace GetData
     {
         static Uri link;
 
+        static public string[] getTrackTitle_Link(string url)
+        {
+            //string[0]=title,[1]=link
+            CQ css = CQ.CreateFromUrl(url);
+            string trackLink = css[@"div[id='music-listen-2139724'] div[class='name d-table-cell'] a"].Attr("href");
+            string trackName = css[@"div[id='music-listen-2139724'] div[class='name d-table-cell'] a"].Attr("title");
+            return new string[] { trackName, trackLink };
+        }
+
         static public string getArtistLinkWithName(string name, DataTable dataTable)
         {
             foreach (DataRow item in dataTable.Rows)

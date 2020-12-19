@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_loading = new System.Windows.Forms.Panel();
             this.album_gridView = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             this.panel_loading.Controls.Add(this.album_gridView);
             this.panel_loading.Controls.Add(this.top_panel);
             this.panel_loading.Location = new System.Drawing.Point(0, 0);
-            this.panel_loading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_loading.Margin = new System.Windows.Forms.Padding(2);
             this.panel_loading.Name = "panel_loading";
             this.panel_loading.Size = new System.Drawing.Size(887, 570);
             this.panel_loading.TabIndex = 0;
@@ -75,14 +75,14 @@
             this.album_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.album_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.album_gridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.album_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.album_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.album_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.album_gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No,
@@ -91,36 +91,36 @@
             this.time,
             this.addToPlaylist,
             this.remove});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.album_gridView.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.album_gridView.DefaultCellStyle = dataGridViewCellStyle10;
             this.album_gridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.album_gridView.EnableHeadersVisualStyles = false;
             this.album_gridView.GridColor = System.Drawing.Color.Black;
             this.album_gridView.Location = new System.Drawing.Point(0, 270);
             this.album_gridView.Name = "album_gridView";
             this.album_gridView.ReadOnly = true;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.album_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.album_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.album_gridView.RowHeadersVisible = false;
             this.album_gridView.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            this.album_gridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.album_gridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.album_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.album_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.album_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -131,6 +131,10 @@
             this.album_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.album_gridView.Size = new System.Drawing.Size(887, 300);
             this.album_gridView.TabIndex = 7;
+            this.album_gridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.album_gridView_CellMouseClick);
+            this.album_gridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
+            this.album_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
+            this.album_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
             // No
             // 
@@ -254,6 +258,7 @@
             this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
             this.playShuffle_Button.TabIndex = 3;
             this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
             // 
             // play_button
             // 
@@ -269,6 +274,7 @@
             this.play_button.Size = new System.Drawing.Size(145, 50);
             this.play_button.TabIndex = 3;
             this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // releaseYear_label
             // 
@@ -318,8 +324,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(887, 570);
-            this.Controls.Add(this.loading_SplashScreen1);
             this.Controls.Add(this.panel_loading);
+            this.Controls.Add(this.loading_SplashScreen1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AlbumDetail";
             this.Text = "AlbumDetail";
