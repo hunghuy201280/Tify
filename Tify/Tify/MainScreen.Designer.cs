@@ -124,6 +124,7 @@
             // 
             this.like_Player_Button.BackgroundImage = global::Tify.Properties.Resources.like;
             this.like_Player_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.like_Player_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.like_Player_Button.FlatAppearance.BorderSize = 0;
             this.like_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.like_Player_Button.Location = new System.Drawing.Point(34, 1);
@@ -137,6 +138,7 @@
             // 
             this.addToPlaylist_Player_Button.BackgroundImage = global::Tify.Properties.Resources.add;
             this.addToPlaylist_Player_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addToPlaylist_Player_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addToPlaylist_Player_Button.FlatAppearance.BorderSize = 0;
             this.addToPlaylist_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addToPlaylist_Player_Button.Location = new System.Drawing.Point(3, 0);

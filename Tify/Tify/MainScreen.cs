@@ -102,6 +102,10 @@ namespace Tify
                 track.IsLoved = false;
 
             }
+            else
+            {
+                track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
+            }
             //
             currentTrack = track;
             soundPlayer.URL = GetSongData.GetStreamLink(track.TrackLink);
@@ -112,6 +116,7 @@ namespace Tify
             {
                 songPicture.Load(GetSongData.GetSongCover(track.TrackLink));
                 songCover_panel.BackgroundImage = songPicture.Image;
+                track.Cover=songPicture.Image;
             }
             else
             {
@@ -127,10 +132,12 @@ namespace Tify
                 {
                     artist_label.Text += artist + ";";
                 }
+                track.Artist = artist_label.Text;
             }
             else
             {
                 artist_label.Text = track.Artist;
+
             }
 
             //title
@@ -138,6 +145,7 @@ namespace Tify
             if (track.Title== null)
             {
                 title_label.Text = GetSongData.GetSongName(track.TrackLink);
+                track.Title = title_label.Text;
             }
             else
             {
@@ -152,6 +160,7 @@ namespace Tify
                 TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(track.TrackLink));
                 string timeString = time.ToString(@"mm\:ss");
                 duration_label.Text = timeString;
+                track.Time = timeString;
             }
             else
             {
@@ -159,9 +168,12 @@ namespace Tify
             }
 
 
-            //check play/pause button
+            //check loved
             checkLoved();
             
+            //check playpause
+            //chua  lam
+            //
 
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(track.TrackLink);

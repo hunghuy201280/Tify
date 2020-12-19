@@ -116,7 +116,6 @@ namespace Tify
             if (e.Error == null)
             {
                 track_gridView.Rows.AddRange(rows.ToArray());
-               
             }
             hideLoading();
             

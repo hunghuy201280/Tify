@@ -9,6 +9,27 @@ namespace Tify
     internal class Database
     {
 
+
+        static public string getTrackIdBaseOnTrackLink(string trackLink)
+        {
+            string sqlQuery = "select * from Track where trackLink=@trackLink";
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackLink", trackLink);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return checkTable.Rows[0]["trackID"].ToString();
+        }
         static public bool checkTrackExisted (string trackLink)
         {
             string sqlQuery = "select count(*) from Track where trackLink=@trackLink";
@@ -38,7 +59,7 @@ namespace Tify
         static public string addTrackToDatabase(string trackUrl)
         {
             //string[0]=title,[1]=link
-            string[] title_link = GetSongData.getTrackTitle_Link(trackUrl);
+            string title = GetSongData.getTrackTitle(trackUrl);
             string sqlQuery = "insert into Track output inserted.trackID values(@trackTitle,@trackLink)";
 
             DataTable Table = new DataTable();
@@ -48,8 +69,8 @@ namespace Tify
 
             using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
             {
-                cmd.Parameters.AddWithValue("@trackTitle", title_link[0]);
-                cmd.Parameters.AddWithValue("@trackLink", title_link[1]);
+                cmd.Parameters.AddWithValue("@trackTitle", title);
+                cmd.Parameters.AddWithValue("@trackLink", trackUrl);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     Table.Load(reader);
@@ -559,8 +580,8 @@ delete From Playlist where playlistID=50
         static public DataTable loadTrackTableInTracks(int userID)
         {
             string sqlQuery = "select userID,dateAdded,Track.*,artistName,Artist.artistID from UserLikeTrack join Track on Track.trackID=UserLikeTrack.trackID " +
-               "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID  " +
-               "join Artist on ArtistHasTrack.artistID = Artist.artistID   " +
+               "left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID  " +
+               "left join Artist on ArtistHasTrack.artistID = Artist.artistID   " +
                "where userID = @id order by trackTitle";
 
             DataTable trackTable = new DataTable();
@@ -655,8 +676,8 @@ delete From Playlist where playlistID=50
             string sqlQuery = "select Playlist.*,Track.*,Artist.*,Account.*,dateAdded from Playlist " +
                 "join PlaylistHasTrack  on PlaylistHasTrack.playlistID = Playlist.playlistID " +
                 "join Track on Track.trackID = PlaylistHasTrack.trackID " +
-                "join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
-                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
+                "left join ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
+                "left join Artist on Artist.artistID = ArtistHasTrack.artistID " +
                 "join Account on Account.userID = Playlist.owner " +
                 "where Playlist.playlistID = @playlistID order by trackTitle";
 
@@ -794,9 +815,9 @@ delete From Playlist where playlistID=50
         {
             DataTable tempTable = new DataTable();
 
-            string sqlQuery = "select Track.*,Artist.* from Track join  " +
+            string sqlQuery = "select Track.*,Artist.* from Track left join  " +
                 "ArtistHasTrack on ArtistHasTrack.trackID = Track.trackID " +
-                "join Artist on Artist.artistID = ArtistHasTrack.artistID " +
+                "left join Artist on Artist.artistID = ArtistHasTrack.artistID " +
                 "where Track.trackID = @trackID";
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
