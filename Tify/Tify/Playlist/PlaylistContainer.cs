@@ -143,8 +143,13 @@ namespace Tify
 
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
+                    
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
+                    if (temp.Artist == "")
+                    {
+                        temp.Artist = GetSongData.loadArtist(temp.TrackLink);
+                    }
                     DateTime dateAdded = DateTime.Parse(track["dateAdded"].ToString());
                     temp.DateAdded = dateAdded.ToShortDateString();
                     if (Database.checkIfTrackLoved(temp.TrackID, playlistFm.mainScr.CurrentUser.UserID))
@@ -260,6 +265,10 @@ namespace Tify
                     temp.Artist = track["artistName"].ToString();
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
+                    if (temp.Artist == "")
+                    {
+                        temp.Artist = GetSongData.loadArtist(temp.TrackLink);
+                    }
 
                     temp.DateAdded = DateTime.Now.ToShortDateString();
                     if (Database.checkIfTrackLoved(temp.TrackID, playlistFm.mainScr.CurrentUser.UserID))
@@ -282,6 +291,8 @@ namespace Tify
             }
             loadCover(false);
             numberOfTracks_label.Text = ++trackCount + " Tracks";
+            if(playlistFm.playlistDetail.playlistContainer==this && !(playlistFm.mainScr.Controls[0] is SongDetail))
+            playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
         }
 
         #endregion addtrack to playlist

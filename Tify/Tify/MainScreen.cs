@@ -1164,6 +1164,7 @@ namespace Tify
                 Database.addTrackToUserLikeTrack(CurrentUser.UserID, currentTrack.TrackID);
                 currentTrack.IsLoved = true;
                 like_Player_Button.BackgroundImage = Properties.Resources.liked;
+                songDetail.like_Player_Button.BackgroundImage = Properties.Resources.liked;
                 currentTrack.DateAdded = DateTime.Now.ToShortDateString();
                 tracksScr.addRow(currentTrack);
             }
@@ -1172,6 +1173,7 @@ namespace Tify
                 Database.deleteTrackInUserLikeTrack(CurrentUser.UserID, currentTrack.TrackID);
                 currentTrack.IsLoved = false;
                 like_Player_Button.BackgroundImage = Properties.Resources.like;
+                songDetail.like_Player_Button.BackgroundImage = Properties.Resources.like;
                 tracksScr.deleteRow(currentTrack.TrackID);
             }
 
@@ -1181,21 +1183,24 @@ namespace Tify
             playlistScr.reloadPlaylistContainer();
             albumsScr.reloadAlbumContainer();
             artistScr.reloadArtistContainer();
-
+            
 
         }
-        
+
+      
         public void checkLoved()
         {
             if (Database.checkIfTrackLoved(currentTrack.TrackID,CurrentUser.UserID))
             {
                 currentTrack.IsLoved = true;
                 like_Player_Button.BackgroundImage = Properties.Resources.liked;
+                songDetail.like_Player_Button.BackgroundImage = Properties.Resources.liked;
             }
             else
             {
                 currentTrack.IsLoved = false;
                 like_Player_Button.BackgroundImage = Properties.Resources.like;
+                songDetail.like_Player_Button.BackgroundImage = Properties.Resources.like;
             }
         }
         #endregion

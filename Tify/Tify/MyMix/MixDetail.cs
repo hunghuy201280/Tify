@@ -143,6 +143,7 @@ namespace Tify
                 myMix.mainScr.playlistScr.reloadPlaylistContainer();
                 myMix.reloadMixContainer();
                 myMix.mainScr.artistScr.reloadArtistContainer();
+                myMix.mainScr.checkLoved();
             }
             else if (e.ColumnIndex==3)// add to playlist
             {

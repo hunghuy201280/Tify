@@ -910,11 +910,11 @@
         private DevExpress.XtraEditors.ProgressBarControl progressBar;
         public MediaSlider.MediaSlider volume_trackBar;
         private System.Windows.Forms.Panel add_like_panel;
-        private System.Windows.Forms.Button addToPlaylist_Player_Button;
-        private System.Windows.Forms.Button like_Player_Button;
         public System.Windows.Forms.FlowLayoutPanel PlayList_FlowPanel;
         private System.Windows.Forms.Button forwardForm_button;
         private System.Windows.Forms.Button backForm_button;
+        public System.Windows.Forms.Button addToPlaylist_Player_Button;
+        public System.Windows.Forms.Button like_Player_Button;
     }
 }
 

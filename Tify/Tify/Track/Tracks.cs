@@ -147,6 +147,12 @@ namespace Tify
 
                     tempTrack.Title = item["trackTitle"].ToString();
                     tempTrack.Artist = item["artistName"].ToString();
+                    if (tempTrack.Artist=="")
+                    {
+                        tempTrack.Artist=GetSongData.loadArtist( tempTrack.TrackLink);
+
+                       
+                    }
                     DateTime dateAdded = DateTime.Parse(item["dateAdded"].ToString());
                     tempTrack.DateAdded = dateAdded.ToShortDateString();
 

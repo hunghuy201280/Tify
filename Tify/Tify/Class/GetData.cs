@@ -17,6 +17,24 @@ namespace GetData
     {
         static Uri link;
 
+        static public string loadArtist(string trackUrl)
+        {
+            string outputArtist = "";
+            string[] artists = GetSongArtist(trackUrl);
+            
+            foreach (string artist in artists)
+            {
+                if (artist!=artists[artists.Length-1])
+                {
+                    outputArtist += artist + "; ";
+                }
+                else
+                {
+                    outputArtist += artist;
+                }
+            }
+            return outputArtist;
+        }
         static public string getTrackTitle(string url)
         {
            

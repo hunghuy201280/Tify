@@ -20,7 +20,7 @@ namespace Tify
         }
 
         private Playlist playlistForm;
-        private PlaylistContainer playlistContainer;
+        public PlaylistContainer playlistContainer;
         private List<TrackInfo> trackInfo;
         public PlaylistDetail(Playlist callFm)
         {
@@ -271,7 +271,7 @@ namespace Tify
                 playlistForm.mainScr.myMixScr.reloadMixContainer();
                 playlistForm.mainScr.albumsScr.reloadAlbumContainer();
                 playlistForm.mainScr.artistScr.reloadArtistContainer();
-
+                playlistForm.mainScr.checkLoved();
             }
             else if (e.ColumnIndex == 5)// add to playlist
             {

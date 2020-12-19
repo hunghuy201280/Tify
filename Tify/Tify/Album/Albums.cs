@@ -40,13 +40,13 @@ namespace Tify
             // get album id that user like
             temp = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
             mainScr = callform;
-            
+            albumDetail = new AlbumDetail(this);
+            firstLoadChildForm();
             for (int i = 0; i < temp.Rows.Count; i++)
             {
                 AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString(), this));
             }
             bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
-            firstLoadChildForm();
 
 
             this.DoubleBuffered = true;
@@ -79,10 +79,10 @@ namespace Tify
         private void firstLoadChildForm()
         {
         
-            albumDetail = new AlbumDetail(this);
             albumDetail.TopLevel = false;
             albumDetail.FormBorderStyle = FormBorderStyle.None;
             albumDetail.Dock = DockStyle.Fill;
+
             mainScr.childForm_panel.Controls.Add(albumDetail);
             albumDetail.Show();
         }

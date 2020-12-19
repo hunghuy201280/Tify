@@ -193,7 +193,7 @@ namespace Tify
                 artistForm.mainScr.myMixScr.reloadMixContainer();
                 artistForm.mainScr.albumsScr.reloadAlbumContainer();
                 artistForm.mainScr.playlistScr.reloadPlaylistContainer();
-
+                artistForm.mainScr.checkLoved();
             }
             else if (e.ColumnIndex == 4)// add to playlist
             {

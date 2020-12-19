@@ -95,7 +95,7 @@ namespace Tify
                 }
                 if (changedAge == true)
                     DOB = ", date of birth";
-                MessageBox.Show("Changed " + Name  + Phone +  DOB  + Phone + " succesfully");
+                MessageBox.Show("Changed " + Name  + Phone +  DOB  + Phone +Pwd+ " succesfully");
             }
             
 

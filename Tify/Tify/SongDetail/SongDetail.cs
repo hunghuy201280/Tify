@@ -93,15 +93,7 @@ namespace Tify
             mainscr.MinimumSize = new Size(774, 361);
         }
 
-        public Label getDuration_Label()
-        {
-            return duration_label;
-        }
-
-        public Label getCurrentTime_Label()
-        {
-            return currentTime_label;
-        }
+ 
 
         public void setDuration_Label(string text)
         {
@@ -203,6 +195,7 @@ namespace Tify
             suggestedTracks_flowPanel.Controls.Clear();
             if (loadSuggestedTracks_backgroundWorker.IsBusy==false)
             {
+                loading_SplashScreen1.BringToFront();
                 loadSuggestedTracks_backgroundWorker.RunWorkerAsync(songUrl);
 
             }
@@ -221,11 +214,6 @@ namespace Tify
         }
 
  
-
-        private void SongDetail_Load(object sender, EventArgs e)
-        {
-      
-        }
 
         private void loadSuggestedTracks_backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -273,6 +261,17 @@ namespace Tify
                 }
                 suggestedTracks_flowPanel.Controls.AddRange(e.Result as ReccommendTrackControl[]);
             }
+            loading_SplashScreen1.SendToBack();
+        }
+
+        private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
+        {
+            mainscr.addToPlaylist_Player_Button.PerformClick();
+        }
+
+        private void like_Player_Button_Click(object sender, EventArgs e)
+        {
+            mainscr.like_Player_Button.PerformClick();
         }
     }
 }

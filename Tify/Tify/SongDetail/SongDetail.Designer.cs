@@ -37,6 +37,9 @@
             this.suggestedTracks_label = new System.Windows.Forms.Label();
             this.songDetail_leftPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.add_like_panel = new System.Windows.Forms.Panel();
+            this.like_Player_Button = new System.Windows.Forms.Button();
+            this.addToPlaylist_Player_Button = new System.Windows.Forms.Button();
             this.tempToContainTrackbar = new System.Windows.Forms.Panel();
             this.volume_trackBar = new MediaSlider.MediaSlider();
             this.progressBar = new DevExpress.XtraEditors.ProgressBarControl();
@@ -55,13 +58,17 @@
             this.songDetailMinimize_button = new System.Windows.Forms.Button();
             this.separator_panel = new System.Windows.Forms.Panel();
             this.loadSuggestedTracks_backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.bigPanel = new System.Windows.Forms.Panel();
+            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.songDetail_rightPanel.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.add_like_panel.SuspendLayout();
             this.tempToContainTrackbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).BeginInit();
+            this.bigPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // songDetaillImageList
@@ -73,7 +80,7 @@
             // songDetail_rightPanel
             // 
             this.songDetail_rightPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
-            this.songDetail_rightPanel.Controls.Add(this.suggestedTracks_flowPanel);
+            this.songDetail_rightPanel.Controls.Add(this.bigPanel);
             this.songDetail_rightPanel.Controls.Add(this.suggestedTracks_label);
             this.songDetail_rightPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.songDetail_rightPanel.Location = new System.Drawing.Point(681, 0);
@@ -86,7 +93,7 @@
             this.suggestedTracks_flowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
             this.suggestedTracks_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.suggestedTracks_flowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.suggestedTracks_flowPanel.Location = new System.Drawing.Point(0, 157);
+            this.suggestedTracks_flowPanel.Location = new System.Drawing.Point(0, 0);
             this.suggestedTracks_flowPanel.Name = "suggestedTracks_flowPanel";
             this.suggestedTracks_flowPanel.Size = new System.Drawing.Size(413, 600);
             this.suggestedTracks_flowPanel.TabIndex = 19;
@@ -120,6 +127,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
+            this.panel4.Controls.Add(this.add_like_panel);
             this.panel4.Controls.Add(this.tempToContainTrackbar);
             this.panel4.Controls.Add(this.progressBar);
             this.panel4.Controls.Add(this.volume_detailButton);
@@ -136,6 +144,44 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(680, 230);
             this.panel4.TabIndex = 15;
+            // 
+            // add_like_panel
+            // 
+            this.add_like_panel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.add_like_panel.Controls.Add(this.like_Player_Button);
+            this.add_like_panel.Controls.Add(this.addToPlaylist_Player_Button);
+            this.add_like_panel.Location = new System.Drawing.Point(612, 16);
+            this.add_like_panel.Name = "add_like_panel";
+            this.add_like_panel.Size = new System.Drawing.Size(62, 24);
+            this.add_like_panel.TabIndex = 17;
+            // 
+            // like_Player_Button
+            // 
+            this.like_Player_Button.BackgroundImage = global::Tify.Properties.Resources.like;
+            this.like_Player_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.like_Player_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.like_Player_Button.FlatAppearance.BorderSize = 0;
+            this.like_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.like_Player_Button.Location = new System.Drawing.Point(34, 1);
+            this.like_Player_Button.Name = "like_Player_Button";
+            this.like_Player_Button.Size = new System.Drawing.Size(24, 24);
+            this.like_Player_Button.TabIndex = 1;
+            this.like_Player_Button.UseVisualStyleBackColor = true;
+            this.like_Player_Button.Click += new System.EventHandler(this.like_Player_Button_Click);
+            // 
+            // addToPlaylist_Player_Button
+            // 
+            this.addToPlaylist_Player_Button.BackgroundImage = global::Tify.Properties.Resources.add;
+            this.addToPlaylist_Player_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addToPlaylist_Player_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToPlaylist_Player_Button.FlatAppearance.BorderSize = 0;
+            this.addToPlaylist_Player_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToPlaylist_Player_Button.Location = new System.Drawing.Point(3, 0);
+            this.addToPlaylist_Player_Button.Name = "addToPlaylist_Player_Button";
+            this.addToPlaylist_Player_Button.Size = new System.Drawing.Size(24, 24);
+            this.addToPlaylist_Player_Button.TabIndex = 0;
+            this.addToPlaylist_Player_Button.UseVisualStyleBackColor = true;
+            this.addToPlaylist_Player_Button.Click += new System.EventHandler(this.addToPlaylist_Player_Button_Click);
             // 
             // tempToContainTrackbar
             // 
@@ -336,7 +382,7 @@
             this.duration_label.AutoSize = true;
             this.duration_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duration_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.duration_label.Location = new System.Drawing.Point(50, 92);
+            this.duration_label.Location = new System.Drawing.Point(62, 92);
             this.duration_label.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
             this.duration_label.Name = "duration_label";
             this.duration_label.Size = new System.Drawing.Size(53, 19);
@@ -429,6 +475,25 @@
             this.loadSuggestedTracks_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loadSuggestedTracks_backgroundWorker_DoWork);
             this.loadSuggestedTracks_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loadSuggestedTracks_backgroundWorker_RunWorkerCompleted);
             // 
+            // bigPanel
+            // 
+            this.bigPanel.Controls.Add(this.suggestedTracks_flowPanel);
+            this.bigPanel.Controls.Add(this.loading_SplashScreen1);
+            this.bigPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bigPanel.Location = new System.Drawing.Point(0, 157);
+            this.bigPanel.Name = "bigPanel";
+            this.bigPanel.Size = new System.Drawing.Size(413, 600);
+            this.bigPanel.TabIndex = 0;
+            // 
+            // loading_SplashScreen1
+            // 
+            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
+            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
+            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
+            this.loading_SplashScreen1.Size = new System.Drawing.Size(413, 600);
+            this.loading_SplashScreen1.TabIndex = 0;
+            // 
             // SongDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,17 +506,18 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SongDetail";
             this.Text = "SongDetail";
-            this.Load += new System.EventHandler(this.SongDetail_Load);
             this.Resize += new System.EventHandler(this.SongDetail_Resize);
             this.songDetail_rightPanel.ResumeLayout(false);
             this.songDetail_leftPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.add_like_panel.ResumeLayout(false);
             this.tempToContainTrackbar.ResumeLayout(false);
             this.tempToContainTrackbar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).EndInit();
+            this.bigPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -482,5 +548,10 @@
         public System.Windows.Forms.Label artist_label;
         public System.Windows.Forms.Label title_label;
         private System.ComponentModel.BackgroundWorker loadSuggestedTracks_backgroundWorker;
+        private System.Windows.Forms.Panel add_like_panel;
+        public System.Windows.Forms.Button like_Player_Button;
+        public System.Windows.Forms.Button addToPlaylist_Player_Button;
+        private System.Windows.Forms.Panel bigPanel;
+        private Loading_SplashScreen loading_SplashScreen1;
     }
 }

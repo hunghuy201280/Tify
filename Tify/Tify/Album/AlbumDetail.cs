@@ -42,6 +42,7 @@ namespace Tify
             album_gridView.Rows.Add();
             album_gridView.Rows[0].Visible = false;
 
+
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
