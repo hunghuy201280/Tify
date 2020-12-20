@@ -20,68 +20,79 @@ namespace Tify
             InitializeComponent();
             
         }
-        private MainScreen callForm = null;
+        private MainScreen mainScr = null;
         public Home(MainScreen parentForm)
         {
             
             InitializeComponent();
-            callForm = parentForm;
+            mainScr = parentForm;
+            loadRecentlyPlayed();
+           
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
-            this.Size=new Size(callForm.childForm_panel.Size.Width - 16, callForm.childForm_panel.Height - 39);
+            this.Size=new Size(mainScr.childForm_panel.Size.Width - 16, mainScr.childForm_panel.Height - 39);
             //MainScreen.hideScrollBar(flowLayoutPanel1, "flow");
             DoubleBuffered = true;
 
             mixesForYou.setContainerName("Mixes For You");
             theCharts.setContainerName("The Charts");
 
-            hideScrollBar();
+
+          
         }
+
+
+        #region recentlyPlayed 
+        DataTable recentlyTable;
+        public void loadRecentlyPlayed()
+        {
+            trackContainers.Clear();
+            recentlyTable = Database.getRecentlyTrack(mainScr.CurrentUser.UserID);
+            if (recentlyTable.Rows.Count>15)
+            {
+                Database.deleteLastTrackInRecentlyPlayed(mainScr.CurrentUser.UserID);
+            }
+            foreach (DataRow row in recentlyTable.Rows)
+            {
+                trackContainers.Add(new TrackContainer_Home(row["trackID"].ToString(), mainScr));
+            }
+            recentlyPlayed.clearItem();
+            recentlyPlayed.addRangeItem(trackContainers.ToArray());
+        }
+        public List<TrackContainer_Home> trackContainers = new List<TrackContainer_Home>();
+
+
+        #endregion
 
         //test
-
-        
-
-      
-
-        #region đổi kích thước của group box khi form resize vì không dùng dock được
-        private void home_flowLayoutPanel_Resize(object sender, EventArgs e)
+        #region load my mix
+        private Control[] mixs;
+        public void addToMix(Control[] mixs)
         {
-            FlowLayoutPanel panel = sender as FlowLayoutPanel;
-            foreach (var item in panel.Controls)
-            {
-                if (item is HomeItemContainer)
-                {
-                    HomeItemContainer temp = item as HomeItemContainer;
-                    temp.Size = new Size(panel.Size.Width-15, temp.Size.Height);
-                }
-            }
+            this.mixs = mixs;
+            mixesForYou.addRangeItem(mixs);
+        }
+        public void reAddMix()
+        {
+            mixesForYou.addRangeItem(mixs);
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            recentlyPlayed.addItem(new PlaylistContainer());
-            HomeItemContainer a = new HomeItemContainer();
-         }
 
-        #region hideScrollBar
 
-        private void hideScrollBar()
-        {
-            home_flowLayoutPanel.AutoScroll = false;
-            home_flowLayoutPanel.HorizontalScroll.Maximum = 0;
-            home_flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
-            home_flowLayoutPanel.AutoScroll = true;
-        }
-        #endregion
+
+
+
+
+
+
+
     }
 }

@@ -58,7 +58,7 @@ namespace Tify
             Application.Run(loadingScr);
         }
 
-        private Home homeScr;
+        public Home homeScr;
         public MyMix myMixScr;
         public Playlist playlistScr;
         public Artist artistScr;
@@ -93,6 +93,7 @@ namespace Tify
 
         private string[] suggestedSong;
         public TrackInfo currentTrack;
+        private PictureBox songPicture = new PictureBox();
         public void loadNewSong(TrackInfo track)
         {
             //kiểm tra track có trong dtb chưa nếu chưa add vào.
@@ -106,6 +107,9 @@ namespace Tify
             {
                 track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
             }
+          
+            Database.addTrackToRecentlyPlayed(track.TrackID, CurrentUser.UserID, currentTrack.TrackID);
+           
             //
             currentTrack = track;
             soundPlayer.URL = GetSongData.GetStreamLink(track.TrackLink);
@@ -178,52 +182,17 @@ namespace Tify
             //lay suggest song
             suggestedSong = GetSongData.GetSuggetSongs(track.TrackLink);
             songDetail.setSuggestedSong(suggestedSong);
+
+          
+            homeScr.loadRecentlyPlayed();
         }
 
         #endregion load nhac khi chuyen bai
 
         #region test
 
-        //test
-        private string testURL = "https://vi.chiasenhac.vn/mp3/hoa-minzy-tung-acoustic/con-mua-ngang-qua-acoustic-version-ts3sr30dq4awnm.html";
-
-        private PictureBox songPicture = new PictureBox();
-
-        private void testFunc()
-        {
-            //volume
-
-            
-            //
-            soundPlayer.URL = GetSongData.GetStreamLink(testURL);
-            soundPlayer.controls.stop();
-            
-
-            songPicture.Load(GetSongData.GetSongCover(testURL));
-            songCover_panel.BackgroundImage = songPicture.Image;
-            string[] artists = GetSongData.GetSongArtist(testURL);
-            artist_label.Text = string.Empty;
-            foreach (string artist in artists)
-            {
-                artist_label.Text += artist + ";";
-            }
-
-            title_label.Text = GetSongData.GetSongName(testURL);
-
-            //timer
-            currentTime_label.Text = "0:00 /";
-            TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(testURL));
-
-
-            string timeString = time.ToString(@"mm\:ss");
-            duration_label.Text = timeString;
-
-
-            //lay suggest song
-            suggestedSong = GetSongData.GetSuggetSongs(testURL);
-            songDetail.setSuggestedSong(suggestedSong);
-            currentTrack = new TrackInfo() { TrackLink = testURL, TrackID = "99999" };
-        }
+       
+       
 
         #endregion test
 
@@ -248,7 +217,7 @@ namespace Tify
             //demo
             this.ActiveControl = artist_label;
 
-            testFunc();
+            //testFunc();
             songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
             //set opacity for song cover
             songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
@@ -266,6 +235,12 @@ namespace Tify
             loadingScr.changePic();
             Thread.Sleep(2600);
             loading_thread.Abort();
+
+            if (homeScr.trackContainers.Count!=0)
+            {
+                currentTrack = homeScr.trackContainers[0].track;
+                loadNewSong(currentTrack);
+            }
         }
 
 
@@ -629,10 +604,12 @@ namespace Tify
             if (childForm == homeScr)
             {
                 changeMenuButtonForeColor(home_button);
+                homeScr.reAddMix();
             }
             else if (childForm == myMixScr)
             {
                 changeMenuButtonForeColor(myMix_button);
+                myMixScr.addMixToBottomFlowPanel();
             }
             else if (childForm == playlistScr)
             {
@@ -1059,11 +1036,6 @@ namespace Tify
         {
             if (previousTracks.Count == 0)
             {
-                
-                previousTracks.Push(new TrackInfo() {TrackLink=testURL,TrackID="99999" });
-            }
-            else
-            {
                 previousTracks.Push(currentTrack);
             }
             if (nextTrack.Count==0)
@@ -1084,14 +1056,7 @@ namespace Tify
         }
         public void changeSong(TrackInfo track)
         {
-            if (previousTracks.Count == 0)
-            {
-                previousTracks.Push(testURL);
-            }
-            else
-            {
-                previousTracks.Push(currentTrack);
-            }
+            previousTracks.Push(currentTrack);
             loadNewSong(track);
         }
 

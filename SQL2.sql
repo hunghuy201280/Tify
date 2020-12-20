@@ -380,3 +380,15 @@ select top 10 * from Track order by trackID desc
 
 
 
+create table RecentlyPlayed
+(
+	userID int  references Account(userID),
+	trackID int  references Track(trackID),
+	stackIndex int  identity (1,1),
+	primary key(userID,trackID)
+)
+
+select * from RecentlyPlayed where userID=8 order by stackIndex desc
+
+
+delete from RecentlyPlayed where userID=8 and trackID =( select top 1 trackID from RecentlyPlayed order by stackIndex)

@@ -48,20 +48,24 @@ namespace Tify
                 mixContainers.Add(new MyMixContainer(this,mixTable.Rows[i]["myMixID"].ToString(),mixDetail));
             }
             mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
-
+            //add mix to home screen
+            mainScr.homeScr.addToMix(mixContainers.ToArray());
 
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
-
             
         }
 
         private List<MyMixContainer> mixContainers=new List<MyMixContainer>();
         public MixDetail mixDetail;
 
+        public void addMixToBottomFlowPanel()
+        {
+            mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
+        }
 
         public void reloadMixContainer(/*string MIXID*/)
         {

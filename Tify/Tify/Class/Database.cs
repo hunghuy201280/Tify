@@ -8,6 +8,76 @@ namespace Tify
 {
     internal class Database
     {
+        
+
+        static public void deleteLastTrackInRecentlyPlayed(int userID)
+        {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            string sqlQuery = "delete from RecentlyPlayed where userID=@userID and trackID =( select top 1 trackID from RecentlyPlayed where userID=@userID1 order by stackIndex)";
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                cmd.Parameters.AddWithValue("@userID1", userID);
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+
+        }
+
+        static public DataTable getRecentlyTrack(int userID)
+        {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            DataTable table = new DataTable();
+            string sqlQuery = "select * from RecentlyPlayed where userID=@userID order by stackIndex desc";
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+
+            return table;
+        }
+
+        static public void addTrackToRecentlyPlayed(string trackID, int userID,string lastTrackID)
+        {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+
+            //delete new track
+            string sqlQuery = "delete from RecentlyPlayed where userID=@userID and trackID=@trackID ";
+            sqlconnection.Open();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@trackID", trackID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            try
+            {
+                sqlQuery = "insert into RecentlyPlayed values(@userID,@trackID)";
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                {
+                    cmd.Parameters.AddWithValue("@trackID", lastTrackID);
+                    cmd.Parameters.AddWithValue("@userID", userID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+            }
+         
+            sqlconnection.Close();
+        }
+
 
         static public void addArtistToUserFollowArtist(string artistID, int userID)
         {

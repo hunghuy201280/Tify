@@ -260,6 +260,12 @@
     <Compile Include="SongDetail\SongDetail.Designer.cs">
       <DependentUpon>SongDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrackContainer_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TrackContainer_Home.Designer.cs">
+      <DependentUpon>TrackContainer_Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="Track\Tracks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SongDetail\SongDetail.resx">
       <DependentUpon>SongDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrackContainer_Home.resx">
+      <DependentUpon>TrackContainer_Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Track\Tracks.resx">
       <DependentUpon>Tracks.cs</DependentUpon>
