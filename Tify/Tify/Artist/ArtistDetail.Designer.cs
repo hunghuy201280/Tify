@@ -45,9 +45,8 @@
             this.viewAll_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.top_panel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.like_button = new System.Windows.Forms.Button();
             this.cover_pictureBox = new System.Windows.Forms.PictureBox();
-            this.addToPlaylist_Button = new System.Windows.Forms.Button();
             this.playShuffle_Button = new System.Windows.Forms.Button();
             this.play_button = new System.Windows.Forms.Button();
             this.artistName_label = new System.Windows.Forms.Label();
@@ -239,9 +238,8 @@
             // 
             // top_panel
             // 
-            this.top_panel.Controls.Add(this.button1);
+            this.top_panel.Controls.Add(this.like_button);
             this.top_panel.Controls.Add(this.cover_pictureBox);
-            this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
             this.top_panel.Controls.Add(this.play_button);
             this.top_panel.Controls.Add(this.artistName_label);
@@ -251,21 +249,22 @@
             this.top_panel.Size = new System.Drawing.Size(921, 270);
             this.top_panel.TabIndex = 4;
             // 
-            // button1
+            // like_button
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.button1.BackgroundImage = global::Tify.Properties.Resources.like;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(553, 133);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 50);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = false;
+            this.like_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.like_button.BackgroundImage = global::Tify.Properties.Resources.like;
+            this.like_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.like_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.like_button.FlatAppearance.BorderSize = 0;
+            this.like_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.like_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.like_button.ForeColor = System.Drawing.Color.White;
+            this.like_button.Location = new System.Drawing.Point(553, 133);
+            this.like_button.Name = "like_button";
+            this.like_button.Size = new System.Drawing.Size(57, 50);
+            this.like_button.TabIndex = 5;
+            this.like_button.UseVisualStyleBackColor = false;
+            this.like_button.Click += new System.EventHandler(this.like_button_Click);
             // 
             // cover_pictureBox
             // 
@@ -276,21 +275,6 @@
             this.cover_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.cover_pictureBox.TabIndex = 4;
             this.cover_pictureBox.TabStop = false;
-            // 
-            // addToPlaylist_Button
-            // 
-            this.addToPlaylist_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
-            this.addToPlaylist_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToPlaylist_Button.FlatAppearance.BorderSize = 0;
-            this.addToPlaylist_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
-            this.addToPlaylist_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToPlaylist_Button.ForeColor = System.Drawing.Color.White;
-            this.addToPlaylist_Button.Image = global::Tify.Properties.Resources.add_white;
-            this.addToPlaylist_Button.Location = new System.Drawing.Point(628, 133);
-            this.addToPlaylist_Button.Name = "addToPlaylist_Button";
-            this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
-            this.addToPlaylist_Button.TabIndex = 3;
-            this.addToPlaylist_Button.UseVisualStyleBackColor = false;
             // 
             // playShuffle_Button
             // 
@@ -329,9 +313,9 @@
             this.artistName_label.ForeColor = System.Drawing.Color.White;
             this.artistName_label.Location = new System.Drawing.Point(218, 41);
             this.artistName_label.Name = "artistName_label";
-            this.artistName_label.Size = new System.Drawing.Size(177, 43);
+            this.artistName_label.Size = new System.Drawing.Size(214, 43);
             this.artistName_label.TabIndex = 1;
-            this.artistName_label.Text = "My Mix 1";
+            this.artistName_label.Text = "ArtistName";
             // 
             // loading_SplashScreen1
             // 
@@ -380,9 +364,8 @@
         private System.Windows.Forms.Button viewAll_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel top_panel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button like_button;
         private System.Windows.Forms.PictureBox cover_pictureBox;
-        private System.Windows.Forms.Button addToPlaylist_Button;
         private System.Windows.Forms.Button playShuffle_Button;
         private System.Windows.Forms.Button play_button;
         private System.Windows.Forms.Label artistName_label;

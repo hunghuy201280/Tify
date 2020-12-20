@@ -60,10 +60,12 @@ namespace Tify
 
 
         #region set detail info
+
+        private ArtistContainer artistContainers;
         public void setTrackDetailInfo(List<TrackInfo> trackInfos, ArtistContainer callFm)
         {
             this.trackInfos = trackInfos;
-        
+            artistContainers = callFm;
             track_gridView.Rows.Clear();
             track_gridView.Rows.Add();
             track_gridView.Rows[0].Visible = false;
@@ -99,6 +101,7 @@ namespace Tify
 
             artistForm.openChildForm(this);
             track_gridView.Rows.Remove(track_gridView.Rows[0]);
+            checkLoved();
             hideLoading();
         }
 
@@ -209,6 +212,42 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             artistForm.mainScr.changeSong(trackToPlay);
+        }
+
+        #endregion
+
+        #region like artist
+        private void like_button_Click(object sender, EventArgs e)
+        {
+            if (Database.checkUserLikeArtist(artistContainers.artistID, artistForm.mainScr.CurrentUser.UserID))
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to unfollow this Artist ?", "Unfollow Artist", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    Database.deleteArtistFromUserFollowArtist(artistContainers.artistID, artistForm.mainScr.CurrentUser.UserID);
+                    artistForm.mainScr.backForm_button.PerformClick();
+                    like_button.BackgroundImage = Properties.Resources.like;
+                    artistForm.reloadArtistTab();
+                }
+            }
+            else
+            {
+                Database.addArtistToUserFollowArtist(artistContainers.artistID, artistForm.mainScr.CurrentUser.UserID);
+                like_button.BackgroundImage = Properties.Resources.liked;
+                artistForm.reloadArtistTab();
+            }
+        }
+        public void checkLoved()
+        {
+            if (Database.checkUserLikeArtist(artistContainers.artistID, artistForm.mainScr.CurrentUser.UserID))
+            {
+                like_button.BackgroundImage = Properties.Resources.liked;
+            }
+            else
+            {
+                like_button.BackgroundImage = Properties.Resources.like;
+            }
         }
 
         #endregion

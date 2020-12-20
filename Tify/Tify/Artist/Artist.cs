@@ -76,5 +76,23 @@ namespace Tify
         {
             mainScr.openChildForm(childForm);
         }
+
+
+        #region reload when add or delete artist
+        public void reloadArtistTab()
+        {
+            artistsTable = Database.getArtistThatUserFollow(mainScr.CurrentUser.UserID);
+
+            artistContainers.Clear();
+            bottom_flowPanel.Controls.Clear();
+
+            for (int i = 0; i < artistsTable.Rows.Count; i++)
+            {
+                artistContainers.Add(new ArtistContainer(this, artistsTable.Rows[i]["artistID"].ToString()));
+            }
+            bottom_flowPanel.Controls.AddRange(artistContainers.ToArray());
+
+        }
+        #endregion
     }
 }
