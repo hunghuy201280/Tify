@@ -22,7 +22,7 @@ namespace Tify
             }
         }
 
-        private string albumID;
+        public string albumID;
         public Albums AlbumForm;
         public int timeInSec = 0;
         public AlbumContainer(string albumID, Albums AlbumForm)

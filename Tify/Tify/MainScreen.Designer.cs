@@ -912,9 +912,9 @@
         private System.Windows.Forms.Panel add_like_panel;
         public System.Windows.Forms.FlowLayoutPanel PlayList_FlowPanel;
         private System.Windows.Forms.Button forwardForm_button;
-        private System.Windows.Forms.Button backForm_button;
         public System.Windows.Forms.Button addToPlaylist_Player_Button;
         public System.Windows.Forms.Button like_Player_Button;
+        public System.Windows.Forms.Button backForm_button;
     }
 }
 

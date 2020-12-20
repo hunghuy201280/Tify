@@ -9,6 +9,65 @@ namespace Tify
     internal class Database
     {
 
+        static public void addAlbumToUserLikeAlbum(string albumID, int userID)
+        {
+            string sqlQuery = "insert into UserLikeAlbum values(@userID,@albumID)";
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@albumID", albumID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+
+
+        static public void deleteAlbumFromUserLikeAlbum(string albumID, int userID)
+        {
+            string sqlQuery = "delete from UserLikeAlbum where userID=@userID and albumID=@albumID";
+
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@albumID", albumID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                cmd.ExecuteNonQuery();
+            }
+            sqlconnection.Close();
+        }
+        static public bool checkUserLikeAlbum(string albumID,int userID)
+        {
+            string sqlQuery = "select count(*) from UserLikeAlbum where albumID=@albumID and userID=@userID";
+
+            DataTable checkTable = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@albumID", albumID);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    checkTable.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return checkTable.Rows[0][0].ToString()=="1";
+        }
+
 
         static public string getTrackIdBaseOnTrackLink(string trackLink)
         {

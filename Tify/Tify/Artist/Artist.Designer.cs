@@ -30,38 +30,20 @@ namespace Tify
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Artist));
             this.top_panel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.formTitle_label = new System.Windows.Forms.Label();
-            this.sort_button = new System.Windows.Forms.Button();
             this.bottom_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.top_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // top_panel
             // 
-            this.top_panel.Controls.Add(this.button1);
             this.top_panel.Controls.Add(this.formTitle_label);
-            this.top_panel.Controls.Add(this.sort_button);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 57);
             this.top_panel.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(843, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 32);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // formTitle_label
             // 
@@ -73,18 +55,6 @@ namespace Tify
             this.formTitle_label.Size = new System.Drawing.Size(106, 23);
             this.formTitle_label.TabIndex = 5;
             this.formTitle_label.Text = "My Artists";
-            // 
-            // sort_button
-            // 
-            this.sort_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sort_button.BackgroundImage")));
-            this.sort_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.sort_button.FlatAppearance.BorderSize = 0;
-            this.sort_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sort_button.Location = new System.Drawing.Point(946, 12);
-            this.sort_button.Name = "sort_button";
-            this.sort_button.Size = new System.Drawing.Size(32, 32);
-            this.sort_button.TabIndex = 6;
-            this.sort_button.UseVisualStyleBackColor = true;
             // 
             // bottom_flowPanel
             // 
@@ -114,8 +84,6 @@ namespace Tify
 
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.Label formTitle_label;
-        private System.Windows.Forms.Button sort_button;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel bottom_flowPanel;
         
     }

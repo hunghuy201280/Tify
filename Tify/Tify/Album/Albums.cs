@@ -27,7 +27,7 @@ namespace Tify
 
         public MainScreen mainScr;
         public AlbumDetail albumDetail;
-        private DataTable temp = new DataTable();
+        private DataTable albumTable = new DataTable();
         private DataTable AlbumTable = new DataTable();
         private List<AlbumContainer> AlbumContainers = new List<AlbumContainer>();
     
@@ -38,13 +38,13 @@ namespace Tify
 
 
             // get album id that user like
-            temp = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
+            albumTable = Database.getAlbumTable_Album(callform.CurrentUser.UserID);
             mainScr = callform;
             albumDetail = new AlbumDetail(this);
             firstLoadChildForm();
-            for (int i = 0; i < temp.Rows.Count; i++)
+            for (int i = 0; i < albumTable.Rows.Count; i++)
             {
-                AlbumContainers.Add(new AlbumContainer(temp.Rows[i]["albumID"].ToString(), this));
+                AlbumContainers.Add(new AlbumContainer(albumTable.Rows[i]["albumID"].ToString(), this));
             }
             bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
 
@@ -94,7 +94,22 @@ namespace Tify
 
         #endregion Mở childForm
 
-       
+        #region reload when add or delete album
+        public void reloadAlbumTab()
+        {
+            albumTable = Database.getAlbumTable_Album(mainScr.CurrentUser.UserID);
+
+            AlbumContainers.Clear();
+            bottom_flowPanel.Controls.Clear();
+
+            for (int i = 0; i < albumTable.Rows.Count; i++)
+            {
+                AlbumContainers.Add(new AlbumContainer(albumTable.Rows[i]["albumID"].ToString(), this));
+            }
+            bottom_flowPanel.Controls.AddRange(AlbumContainers.ToArray());
+            
+        }
+        #endregion
 
     }
 }

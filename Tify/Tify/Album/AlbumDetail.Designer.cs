@@ -219,6 +219,7 @@
             this.addToAlbum_button.Size = new System.Drawing.Size(57, 50);
             this.addToAlbum_button.TabIndex = 4;
             this.addToAlbum_button.UseVisualStyleBackColor = false;
+            this.addToAlbum_button.Click += new System.EventHandler(this.addToAlbum_button_Click);
             // 
             // albumCover_pictureBox
             // 

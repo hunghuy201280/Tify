@@ -290,6 +290,7 @@ namespace Tify
             {
                 Database.deletePlaylist(playlistContainer.playlistID);
 
+                playlistForm.mainScr.backForm_button.PerformClick();
                 playlistForm.mainScr.CreatePL.AddPlaylistButtonToMenuPanel(playlistForm.mainScr.PlayList_FlowPanel);
 
                 playlistForm.reload_createNew();

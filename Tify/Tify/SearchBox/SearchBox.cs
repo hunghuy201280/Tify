@@ -58,6 +58,7 @@ namespace Tify
 
         private void loadAlbum()
         {
+            albumResult_flowPanel.Controls.Clear();
             try
             {
                 if (albumTab_Table.Rows.Count == 0)
@@ -132,6 +133,7 @@ namespace Tify
 
         private void artist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            artistResult_flowPanel.Controls.Clear();
             loadArtist();
         }
 

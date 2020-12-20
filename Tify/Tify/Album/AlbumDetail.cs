@@ -112,6 +112,7 @@ namespace Tify
             albumCover_pictureBox.Image = inputcover.Image;
             releaseYear_label.Text ="Released "+year ;
             album_gridView.Rows.RemoveAt(0);
+            checkLoved();
         }
       
 
@@ -251,7 +252,46 @@ namespace Tify
             }
             albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
         }
-    }
+
+
         #endregion
- }
+
+        #region like album
+
+        public void checkLoved()
+        {
+            if (Database.checkUserLikeAlbum(albumContainer.albumID, albumsFm.mainScr.CurrentUser.UserID))
+            {
+                addToAlbum_button.BackgroundImage = Properties.Resources.liked;
+            }
+            else
+            {
+                addToAlbum_button.BackgroundImage = Properties.Resources.like;
+            }
+        }
+        private void addToAlbum_button_Click(object sender, EventArgs e)
+        {
+            if (Database.checkUserLikeAlbum(albumContainer.albumID, albumsFm.mainScr.CurrentUser.UserID))
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this Album ?", "Delete Album", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    Database.deleteAlbumFromUserLikeAlbum(albumContainer.albumID, albumsFm.mainScr.CurrentUser.UserID);
+                    albumsFm.mainScr.backForm_button.PerformClick();
+                    addToAlbum_button.BackgroundImage = Properties.Resources.like;
+                    albumsFm.reloadAlbumTab();
+                }
+            }
+            else
+            {
+                Database.addAlbumToUserLikeAlbum(albumContainer.albumID, albumsFm.mainScr.CurrentUser.UserID);
+                addToAlbum_button.BackgroundImage = Properties.Resources.liked;
+                albumsFm.reloadAlbumTab();
+            }
+        }
+
+        #endregion
+    }
+}
 

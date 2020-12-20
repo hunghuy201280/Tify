@@ -31,16 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Playlist));
             this.Playlist_label = new System.Windows.Forms.Label();
             this.panel_default_playlist = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bottom_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.top_panel = new System.Windows.Forms.Panel();
             this.formTitle_label = new System.Windows.Forms.Label();
-            this.sort_button = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_default_playlist.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.top_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Playlist_label
@@ -66,6 +65,17 @@
             this.panel_default_playlist.Size = new System.Drawing.Size(610, 346);
             this.panel_default_playlist.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(216, 14);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.bottom_flowPanel);
@@ -87,7 +97,6 @@
             // top_panel
             // 
             this.top_panel.Controls.Add(this.formTitle_label);
-            this.top_panel.Controls.Add(this.sort_button);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
             this.top_panel.Name = "top_panel";
@@ -105,30 +114,6 @@
             this.formTitle_label.TabIndex = 5;
             this.formTitle_label.Text = "My Playlists";
             // 
-            // sort_button
-            // 
-            this.sort_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sort_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sort_button.BackgroundImage")));
-            this.sort_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.sort_button.FlatAppearance.BorderSize = 0;
-            this.sort_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sort_button.Location = new System.Drawing.Point(946, 12);
-            this.sort_button.Name = "sort_button";
-            this.sort_button.Size = new System.Drawing.Size(32, 32);
-            this.sort_button.TabIndex = 6;
-            this.sort_button.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(216, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 139);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // Playlist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,10 +127,10 @@
             this.Text = "PlayList";
             this.panel_default_playlist.ResumeLayout(false);
             this.panel_default_playlist.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,7 +142,6 @@
         private System.Windows.Forms.Panel panel_default_playlist;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label formTitle_label;
-        private System.Windows.Forms.Button sort_button;
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.FlowLayoutPanel bottom_flowPanel;
     }
