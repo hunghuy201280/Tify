@@ -52,7 +52,6 @@ namespace Tify
 
             //debug.Show();
         }
-        public DebugForm debug = new DebugForm();
         private void loadingFunc()
         {
             Application.Run(loadingScr);
@@ -107,9 +106,12 @@ namespace Tify
             {
                 track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
             }
-          
-            Database.addTrackToRecentlyPlayed(track.TrackID, CurrentUser.UserID, currentTrack.TrackID);
-           
+
+            if (currentTrack!=null)
+            {
+                Database.addTrackToRecentlyPlayed(track.TrackID, CurrentUser.UserID, currentTrack.TrackID);
+            }
+
             //
             currentTrack = track;
             soundPlayer.URL = GetSongData.GetStreamLink(track.TrackLink);

@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Tify
 {
@@ -262,8 +263,38 @@ namespace Tify
                     Table.Load(reader);
                 }
             }
-            sqlconnection.Close();
+            DataTable artistTable = new DataTable();
+            ThreadPool.QueueUserWorkItem(delegate (object obj)
+            {
+                string[] artist = GetSongData.GetSongArtist(trackUrl);
+                foreach (string item in artist)
+                {
+                    artistTable.Clear();
+                    string temp = TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(item);
+                    sqlQuery = "select * from Artist where artistName=@artistName";
+                    using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                    {
+                        cmd.Parameters.AddWithValue("@artistName", temp);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            artistTable.Load(reader);
+                        }
+                    }
+                    if (artistTable.Rows.Count!=0)
+                    {
+                        string artistID = artistTable.Rows[0]["artistID"].ToString();
+                        sqlQuery = "insert into ArtistHasTrack values(@artistID,@trackID)";
+                        using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                        {
+                            cmd.Parameters.AddWithValue("@artistID", artistID);
+                            cmd.Parameters.AddWithValue("@trackID", Table.Rows[0][0].ToString());
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
 
+                sqlconnection.Close();
+            });
             return Table.Rows[0][0].ToString();
         }
 

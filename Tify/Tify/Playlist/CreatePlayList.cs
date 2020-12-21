@@ -99,6 +99,11 @@ namespace Tify
         private void CreatePlayList_Button_Click(object sender, EventArgs e)
         {
 
+            if (string.IsNullOrWhiteSpace(Title_TextBox.Text) || Title_TextBox.ForeColor == Color.Gray)
+            {
+                MessageBox.Show("PlayList name cannot be blank");
+                return;
+            }
             Button newbutton = new Button();
             newbutton.FlatStyle = FlatStyle.Flat;
             newbutton.FlatAppearance.BorderSize = 0;
@@ -115,10 +120,7 @@ namespace Tify
             newbutton.FlatAppearance.MouseOverBackColor = Color.FromArgb(76, 78, 84);
             
 
-            if (string.IsNullOrWhiteSpace(Title_TextBox.Text)|| Title_TextBox.ForeColor==Color.Gray)
-            {
-                MessageBox.Show("PlayList name cannot be a blank");
-            }
+          
             if (!Database.checkIfPlaylistExisted(Title_TextBox.Text,mainScr.CurrentUser.UserID))
             {
                 MessageBox.Show("Name existed , may be try another name ?");

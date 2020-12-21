@@ -391,6 +391,11 @@ namespace Tify
                     selectedRow.Tag = selectedTrack;
                     mainScr.tracksScr.deleteRow(selectedTrack.TrackID);
                 }
+                mainScr.playlistScr.reloadPlaylistContainer();
+                mainScr.myMixScr.reloadMixContainer();
+                mainScr.albumsScr.reloadAlbumContainer();
+                mainScr.artistScr.reloadArtistContainer();
+                mainScr.checkLoved();
             }
             //add to playlist
             if (e.ColumnIndex == 4)
