@@ -129,6 +129,7 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             playlistForm.mainScr.changeSong(trackToPlay);
+
         }
 
         #endregion

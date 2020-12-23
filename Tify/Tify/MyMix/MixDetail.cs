@@ -204,6 +204,7 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             myMix.mainScr.changeSong(trackToPlay);
+           
         }
 
 
@@ -245,6 +246,8 @@ namespace Tify
                 myMix.mainScr.addTrackToQueue(trackToPlay);
             }
             myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+
+
         }
         #endregion
 

@@ -63,7 +63,8 @@ namespace Tify
             {
                 if (albumTab_Table.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty album");
+                    //empty
+                   
                     return;
                 }
                 else
@@ -106,7 +107,7 @@ namespace Tify
             {
                 if (artistTab_Table.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty artist");
+                   
                     return;
                 }
                 else
@@ -159,7 +160,7 @@ namespace Tify
                 });
                 if (trackTable.Rows.Count == 0)
                 {
-                    MessageBox.Show("Empty track");
+                   
                     return;
                 }
                 else
@@ -309,13 +310,56 @@ namespace Tify
             }
 
             if (btn.Tag.ToString() == "track_button")
-                track_gridView.BringToFront();
+            {
+                if (trackTable.Rows.Count==0)
+                {
+                    noResult_panel.BringToFront();
+                }
+                else
+                {
+                    track_gridView.BringToFront();
+                }
+            }
             else if (btn.Tag.ToString() == "artist_button")
-                artistResult_flowPanel.BringToFront();
+            {
+
+                if (artistTab_Table.Rows.Count == 0)
+                {
+                    noResult_panel.BringToFront();
+                }
+                else
+                {
+                    artistResult_flowPanel.BringToFront();
+                }
+            }
             else if (btn.Tag.ToString() == "album_button")
-                albumResult_flowPanel.BringToFront();
+            {
+                
+
+                    if (albumTab_Table.Rows.Count == 0)
+                    {
+                        noResult_panel.BringToFront();
+                    }
+                    else
+                    {
+                        albumResult_flowPanel.BringToFront();
+                    }
+                
+            }
             else if (btn.Tag.ToString() == "playlist_button")
-                playlistResult_flowPanel.BringToFront();
+            {
+
+
+                if (playlistTab_Table.Rows.Count == 0)
+                {
+                    noResult_panel.BringToFront();
+                }
+                else
+                {
+                    playlistResult_flowPanel.BringToFront();
+                }
+
+            }
             if (pic_time_Track_worker.IsBusy)
             {
                 loading_SplashScreen1.BringToFront();
@@ -404,8 +448,38 @@ namespace Tify
                 add2PL.ShowDialog();
             }
         }
+
         #endregion
 
-   
+
+        #region search playlist
+
+        DataTable playlistTab_Table = new DataTable();
+        List<PlaylistContainer> playlistContainers = new List<PlaylistContainer>();
+        private void playlist_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            playlistTab_Table = Database.getPlaylistTable_Search(searchKeyWord);
+        }
+
+        private void playlist_worker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            playlistResult_flowPanel.Controls.Clear();
+
+
+            if (playlistTab_Table.Rows.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                foreach (DataRow item in playlistTab_Table.Rows)
+                {
+                    playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr, item["playlistID"].ToString()));
+                }
+            }
+            playlistResult_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+        }
+
+        #endregion
     }
 }

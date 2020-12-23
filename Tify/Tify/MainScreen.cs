@@ -88,6 +88,55 @@ namespace Tify
 
         #endregion doublebuffered
 
+        #region Load form
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            home_button.PerformClick();
+
+            volume_trackBar.Anchor = AnchorStyles.Right;
+
+            volume_trackBar.Maximum = 100;
+            volume_trackBar.Value = 50;
+
+            //Hide  ScrollBar so menu_panel
+            hideScrollBar(menu_panel, "panel");
+
+            this.DoubleBuffered = true;
+
+            //demo
+            this.ActiveControl = artist_label;
+
+            //testFunc();
+            songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
+            //set opacity for song cover
+            songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
+            songImgOpacity_panel.Hide();
+            //Set Main Screen for RightClickUC
+
+
+            //add playlist on low-left conner
+            CreatePL.AddPlaylistButtonToMenuPanel(PlayList_FlowPanel);
+            playlistScr.attachPlaylistContainerToPlaylistButtonInMenuPanel(PlayList_FlowPanel);
+
+            //finish loading
+
+
+           
+
+            if (homeScr.trackContainers.Count != 0)
+            {
+                currentTrack = homeScr.trackContainers[0].track;
+                loadNewSong(currentTrack);
+            }
+            loadingScr.changePic();
+            Thread.Sleep(2600);
+            loading_thread.Abort();
+        }
+
+
+        #endregion Load form
+
         #region load nhac khi chuyen bai
 
         private string[] suggestedSong;
@@ -200,55 +249,7 @@ namespace Tify
 
         private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
 
-        #region Load form
-
-        private void MainScreen_Load(object sender, EventArgs e)
-        {
-            home_button.PerformClick();
-
-            volume_trackBar.Anchor = AnchorStyles.Right;
-
-            volume_trackBar.Maximum = 100;
-            volume_trackBar.Value = 50;
-
-            //Hide  ScrollBar so menu_panel
-            hideScrollBar(menu_panel, "panel");
-
-            this.DoubleBuffered = true;
-
-            //demo
-            this.ActiveControl = artist_label;
-
-            //testFunc();
-            songDetail.setVolume_Trackbar_Value(volume_trackBar.Value);
-            //set opacity for song cover
-            songImgOpacity_panel.BackColor = Color.FromArgb(125, Color.Black);
-            songImgOpacity_panel.Hide();
-            //Set Main Screen for RightClickUC
-
-
-            //add playlist on low-left conner
-            CreatePL.AddPlaylistButtonToMenuPanel(PlayList_FlowPanel);
-            playlistScr.attachPlaylistContainerToPlaylistButtonInMenuPanel(PlayList_FlowPanel);
-
-            //finish loading
-
-            
-            loadingScr.changePic();
-            Thread.Sleep(2600);
-            loading_thread.Abort();
-
-            if (homeScr.trackContainers.Count!=0)
-            {
-                currentTrack = homeScr.trackContainers[0].track;
-                loadNewSong(currentTrack);
-            }
-        }
-
-
-
-     
-        #endregion Load form
+      
 
         #region Đổi icon khi nhấn vào nút play/pause
 
@@ -1155,8 +1156,13 @@ namespace Tify
         }
 
       
+
         public void checkLoved()
         {
+            if (currentTrack==null)
+            {
+                return;
+            }
             if (Database.checkIfTrackLoved(currentTrack.TrackID,CurrentUser.UserID))
             {
                 currentTrack.IsLoved = true;

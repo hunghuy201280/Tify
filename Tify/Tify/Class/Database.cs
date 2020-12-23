@@ -9,8 +9,28 @@ namespace Tify
 {
     internal class Database
     {
-        
 
+        static public DataTable getPlaylistTable_Search(string searchKeyWord)
+        {
+            string sqlQuery = "select * from Playlist where playlistTitle like '%"+searchKeyWord+"%'";
+
+            /* string sqlQuery = "select top 20 *  " +
+                "from Track where trackTitle like '%" + searchKeyWord + "%' order by trackID";*/
+            DataTable Table = new DataTable();
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Table.Load(reader);
+                }
+            }
+            sqlconnection.Close();
+            return Table;
+        }
         static public void deleteLastTrackInRecentlyPlayed(int userID)
         {
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
@@ -406,7 +426,9 @@ namespace Tify
 
         static public void updateDOB(int userID, string newDOB)
         {
-            string sqlQuery = "update Account set DOB=@newDOB where userID=@userID";
+            string sqlQuery = "update Account  " +
+                "set DOB = (select convert(datetime, @newDOB, 103)) " +
+                "where userID = @userID";
             DateTime dob;
             try
             {
