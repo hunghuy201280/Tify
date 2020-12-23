@@ -245,6 +245,7 @@
             this.addToPlaylist_Button.Size = new System.Drawing.Size(57, 50);
             this.addToPlaylist_Button.TabIndex = 3;
             this.addToPlaylist_Button.UseVisualStyleBackColor = false;
+            this.addToPlaylist_Button.Click += new System.EventHandler(this.addToPlaylist_Button_Click);
             // 
             // playShuffle_Button
             // 
@@ -285,7 +286,7 @@
             this.releaseYear_label.ForeColor = System.Drawing.Color.Gray;
             this.releaseYear_label.Location = new System.Drawing.Point(222, 124);
             this.releaseYear_label.Name = "releaseYear_label";
-            this.releaseYear_label.Size = new System.Drawing.Size(116, 20);
+            this.releaseYear_label.Size = new System.Drawing.Size(146, 25);
             this.releaseYear_label.TabIndex = 2;
             this.releaseYear_label.Text = "Released 2020";
             // 
@@ -296,7 +297,7 @@
             this.artist_track_time__label.ForeColor = System.Drawing.Color.White;
             this.artist_track_time__label.Location = new System.Drawing.Point(222, 95);
             this.artist_track_time__label.Name = "artist_track_time__label";
-            this.artist_track_time__label.Size = new System.Drawing.Size(208, 20);
+            this.artist_track_time__label.Size = new System.Drawing.Size(259, 25);
             this.artist_track_time__label.TabIndex = 2;
             this.artist_track_time__label.Text = "by Artist— 14 Tracks — 57:55";
             // 
@@ -307,7 +308,7 @@
             this.albumName_label.ForeColor = System.Drawing.Color.White;
             this.albumName_label.Location = new System.Drawing.Point(218, 41);
             this.albumName_label.Name = "albumName_label";
-            this.albumName_label.Size = new System.Drawing.Size(245, 43);
+            this.albumName_label.Size = new System.Drawing.Size(306, 53);
             this.albumName_label.TabIndex = 1;
             this.albumName_label.Text = "Album Name";
             // 

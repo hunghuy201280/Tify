@@ -55,7 +55,7 @@ namespace Tify
 
         private DataTable albumTab_Table = new DataTable();
         private List<DataGridViewRow> tracks = new List<DataGridViewRow>();
-    
+        
         private List<TrackInfo> albumInfo;
         private AlbumContainer albumContainer;
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
@@ -210,6 +210,7 @@ namespace Tify
         {
             TrackInfo trackToPlay = album_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             albumsFm.mainScr.changeSong(trackToPlay);
+            albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
 
         #endregion
@@ -226,6 +227,7 @@ namespace Tify
 
             }
             albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
         #endregion
 
@@ -251,6 +253,7 @@ namespace Tify
                 albumsFm.mainScr.addTrackToQueue(trackToPlay);
             }
             albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
 
 
@@ -291,6 +294,13 @@ namespace Tify
             }
         }
 
+        #endregion
+
+        #region add album
+        private void addToPlaylist_Button_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

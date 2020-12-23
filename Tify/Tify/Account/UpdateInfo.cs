@@ -106,5 +106,12 @@ namespace Tify
             panel6.Location = new Point(this.ClientSize.Width / 2 - panel6.Size.Width / 2,this.ClientSize.Height / 2 - panel6.Size.Height / 2);
             panel6.Anchor = AnchorStyles.None;
         }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            
+            Application.Restart();
+           /* Environment.Exit(0);*/
+        }
     }
 }

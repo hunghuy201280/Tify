@@ -258,6 +258,7 @@ namespace Tify
                 return;
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             mainScr.changeSong(trackToPlay);
+            mainScr.setplayfrom("Track");
         }
 
         #endregion event cell click
