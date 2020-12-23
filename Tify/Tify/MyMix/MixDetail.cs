@@ -204,7 +204,7 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             myMix.mainScr.changeSong(trackToPlay);
-           
+            myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
 
 
@@ -222,6 +222,7 @@ namespace Tify
               
             }
             myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+            myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
         #endregion
 
@@ -245,11 +246,11 @@ namespace Tify
                 TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
                 myMix.mainScr.addTrackToQueue(trackToPlay);
             }
+            myMix.mainScr.setplayfrom(mixTitle_label.Text);
             myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
-
-
         }
         #endregion
+
 
       
     }

@@ -212,6 +212,7 @@ namespace Tify
         {
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             artistForm.mainScr.changeSong(trackToPlay);
+            artistForm.mainScr.setplayfrom(artistName_label.Text);
         }
 
         #endregion

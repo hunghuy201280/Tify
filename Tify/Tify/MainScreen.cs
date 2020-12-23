@@ -236,6 +236,16 @@ namespace Tify
 
           
             homeScr.loadRecentlyPlayed();
+
+            if (title_label.Text.Length > 24)
+            {
+                title_label.Text = title_label.Text.Substring(0, 24) + "...";
+            }
+            if (artist_label.Text.Length > 18)
+            {
+                artist_label.Text = artist_label.Text.Substring(0, 18) + "...";
+            }
+
         }
 
         #endregion load nhac khi chuyen bai
@@ -1175,6 +1185,20 @@ namespace Tify
                 like_Player_Button.BackgroundImage = Properties.Resources.like;
                 songDetail.like_Player_Button.BackgroundImage = Properties.Resources.like;
             }
+        }
+        #endregion
+
+        #region playfrom
+
+        public void setplayfrom(string input)
+        {
+            
+            playingFrom_label.Text = "Play from : " + input;
+            if (playingFrom_label.Text.Length > 24)
+            {
+                playingFrom_label.Text = playingFrom_label.Text.Substring(0, 24)+"...";
+            }
+            
         }
         #endregion
     }
