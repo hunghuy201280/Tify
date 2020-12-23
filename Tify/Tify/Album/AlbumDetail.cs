@@ -297,9 +297,12 @@ namespace Tify
         #endregion
 
         #region add album
+       
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {
-
+            AddtoPlaylistForm add2PL = new AddtoPlaylistForm(albumsFm.mainScr, true,albumInfo);
+            add2PL.ShowDialog();
+            
         }
         #endregion
     }

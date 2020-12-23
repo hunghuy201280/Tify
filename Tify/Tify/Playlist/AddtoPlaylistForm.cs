@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Tify
 {
@@ -18,7 +19,14 @@ namespace Tify
             InitializeComponent();
 
         }
-
+        bool isnotsingletrack=false;
+        public AddtoPlaylistForm(MainScreen callForm,bool input,List<TrackInfo> inputTrack)
+        {
+            InitializeComponent();
+            isnotsingletrack = input;
+            mainScr = callForm;
+            
+        }
         public AddtoPlaylistForm(MainScreen callForm, string trackid)
         {
             InitializeComponent();
@@ -108,21 +116,27 @@ namespace Tify
 
         private void playlistchoseevent(string input, string trackID)
         {
-           
-            try
+            if (isnotsingletrack == false)
             {
-                Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
-                //add row to playlist
-                mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPlaylistID);
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                try
                 {
-                    //Violation of primary key. Handle Exception
-                    MessageBox.Show("This track already exist in this playlist");
+                    Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
+                    //add row to playlist
+                    mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPlaylistID);
                 }
-                else throw;
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627)
+                    {
+                        //Violation of primary key. Handle Exception
+                        MessageBox.Show("This track already exist in this playlist");
+                    }
+                    else throw;
+                }
+            }
+            else 
+            { 
+            
             }
 
            
