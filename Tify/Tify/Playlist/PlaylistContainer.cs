@@ -85,10 +85,10 @@ namespace Tify
                 owner = trackTable.Rows[0]["name"].ToString();
                 //number of tracks
                 trackCount = trackTable
-       .AsEnumerable()
-       .Select(r => r.Field<string>("trackTitle"))
-       .Distinct()
-       .Count();
+                                       .AsEnumerable()
+                                       .Select(r => r.Field<string>("trackTitle"))
+                                       .Distinct()
+                                       .Count();
                 numberOfTracks_label.Text = trackCount + " Tracks";
 
                 createdBy_label.Text = "Created by " + owner;

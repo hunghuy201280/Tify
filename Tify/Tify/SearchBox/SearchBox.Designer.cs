@@ -42,14 +42,7 @@
             this.SearchBox_Tracks = new System.Windows.Forms.Button();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
             this.bottom_panel = new System.Windows.Forms.Panel();
-            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.track_gridView = new System.Windows.Forms.DataGridView();
-            this.img = new System.Windows.Forms.DataGridViewImageColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
-            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.playlistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.albumResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.artistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -58,9 +51,21 @@
             this.album_worker = new System.ComponentModel.BackgroundWorker();
             this.playlist_worker = new System.ComponentModel.BackgroundWorker();
             this.pic_time_Track_worker = new System.ComponentModel.BackgroundWorker();
+            this.noResult_panel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.img = new System.Windows.Forms.DataGridViewImageColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
+            this.noResult_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // top_panel
@@ -163,25 +168,17 @@
             // 
             // bottom_panel
             // 
-            this.bottom_panel.Controls.Add(this.loading_SplashScreen1);
-            this.bottom_panel.Controls.Add(this.track_gridView);
             this.bottom_panel.Controls.Add(this.playlistResult_flowPanel);
+            this.bottom_panel.Controls.Add(this.track_gridView);
             this.bottom_panel.Controls.Add(this.albumResult_flowPanel);
             this.bottom_panel.Controls.Add(this.artistResult_flowPanel);
+            this.bottom_panel.Controls.Add(this.noResult_panel);
+            this.bottom_panel.Controls.Add(this.loading_SplashScreen1);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_panel.Location = new System.Drawing.Point(0, 59);
             this.bottom_panel.Name = "bottom_panel";
             this.bottom_panel.Size = new System.Drawing.Size(871, 472);
             this.bottom_panel.TabIndex = 4;
-            // 
-            // loading_SplashScreen1
-            // 
-            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
-            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
-            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
-            this.loading_SplashScreen1.Size = new System.Drawing.Size(871, 472);
-            this.loading_SplashScreen1.TabIndex = 0;
             // 
             // track_gridView
             // 
@@ -254,54 +251,6 @@
             this.track_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
             // 
-            // img
-            // 
-            this.img.HeaderText = "";
-            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.img.MinimumWidth = 42;
-            this.img.Name = "img";
-            this.img.ReadOnly = true;
-            this.img.Width = 42;
-            // 
-            // title
-            // 
-            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.title.HeaderText = "TITLE";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // artist
-            // 
-            this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.artist.HeaderText = "ARTIST";
-            this.artist.Name = "artist";
-            this.artist.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.time.HeaderText = "TIME";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // addToPlaylist
-            // 
-            this.addToPlaylist.HeaderText = "";
-            this.addToPlaylist.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.addToPlaylist.MinimumWidth = 20;
-            this.addToPlaylist.Name = "addToPlaylist";
-            this.addToPlaylist.ReadOnly = true;
-            this.addToPlaylist.Width = 20;
-            // 
-            // remove
-            // 
-            this.remove.HeaderText = "";
-            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.remove.MinimumWidth = 20;
-            this.remove.Name = "remove";
-            this.remove.ReadOnly = true;
-            this.remove.Width = 20;
-            // 
             // playlistResult_flowPanel
             // 
             this.playlistResult_flowPanel.AutoScroll = true;
@@ -354,6 +303,8 @@
             // 
             this.playlist_worker.WorkerReportsProgress = true;
             this.playlist_worker.WorkerSupportsCancellation = true;
+            this.playlist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.playlist_worker_DoWork);
+            this.playlist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.playlist_worker_RunWorkerCompleted);
             // 
             // pic_time_Track_worker
             // 
@@ -361,6 +312,94 @@
             this.pic_time_Track_worker.WorkerSupportsCancellation = true;
             this.pic_time_Track_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.pic_time_Track_worker_DoWork);
             this.pic_time_Track_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.pic_time_Track_worker_RunWorkerCompleted);
+            // 
+            // noResult_panel
+            // 
+            this.noResult_panel.Controls.Add(this.label1);
+            this.noResult_panel.Controls.Add(this.pictureBox1);
+            this.noResult_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noResult_panel.Location = new System.Drawing.Point(0, 0);
+            this.noResult_panel.Name = "noResult_panel";
+            this.noResult_panel.Size = new System.Drawing.Size(871, 472);
+            this.noResult_panel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(310, 111);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(339, 388);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nothing Found";
+            // 
+            // img
+            // 
+            this.img.HeaderText = "";
+            this.img.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.img.MinimumWidth = 42;
+            this.img.Name = "img";
+            this.img.ReadOnly = true;
+            this.img.Width = 42;
+            // 
+            // title
+            // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.title.HeaderText = "TITLE";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // artist
+            // 
+            this.artist.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artist.HeaderText = "ARTIST";
+            this.artist.Name = "artist";
+            this.artist.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.time.HeaderText = "TIME";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // addToPlaylist
+            // 
+            this.addToPlaylist.HeaderText = "";
+            this.addToPlaylist.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.addToPlaylist.MinimumWidth = 20;
+            this.addToPlaylist.Name = "addToPlaylist";
+            this.addToPlaylist.ReadOnly = true;
+            this.addToPlaylist.Width = 20;
+            // 
+            // remove
+            // 
+            this.remove.HeaderText = "";
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 20;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 20;
+            // 
+            // loading_SplashScreen1
+            // 
+            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
+            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
+            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
+            this.loading_SplashScreen1.Size = new System.Drawing.Size(871, 472);
+            this.loading_SplashScreen1.TabIndex = 0;
             // 
             // SearchBox
             // 
@@ -376,6 +415,9 @@
             this.top_panel.ResumeLayout(false);
             this.bottom_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).EndInit();
+            this.noResult_panel.ResumeLayout(false);
+            this.noResult_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -391,12 +433,6 @@
         private System.Windows.Forms.Panel separator_panel;
         private System.Windows.Forms.DataGridView track_gridView;
         private System.Windows.Forms.FlowLayoutPanel artistResult_flowPanel;
-        private System.Windows.Forms.DataGridViewImageColumn img;
-        private System.Windows.Forms.DataGridViewTextBoxColumn title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn artist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
-        private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
-        private System.Windows.Forms.DataGridViewImageColumn remove;
         private System.ComponentModel.BackgroundWorker search_worker;
         private System.Windows.Forms.FlowLayoutPanel albumResult_flowPanel;
         private System.Windows.Forms.FlowLayoutPanel playlistResult_flowPanel;
@@ -405,5 +441,14 @@
         private System.ComponentModel.BackgroundWorker playlist_worker;
         private Loading_SplashScreen loading_SplashScreen1;
         private System.ComponentModel.BackgroundWorker pic_time_Track_worker;
+        private System.Windows.Forms.Panel noResult_panel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewImageColumn img;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
+        private System.Windows.Forms.DataGridViewImageColumn remove;
     }
 }

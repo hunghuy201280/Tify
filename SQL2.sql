@@ -392,3 +392,41 @@ select * from RecentlyPlayed where userID=8 order by stackIndex desc
 
 
 delete from RecentlyPlayed where userID=8 and trackID =( select top 1 trackID from RecentlyPlayed order by stackIndex)
+
+
+select top 1 * from Track order by trackID desc
+
+select top 8000  * from Track left join ArtistHasTrack on Track.trackID=ArtistHasTrack.trackID
+left join Artist on ArtistHasTrack.artistID=Artist.artistID
+order by Track.trackID desc;
+
+select * from Artist where artistName like '%soob%'
+
+select * from Account
+
+--update Account 
+--set DOB= (select convert(datetime, '29/12/2009', 103))
+--where userID=15
+
+select  * from Track where trackLink like '%nghe-album%'
+
+select top 1* from AlbumHasTrack
+
+select top 1000 * from Album
+select * from Track where trackLink ='https://vi.chiasenhac.vn/mp3/5-dong-ke/canh-dong-tinh-yeu-tsvqr766qeatkk.html'
+
+--delete from Track where trackLink like '%nghe-album%'
+
+--delete from Track where trackID in( 
+--select trackID from ArtistHasTrack join Track on ArtistHasTrack.trackID=Track.trackID where trackLink like '%nghe-album%')
+
+--delete from ArtistHasTrack where ArtistHasTrack.trackID in
+--(select temp.trackID from ArtistHasTrack join Track temp on ArtistHasTrack.trackID=temp.trackID where trackLink like '%nghe-album%')
+
+select top 1000 * from Track order by trackID desc
+
+select top 1000 * from AlbumHasTrack order by albumID desc
+
+select * from Album
+
+select top 1000 * from ArtistHasTrack order by trackID desc
