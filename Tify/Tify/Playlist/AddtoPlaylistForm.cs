@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Tify
 {
@@ -120,7 +121,10 @@ namespace Tify
             {
                 try
                 {
-                    Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
+                    ThreadPool.QueueUserWorkItem(delegate (object obj)
+                    {
+                        Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
+                    });
                     //add row to playlist
                     mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPlaylistID);
                 }
@@ -136,7 +140,7 @@ namespace Tify
             }
             else 
             { 
-            
+                
             }
 
            

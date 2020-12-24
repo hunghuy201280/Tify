@@ -1,5 +1,6 @@
 ﻿using GetData;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,6 +11,26 @@ namespace Tify
     internal class Database
     {
 
+        static public void addPlaylistToOtherPlaylist(List<TrackInfo> trackInfos,string playlistID)
+        {
+
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID,getdate())";
+            foreach (TrackInfo track in trackInfos)
+            {
+
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                {
+                    cmd.Parameters.AddWithValue("@trackID", track.TrackID);
+                    cmd.Parameters.AddWithValue("@playlistID", playlistID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+          
+            sqlconnection.Close();
+        }
         static public DataTable getPlaylistTable_Search(string searchKeyWord)
         {
             string sqlQuery = "select * from Playlist where playlistTitle like '%"+searchKeyWord+"%'";

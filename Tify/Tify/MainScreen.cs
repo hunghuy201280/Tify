@@ -1251,6 +1251,8 @@ namespace Tify
         #endregion
 
         #region repeatButton
+
+        bool loopMode = false;
         private void repeate_button_Click(object sender, EventArgs e)
         {
             if (repeat_button.Tag.ToString()=="off")
@@ -1270,6 +1272,7 @@ namespace Tify
             }
 
             songDetail.repeat_button.BackgroundImage = repeat_button.BackgroundImage;
+          
         }
 
         #endregion

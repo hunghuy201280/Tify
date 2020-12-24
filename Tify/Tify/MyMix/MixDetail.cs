@@ -257,9 +257,13 @@ namespace Tify
             myMix.mainScr.setplayfrom(mixTitle_label.Text);
             myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
         }
+
+
         #endregion
 
+        private void addToPlaylist_Button_Click(object sender, EventArgs e)
+        {
 
-      
+        }
     }
 }

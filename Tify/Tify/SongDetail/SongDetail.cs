@@ -277,6 +277,7 @@ namespace Tify
         private void repeat_button_Click(object sender, EventArgs e)
         {
             mainscr.repeat_button.PerformClick();
+            
         }
     }
 }
