@@ -380,18 +380,16 @@ select top 10 * from Track order by trackID desc
 
 
 
-create table RecentlyPlayed
-(
-	userID int  references Account(userID),
-	trackID int  references Track(trackID),
-	stackIndex int  identity (1,1),
-	primary key(userID,trackID)
-)
+--create table RecentlyPlayed
+--(
+--	userID int  references Account(userID),
+--	trackID int  references Track(trackID),
+--	stackIndex int  identity (1,1),
+--	primary key(userID,trackID)
+--)
 
 select * from RecentlyPlayed where userID=8 order by stackIndex desc
 
-
-delete from RecentlyPlayed where userID=8 and trackID =( select top 1 trackID from RecentlyPlayed order by stackIndex)
 
 
 select top 1 * from Track order by trackID desc
@@ -427,6 +425,12 @@ select top 1000 * from Track order by trackID desc
 
 select top 1000 * from AlbumHasTrack order by albumID desc
 
-select * from Album
+select count(*) from Album
 
 select top 1000 * from ArtistHasTrack order by trackID desc
+
+select * from Album where albumID=4188
+
+select * from Account
+
+select * from Playlist
