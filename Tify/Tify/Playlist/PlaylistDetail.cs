@@ -145,7 +145,7 @@ namespace Tify
                 playlistForm.mainScr.addTrackToQueue(trackToPlay);
 
             }
-            playlistForm.mainScr.changeSong(playlistForm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue());
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
         #endregion
@@ -171,7 +171,7 @@ namespace Tify
                 TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
                 playlistForm.mainScr.addTrackToQueue(trackToPlay);
             }
-            playlistForm.mainScr.changeSong(playlistForm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue() );
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
         #endregion

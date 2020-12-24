@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -55,10 +56,13 @@ namespace Tify
         {
             trackContainers.Clear();
             recentlyTable = Database.getRecentlyTrack(mainScr.CurrentUser.UserID);
-            if (recentlyTable.Rows.Count>15)
+            ThreadPool.QueueUserWorkItem(delegate (object obj)
             {
-                Database.deleteLastTrackInRecentlyPlayed(mainScr.CurrentUser.UserID);
-            }
+                if (recentlyTable.Rows.Count > 15)
+                {
+                    Database.deleteLastTrackInRecentlyPlayed(mainScr.CurrentUser.UserID);
+                }
+            });
             foreach (DataRow row in recentlyTable.Rows)
             {
                 trackContainers.Add(new TrackContainer_Home(row["trackID"].ToString(), mainScr));

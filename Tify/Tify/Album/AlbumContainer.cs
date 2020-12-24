@@ -70,6 +70,7 @@ namespace Tify
         private void setContainerUI()
         {
             //load cover,name,... cho album container
+           
             albumName_label.Text = trackTable.Rows[0]["albumTitle"].ToString();
             albumYear_label.Text = trackTable.Rows[0]["albumYear"].ToString();
 

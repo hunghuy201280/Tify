@@ -69,11 +69,12 @@ namespace Tify
             loading_SplashScreen1.SendToBack();
         }
 
-
+        private List<TrackInfo> trackInfos = new List<TrackInfo>();
 
         public void SetDetailInfo(List<TrackInfo> trackInfos,Image cover,bool open,MyMixContainer callFm)
         {
             track_dataGridView.Rows.Clear();
+            this.trackInfos = trackInfos;
             //create template row
             track_dataGridView.Rows.Add();
             track_dataGridView.Rows[0].Visible = false;
@@ -202,8 +203,15 @@ namespace Tify
         #region play track on clicking row
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
+            int index = trackInfos.IndexOf(trackToPlay);
             myMix.mainScr.changeSong(trackToPlay);
+            for (int i = index+1; i < trackInfos.Count; i++)
+            {
+                myMix.mainScr.addTrackToQueue(trackInfos[i]);
+                
+            }
             myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
 
@@ -221,7 +229,7 @@ namespace Tify
                 myMix.mainScr.addTrackToQueue(trackToPlay);
               
             }
-            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+            myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
             myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
         #endregion
@@ -247,7 +255,7 @@ namespace Tify
                 myMix.mainScr.addTrackToQueue(trackToPlay);
             }
             myMix.mainScr.setplayfrom(mixTitle_label.Text);
-            myMix.mainScr.changeSong(myMix.mainScr.nextTrack.Dequeue() as TrackInfo);
+            myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
         }
         #endregion
 

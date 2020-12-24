@@ -2,6 +2,7 @@
 using GetData;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -234,8 +235,11 @@ namespace Tify
             suggestedSong = GetSongData.GetSuggetSongs(track.TrackLink);
             songDetail.setSuggestedSong(suggestedSong);
 
-          
-            homeScr.loadRecentlyPlayed();
+
+            if (activeForm==homeScr)
+            {
+                homeScr.loadRecentlyPlayed();
+            }
 
             if (title_label.Text.Length > 24)
             {
@@ -351,19 +355,48 @@ namespace Tify
 
         #region Đổi icon khi nhấn vào nút shuffle
 
+        #region random list nextrack
+
+        private Random rng = new Random();
+
+        public void Shuffle(IList<TrackInfo> list)
+        {
+          
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                TrackInfo value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
+        List<TrackInfo> originalNextTrack = new List<TrackInfo>();
+
+        #endregion
         private void shuffle_button_Click(object sender, EventArgs e)
         {
             if (shuffle_button.Tag.ToString() == "on")
             {
                 shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
                 shuffle_button.Tag = "off";
+
+                nextTrack = originalNextTrack.ConvertAll(track => new TrackInfo(track));
+                 //   books_1.ConvertAll(book => new Book(book.title));
             }
             else
             {
                 shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
                 shuffle_button.Tag = "on";
+
+                originalNextTrack = nextTrack.ConvertAll(track => new TrackInfo(track));
+                Shuffle(nextTrack);
             }
             songDetail.setShuffle_Button_Img(shuffle_button.BackgroundImage);
+
+
         }
 
         #endregion Đổi icon khi nhấn vào nút shuffle
@@ -480,7 +513,10 @@ namespace Tify
 
             //Mở childForm
             if (sender == home_button)
+            {
+                homeScr.loadRecentlyPlayed();
                 openChildForm(homeScr);
+            }
             else if (sender == myMix_button)
                 openChildForm(myMixScr);
             else if (sender == playlist_button)
@@ -1044,33 +1080,42 @@ namespace Tify
             TrackInfo lastTrack = previousTracks.Pop() as TrackInfo;
             loadNewSong(lastTrack);
         }
-
+        public TrackInfo Dequeue()
+        {
+            if (nextTrack.Count==0)
+            {
+                return null;
+            }
+            TrackInfo temp = nextTrack[0];
+            nextTrack.RemoveAt(0);
+            return temp;
+        }
         private void next_button_Click(object sender, EventArgs e)
         {
-            if (previousTracks.Count == 0)
-            {
-                previousTracks.Push(currentTrack);
-            }
             if (nextTrack.Count==0)
             {
                 loadNewSong(new TrackInfo() { TrackLink=suggestedSong[0] });
+                setplayfrom("Suggests");
             }
             else
             {
-                loadNewSong(nextTrack.Dequeue() as TrackInfo);
+                changeSong(Dequeue());
             }
         }
 
 
-        public Queue nextTrack = new Queue();
+        public List<TrackInfo> nextTrack = new List<TrackInfo>();
         public void addTrackToQueue (TrackInfo track)
         {
-            nextTrack.Enqueue(track);
+            nextTrack.Add(track);
+          
+            
         }
         public void changeSong(TrackInfo track)
         {
             previousTracks.Push(currentTrack);
             loadNewSong(track);
+            originalNextTrack = nextTrack;
         }
 
 
@@ -1186,6 +1231,8 @@ namespace Tify
                 songDetail.like_Player_Button.BackgroundImage = Properties.Resources.like;
             }
         }
+
+       
         #endregion
 
         #region playfrom
@@ -1199,7 +1246,32 @@ namespace Tify
                 playingFrom_label.Text = playingFrom_label.Text.Substring(0, 24)+"...";
             }
             
+           
         }
+        #endregion
+
+        #region repeatButton
+        private void repeate_button_Click(object sender, EventArgs e)
+        {
+            if (repeat_button.Tag.ToString()=="off")
+            {
+                repeat_button.BackgroundImage = player_imageList.Images["repeat_on.png"];
+                repeat_button.Tag = "on";
+            }
+            else if(repeat_button.Tag.ToString() == "on")
+            {
+                repeat_button.BackgroundImage = player_imageList.Images["repeat1.png"];
+                repeat_button.Tag = "1";
+            }
+            else if (repeat_button.Tag.ToString() == "1")
+            {
+                repeat_button.BackgroundImage = player_imageList.Images["repeat_off.png"];
+                repeat_button.Tag = "off";
+            }
+
+            songDetail.repeat_button.BackgroundImage = repeat_button.BackgroundImage;
+        }
+
         #endregion
     }
 }

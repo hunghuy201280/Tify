@@ -407,6 +407,8 @@ namespace Tify
             }
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
             mainScr.changeSong(trackToPlay);
+
+            mainScr.setplayfrom("Search");
         }
 
         private void track_gridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

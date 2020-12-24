@@ -33,7 +33,9 @@
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.songDetail_rightPanel = new System.Windows.Forms.Panel();
+            this.bigPanel = new System.Windows.Forms.Panel();
             this.suggestedTracks_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.suggestedTracks_label = new System.Windows.Forms.Label();
             this.songDetail_leftPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -58,9 +60,9 @@
             this.songDetailMinimize_button = new System.Windows.Forms.Button();
             this.separator_panel = new System.Windows.Forms.Panel();
             this.loadSuggestedTracks_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.bigPanel = new System.Windows.Forms.Panel();
-            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
+            this.repeat_button = new System.Windows.Forms.Button();
             this.songDetail_rightPanel.SuspendLayout();
+            this.bigPanel.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.add_like_panel.SuspendLayout();
@@ -68,7 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).BeginInit();
-            this.bigPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // songDetaillImageList
@@ -88,6 +89,16 @@
             this.songDetail_rightPanel.Size = new System.Drawing.Size(413, 757);
             this.songDetail_rightPanel.TabIndex = 3;
             // 
+            // bigPanel
+            // 
+            this.bigPanel.Controls.Add(this.suggestedTracks_flowPanel);
+            this.bigPanel.Controls.Add(this.loading_SplashScreen1);
+            this.bigPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bigPanel.Location = new System.Drawing.Point(0, 157);
+            this.bigPanel.Name = "bigPanel";
+            this.bigPanel.Size = new System.Drawing.Size(413, 600);
+            this.bigPanel.TabIndex = 0;
+            // 
             // suggestedTracks_flowPanel
             // 
             this.suggestedTracks_flowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(6)))), ((int)(((byte)(14)))));
@@ -98,6 +109,15 @@
             this.suggestedTracks_flowPanel.Size = new System.Drawing.Size(413, 600);
             this.suggestedTracks_flowPanel.TabIndex = 19;
             this.suggestedTracks_flowPanel.WrapContents = false;
+            // 
+            // loading_SplashScreen1
+            // 
+            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
+            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
+            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
+            this.loading_SplashScreen1.Size = new System.Drawing.Size(413, 600);
+            this.loading_SplashScreen1.TabIndex = 0;
             // 
             // suggestedTracks_label
             // 
@@ -279,13 +299,14 @@
             // panel7
             // 
             this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel7.Controls.Add(this.repeat_button);
             this.panel7.Controls.Add(this.shuffle_button);
             this.panel7.Controls.Add(this.previous_button);
             this.panel7.Controls.Add(this.next_button);
             this.panel7.Controls.Add(this.pause_button);
-            this.panel7.Location = new System.Drawing.Point(192, 118);
+            this.panel7.Location = new System.Drawing.Point(171, 118);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(235, 100);
+            this.panel7.Size = new System.Drawing.Size(284, 100);
             this.panel7.TabIndex = 12;
             // 
             // shuffle_button
@@ -475,24 +496,25 @@
             this.loadSuggestedTracks_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loadSuggestedTracks_backgroundWorker_DoWork);
             this.loadSuggestedTracks_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loadSuggestedTracks_backgroundWorker_RunWorkerCompleted);
             // 
-            // bigPanel
+            // repeat_button
             // 
-            this.bigPanel.Controls.Add(this.suggestedTracks_flowPanel);
-            this.bigPanel.Controls.Add(this.loading_SplashScreen1);
-            this.bigPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bigPanel.Location = new System.Drawing.Point(0, 157);
-            this.bigPanel.Name = "bigPanel";
-            this.bigPanel.Size = new System.Drawing.Size(413, 600);
-            this.bigPanel.TabIndex = 0;
-            // 
-            // loading_SplashScreen1
-            // 
-            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
-            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
-            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
-            this.loading_SplashScreen1.Size = new System.Drawing.Size(413, 600);
-            this.loading_SplashScreen1.TabIndex = 0;
+            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
+            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.repeat_button.FlatAppearance.BorderSize = 0;
+            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.repeat_button.Location = new System.Drawing.Point(256, 32);
+            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.repeat_button.Name = "repeat_button";
+            this.repeat_button.Size = new System.Drawing.Size(28, 32);
+            this.repeat_button.TabIndex = 13;
+            this.repeat_button.Tag = "off";
+            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
+            this.repeat_button.UseVisualStyleBackColor = false;
+            this.repeat_button.Click += new System.EventHandler(this.repeat_button_Click);
             // 
             // SongDetail
             // 
@@ -508,6 +530,7 @@
             this.Text = "SongDetail";
             this.Resize += new System.EventHandler(this.SongDetail_Resize);
             this.songDetail_rightPanel.ResumeLayout(false);
+            this.bigPanel.ResumeLayout(false);
             this.songDetail_leftPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -517,7 +540,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.songCover_detailPictureBox)).EndInit();
-            this.bigPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -553,5 +575,6 @@
         public System.Windows.Forms.Button addToPlaylist_Player_Button;
         private System.Windows.Forms.Panel bigPanel;
         private Loading_SplashScreen loading_SplashScreen1;
+        public System.Windows.Forms.Button repeat_button;
     }
 }

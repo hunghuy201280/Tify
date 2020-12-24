@@ -75,6 +75,7 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
+            this.repeat_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -263,13 +264,14 @@
             // play_pause_panel
             // 
             this.play_pause_panel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.play_pause_panel.Controls.Add(this.repeat_button);
             this.play_pause_panel.Controls.Add(this.shuffle_button);
             this.play_pause_panel.Controls.Add(this.previous_button);
             this.play_pause_panel.Controls.Add(this.next_button);
             this.play_pause_panel.Controls.Add(this.pause_button);
             this.play_pause_panel.Location = new System.Drawing.Point(446, 0);
             this.play_pause_panel.Name = "play_pause_panel";
-            this.play_pause_panel.Size = new System.Drawing.Size(235, 100);
+            this.play_pause_panel.Size = new System.Drawing.Size(294, 100);
             this.play_pause_panel.TabIndex = 12;
             // 
             // shuffle_button
@@ -388,9 +390,8 @@
             this.playingFrom_label.Location = new System.Drawing.Point(104, 61);
             this.playingFrom_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.playingFrom_label.Name = "playingFrom_label";
-            this.playingFrom_label.Size = new System.Drawing.Size(148, 16);
+            this.playingFrom_label.Size = new System.Drawing.Size(0, 16);
             this.playingFrom_label.TabIndex = 4;
-            this.playingFrom_label.Text = "Playing from:  Yorushika";
             // 
             // artist_label
             // 
@@ -401,9 +402,8 @@
             this.artist_label.Location = new System.Drawing.Point(104, 40);
             this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.artist_label.Name = "artist_label";
-            this.artist_label.Size = new System.Drawing.Size(155, 16);
+            this.artist_label.Size = new System.Drawing.Size(0, 16);
             this.artist_label.TabIndex = 3;
-            this.artist_label.Text = "Yorushikaaaaaaaaaaaaaa";
             this.artist_label.TextChanged += new System.EventHandler(this.artist_label_TextChanged);
             // 
             // title_label
@@ -415,9 +415,8 @@
             this.title_label.Location = new System.Drawing.Point(104, 23);
             this.title_label.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(140, 17);
+            this.title_label.Size = new System.Drawing.Size(0, 17);
             this.title_label.TabIndex = 1;
-            this.title_label.Text = "Hole In The Heart";
             this.title_label.TextChanged += new System.EventHandler(this.title_label_TextChanged);
             // 
             // menu_panel
@@ -812,6 +811,9 @@
             this.player_imageList.Images.SetKeyName(5, "shuffle_off.png");
             this.player_imageList.Images.SetKeyName(6, "like.png");
             this.player_imageList.Images.SetKeyName(7, "liked.png");
+            this.player_imageList.Images.SetKeyName(8, "repeat_off.png");
+            this.player_imageList.Images.SetKeyName(9, "repeat_on.png");
+            this.player_imageList.Images.SetKeyName(10, "repeat1.png");
             // 
             // myToolTip
             // 
@@ -833,6 +835,26 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
+            // 
+            // repeat_button
+            // 
+            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
+            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.repeat_button.FlatAppearance.BorderSize = 0;
+            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.repeat_button.Location = new System.Drawing.Point(256, 33);
+            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.repeat_button.Name = "repeat_button";
+            this.repeat_button.Size = new System.Drawing.Size(28, 32);
+            this.repeat_button.TabIndex = 12;
+            this.repeat_button.Tag = "off";
+            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
+            this.repeat_button.UseVisualStyleBackColor = false;
+            this.repeat_button.Click += new System.EventHandler(this.repeate_button_Click);
             // 
             // MainScreen
             // 
@@ -915,6 +937,7 @@
         public System.Windows.Forms.Button addToPlaylist_Player_Button;
         public System.Windows.Forms.Button like_Player_Button;
         public System.Windows.Forms.Button backForm_button;
+        public System.Windows.Forms.Button repeat_button;
     }
 }
 

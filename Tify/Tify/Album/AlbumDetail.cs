@@ -226,7 +226,7 @@ namespace Tify
                 albumsFm.mainScr.addTrackToQueue(trackToPlay);
 
             }
-            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            albumsFm.mainScr.changeSong(albumsFm.mainScr.Dequeue());
             albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
         #endregion
@@ -252,7 +252,7 @@ namespace Tify
                 TrackInfo trackToPlay = album_gridView.Rows[num].Tag as TrackInfo;
                 albumsFm.mainScr.addTrackToQueue(trackToPlay);
             }
-            albumsFm.mainScr.changeSong(albumsFm.mainScr.nextTrack.Dequeue() as TrackInfo);
+            albumsFm.mainScr.changeSong(albumsFm.mainScr.Dequeue());
             albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
 

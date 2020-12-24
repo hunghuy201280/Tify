@@ -12,15 +12,21 @@ namespace Tify
         private string title, artist, time,trackID,trackLink,dateAdded;
         private bool isLoved;
         private Image cover;
-        public TrackInfo(string title,string artist,string time)
+        
+        public TrackInfo(TrackInfo copy)
         {
-            this.title = title;
-            this.artist = artist;
-            this.time = time;
+            title = copy.title;
+            artist = copy.artist;
+            time = copy.time;
+            trackID = copy.trackID;
+            trackLink = copy.trackLink;
+            dateAdded = copy.dateAdded;
+            IsLoved = copy.isLoved;
+            cover = copy.cover;
+                
         }
         public TrackInfo()
         {
-            
         }
 
         public string Title { get => title; set => title = value; }
