@@ -209,7 +209,22 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             TrackInfo trackToPlay = album_gridView.Rows[e.RowIndex].Tag as TrackInfo;
-            albumsFm.mainScr.changeSong(trackToPlay);
+
+            albumsFm.mainScr.nextTrack.Clear();
+            albumsFm.mainScr.currentTrackIndex = 0;
+            for (int i = e.RowIndex; i < album_gridView.Rows.Count; i++)
+            {
+                albumsFm.mainScr.addTrackToQueue((album_gridView.Rows[i].Tag as TrackInfo));
+            }
+            if (albumsFm.mainScr.shuffle_button.Tag.ToString() == "on")
+            {
+                albumsFm.mainScr.enableShuffle();
+            }
+            else
+            {
+                albumsFm.mainScr.disableShuffle();
+            }
+            albumsFm.mainScr.changeSong(albumsFm.mainScr.Dequeue());
             albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
 

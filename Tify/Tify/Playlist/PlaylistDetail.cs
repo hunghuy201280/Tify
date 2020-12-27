@@ -127,8 +127,29 @@ namespace Tify
         #region play track on clicking row
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //khi double click row trong grid view, clear nextrack, add tất cả các track phía sau vào nexttrack, kiểm tra random,...
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
-            playlistForm.mainScr.changeSong(trackToPlay);
+            //
+            playlistForm.mainScr.nextTrack.Clear();
+            playlistForm.mainScr.currentTrackIndex = 0;
+            for (int i = e.RowIndex; i < track_dataGridView.Rows.Count; i++)
+            {
+                playlistForm.mainScr.addTrackToQueue((track_dataGridView.Rows[i].Tag as TrackInfo));
+            }
+            if (playlistForm.mainScr.shuffle_button.Tag.ToString()=="on")
+            {
+                playlistForm.mainScr.enableShuffle();
+            }
+            else
+            {
+                playlistForm.mainScr.disableShuffle();
+            }
+
+            //
+
+
+
+            playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue());
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
 
@@ -138,7 +159,11 @@ namespace Tify
         private void play_button_Click(object sender, EventArgs e)
         {
             playlistForm.mainScr.nextTrack.Clear();
-
+            if (track_dataGridView.Rows.Count==0)
+            {
+                MessageBox.Show("Nothing to play");
+                return;
+            }
             //
             playlistForm.mainScr.currentTrackIndex = 0;
             //

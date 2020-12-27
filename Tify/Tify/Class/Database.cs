@@ -809,7 +809,10 @@ delete From Playlist where playlistID=50
                 cmd.Parameters.AddWithValue("@trackID", trackID);
                 cmd.Parameters.AddWithValue("@playlistID", playlistID);
 
-                cmd.ExecuteNonQuery();
+               
+                    cmd.ExecuteNonQuery();
+                
+                
             }
             sqlconnection.Close();
         }

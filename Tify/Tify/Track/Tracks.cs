@@ -257,7 +257,21 @@ namespace Tify
             if (e.RowIndex == -1)
                 return;
             TrackInfo trackToPlay = track_gridView.Rows[e.RowIndex].Tag as TrackInfo;
-            mainScr.changeSong(trackToPlay);
+
+            mainScr.currentTrackIndex = 0;
+            for (int i = e.RowIndex; i < track_gridView.Rows.Count; i++)
+            {
+                mainScr.addTrackToQueue((track_gridView.Rows[i].Tag as TrackInfo));
+            }
+            if (mainScr.shuffle_button.Tag.ToString() == "on")
+            {
+                mainScr.enableShuffle();
+            }
+            else
+            {
+                mainScr.disableShuffle();
+            }
+            mainScr.changeSong(mainScr.Dequeue());
             mainScr.setplayfrom("Track");
         }
 

@@ -373,7 +373,7 @@ namespace Tify
         {
 
             int n = list.Count;
-            while (n > 1)
+            while (n >=currentTrackIndex)
             {
                 n--;
                 int k = rng.Next(n + 1);
@@ -1121,6 +1121,10 @@ namespace Tify
             {
                 return null;
             }
+            if (nextTrack.Count<currentTrackIndex)
+            {
+                currentTrackIndex = 0;
+            }
             TrackInfo temp = nextTrack[currentTrackIndex++];
             /*nextTrack.RemoveAt(0);*/
             return temp;
@@ -1153,6 +1157,7 @@ namespace Tify
         public void addTrackToQueue(TrackInfo track)
         {
             nextTrack.Add(track);
+            originalNextTrack = nextTrack;
         }
         public void changeSong(TrackInfo track)
         {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Configuration;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace Tify
 {
@@ -18,21 +16,34 @@ namespace Tify
         public AddtoPlaylistForm()
         {
             InitializeComponent();
-
         }
-        bool isnotsingletrack=false;
-        public AddtoPlaylistForm(MainScreen callForm,bool input,List<TrackInfo> inputTrack)
+
+        private bool isnotsingletrack = false;
+
+        public AddtoPlaylistForm(MainScreen callForm, bool input, List<TrackInfo> inputTrack)
         {
             InitializeComponent();
             isnotsingletrack = input;
             mainScr = callForm;
-            
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
+
         public AddtoPlaylistForm(MainScreen callForm, string trackid)
         {
             InitializeComponent();
             mainScr = callForm;
             trackID = trackid;
+            this.DoubleBuffered = true;
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
 
         private void AddtoPlaylistForm_Load(object sender, EventArgs e)
@@ -54,12 +65,12 @@ namespace Tify
                 newbutton.BackColor = Color.FromArgb(36, 37, 40);
                 newbutton.ForeColor = Color.White;
                 newbutton.FlatStyle = FlatStyle.Flat;
-
+                newbutton.Cursor = Cursors.Hand;
                 newbutton.FlatAppearance.BorderSize = 0;
                 newbutton.Font = new Font("Nationale Light", 12);
                 newbutton.TextAlign = ContentAlignment.MiddleLeft;
                 newbutton.Text = playlist["playlistTitle"].ToString();
-                newbutton.Tag= playlist["playlistID"].ToString();
+                newbutton.Tag = playlist["playlistID"].ToString();
                 newbutton.Click += Newbutton_Click;
                 flowLayoutPanel_showPL.FlowDirection = FlowDirection.TopDown;
                 hideScrollBar(flowLayoutPanel_showPL);
@@ -82,8 +93,6 @@ namespace Tify
         //convert string choosenPL to ID
         private string choosenPlaylistID;//ten playlist
 
-    
-
         static public void hideScrollBar(Control needHide)
         {
             {
@@ -99,7 +108,6 @@ namespace Tify
                 flowpanel.AutoScroll = true;
             }
         }
-
 
         //exit button
         private void button1_Click(object sender, EventArgs e)
@@ -121,11 +129,10 @@ namespace Tify
             {
                 try
                 {
-                    ThreadPool.QueueUserWorkItem(delegate (object obj)
-                    {
-                        Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
-                    });
+                    Database.AddTrackToPlaylist(trackID, choosenPlaylistID);
+
                     //add row to playlist
+
                     mainScr.playlistScr.addTrackToPlaylistContainer(trackID, choosenPlaylistID);
                 }
                 catch (SqlException ex)
@@ -135,15 +142,11 @@ namespace Tify
                         //Violation of primary key. Handle Exception
                         MessageBox.Show("This track already exist in this playlist");
                     }
-                    else throw;
                 }
             }
-            else 
-            { 
-                
+            else
+            {
             }
-
-           
         }
     }
 }

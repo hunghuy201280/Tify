@@ -205,13 +205,21 @@ namespace Tify
         {
             
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
-            int index = trackInfos.IndexOf(trackToPlay);
-            myMix.mainScr.changeSong(trackToPlay);
-            for (int i = index+1; i < trackInfos.Count; i++)
+            myMix.mainScr.nextTrack.Clear();
+            myMix.mainScr.currentTrackIndex = 0;
+            for (int i = e.RowIndex; i < track_dataGridView.Rows.Count; i++)
             {
-                myMix.mainScr.addTrackToQueue(trackInfos[i]);
-                
+                myMix.mainScr.addTrackToQueue((track_dataGridView.Rows[i].Tag as TrackInfo));
             }
+            if (myMix.mainScr.shuffle_button.Tag.ToString() == "on")
+            {
+                myMix.mainScr.enableShuffle();
+            }
+            else
+            {
+                myMix.mainScr.disableShuffle();
+            }
+            myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
             myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
 
