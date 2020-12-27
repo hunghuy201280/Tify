@@ -218,48 +218,32 @@ namespace Tify
 
         #endregion
 
-        #region play button
+        #region play,shuffle button
         private void play_button_Click(object sender, EventArgs e)
         {
             myMix.mainScr.nextTrack.Clear();
+
+            myMix.mainScr.currentTrackIndex = 0;
             foreach (DataGridViewRow track in track_dataGridView.Rows)
             {
              
                 TrackInfo trackToPlay = track.Tag as TrackInfo;
                 myMix.mainScr.addTrackToQueue(trackToPlay);
-              
             }
-            myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
-            myMix.mainScr.setplayfrom(mixTitle_label.Text);
-        }
-        #endregion
-
-        #region shuffle button
-        private void playShuffle_Button_Click(object sender, EventArgs e)
-        {
-            myMix.mainScr.nextTrack.Clear();
-            Random rnd = new Random(DateTime.Now.Second);
-            int numOfTracks = track_dataGridView.Rows.Count;
-           
-            
-            List<int> numbers = new List<int>();
-            for (int i = 0; i < numOfTracks; i++)
+            if (sender == playShuffle_Button)
             {
-                int num = rnd.Next(0, numOfTracks );
-                while (numbers.Contains(num))
-                {
-                    num = rnd.Next(0, numOfTracks );
-                }
-                numbers.Add(num);
-                TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
-                myMix.mainScr.addTrackToQueue(trackToPlay);
+                myMix.mainScr.enableShuffle();
             }
-            myMix.mainScr.setplayfrom(mixTitle_label.Text);
+            else
+            {
+                myMix.mainScr.disableShuffle();
+            }
             myMix.mainScr.changeSong(myMix.mainScr.Dequeue());
+            myMix.mainScr.setplayfrom(mixTitle_label.Text);
         }
-
-
         #endregion
+
+    
 
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {

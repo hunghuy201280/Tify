@@ -134,10 +134,14 @@ namespace Tify
 
         #endregion
 
-        #region play button
+        #region play button,shuffle button
         private void play_button_Click(object sender, EventArgs e)
         {
             playlistForm.mainScr.nextTrack.Clear();
+
+            //
+            playlistForm.mainScr.currentTrackIndex = 0;
+            //
             foreach (DataGridViewRow track in track_dataGridView.Rows)
             {
               
@@ -145,36 +149,23 @@ namespace Tify
                 playlistForm.mainScr.addTrackToQueue(trackToPlay);
 
             }
+            //
+            if (sender == playShuffle_Button)
+            {
+                playlistForm.mainScr.enableShuffle();
+            }
+            else
+            {
+                playlistForm.mainScr.disableShuffle();
+            }
+            //
             playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue());
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
         #endregion
 
 
-        #region shuffle button
-        private void playShuffle_Button_Click(object sender, EventArgs e)
-        {
-            playlistForm.mainScr.nextTrack.Clear();
-            Random rnd = new Random(DateTime.Now.Second);
-            int numOfTracks = track_dataGridView.Rows.Count;
-
-
-            List<int> numbers = new List<int>();
-            for (int i = 0; i < numOfTracks; i++)
-            {
-                int num = rnd.Next(0, numOfTracks);
-                while (numbers.Contains(num))
-                {
-                    num = rnd.Next(0, numOfTracks);
-                }
-                numbers.Add(num);
-                TrackInfo trackToPlay = track_dataGridView.Rows[num].Tag as TrackInfo;
-                playlistForm.mainScr.addTrackToQueue(trackToPlay);
-            }
-            playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue() );
-            playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
-        }
-        #endregion
+      
 
         #region enter,leave row
 

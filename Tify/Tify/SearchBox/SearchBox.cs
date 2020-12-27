@@ -69,6 +69,7 @@ namespace Tify
                 }
                 else
                 {
+                    albumContainers.Clear();
                     foreach (DataRow item in albumTab_Table.Rows)
                     {
                         albumContainers.Add(new AlbumContainer(item["albumID"].ToString(), mainScr.albumsScr));
@@ -112,6 +113,7 @@ namespace Tify
                 }
                 else
                 {
+                    artistContainers.Clear();
                     foreach (DataRow item in artistTab_Table.Rows)
                     {
                         artistContainers.Add(new ArtistContainer(mainScr.artistScr, item["artistID"].ToString()));

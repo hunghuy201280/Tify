@@ -215,10 +215,11 @@ namespace Tify
 
         #endregion
 
-        #region play button
+        #region play,shuffle button
         private void play_button_Click(object sender, EventArgs e)
         {
             albumsFm.mainScr.nextTrack.Clear();
+            albumsFm.mainScr.currentTrackIndex = 0;
             foreach (DataGridViewRow track in album_gridView.Rows)
             {
 
@@ -226,38 +227,21 @@ namespace Tify
                 albumsFm.mainScr.addTrackToQueue(trackToPlay);
 
             }
-            albumsFm.mainScr.changeSong(albumsFm.mainScr.Dequeue());
-            albumsFm.mainScr.setplayfrom(albumName_label.Text);
-        }
-        #endregion
-
-
-        #region shuffle button
-        private void playShuffle_Button_Click(object sender, EventArgs e)
-        {
-            albumsFm.mainScr.nextTrack.Clear();
-            Random rnd = new Random(DateTime.Now.Second);
-            int numOfTracks = album_gridView.Rows.Count;
-
-
-            List<int> numbers = new List<int>();
-            for (int i = 0; i < numOfTracks; i++)
+            if (sender == playShuffle_Button)
             {
-                int num = rnd.Next(0, numOfTracks);
-                while (numbers.Contains(num))
-                {
-                    num = rnd.Next(0, numOfTracks);
-                }
-                numbers.Add(num);
-                TrackInfo trackToPlay = album_gridView.Rows[num].Tag as TrackInfo;
-                albumsFm.mainScr.addTrackToQueue(trackToPlay);
+                albumsFm.mainScr.enableShuffle();
+            }
+            else
+            {
+                albumsFm.mainScr.disableShuffle();
             }
             albumsFm.mainScr.changeSong(albumsFm.mainScr.Dequeue());
             albumsFm.mainScr.setplayfrom(albumName_label.Text);
         }
-
-
         #endregion
+
+
+       
 
         #region like album
 

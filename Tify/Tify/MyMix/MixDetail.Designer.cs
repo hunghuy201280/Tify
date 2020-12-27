@@ -230,7 +230,7 @@
             this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
             this.playShuffle_Button.TabIndex = 3;
             this.playShuffle_Button.UseVisualStyleBackColor = false;
-            this.playShuffle_Button.Click += new System.EventHandler(this.playShuffle_Button_Click);
+            this.playShuffle_Button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // play_button
             // 

@@ -425,11 +425,13 @@ select top 1000 * from Track order by trackID desc
 
 select top 1000 * from AlbumHasTrack order by albumID desc
 
-select count(*) from Album
+
+
 
 select top 1000 * from ArtistHasTrack order by trackID desc
 
-select * from Album where albumID=4188
+select top 10 * from Album  order by albumID desc
+
 
 select * from Account
 

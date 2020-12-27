@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
@@ -22,11 +21,11 @@ namespace Tify
         Loading loadingScr = new Loading();
         public MainScreen()
         {
-            
+
 
             loading_thread = new Thread(new ThreadStart(loadingFunc));
-            
-             
+
+
             InitializeComponent();
             //Dang nhap
             loginForm = new Login(this);
@@ -42,7 +41,7 @@ namespace Tify
             firstLoadChildForm();
 
 
-          
+
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
@@ -120,16 +119,18 @@ namespace Tify
             CreatePL.AddPlaylistButtonToMenuPanel(PlayList_FlowPanel);
             playlistScr.attachPlaylistContainerToPlaylistButtonInMenuPanel(PlayList_FlowPanel);
 
-            //finish loading
 
 
-           
+
+
 
             if (homeScr.trackContainers.Count != 0)
             {
                 currentTrack = homeScr.trackContainers[0].track;
                 loadNewSong(currentTrack);
+                setplayfrom("Home");
             }
+            loopMode = LoopMode.Off;
             loadingScr.changePic();
             Thread.Sleep(2600);
             loading_thread.Abort();
@@ -145,19 +146,27 @@ namespace Tify
         private PictureBox songPicture = new PictureBox();
         public void loadNewSong(TrackInfo track)
         {
+            if (track==null)
+            {
+                return;
+            }
             //kiểm tra track có trong dtb chưa nếu chưa add vào.
-            if (!Database.checkTrackExisted(track.TrackLink))
+            if (track.TrackID == null)
             {
-                track.TrackID=Database.addTrackToDatabase(track.TrackLink);
-                track.IsLoved = false;
+                if (!Database.checkTrackExisted(track.TrackLink))
+                {
+                    track.TrackID = Database.addTrackToDatabase(track.TrackLink);
+                    track.IsLoved = false;
 
-            }
-            else
-            {
-                track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
+                }
+                else
+                {
+                    track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
+                }
             }
 
-            if (currentTrack!=null)
+
+            if (currentTrack != null)
             {
                 Database.addTrackToRecentlyPlayed(track.TrackID, CurrentUser.UserID, currentTrack.TrackID);
             }
@@ -168,11 +177,11 @@ namespace Tify
 
             time = 0;
 
-            if (track.Cover==null)
+            if (track.Cover == null)
             {
                 songPicture.Load(GetSongData.GetSongCover(track.TrackLink));
                 songCover_panel.BackgroundImage = songPicture.Image;
-                track.Cover=songPicture.Image;
+                track.Cover = songPicture.Image;
             }
             else
             {
@@ -180,7 +189,7 @@ namespace Tify
             }
 
             //artist
-            if (track.Artist==null)
+            if (track.Artist == null)
             {
                 string[] artists = GetSongData.GetSongArtist(track.TrackLink);
                 artist_label.Text = string.Empty;
@@ -198,7 +207,7 @@ namespace Tify
 
             //title
 
-            if (track.Title== null)
+            if (track.Title == null)
             {
                 title_label.Text = GetSongData.GetSongName(track.TrackLink);
                 track.Title = title_label.Text;
@@ -211,7 +220,7 @@ namespace Tify
             //time
             currentTime_label.Text = "0:00 /";
 
-            if (track.Time== null)
+            if (track.Time == null)
             {
                 TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(track.TrackLink));
                 string timeString = time.ToString(@"mm\:ss");
@@ -226,7 +235,7 @@ namespace Tify
 
             //check loved
             checkLoved();
-            
+
             //check playpause
             //chua  lam
             //
@@ -236,7 +245,7 @@ namespace Tify
             songDetail.setSuggestedSong(suggestedSong);
 
 
-            if (activeForm==homeScr)
+            if (activeForm == homeScr)
             {
                 homeScr.loadRecentlyPlayed();
             }
@@ -256,14 +265,14 @@ namespace Tify
 
         #region test
 
-       
-       
+
+
 
         #endregion test
 
         private WindowsMediaPlayer soundPlayer = new WindowsMediaPlayer();
 
-      
+
 
         #region Đổi icon khi nhấn vào nút play/pause
 
@@ -276,24 +285,25 @@ namespace Tify
             {
                 pause.BackgroundImage = player_imageList.Images["play.png"];
                 time = soundPlayer.controls.currentPosition;
-                soundPlayer.controls.pause();
                 pause.Tag = "play";
                 myToolTip.SetToolTip(pause, "Play");
 
                 //if(pause_button.Focused==true)
                 songDetail.setPause_Button_Img(pause.BackgroundImage);
+                soundPlayer.controls.pause();
+
             }
             else
             {
                 pause.BackgroundImage = player_imageList.Images["pause.png"];
                 soundPlayer.controls.currentPosition = time;
-                soundPlayer.controls.play();
 
                 pause.Tag = "pause";
                 myToolTip.SetToolTip(pause, "Pause");
 
                 //if (pause_button.Focused == true)
                 songDetail.setPause_Button_Img(pause.BackgroundImage);
+                soundPlayer.controls.play();
             }
             //
         }
@@ -361,7 +371,7 @@ namespace Tify
 
         public void Shuffle(IList<TrackInfo> list)
         {
-          
+
             int n = list.Count;
             while (n > 1)
             {
@@ -376,25 +386,36 @@ namespace Tify
         List<TrackInfo> originalNextTrack = new List<TrackInfo>();
 
         #endregion
+
+        public void disableShuffle()
+        {
+            shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
+            shuffle_button.Tag = "off";
+            nextTrack = originalNextTrack.ConvertAll(track => new TrackInfo(track));
+            songDetail.setShuffle_Button_Img(shuffle_button.BackgroundImage);
+
+        }
+       
+        public void enableShuffle()
+        {
+            shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
+            shuffle_button.Tag = "on";
+
+            originalNextTrack = nextTrack.ConvertAll(track => new TrackInfo(track));
+            Shuffle(nextTrack);
+            songDetail.setShuffle_Button_Img(shuffle_button.BackgroundImage);
+
+        }
         private void shuffle_button_Click(object sender, EventArgs e)
         {
             if (shuffle_button.Tag.ToString() == "on")
             {
-                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_off.png"];
-                shuffle_button.Tag = "off";
-
-                nextTrack = originalNextTrack.ConvertAll(track => new TrackInfo(track));
-                 //   books_1.ConvertAll(book => new Book(book.title));
+                disableShuffle();
             }
             else
             {
-                shuffle_button.BackgroundImage = player_imageList.Images["shuffle_on.png"];
-                shuffle_button.Tag = "on";
-
-                originalNextTrack = nextTrack.ConvertAll(track => new TrackInfo(track));
-                Shuffle(nextTrack);
+                enableShuffle();
             }
-            songDetail.setShuffle_Button_Img(shuffle_button.BackgroundImage);
 
 
         }
@@ -527,7 +548,7 @@ namespace Tify
                 openChildForm(albumsScr);
             else if (sender == tracks_button)
                 openChildForm(tracksScr);
-            
+
         }
 
         #endregion Đổi màu icon và chữ khi click vào 1 menu button, mở child Form
@@ -609,7 +630,7 @@ namespace Tify
 
         public Form activeForm = null;
 
-      
+
 
         private void firstLoadChildForm()
         {
@@ -617,14 +638,14 @@ namespace Tify
             homeScr = new Home(this);
             myMixScr = new MyMix(this);
             playlistScr = new Playlist(this);
-            
+
             albumsScr = new Albums(this);
             tracksScr = new Tracks(this);
-            
+
             srchBox = new SearchBox(this);
 
             updatein4 = new UpdateInfo(this);
-            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, srchBox,updatein4 };
+            Form[] temp = { myMixScr, homeScr, playlistScr, artistScr, albumsScr, tracksScr, srchBox, updatein4 };
             foreach (Form item in temp)
             {
                 item.TopLevel = false;
@@ -750,12 +771,12 @@ namespace Tify
                 srchBox.doSearch(searchBar_textBox.Text);
                 /*loadSingleChildForm(srchBox);*/
                 openChildForm(srchBox);
-              
+
             }
         }
 
 
-  
+
         #endregion Searchbar
 
         //
@@ -790,8 +811,8 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                /*if (pause_button.Tag.ToString() == "pause")
-                    soundPlayer.controls.pause();*/
+                if (pause_button.Tag.ToString() == "play")
+                    soundPlayer.controls.pause();
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
                 songDetail.setProgressBar_Maximum(progressBar.Properties.Maximum);
                 onesec.Start();
@@ -807,7 +828,15 @@ namespace Tify
             }
             else if (soundPlayer.playState == WMPPlayState.wmppsMediaEnded)
             {
-                next_button.PerformClick();
+                if (loopMode == LoopMode.RepeatOne)
+                {
+                    soundPlayer.URL = soundPlayer.URL;
+                }
+                else
+                {
+                    next_button.PerformClick();
+                }
+
                 progressBar.EditValue = 0;
                 onesec.Stop();
             }
@@ -939,6 +968,10 @@ namespace Tify
 
         #region sync 2 form
 
+        private void playingFrom_label_TextChanged(object sender, EventArgs e)
+        {
+            songDetail.playingFrom_label.Text = playingFrom_label.Text;
+        }
         private void currentTime_label_TextChanged(object sender, EventArgs e)
         {
             songDetail.setCurrentTime_Label(currentTime_label.Text);
@@ -1080,36 +1113,46 @@ namespace Tify
             TrackInfo lastTrack = previousTracks.Pop() as TrackInfo;
             loadNewSong(lastTrack);
         }
+
+        public int currentTrackIndex;
         public TrackInfo Dequeue()
         {
-            if (nextTrack.Count==0)
+            if (nextTrack.Count == currentTrackIndex)
             {
                 return null;
             }
-            TrackInfo temp = nextTrack[0];
-            nextTrack.RemoveAt(0);
+            TrackInfo temp = nextTrack[currentTrackIndex++];
+            /*nextTrack.RemoveAt(0);*/
             return temp;
         }
         private void next_button_Click(object sender, EventArgs e)
         {
-            if (nextTrack.Count==0)
+            if (!(loopMode == LoopMode.On) && currentTrackIndex == nextTrack.Count)
             {
-                loadNewSong(new TrackInfo() { TrackLink=suggestedSong[0] });
+                loadNewSong(new TrackInfo() { TrackLink = suggestedSong[0] });
                 setplayfrom("Suggests");
             }
             else
             {
-                changeSong(Dequeue());
+              
+                if (loopMode == LoopMode.On && currentTrackIndex == nextTrack.Count)
+                {
+                    currentTrackIndex = 0;
+                    
+                    changeSong(Dequeue());
+                }
+                else
+                {
+                    changeSong(Dequeue());
+                }
             }
         }
 
 
         public List<TrackInfo> nextTrack = new List<TrackInfo>();
-        public void addTrackToQueue (TrackInfo track)
+        public void addTrackToQueue(TrackInfo track)
         {
             nextTrack.Add(track);
-          
-            
         }
         public void changeSong(TrackInfo track)
         {
@@ -1124,11 +1167,11 @@ namespace Tify
         #region addplaylist
         private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
         {
-            add2PL = new AddtoPlaylistForm(this,currentTrack.TrackID);
+            add2PL = new AddtoPlaylistForm(this, currentTrack.TrackID);
             add2PL.Show();
         }
 
-     
+
         #endregion
 
         #region click event for playlist button
@@ -1139,7 +1182,7 @@ namespace Tify
             playlistContainer.opacity_panel_MouseClick(playlistContainer.opacity_panel, e);
         }
 
-       
+
 
 
         #endregion
@@ -1147,7 +1190,7 @@ namespace Tify
         #region next,back form button
         private void forwardForm_button_Click(object sender, EventArgs e)
         {
-            if (nextFormStack.Count!=0)
+            if (nextFormStack.Count != 0)
             {
                 if (activeForm != null)
                 {
@@ -1166,7 +1209,7 @@ namespace Tify
             {
                 return;
             }
-            if (activeForm!=null)
+            if (activeForm != null)
             {
                 nextFormStack.Push(activeForm);
             }
@@ -1206,19 +1249,19 @@ namespace Tify
             playlistScr.reloadPlaylistContainer();
             albumsScr.reloadAlbumContainer();
             artistScr.reloadArtistContainer();
-            
+
 
         }
 
-      
+
 
         public void checkLoved()
         {
-            if (currentTrack==null)
+            if (currentTrack == null)
             {
                 return;
             }
-            if (Database.checkIfTrackLoved(currentTrack.TrackID,CurrentUser.UserID))
+            if (Database.checkIfTrackLoved(currentTrack.TrackID, CurrentUser.UserID))
             {
                 currentTrack.IsLoved = true;
                 like_Player_Button.BackgroundImage = Properties.Resources.liked;
@@ -1232,47 +1275,64 @@ namespace Tify
             }
         }
 
-       
+
         #endregion
 
         #region playfrom
 
         public void setplayfrom(string input)
         {
-            
-            playingFrom_label.Text = "Play from : " + input;
+
+            playingFrom_label.Text = "Playing From : " + input;
             if (playingFrom_label.Text.Length > 24)
             {
-                playingFrom_label.Text = playingFrom_label.Text.Substring(0, 24)+"...";
+                playingFrom_label.Text = playingFrom_label.Text.Substring(0, 24) + "...";
             }
-            
-           
+
+
+
         }
         #endregion
 
         #region repeatButton
 
-        bool loopMode = false;
+
+        enum LoopMode
+        {
+            On,
+            Off,
+            RepeatOne
+
+        }
+        LoopMode loopMode;
+
+
+
         private void repeate_button_Click(object sender, EventArgs e)
         {
-            if (repeat_button.Tag.ToString()=="off")
+            if (repeat_button.Tag.ToString() == "off")
             {
                 repeat_button.BackgroundImage = player_imageList.Images["repeat_on.png"];
                 repeat_button.Tag = "on";
+                loopMode = LoopMode.On;
             }
-            else if(repeat_button.Tag.ToString() == "on")
+            else if (repeat_button.Tag.ToString() == "on")
             {
                 repeat_button.BackgroundImage = player_imageList.Images["repeat1.png"];
                 repeat_button.Tag = "1";
+                loopMode = LoopMode.RepeatOne;
+
             }
             else if (repeat_button.Tag.ToString() == "1")
             {
                 repeat_button.BackgroundImage = player_imageList.Images["repeat_off.png"];
                 repeat_button.Tag = "off";
+                loopMode = LoopMode.Off;
+
             }
 
             songDetail.repeat_button.BackgroundImage = repeat_button.BackgroundImage;
-          
+
         }
 
         #endregion

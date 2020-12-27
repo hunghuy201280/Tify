@@ -152,15 +152,23 @@ namespace GetData
 
         static public string GetStreamLink(string url)
         {
-            if (Uri.TryCreate(url, UriKind.Absolute, out link))
+            try
             {
-                var dom = CQ.CreateFromUrl(link.ToString());
-                return dom[@"ul[class='list-unstyled download_status'] li:nth-of-type(2) a[href*='.mp3']"].Attr("href");
+                if (Uri.TryCreate(url, UriKind.Absolute, out link))
+                {
+                    var dom = CQ.CreateFromUrl(link.ToString());
+                    return dom[@"ul[class='list-unstyled download_status'] li:nth-of-type(2) a[href*='.mp3']"].Attr("href");
+                }
+                else
+                {
+                    return string.Empty;
+                }
             }
-            else
+            catch (Exception)
             {
                 return string.Empty;
             }
+          
         }
 
         static public int GetSongDuration(string url)
@@ -194,13 +202,14 @@ namespace GetData
                 }
                 else
                 {
-                    return string.Empty;
+                    var dom = CQ.CreateFromUrl("https://vi.chiasenhac.vn/mp3/kodaline/aaa-tesst-tsvrmzrqqa81ae.html");
+                    return dom[@"div#companion_cover img"].Attr("src");
                 }
             }
             catch (Exception)
             {
-
-                return string.Empty;
+                var dom = CQ.CreateFromUrl("https://vi.chiasenhac.vn/mp3/kodaline/aaa-tesst-tsvrmzrqqa81ae.html");
+                return dom[@"div#companion_cover img"].Attr("src");
             }
           
 

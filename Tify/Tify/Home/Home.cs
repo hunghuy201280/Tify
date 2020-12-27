@@ -22,6 +22,7 @@ namespace Tify
             
         }
         private MainScreen mainScr = null;
+        
         public Home(MainScreen parentForm)
         {
             
@@ -69,6 +70,7 @@ namespace Tify
             }
             recentlyPlayed.clearItem();
             recentlyPlayed.addRangeItem(trackContainers.ToArray());
+           
         }
         public List<TrackContainer_Home> trackContainers = new List<TrackContainer_Home>();
 

@@ -40,6 +40,7 @@
             this.songImgOpacity_panel = new System.Windows.Forms.Panel();
             this.volume_button = new System.Windows.Forms.Button();
             this.play_pause_panel = new System.Windows.Forms.Panel();
+            this.repeat_button = new System.Windows.Forms.Button();
             this.shuffle_button = new System.Windows.Forms.Button();
             this.previous_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.onesec = new System.Windows.Forms.Timer(this.components);
             this.songDetail_panel = new System.Windows.Forms.Panel();
-            this.repeat_button = new System.Windows.Forms.Button();
             this.player_panel.SuspendLayout();
             this.add_like_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
@@ -274,6 +274,26 @@
             this.play_pause_panel.Size = new System.Drawing.Size(294, 100);
             this.play_pause_panel.TabIndex = 12;
             // 
+            // repeat_button
+            // 
+            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
+            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.repeat_button.FlatAppearance.BorderSize = 0;
+            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.repeat_button.Location = new System.Drawing.Point(256, 33);
+            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.repeat_button.Name = "repeat_button";
+            this.repeat_button.Size = new System.Drawing.Size(28, 32);
+            this.repeat_button.TabIndex = 12;
+            this.repeat_button.Tag = "off";
+            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
+            this.repeat_button.UseVisualStyleBackColor = false;
+            this.repeat_button.Click += new System.EventHandler(this.repeate_button_Click);
+            // 
             // shuffle_button
             // 
             this.shuffle_button.BackColor = System.Drawing.Color.Transparent;
@@ -335,7 +355,7 @@
             // pause_button
             // 
             this.pause_button.BackColor = System.Drawing.Color.Transparent;
-            this.pause_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pause_button.BackgroundImage")));
+            this.pause_button.BackgroundImage = global::Tify.Properties.Resources.play;
             this.pause_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pause_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pause_button.FlatAppearance.BorderSize = 0;
@@ -347,8 +367,8 @@
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(40, 50);
             this.pause_button.TabIndex = 8;
-            this.pause_button.Tag = "pause";
-            this.myToolTip.SetToolTip(this.pause_button, "Pause");
+            this.pause_button.Tag = "play";
+            this.myToolTip.SetToolTip(this.pause_button, "Play");
             this.pause_button.UseVisualStyleBackColor = false;
             this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
@@ -392,6 +412,7 @@
             this.playingFrom_label.Name = "playingFrom_label";
             this.playingFrom_label.Size = new System.Drawing.Size(0, 16);
             this.playingFrom_label.TabIndex = 4;
+            this.playingFrom_label.TextChanged += new System.EventHandler(this.playingFrom_label_TextChanged);
             // 
             // artist_label
             // 
@@ -835,26 +856,6 @@
             this.songDetail_panel.Name = "songDetail_panel";
             this.songDetail_panel.Size = new System.Drawing.Size(1127, 838);
             this.songDetail_panel.TabIndex = 0;
-            // 
-            // repeat_button
-            // 
-            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
-            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.repeat_button.FlatAppearance.BorderSize = 0;
-            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.repeat_button.Location = new System.Drawing.Point(256, 33);
-            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.repeat_button.Name = "repeat_button";
-            this.repeat_button.Size = new System.Drawing.Size(28, 32);
-            this.repeat_button.TabIndex = 12;
-            this.repeat_button.Tag = "off";
-            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
-            this.repeat_button.UseVisualStyleBackColor = false;
-            this.repeat_button.Click += new System.EventHandler(this.repeate_button_Click);
             // 
             // MainScreen
             // 
