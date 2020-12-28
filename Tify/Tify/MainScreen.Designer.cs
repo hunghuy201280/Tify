@@ -367,7 +367,7 @@
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(40, 50);
             this.pause_button.TabIndex = 8;
-            this.pause_button.Tag = "play";
+            this.pause_button.Tag = "pausing";
             this.myToolTip.SetToolTip(this.pause_button, "Play");
             this.pause_button.UseVisualStyleBackColor = false;
             this.pause_button.Click += new System.EventHandler(this.pause_button_Click);

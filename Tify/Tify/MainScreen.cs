@@ -144,6 +144,7 @@ namespace Tify
         private string[] suggestedSong;
         public TrackInfo currentTrack;
         private PictureBox songPicture = new PictureBox();
+        private bool firstShown = true;
         public void loadNewSong(TrackInfo track)
         {
             if (track==null)
@@ -258,7 +259,13 @@ namespace Tify
             {
                 artist_label.Text = artist_label.Text.Substring(0, 18) + "...";
             }
-
+            if (firstShown)
+            {
+                pauseSong();
+                firstShown = false;
+                return;
+            }
+            playSong();
         }
 
         #endregion load nhac khi chuyen bai
@@ -278,32 +285,39 @@ namespace Tify
 
         private double time;
 
+        public void pauseSong()
+        {
+            pause_button.BackgroundImage = player_imageList.Images["play.png"];
+            time = soundPlayer.controls.currentPosition;
+            pause_button.Tag = "pausing";
+            myToolTip.SetToolTip(pause_button, "Play");
+
+            //if(pause_button.Focused==true)
+            songDetail.setPause_Button_Img(pause_button.BackgroundImage);
+            soundPlayer.controls.pause();
+        }
+        public void playSong()
+        {
+            pause_button.BackgroundImage = player_imageList.Images["pause.png"];
+            soundPlayer.controls.currentPosition = time;
+
+            pause_button.Tag = "playing";
+            myToolTip.SetToolTip(pause_button, "Pause");
+
+            //if (pause_button.Focused == true)
+            songDetail.setPause_Button_Img(pause_button.BackgroundImage);
+            soundPlayer.controls.play();
+        }
         public void pause_button_Click(object sender, EventArgs e)
         {
             Button pause = sender as Button;
-            if (pause.Tag.ToString() == "pause")
+            if (pause.Tag.ToString() == "playing")
             {
-                pause.BackgroundImage = player_imageList.Images["play.png"];
-                time = soundPlayer.controls.currentPosition;
-                pause.Tag = "play";
-                myToolTip.SetToolTip(pause, "Play");
-
-                //if(pause_button.Focused==true)
-                songDetail.setPause_Button_Img(pause.BackgroundImage);
-                soundPlayer.controls.pause();
-
+                pauseSong();
             }
             else
             {
-                pause.BackgroundImage = player_imageList.Images["pause.png"];
-                soundPlayer.controls.currentPosition = time;
-
-                pause.Tag = "pause";
-                myToolTip.SetToolTip(pause, "Pause");
-
-                //if (pause_button.Focused == true)
-                songDetail.setPause_Button_Img(pause.BackgroundImage);
-                soundPlayer.controls.play();
+                playSong();
             }
             //
         }
@@ -811,7 +825,7 @@ namespace Tify
         {
             if (soundPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                if (pause_button.Tag.ToString() == "play")
+                if (pause_button.Tag.ToString() == "pausing")
                     soundPlayer.controls.pause();
                 progressBar.Properties.Maximum = (int)soundPlayer.currentMedia.duration;
                 songDetail.setProgressBar_Maximum(progressBar.Properties.Maximum);
