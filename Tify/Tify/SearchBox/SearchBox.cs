@@ -49,6 +49,7 @@ namespace Tify
             search_worker.RunWorkerAsync();
             artist_worker.RunWorkerAsync();
             album_worker.RunWorkerAsync();
+            playlist_worker.RunWorkerAsync();
         }
 
         #region load album

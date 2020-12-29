@@ -387,7 +387,7 @@ namespace Tify
         {
 
             int n = list.Count;
-            while (n >=currentTrackIndex)
+            while (n >1)
             {
                 n--;
                 int k = rng.Next(n + 1);

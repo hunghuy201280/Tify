@@ -266,6 +266,7 @@
             // play_button
             // 
             this.play_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.play_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.play_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.play_button.FlatAppearance.BorderSize = 0;
             this.play_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));

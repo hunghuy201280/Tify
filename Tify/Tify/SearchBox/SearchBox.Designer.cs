@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchBox));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.top_panel = new System.Windows.Forms.Panel();
             this.separator_panel = new System.Windows.Forms.Panel();
             this.SearchBox_PlayLists = new System.Windows.Forms.Button();
@@ -42,25 +42,25 @@
             this.SearchBox_Tracks = new System.Windows.Forms.Button();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
             this.bottom_panel = new System.Windows.Forms.Panel();
-            this.track_gridView = new System.Windows.Forms.DataGridView();
             this.playlistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.albumResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.artistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.search_worker = new System.ComponentModel.BackgroundWorker();
-            this.artist_worker = new System.ComponentModel.BackgroundWorker();
-            this.album_worker = new System.ComponentModel.BackgroundWorker();
-            this.playlist_worker = new System.ComponentModel.BackgroundWorker();
-            this.pic_time_Track_worker = new System.ComponentModel.BackgroundWorker();
-            this.noResult_panel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.track_gridView = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.albumResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.artistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.noResult_panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
+            this.search_worker = new System.ComponentModel.BackgroundWorker();
+            this.artist_worker = new System.ComponentModel.BackgroundWorker();
+            this.album_worker = new System.ComponentModel.BackgroundWorker();
+            this.playlist_worker = new System.ComponentModel.BackgroundWorker();
+            this.pic_time_Track_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
@@ -168,17 +168,26 @@
             // 
             // bottom_panel
             // 
+            this.bottom_panel.Controls.Add(this.noResult_panel);
             this.bottom_panel.Controls.Add(this.playlistResult_flowPanel);
             this.bottom_panel.Controls.Add(this.track_gridView);
             this.bottom_panel.Controls.Add(this.albumResult_flowPanel);
             this.bottom_panel.Controls.Add(this.artistResult_flowPanel);
-            this.bottom_panel.Controls.Add(this.noResult_panel);
             this.bottom_panel.Controls.Add(this.loading_SplashScreen1);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_panel.Location = new System.Drawing.Point(0, 59);
             this.bottom_panel.Name = "bottom_panel";
             this.bottom_panel.Size = new System.Drawing.Size(871, 472);
             this.bottom_panel.TabIndex = 4;
+            // 
+            // playlistResult_flowPanel
+            // 
+            this.playlistResult_flowPanel.AutoScroll = true;
+            this.playlistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.playlistResult_flowPanel.Name = "playlistResult_flowPanel";
+            this.playlistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.playlistResult_flowPanel.TabIndex = 4;
             // 
             // track_gridView
             // 
@@ -189,14 +198,14 @@
             this.track_gridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.track_gridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.track_gridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.track_gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.track_gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.img,
@@ -206,14 +215,14 @@
             this.addToPlaylist,
             this.remove});
             this.track_gridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.track_gridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.track_gridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.track_gridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.track_gridView.EnableHeadersVisualStyles = false;
             this.track_gridView.GridColor = System.Drawing.Color.Black;
@@ -221,21 +230,21 @@
             this.track_gridView.MultiSelect = false;
             this.track_gridView.Name = "track_gridView";
             this.track_gridView.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.track_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nationale Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.track_gridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.track_gridView.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,99 +259,6 @@
             this.track_gridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_gridView_CellMouseDoubleClick);
             this.track_gridView.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseEnter);
             this.track_gridView.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.trackGridView_CellMouseLeave);
-            // 
-            // playlistResult_flowPanel
-            // 
-            this.playlistResult_flowPanel.AutoScroll = true;
-            this.playlistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playlistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
-            this.playlistResult_flowPanel.Name = "playlistResult_flowPanel";
-            this.playlistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
-            this.playlistResult_flowPanel.TabIndex = 4;
-            // 
-            // albumResult_flowPanel
-            // 
-            this.albumResult_flowPanel.AutoScroll = true;
-            this.albumResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.albumResult_flowPanel.Location = new System.Drawing.Point(0, 0);
-            this.albumResult_flowPanel.Name = "albumResult_flowPanel";
-            this.albumResult_flowPanel.Size = new System.Drawing.Size(871, 472);
-            this.albumResult_flowPanel.TabIndex = 3;
-            // 
-            // artistResult_flowPanel
-            // 
-            this.artistResult_flowPanel.AutoScroll = true;
-            this.artistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.artistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
-            this.artistResult_flowPanel.Name = "artistResult_flowPanel";
-            this.artistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
-            this.artistResult_flowPanel.TabIndex = 2;
-            // 
-            // search_worker
-            // 
-            this.search_worker.WorkerReportsProgress = true;
-            this.search_worker.WorkerSupportsCancellation = true;
-            this.search_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.search_worker_DoWork);
-            this.search_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.search_worker_RunWorkerCompleted);
-            // 
-            // artist_worker
-            // 
-            this.artist_worker.WorkerReportsProgress = true;
-            this.artist_worker.WorkerSupportsCancellation = true;
-            this.artist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artist_worker_DoWork);
-            this.artist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artist_worker_RunWorkerCompleted);
-            // 
-            // album_worker
-            // 
-            this.album_worker.WorkerReportsProgress = true;
-            this.album_worker.WorkerSupportsCancellation = true;
-            this.album_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.album_worker_DoWork);
-            this.album_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.album_worker_RunWorkerCompleted);
-            // 
-            // playlist_worker
-            // 
-            this.playlist_worker.WorkerReportsProgress = true;
-            this.playlist_worker.WorkerSupportsCancellation = true;
-            this.playlist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.playlist_worker_DoWork);
-            this.playlist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.playlist_worker_RunWorkerCompleted);
-            // 
-            // pic_time_Track_worker
-            // 
-            this.pic_time_Track_worker.WorkerReportsProgress = true;
-            this.pic_time_Track_worker.WorkerSupportsCancellation = true;
-            this.pic_time_Track_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.pic_time_Track_worker_DoWork);
-            this.pic_time_Track_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.pic_time_Track_worker_RunWorkerCompleted);
-            // 
-            // noResult_panel
-            // 
-            this.noResult_panel.Controls.Add(this.label1);
-            this.noResult_panel.Controls.Add(this.pictureBox1);
-            this.noResult_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noResult_panel.Location = new System.Drawing.Point(0, 0);
-            this.noResult_panel.Name = "noResult_panel";
-            this.noResult_panel.Size = new System.Drawing.Size(871, 472);
-            this.noResult_panel.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(310, 111);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(339, 388);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nothing Found";
             // 
             // img
             // 
@@ -392,6 +308,57 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
             // 
+            // albumResult_flowPanel
+            // 
+            this.albumResult_flowPanel.AutoScroll = true;
+            this.albumResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.albumResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.albumResult_flowPanel.Name = "albumResult_flowPanel";
+            this.albumResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.albumResult_flowPanel.TabIndex = 3;
+            // 
+            // artistResult_flowPanel
+            // 
+            this.artistResult_flowPanel.AutoScroll = true;
+            this.artistResult_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artistResult_flowPanel.Location = new System.Drawing.Point(0, 0);
+            this.artistResult_flowPanel.Name = "artistResult_flowPanel";
+            this.artistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
+            this.artistResult_flowPanel.TabIndex = 2;
+            // 
+            // noResult_panel
+            // 
+            this.noResult_panel.Controls.Add(this.label1);
+            this.noResult_panel.Controls.Add(this.pictureBox1);
+            this.noResult_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noResult_panel.Location = new System.Drawing.Point(0, 0);
+            this.noResult_panel.Name = "noResult_panel";
+            this.noResult_panel.Size = new System.Drawing.Size(871, 472);
+            this.noResult_panel.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(339, 388);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nothing Found";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(310, 111);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // loading_SplashScreen1
             // 
             this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
@@ -400,6 +367,41 @@
             this.loading_SplashScreen1.Name = "loading_SplashScreen1";
             this.loading_SplashScreen1.Size = new System.Drawing.Size(871, 472);
             this.loading_SplashScreen1.TabIndex = 0;
+            // 
+            // search_worker
+            // 
+            this.search_worker.WorkerReportsProgress = true;
+            this.search_worker.WorkerSupportsCancellation = true;
+            this.search_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.search_worker_DoWork);
+            this.search_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.search_worker_RunWorkerCompleted);
+            // 
+            // artist_worker
+            // 
+            this.artist_worker.WorkerReportsProgress = true;
+            this.artist_worker.WorkerSupportsCancellation = true;
+            this.artist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artist_worker_DoWork);
+            this.artist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artist_worker_RunWorkerCompleted);
+            // 
+            // album_worker
+            // 
+            this.album_worker.WorkerReportsProgress = true;
+            this.album_worker.WorkerSupportsCancellation = true;
+            this.album_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.album_worker_DoWork);
+            this.album_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.album_worker_RunWorkerCompleted);
+            // 
+            // playlist_worker
+            // 
+            this.playlist_worker.WorkerReportsProgress = true;
+            this.playlist_worker.WorkerSupportsCancellation = true;
+            this.playlist_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.playlist_worker_DoWork);
+            this.playlist_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.playlist_worker_RunWorkerCompleted);
+            // 
+            // pic_time_Track_worker
+            // 
+            this.pic_time_Track_worker.WorkerReportsProgress = true;
+            this.pic_time_Track_worker.WorkerSupportsCancellation = true;
+            this.pic_time_Track_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.pic_time_Track_worker_DoWork);
+            this.pic_time_Track_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.pic_time_Track_worker_RunWorkerCompleted);
             // 
             // SearchBox
             // 

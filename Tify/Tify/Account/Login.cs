@@ -127,5 +127,15 @@ namespace Tify
         {
             this.Close();
         }
+
+        private void password_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)//enter
+            {
+
+                Login_Button_Click(Login_Button, new EventArgs());
+
+            }
+        }
     }
     }
