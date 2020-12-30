@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using GetData;
+using System.Threading;
 
 namespace Tify
 {
@@ -39,6 +40,7 @@ namespace Tify
             {
                 return;
             }
+            loading_SplashScreen1.BringToFront();
             suggestedSong_worker.RunWorkerAsync();
         }
 
@@ -141,6 +143,8 @@ namespace Tify
 
             return track;
         }
+
+        ManualResetEvent mrse = new ManualResetEvent(false);
         private void suggestedSong_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             mainTrack = loadTrackInfo(trackID);
@@ -174,14 +178,17 @@ namespace Tify
                 this.BeginInvoke((Action)delegate ()
                 {
                     temp.Add(new TrackContainer_Home(track.TrackID, homeScr.mainScr));
+                    mrse.Set();
                 });
+                mrse.WaitOne();
 
+                
             }
 
 
         }
         List<TrackContainer_Home> temp = new List<TrackContainer_Home>();
-        PictureBox songPicture = new PictureBox();
+      
         private void suggestedSong_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             /* TrackContainer_Home[] temp = new TrackContainer_Home[10];
@@ -208,6 +215,7 @@ namespace Tify
 
              suggested_flowLayoutPanel.Controls.AddRange(temp);*/
             suggested_flowLayoutPanel.Controls.AddRange(temp.ToArray());
+            loading_SplashScreen1.SendToBack();
 
         }
     }

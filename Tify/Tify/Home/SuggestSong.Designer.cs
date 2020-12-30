@@ -39,8 +39,11 @@
             this.suggested_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.suggestedSong_worker = new System.ComponentModel.BackgroundWorker();
+            this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
+            this.bottom_panel = new System.Windows.Forms.Panel();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_picturebox)).BeginInit();
+            this.bottom_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // top_panel
@@ -121,11 +124,11 @@
             // 
             // suggested_flowLayoutPanel
             // 
-            this.suggested_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.suggested_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.suggested_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
-            this.suggested_flowLayoutPanel.Location = new System.Drawing.Point(0, 74);
+            this.suggested_flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.suggested_flowLayoutPanel.Name = "suggested_flowLayoutPanel";
-            this.suggested_flowLayoutPanel.Size = new System.Drawing.Size(1045, 266);
+            this.suggested_flowLayoutPanel.Size = new System.Drawing.Size(1045, 275);
             this.suggested_flowLayoutPanel.TabIndex = 5;
             this.suggested_flowLayoutPanel.WrapContents = false;
             // 
@@ -139,18 +142,38 @@
             this.suggestedSong_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.suggestedSong_worker_DoWork);
             this.suggestedSong_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.suggestedSong_worker_RunWorkerCompleted);
             // 
+            // loading_SplashScreen1
+            // 
+            this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
+            this.loading_SplashScreen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loading_SplashScreen1.Location = new System.Drawing.Point(0, 0);
+            this.loading_SplashScreen1.Name = "loading_SplashScreen1";
+            this.loading_SplashScreen1.Size = new System.Drawing.Size(1045, 275);
+            this.loading_SplashScreen1.TabIndex = 0;
+            // 
+            // bottom_panel
+            // 
+            this.bottom_panel.Controls.Add(this.suggested_flowLayoutPanel);
+            this.bottom_panel.Controls.Add(this.loading_SplashScreen1);
+            this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bottom_panel.Location = new System.Drawing.Point(0, 65);
+            this.bottom_panel.Name = "bottom_panel";
+            this.bottom_panel.Size = new System.Drawing.Size(1045, 275);
+            this.bottom_panel.TabIndex = 6;
+            // 
             // SuggestSong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.suggested_flowLayoutPanel);
+            this.Controls.Add(this.bottom_panel);
             this.Controls.Add(this.top_panel);
             this.Name = "SuggestSong";
             this.Size = new System.Drawing.Size(1045, 340);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_picturebox)).EndInit();
+            this.bottom_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -165,5 +188,7 @@
         public System.Windows.Forms.FlowLayoutPanel suggested_flowLayoutPanel;
         public System.Windows.Forms.Timer timer1;
         private System.ComponentModel.BackgroundWorker suggestedSong_worker;
+        private Loading_SplashScreen loading_SplashScreen1;
+        private System.Windows.Forms.Panel bottom_panel;
     }
 }
