@@ -22,7 +22,7 @@ namespace Tify
             
         }
         public MainScreen mainScr = null;
-        
+        bool firstLoad = true;
         public Home(MainScreen parentForm)
         {
             
@@ -64,24 +64,31 @@ namespace Tify
                     Database.deleteLastTrackInRecentlyPlayed(mainScr.CurrentUser.UserID);
                 }
             });
-            Random rndSuggest = new Random(DateTime.Now.Second);
-            string trackID1="", trackID2="";
-            if (recentlyTable.Rows.Count>15)
+            if (firstLoad)
             {
-                trackID1 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
-                while (trackID1 == trackID2 || trackID2=="")
+                Random rndSuggest = new Random(DateTime.Now.Second);
+
+                string trackID1 = "", trackID2 = "";
+
+                if (recentlyTable.Rows.Count > 15)
                 {
-                    trackID2 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
+                    trackID1 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
+                    while (trackID1 == trackID2 || trackID2 == "")
+                    {
+                        trackID2 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
+                    }
+                    suggestSong1.setInfo(this, trackID1);
+                    suggestSong2.setInfo(this, trackID2);
                 }
-                suggestSong1.setInfo(this, trackID1);
-                suggestSong2.setInfo(this, trackID2);
+                else
+                {
+                    suggestSong1.Hide();
+                    suggestSong2.Hide();
+                }
+
+                firstLoad = false;  
             }
-            else
-            {
-                suggestSong1.Hide();
-                suggestSong2.Hide();
-            }
-           
+        
             
             foreach (DataRow row in recentlyTable.Rows)
             {
