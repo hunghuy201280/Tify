@@ -292,7 +292,7 @@ namespace Tify
             loadCover(false);
             numberOfTracks_label.Text = ++trackCount + " Tracks";
             if(playlistFm.playlistDetail.playlistContainer==this && !(playlistFm.mainScr.Controls[0] is SongDetail))
-            playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
         }
 
         #endregion addtrack to playlist

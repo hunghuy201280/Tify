@@ -99,6 +99,16 @@ namespace Tify
                 }
             }
         }
+        /*   public void addTrackToPlaylistContainer(string trackID,string playlistID)
+        {
+            foreach (var playlist in playlistContainers)
+            {
+                if (playlist.playlistID== playlistID)
+                {
+                    playlist.addTrack(trackID);
+                }
+            }
+        }*/
 
         #endregion
 
