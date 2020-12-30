@@ -28,7 +28,7 @@ namespace Tify
             
             InitializeComponent();
             mainScr = parentForm;
-            loadRecentlyPlayed();
+            
            
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
@@ -69,12 +69,12 @@ namespace Tify
             if (recentlyTable.Rows.Count>15)
             {
                 trackID1 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
-                while (trackID1 == trackID2)
+                while (trackID1 == trackID2 || trackID2=="")
                 {
                     trackID2 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
                 }
                 suggestSong1.setInfo(this, trackID1);
-                suggestSong2.setInfo(this, trackID2);
+                //suggestSong2.setInfo(this, trackID2);
             }
             else
             {

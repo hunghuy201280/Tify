@@ -18,6 +18,7 @@ namespace Tify
         {
             InitializeComponent();
 
+            hideScrollBar();
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
@@ -26,17 +27,7 @@ namespace Tify
         }
 
         Home homeScr;
-        public SuggestSong(Home homeScr)
-        {
-            InitializeComponent();
-
-           
-            this.DoubleBuffered = true;
-            foreach (Control control in this.Controls)
-            {
-                MainScreen.EnableDoubleBuferring(control);
-            }
-        }
+   
 
 
         string trackID;
@@ -44,6 +35,10 @@ namespace Tify
         {
             this.homeScr = homeScr;
             this.trackID = trackID;
+            if (suggestedSong_worker.IsBusy)
+            {
+                return;
+            }
             suggestedSong_worker.RunWorkerAsync();
         }
 
@@ -149,35 +144,71 @@ namespace Tify
         private void suggestedSong_worker_DoWork(object sender, DoWorkEventArgs e)
         {
             mainTrack = loadTrackInfo(trackID);
+            this.BeginInvoke((Action)delegate ()
+            {
+                songName_label.Text = mainTrack.Title;
+                songPicture.Image=(mainTrack.Cover);
+            });
             string[] songUrl = GetSongData.GetSuggetSongs(mainTrack.TrackLink);
             e.Result = songUrl;
-        }
-        PictureBox songPicture = new PictureBox();
-        private void suggestedSong_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            TrackContainer_Home[] temp = new TrackContainer_Home[10];
-            string[] songUrl = e.Result as string[];
-            TrackInfo track=new TrackInfo();
+
+           
+          
+            TrackInfo track = new TrackInfo();
             for (int i = 0; i < 10; i++)
             {
                 track.TrackLink = songUrl[i];
 
                 if (!Database.checkTrackExisted(track.TrackLink))
                 {
+                  
                     track.TrackID = Database.addTrackToDatabase(track.TrackLink);
                     track.IsLoved = false;
-                    
+
                 }
                 else
                 {
                     track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
 
                 }
-                temp[i] = new TrackContainer_Home(track.TrackID, homeScr.mainScr);
+                this.BeginInvoke((Action)delegate ()
+                {
+                    temp.Add(new TrackContainer_Home(track.TrackID, homeScr.mainScr));
+                });
 
             }
 
-            suggested_flowLayoutPanel.Controls.AddRange(temp);
+
+        }
+        List<TrackContainer_Home> temp = new List<TrackContainer_Home>();
+        PictureBox songPicture = new PictureBox();
+        private void suggestedSong_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            /* TrackContainer_Home[] temp = new TrackContainer_Home[10];
+             string[] songUrl = e.Result as string[];
+             TrackInfo track = new TrackInfo();
+             for (int i = 0; i < 10; i++)
+             {
+                 track.TrackLink = songUrl[i];
+
+                 if (!Database.checkTrackExisted(track.TrackLink))
+                 {
+                     track.TrackID = Database.addTrackToDatabase(track.TrackLink);
+                     track.IsLoved = false;
+
+                 }
+                 else
+                 {
+                     track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
+
+                 }
+                 temp[i] = new TrackContainer_Home(track.TrackID, homeScr.mainScr);
+
+             }
+
+             suggested_flowLayoutPanel.Controls.AddRange(temp);*/
+            suggested_flowLayoutPanel.Controls.AddRange(temp.ToArray());
+
         }
     }
 
