@@ -74,7 +74,7 @@ namespace Tify
                     trackID2 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
                 }
                 suggestSong1.setInfo(this, trackID1);
-                //suggestSong2.setInfo(this, trackID2);
+                suggestSong2.setInfo(this, trackID2);
             }
             else
             {

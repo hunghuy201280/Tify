@@ -19,14 +19,18 @@ namespace Tify
             string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID,getdate())";
             foreach (TrackInfo track in trackInfos)
             {
-
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@trackID", track.TrackID);
-                    cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                    using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+                    {
+                        cmd.Parameters.AddWithValue("@trackID", track.TrackID);
+                        cmd.Parameters.AddWithValue("@playlistID", playlistID);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                catch (Exception) { }
+               
             }
           
             sqlconnection.Close();

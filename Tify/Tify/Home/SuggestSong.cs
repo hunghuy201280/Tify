@@ -147,7 +147,7 @@ namespace Tify
             this.BeginInvoke((Action)delegate ()
             {
                 songName_label.Text = mainTrack.Title;
-                songPicture.Image=(mainTrack.Cover);
+                songCover_picturebox.Image=(mainTrack.Cover);
             });
             string[] songUrl = GetSongData.GetSuggetSongs(mainTrack.TrackLink);
             e.Result = songUrl;
