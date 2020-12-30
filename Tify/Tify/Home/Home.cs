@@ -21,7 +21,7 @@ namespace Tify
             InitializeComponent();
             
         }
-        private MainScreen mainScr = null;
+        public MainScreen mainScr = null;
         
         public Home(MainScreen parentForm)
         {
@@ -59,13 +59,36 @@ namespace Tify
             recentlyTable = Database.getRecentlyTrack(mainScr.CurrentUser.UserID);
             ThreadPool.QueueUserWorkItem(delegate (object obj)
             {
-                if (recentlyTable.Rows.Count > 15)
+                if (recentlyTable.Rows.Count > 50)
                 {
                     Database.deleteLastTrackInRecentlyPlayed(mainScr.CurrentUser.UserID);
                 }
             });
+            Random rndSuggest = new Random(DateTime.Now.Second);
+            string trackID1="", trackID2="";
+            if (recentlyTable.Rows.Count>15)
+            {
+                trackID1 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
+                while (trackID1 == trackID2)
+                {
+                    trackID2 = recentlyTable.Rows[rndSuggest.Next(16, recentlyTable.Rows.Count)]["trackID"].ToString();
+                }
+                suggestSong1.setInfo(this, trackID1);
+                suggestSong2.setInfo(this, trackID2);
+            }
+            else
+            {
+                suggestSong1.Hide();
+                suggestSong2.Hide();
+            }
+           
+            
             foreach (DataRow row in recentlyTable.Rows)
             {
+                if (trackContainers.Count>15)
+                {
+                    break;
+                }
                 trackContainers.Add(new TrackContainer_Home(row["trackID"].ToString(), mainScr));
             }
             recentlyPlayed.clearItem();

@@ -36,15 +36,11 @@
             this.songCover_picturebox = new System.Windows.Forms.PictureBox();
             this.back_Button = new System.Windows.Forms.Button();
             this.forward_Button = new System.Windows.Forms.Button();
-            this.recentlyPlayed_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.suggested_flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.trackContainer_Home1 = new Tify.TrackContainer_Home();
-            this.trackContainer_Home2 = new Tify.TrackContainer_Home();
-            this.trackContainer_Home3 = new Tify.TrackContainer_Home();
-            this.trackContainer_Home4 = new Tify.TrackContainer_Home();
+            this.suggestedSong_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_picturebox)).BeginInit();
-            this.recentlyPlayed_flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // top_panel
@@ -123,87 +119,51 @@
             this.forward_Button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scroll_Button_MouseDown);
             this.forward_Button.MouseUp += new System.Windows.Forms.MouseEventHandler(this.scroll_Button_MouseUp);
             // 
-            // recentlyPlayed_flowLayoutPanel
+            // suggested_flowLayoutPanel
             // 
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.trackContainer_Home1);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.trackContainer_Home2);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.trackContainer_Home3);
-            this.recentlyPlayed_flowLayoutPanel.Controls.Add(this.trackContainer_Home4);
-            this.recentlyPlayed_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.recentlyPlayed_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
-            this.recentlyPlayed_flowLayoutPanel.Location = new System.Drawing.Point(0, 74);
-            this.recentlyPlayed_flowLayoutPanel.Name = "recentlyPlayed_flowLayoutPanel";
-            this.recentlyPlayed_flowLayoutPanel.Size = new System.Drawing.Size(1045, 266);
-            this.recentlyPlayed_flowLayoutPanel.TabIndex = 5;
-            this.recentlyPlayed_flowLayoutPanel.WrapContents = false;
+            this.suggested_flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.suggested_flowLayoutPanel.ForeColor = System.Drawing.Color.White;
+            this.suggested_flowLayoutPanel.Location = new System.Drawing.Point(0, 74);
+            this.suggested_flowLayoutPanel.Name = "suggested_flowLayoutPanel";
+            this.suggested_flowLayoutPanel.Size = new System.Drawing.Size(1045, 266);
+            this.suggested_flowLayoutPanel.TabIndex = 5;
+            this.suggested_flowLayoutPanel.WrapContents = false;
             // 
             // timer1
             // 
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // trackContainer_Home1
+            // suggestedSong_worker
             // 
-            this.trackContainer_Home1.BackColor = System.Drawing.Color.Black;
-            this.trackContainer_Home1.Location = new System.Drawing.Point(3, 3);
-            this.trackContainer_Home1.Name = "trackContainer_Home1";
-            this.trackContainer_Home1.Size = new System.Drawing.Size(172, 236);
-            this.trackContainer_Home1.TabIndex = 0;
-            // 
-            // trackContainer_Home2
-            // 
-            this.trackContainer_Home2.BackColor = System.Drawing.Color.Black;
-            this.trackContainer_Home2.Location = new System.Drawing.Point(181, 3);
-            this.trackContainer_Home2.Name = "trackContainer_Home2";
-            this.trackContainer_Home2.Size = new System.Drawing.Size(172, 236);
-            this.trackContainer_Home2.TabIndex = 1;
-            // 
-            // trackContainer_Home3
-            // 
-            this.trackContainer_Home3.BackColor = System.Drawing.Color.Black;
-            this.trackContainer_Home3.Location = new System.Drawing.Point(359, 3);
-            this.trackContainer_Home3.Name = "trackContainer_Home3";
-            this.trackContainer_Home3.Size = new System.Drawing.Size(172, 236);
-            this.trackContainer_Home3.TabIndex = 2;
-            // 
-            // trackContainer_Home4
-            // 
-            this.trackContainer_Home4.BackColor = System.Drawing.Color.Black;
-            this.trackContainer_Home4.Location = new System.Drawing.Point(537, 3);
-            this.trackContainer_Home4.Name = "trackContainer_Home4";
-            this.trackContainer_Home4.Size = new System.Drawing.Size(172, 236);
-            this.trackContainer_Home4.TabIndex = 3;
+            this.suggestedSong_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.suggestedSong_worker_DoWork);
+            this.suggestedSong_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.suggestedSong_worker_RunWorkerCompleted);
             // 
             // SuggestSong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.recentlyPlayed_flowLayoutPanel);
+            this.Controls.Add(this.suggested_flowLayoutPanel);
             this.Controls.Add(this.top_panel);
             this.Name = "SuggestSong";
             this.Size = new System.Drawing.Size(1045, 340);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.songCover_picturebox)).EndInit();
-            this.recentlyPlayed_flowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public TrackContainer_Home trackContainer_Home1;
-        public TrackContainer_Home trackContainer_Home2;
-        public TrackContainer_Home trackContainer_Home3;
-        public TrackContainer_Home trackContainer_Home4;
         public System.Windows.Forms.Panel top_panel;
         public System.Windows.Forms.Button back_Button;
         public System.Windows.Forms.Button forward_Button;
         public System.Windows.Forms.PictureBox songCover_picturebox;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label songName_label;
-        public System.Windows.Forms.FlowLayoutPanel recentlyPlayed_flowLayoutPanel;
+        public System.Windows.Forms.FlowLayoutPanel suggested_flowLayoutPanel;
         public System.Windows.Forms.Timer timer1;
+        private System.ComponentModel.BackgroundWorker suggestedSong_worker;
     }
 }

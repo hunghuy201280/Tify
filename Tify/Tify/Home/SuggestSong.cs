@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using GetData;
 
 namespace Tify
 {
@@ -16,10 +17,37 @@ namespace Tify
         public SuggestSong()
         {
             InitializeComponent();
+
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+        }
+
+        Home homeScr;
+        public SuggestSong(Home homeScr)
+        {
+            InitializeComponent();
+
+           
+            this.DoubleBuffered = true;
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
         }
 
 
+        string trackID;
+        public void setInfo(Home homeScr, string trackID)
+        {
+            this.homeScr = homeScr;
+            this.trackID = trackID;
+            suggestedSong_worker.RunWorkerAsync();
+        }
 
+        TrackInfo mainTrack = new TrackInfo();
         #region scroll Button
         private const int WM_SCROLL = 276; // Horizontal scroll
         private const int SB_LINELEFT = 0; // Scrolls one cell left
@@ -27,10 +55,10 @@ namespace Tify
 
         private void hideScrollBar()
         {
-            recentlyPlayed_flowLayoutPanel.AutoScroll = false;
-            recentlyPlayed_flowLayoutPanel.HorizontalScroll.Maximum = 0;
-            recentlyPlayed_flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
-            recentlyPlayed_flowLayoutPanel.AutoScroll = true;
+            suggested_flowLayoutPanel.AutoScroll = false;
+            suggested_flowLayoutPanel.HorizontalScroll.Maximum = 0;
+            suggested_flowLayoutPanel.AutoScrollPosition = new Point(0, 0);
+            suggested_flowLayoutPanel.AutoScroll = true;
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
@@ -41,7 +69,7 @@ namespace Tify
 
             for (int i = 0; i < 10; i++)
             {
-                SendMessage(this.recentlyPlayed_flowLayoutPanel.Handle, WM_SCROLL, (IntPtr)(int)timer1.Tag, IntPtr.Zero);
+                SendMessage(this.suggested_flowLayoutPanel.Handle, WM_SCROLL, (IntPtr)(int)timer1.Tag, IntPtr.Zero);
             }
         }
 
@@ -63,10 +91,94 @@ namespace Tify
             timer1.Enabled = false;
         }
 
+
+
         #endregion
 
+        public TrackInfo loadTrackInfo(string trackID)
+        {
+            TrackInfo track = new TrackInfo();
+            track.TrackID = trackID;
+            DataTable infoTable = Database.getTrackBaseOnID(track.TrackID);
+            string lastTrackID = "";
+            foreach (DataRow Track in infoTable.Rows)
+            {
+                if (Track["trackID"].ToString() == lastTrackID && lastTrackID != "")
+                {
+                    track.Artist += ";" + Track["artistName"].ToString();
+                }
+                else
+                {
 
 
+                    track.Artist = Track["artistName"].ToString();
+                    track.Title = Track["trackTitle"].ToString();
+                    track.TrackLink = Track["trackLink"].ToString();
+                    if (track.Artist == "")
+                    {
+                        track.Artist = GetSongData.loadArtist(track.TrackLink);
+                    }
+                    using (PictureBox pb = new PictureBox())
+                    {
+                        pb.Load(GetSongData.GetSongCover(track.TrackLink));
+                        track.Cover = pb.Image;
+                    }
+
+                    if (Database.checkIfTrackLoved(track.TrackID, homeScr.mainScr.CurrentUser.UserID))
+                    {
+                        track.IsLoved = true;
+                    }
+                    else
+                    {
+                        track.IsLoved = false;
+                    }
+
+                    TimeSpan time = TimeSpan.FromSeconds(GetSongData.GetSongDuration(track.TrackLink));
+
+                    string timeString = time.ToString(@"mm\:ss");
+                    track.Time = timeString;
+
+
+                    lastTrackID = track.TrackID;
+                }
+            }
+
+
+            return track;
+        }
+        private void suggestedSong_worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            mainTrack = loadTrackInfo(trackID);
+            string[] songUrl = GetSongData.GetSuggetSongs(mainTrack.TrackLink);
+            e.Result = songUrl;
+        }
+        PictureBox songPicture = new PictureBox();
+        private void suggestedSong_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            TrackContainer_Home[] temp = new TrackContainer_Home[10];
+            string[] songUrl = e.Result as string[];
+            TrackInfo track=new TrackInfo();
+            for (int i = 0; i < 10; i++)
+            {
+                track.TrackLink = songUrl[i];
+
+                if (!Database.checkTrackExisted(track.TrackLink))
+                {
+                    track.TrackID = Database.addTrackToDatabase(track.TrackLink);
+                    track.IsLoved = false;
+                    
+                }
+                else
+                {
+                    track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
+
+                }
+                temp[i] = new TrackContainer_Home(track.TrackID, homeScr.mainScr);
+
+            }
+
+            suggested_flowLayoutPanel.Controls.AddRange(temp);
+        }
     }
 
 
