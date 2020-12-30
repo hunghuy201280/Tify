@@ -104,7 +104,7 @@
             this.player_panel.Controls.Add(this.title_label);
             this.player_panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.player_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.player_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player_panel.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.player_panel.Location = new System.Drawing.Point(0, 738);
             this.player_panel.Name = "player_panel";
             this.player_panel.Size = new System.Drawing.Size(1127, 100);
@@ -377,12 +377,12 @@
             this.currentTime_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.currentTime_label.AutoSize = true;
             this.currentTime_label.BackColor = System.Drawing.Color.Transparent;
-            this.currentTime_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTime_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(152)))), ((int)(((byte)(169)))));
             this.currentTime_label.Location = new System.Drawing.Point(818, 40);
             this.currentTime_label.Margin = new System.Windows.Forms.Padding(0);
             this.currentTime_label.Name = "currentTime_label";
-            this.currentTime_label.Size = new System.Drawing.Size(44, 18);
+            this.currentTime_label.Size = new System.Drawing.Size(50, 19);
             this.currentTime_label.TabIndex = 11;
             this.currentTime_label.Text = "0:14 /";
             this.currentTime_label.TextChanged += new System.EventHandler(this.currentTime_label_TextChanged);
@@ -391,12 +391,12 @@
             // 
             this.duration_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.duration_label.AutoSize = true;
-            this.duration_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.duration_label.Font = new System.Drawing.Font("Nationale Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duration_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
             this.duration_label.Location = new System.Drawing.Point(864, 40);
             this.duration_label.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
             this.duration_label.Name = "duration_label";
-            this.duration_label.Size = new System.Drawing.Size(48, 18);
+            this.duration_label.Size = new System.Drawing.Size(53, 19);
             this.duration_label.TabIndex = 10;
             this.duration_label.Text = " 03:23";
             this.duration_label.TextChanged += new System.EventHandler(this.duration_label_TextChanged);
@@ -405,7 +405,7 @@
             // 
             this.playingFrom_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.playingFrom_label.AutoSize = true;
-            this.playingFrom_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playingFrom_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playingFrom_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.playingFrom_label.Location = new System.Drawing.Point(104, 61);
             this.playingFrom_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
@@ -418,7 +418,7 @@
             // 
             this.artist_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.artist_label.AutoSize = true;
-            this.artist_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.artist_label.Location = new System.Drawing.Point(104, 40);
             this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
@@ -431,12 +431,12 @@
             // 
             this.title_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.title_label.AutoSize = true;
-            this.title_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title_label.ForeColor = System.Drawing.Color.White;
             this.title_label.Location = new System.Drawing.Point(104, 23);
             this.title_label.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(0, 18);
+            this.title_label.Size = new System.Drawing.Size(0, 17);
             this.title_label.TabIndex = 1;
             this.title_label.TextChanged += new System.EventHandler(this.title_label_TextChanged);
             // 
@@ -470,7 +470,7 @@
             this.createNewPlaylist_button.FlatAppearance.BorderSize = 0;
             this.createNewPlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.createNewPlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createNewPlaylist_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewPlaylist_button.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createNewPlaylist_button.ForeColor = System.Drawing.Color.White;
             this.createNewPlaylist_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.createNewPlaylist_button.ImageIndex = 0;
@@ -498,12 +498,12 @@
             // myPlaylist_label
             // 
             this.myPlaylist_label.AutoSize = true;
-            this.myPlaylist_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myPlaylist_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myPlaylist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
             this.myPlaylist_label.Location = new System.Drawing.Point(15, 479);
             this.myPlaylist_label.Margin = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.myPlaylist_label.Name = "myPlaylist_label";
-            this.myPlaylist_label.Size = new System.Drawing.Size(111, 18);
+            this.myPlaylist_label.Size = new System.Drawing.Size(105, 17);
             this.myPlaylist_label.TabIndex = 22;
             this.myPlaylist_label.Tag = "MY PLAYLIST";
             this.myPlaylist_label.Text = "MY PLAYLIST";
@@ -518,7 +518,7 @@
             this.account_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.account_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.account_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.account_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.account_button.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.account_button.ForeColor = System.Drawing.Color.White;
             this.account_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.account_button.ImageIndex = 10;
@@ -554,12 +554,12 @@
             // myCollection_label
             // 
             this.myCollection_label.AutoSize = true;
-            this.myCollection_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myCollection_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myCollection_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
             this.myCollection_label.Location = new System.Drawing.Point(15, 160);
             this.myCollection_label.Margin = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.myCollection_label.Name = "myCollection_label";
-            this.myCollection_label.Size = new System.Drawing.Size(142, 18);
+            this.myCollection_label.Size = new System.Drawing.Size(135, 17);
             this.myCollection_label.TabIndex = 21;
             this.myCollection_label.Tag = "MY COLLECTION";
             this.myCollection_label.Text = "MY COLLECTION";
@@ -586,7 +586,7 @@
             this.myMix_button.FlatAppearance.BorderSize = 0;
             this.myMix_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.myMix_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.myMix_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myMix_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myMix_button.ForeColor = System.Drawing.Color.White;
             this.myMix_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.myMix_button.ImageIndex = 0;
@@ -611,7 +611,7 @@
             this.albums_button.FlatAppearance.BorderSize = 0;
             this.albums_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.albums_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.albums_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.albums_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albums_button.ForeColor = System.Drawing.Color.White;
             this.albums_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.albums_button.ImageIndex = 4;
@@ -636,7 +636,7 @@
             this.home_button.FlatAppearance.BorderSize = 0;
             this.home_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.home_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.home_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.home_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.home_button.ForeColor = System.Drawing.Color.White;
             this.home_button.Location = new System.Drawing.Point(9, 80);
             this.home_button.Margin = new System.Windows.Forms.Padding(0, 80, 0, 0);
@@ -654,7 +654,7 @@
             this.playlist_button.FlatAppearance.BorderSize = 0;
             this.playlist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.playlist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playlist_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlist_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlist_button.ForeColor = System.Drawing.Color.White;
             this.playlist_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.playlist_button.ImageIndex = 2;
@@ -679,7 +679,7 @@
             this.artists_button.FlatAppearance.BorderSize = 0;
             this.artists_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.artists_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.artists_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artists_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artists_button.ForeColor = System.Drawing.Color.White;
             this.artists_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.artists_button.ImageIndex = 8;
@@ -704,7 +704,7 @@
             this.tracks_button.FlatAppearance.BorderSize = 0;
             this.tracks_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(78)))), ((int)(((byte)(84)))));
             this.tracks_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tracks_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tracks_button.Font = new System.Drawing.Font("Nationale", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tracks_button.ForeColor = System.Drawing.Color.White;
             this.tracks_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tracks_button.ImageIndex = 6;
@@ -789,11 +789,11 @@
             this.searchBar_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.searchBar_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchBar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBar_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
             this.searchBar_textBox.Location = new System.Drawing.Point(40, 0);
             this.searchBar_textBox.Name = "searchBar_textBox";
-            this.searchBar_textBox.Size = new System.Drawing.Size(350, 33);
+            this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
             this.searchBar_textBox.TabIndex = 2;
             this.searchBar_textBox.Text = "Search";
             this.searchBar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBar_textBox_KeyPress);
