@@ -19,14 +19,14 @@ namespace Tify
         }
 
         private bool isnotsingletrack = false;
-
+        List<TrackInfo> tracks;
         public AddtoPlaylistForm(MainScreen callForm, bool input, List<TrackInfo> inputTrack)
         {
             InitializeComponent();
             isnotsingletrack = input;
             mainScr = callForm;
             this.DoubleBuffered = true;
-
+            tracks = inputTrack;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
@@ -146,6 +146,7 @@ namespace Tify
             }
             else
             {
+                Database.addPlaylistToOtherPlaylist(tracks, choosenPlaylistID);
             }
         }
     }
