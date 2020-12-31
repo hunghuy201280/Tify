@@ -54,7 +54,12 @@ namespace Tify
         }
         private void loadingFunc()
         {
-            Application.Run(loadingScr);
+            try
+            {
+                Application.Run(loadingScr);
+            }
+            catch (Exception) { }
+         
         }
 
         public Home homeScr;
@@ -196,7 +201,16 @@ namespace Tify
                 artist_label.Text = string.Empty;
                 foreach (string artist in artists)
                 {
-                    artist_label.Text += artist + ";";
+                    if (artists[artists.Length - 1] == artist)
+                    {
+                        artist_label.Text += artist;
+                    }
+                    else
+                    {
+                        artist_label.Text += artist + ";";
+
+                    }
+                    
                 }
                 track.Artist = artist_label.Text;
             }
@@ -1147,7 +1161,7 @@ namespace Tify
         {
             if (!(loopMode == LoopMode.On) && currentTrackIndex == nextTrack.Count)
             {
-                loadNewSong(new TrackInfo() { TrackLink = suggestedSong[0] });
+                changeSong(new TrackInfo() { TrackLink = suggestedSong[0] });
                 setplayfrom("Suggests");
             }
             else

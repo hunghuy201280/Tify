@@ -252,5 +252,37 @@ namespace Tify
         }
 
         #endregion
+
+        private void play_button_Click(object sender, EventArgs e)
+        {
+            artistForm.mainScr.nextTrack.Clear();
+            if (track_gridView.Rows.Count == 0)
+            {
+                MessageBox.Show("Nothing to play");
+                return;
+            }
+            //
+            artistForm.mainScr.currentTrackIndex = 0;
+            //
+            foreach (DataGridViewRow track in track_gridView.Rows)
+            {
+
+                TrackInfo trackToPlay = track.Tag as TrackInfo;
+                artistForm.mainScr.addTrackToQueue(trackToPlay);
+
+            }
+            //
+            if (sender == playShuffle_Button)
+            {
+                artistForm.mainScr.enableShuffle();
+            }
+            else
+            {
+                artistForm.mainScr.disableShuffle();
+            }
+            //
+            artistForm.mainScr.changeSong(artistForm.mainScr.Dequeue());
+            artistForm.mainScr.setplayfrom(artistName_label.Text);
+        }
     }
 }
