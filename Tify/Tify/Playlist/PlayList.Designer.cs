@@ -79,8 +79,8 @@
             // 
             // Bottom_panel
             // 
-            this.Bottom_panel.Controls.Add(this.panel_default_playlist);
             this.Bottom_panel.Controls.Add(this.bottom_flowPanel);
+            this.Bottom_panel.Controls.Add(this.panel_default_playlist);
             this.Bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Bottom_panel.Location = new System.Drawing.Point(0, 0);
             this.Bottom_panel.Name = "Bottom_panel";
