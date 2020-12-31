@@ -45,12 +45,12 @@
             // Playlist_label
             // 
             this.Playlist_label.AutoSize = true;
-            this.Playlist_label.Font = new System.Drawing.Font("Nationale Light", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Playlist_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Playlist_label.ForeColor = System.Drawing.Color.White;
             this.Playlist_label.Location = new System.Drawing.Point(2, 177);
             this.Playlist_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Playlist_label.Name = "Playlist_label";
-            this.Playlist_label.Size = new System.Drawing.Size(598, 33);
+            this.Playlist_label.Size = new System.Drawing.Size(595, 31);
             this.Playlist_label.TabIndex = 2;
             this.Playlist_label.Text = "You don\'t have any playlist, but you will soon do.";
             // 
@@ -88,6 +88,7 @@
             // 
             // bottom_flowPanel
             // 
+            this.bottom_flowPanel.AutoScroll = true;
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
@@ -96,6 +97,7 @@
             // 
             // top_panel
             // 
+            this.top_panel.AutoScroll = true;
             this.top_panel.Controls.Add(this.formTitle_label);
             this.top_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.top_panel.Location = new System.Drawing.Point(0, 0);
@@ -106,11 +108,11 @@
             // formTitle_label
             // 
             this.formTitle_label.AutoSize = true;
-            this.formTitle_label.Font = new System.Drawing.Font("Nationale", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formTitle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.formTitle_label.ForeColor = System.Drawing.Color.White;
             this.formTitle_label.Location = new System.Drawing.Point(12, 16);
             this.formTitle_label.Name = "formTitle_label";
-            this.formTitle_label.Size = new System.Drawing.Size(124, 23);
+            this.formTitle_label.Size = new System.Drawing.Size(117, 24);
             this.formTitle_label.TabIndex = 5;
             this.formTitle_label.Text = "My Playlists";
             // 
@@ -118,6 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(990, 644);
             this.Controls.Add(this.panel1);
