@@ -128,6 +128,10 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //khi double click row trong grid view, clear nextrack, add tất cả các track phía sau vào nexttrack, kiểm tra random,...
+            if (e.ColumnIndex==7|| e.ColumnIndex==5||e.ColumnIndex==6)
+            {
+                return;
+            }
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             //
             playlistForm.mainScr.nextTrack.Clear();

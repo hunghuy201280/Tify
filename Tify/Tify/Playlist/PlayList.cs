@@ -99,22 +99,22 @@ namespace Tify
                 }
             }
         }
-        /*   public void addTrackToPlaylistContainer(string trackID,string playlistID)
+        public void addTrackToPlaylistContainer(List<TrackInfo> tracks, string playlistID)
         {
             foreach (var playlist in playlistContainers)
             {
-                if (playlist.playlistID== playlistID)
+                if (playlist.playlistID == playlistID)
                 {
-                    playlist.addTrack(trackID);
+                    playlist.addTrack(tracks);
                 }
             }
-        }*/
+        }
 
         #endregion
 
 
         #region Mở childForm
-        
+
         public void attachPlaylistContainerToPlaylistButtonInMenuPanel(FlowLayoutPanel playlist_panel)
         {
             int countButton = playlist_panel.Controls.Count;
