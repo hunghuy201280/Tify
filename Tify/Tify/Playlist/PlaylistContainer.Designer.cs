@@ -145,7 +145,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel playlistCover_panel;
         private System.ComponentModel.BackgroundWorker load_worker;
         public System.Windows.Forms.Label numberOfTracks_label;
         public System.Windows.Forms.Label playlistName_label;
@@ -154,5 +153,6 @@
         private System.ComponentModel.BackgroundWorker reload_worker;
         public System.Windows.Forms.Panel opacity_panel;
         private System.ComponentModel.BackgroundWorker loadCover_worker;
+        public System.Windows.Forms.Panel playlistCover_panel;
     }
 }

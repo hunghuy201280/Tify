@@ -38,14 +38,33 @@ namespace Tify
             playlistFm = callform;
 
             this.DoubleBuffered = true;
+            //load trước track table
+            trackTable_woker.RunWorkerAsync();
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
 
+          
+        }
+        
+        public PlaylistContainer(Playlist callform, string PLAYLIST_ID,Image chartCover)
+        {
+            InitializeComponent();
+            playlistID = PLAYLIST_ID;
+            playlistFm = callform;
+            playlistCover_panel.BackgroundImage = chartCover;
+            this.DoubleBuffered = true;
             //load trước track table
+
             trackTable_woker.RunWorkerAsync();
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         private bool isLoaded = false;

@@ -50,6 +50,15 @@ namespace Tify
           
         }
 
+        List<PlaylistContainer> playlistContainers = new List<PlaylistContainer>();
+        private void loadChart()
+        {
+            for (int i = 87; i <= 91; i++)
+            {
+               // playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr,i.ToString(),);
+            }
+            //bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+        }
 
         #region recentlyPlayed 
         DataTable recentlyTable;

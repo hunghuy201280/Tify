@@ -52,7 +52,10 @@ namespace Tify
                 playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
-
+            if (playlistContainers.Count==0)
+            {
+                panel_default_playlist.BringToFront();
+            }
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
