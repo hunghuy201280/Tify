@@ -301,7 +301,9 @@ namespace Tify
         {
             AddtoPlaylistForm add2PL = new AddtoPlaylistForm(albumsFm.mainScr, true,albumInfo);
             add2PL.ShowDialog();
-            
+            //add reload form here
+            //->
+
         }
         #endregion
     }

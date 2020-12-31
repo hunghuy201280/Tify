@@ -318,5 +318,12 @@ namespace Tify
 
         #endregion
 
+        private void addToPlaylist_Button_Click(object sender, EventArgs e)
+        {
+            AddtoPlaylistForm add2PL = new AddtoPlaylistForm(playlistForm.mainScr, true, trackInfo);
+            add2PL.ShowDialog();
+            //add reload form here
+            //->
+        }
     }
 }

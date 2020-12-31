@@ -255,7 +255,10 @@ namespace Tify
 
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {
-
+            AddtoPlaylistForm add2PL = new AddtoPlaylistForm(myMix.mainScr, true, trackInfos);
+            add2PL.ShowDialog();
+            //add reload form here
+            //->
         }
     }
 }
