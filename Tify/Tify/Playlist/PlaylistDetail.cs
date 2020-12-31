@@ -8,6 +8,7 @@ namespace Tify
 {
     public partial class PlaylistDetail : Form
     {
+
         public PlaylistDetail()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace Tify
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
 
-
+        public bool isChart;
         public void setCover(Image[] cover)
         {
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
@@ -64,6 +65,7 @@ namespace Tify
         }
         public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, PlaylistContainer callFm)
         {
+            
             this.trackInfo = trackInfos;
             playlistContainer = callFm;
             int indexCount = 1;
@@ -120,7 +122,15 @@ namespace Tify
 
                 
             track_dataGridView.Rows.Remove(track_dataGridView.Rows[0]);
+
+            if (isChart)
+            {
+                chartCover_panel.BackgroundImage = callFm.playlistCover_panel.BackgroundImage;
+                chartCover_panel.BringToFront();
+            }
+
             hideLoading();
+
         }
 
 
@@ -128,6 +138,10 @@ namespace Tify
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //khi double click row trong grid view, clear nextrack, add tất cả các track phía sau vào nexttrack, kiểm tra random,...
+            if (e.ColumnIndex==7|| e.ColumnIndex==5||e.ColumnIndex==6)
+            {
+                return;
+            }
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             //
             playlistForm.mainScr.nextTrack.Clear();
@@ -318,6 +332,7 @@ namespace Tify
 
         #endregion
 
+        #region add button
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {
             AddtoPlaylistForm add2PL = new AddtoPlaylistForm(playlistForm.mainScr, true, trackInfo);
@@ -325,5 +340,13 @@ namespace Tify
             //add reload form here
             //->
         }
+
+        #endregion
+
+        
+
+
+
+
     }
 }

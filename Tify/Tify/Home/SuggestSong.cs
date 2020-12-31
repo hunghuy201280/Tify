@@ -191,29 +191,7 @@ namespace Tify
       
         private void suggestedSong_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            /* TrackContainer_Home[] temp = new TrackContainer_Home[10];
-             string[] songUrl = e.Result as string[];
-             TrackInfo track = new TrackInfo();
-             for (int i = 0; i < 10; i++)
-             {
-                 track.TrackLink = songUrl[i];
-
-                 if (!Database.checkTrackExisted(track.TrackLink))
-                 {
-                     track.TrackID = Database.addTrackToDatabase(track.TrackLink);
-                     track.IsLoved = false;
-
-                 }
-                 else
-                 {
-                     track.TrackID = Database.getTrackIdBaseOnTrackLink(track.TrackLink);
-
-                 }
-                 temp[i] = new TrackContainer_Home(track.TrackID, homeScr.mainScr);
-
-             }
-
-             suggested_flowLayoutPanel.Controls.AddRange(temp);*/
+         
             suggested_flowLayoutPanel.Controls.AddRange(temp.ToArray());
             loading_SplashScreen1.SendToBack();
 

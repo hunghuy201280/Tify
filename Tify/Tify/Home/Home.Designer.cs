@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.suggestSong1 = new Tify.SuggestSong();
             this.suggestSong2 = new Tify.SuggestSong();
             this.theCharts = new Tify.HomeItemContainer();
             this.mixesForYou = new Tify.HomeItemContainer();
             this.recentlyPlayed = new Tify.HomeItemContainer();
+            this.chart_ImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // suggestSong1
@@ -83,6 +85,12 @@
             this.recentlyPlayed.Size = new System.Drawing.Size(1310, 320);
             this.recentlyPlayed.TabIndex = 2;
             // 
+            // chart_ImageList
+            // 
+            this.chart_ImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.chart_ImageList.ImageSize = new System.Drawing.Size(172, 172);
+            this.chart_ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,5 +118,6 @@
         private SuggestSong suggestSong1;
         private SuggestSong suggestSong2;
         public HomeItemContainer recentlyPlayed;
+        private System.Windows.Forms.ImageList chart_ImageList;
     }
 }

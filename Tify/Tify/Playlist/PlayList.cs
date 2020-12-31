@@ -52,7 +52,10 @@ namespace Tify
                 playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
-
+            if (playlistContainers.Count==0)
+            {
+                panel_default_playlist.BringToFront();
+            }
             this.DoubleBuffered = true;
             foreach (Control control in this.Controls)
             {
@@ -99,22 +102,22 @@ namespace Tify
                 }
             }
         }
-        /*   public void addTrackToPlaylistContainer(string trackID,string playlistID)
+        public void addTrackToPlaylistContainer(List<TrackInfo> tracks, string playlistID)
         {
             foreach (var playlist in playlistContainers)
             {
-                if (playlist.playlistID== playlistID)
+                if (playlist.playlistID == playlistID)
                 {
-                    playlist.addTrack(trackID);
+                    playlist.addTrack(tracks);
                 }
             }
-        }*/
+        }
 
         #endregion
 
 
         #region Mở childForm
-        
+
         public void attachPlaylistContainerToPlaylistButtonInMenuPanel(FlowLayoutPanel playlist_panel)
         {
             int countButton = playlist_panel.Controls.Count;

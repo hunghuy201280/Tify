@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -29,7 +30,7 @@ namespace Tify
         public string playlistName;
         public string owner;
         public int trackCount;
-        
+
         public PlaylistContainer(Playlist callform, string PLAYLIST_ID)
         {
             InitializeComponent();
@@ -37,16 +38,33 @@ namespace Tify
             playlistFm = callform;
 
             this.DoubleBuffered = true;
+            //load trước track table
+            trackTable_woker.RunWorkerAsync();
 
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
             }
 
+          
+        }
+        
+        public PlaylistContainer(Playlist callform, string PLAYLIST_ID,Image chartCover)
+        {
+            InitializeComponent();
+            playlistID = PLAYLIST_ID;
+            playlistFm = callform;
+            playlistCover_panel.BackgroundImage = chartCover;
+            this.DoubleBuffered = true;
             //load trước track table
+
             trackTable_woker.RunWorkerAsync();
-           
-           
+
+            foreach (Control control in this.Controls)
+            {
+                MainScreen.EnableDoubleBuferring(control);
+            }
+
         }
 
         private bool isLoaded = false;
@@ -56,7 +74,6 @@ namespace Tify
         {
             //khi click vào container, mở detail fm lên sau đó bring to front loading trong detail trong hàm loadinfo
             playlistFm.openChildForm(playlistFm.playlistDetail);
-
 
             if (isLoaded)
             {
@@ -79,7 +96,6 @@ namespace Tify
         //load cover, tên playlist lúc chưa click vào
         private void trackTable_woker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
             if (trackTable.Rows.Count != 0)
             {
                 owner = trackTable.Rows[0]["name"].ToString();
@@ -118,7 +134,6 @@ namespace Tify
             playlistFm.playlistDetail.showLoading();
 
             load_worker.RunWorkerAsync();
-           
         }
 
         private DataTable trackTable = new DataTable();
@@ -143,7 +158,7 @@ namespace Tify
 
                     temp.TrackID = track["trackID"].ToString();
                     temp.Artist = track["artistName"].ToString();
-                    
+
                     temp.Title = track["trackTitle"].ToString();
                     temp.TrackLink = track["trackLink"].ToString();
                     if (temp.Artist == "")
@@ -184,7 +199,6 @@ namespace Tify
             }
 
             playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
-            
         }
 
         private void PlaylistContainer_Load(object sender, EventArgs e)
@@ -209,13 +223,12 @@ namespace Tify
             cover.Clear();
 
             while (loadCover_worker.IsBusy) { }
-       
+
             loadCover_worker.RunWorkerAsync(set);
         }
 
         private void loadCover_worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            
             int trackInfosIndex = 0;
 
             while (cover.Count < 4 && trackInfosIndex < trackInfos.Count)
@@ -235,7 +248,7 @@ namespace Tify
 
         private void loadCover_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Result.ToString()=="True")
+            if (e.Result.ToString() == "True")
             {
                 playlistFm.playlistDetail.setCover(cover.ToArray());
             }
@@ -291,57 +304,86 @@ namespace Tify
             }
             loadCover(false);
             numberOfTracks_label.Text = ++trackCount + " Tracks";
-            if(playlistFm.playlistDetail.playlistContainer==this && !(playlistFm.mainScr.Controls[0] is SongDetail))
+            if (playlistFm.playlistDetail.playlistContainer == this && !(playlistFm.mainScr.Controls[0] is SongDetail))
                 playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
         }
 
-        #endregion addtrack to playlist
-
-        #region reload when unlike track
-
-        public void reloadStatus()
+        public void addTrack(List<TrackInfo> tracks)
         {
-            //reload_worker.RunWorkerAsync();
-            new Thread(() =>
+            int insertedTrackCount=0;
+            foreach (TrackInfo track in tracks)
             {
-                reload();
-            }).Start();
-        }
+            
+                if (trackInfos.Where(Track => (Track.Title == track.Title)).Count()==0)
+                {
+                    TrackInfo temp = track;
 
-        private void reload()
-        {
-            foreach (var track in trackInfos)
-            {
-                if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
-                {
-                    track.IsLoved = true;
-                }
-                else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
-                {
-                    track.IsLoved = false;
+                    temp.DateAdded = DateTime.Now.ToShortDateString();
+
+
+
+                    TimeSpan time = TimeSpan.ParseExact(temp.Time, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                    timeInSec += (int)time.TotalSeconds;
+                    trackInfos.Add(temp);
+                    insertedTrackCount++;
                 }
             }
+
+        loadCover(false);
+        trackCount += insertedTrackCount;
+        numberOfTracks_label.Text = trackCount + " Tracks";
+            if (playlistFm.playlistDetail.playlistContainer == this && !(playlistFm.mainScr.Controls[0] is SongDetail))
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
         }
 
-        private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
+    #endregion addtrack to playlist
+
+    #region reload when unlike track
+
+    public void reloadStatus()
+    {
+        //reload_worker.RunWorkerAsync();
+        new Thread(() =>
         {
-            foreach (var track in trackInfos)
-            {
-                if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
-                {
-                    track.IsLoved = true;
-                }
-                else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
-                {
-                    track.IsLoved = false;
-                }
-            }
-        }
-
-        private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-        }
-
-        #endregion reload when unlike track
+            reload();
+        }).Start();
     }
+
+    private void reload()
+    {
+        foreach (var track in trackInfos)
+        {
+            if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+            {
+                track.IsLoved = true;
+            }
+            else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+            {
+                track.IsLoved = false;
+            }
+        }
+    }
+
+    private void reload_worker_DoWork(object sender, DoWorkEventArgs e)
+    {
+        foreach (var track in trackInfos)
+        {
+            if (Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+            {
+                track.IsLoved = true;
+            }
+            else if (!Database.checkIfTrackLoved(track.TrackID, playlistFm.mainScr.CurrentUser.UserID))
+            {
+                track.IsLoved = false;
+            }
+        }
+    }
+
+    private void reload_worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+    }
+
+    #endregion reload when unlike track
+}
 }

@@ -221,21 +221,22 @@ namespace Tify
             string[] songUrl = e.Argument as string[];
             for (int i = 0; i < 10; i++)
             {
-                //debug
-
-              /*  mainscr.debug.BeginInvoke((Action)delegate () {
-                    mainscr.debug.richTextBox1.Text += songUrl[i] + "\n\n";
-
-                });*/
-
-                //
+               
                 string url = songUrl[i];
                 temp[i] = new ReccommendTrackControl(mainscr);
                 string[] artists = GetSongData.GetSongArtist(url);
                 string name = string.Empty;
                 foreach (string artist in artists)
                 {
-                    name += artist + ";";
+                    if (artists[artists.Length - 1] == artist)
+                    {
+                        name += artist;
+                    }
+                    else
+                    {
+                        name += artist + ";";
+
+                    }
                 }
                 temp[i].setSongArtist(name);
                 temp[i].Url = url;

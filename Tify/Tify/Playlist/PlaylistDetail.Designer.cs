@@ -57,6 +57,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.BigPanel = new System.Windows.Forms.Panel();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
+            this.chartCover_panel = new System.Windows.Forms.Panel();
             this.playlistCover_pictureBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).BeginInit();
@@ -95,6 +96,7 @@
             this.playlistCover_pictureBox.Controls.Add(this.Cover3_pictureBox);
             this.playlistCover_pictureBox.Controls.Add(this.Cover2_pictureBox);
             this.playlistCover_pictureBox.Controls.Add(this.Cover1_pictureBox);
+            this.playlistCover_pictureBox.Controls.Add(this.chartCover_panel);
             this.playlistCover_pictureBox.Location = new System.Drawing.Point(12, 12);
             this.playlistCover_pictureBox.Name = "playlistCover_pictureBox";
             this.playlistCover_pictureBox.Size = new System.Drawing.Size(200, 200);
@@ -394,6 +396,14 @@
             this.loading_SplashScreen1.Size = new System.Drawing.Size(887, 570);
             this.loading_SplashScreen1.TabIndex = 4;
             // 
+            // chartCover_panel
+            // 
+            this.chartCover_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartCover_panel.Location = new System.Drawing.Point(0, 0);
+            this.chartCover_panel.Name = "chartCover_panel";
+            this.chartCover_panel.Size = new System.Drawing.Size(200, 200);
+            this.chartCover_panel.TabIndex = 4;
+            // 
             // PlaylistDetail
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -444,5 +454,6 @@
         private System.Windows.Forms.Button deletePlaylist_button;
         private System.Windows.Forms.Panel BigPanel;
         private Loading_SplashScreen loading_SplashScreen1;
+        private System.Windows.Forms.Panel chartCover_panel;
     }
 }

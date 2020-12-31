@@ -147,6 +147,10 @@ namespace Tify
             else
             {
                 Database.addPlaylistToOtherPlaylist(tracks, choosenPlaylistID);
+
+                //add row to playlist
+
+                mainScr.playlistScr.addTrackToPlaylistContainer(tracks, choosenPlaylistID);
             }
         }
     }

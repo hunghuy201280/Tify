@@ -32,13 +32,13 @@
             this.Playlist_label = new System.Windows.Forms.Label();
             this.panel_default_playlist = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Bottom_panel = new System.Windows.Forms.Panel();
             this.bottom_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.top_panel = new System.Windows.Forms.Panel();
             this.formTitle_label = new System.Windows.Forms.Label();
             this.panel_default_playlist.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.Bottom_panel.SuspendLayout();
             this.top_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,10 +56,11 @@
             // 
             // panel_default_playlist
             // 
+            this.panel_default_playlist.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_default_playlist.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_default_playlist.Controls.Add(this.pictureBox1);
             this.panel_default_playlist.Controls.Add(this.Playlist_label);
-            this.panel_default_playlist.Location = new System.Drawing.Point(35, 10);
+            this.panel_default_playlist.Location = new System.Drawing.Point(190, 149);
             this.panel_default_playlist.Margin = new System.Windows.Forms.Padding(2);
             this.panel_default_playlist.Name = "panel_default_playlist";
             this.panel_default_playlist.Size = new System.Drawing.Size(610, 346);
@@ -76,23 +77,23 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // panel1
+            // Bottom_panel
             // 
-            this.panel1.Controls.Add(this.bottom_flowPanel);
-            this.panel1.Controls.Add(this.top_panel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(990, 644);
-            this.panel1.TabIndex = 4;
+            this.Bottom_panel.Controls.Add(this.panel_default_playlist);
+            this.Bottom_panel.Controls.Add(this.bottom_flowPanel);
+            this.Bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Bottom_panel.Location = new System.Drawing.Point(0, 0);
+            this.Bottom_panel.Name = "Bottom_panel";
+            this.Bottom_panel.Size = new System.Drawing.Size(990, 644);
+            this.Bottom_panel.TabIndex = 4;
             // 
             // bottom_flowPanel
             // 
             this.bottom_flowPanel.AutoScroll = true;
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
+            this.bottom_flowPanel.Location = new System.Drawing.Point(0, 0);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
-            this.bottom_flowPanel.Size = new System.Drawing.Size(990, 587);
+            this.bottom_flowPanel.Size = new System.Drawing.Size(990, 644);
             this.bottom_flowPanel.TabIndex = 8;
             // 
             // top_panel
@@ -123,15 +124,15 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(990, 644);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel_default_playlist);
+            this.Controls.Add(this.top_panel);
+            this.Controls.Add(this.Bottom_panel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Playlist";
             this.Text = "PlayList";
             this.panel_default_playlist.ResumeLayout(false);
             this.panel_default_playlist.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.Bottom_panel.ResumeLayout(false);
             this.top_panel.ResumeLayout(false);
             this.top_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -143,7 +144,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Playlist_label;
         private System.Windows.Forms.Panel panel_default_playlist;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Bottom_panel;
         private System.Windows.Forms.Label formTitle_label;
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.FlowLayoutPanel bottom_flowPanel;

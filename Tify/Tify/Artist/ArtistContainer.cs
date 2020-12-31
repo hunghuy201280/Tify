@@ -42,20 +42,12 @@ namespace Tify
             ThreadPool.QueueUserWorkItem(delegate {
                 trackTable = Database.getTrack_Artist(artistID);
             });
-            /*   new Thread(() =>
-               {
-                   trackTable = Database.getTrack_Artist(artistID);
-               }).Start();*/
-
-            //load album table
+        
 
             ThreadPool.QueueUserWorkItem(delegate {
                 albumTalbe = Database.getAlbumOfArtist(artistID);
             });
-         /*   new Thread(() =>
-            {
-                albumTalbe = Database.getAlbumOfArtist(artistID);
-            }).Start();*/
+       
 
             this.DoubleBuffered = true;
 
@@ -158,7 +150,7 @@ namespace Tify
             foreach (DataRow track in trackTable.Rows)
             {
                 //stop add at
-                if (trackTable.Rows.Count>10 &&trackTable.Rows[10] == track)
+                if (trackTable.Rows.Count>15 &&trackTable.Rows[15] == track)
                 {
                     break;
                 }

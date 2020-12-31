@@ -750,6 +750,7 @@
             // 
             this.backForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("backForm_button.BackgroundImage")));
             this.backForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.backForm_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backForm_button.FlatAppearance.BorderSize = 0;
             this.backForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backForm_button.Location = new System.Drawing.Point(6, 11);
@@ -763,6 +764,7 @@
             // 
             this.forwardForm_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forwardForm_button.BackgroundImage")));
             this.forwardForm_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.forwardForm_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.forwardForm_button.FlatAppearance.BorderSize = 0;
             this.forwardForm_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forwardForm_button.Location = new System.Drawing.Point(49, 11);

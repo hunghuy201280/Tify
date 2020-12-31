@@ -42,7 +42,6 @@
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addToPlaylist = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
-            this.viewAll_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.top_panel = new System.Windows.Forms.Panel();
             this.like_button = new System.Windows.Forms.Button();
@@ -74,7 +73,7 @@
             // 
             this.artistAlbum_container.BackColor = System.Drawing.Color.Black;
             this.artistAlbum_container.Dock = System.Windows.Forms.DockStyle.Top;
-            this.artistAlbum_container.Location = new System.Drawing.Point(0, 498);
+            this.artistAlbum_container.Location = new System.Drawing.Point(0, 666);
             this.artistAlbum_container.MinimumSize = new System.Drawing.Size(0, 320);
             this.artistAlbum_container.Name = "artistAlbum_container";
             this.artistAlbum_container.Size = new System.Drawing.Size(921, 320);
@@ -83,12 +82,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.track_gridView);
-            this.panel1.Controls.Add(this.viewAll_button);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(921, 228);
+            this.panel1.Size = new System.Drawing.Size(921, 396);
             this.panel1.TabIndex = 5;
             // 
             // track_gridView
@@ -128,7 +126,7 @@
             this.track_gridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.track_gridView.EnableHeadersVisualStyles = false;
             this.track_gridView.GridColor = System.Drawing.Color.Black;
-            this.track_gridView.Location = new System.Drawing.Point(0, 47);
+            this.track_gridView.Location = new System.Drawing.Point(0, 44);
             this.track_gridView.Name = "track_gridView";
             this.track_gridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -155,7 +153,7 @@
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.Height = 42;
             this.track_gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.track_gridView.Size = new System.Drawing.Size(921, 181);
+            this.track_gridView.Size = new System.Drawing.Size(921, 352);
             this.track_gridView.TabIndex = 2;
             this.track_gridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_gridView_CellMouseClick);
             this.track_gridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.track_dataGridView_CellMouseDoubleClick);
@@ -212,19 +210,6 @@
             this.remove.Name = "remove";
             this.remove.ReadOnly = true;
             this.remove.Width = 20;
-            // 
-            // viewAll_button
-            // 
-            this.viewAll_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(26)))), ((int)(((byte)(30)))));
-            this.viewAll_button.FlatAppearance.BorderSize = 0;
-            this.viewAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewAll_button.Font = new System.Drawing.Font("Nationale Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAll_button.Location = new System.Drawing.Point(809, 0);
-            this.viewAll_button.Name = "viewAll_button";
-            this.viewAll_button.Size = new System.Drawing.Size(75, 23);
-            this.viewAll_button.TabIndex = 1;
-            this.viewAll_button.Text = "VIEW ALL";
-            this.viewAll_button.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -290,6 +275,7 @@
             this.playShuffle_Button.Size = new System.Drawing.Size(145, 50);
             this.playShuffle_Button.TabIndex = 3;
             this.playShuffle_Button.UseVisualStyleBackColor = false;
+            this.playShuffle_Button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // play_button
             // 
@@ -305,6 +291,7 @@
             this.play_button.Size = new System.Drawing.Size(145, 50);
             this.play_button.TabIndex = 3;
             this.play_button.UseVisualStyleBackColor = false;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // artistName_label
             // 
@@ -361,7 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
-        private System.Windows.Forms.Button viewAll_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel top_panel;
         private System.Windows.Forms.Button like_button;

@@ -185,7 +185,15 @@ namespace Tify
                         string artist = "";
                         foreach (DataRow artistName in artistTable.Rows)
                         {
-                            artist += artistName["artistName"].ToString() + ";";
+                            if (artistTable.Rows[artistTable.Rows.Count-1]==artistName)
+                            {
+                                artist += artistName["artistName"].ToString();
+                            }
+                            else
+                            {
+                                artist += artistName["artistName"].ToString() + ";";
+
+                            }
                         }
                         tempTrack.Title = item["trackTitle"].ToString();
 
@@ -194,7 +202,15 @@ namespace Tify
                             string[] artists = GetSongData.GetSongArtist(tempTrack.TrackLink);
                             foreach (string artistName in artists)
                             {
-                                artist += artistName + ";";
+                                if (artists[artists.Length-1]==artistName)
+                                {
+                                    artist += artistName;
+                                }
+                                else
+                                {
+                                    artist += artistName + ";";
+
+                                }
                             }
                         }
                         tempTrack.Artist = artist;
