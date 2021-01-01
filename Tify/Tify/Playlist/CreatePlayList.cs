@@ -104,6 +104,10 @@ namespace Tify
                 MessageBox.Show("PlayList name cannot be blank");
                 return;
             }
+            if (string.IsNullOrWhiteSpace(Description_TextBox.Text) || Description_TextBox.ForeColor == Color.Gray)
+            {
+                Description_TextBox.Text = null;
+            }
             Button newbutton = new Button();
             newbutton.FlatStyle = FlatStyle.Flat;
             newbutton.FlatAppearance.BorderSize = 0;
