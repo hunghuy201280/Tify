@@ -109,9 +109,10 @@ namespace Tify
 
             track_dataGridView.Rows.AddRange(rows.ToArray());
 
+            int coverIndex = 0;
+
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
             {
-                int coverIndex = 0;
 
                 if (coverIndex >= cover.Length)
                 {
