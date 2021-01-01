@@ -616,7 +616,7 @@ delete From Playlist where playlistID=50
 
         static public DataTable getArtistThatUserFollow(int userID)
         {
-            string sqlQuery = "select * from UserFollowArtist where userID=@userID";
+            string sqlQuery = "select Artist.* from UserFollowArtist join Artist on Artist.artistID=UserFollowArtist.artistID where userID=@userID";
 
             DataTable Table = new DataTable();
 

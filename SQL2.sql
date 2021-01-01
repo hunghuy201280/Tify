@@ -446,5 +446,33 @@ select * from Track where trackTitle like '%chung ta cua%'
 
 select * from Track where trackLink='https://vi.chiasenhac.vn/mp3/den-justatee/di-ve-nha-tsvm7cwsq8tv94.html'
 
-select * from PlaylistHasTrack where playlistID<=91 and playlistID >=87 order by playlistID,dateAdded 
+select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trackID
+join Playlist on Playlist.playlistID=PlaylistHasTrack.playlistID
+where playlistTitle ='108'
+
+select * from Artist
+
+select * from MyMix
+
+
+select * from UserHasMix where userID=8 order by myMixID 
+
+select * from Playlist
+
+select* from MyMixHasTrack where myMixID=5
+
+ /*
+             delete from UserHasPlaylist where playlistID=50
+
+delete From PlaylistHasTrack where playlistID=50
+
+delete From Playlist where playlistID=50
+ delete from UserHasMix where myMixID=5
+
+delete From MyMixHasTrack where myMixID=5
+
+delete From MyMix where myMixID=5
+             */
+
+			 
 
