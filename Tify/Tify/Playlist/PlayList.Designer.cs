@@ -60,7 +60,7 @@
             this.panel_default_playlist.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_default_playlist.Controls.Add(this.pictureBox1);
             this.panel_default_playlist.Controls.Add(this.Playlist_label);
-            this.panel_default_playlist.Location = new System.Drawing.Point(190, 149);
+            this.panel_default_playlist.Location = new System.Drawing.Point(190, 120);
             this.panel_default_playlist.Margin = new System.Windows.Forms.Padding(2);
             this.panel_default_playlist.Name = "panel_default_playlist";
             this.panel_default_playlist.Size = new System.Drawing.Size(610, 346);
@@ -82,9 +82,9 @@
             this.Bottom_panel.Controls.Add(this.bottom_flowPanel);
             this.Bottom_panel.Controls.Add(this.panel_default_playlist);
             this.Bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Bottom_panel.Location = new System.Drawing.Point(0, 0);
+            this.Bottom_panel.Location = new System.Drawing.Point(0, 57);
             this.Bottom_panel.Name = "Bottom_panel";
-            this.Bottom_panel.Size = new System.Drawing.Size(990, 644);
+            this.Bottom_panel.Size = new System.Drawing.Size(990, 587);
             this.Bottom_panel.TabIndex = 4;
             // 
             // bottom_flowPanel
@@ -93,7 +93,7 @@
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 0);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
-            this.bottom_flowPanel.Size = new System.Drawing.Size(990, 644);
+            this.bottom_flowPanel.Size = new System.Drawing.Size(990, 587);
             this.bottom_flowPanel.TabIndex = 8;
             // 
             // top_panel
@@ -124,8 +124,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(990, 644);
-            this.Controls.Add(this.top_panel);
             this.Controls.Add(this.Bottom_panel);
+            this.Controls.Add(this.top_panel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Playlist";
             this.Text = "PlayList";

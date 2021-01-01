@@ -129,25 +129,33 @@ namespace GetData
         static public string[] GetSongArtist(string url)
         {
             string[] artists;
-            if (Uri.TryCreate(url, UriKind.Absolute, out link))
+            try
             {
-                var dom = CQ.CreateFromUrl(link.ToString());
-
-                int count = dom[@"div.col-md-4 div.card-body ul.list-unstyled li:nth-of-type(1) a"].Count();
-                artists = new string[count];
-                for (int i = 0; i < count; i++)
+                if (Uri.TryCreate(url, UriKind.Absolute, out link))
                 {
-                    int cur = i + 1;
-                    artists[i] = dom[@"div.col-md-4 div.card-body ul.list-unstyled li:nth-of-type(1) a[href]:nth-of-type(" + cur + ")"].Text();
+                    var dom = CQ.CreateFromUrl(link.ToString());
+
+                    int count = dom[@"div.col-md-4 div.card-body ul.list-unstyled li:nth-of-type(1) a"].Count();
+                    artists = new string[count];
+                    for (int i = 0; i < count; i++)
+                    {
+                        int cur = i + 1;
+                        artists[i] = dom[@"div.col-md-4 div.card-body ul.list-unstyled li:nth-of-type(1) a[href]:nth-of-type(" + cur + ")"].Text();
 
 
+                    }
+                    return artists;
                 }
-                return artists;
+                else
+                {
+                    return new string[1] { "Unknow" };
+                }
             }
-            else
+            catch (Exception)
             {
-                return new string[1];
+                return new string[1] { "Unknow" };
             }
+         
         }
 
         static public string GetStreamLink(string url)

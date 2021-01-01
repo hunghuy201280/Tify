@@ -49,7 +49,7 @@ namespace Tify
            
             for (int i = 0; i < playlistTable.Rows.Count; i++)
             {
-                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
+                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString(),true));
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
             if (playlistContainers.Count==0)
@@ -73,7 +73,7 @@ namespace Tify
 
             for (int i = 0; i < playlistTable.Rows.Count; i++)
             {
-                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString()));
+                playlistContainers.Add(new PlaylistContainer(this, playlistTable.Rows[i]["playlistID"].ToString(),true));
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
             attachPlaylistContainerToPlaylistButtonInMenuPanel(mainScr.PlayList_FlowPanel);

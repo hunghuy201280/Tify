@@ -31,7 +31,7 @@ namespace Tify
         public string owner;
         public int trackCount;
 
-        public PlaylistContainer(Playlist callform, string PLAYLIST_ID)
+        public PlaylistContainer(Playlist callform, string PLAYLIST_ID,bool canDelete)
         {
             InitializeComponent();
             playlistID = PLAYLIST_ID;
@@ -40,7 +40,7 @@ namespace Tify
             this.DoubleBuffered = true;
             //load trước track table
             trackTable_woker.RunWorkerAsync();
-
+            this.canDelete = canDelete;
             foreach (Control control in this.Controls)
             {
                 MainScreen.EnableDoubleBuferring(control);
@@ -57,7 +57,8 @@ namespace Tify
             playlistCover_panel.BackgroundImage = chartCover;
             this.DoubleBuffered = true;
             //load trước track table
-
+            isChart = true;
+            canDelete = false;
             trackTable_woker.RunWorkerAsync();
 
             foreach (Control control in this.Controls)
@@ -68,6 +69,8 @@ namespace Tify
         }
 
         private bool isLoaded = false;
+        bool isChart = false;
+        public bool canDelete = false;
 
         //khi click vào opacity panel mới bắt đầu load các track trong playlist
         public void opacity_panel_MouseClick(object sender, MouseEventArgs e)
@@ -77,7 +80,7 @@ namespace Tify
 
             if (isLoaded)
             {
-                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this,isChart);
                 return;
             }
 
@@ -91,6 +94,7 @@ namespace Tify
         private void trackTable_woker_DoWork(object sender, DoWorkEventArgs e)
         {
             trackTable = Database.getTrackInPlaylist(playlistID);
+            
         }
 
         //load cover, tên playlist lúc chưa click vào
@@ -198,7 +202,7 @@ namespace Tify
                 return;
             }
 
-            playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
+            playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this,isChart);
         }
 
         private void PlaylistContainer_Load(object sender, EventArgs e)
@@ -305,7 +309,7 @@ namespace Tify
             loadCover(false);
             numberOfTracks_label.Text = ++trackCount + " Tracks";
             if (playlistFm.playlistDetail.playlistContainer == this && !(playlistFm.mainScr.Controls[0] is SongDetail))
-                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this,isChart);
         }
 
         public void addTrack(List<TrackInfo> tracks)
@@ -334,7 +338,7 @@ namespace Tify
         trackCount += insertedTrackCount;
         numberOfTracks_label.Text = trackCount + " Tracks";
             if (playlistFm.playlistDetail.playlistContainer == this && !(playlistFm.mainScr.Controls[0] is SongDetail))
-                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this);
+                playlistFm.playlistDetail.setDetailInfo(trackInfos, cover.ToArray(), this,isChart);
         }
 
     #endregion addtrack to playlist

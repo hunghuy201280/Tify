@@ -45,7 +45,7 @@ namespace Tify
 
             mixesForYou.setContainerName("Mixes For You");
             theCharts.setContainerName("The Charts");
-
+            loadChart();
 
           
         }
@@ -55,9 +55,9 @@ namespace Tify
         {
             for (int i = 87; i <= 91; i++)
             {
-               // playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr,i.ToString(),);
+               playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr,i.ToString(),chart_ImageList.Images[i-87]));
             }
-            //bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
+            theCharts.addRangeItem(playlistContainers.ToArray());
         }
 
         #region recentlyPlayed 

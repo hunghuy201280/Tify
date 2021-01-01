@@ -495,7 +495,7 @@ namespace Tify
             {
                 foreach (DataRow item in playlistTab_Table.Rows)
                 {
-                    playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr, item["playlistID"].ToString()));
+                    playlistContainers.Add(new PlaylistContainer(mainScr.playlistScr, item["playlistID"].ToString(),false));
                 }
             }
             playlistResult_flowPanel.Controls.AddRange(playlistContainers.ToArray());

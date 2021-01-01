@@ -8,7 +8,6 @@ namespace Tify
 {
     public partial class PlaylistDetail : Form
     {
-
         public PlaylistDetail()
         {
             InitializeComponent();
@@ -23,6 +22,7 @@ namespace Tify
         private Playlist playlistForm;
         public PlaylistContainer playlistContainer;
         private List<TrackInfo> trackInfo;
+
         public PlaylistDetail(Playlist callFm)
         {
             InitializeComponent();
@@ -39,7 +39,6 @@ namespace Tify
 
         private List<DataGridViewRow> rows = new List<DataGridViewRow>();
 
-        public bool isChart;
         public void setCover(Image[] cover)
         {
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
@@ -59,13 +58,14 @@ namespace Tify
         {
             loading_SplashScreen1.BringToFront();
         }
+
         public void hideLoading()
         {
             loading_SplashScreen1.SendToBack();
         }
-        public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, PlaylistContainer callFm)
+
+        public void setDetailInfo(List<TrackInfo> trackInfos, Image[] cover, PlaylistContainer callFm, bool isChart)
         {
-            
             this.trackInfo = trackInfos;
             playlistContainer = callFm;
             int indexCount = 1;
@@ -99,46 +99,64 @@ namespace Tify
 
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
             {
-                try
+                int coverIndex = 0;
+
+                if (coverIndex >= cover.Length)
+                {
+                    break;
+                }
+                if (playlistCover_pictureBox.Controls[i] is PictureBox)
                 {
                     PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
-                    tempPb.Image = cover[i];
+                    tempPb.Image = cover[coverIndex++];
                 }
-                catch (Exception)
+                else
                 {
+                    continue;
                 }
             }
 
             description_label.Text = callFm.description;
             playlistTitle_label.Text = callFm.playlistName;
 
-
             TimeSpan time = TimeSpan.FromSeconds(callFm.timeInSec);
 
-            
             string str = time.ToString(@"hh\:mm\:ss");
-            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks - "+str;
+            createdBy_label.Text = "Created by " + callFm.owner + " - " + trackInfos.Count + " Tracks - " + str;
             //Created by me - 10 Tracks - 1:24:00
 
-                
             track_dataGridView.Rows.Remove(track_dataGridView.Rows[0]);
 
             if (isChart)
             {
+                deletePlaylist_button.Hide();
                 chartCover_panel.BackgroundImage = callFm.playlistCover_panel.BackgroundImage;
+                chartCover_panel.Show();
                 chartCover_panel.BringToFront();
+            }
+            else
+            {
+                deletePlaylist_button.Show();
+                chartCover_panel.Hide();
+            }
+            if (callFm.canDelete)
+            {
+                deletePlaylist_button.Show();
+            }
+            else
+            {
+                deletePlaylist_button.Hide();
             }
 
             hideLoading();
-
         }
 
-
         #region play track on clicking row
+
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //khi double click row trong grid view, clear nextrack, add tất cả các track phía sau vào nexttrack, kiểm tra random,...
-            if (e.ColumnIndex==7|| e.ColumnIndex==5||e.ColumnIndex==6)
+            if (e.ColumnIndex == 7 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
             {
                 return;
             }
@@ -150,7 +168,7 @@ namespace Tify
             {
                 playlistForm.mainScr.addTrackToQueue((track_dataGridView.Rows[i].Tag as TrackInfo));
             }
-            if (playlistForm.mainScr.shuffle_button.Tag.ToString()=="on")
+            if (playlistForm.mainScr.shuffle_button.Tag.ToString() == "on")
             {
                 playlistForm.mainScr.enableShuffle();
             }
@@ -161,19 +179,18 @@ namespace Tify
 
             //
 
-
-
             playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue());
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
 
-        #endregion
+        #endregion play track on clicking row
 
         #region play button,shuffle button
+
         private void play_button_Click(object sender, EventArgs e)
         {
             playlistForm.mainScr.nextTrack.Clear();
-            if (track_dataGridView.Rows.Count==0)
+            if (track_dataGridView.Rows.Count == 0)
             {
                 MessageBox.Show("Nothing to play");
                 return;
@@ -183,10 +200,8 @@ namespace Tify
             //
             foreach (DataGridViewRow track in track_dataGridView.Rows)
             {
-              
                 TrackInfo trackToPlay = track.Tag as TrackInfo;
                 playlistForm.mainScr.addTrackToQueue(trackToPlay);
-
             }
             //
             if (sender == playShuffle_Button)
@@ -201,10 +216,8 @@ namespace Tify
             playlistForm.mainScr.changeSong(playlistForm.mainScr.Dequeue());
             playlistForm.mainScr.setplayfrom(playlistTitle_label.Text);
         }
-        #endregion
 
-
-      
+        #endregion play button,shuffle button
 
         #region enter,leave row
 
@@ -215,7 +228,6 @@ namespace Tify
 
             //change cursor
             track_dataGridView.Cursor = Cursors.Hand;
-
 
             //change back color
             if (track_dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.FromArgb(19, 19, 20))
@@ -249,38 +261,39 @@ namespace Tify
             }
         }
 
-
-
         #endregion enter,leave row
 
-
         #region cell click event
+
         private void track_dataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == -1)
                 return;
             DataGridViewRow selectedRow = track_dataGridView.Rows[e.RowIndex];
             TrackInfo selectedTrack = selectedRow.Tag as TrackInfo;
+
             #region delete track from playlist
-            if (e.ColumnIndex==7)
+
+            if (e.ColumnIndex == 7)
             {
                 Database.deleteTrackFromPlaylist(playlistContainer.playlistID, selectedTrack.TrackID);
                 trackInfo.Remove(selectedTrack);
-                
+
                 track_dataGridView.Rows.Remove(selectedRow);
 
                 TimeSpan duration = TimeSpan.ParseExact(selectedTrack.Time, "mm\\:ss", CultureInfo.InvariantCulture);
-                int seconds = (int)duration.TotalSeconds; 
+                int seconds = (int)duration.TotalSeconds;
                 playlistContainer.timeInSec -= seconds;
                 TimeSpan time = TimeSpan.FromSeconds(playlistContainer.timeInSec);
 
-
                 string str = time.ToString(@"hh\:mm\:ss");
                 createdBy_label.Text = "Created by " + playlistContainer.owner + " - " + trackInfo.Count + " Tracks - " + str;
-                playlistContainer.numberOfTracks_label.Text=--playlistContainer.trackCount + " Tracks";
+                playlistContainer.numberOfTracks_label.Text = --playlistContainer.trackCount + " Tracks";
                 playlistContainer.loadCover(true);
             }
-            #endregion
+
+            #endregion delete track from playlist
+
             else if (e.ColumnIndex == 6)//like track
             {
                 if (selectedTrack.IsLoved == false)
@@ -312,14 +325,16 @@ namespace Tify
                 addFm.ShowDialog();
             }
         }
-        #endregion
+
+        #endregion cell click event
 
         #region delete playlist button click
+
         private void deletePlaylist_button_Click(object sender, EventArgs e)
         {
-           DialogResult result= MessageBox.Show("Are you sure you want to delete this playlist ?", "Delete Playlist", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this playlist ?", "Delete Playlist", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (result==DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 Database.deletePlaylist(playlistContainer.playlistID);
 
@@ -330,9 +345,10 @@ namespace Tify
             }
         }
 
-        #endregion
+        #endregion delete playlist button click
 
         #region add button
+
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {
             AddtoPlaylistForm add2PL = new AddtoPlaylistForm(playlistForm.mainScr, true, trackInfo);
@@ -341,12 +357,6 @@ namespace Tify
             //->
         }
 
-        #endregion
-
-        
-
-
-
-
+        #endregion add button
     }
 }

@@ -39,6 +39,7 @@
             this.Cover3_pictureBox = new System.Windows.Forms.PictureBox();
             this.Cover2_pictureBox = new System.Windows.Forms.PictureBox();
             this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
+            this.chartCover_panel = new System.Windows.Forms.Panel();
             this.top_panel = new System.Windows.Forms.Panel();
             this.deletePlaylist_button = new System.Windows.Forms.Button();
             this.addToPlaylist_Button = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.BigPanel = new System.Windows.Forms.Panel();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
-            this.chartCover_panel = new System.Windows.Forms.Panel();
             this.playlistCover_pictureBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cover4_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cover3_pictureBox)).BeginInit();
@@ -141,6 +141,15 @@
             this.Cover1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Cover1_pictureBox.TabIndex = 0;
             this.Cover1_pictureBox.TabStop = false;
+            // 
+            // chartCover_panel
+            // 
+            this.chartCover_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.chartCover_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartCover_panel.Location = new System.Drawing.Point(0, 0);
+            this.chartCover_panel.Name = "chartCover_panel";
+            this.chartCover_panel.Size = new System.Drawing.Size(200, 200);
+            this.chartCover_panel.TabIndex = 4;
             // 
             // top_panel
             // 
@@ -395,14 +404,6 @@
             this.loading_SplashScreen1.Name = "loading_SplashScreen1";
             this.loading_SplashScreen1.Size = new System.Drawing.Size(887, 570);
             this.loading_SplashScreen1.TabIndex = 4;
-            // 
-            // chartCover_panel
-            // 
-            this.chartCover_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartCover_panel.Location = new System.Drawing.Point(0, 0);
-            this.chartCover_panel.Name = "chartCover_panel";
-            this.chartCover_panel.Size = new System.Drawing.Size(200, 200);
-            this.chartCover_panel.TabIndex = 4;
             // 
             // PlaylistDetail
             // 
