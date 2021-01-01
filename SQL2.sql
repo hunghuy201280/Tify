@@ -436,3 +436,15 @@ select top 10 * from Album  order by albumID desc
 select * from Account
 
 select * from Playlist
+
+select * from Track where trackTitle like '%chung ta cua%'
+
+--15 tifyadmin
+--viet nam 87,88 US UK,8 Chinese, 90 Korea, 91 Japanese
+
+
+
+select * from Track where trackLink='https://vi.chiasenhac.vn/mp3/den-justatee/di-ve-nha-tsvm7cwsq8tv94.html'
+
+select * from PlaylistHasTrack where playlistID<=91 and playlistID >=87 order by playlistID,dateAdded 
+
