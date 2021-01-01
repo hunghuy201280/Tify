@@ -146,11 +146,15 @@ namespace Tify
                 chartCover_panel.BackgroundImage = callFm.playlistCover_panel.BackgroundImage;
                 chartCover_panel.Show();
                 chartCover_panel.BringToFront();
+                //ẩn nút xóa
+                track_dataGridView.Columns[7].Visible = false;
             }
             else
             {
                 deletePlaylist_button.Show();
                 chartCover_panel.Hide();
+                //hiện nút xóa
+                track_dataGridView.Columns[7].Visible = true;
             }
             if (callFm.canDelete)
             {
