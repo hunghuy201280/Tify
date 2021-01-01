@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tify
@@ -18,45 +11,43 @@ namespace Tify
         {
             InitializeComponent();
         }
-        MainScreen mainscr;
+
+        private MainScreen mainscr;
+
         public UpdateInfo(MainScreen input)
         {
             InitializeComponent();
-             mainscr=input;
-          
+            mainscr = input;
         }
-        string getdob()
+
+        private string getdob()
         {
             string[] dob = mainscr.CurrentUser.Dob.Split(' ');
             string finaldob = dob[0];
+            DateTime dt = DateTime.ParseExact(finaldob, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-           return finaldob;
+            MessageBox.Show(dt.ToString("dd/MM/yyyy"));
+            return finaldob;
         }
-
 
         private void UpdateInfo_Load(object sender, EventArgs e)
-        { 
+        {
             textbox_name.Text = mainscr.CurrentUser.Name;
             textBox_Phone.Text = mainscr.CurrentUser.Phone;
-            dateTimePicker1.Value = DateTime.Parse(getdob());
-          
-           
-        }
 
+            dateTimePicker1.Value = DateTime.Parse(getdob());
+        }
 
         private void textBox_Phone_KeyPress(object sender, KeyPressEventArgs e)
         {
             textBox_Phone.MaxLength = 10;
-           
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
-
-        
         private void button_save_Click(object sender, EventArgs e)
         {
             bool changedAge = false;
@@ -64,8 +55,8 @@ namespace Tify
             string Phone = "";
             string DOB = "";
             string Pwd = "";
-            int myAge =DateTime.Today.Year - dateTimePicker1.Value.Year;
-            if (myAge<=6)
+            int myAge = DateTime.Today.Year - dateTimePicker1.Value.Year;
+            if (myAge <= 6)
             {
                 MessageBox.Show("Wrong age");
                 return;
@@ -74,7 +65,7 @@ namespace Tify
             {
                 string theDate = dateTimePicker1.Value.ToShortDateString();
                 Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
-               
+
                 changedAge = true;
             }
             if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text) && String.IsNullOrEmpty(textBox_pwd.Text))
@@ -86,14 +77,14 @@ namespace Tify
                 if (!String.IsNullOrEmpty(textbox_name.Text))
                 {
                     Database.updateName(mainscr.CurrentUser.UserID, textbox_name.Text);
-                     Name = "name";
+                    Name = "name";
                 }
                 if (!String.IsNullOrEmpty(textBox_Phone.Text))
                 {
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
-                     Phone = ", phone";
+                    Phone = ", phone";
                 }
-               
+
                 if (!String.IsNullOrEmpty(textBox_pwd.Text))
                 {
                     if (textBox_retypepwd.Text == textBox_pwd.Text)
@@ -103,27 +94,23 @@ namespace Tify
                     }
                     else
                         MessageBox.Show("Oops ,seem that your password didnt match,may be give it a check?");
-
                 }
                 if (changedAge == true)
                     DOB = ", date of birth";
-                MessageBox.Show("Changed " + Name  + Phone +  DOB  + Phone +Pwd+ " succesfully");
+                MessageBox.Show("Changed " + Name + Phone + DOB + Phone + Pwd + " succesfully");
             }
-            
-
         }
 
         private void UpdateInfo_Resize(object sender, EventArgs e)
         {
-            panel6.Location = new Point(this.ClientSize.Width / 2 - panel6.Size.Width / 2,this.ClientSize.Height / 2 - panel6.Size.Height / 2);
+            panel6.Location = new Point(this.ClientSize.Width / 2 - panel6.Size.Width / 2, this.ClientSize.Height / 2 - panel6.Size.Height / 2);
             panel6.Anchor = AnchorStyles.None;
         }
 
         private void button_logout_Click(object sender, EventArgs e)
         {
-            
             Application.Restart();
-           /* Environment.Exit(0);*/
+            /* Environment.Exit(0);*/
         }
     }
 }
