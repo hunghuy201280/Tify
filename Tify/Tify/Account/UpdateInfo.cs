@@ -24,9 +24,12 @@ namespace Tify
         {
             string[] dob = mainscr.CurrentUser.Dob.Split(' ');
             string finaldob = dob[0];
-            DateTime dt = DateTime.ParseExact(finaldob, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-            MessageBox.Show(dt.ToString("dd/MM/yyyy"));
+            DateTime dt;
+            if (DateTime.TryParseExact(finaldob,"MM/dd/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None,out dt))
+            {
+                finaldob = dt.ToString("dd/MM/yyyy");
+            }
+            MessageBox.Show(finaldob);
             return finaldob;
         }
 
