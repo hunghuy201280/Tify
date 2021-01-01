@@ -41,15 +41,27 @@ namespace Tify
 
         public void setCover(Image[] cover)
         {
+
+            int coverIndex = 0;
             for (int i = 0; i < playlistCover_pictureBox.Controls.Count; i++)
             {
-                try
+             
+            
+                if (coverIndex >= cover.Length)
+                {
+                    break;
+                }
+                if (playlistCover_pictureBox.Controls[i] is PictureBox)
                 {
                     PictureBox tempPb = playlistCover_pictureBox.Controls[i] as PictureBox;
-                    tempPb.Image = cover[i];
+                   
+                    tempPb.Image = cover[coverIndex++];
+
+
                 }
-                catch (Exception)
+                else
                 {
+                    continue;
                 }
             }
         }

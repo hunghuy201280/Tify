@@ -241,6 +241,7 @@ namespace Tify
                 {
                     pb.Load(GetSongData.GetSongCover(trackInfos[trackInfosIndex++].TrackLink));
                     cover.Add(pb.Image);
+                   
                 }
             }
             while (cover.Count < 4)
