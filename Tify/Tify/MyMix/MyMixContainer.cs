@@ -118,27 +118,7 @@ namespace Tify
                 MessageBox.Show(e.Error.Message + "My mix container, cover");
                 return;
             }
-            switch (index)
-            {
-                case 1:
-                    myMixCover_panel.BackgroundImage = Properties.Resources.mymix1;
-                    break;
-
-                case 2:
-                    myMixCover_panel.BackgroundImage = Properties.Resources.mymix2;
-                    break;
-
-                case 3:
-                    myMixCover_panel.BackgroundImage = Properties.Resources.mymix3;
-                    break;
-
-                case 4:
-                    myMixCover_panel.BackgroundImage = Properties.Resources.mymix4;
-                    break;
-
-                default:
-                    break;
-            }
+            myMixCover_panel.BackgroundImage = MixCover_ImageList.Images[index - 1];
             playlistName_label.Text = "My Mix " + index;
         }
 

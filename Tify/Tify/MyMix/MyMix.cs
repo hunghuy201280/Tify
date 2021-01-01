@@ -67,13 +67,11 @@ namespace Tify
             mix_Flowpanel.Controls.AddRange(mixContainers.ToArray());
         }
 
-        public void reloadMixContainer(/*string MIXID*/)
+        public void reloadMixContainer()
         {
             foreach (MyMixContainer container in mixContainers)
             {
-               
                     container.reloadStatus();
-              
             }
         }
 

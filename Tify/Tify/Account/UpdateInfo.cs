@@ -25,7 +25,6 @@ namespace Tify
             string[] dob = mainscr.CurrentUser.Dob.Split(' ');
             string finaldob = dob[0];
             finaldob = Convert.ToDateTime(finaldob).ToString("dd/MM/yyyy");
-            MessageBox.Show(finaldob);
             return finaldob;
         }
 

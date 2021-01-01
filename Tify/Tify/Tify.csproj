@@ -80,12 +80,6 @@
     <Compile Include="Artist\ArtistDetail.Designer.cs">
       <DependentUpon>ArtistDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="debuc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="debuc.Designer.cs">
-      <DependentUpon>debuc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Loading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,11 +272,14 @@
     <Compile Include="Account\UpdateInfo.Designer.cs">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Playlist\UpdatePlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Playlist\UpdatePlaylist.Designer.cs">
+      <DependentUpon>UpdatePlaylist.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Artist\ArtistDetail.resx">
       <DependentUpon>ArtistDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="debuc.resx">
-      <DependentUpon>debuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
@@ -379,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\UpdateInfo.resx">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Playlist\UpdatePlaylist.resx">
+      <DependentUpon>UpdatePlaylist.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MainScreen.cs.vsspell" />
     <None Include="packages.config" />

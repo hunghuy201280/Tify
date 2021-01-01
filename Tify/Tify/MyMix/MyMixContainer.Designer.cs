@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMixContainer));
             this.myMixCover_panel = new System.Windows.Forms.Panel();
             this.opacity_panel = new System.Windows.Forms.Panel();
@@ -37,6 +38,7 @@
             this.artist_worker = new System.ComponentModel.BackgroundWorker();
             this.load_worker = new System.ComponentModel.BackgroundWorker();
             this.reload_worker = new System.ComponentModel.BackgroundWorker();
+            this.MixCover_ImageList = new System.Windows.Forms.ImageList(this.components);
             this.myMixCover_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +115,17 @@
             this.reload_worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reload_worker_DoWork);
             this.reload_worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reload_worker_RunWorkerCompleted);
             // 
+            // MixCover_ImageList
+            // 
+            this.MixCover_ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MixCover_ImageList.ImageStream")));
+            this.MixCover_ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.MixCover_ImageList.Images.SetKeyName(0, "mymix1.jpg");
+            this.MixCover_ImageList.Images.SetKeyName(1, "mymix2.jpg");
+            this.MixCover_ImageList.Images.SetKeyName(2, "mymix3.jpg");
+            this.MixCover_ImageList.Images.SetKeyName(3, "mymix4.jpg");
+            this.MixCover_ImageList.Images.SetKeyName(4, "mymix5.jpg");
+            this.MixCover_ImageList.Images.SetKeyName(5, "mymix6.jpg");
+            // 
             // MyMixContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -139,5 +152,6 @@
         private System.ComponentModel.BackgroundWorker reload_worker;
         public System.Windows.Forms.Label playlistName_label;
         public System.Windows.Forms.Label artist_label;
+        private System.Windows.Forms.ImageList MixCover_ImageList;
     }
 }

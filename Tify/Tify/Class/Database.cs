@@ -10,10 +10,25 @@ namespace Tify
 {
     internal class Database
     {
-
-        static public void addPlaylistToOtherPlaylist(List<TrackInfo> trackInfos,string playlistID)
+        static public void EditPlaylist(string playlistID, string playlistTitle, string description)
         {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            string sqlQuery = "update Playlist set playlistTitle=@playlistTitle, description=@description where playlistID=@playlistID";
 
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@playlistTitle", playlistTitle);
+                cmd.Parameters.AddWithValue("@playlistID", playlistID);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.ExecuteNonQuery();
+            }
+
+            sqlconnection.Close();
+        }
+
+        static public void addPlaylistToOtherPlaylist(List<TrackInfo> trackInfos, string playlistID)
+        {
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
             string sqlQuery = "insert into PlaylistHastrack values(@trackID, @playlistID,getdate())";
@@ -30,14 +45,14 @@ namespace Tify
                     }
                 }
                 catch (Exception) { }
-               
             }
-          
+
             sqlconnection.Close();
         }
+
         static public DataTable getPlaylistTable_Search(string searchKeyWord)
         {
-            string sqlQuery = "select * from Playlist where playlistTitle like '%"+searchKeyWord+"%'";
+            string sqlQuery = "select * from Playlist where playlistTitle like '%" + searchKeyWord + "%'";
 
             /* string sqlQuery = "select top 20 *  " +
                 "from Track where trackTitle like '%" + searchKeyWord + "%' order by trackID";*/
@@ -56,6 +71,7 @@ namespace Tify
             sqlconnection.Close();
             return Table;
         }
+
         static public void deleteLastTrackInRecentlyPlayed(int userID)
         {
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
@@ -68,7 +84,6 @@ namespace Tify
                 cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
-
         }
 
         static public DataTable getRecentlyTrack(int userID)
@@ -91,7 +106,7 @@ namespace Tify
             return table;
         }
 
-        static public void addTrackToRecentlyPlayed(string trackID, int userID,string lastTrackID)
+        static public void addTrackToRecentlyPlayed(string trackID, int userID, string lastTrackID)
         {
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
 
@@ -120,16 +135,14 @@ namespace Tify
             catch (Exception)
             {
             }
-         
+
             sqlconnection.Close();
         }
-
 
         static public void addArtistToUserFollowArtist(string artistID, int userID)
         {
             string sqlQuery = "insert into UserFollowArtist values(@userID,@artistID)";
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
 
@@ -142,11 +155,11 @@ namespace Tify
             }
             sqlconnection.Close();
         }
+
         static public void deleteArtistFromUserFollowArtist(string artistID, int userID)
         {
             string sqlQuery = "delete from UserFollowArtist where userID=@userID and artistID=@artistID";
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
 
@@ -158,6 +171,7 @@ namespace Tify
             }
             sqlconnection.Close();
         }
+
         static public bool checkUserLikeArtist(string artistID, int userID)
         {
             string sqlQuery = "select count(*) from UserFollowArtist where userID=@userID and artistID=@artistID ";
@@ -181,11 +195,9 @@ namespace Tify
             return checkTable.Rows[0][0].ToString() == "1";
         }
 
-
         static public void addAlbumToUserLikeAlbum(string albumID, int userID)
         {
             string sqlQuery = "insert into UserLikeAlbum values(@userID,@albumID)";
-
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
@@ -199,13 +211,11 @@ namespace Tify
             }
             sqlconnection.Close();
         }
-
 
         static public void deleteAlbumFromUserLikeAlbum(string albumID, int userID)
         {
             string sqlQuery = "delete from UserLikeAlbum where userID=@userID and albumID=@albumID";
 
-
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
 
@@ -218,7 +228,8 @@ namespace Tify
             }
             sqlconnection.Close();
         }
-        static public bool checkUserLikeAlbum(string albumID,int userID)
+
+        static public bool checkUserLikeAlbum(string albumID, int userID)
         {
             string sqlQuery = "select count(*) from UserLikeAlbum where albumID=@albumID and userID=@userID";
 
@@ -238,9 +249,8 @@ namespace Tify
                 }
             }
             sqlconnection.Close();
-            return checkTable.Rows[0][0].ToString()=="1";
+            return checkTable.Rows[0][0].ToString() == "1";
         }
-
 
         static public string getTrackIdBaseOnTrackLink(string trackLink)
         {
@@ -262,7 +272,8 @@ namespace Tify
             sqlconnection.Close();
             return checkTable.Rows[0]["trackID"].ToString();
         }
-        static public bool checkTrackExisted (string trackLink)
+
+        static public bool checkTrackExisted(string trackLink)
         {
             string sqlQuery = "select count(*) from Track where trackLink=@trackLink";
 
@@ -280,13 +291,12 @@ namespace Tify
                 }
             }
             sqlconnection.Close();
-            if (Table.Rows[0][0].ToString()=="0")
+            if (Table.Rows[0][0].ToString() == "0")
             {
                 return false;
             }
             return true;
         }
-
 
         static public string addTrackToDatabase(string trackUrl)
         {
@@ -325,7 +335,7 @@ namespace Tify
                             artistTable.Load(reader);
                         }
                     }
-                    if (artistTable.Rows.Count!=0)
+                    if (artistTable.Rows.Count != 0)
                     {
                         string artistID = artistTable.Rows[0]["artistID"].ToString();
                         sqlQuery = "insert into ArtistHasTrack values(@artistID,@trackID)";
@@ -342,7 +352,6 @@ namespace Tify
             });
             return Table.Rows[0][0].ToString();
         }
-
 
         static public DataTable getAlbumOfArtist(string artistID)
         {
@@ -387,6 +396,7 @@ namespace Tify
 
             return artistTab_Table;
         }
+
         static public bool checkIfPlaylistExisted(string playlistTitle, int userID)
         {
             string sqlQuery = "select * from UserHasPlaylist join Playlist on Playlist.playlistID=UserHasPlaylist.playlistID" +
@@ -813,10 +823,7 @@ delete From Playlist where playlistID=50
                 cmd.Parameters.AddWithValue("@trackID", trackID);
                 cmd.Parameters.AddWithValue("@playlistID", playlistID);
 
-               
-                    cmd.ExecuteNonQuery();
-                
-                
+                cmd.ExecuteNonQuery();
             }
             sqlconnection.Close();
         }

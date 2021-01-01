@@ -148,6 +148,9 @@ namespace Tify
                 chartCover_panel.BringToFront();
                 //ẩn nút xóa
                 track_dataGridView.Columns[7].Visible = false;
+
+                editPlaylist_button.Hide();
+
             }
             else
             {
@@ -155,14 +158,19 @@ namespace Tify
                 chartCover_panel.Hide();
                 //hiện nút xóa
                 track_dataGridView.Columns[7].Visible = true;
+
+                editPlaylist_button.Show();
+
             }
             if (callFm.canDelete)
             {
                 deletePlaylist_button.Show();
+                editPlaylist_button.Show();
             }
             else
             {
                 deletePlaylist_button.Hide();
+                editPlaylist_button.Hide();
             }
 
             hideLoading();
@@ -375,5 +383,13 @@ namespace Tify
         }
 
         #endregion add button
+
+        #region edit playlist
+        private void editPlaylist_button_Click(object sender, EventArgs e)
+        {
+            UpdatePlaylist updatePlaylist = new UpdatePlaylist(playlistContainer);
+            updatePlaylist.ShowDialog();
+        }
+        #endregion
     }
 }

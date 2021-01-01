@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlaylistDetail));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,6 +42,7 @@
             this.Cover1_pictureBox = new System.Windows.Forms.PictureBox();
             this.chartCover_panel = new System.Windows.Forms.Panel();
             this.top_panel = new System.Windows.Forms.Panel();
+            this.editPlaylist_button = new System.Windows.Forms.Button();
             this.deletePlaylist_button = new System.Windows.Forms.Button();
             this.addToPlaylist_Button = new System.Windows.Forms.Button();
             this.playShuffle_Button = new System.Windows.Forms.Button();
@@ -153,6 +155,7 @@
             // 
             // top_panel
             // 
+            this.top_panel.Controls.Add(this.editPlaylist_button);
             this.top_panel.Controls.Add(this.deletePlaylist_button);
             this.top_panel.Controls.Add(this.addToPlaylist_Button);
             this.top_panel.Controls.Add(this.playShuffle_Button);
@@ -166,6 +169,22 @@
             this.top_panel.Name = "top_panel";
             this.top_panel.Size = new System.Drawing.Size(887, 270);
             this.top_panel.TabIndex = 2;
+            // 
+            // editPlaylist_button
+            // 
+            this.editPlaylist_button.BackColor = System.Drawing.Color.Black;
+            this.editPlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editPlaylist_button.FlatAppearance.BorderSize = 0;
+            this.editPlaylist_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(87)))), ((int)(((byte)(99)))));
+            this.editPlaylist_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editPlaylist_button.ForeColor = System.Drawing.Color.White;
+            this.editPlaylist_button.Image = ((System.Drawing.Image)(resources.GetObject("editPlaylist_button.Image")));
+            this.editPlaylist_button.Location = new System.Drawing.Point(817, 15);
+            this.editPlaylist_button.Name = "editPlaylist_button";
+            this.editPlaylist_button.Size = new System.Drawing.Size(58, 29);
+            this.editPlaylist_button.TabIndex = 4;
+            this.editPlaylist_button.UseVisualStyleBackColor = false;
+            this.editPlaylist_button.Click += new System.EventHandler(this.editPlaylist_button_Click);
             // 
             // deletePlaylist_button
             // 
@@ -316,7 +335,7 @@
             // no
             // 
             this.no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.no.FillWeight = 10F;
+            this.no.FillWeight = 30F;
             this.no.HeaderText = "#";
             this.no.Name = "no";
             this.no.ReadOnly = true;
@@ -444,6 +463,10 @@
         private System.Windows.Forms.DataGridView track_dataGridView;
         private System.Windows.Forms.Label createdBy_label;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Button deletePlaylist_button;
+        private System.Windows.Forms.Panel BigPanel;
+        private Loading_SplashScreen loading_SplashScreen1;
+        private System.Windows.Forms.Panel chartCover_panel;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn artist;
@@ -452,9 +475,6 @@
         private System.Windows.Forms.DataGridViewImageColumn addToPlaylist;
         private System.Windows.Forms.DataGridViewImageColumn remove;
         private System.Windows.Forms.DataGridViewImageColumn delete;
-        private System.Windows.Forms.Button deletePlaylist_button;
-        private System.Windows.Forms.Panel BigPanel;
-        private Loading_SplashScreen loading_SplashScreen1;
-        private System.Windows.Forms.Panel chartCover_panel;
+        private System.Windows.Forms.Button editPlaylist_button;
     }
 }
