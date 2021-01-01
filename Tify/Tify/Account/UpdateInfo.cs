@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -24,11 +25,22 @@ namespace Tify
              mainscr=input;
           
         }
+        string getdob()
+        {
+            string[] dob = mainscr.CurrentUser.Dob.Split(' ');
+            string finaldob = dob[0];
+
+           return finaldob;
+        }
+
 
         private void UpdateInfo_Load(object sender, EventArgs e)
-        {
-
-
+        { 
+            textbox_name.Text = mainscr.CurrentUser.Name;
+            textBox_Phone.Text = mainscr.CurrentUser.Phone;
+            dateTimePicker1.Value = DateTime.Parse(getdob());
+          
+           
         }
 
 
