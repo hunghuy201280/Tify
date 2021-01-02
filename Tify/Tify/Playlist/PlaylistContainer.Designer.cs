@@ -57,12 +57,12 @@
             // 
             this.playlistName_label.AutoSize = true;
             this.playlistName_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playlistName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistName_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlistName_label.ForeColor = System.Drawing.Color.White;
             this.playlistName_label.Location = new System.Drawing.Point(11, 180);
             this.playlistName_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.playlistName_label.Name = "playlistName_label";
-            this.playlistName_label.Size = new System.Drawing.Size(78, 17);
+            this.playlistName_label.Size = new System.Drawing.Size(72, 20);
             this.playlistName_label.TabIndex = 7;
             this.playlistName_label.Text = "Playlist 1";
             // 
@@ -101,14 +101,14 @@
             // createdBy_label
             // 
             this.createdBy_label.AutoSize = true;
-            this.createdBy_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createdBy_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createdBy_label.ForeColor = System.Drawing.Color.White;
             this.createdBy_label.Location = new System.Drawing.Point(11, 223);
             this.createdBy_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.createdBy_label.Name = "createdBy_label";
-            this.createdBy_label.Size = new System.Drawing.Size(51, 16);
+            this.createdBy_label.Size = new System.Drawing.Size(72, 17);
             this.createdBy_label.TabIndex = 8;
-            this.createdBy_label.Text = "0 tracks";
+            this.createdBy_label.Text = "Created by";
             // 
             // trackTable_woker
             // 

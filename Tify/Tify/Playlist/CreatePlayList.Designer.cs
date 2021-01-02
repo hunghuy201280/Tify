@@ -79,12 +79,12 @@
             // 
             this.Title_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.Title_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Title_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.Title_TextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title_TextBox.ForeColor = System.Drawing.Color.White;
             this.Title_TextBox.Location = new System.Drawing.Point(34, 105);
-            this.Title_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Title_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Title_TextBox.Name = "Title_TextBox";
-            this.Title_TextBox.Size = new System.Drawing.Size(528, 23);
+            this.Title_TextBox.Size = new System.Drawing.Size(528, 27);
             this.Title_TextBox.TabIndex = 3;
             this.Title_TextBox.TextChanged += new System.EventHandler(this.Title_TextBox_TextChanged);
             // 
@@ -92,10 +92,10 @@
             // 
             this.Description_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.Description_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Description_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.Description_TextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Description_TextBox.ForeColor = System.Drawing.Color.White;
             this.Description_TextBox.Location = new System.Drawing.Point(34, 195);
-            this.Description_TextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Description_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Description_TextBox.Multiline = true;
             this.Description_TextBox.Name = "Description_TextBox";
             this.Description_TextBox.Size = new System.Drawing.Size(528, 105);
@@ -121,7 +121,7 @@
             // panel_title_underline
             // 
             this.panel_title_underline.Location = new System.Drawing.Point(33, 132);
-            this.panel_title_underline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_title_underline.Margin = new System.Windows.Forms.Padding(2);
             this.panel_title_underline.Name = "panel_title_underline";
             this.panel_title_underline.Size = new System.Drawing.Size(529, 1);
             this.panel_title_underline.TabIndex = 7;
@@ -129,7 +129,7 @@
             // panel_description_underline
             // 
             this.panel_description_underline.Location = new System.Drawing.Point(33, 304);
-            this.panel_description_underline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_description_underline.Margin = new System.Windows.Forms.Padding(2);
             this.panel_description_underline.Name = "panel_description_underline";
             this.panel_description_underline.Size = new System.Drawing.Size(529, 1);
             this.panel_description_underline.TabIndex = 8;
@@ -142,7 +142,7 @@
             this.button1.Font = new System.Drawing.Font("Nationale", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Cyan;
             this.button1.Location = new System.Drawing.Point(577, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 24);
             this.button1.TabIndex = 9;
@@ -166,7 +166,7 @@
             this.Controls.Add(this.Text_PlayList_Name);
             this.Controls.Add(this.Text_CreatePlaylist);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CreatePlayList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreatePlayList";

@@ -42,6 +42,9 @@
             this.SearchBox_Tracks = new System.Windows.Forms.Button();
             this.rightIconImgList = new System.Windows.Forms.ImageList(this.components);
             this.bottom_panel = new System.Windows.Forms.Panel();
+            this.noResult_panel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.playlistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.track_gridView = new System.Windows.Forms.DataGridView();
             this.img = new System.Windows.Forms.DataGridViewImageColumn();
@@ -52,9 +55,6 @@
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.albumResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.artistResult_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.noResult_panel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loading_SplashScreen1 = new Tify.Loading_SplashScreen();
             this.search_worker = new System.ComponentModel.BackgroundWorker();
             this.artist_worker = new System.ComponentModel.BackgroundWorker();
@@ -63,9 +63,9 @@
             this.pic_time_Track_worker = new System.ComponentModel.BackgroundWorker();
             this.top_panel.SuspendLayout();
             this.bottom_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
             this.noResult_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // top_panel
@@ -180,6 +180,39 @@
             this.bottom_panel.Size = new System.Drawing.Size(871, 472);
             this.bottom_panel.TabIndex = 4;
             // 
+            // noResult_panel
+            // 
+            this.noResult_panel.Controls.Add(this.label1);
+            this.noResult_panel.Controls.Add(this.pictureBox1);
+            this.noResult_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noResult_panel.Location = new System.Drawing.Point(0, 0);
+            this.noResult_panel.Name = "noResult_panel";
+            this.noResult_panel.Size = new System.Drawing.Size(871, 472);
+            this.noResult_panel.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(339, 388);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nothing Found";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(310, 111);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // playlistResult_flowPanel
             // 
             this.playlistResult_flowPanel.AutoScroll = true;
@@ -247,7 +280,7 @@
             this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.track_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -326,39 +359,6 @@
             this.artistResult_flowPanel.Size = new System.Drawing.Size(871, 472);
             this.artistResult_flowPanel.TabIndex = 2;
             // 
-            // noResult_panel
-            // 
-            this.noResult_panel.Controls.Add(this.label1);
-            this.noResult_panel.Controls.Add(this.pictureBox1);
-            this.noResult_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noResult_panel.Location = new System.Drawing.Point(0, 0);
-            this.noResult_panel.Name = "noResult_panel";
-            this.noResult_panel.Size = new System.Drawing.Size(871, 472);
-            this.noResult_panel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(339, 388);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nothing Found";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(310, 111);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // loading_SplashScreen1
             // 
             this.loading_SplashScreen1.BackColor = System.Drawing.Color.Black;
@@ -416,10 +416,10 @@
             this.Text = "SearchBox";
             this.top_panel.ResumeLayout(false);
             this.bottom_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).EndInit();
             this.noResult_panel.ResumeLayout(false);
             this.noResult_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_gridView)).EndInit();
             this.ResumeLayout(false);
 
         }

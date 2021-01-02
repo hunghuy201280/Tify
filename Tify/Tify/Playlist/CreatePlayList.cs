@@ -112,7 +112,7 @@ namespace Tify
             newbutton.FlatStyle = FlatStyle.Flat;
             newbutton.FlatAppearance.BorderSize = 0;
             newbutton.Text = Title_TextBox.Text;
-            newbutton.Font = new Font("Nationale", 12);
+            newbutton.Font = new Font("Segoe UI", 12);
             newbutton.AutoSize = false;
             newbutton.Cursor = Cursors.Hand;
             newbutton.TextAlign = ContentAlignment.MiddleLeft;
@@ -197,7 +197,7 @@ namespace Tify
                 newbutton.FlatStyle = FlatStyle.Flat;
 
                 newbutton.FlatAppearance.BorderSize = 0;
-                newbutton.Font = new Font("Nationale", 12);
+                newbutton.Font = new Font("Segoe UI", 12);
                 newbutton.TextAlign = ContentAlignment.MiddleLeft;
                 newbutton.Text = playlist["playlistTitle"].ToString();
                 newbutton.Tag= playlist["playlistID"].ToString();

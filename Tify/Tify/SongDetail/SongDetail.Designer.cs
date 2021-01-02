@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongDetail));
             this.songDetaillImageList = new System.Windows.Forms.ImageList(this.components);
             this.myToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.repeat_button = new System.Windows.Forms.Button();
             this.songDetail_rightPanel = new System.Windows.Forms.Panel();
             this.bigPanel = new System.Windows.Forms.Panel();
             this.suggestedTracks_flowPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -60,7 +61,6 @@
             this.songDetailMinimize_button = new System.Windows.Forms.Button();
             this.separator_panel = new System.Windows.Forms.Panel();
             this.loadSuggestedTracks_backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.repeat_button = new System.Windows.Forms.Button();
             this.songDetail_rightPanel.SuspendLayout();
             this.bigPanel.SuspendLayout();
             this.songDetail_leftPanel.SuspendLayout();
@@ -77,6 +77,26 @@
             this.songDetaillImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("songDetaillImageList.ImageStream")));
             this.songDetaillImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.songDetaillImageList.Images.SetKeyName(0, "minimize.png");
+            // 
+            // repeat_button
+            // 
+            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
+            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.repeat_button.FlatAppearance.BorderSize = 0;
+            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.repeat_button.Location = new System.Drawing.Point(256, 32);
+            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.repeat_button.Name = "repeat_button";
+            this.repeat_button.Size = new System.Drawing.Size(28, 32);
+            this.repeat_button.TabIndex = 13;
+            this.repeat_button.Tag = "off";
+            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
+            this.repeat_button.UseVisualStyleBackColor = false;
+            this.repeat_button.Click += new System.EventHandler(this.repeat_button_Click);
             // 
             // songDetail_rightPanel
             // 
@@ -413,36 +433,36 @@
             // playingFrom_label
             // 
             this.playingFrom_label.AutoSize = true;
-            this.playingFrom_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playingFrom_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playingFrom_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.playingFrom_label.Location = new System.Drawing.Point(12, 45);
             this.playingFrom_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.playingFrom_label.Name = "playingFrom_label";
-            this.playingFrom_label.Size = new System.Drawing.Size(148, 16);
+            this.playingFrom_label.Size = new System.Drawing.Size(147, 17);
             this.playingFrom_label.TabIndex = 4;
             this.playingFrom_label.Text = "Playing from:  Yorushika";
             // 
             // artist_label
             // 
             this.artist_label.AutoSize = true;
-            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.artist_label.Location = new System.Drawing.Point(12, 24);
             this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.artist_label.Name = "artist_label";
-            this.artist_label.Size = new System.Drawing.Size(64, 16);
+            this.artist_label.Size = new System.Drawing.Size(63, 17);
             this.artist_label.TabIndex = 3;
             this.artist_label.Text = "Yorushika";
             // 
             // title_label
             // 
             this.title_label.AutoSize = true;
-            this.title_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title_label.ForeColor = System.Drawing.Color.White;
             this.title_label.Location = new System.Drawing.Point(12, 7);
             this.title_label.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(140, 17);
+            this.title_label.Size = new System.Drawing.Size(132, 20);
             this.title_label.TabIndex = 1;
             this.title_label.Text = "Hole In The Heart";
             // 
@@ -495,26 +515,6 @@
             this.loadSuggestedTracks_backgroundWorker.WorkerSupportsCancellation = true;
             this.loadSuggestedTracks_backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loadSuggestedTracks_backgroundWorker_DoWork);
             this.loadSuggestedTracks_backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loadSuggestedTracks_backgroundWorker_RunWorkerCompleted);
-            // 
-            // repeat_button
-            // 
-            this.repeat_button.BackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("repeat_button.BackgroundImage")));
-            this.repeat_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.repeat_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.repeat_button.FlatAppearance.BorderSize = 0;
-            this.repeat_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.repeat_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.repeat_button.Location = new System.Drawing.Point(256, 32);
-            this.repeat_button.Margin = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.repeat_button.Name = "repeat_button";
-            this.repeat_button.Size = new System.Drawing.Size(28, 32);
-            this.repeat_button.TabIndex = 13;
-            this.repeat_button.Tag = "off";
-            this.myToolTip.SetToolTip(this.repeat_button, "Shuffle");
-            this.repeat_button.UseVisualStyleBackColor = false;
-            this.repeat_button.Click += new System.EventHandler(this.repeat_button_Click);
             // 
             // SongDetail
             // 

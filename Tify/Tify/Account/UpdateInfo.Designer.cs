@@ -92,25 +92,25 @@
             // 
             this.textbox_name.BackColor = System.Drawing.Color.Black;
             this.textbox_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textbox_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.textbox_name.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textbox_name.ForeColor = System.Drawing.Color.White;
             this.textbox_name.Location = new System.Drawing.Point(170, 151);
             this.textbox_name.Margin = new System.Windows.Forms.Padding(2);
             this.textbox_name.Name = "textbox_name";
-            this.textbox_name.Size = new System.Drawing.Size(291, 16);
+            this.textbox_name.Size = new System.Drawing.Size(291, 20);
             this.textbox_name.TabIndex = 5;
             // 
             // textBox_pwd
             // 
             this.textBox_pwd.BackColor = System.Drawing.Color.Black;
             this.textBox_pwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_pwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.textBox_pwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_pwd.ForeColor = System.Drawing.Color.White;
             this.textBox_pwd.Location = new System.Drawing.Point(168, 203);
             this.textBox_pwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_pwd.Name = "textBox_pwd";
             this.textBox_pwd.PasswordChar = '*';
-            this.textBox_pwd.Size = new System.Drawing.Size(291, 16);
+            this.textBox_pwd.Size = new System.Drawing.Size(291, 20);
             this.textBox_pwd.TabIndex = 6;
             // 
             // label_phonenumber
@@ -129,12 +129,12 @@
             // 
             this.textBox_Phone.BackColor = System.Drawing.Color.Black;
             this.textBox_Phone.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.textBox_Phone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Phone.ForeColor = System.Drawing.Color.White;
             this.textBox_Phone.Location = new System.Drawing.Point(170, 338);
             this.textBox_Phone.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Phone.Name = "textBox_Phone";
-            this.textBox_Phone.Size = new System.Drawing.Size(291, 16);
+            this.textBox_Phone.Size = new System.Drawing.Size(291, 20);
             this.textBox_Phone.TabIndex = 9;
             this.textBox_Phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Phone_KeyPress);
             // 
@@ -215,13 +215,13 @@
             // 
             this.textBox_retypepwd.BackColor = System.Drawing.Color.Black;
             this.textBox_retypepwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_retypepwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.textBox_retypepwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_retypepwd.ForeColor = System.Drawing.Color.White;
             this.textBox_retypepwd.Location = new System.Drawing.Point(168, 245);
             this.textBox_retypepwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_retypepwd.Name = "textBox_retypepwd";
             this.textBox_retypepwd.PasswordChar = '*';
-            this.textBox_retypepwd.Size = new System.Drawing.Size(291, 16);
+            this.textBox_retypepwd.Size = new System.Drawing.Size(291, 20);
             this.textBox_retypepwd.TabIndex = 23;
             // 
             // label3

@@ -124,7 +124,7 @@
             this.album_gridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.album_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.album_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.album_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.album_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.album_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.album_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.album_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -294,22 +294,22 @@
             // artist_track_time__label
             // 
             this.artist_track_time__label.AutoSize = true;
-            this.artist_track_time__label.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_track_time__label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_track_time__label.ForeColor = System.Drawing.Color.White;
             this.artist_track_time__label.Location = new System.Drawing.Point(222, 95);
             this.artist_track_time__label.Name = "artist_track_time__label";
-            this.artist_track_time__label.Size = new System.Drawing.Size(208, 20);
+            this.artist_track_time__label.Size = new System.Drawing.Size(216, 21);
             this.artist_track_time__label.TabIndex = 2;
             this.artist_track_time__label.Text = "by Artist— 14 Tracks — 57:55";
             // 
             // albumName_label
             // 
             this.albumName_label.AutoSize = true;
-            this.albumName_label.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.albumName_label.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.albumName_label.ForeColor = System.Drawing.Color.White;
             this.albumName_label.Location = new System.Drawing.Point(218, 41);
             this.albumName_label.Name = "albumName_label";
-            this.albumName_label.Size = new System.Drawing.Size(245, 43);
+            this.albumName_label.Size = new System.Drawing.Size(238, 47);
             this.albumName_label.TabIndex = 1;
             this.albumName_label.Text = "Album Name";
             // 

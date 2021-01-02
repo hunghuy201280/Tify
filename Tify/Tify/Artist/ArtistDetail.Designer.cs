@@ -147,7 +147,7 @@
             this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.track_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -296,11 +296,11 @@
             // artistName_label
             // 
             this.artistName_label.AutoSize = true;
-            this.artistName_label.Font = new System.Drawing.Font("Nationale", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artistName_label.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artistName_label.ForeColor = System.Drawing.Color.White;
             this.artistName_label.Location = new System.Drawing.Point(218, 41);
             this.artistName_label.Name = "artistName_label";
-            this.artistName_label.Size = new System.Drawing.Size(214, 43);
+            this.artistName_label.Size = new System.Drawing.Size(211, 47);
             this.artistName_label.TabIndex = 1;
             this.artistName_label.Text = "ArtistName";
             // 

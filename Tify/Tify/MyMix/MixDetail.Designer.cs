@@ -251,11 +251,11 @@
             // mixArtist_label
             // 
             this.mixArtist_label.AutoSize = true;
-            this.mixArtist_label.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mixArtist_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mixArtist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
             this.mixArtist_label.Location = new System.Drawing.Point(222, 95);
             this.mixArtist_label.Name = "mixArtist_label";
-            this.mixArtist_label.Size = new System.Drawing.Size(252, 20);
+            this.mixArtist_label.Size = new System.Drawing.Size(245, 21);
             this.mixArtist_label.TabIndex = 2;
             this.mixArtist_label.Text = "Artist 1, Artist 2, Artist 3 and more";
             // 

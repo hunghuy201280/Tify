@@ -91,7 +91,7 @@
             // 
             this.Description_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.Description_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Description_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.Description_TextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Description_TextBox.ForeColor = System.Drawing.Color.White;
             this.Description_TextBox.Location = new System.Drawing.Point(21, 209);
             this.Description_TextBox.Margin = new System.Windows.Forms.Padding(2);
@@ -104,12 +104,12 @@
             // 
             this.Title_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(40)))));
             this.Title_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Title_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.Title_TextBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title_TextBox.ForeColor = System.Drawing.Color.White;
             this.Title_TextBox.Location = new System.Drawing.Point(21, 119);
             this.Title_TextBox.Margin = new System.Windows.Forms.Padding(2);
             this.Title_TextBox.Name = "Title_TextBox";
-            this.Title_TextBox.Size = new System.Drawing.Size(528, 23);
+            this.Title_TextBox.Size = new System.Drawing.Size(528, 27);
             this.Title_TextBox.TabIndex = 13;
             // 
             // Text_PlayList_Description

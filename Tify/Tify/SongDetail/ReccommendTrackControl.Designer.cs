@@ -64,22 +64,22 @@
             // title_label
             // 
             this.title_label.AutoSize = true;
-            this.title_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title_label.Location = new System.Drawing.Point(59, 8);
             this.title_label.Margin = new System.Windows.Forms.Padding(0, 8, 8, 8);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(118, 17);
+            this.title_label.Size = new System.Drawing.Size(111, 20);
             this.title_label.TabIndex = 1;
             this.title_label.Text = "Hana ni bourei";
             // 
             // artist_label
             // 
             this.artist_label.AutoSize = true;
-            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.artist_label.Location = new System.Drawing.Point(62, 33);
             this.artist_label.Name = "artist_label";
-            this.artist_label.Size = new System.Drawing.Size(43, 16);
+            this.artist_label.Size = new System.Drawing.Size(43, 17);
             this.artist_label.TabIndex = 2;
             this.artist_label.Text = "label1";
             // 

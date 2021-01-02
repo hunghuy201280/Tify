@@ -54,12 +54,12 @@
             // trackArtist_label
             // 
             this.trackArtist_label.AutoSize = true;
-            this.trackArtist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackArtist_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackArtist_label.ForeColor = System.Drawing.Color.White;
             this.trackArtist_label.Location = new System.Drawing.Point(0, 202);
             this.trackArtist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.trackArtist_label.Name = "trackArtist_label";
-            this.trackArtist_label.Size = new System.Drawing.Size(64, 16);
+            this.trackArtist_label.Size = new System.Drawing.Size(63, 17);
             this.trackArtist_label.TabIndex = 16;
             this.trackArtist_label.Text = "Yorushika";
             // 
@@ -67,12 +67,12 @@
             // 
             this.trackName_label.AutoSize = true;
             this.trackName_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackName_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackName_label.ForeColor = System.Drawing.Color.White;
             this.trackName_label.Location = new System.Drawing.Point(0, 180);
             this.trackName_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.trackName_label.Name = "trackName_label";
-            this.trackName_label.Size = new System.Drawing.Size(143, 17);
+            this.trackName_label.Size = new System.Drawing.Size(135, 20);
             this.trackName_label.TabIndex = 14;
             this.trackName_label.Text = "Ghost In A Flower";
             // 
