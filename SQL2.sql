@@ -455,11 +455,16 @@ select * from Artist
 select * from MyMix
 
 
+
 select * from UserHasMix where userID=8 order by myMixID 
+
+select * from UserFollowArtist where userID=14
 
 select * from Playlist
 
-select* from MyMixHasTrack where myMixID=5
+select myMixID from MyMixHasTrack group by myMixID having count(*) <20
+
+select * from MyMixHasTrack where myMixID=34
 
  /*
              delete from UserHasPlaylist where playlistID=50
@@ -467,12 +472,15 @@ select* from MyMixHasTrack where myMixID=5
 delete From PlaylistHasTrack where playlistID=50
 
 delete From Playlist where playlistID=50
+
  delete from UserHasMix where myMixID=5
 
 delete From MyMixHasTrack where myMixID=5
 
 delete From MyMix where myMixID=5
              */
+			
+			select _order from MyMix join UserHasMix on UserHasMix.myMixID=MyMix.myMixID Where userID=8 and MyMix.myMixID=16
 
-			 
 
+			
