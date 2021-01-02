@@ -17,7 +17,8 @@ namespace Tify
 
         SqlConnection connection;
 
-        public ForgotPassword()
+        Login loginScr;
+        public ForgotPassword(Login callFm)
         {
             InitializeComponent();
             userName_textBox.Focus();
@@ -29,7 +30,7 @@ namespace Tify
             }
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             connection = new SqlConnection(connectionString);
-
+            loginScr = callFm;
             this.DoubleBuffered = true;
 
             foreach (Control control in this.Controls)
@@ -49,6 +50,7 @@ namespace Tify
         private void exit_label_Click(object sender, EventArgs e)
         {
             this.Close();
+            
         }
 
         DataTable login = new DataTable();

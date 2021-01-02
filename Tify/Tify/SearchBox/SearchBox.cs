@@ -486,7 +486,7 @@ namespace Tify
         {
             playlistResult_flowPanel.Controls.Clear();
 
-
+            playlistContainers.Clear();
             if (playlistTab_Table.Rows.Count == 0)
             {
                 return;

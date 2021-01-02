@@ -141,6 +141,7 @@
             // button_save
             // 
             this.button_save.BackColor = System.Drawing.Color.Gray;
+            this.button_save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_save.FlatAppearance.BorderSize = 0;
             this.button_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -265,6 +266,7 @@
             // button_logout
             // 
             this.button_logout.BackColor = System.Drawing.Color.Gray;
+            this.button_logout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_logout.FlatAppearance.BorderSize = 0;
             this.button_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

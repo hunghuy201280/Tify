@@ -44,11 +44,12 @@ namespace Tify
             string dob = getdob();
             if (dob=="")
             {
-                dateTimePicker1.Hide();
+
+                dateTimePicker1.Value = DateTime.Now;
             }
             else
             {
-                dateTimePicker1.Show();
+                
                 dateTimePicker1.Value = DateTime.Parse(dob);
             }
         }
@@ -124,8 +125,9 @@ namespace Tify
 
         private void button_logout_Click(object sender, EventArgs e)
         {
+            mainscr.WindowState = FormWindowState.Minimized;
             Application.Restart();
-            /* Environment.Exit(0);*/
+            
         }
     }
 }

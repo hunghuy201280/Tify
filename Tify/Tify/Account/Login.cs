@@ -55,16 +55,19 @@ namespace Tify
 
         private void registerLink_label_Click(object sender, EventArgs e)
         {
-            this.Close();
-            new Register(mainScr).ShowDialog();
+       
+            Register reg = new Register(this);
+            
+            reg.ShowDialog();
+            
 
-           
+
         }
 
         private void forgotPassLink_label_Click(object sender, EventArgs e)
         {
-            this.Close();
-            new ForgotPassword().ShowDialog();
+            
+            new ForgotPassword(this).ShowDialog();
             
         }
 

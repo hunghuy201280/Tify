@@ -77,6 +77,15 @@ namespace Tify
             }
             bottom_flowPanel.Controls.AddRange(playlistContainers.ToArray());
             attachPlaylistContainerToPlaylistButtonInMenuPanel(mainScr.PlayList_FlowPanel);
+
+            if (playlistContainers.Count == 0)
+            {
+                panel_default_playlist.BringToFront();
+            }
+            else
+            {
+                panel_default_playlist.SendToBack();
+            }
         }
         #endregion
 
@@ -87,6 +96,7 @@ namespace Tify
             {
                     container.reloadStatus();
             }
+           
         }
         #endregion
 
