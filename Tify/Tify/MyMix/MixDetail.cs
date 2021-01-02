@@ -203,7 +203,10 @@ namespace Tify
         #region play track on clicking row
         private void track_dataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+            if (e.RowIndex==-1)
+            {
+                return;
+            }
             TrackInfo trackToPlay = track_dataGridView.Rows[e.RowIndex].Tag as TrackInfo;
             myMix.mainScr.nextTrack.Clear();
             myMix.mainScr.currentTrackIndex = 0;

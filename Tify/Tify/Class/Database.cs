@@ -1025,7 +1025,8 @@ delete From Playlist where playlistID=50
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserHasMix where userID=@userID order by myMixID asc;", sqlconnection))
+            using (SqlCommand cmd = new SqlCommand("select MyMix.* from UserHasMix join MyMix on UserHasMix.myMixID=MyMix.myMixID" +
+                " where userID=@userID order by _order asc;", sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@userID", userID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
