@@ -346,7 +346,7 @@ namespace Tify
             }
             else if (e.ColumnIndex == 5)// add to playlist
             {
-                AddtoPlaylistForm addFm = new AddtoPlaylistForm(playlistForm.mainScr, selectedTrack.TrackID);
+                AddtoPlaylistForm addFm = new AddtoPlaylistForm(playlistForm.mainScr, selectedTrack.TrackID) { currentPlaylistName = playlistTitle_label.Text };
                 addFm.ShowDialog();
             }
         }
@@ -376,7 +376,8 @@ namespace Tify
 
         private void addToPlaylist_Button_Click(object sender, EventArgs e)
         {
-            AddtoPlaylistForm add2PL = new AddtoPlaylistForm(playlistForm.mainScr, true, trackInfo);
+            AddtoPlaylistForm add2PL = new AddtoPlaylistForm(playlistForm.mainScr, true, trackInfo) { currentPlaylistName=playlistTitle_label.Text};
+            
             add2PL.ShowDialog();
             //add reload form here
             //->

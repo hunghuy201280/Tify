@@ -50,7 +50,7 @@ namespace Tify
         {
             loadPlaylist_InFlowPanel();
         }
-
+        public string currentPlaylistName = "";
         public void loadPlaylist_InFlowPanel()
         {
             flowLayoutPanel_showPL.Controls.Clear();
@@ -59,6 +59,10 @@ namespace Tify
 
             foreach (DataRow playlist in playlisTable.Rows)
             {
+                if (currentPlaylistName== playlist["playlistTitle"].ToString())
+                {
+                    continue;
+                }
                 Button newbutton = new Button();
                 newbutton.Width = 233;
                 newbutton.Height = 45;

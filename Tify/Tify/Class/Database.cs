@@ -1002,27 +1002,21 @@ delete From Playlist where playlistID=50
 
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             sqlconnection.Open();
-            using (SqlCommand cmd = new SqlCommand("select * from UserHasMix where userID=@userid order by myMixID asc ", sqlconnection))
+            using (SqlCommand cmd = new SqlCommand("	select _order from MyMix join UserHasMix on UserHasMix.myMixID=MyMix.myMixID" +
+                " Where userID=@userID and MyMix.myMixID=@mixID", sqlconnection))
             {
                 cmd.Parameters.AddWithValue("@userid", userID);
+                cmd.Parameters.AddWithValue("@mixID", mixID);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     mixTable.Load(reader);
                 }
             }
 
-            int index = 0;
-            for (int i = 0; i < mixTable.Rows.Count; i++)
-            {
-                if (mixTable.Rows[i]["myMixID"].ToString() == mixID)
-                {
-                    index = i + 1;
-                    break;
-                }
-            }
+            
             sqlconnection.Close();
 
-            return index;
+            return int.Parse(mixTable.Rows[0][0].ToString());
         }
 
         static public DataTable getMyMixTableInMyMix(int userID)
