@@ -24,7 +24,15 @@ namespace Tify
         {
             string[] dob = mainscr.CurrentUser.Dob.Split(' ');
             string finaldob = dob[0];
-            finaldob = Convert.ToDateTime(finaldob).ToString("dd/MM/yyyy");
+            try
+            {
+                finaldob = Convert.ToDateTime(finaldob).ToString("dd/MM/yyyy");
+            }
+            catch (Exception)
+            {
+                return "";
+                
+            }
             return finaldob;
         }
 
@@ -33,7 +41,16 @@ namespace Tify
             textbox_name.Text = mainscr.CurrentUser.Name;
             textBox_Phone.Text = mainscr.CurrentUser.Phone;
 
-            dateTimePicker1.Value = DateTime.Parse(getdob());
+            string dob = getdob();
+            if (dob=="")
+            {
+                dateTimePicker1.Hide();
+            }
+            else
+            {
+                dateTimePicker1.Show();
+                dateTimePicker1.Value = DateTime.Parse(dob);
+            }
         }
 
         private void textBox_Phone_KeyPress(object sender, KeyPressEventArgs e)
