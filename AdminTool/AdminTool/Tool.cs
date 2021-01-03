@@ -369,7 +369,7 @@ namespace AdminTool
             {
                 richTextBox1.BeginInvoke((Action)delegate ()
                 {
-                    richTextBox1.Text += "User dont have loved artist : " + User["username"].ToString() + "\n";
+                    richTextBox1.Text += "User doesn't has loved artist : " + User["username"].ToString() + "\n";
                 });
                 return;
             }
