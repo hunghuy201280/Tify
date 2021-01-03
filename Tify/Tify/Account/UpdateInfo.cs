@@ -77,12 +77,16 @@ namespace Tify
                 MessageBox.Show("Wrong age");
                 return;
             }
-            else
+            else 
             {
                 string theDate = dateTimePicker1.Value.ToShortDateString();
-                Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
+                if (!mainscr.CurrentUser.Dob.Contains(theDate))
+                {
+                    Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
 
-                changedAge = true;
+                    changedAge = true;
+                }
+                
             }
             if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text))
             {
@@ -90,13 +94,14 @@ namespace Tify
             }
             else
             {
-                if (!String.IsNullOrEmpty(textbox_name.Text))
+                if (!String.IsNullOrEmpty(textbox_name.Text) && textbox_name.Text!=mainscr.CurrentUser.Name)
                 {
                     Database.updateName(mainscr.CurrentUser.UserID, textbox_name.Text);
                     Name = "name";
                 }
-                if (!String.IsNullOrEmpty(textBox_Phone.Text))
+                if (!String.IsNullOrEmpty(textBox_Phone.Text) && textBox_Phone.Text != mainscr.CurrentUser.Phone)
                 {
+                    
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
                     Phone = ", phone";
                 }
@@ -104,7 +109,15 @@ namespace Tify
                
                 if (changedAge == true)
                     DOB = ", date of birth";
-                MessageBox.Show("Changed " + Name + Phone + DOB + Phone + " succesfully");
+                if (Name!="" || Phone!="" || DOB!="")
+                {
+                    MessageBox.Show("Changed " + Name + Phone + DOB + " succesfully");
+
+                }
+                else
+                {
+                    MessageBox.Show("Nothing changed ");
+                }
             }
         }
 

@@ -373,19 +373,12 @@ namespace AdminTool
                 });
                 return;
             }
-            /* if (lovedArtist.Rows.Count <= (getNumberOfMix(userID.ToString()) * 3))
-             {
-                 richTextBox1.BeginInvoke((Action)delegate ()
-                 {
-                     richTextBox1.Text += "User dont have enough artist : " + User["username"].ToString() + "\n";
-                 });
-                 return;
-             }*/
+           
             string mixID = createMixForUser(userID.ToString());
             //the max number of tracks each artist
             int numberOfTrackEachArtist;
 
-            if (lovedArtist.Rows.Count<=3)
+            if (lovedArtist.Rows.Count <= 3)
             {
                 numberOfTrackEachArtist = 20 / lovedArtist.Rows.Count;
             }
@@ -406,6 +399,7 @@ namespace AdminTool
                 {
                     currentIndex = randArtist.Next(0, lovedArtist.Rows.Count);
                 }
+                randRes.Add(currentIndex);
 
                 //
 
@@ -418,7 +412,7 @@ namespace AdminTool
                 JToken[] suggestedArtist = apiRes["artists"].ToArray();
                 List<string> availableArtistID = new List<string>();
                 //find available artist in database
-                for (int i = 0; i < suggestedArtist.Length && countTrackInMix < 20; i++)
+                for (int i = 0; i < suggestedArtist.Length; i++)
                 {
                     Random randSuggestedArtist = new Random(DateTime.Now.Second);
                     List<int> randSuggestRes = new List<int>();
@@ -434,16 +428,13 @@ namespace AdminTool
                     {
                         availableArtistID.Add(suggestedArtist[suggestArtistIndex]["id"].ToString());
                     }
-
-                 
                 }
 
                 //add track of available artist
                 for (int f = 0; f < availableArtistID.Count; f++)
                 {
-                    
                     int numberOfTrackOfEachSuggestArtist;
-                    if (availableArtistID.Count<=numberOfTrackEachArtist)
+                    if (availableArtistID.Count <= numberOfTrackEachArtist)
                     {
                         numberOfTrackOfEachSuggestArtist = numberOfTrackEachArtist / availableArtistID.Count;
                     }
@@ -454,78 +445,69 @@ namespace AdminTool
                     int countTrackOfSuggestedArtist = 0;
                     DataTable artist_Track = Database.getTrack_Artist(availableArtistID[f], 93939);
 
-                
-                        Random rnd = new Random(DateTime.Now.Second);
-                        List<int> randomNum = new List<int>();
-                        for (int j = 0; j < numberOfTrackOfEachSuggestArtist; j++)
+                    Random rnd = new Random(DateTime.Now.Second);
+                    List<int> randomNum = new List<int>();
+                    for (int j = 0; j < numberOfTrackOfEachSuggestArtist; j++)
+                    {
+                        int index = rnd.Next(0, artist_Track.Rows.Count);
+                        while (randomNum.Contains(index))
                         {
-                            int index = rnd.Next(0, artist_Track.Rows.Count);
-                            while (randomNum.Contains(index))
-                            {
-                                index = rnd.Next(0, artist_Track.Rows.Count);
-                            }
+                            index = rnd.Next(0, artist_Track.Rows.Count);
+                        }
                         randomNum.Add(index);
 
                         try
                         {
-                                addTrackToMix(artist_Track.Rows[index]["trackID"].ToString(), mixID);
-                                countTrackInMix++; countTrackOfSuggestedArtist++;
-                            }
-                            catch (Exception)
-                            {
-                            }
+                            addTrackToMix(artist_Track.Rows[index]["trackID"].ToString(), mixID);
+                            countTrackInMix++; countTrackOfSuggestedArtist++;
+                        }
+                        catch (Exception)
+                        {
+                        }
 
-                            if (countTrackOfSuggestedArtist > numberOfTrackEachArtist)
-                            {
-                                break;
-                            }
-                        
-                   
-                    if (countTrackOfSuggestedArtist > numberOfTrackEachArtist)
-                    {
-                        break;
+                      
                     }
+                  
+
+                    //
+
+                    //
                 }
                 if (countTrackInMix > 20)
                 {
                     break;
                 }
 
-                //
-
-                randRes.Add(currentIndex);
-                //
-
-                //khi chua du 20 bai, add them nhac trong track vao
-                DataTable lovedTrack = new DataTable();
-                lovedTrack = Database.loadTrackTableInTracks(userID);
-
-                for (int i = 0; i < lovedTrack.Rows.Count && countTrackInMix < 20; i++)
-                {
-                    string[] suggestTrack = GetSongData.GetSuggetSongs(lovedTrack.Rows[i]["trackLink"].ToString());
-                    try
-                    {
-                        string trackID = "";
-                        if (!Database.checkTrackExisted(suggestTrack[0]))
-                        {
-                            trackID = Database.addTrackToDatabase(suggestTrack[0]);
-                        }
-                        else
-                        {
-                            trackID = Database.getTrackIdBaseOnTrackLink(suggestTrack[0]);
-                        }
-                        addTrackToMix(trackID, mixID);
-                        countTrackInMix++;
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-                richTextBox1.BeginInvoke((Action)delegate ()
-                {
-                    richTextBox1.Text += "Created mix for : " + User["username"].ToString() + "\n";
-                });
             }
+            //khi chua du 20 bai, add them nhac trong track vao
+            DataTable lovedTrack = new DataTable();
+            lovedTrack = Database.loadTrackTableInTracks(userID);
+
+            for (int i = 0; i < lovedTrack.Rows.Count && countTrackInMix < 20; i++)
+            {
+                string[] suggestTrack = GetSongData.GetSuggetSongs(lovedTrack.Rows[i]["trackLink"].ToString());
+                try
+                {
+                    string trackID = "";
+                    if (!Database.checkTrackExisted(suggestTrack[0]))
+                    {
+                        trackID = Database.addTrackToDatabase(suggestTrack[0]);
+                    }
+                    else
+                    {
+                        trackID = Database.getTrackIdBaseOnTrackLink(suggestTrack[0]);
+                    }
+                    addTrackToMix(trackID, mixID);
+                    countTrackInMix++;
+                }
+                catch (Exception)
+                {
+                }
+            }
+            richTextBox1.BeginInvoke((Action)delegate ()
+            {
+                richTextBox1.Text += "Created mix for : " + User["username"].ToString() + "\n";
+            });
         }
 
         private ManualResetEvent resetEvent = new ManualResetEvent(false);
@@ -536,7 +518,7 @@ namespace AdminTool
             DataTable AccountTable = getAllAccount();
             foreach (DataRow User in AccountTable.Rows)
             {
-                if (User["userID"].ToString() != "12")
+                if (User["userID"].ToString() != "8")
                 {
                     continue;
                 }
