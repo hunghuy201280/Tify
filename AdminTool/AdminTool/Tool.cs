@@ -383,13 +383,22 @@ namespace AdminTool
             }*/
             string mixID = createMixForUser(userID.ToString());
             //the max number of tracks each artist
-            int numberOfTrackEachArtist = 20 / lovedArtist.Rows.Count;
+            int numberOfTrackEachArtist;
+
+            if (lovedArtist.Rows.Count>3)
+            {
+                numberOfTrackEachArtist =6;
+            }
+            else
+            {
+                numberOfTrackEachArtist = 20 / lovedArtist.Rows.Count;
+            }
             int countTrackInMix = 0;
 
             Random randArtist = new Random(DateTime.Now.Second);
             List<int> randRes = new List<int>();
             int loopCount = (lovedArtist.Rows.Count <= 3 ? lovedArtist.Rows.Count : 3);
-            for (int a = 0; a < 3; a++)
+            for (int a = 0; a < loopCount; a++)
             {
                 int currentIndex = randArtist.Next(0, lovedArtist.Rows.Count );
                 while (randRes.Contains(currentIndex))
@@ -423,6 +432,7 @@ namespace AdminTool
                     {
                         int countTrackOfSuggestedArtist = 0;
                         DataTable artist_Track = Database.getTrack_Artist(suggestedArtist[suggestArtistIndex]["id"].ToString(), 93939);
+
                         if (artist_Track.Rows.Count < numberOfTrackEachArtist)
                         {
                             foreach (DataRow track in artist_Track.Rows)
