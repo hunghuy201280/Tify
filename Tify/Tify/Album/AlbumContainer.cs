@@ -73,7 +73,10 @@ namespace Tify
            
             albumName_label.Text = trackTable.Rows[0]["albumTitle"].ToString();
             albumYear_label.Text = trackTable.Rows[0]["albumYear"].ToString();
-
+            if (albumYear_label.Text=="0")
+            {
+                albumYear_label.Text = "";
+            }
             ThreadPool.QueueUserWorkItem(delegate {
 
                 PB.Load(GetData.GetSongData.GetSongCover(trackTable.Rows[0]["albumLink"].ToString()));

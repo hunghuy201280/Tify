@@ -49,8 +49,15 @@ namespace Tify
             }
             else
             {
-                
-                dateTimePicker1.Value = DateTime.Parse(dob);
+                try
+                {
+                    dateTimePicker1.Value = DateTime.Parse(dob);
+
+                }
+                catch (Exception)
+                {
+                    dateTimePicker1.Value = DateTime.Now;
+                }
             }
         }
 
