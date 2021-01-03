@@ -47,7 +47,7 @@ namespace Tify
             this.label_password.AutoSize = true;
             this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_password.ForeColor = System.Drawing.Color.White;
-            this.label_password.Location = new System.Drawing.Point(172, 195);
+            this.label_password.Location = new System.Drawing.Point(185, 195);
             this.label_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_password.Name = "label_password";
             this.label_password.Size = new System.Drawing.Size(117, 20);
@@ -57,7 +57,7 @@ namespace Tify
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(293, 300);
+            this.panel5.Location = new System.Drawing.Point(306, 300);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(291, 1);
@@ -65,11 +65,11 @@ namespace Tify
             // 
             // textBox_retypenewpwd
             // 
-            this.textBox_retypenewpwd.BackColor = System.Drawing.Color.Black;
+            this.textBox_retypenewpwd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.textBox_retypenewpwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_retypenewpwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_retypenewpwd.ForeColor = System.Drawing.Color.White;
-            this.textBox_retypenewpwd.Location = new System.Drawing.Point(293, 276);
+            this.textBox_retypenewpwd.Location = new System.Drawing.Point(306, 276);
             this.textBox_retypenewpwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_retypenewpwd.Name = "textBox_retypenewpwd";
             this.textBox_retypenewpwd.PasswordChar = '*';
@@ -81,7 +81,7 @@ namespace Tify
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(116, 276);
+            this.label3.Location = new System.Drawing.Point(129, 276);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(173, 20);
@@ -90,11 +90,11 @@ namespace Tify
             // 
             // textBox_newpwd
             // 
-            this.textBox_newpwd.BackColor = System.Drawing.Color.Black;
+            this.textBox_newpwd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.textBox_newpwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_newpwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_newpwd.ForeColor = System.Drawing.Color.White;
-            this.textBox_newpwd.Location = new System.Drawing.Point(299, 195);
+            this.textBox_newpwd.Location = new System.Drawing.Point(312, 195);
             this.textBox_newpwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_newpwd.Name = "textBox_newpwd";
             this.textBox_newpwd.PasswordChar = '*';
@@ -104,7 +104,7 @@ namespace Tify
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(299, 219);
+            this.panel2.Location = new System.Drawing.Point(312, 219);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(291, 1);
@@ -115,7 +115,7 @@ namespace Tify
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(179, 117);
+            this.label1.Location = new System.Drawing.Point(192, 117);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 20);
@@ -124,11 +124,11 @@ namespace Tify
             // 
             // textBox_oldPwd
             // 
-            this.textBox_oldPwd.BackColor = System.Drawing.Color.Black;
+            this.textBox_oldPwd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.textBox_oldPwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_oldPwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_oldPwd.ForeColor = System.Drawing.Color.White;
-            this.textBox_oldPwd.Location = new System.Drawing.Point(299, 117);
+            this.textBox_oldPwd.Location = new System.Drawing.Point(312, 117);
             this.textBox_oldPwd.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_oldPwd.Name = "textBox_oldPwd";
             this.textBox_oldPwd.PasswordChar = '*';
@@ -138,7 +138,7 @@ namespace Tify
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(299, 141);
+            this.panel1.Location = new System.Drawing.Point(312, 141);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(291, 1);
@@ -146,13 +146,13 @@ namespace Tify
             // 
             // button_save
             // 
-            this.button_save.BackColor = System.Drawing.Color.Gray;
+            this.button_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.button_save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_save.FlatAppearance.BorderSize = 0;
             this.button_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_save.ForeColor = System.Drawing.Color.White;
-            this.button_save.Location = new System.Drawing.Point(348, 356);
+            this.button_save.Location = new System.Drawing.Point(361, 356);
             this.button_save.Margin = new System.Windows.Forms.Padding(2);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(90, 43);
@@ -181,7 +181,7 @@ namespace Tify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(32)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(800, 469);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_save);
