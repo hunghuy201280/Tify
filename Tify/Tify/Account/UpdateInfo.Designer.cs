@@ -30,24 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateInfo));
             this.Label_name = new System.Windows.Forms.Label();
-            this.label_password = new System.Windows.Forms.Label();
             this.label_DOB = new System.Windows.Forms.Label();
             this.textbox_name = new System.Windows.Forms.TextBox();
-            this.textBox_pwd = new System.Windows.Forms.TextBox();
             this.label_phonenumber = new System.Windows.Forms.Label();
             this.textBox_Phone = new System.Windows.Forms.TextBox();
             this.button_save = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox_retypepwd = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button_logout = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button_changepwd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -64,24 +59,12 @@
             this.Label_name.TabIndex = 0;
             this.Label_name.Text = "Name:";
             // 
-            // label_password
-            // 
-            this.label_password.AutoSize = true;
-            this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_password.ForeColor = System.Drawing.Color.White;
-            this.label_password.Location = new System.Drawing.Point(80, 203);
-            this.label_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(82, 20);
-            this.label_password.TabIndex = 1;
-            this.label_password.Text = "Password:";
-            // 
             // label_DOB
             // 
             this.label_DOB.AutoSize = true;
             this.label_DOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_DOB.ForeColor = System.Drawing.Color.White;
-            this.label_DOB.Location = new System.Drawing.Point(67, 288);
+            this.label_DOB.Location = new System.Drawing.Point(62, 238);
             this.label_DOB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_DOB.Name = "label_DOB";
             this.label_DOB.Size = new System.Drawing.Size(101, 20);
@@ -100,25 +83,12 @@
             this.textbox_name.Size = new System.Drawing.Size(291, 20);
             this.textbox_name.TabIndex = 5;
             // 
-            // textBox_pwd
-            // 
-            this.textBox_pwd.BackColor = System.Drawing.Color.Black;
-            this.textBox_pwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_pwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_pwd.ForeColor = System.Drawing.Color.White;
-            this.textBox_pwd.Location = new System.Drawing.Point(168, 203);
-            this.textBox_pwd.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_pwd.Name = "textBox_pwd";
-            this.textBox_pwd.PasswordChar = '*';
-            this.textBox_pwd.Size = new System.Drawing.Size(291, 20);
-            this.textBox_pwd.TabIndex = 6;
-            // 
             // label_phonenumber
             // 
             this.label_phonenumber.AutoSize = true;
             this.label_phonenumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_phonenumber.ForeColor = System.Drawing.Color.White;
-            this.label_phonenumber.Location = new System.Drawing.Point(46, 338);
+            this.label_phonenumber.Location = new System.Drawing.Point(44, 309);
             this.label_phonenumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_phonenumber.Name = "label_phonenumber";
             this.label_phonenumber.Size = new System.Drawing.Size(119, 20);
@@ -131,7 +101,7 @@
             this.textBox_Phone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_Phone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Phone.ForeColor = System.Drawing.Color.White;
-            this.textBox_Phone.Location = new System.Drawing.Point(170, 338);
+            this.textBox_Phone.Location = new System.Drawing.Point(168, 309);
             this.textBox_Phone.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Phone.Name = "textBox_Phone";
             this.textBox_Phone.Size = new System.Drawing.Size(291, 20);
@@ -175,19 +145,10 @@
             this.panel1.Size = new System.Drawing.Size(291, 1);
             this.panel1.TabIndex = 14;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(168, 227);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(291, 1);
-            this.panel2.TabIndex = 15;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(175, 307);
+            this.panel3.Location = new System.Drawing.Point(170, 257);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(202, 1);
@@ -196,67 +157,28 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(170, 361);
+            this.panel4.Location = new System.Drawing.Point(168, 332);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(291, 1);
             this.panel4.TabIndex = 17;
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(168, 269);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(291, 1);
-            this.panel5.TabIndex = 24;
-            // 
-            // textBox_retypepwd
-            // 
-            this.textBox_retypepwd.BackColor = System.Drawing.Color.Black;
-            this.textBox_retypepwd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_retypepwd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_retypepwd.ForeColor = System.Drawing.Color.White;
-            this.textBox_retypepwd.Location = new System.Drawing.Point(168, 245);
-            this.textBox_retypepwd.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_retypepwd.Name = "textBox_retypepwd";
-            this.textBox_retypepwd.PasswordChar = '*';
-            this.textBox_retypepwd.Size = new System.Drawing.Size(291, 20);
-            this.textBox_retypepwd.TabIndex = 23;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(32, 247);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 20);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Retype password:";
-            // 
             // panel6
             // 
             this.panel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel6.Controls.Add(this.button_changepwd);
             this.panel6.Controls.Add(this.button_logout);
             this.panel6.Controls.Add(this.dateTimePicker1);
             this.panel6.Controls.Add(this.Label_name);
             this.panel6.Controls.Add(this.button_save);
-            this.panel6.Controls.Add(this.label_password);
-            this.panel6.Controls.Add(this.panel5);
             this.panel6.Controls.Add(this.label_DOB);
-            this.panel6.Controls.Add(this.textBox_retypepwd);
             this.panel6.Controls.Add(this.textbox_name);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.textBox_pwd);
             this.panel6.Controls.Add(this.label_phonenumber);
             this.panel6.Controls.Add(this.textBox_Phone);
             this.panel6.Controls.Add(this.pictureBox1);
             this.panel6.Controls.Add(this.panel4);
             this.panel6.Controls.Add(this.panel1);
             this.panel6.Controls.Add(this.panel3);
-            this.panel6.Controls.Add(this.panel2);
             this.panel6.Location = new System.Drawing.Point(160, 41);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
@@ -290,11 +212,28 @@
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(173, 279);
+            this.dateTimePicker1.Location = new System.Drawing.Point(168, 229);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
             this.dateTimePicker1.TabIndex = 25;
+            // 
+            // button_changepwd
+            // 
+            this.button_changepwd.BackColor = System.Drawing.Color.Gray;
+            this.button_changepwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_changepwd.FlatAppearance.BorderSize = 0;
+            this.button_changepwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_changepwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_changepwd.ForeColor = System.Drawing.Color.White;
+            this.button_changepwd.Location = new System.Drawing.Point(184, 401);
+            this.button_changepwd.Margin = new System.Windows.Forms.Padding(2);
+            this.button_changepwd.Name = "button_changepwd";
+            this.button_changepwd.Size = new System.Drawing.Size(212, 43);
+            this.button_changepwd.TabIndex = 27;
+            this.button_changepwd.Text = "Change password";
+            this.button_changepwd.UseVisualStyleBackColor = false;
+            this.button_changepwd.Click += new System.EventHandler(this.button1_Click);
             // 
             // UpdateInfo
             // 
@@ -321,23 +260,18 @@
         #endregion
 
         private System.Windows.Forms.Label Label_name;
-        private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Label label_DOB;
         private System.Windows.Forms.TextBox textbox_name;
-        private System.Windows.Forms.TextBox textBox_pwd;
         private System.Windows.Forms.Label label_phonenumber;
         private System.Windows.Forms.TextBox textBox_Phone;
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox_retypepwd;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button_logout;
+        private System.Windows.Forms.Button button_changepwd;
     }
 }
