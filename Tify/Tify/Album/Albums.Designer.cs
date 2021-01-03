@@ -44,6 +44,7 @@
             // 
             // bottom_flowPanel
             // 
+            this.bottom_flowPanel.AutoScroll = true;
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
             this.bottom_flowPanel.Name = "bottom_flowPanel";
@@ -54,7 +55,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(216, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(152, 139);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,7 +110,7 @@
             this.panel_default_playlist.Controls.Add(this.pictureBox1);
             this.panel_default_playlist.Controls.Add(this.Playlist_label);
             this.panel_default_playlist.Location = new System.Drawing.Point(35, 10);
-            this.panel_default_playlist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_default_playlist.Margin = new System.Windows.Forms.Padding(2);
             this.panel_default_playlist.Name = "panel_default_playlist";
             this.panel_default_playlist.Size = new System.Drawing.Size(610, 346);
             this.panel_default_playlist.TabIndex = 5;

@@ -58,6 +58,7 @@ namespace Tify
             // 
             // bottom_flowPanel
             // 
+            this.bottom_flowPanel.AutoScroll = true;
             this.bottom_flowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_flowPanel.Location = new System.Drawing.Point(0, 57);
             this.bottom_flowPanel.Name = "bottom_flowPanel";

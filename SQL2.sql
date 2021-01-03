@@ -514,3 +514,5 @@ as
 	
 	end
 	
+
+	select * from ArtistHasTrack where artistID='https://chiasenhac.vn/ca-si/le-bao-binh-zsswv00tq92nnf.html'
