@@ -30,14 +30,21 @@ namespace Tify
 
         private void button_save_Click(object sender, EventArgs e)
         {
+            if (!Database.checkPassword(mainscr.CurrentUser.UserID.ToString(),textBox_oldPwd.Text))
+            {
+                textBox_oldPwd.Clear();
+                MessageBox.Show("Wrong password, please try again !");
+                return;
+            }
             if (!String.IsNullOrEmpty(textBox_newpwd.Text) && !String.IsNullOrEmpty(textBox_oldPwd.Text) && !String.IsNullOrEmpty(textBox_retypenewpwd.Text))
             {
                 if (textBox_oldPwd.Text == textBox_newpwd.Text)
                 {
                     MessageBox.Show("They are the same, you sure you want to change your password ?");
+                    return;
                 }
-                else
-                //them ham vao cho nay nay)
+               
+
                 if (textBox_retypenewpwd.Text == textBox_newpwd.Text /*&& nhet cai ham vo*/)
                 {
                     Database.updatePassword(mainscr.CurrentUser.UserID, textBox_retypenewpwd.Text);
@@ -46,7 +53,11 @@ namespace Tify
 
                 }
                 else
-                    MessageBox.Show("Oops ,seem that your password didnt match,may be give it a check?");
+                {
+                    MessageBox.Show("Oops ,seem that your password didn't match,may be give it a check?");
+                }
+                
+                    
             }
             else
             {

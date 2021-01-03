@@ -319,9 +319,15 @@ namespace Tify
 
         public void showLoading()
         {
-            panel_loading.BeginInvoke((Action)delegate () { 
-            panel_loading.BringToFront();
-            });
+            try
+            {
+                panel_loading.BringToFront();
+            }
+            catch (Exception)
+            {
+
+                
+            }
         }
         public void hideLoading()
         {
