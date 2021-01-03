@@ -518,10 +518,7 @@ namespace AdminTool
             DataTable AccountTable = getAllAccount();
             foreach (DataRow User in AccountTable.Rows)
             {
-                if (User["userID"].ToString() != "8")
-                {
-                    continue;
-                }
+               
                 ThreadPool.QueueUserWorkItem(delegate (object obj)
                 {
                     DataRow currentUser = User;

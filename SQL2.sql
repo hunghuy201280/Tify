@@ -440,7 +440,9 @@ select * from Playlist
 select * from Track where trackTitle like '%chung ta cua%'
 
 --15 tifyadmin
---viet nam 87,88 US UK,8 Chinese, 90 Korea, 91 Japanese
+--viet nam 87,88 US UK,89 Chinese, 90 Korea, 91 Japanese
+
+select count(*) from PlaylistHasTrac
 
 
 
@@ -450,13 +452,13 @@ select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trac
 join Playlist on Playlist.playlistID=PlaylistHasTrack.playlistID
 where playlistTitle ='108'
 
-select * from Artist
+select * from Artist where spotifyID ='24Wn81dwdDeTCuB1BWGoVJ'
 
 select * from MyMix
 
 
 
-select * from UserHasMix where userID=8 order by myMixID 
+select * from UserHasMix where userID=8 order by myMixID desc
 
 select * from UserFollowArtist where userID=14
 
@@ -482,5 +484,5 @@ delete From MyMix where myMixID=5
 			
 			select _order from MyMix join UserHasMix on UserHasMix.myMixID=MyMix.myMixID Where userID=8 and MyMix.myMixID=16
 
-
-			
+		
+select * from PlaylistHasTrack
