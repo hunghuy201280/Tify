@@ -691,37 +691,194 @@ delete From Playlist where playlistID=50
                 //string name = Convert.ToString(json["artists"]["items"][0]["name"]);
                 string id = Convert.ToString(json["artists"]["items"][0]["id"]);
                 return id;
-               
             }
             catch (Exception)
             {
-
                 return "";
             }
-           
-          
-          
-
-
-
-        
         }
+
+        #region add album of artist
+
+        private void upTrackInAlbum(string albumLink, string albumID)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            sqlconnection.Open();
+            string newTrackID = "";
+
+            CQ dom = CQ.CreateFromUrl(albumLink);
+            int numberOfTracks = dom[@"div[class='music_recommendation'] div.d-table div[id*='music-listen']"].Length;
+
+            for (int j = 0; j < numberOfTracks; j++)
+            {
+                //div[class='music_recommendation'] div.d-table div[id*='music-listen']:nth-of-type(1) div.name a
+                int currentTrack = j + 1;
+                string trackTitle = dom[@"div[class='music_recommendation'] div.d-table div[id*='music-listen']:nth-of-type(" + currentTrack + ") div.name a"].Attr("title");
+
+                string trackLink = dom[@"div[class='music_recommendation'] div.d-table div[id*='music-listen']:nth-of-type(" + currentTrack + ") div.tool ul.list-inline a"].Attr("href");
+
+                try
+                {
+                    //add track to track
+                    if (Database.checkTrackExisted(trackLink))
+                    {
+                        newTrackID = Database.getTrackIdBaseOnTrackLink(trackLink);
+                    }
+                    else
+                    {
+                        newTrackID = Database.addTrackToDatabase(trackLink);
+                    }
+
+                    string addToAlbumHasTrackQuery = "insert into AlbumHasTrack values(@albumID,@trackID)";
+                    //Add to album has track
+                    using (SqlCommand cmd = new SqlCommand(addToAlbumHasTrackQuery, sqlconnection))
+                    {
+                        cmd.Parameters.AddWithValue("@albumID", albumID);
+                        cmd.Parameters.AddWithValue("@trackID", newTrackID);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    this.BeginInvoke((Action)delegate ()
+                    {
+                        richTextBox1.Text += "Success\n";
+                        richTextBox1.Text += trackTitle + "\n" + trackLink + "\n-------\n";
+                    });
+                }
+                catch (Exception e)
+                {
+                    this.BeginInvoke((Action)delegate ()
+                    {
+                        richTextBox1.Text += "Fail\n";
+                        richTextBox1.Text += e.Message + "\n";
+                        richTextBox1.Text += trackTitle + "\n" + trackLink + "\n-------\n";
+                    });
+                }
+            }
+
+            sqlconnection.Close();
+        }
+
+        private void AddAlbumOfArtist(string artistLink)
+        {
+         
+                //https://chiasenhac.vn/tab_artist?page=2&artist=Binz&artist_id=624&tab=album
+                //get artistID
+                CQ dom = CQ.CreateFromUrl(artistLink);
+                string html = dom.Render();
+                //artist Name
+                string name = dom[@"h4[class='media-right align-self-center artist_name_box mb-4']"].Text();
+
+                //div[class='center-text-mes'] span
+                for (int i = 1; ; i++)
+                {
+                    if (!getAlbumInfo(i, name, getID(html), artistLink))
+                    {
+                        break;
+                    }
+                }
+            
+        }
+
+        private bool getAlbumInfo(int page, string name, string id, string artistID)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            sqlconnection.Open();
+            string url = "https://chiasenhac.vn/tab_artist?page=" + page + "&artist=" + name + "&artist_id=" + id + "&tab=album";
+            //div[class='row row10px float-col-width']
+            CQ dom = CQ.CreateFromUrl(url);
+            string albumTitle, albumLink;
+            string albumYear;
+            //lay so luong album trong page
+            int count = dom[@"div[class='row row10px float-col-width'] div[class='col']"].Length;
+            //div[class='row row10px float-col-width'] div[class='col']:nth-of-type(1) h3 a
+            for (int i = 1; i <= count; i++)
+            {
+                albumLink = "https://chiasenhac.vn" + dom[@"div[class='row row10px float-col-width'] div[class='col']:nth-of-type(" + i + ") h3 a"].Attr("href");
+                albumTitle = dom[@"div[class='row row10px float-col-width'] div[class='col']:nth-of-type(" + i + ") h3 a"].Text();
+                CQ year = CQ.CreateFromUrl(albumLink);
+
+                albumYear = year[@"div[class='col-md-4'] div[class='card-body'] li:nth-of-type(4)"].Text();
+                albumYear = albumYear.Replace("Năm phát hành: ", "");
+                //insert into Album values('1',2,'3')
+
+                try
+                {
+                    string sqlCommand = "insert into Album output inserted.albumID values(@title,@year,@link,@artistID)";
+                    DataTable albumIDTable = new DataTable();
+                    using (SqlCommand cmd = new SqlCommand(sqlCommand, sqlconnection))
+                    {
+                        cmd.Parameters.AddWithValue("title", albumTitle);
+                        cmd.Parameters.AddWithValue("year", albumYear);
+                        cmd.Parameters.AddWithValue("link", albumLink);
+                        cmd.Parameters.AddWithValue("artistID", artistID);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            albumIDTable.Load(reader);
+                        }
+
+                        ThreadPool.QueueUserWorkItem(delegate (object obj)
+                        {
+                            string ablink = albumLink;
+                            string abid = albumIDTable.Rows[0]["albumID"].ToString();
+                            upTrackInAlbum(ablink, abid);
+                        });
+                        this.BeginInvoke((Action)delegate ()
+                        {
+                            richTextBox1.Text += "Success\n";
+                            richTextBox1.Text += "Album Link: " + albumLink + "\nAlbum name: " + albumTitle + "\n------\n";
+                        });
+                       
+                    }
+                }
+                catch (Exception e)
+                {
+                    this.BeginInvoke((Action)delegate ()
+                    {
+                        richTextBox1.Text += e.Message + "\n\n";
+                        richTextBox1.Text += "Album Link: " + albumLink + "\nAlbum name: " + albumTitle + "\n------\n";
+                    });
+                    
+                }
+            }
+            sqlconnection.Close();
+
+            if (count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private string getID(string html)
+        {
+            int index = html.IndexOf("'artist_id': '");
+            int start = index + 14;
+            int end = html.IndexOf("',", start);
+            return html.Substring(start, end - start);
+        }
+
+        #endregion 
 
         private void addArtist_button_Click(object sender, EventArgs e)
         {
-            if (artistLink_textBox.Text=="")
+            if (artistLink_textBox.Text == "")
             {
                 MessageBox.Show("Empty artist link");
                 return;
             }
+                
             richTextBox1.Clear();
             addArtist(artistLink_textBox.Text);
         }
+
         private void addArtist(string artistLink)
         {
             CQ dom = CQ.CreateFromUrl(artistLink);
             string artistName = dom[@"div[class='thumb-mask media align-items-stretch d-flex align-content-center justify-content-center'] h4"].Text();
-            if (artistName=="")
+            if (artistName == "")
             {
                 MessageBox.Show("Invalid link");
                 return;
@@ -735,7 +892,7 @@ delete From Playlist where playlistID=50
                 cmd.Parameters.AddWithValue("@artistName", artistName);
                 cmd.Parameters.AddWithValue("@artistLink", artistLink);
                 string spotifyID = getSpotifyID(artistName);
-                if (spotifyID=="")
+                if (spotifyID == "")
                 {
                     MessageBox.Show("Dont have spotify ID");
                     return;
@@ -750,27 +907,25 @@ delete From Playlist where playlistID=50
                 }
                 catch (SqlException e)
                 {
-
-                    if (e.Number==2627)
+                    if (e.Number == 2627)
                     {
                         MessageBox.Show("Artist đã tồn tại trong database");
-                       
+
                         return;
                     }
                 }
-               
-              
             }
-
-            
 
             sqlconnection.Close();
             ThreadPool.QueueUserWorkItem(delegate (object obj)
             {
-                addTrackOfArtist(addArtistRes.Rows[0]);
+                string ArtistLink = addArtistRes.Rows[0]["artistID"].ToString();
+                DataRow artistRow=addArtistRes.Rows[0];
+                addTrackOfArtist(artistRow);
+                AddAlbumOfArtist(ArtistLink);
             });
-
         }
+
         private void addTrackOfArtist(DataRow Artist)
         {
             //bao thy
@@ -796,7 +951,6 @@ delete From Playlist where playlistID=50
                 css = CQ.CreateFromUrl(artistLink + "?tab=music&page=" + pageNum);
                 //lay so nhac trong trang
                 int count = css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']"].Length;
-              
 
                 for (int i = 1; i <= count; i++)
                 {
@@ -824,7 +978,7 @@ delete From Playlist where playlistID=50
                             }
                             trackID = trackTable.Rows[0][0].ToString();
                         }
-                        
+
                         string ArtistHasTrackQuery = "insert into ArtistHasTrack values(@artistLink,@trackID)";
 
                         using (SqlCommand cmd = new SqlCommand(ArtistHasTrackQuery, sqlconnection))
@@ -836,29 +990,27 @@ delete From Playlist where playlistID=50
                     }
                     catch (Exception e)
                     {
-                        richTextBox1.BeginInvoke((Action)delegate () {
+                        richTextBox1.BeginInvoke((Action)delegate ()
+                        {
                             richTextBox1.Text += e.Message + "\n";
                             richTextBox1.Text += songName + "\t" + songLink;
                         });
-                       
                     }
-                    richTextBox1.BeginInvoke((Action)delegate () {
+                    richTextBox1.BeginInvoke((Action)delegate ()
+                    {
                         richTextBox1.Text += css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("title") + "\n";
                         richTextBox1.Text += "Link: " + css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("href") + "\n\n";
                     });
-                   
                 }
             }
 
             sqlconnection.Close();
         }
 
-
         #endregion add more artist
 
         #region add more track
 
-        
         private void button2_Click(object sender, EventArgs e)
         {
             if (trackLink_textBox.Text == "")
@@ -878,6 +1030,7 @@ delete From Playlist where playlistID=50
                 MessageBox.Show("Successfully added track");
             }
         }
-        #endregion 
+
+        #endregion add more track
     }
 }
