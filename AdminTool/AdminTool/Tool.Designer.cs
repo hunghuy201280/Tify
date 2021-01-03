@@ -39,6 +39,10 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.addArtist_button = new System.Windows.Forms.Button();
             this.artistLink_textBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trackLink_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,18 +131,58 @@
             // 
             // artistLink_textBox
             // 
-            this.artistLink_textBox.Location = new System.Drawing.Point(70, 474);
+            this.artistLink_textBox.Location = new System.Drawing.Point(70, 461);
             this.artistLink_textBox.Name = "artistLink_textBox";
             this.artistLink_textBox.Size = new System.Drawing.Size(407, 20);
             this.artistLink_textBox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(67, 445);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Artist Link";
+            // 
+            // trackLink_textBox
+            // 
+            this.trackLink_textBox.Location = new System.Drawing.Point(70, 502);
+            this.trackLink_textBox.Name = "trackLink_textBox";
+            this.trackLink_textBox.Size = new System.Drawing.Size(407, 20);
+            this.trackLink_textBox.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(67, 486);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Track Link";
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(635, 445);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(146, 77);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Add Track";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 528);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.trackLink_textBox);
             this.Controls.Add(this.artistLink_textBox);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.addArtist_button);
             this.Controls.Add(this.createMix_button);
             this.Controls.Add(this.button1);
@@ -165,6 +209,10 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button addArtist_button;
         private System.Windows.Forms.TextBox artistLink_textBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox trackLink_textBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }
 

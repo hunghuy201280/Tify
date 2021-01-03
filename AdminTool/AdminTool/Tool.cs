@@ -709,6 +709,11 @@ delete From Playlist where playlistID=50
 
         private void addArtist_button_Click(object sender, EventArgs e)
         {
+            if (artistLink_textBox.Text=="")
+            {
+                MessageBox.Show("Empty artist link");
+                return;
+            }
             richTextBox1.Clear();
             addArtist(artistLink_textBox.Text);
         }
@@ -848,8 +853,31 @@ delete From Playlist where playlistID=50
             sqlconnection.Close();
         }
 
+
         #endregion add more artist
 
-      
+        #region add more track
+
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (trackLink_textBox.Text == "")
+            {
+                MessageBox.Show("Empty track link");
+                return;
+            }
+            richTextBox1.Clear();
+            if (Database.checkTrackExisted(trackLink_textBox.Text))
+            {
+                MessageBox.Show("This track already existed");
+                return;
+            }
+            else
+            {
+                Database.addTrackToDatabase(trackLink_textBox.Text);
+                MessageBox.Show("Successfully added track");
+            }
+        }
+        #endregion 
     }
 }

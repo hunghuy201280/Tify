@@ -433,7 +433,7 @@ select top 1000 * from ArtistHasTrack order by trackID desc
 select top 10 * from Album  order by albumID desc
 
 
-select * from Account
+select * from Account 
 
 select * from Playlist
 
@@ -443,6 +443,8 @@ select * from Track where trackTitle like '%chung ta cua%'
 --viet nam 87,88 US UK,89 Chinese, 90 Korea, 91 Japanese
 
 select count(*) from PlaylistHasTrack where playlistID=89
+
+
 
 
 select top 1 * from ArtistHasTrack
@@ -494,3 +496,21 @@ delete from Artist where artistID='https://chiasenhac.vn/ca-si/amee-zss7vbrwqt2q
 
 delete from ArtistHasTrack where artistID='https://chiasenhac.vn/ca-si/amee-zss7vbrwqt2qa9.html'
 */
+
+create trigger default_name_Account
+on Account
+for insert
+as
+	Declare @userID int,@name nvarchar(50)
+
+	select @userID=userID from inserted
+	select @name=name from inserted
+
+	if(@name is NULL)
+	begin
+	update Account
+	set name='no name'
+	where userID=@userID
+	
+	end
+	
