@@ -235,6 +235,8 @@ namespace Tify
         #region load and set pic,time for track gridview
         private void pic_time_Track_worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            trackImg.Clear();
+            trackTime.Clear();
             foreach (DataRow item in trackTable.Rows)
             {
                 using (PictureBox pb = new PictureBox())

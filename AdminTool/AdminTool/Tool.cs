@@ -10,7 +10,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading;
+using System.Web;
 using System.Windows.Forms;
 using Tify;
 
@@ -373,7 +375,7 @@ namespace AdminTool
                 });
                 return;
             }
-           
+
             string mixID = createMixForUser(userID.ToString());
             //the max number of tracks each artist
             int numberOfTrackEachArtist;
@@ -464,10 +466,7 @@ namespace AdminTool
                         catch (Exception)
                         {
                         }
-
-                      
                     }
-                  
 
                     //
 
@@ -477,7 +476,6 @@ namespace AdminTool
                 {
                     break;
                 }
-
             }
             //khi chua du 20 bai, add them nhac trong track vao
             DataTable lovedTrack = new DataTable();
@@ -518,7 +516,6 @@ namespace AdminTool
             DataTable AccountTable = getAllAccount();
             foreach (DataRow User in AccountTable.Rows)
             {
-               
                 ThreadPool.QueueUserWorkItem(delegate (object obj)
                 {
                     DataRow currentUser = User;
@@ -679,5 +676,180 @@ delete From Playlist where playlistID=50
         }
 
         #endregion create mix for user
+
+        #region add more artist
+
+        private string getSpotifyID(string artistName)
+        {
+            try
+            {
+                string url = "https://musicroamer.com/api/v1/spotify?artist=" +
+          HttpUtility.UrlEncode(TiengVietKhongDau.TiengVietKhongDau.RemoveSign4VietnameseString(artistName), Encoding.UTF8);
+
+                JObject json = getResponseJObject(url);
+                string dtbName = artistName;
+                //string name = Convert.ToString(json["artists"]["items"][0]["name"]);
+                string id = Convert.ToString(json["artists"]["items"][0]["id"]);
+                return id;
+               
+            }
+            catch (Exception)
+            {
+
+                return "";
+            }
+           
+          
+          
+
+
+
+        
+        }
+
+        private void addArtist_button_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            addArtist(artistLink_textBox.Text);
+        }
+        private void addArtist(string artistLink)
+        {
+            CQ dom = CQ.CreateFromUrl(artistLink);
+            string artistName = dom[@"div[class='thumb-mask media align-items-stretch d-flex align-content-center justify-content-center'] h4"].Text();
+            if (artistName=="")
+            {
+                MessageBox.Show("Invalid link");
+                return;
+            }
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            sqlconnection.Open();
+            string Sqlquery = "insert into Artist output inserted.* values(@artistName,@artistLink,@spotifyID)";
+            DataTable addArtistRes = new DataTable();
+            using (SqlCommand cmd = new SqlCommand(Sqlquery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@artistName", artistName);
+                cmd.Parameters.AddWithValue("@artistLink", artistLink);
+                string spotifyID = getSpotifyID(artistName);
+                if (spotifyID=="")
+                {
+                    MessageBox.Show("Dont have spotify ID");
+                    return;
+                }
+                cmd.Parameters.AddWithValue("@spotifyID", spotifyID);
+                try
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        addArtistRes.Load(reader);
+                    }
+                }
+                catch (SqlException e)
+                {
+
+                    if (e.Number==2627)
+                    {
+                        MessageBox.Show("Artist đã tồn tại trong database");
+                       
+                        return;
+                    }
+                }
+               
+              
+            }
+
+            
+
+            sqlconnection.Close();
+            ThreadPool.QueueUserWorkItem(delegate (object obj)
+            {
+                addTrackOfArtist(addArtistRes.Rows[0]);
+            });
+
+        }
+        private void addTrackOfArtist(DataRow Artist)
+        {
+            //bao thy
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            sqlconnection.Open();
+
+            string artistName = Artist["artistName"].ToString();
+            string artistLink = Artist["artistID"].ToString();
+            CQ css = CQ.CreateFromUrl(artistLink + "?tab=music&page=" + 1);
+            //lay tong so trang
+            int temp = css[@"section[id='music'] center ul li"].Length;
+            if (temp == 0)
+            {
+                return;
+            }
+            int maxPage = int.Parse(css[@"section[id='music'] center ul li:nth-of-type(" + temp + ") a"].Text());
+            if (maxPage > 5)
+            {
+                maxPage = 5;
+            }
+            for (int pageNum = 1; pageNum <= maxPage; pageNum++)
+            {
+                css = CQ.CreateFromUrl(artistLink + "?tab=music&page=" + pageNum);
+                //lay so nhac trong trang
+                int count = css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']"].Length;
+              
+
+                for (int i = 1; i <= count; i++)
+                {
+                    string songName = css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("title");
+                    string songLink = css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("href");
+                    string sqlCommand = "insert into Track output inserted.trackID values(@songName,@songLink)";
+                    string trackID = "";
+                    DataTable trackTable = new DataTable();
+                    try
+                    {
+                        if (Database.checkTrackExisted(songLink))
+                        {
+                            trackID = Database.getTrackIdBaseOnTrackLink(songLink);
+                        }
+                        else
+                        {
+                            using (SqlCommand cmd = new SqlCommand(sqlCommand, sqlconnection))
+                            {
+                                cmd.Parameters.AddWithValue("@songName", songName);
+                                cmd.Parameters.AddWithValue("@songLink", songLink);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    trackTable.Load(reader);
+                                }
+                            }
+                            trackID = trackTable.Rows[0][0].ToString();
+                        }
+                        
+                        string ArtistHasTrackQuery = "insert into ArtistHasTrack values(@artistLink,@trackID)";
+
+                        using (SqlCommand cmd = new SqlCommand(ArtistHasTrackQuery, sqlconnection))
+                        {
+                            cmd.Parameters.AddWithValue("@artistLink", artistLink);
+                            cmd.Parameters.AddWithValue("@trackID", trackID);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        richTextBox1.BeginInvoke((Action)delegate () {
+                            richTextBox1.Text += e.Message + "\n";
+                            richTextBox1.Text += songName + "\t" + songLink;
+                        });
+                       
+                    }
+                    richTextBox1.BeginInvoke((Action)delegate () {
+                        richTextBox1.Text += css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("title") + "\n";
+                        richTextBox1.Text += "Link: " + css["section[id='music'] ul[class='list-unstyled list_music']  li[class='media align-items-stretch not']:nth-of-type(" + i + ") h5 a"].Attr("href") + "\n\n";
+                    });
+                   
+                }
+            }
+
+            sqlconnection.Close();
+        }
+
+        #endregion add more artist
+
+      
     }
 }
