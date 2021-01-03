@@ -62,11 +62,11 @@
             // songName_label
             // 
             this.songName_label.AutoSize = true;
-            this.songName_label.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.songName_label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.songName_label.ForeColor = System.Drawing.Color.White;
             this.songName_label.Location = new System.Drawing.Point(74, 29);
             this.songName_label.Name = "songName_label";
-            this.songName_label.Size = new System.Drawing.Size(121, 27);
+            this.songName_label.Size = new System.Drawing.Size(118, 30);
             this.songName_label.TabIndex = 8;
             this.songName_label.Text = "Song name";
             // 

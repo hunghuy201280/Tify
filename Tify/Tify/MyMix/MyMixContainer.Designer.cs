@@ -72,13 +72,13 @@
             // artist_label
             // 
             this.artist_label.AutoSize = true;
-            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_label.ForeColor = System.Drawing.Color.White;
             this.artist_label.Location = new System.Drawing.Point(13, 207);
             this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.artist_label.MaximumSize = new System.Drawing.Size(148, 0);
             this.artist_label.Name = "artist_label";
-            this.artist_label.Size = new System.Drawing.Size(38, 16);
+            this.artist_label.Size = new System.Drawing.Size(38, 17);
             this.artist_label.TabIndex = 11;
             this.artist_label.Text = "Artist";
             // 
@@ -86,14 +86,14 @@
             // 
             this.playlistName_label.AutoSize = true;
             this.playlistName_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.playlistName_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistName_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlistName_label.ForeColor = System.Drawing.Color.White;
             this.playlistName_label.Location = new System.Drawing.Point(13, 185);
             this.playlistName_label.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
             this.playlistName_label.Name = "playlistName_label";
-            this.playlistName_label.Size = new System.Drawing.Size(109, 17);
+            this.playlistName_label.Size = new System.Drawing.Size(74, 20);
             this.playlistName_label.TabIndex = 10;
-            this.playlistName_label.Text = "Japan Top 50";
+            this.playlistName_label.Text = "My Mix 1";
             // 
             // cover_worker
             // 

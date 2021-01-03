@@ -67,7 +67,7 @@
             // artistName_Label
             // 
             this.artistName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.artistName_Label.Font = new System.Drawing.Font("Nationale Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artistName_Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artistName_Label.ForeColor = System.Drawing.Color.White;
             this.artistName_Label.Location = new System.Drawing.Point(0, 170);
             this.artistName_Label.Name = "artistName_Label";

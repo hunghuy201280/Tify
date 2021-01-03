@@ -79,8 +79,8 @@
             // bottom_panel
             // 
             this.bottom_panel.AutoScroll = true;
-            this.bottom_panel.Controls.Add(this.panel_loading);
             this.bottom_panel.Controls.Add(this.track_gridView);
+            this.bottom_panel.Controls.Add(this.panel_loading);
             this.bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bottom_panel.Location = new System.Drawing.Point(0, 61);
             this.bottom_panel.Name = "bottom_panel";
@@ -164,7 +164,7 @@
             this.track_gridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_gridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_gridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Nationale Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track_gridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.track_gridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.track_gridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;

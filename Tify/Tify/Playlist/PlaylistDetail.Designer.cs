@@ -73,22 +73,22 @@
             // description_label
             // 
             this.description_label.AutoSize = true;
-            this.description_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.description_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.description_label.ForeColor = System.Drawing.Color.White;
             this.description_label.Location = new System.Drawing.Point(222, 95);
             this.description_label.Name = "description_label";
-            this.description_label.Size = new System.Drawing.Size(89, 20);
+            this.description_label.Size = new System.Drawing.Size(89, 21);
             this.description_label.TabIndex = 2;
             this.description_label.Text = "Description";
             // 
             // playlistTitle_label
             // 
             this.playlistTitle_label.AutoSize = true;
-            this.playlistTitle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playlistTitle_label.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playlistTitle_label.ForeColor = System.Drawing.Color.White;
             this.playlistTitle_label.Location = new System.Drawing.Point(218, 41);
             this.playlistTitle_label.Name = "playlistTitle_label";
-            this.playlistTitle_label.Size = new System.Drawing.Size(244, 39);
+            this.playlistTitle_label.Size = new System.Drawing.Size(247, 47);
             this.playlistTitle_label.TabIndex = 1;
             this.playlistTitle_label.Text = "Playlist Name";
             // 
@@ -253,11 +253,11 @@
             // createdBy_label
             // 
             this.createdBy_label.AutoSize = true;
-            this.createdBy_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createdBy_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createdBy_label.ForeColor = System.Drawing.Color.Gray;
             this.createdBy_label.Location = new System.Drawing.Point(222, 124);
             this.createdBy_label.Name = "createdBy_label";
-            this.createdBy_label.Size = new System.Drawing.Size(260, 20);
+            this.createdBy_label.Size = new System.Drawing.Size(255, 21);
             this.createdBy_label.TabIndex = 2;
             this.createdBy_label.Text = "Created by me - 10 Tracks - 1:24:00";
             // 
@@ -319,7 +319,7 @@
             this.track_dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.track_dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track_dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.track_dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.track_dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.track_dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;

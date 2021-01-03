@@ -405,12 +405,12 @@
             // 
             this.playingFrom_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.playingFrom_label.AutoSize = true;
-            this.playingFrom_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playingFrom_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playingFrom_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.playingFrom_label.Location = new System.Drawing.Point(104, 61);
             this.playingFrom_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.playingFrom_label.Name = "playingFrom_label";
-            this.playingFrom_label.Size = new System.Drawing.Size(0, 16);
+            this.playingFrom_label.Size = new System.Drawing.Size(0, 17);
             this.playingFrom_label.TabIndex = 4;
             this.playingFrom_label.TextChanged += new System.EventHandler(this.playingFrom_label_TextChanged);
             // 
@@ -418,12 +418,12 @@
             // 
             this.artist_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.artist_label.AutoSize = true;
-            this.artist_label.Font = new System.Drawing.Font("Nationale Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artist_label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artist_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(128)))), ((int)(((byte)(137)))));
             this.artist_label.Location = new System.Drawing.Point(104, 40);
             this.artist_label.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.artist_label.Name = "artist_label";
-            this.artist_label.Size = new System.Drawing.Size(0, 16);
+            this.artist_label.Size = new System.Drawing.Size(0, 17);
             this.artist_label.TabIndex = 3;
             this.artist_label.TextChanged += new System.EventHandler(this.artist_label_TextChanged);
             // 
@@ -431,12 +431,12 @@
             // 
             this.title_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.title_label.AutoSize = true;
-            this.title_label.Font = new System.Drawing.Font("Nationale", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title_label.ForeColor = System.Drawing.Color.White;
             this.title_label.Location = new System.Drawing.Point(104, 23);
             this.title_label.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(0, 17);
+            this.title_label.Size = new System.Drawing.Size(0, 20);
             this.title_label.TabIndex = 1;
             this.title_label.TextChanged += new System.EventHandler(this.title_label_TextChanged);
             // 
@@ -791,11 +791,11 @@
             this.searchBar_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.searchBar_textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.searchBar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBar_textBox.Font = new System.Drawing.Font("Nationale Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBar_textBox.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBar_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(162)))), ((int)(((byte)(166)))));
             this.searchBar_textBox.Location = new System.Drawing.Point(40, 0);
             this.searchBar_textBox.Name = "searchBar_textBox";
-            this.searchBar_textBox.Size = new System.Drawing.Size(350, 37);
+            this.searchBar_textBox.Size = new System.Drawing.Size(350, 39);
             this.searchBar_textBox.TabIndex = 2;
             this.searchBar_textBox.Text = "Search";
             this.searchBar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBar_textBox_KeyPress);
