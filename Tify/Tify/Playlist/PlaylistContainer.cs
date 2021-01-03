@@ -107,7 +107,6 @@ namespace Tify
                 trackCount = trackTable
                                        .AsEnumerable()
                                        .Select(r => r.Field<string>("trackTitle"))
-                                       .Distinct()
                                        .Count();
                 numberOfTracks_label.Text = trackCount + " Tracks";
 

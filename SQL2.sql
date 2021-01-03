@@ -440,23 +440,25 @@ select * from Playlist
 select * from Track where trackTitle like '%chung ta cua%'
 
 --15 tifyadmin
---viet nam 87,88 US UK,8 Chinese, 90 Korea, 91 Japanese
+--viet nam 87,88 US UK,89 Chinese, 90 Korea, 91 Japanese
+
+select count(*) from PlaylistHasTrack where playlistID=89
 
 
-
+select top 1 * from ArtistHasTrack
 select * from Track where trackLink='https://vi.chiasenhac.vn/mp3/den-justatee/di-ve-nha-tsvm7cwsq8tv94.html'
 
 select * from PlaylistHasTrack join Track on Track.trackID=PlaylistHasTrack.trackID
 join Playlist on Playlist.playlistID=PlaylistHasTrack.playlistID
 where playlistTitle ='108'
 
-select * from Artist
+select * from Artist where spotifyID ='24Wn81dwdDeTCuB1BWGoVJ'
 
 select * from MyMix
 
 
 
-select * from UserHasMix where userID=8 order by myMixID 
+select * from UserHasMix where userID=8 order by myMixID desc
 
 select * from UserFollowArtist where userID=14
 
@@ -482,5 +484,13 @@ delete From MyMix where myMixID=5
 			
 			select _order from MyMix join UserHasMix on UserHasMix.myMixID=MyMix.myMixID Where userID=8 and MyMix.myMixID=16
 
+		
+select * from PlaylistHasTrack
 
-			
+/*
+delete from Artist where artistID='https://chiasenhac.vn/ca-si/amee-zss7vbrwqt2qa9.html'
+
+
+
+delete from ArtistHasTrack where artistID='https://chiasenhac.vn/ca-si/amee-zss7vbrwqt2qa9.html'
+*/

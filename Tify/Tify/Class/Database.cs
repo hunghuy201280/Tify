@@ -10,6 +10,34 @@ namespace Tify
 {
     internal class Database
     {
+
+        static public bool checkPassword(string userID,string oldPassword)
+        {
+            SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            sqlconnection.Open();
+            string sqlQuery = "select * from Account where userID=@userID";
+            DataTable table = new DataTable();
+            using (SqlCommand cmd = new SqlCommand(sqlQuery, sqlconnection))
+            {
+                cmd.Parameters.AddWithValue("@userID", userID);
+                using (SqlDataReader reader=cmd.ExecuteReader())
+                {
+                    table.Load(reader);
+                }
+           
+            }
+            sqlconnection.Close();
+
+            if (table.Rows[0]["password"].ToString()==oldPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         static public void EditPlaylist(string playlistID, string playlistTitle, string description)
         {
             SqlConnection sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);

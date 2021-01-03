@@ -172,6 +172,7 @@
             // 
             // editPlaylist_button
             // 
+            this.editPlaylist_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editPlaylist_button.BackColor = System.Drawing.Color.Black;
             this.editPlaylist_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.editPlaylist_button.FlatAppearance.BorderSize = 0;

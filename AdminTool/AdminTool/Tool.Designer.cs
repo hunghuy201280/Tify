@@ -37,6 +37,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.createMix_button = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.addArtist_button = new System.Windows.Forms.Button();
+            this.artistLink_textBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,12 +114,32 @@
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
+            // addArtist_button
+            // 
+            this.addArtist_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addArtist_button.Location = new System.Drawing.Point(483, 445);
+            this.addArtist_button.Name = "addArtist_button";
+            this.addArtist_button.Size = new System.Drawing.Size(146, 77);
+            this.addArtist_button.TabIndex = 1;
+            this.addArtist_button.Text = "Add Artist";
+            this.addArtist_button.UseVisualStyleBackColor = true;
+            this.addArtist_button.Click += new System.EventHandler(this.addArtist_button_Click);
+            // 
+            // artistLink_textBox
+            // 
+            this.artistLink_textBox.Location = new System.Drawing.Point(70, 474);
+            this.artistLink_textBox.Name = "artistLink_textBox";
+            this.artistLink_textBox.Size = new System.Drawing.Size(407, 20);
+            this.artistLink_textBox.TabIndex = 3;
+            // 
             // Tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 528);
+            this.Controls.Add(this.artistLink_textBox);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.addArtist_button);
             this.Controls.Add(this.createMix_button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar);
@@ -127,6 +149,7 @@
             this.Text = "Admin Tool";
             ((System.ComponentModel.ISupportInitialize)(this.progressBar.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -140,6 +163,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button createMix_button;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button addArtist_button;
+        private System.Windows.Forms.TextBox artistLink_textBox;
     }
 }
 

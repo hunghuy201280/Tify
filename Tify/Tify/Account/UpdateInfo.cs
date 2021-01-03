@@ -49,8 +49,15 @@ namespace Tify
             }
             else
             {
-                
-                dateTimePicker1.Value = DateTime.Parse(dob);
+                try
+                {
+                    dateTimePicker1.Value = DateTime.Parse(dob);
+
+                }
+                catch (Exception)
+                {
+                    dateTimePicker1.Value = DateTime.Now;
+                }
             }
         }
 
@@ -70,50 +77,54 @@ namespace Tify
             string Name = "";
             string Phone = "";
             string DOB = "";
-            string Pwd = "";
+         
             int myAge = DateTime.Today.Year - dateTimePicker1.Value.Year;
             if (myAge <= 6)
             {
                 MessageBox.Show("Wrong age");
                 return;
             }
-            else
+            else 
             {
                 string theDate = dateTimePicker1.Value.ToShortDateString();
-                Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
+                if (!mainscr.CurrentUser.Dob.Contains(theDate))
+                {
+                    Database.updateDOB(mainscr.CurrentUser.UserID, theDate);
 
-                changedAge = true;
+                    changedAge = true;
+                }
+                
             }
-            if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text) && String.IsNullOrEmpty(textBox_pwd.Text))
+            if (String.IsNullOrEmpty(textbox_name.Text) && String.IsNullOrEmpty(textBox_Phone.Text))
             {
                 MessageBox.Show("Notthing to save.");
             }
             else
             {
-                if (!String.IsNullOrEmpty(textbox_name.Text))
+                if (!String.IsNullOrEmpty(textbox_name.Text) && textbox_name.Text!=mainscr.CurrentUser.Name)
                 {
                     Database.updateName(mainscr.CurrentUser.UserID, textbox_name.Text);
                     Name = "name";
                 }
-                if (!String.IsNullOrEmpty(textBox_Phone.Text))
+                if (!String.IsNullOrEmpty(textBox_Phone.Text) && textBox_Phone.Text != mainscr.CurrentUser.Phone)
                 {
+                    
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
                     Phone = ", phone";
                 }
 
-                if (!String.IsNullOrEmpty(textBox_pwd.Text))
-                {
-                    if (textBox_retypepwd.Text == textBox_pwd.Text)
-                    {
-                        Database.updatePassword(mainscr.CurrentUser.UserID, textBox_retypepwd.Text);
-                        Pwd = ", pass word";
-                    }
-                    else
-                        MessageBox.Show("Oops ,seem that your password didnt match,may be give it a check?");
-                }
+               
                 if (changedAge == true)
                     DOB = ", date of birth";
-                MessageBox.Show("Changed " + Name + Phone + DOB + Phone + Pwd + " succesfully");
+                if (Name!="" || Phone!="" || DOB!="")
+                {
+                    MessageBox.Show("Changed " + Name + Phone + DOB + " succesfully");
+
+                }
+                else
+                {
+                    MessageBox.Show("Nothing changed ");
+                }
             }
         }
 
@@ -128,6 +139,12 @@ namespace Tify
             mainscr.WindowState = FormWindowState.Minimized;
             Application.Restart();
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangePwd changePwd = new ChangePwd(mainscr);
+            changePwd.ShowDialog();
         }
     }
 }
