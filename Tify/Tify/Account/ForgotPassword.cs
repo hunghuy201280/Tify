@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -60,6 +61,12 @@ namespace Tify
             {
                 MessageBox.Show("Please enter your username and phone");
                 userName_textBox.Focus();
+                return;
+            }
+            var std = new Regex(@"^\+?(\d.*){10,}$");
+            if (!std.IsMatch(phone_textBox.Text))
+            {
+                MessageBox.Show("Oops, check your phone number again ?");
                 return;
             }
             string sqlCommand = "Select * from Account where username=@usrname and phone=@phone";

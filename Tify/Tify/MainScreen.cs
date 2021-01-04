@@ -1154,11 +1154,15 @@ namespace Tify
                 currentTrackIndex = 0;
             }
             TrackInfo temp = nextTrack[currentTrackIndex++];
-            /*nextTrack.RemoveAt(0);*/
+           
             return temp;
         }
         private void next_button_Click(object sender, EventArgs e)
         {
+            if (currentTrack==null)
+            {
+                return;
+            }
             if (!(loopMode == LoopMode.On) && currentTrackIndex == nextTrack.Count || nextTrack.Count==0)
             {
                 changeSong(new TrackInfo() { TrackLink = suggestedSong[0] });
@@ -1169,6 +1173,7 @@ namespace Tify
               
                 if (loopMode == LoopMode.On && currentTrackIndex == nextTrack.Count)
                 {
+
                     currentTrackIndex = 0;
                     
                     changeSong(Dequeue());
@@ -1200,6 +1205,10 @@ namespace Tify
         #region addplaylist
         private void addToPlaylist_Player_Button_Click(object sender, EventArgs e)
         {
+            if (currentTrack==null)
+            {
+                return;
+            }
             add2PL = new AddtoPlaylistForm(this, currentTrack.TrackID);
             add2PL.Show();
         }
@@ -1256,7 +1265,10 @@ namespace Tify
         #region add to loved track
         private void like_Player_Button_Click(object sender, EventArgs e)
         {
-
+            if (currentTrack==null)
+            {
+                return;
+            }
 
             if (currentTrack.IsLoved == false)
             {

@@ -64,6 +64,7 @@ namespace Tify
         private void textBox_Phone_KeyPress(object sender, KeyPressEventArgs e)
         {
             textBox_Phone.MaxLength = 10;
+            
 
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -108,7 +109,11 @@ namespace Tify
                 }
                 if (!String.IsNullOrEmpty(textBox_Phone.Text) && textBox_Phone.Text != mainscr.CurrentUser.Phone)
                 {
-                    
+                    if (textBox_Phone.Text.Length<10)
+                    {
+                        MessageBox.Show("Phone must be 10 digits ");
+                        return;
+                    }
                     Database.updatePhone(mainscr.CurrentUser.UserID, textBox_Phone.Text);
                     Phone = ", phone";
                 }
