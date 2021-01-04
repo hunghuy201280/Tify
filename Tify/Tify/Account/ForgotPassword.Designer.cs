@@ -53,7 +53,7 @@
             this.done_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.done_button.Name = "done_button";
             this.done_button.Size = new System.Drawing.Size(236, 36);
-            this.done_button.TabIndex = 6;
+            this.done_button.TabIndex = 3;
             this.done_button.Text = "Done";
             this.done_button.UseVisualStyleBackColor = false;
             this.done_button.Click += new System.EventHandler(this.done_button_Click);

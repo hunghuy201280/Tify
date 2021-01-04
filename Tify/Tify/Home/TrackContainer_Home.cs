@@ -61,6 +61,8 @@ namespace Tify
 
         private void opacity_panel_MouseClick(object sender, MouseEventArgs e)
         {
+            mainScr.nextTrack.Clear();
+            mainScr.setplayfrom("Home");
             mainScr.changeSong(track);
         }
 

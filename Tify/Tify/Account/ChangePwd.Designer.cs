@@ -75,7 +75,7 @@ namespace Tify
             this.textBox_retypenewpwd.Name = "textBox_retypenewpwd";
             this.textBox_retypenewpwd.PasswordChar = '*';
             this.textBox_retypenewpwd.Size = new System.Drawing.Size(291, 20);
-            this.textBox_retypenewpwd.TabIndex = 29;
+            this.textBox_retypenewpwd.TabIndex = 3;
             // 
             // label3
             // 
@@ -100,7 +100,7 @@ namespace Tify
             this.textBox_newpwd.Name = "textBox_newpwd";
             this.textBox_newpwd.PasswordChar = '*';
             this.textBox_newpwd.Size = new System.Drawing.Size(291, 20);
-            this.textBox_newpwd.TabIndex = 26;
+            this.textBox_newpwd.TabIndex = 2;
             // 
             // panel2
             // 
@@ -134,7 +134,7 @@ namespace Tify
             this.textBox_oldPwd.Name = "textBox_oldPwd";
             this.textBox_oldPwd.PasswordChar = '*';
             this.textBox_oldPwd.Size = new System.Drawing.Size(291, 20);
-            this.textBox_oldPwd.TabIndex = 32;
+            this.textBox_oldPwd.TabIndex = 1;
             // 
             // panel1
             // 
@@ -157,7 +157,7 @@ namespace Tify
             this.button_save.Margin = new System.Windows.Forms.Padding(2);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(90, 43);
-            this.button_save.TabIndex = 34;
+            this.button_save.TabIndex = 4;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = false;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);

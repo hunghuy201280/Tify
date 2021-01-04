@@ -65,7 +65,7 @@
             this.exit_label.Location = new System.Drawing.Point(130, 386);
             this.exit_label.Name = "exit_label";
             this.exit_label.Size = new System.Drawing.Size(33, 16);
-            this.exit_label.TabIndex = 37;
+            this.exit_label.TabIndex = 4;
             this.exit_label.Text = "Exit";
             this.exit_label.Click += new System.EventHandler(this.exit_label_Click);
             // 
@@ -91,7 +91,7 @@
             this.done_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.done_button.Name = "done_button";
             this.done_button.Size = new System.Drawing.Size(236, 36);
-            this.done_button.TabIndex = 36;
+            this.done_button.TabIndex = 3;
             this.done_button.Text = "Done";
             this.done_button.UseVisualStyleBackColor = false;
             this.done_button.Click += new System.EventHandler(this.done_button_Click);
@@ -106,7 +106,7 @@
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
             this.password_textBox.Size = new System.Drawing.Size(205, 19);
-            this.password_textBox.TabIndex = 44;
+            this.password_textBox.TabIndex = 1;
             this.password_textBox.UseSystemPasswordChar = true;
             // 
             // panel2
@@ -155,7 +155,7 @@
             this.passwordAgain_textBox.Name = "passwordAgain_textBox";
             this.passwordAgain_textBox.PasswordChar = '*';
             this.passwordAgain_textBox.Size = new System.Drawing.Size(205, 19);
-            this.passwordAgain_textBox.TabIndex = 44;
+            this.passwordAgain_textBox.TabIndex = 2;
             this.passwordAgain_textBox.UseSystemPasswordChar = true;
             // 
             // label3

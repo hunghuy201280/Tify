@@ -40,9 +40,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button_changepwd = new System.Windows.Forms.Button();
             this.button_logout = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button_changepwd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +81,7 @@
             this.textbox_name.Margin = new System.Windows.Forms.Padding(2);
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(291, 20);
-            this.textbox_name.TabIndex = 5;
+            this.textbox_name.TabIndex = 1;
             // 
             // label_phonenumber
             // 
@@ -105,7 +105,7 @@
             this.textBox_Phone.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Phone.Name = "textBox_Phone";
             this.textBox_Phone.Size = new System.Drawing.Size(291, 20);
-            this.textBox_Phone.TabIndex = 9;
+            this.textBox_Phone.TabIndex = 3;
             this.textBox_Phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Phone_KeyPress);
             // 
             // button_save
@@ -120,7 +120,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(2);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(90, 43);
-            this.button_save.TabIndex = 10;
+            this.button_save.TabIndex = 4;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = false;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -185,6 +185,23 @@
             this.panel6.Size = new System.Drawing.Size(556, 460);
             this.panel6.TabIndex = 25;
             // 
+            // button_changepwd
+            // 
+            this.button_changepwd.BackColor = System.Drawing.Color.Gray;
+            this.button_changepwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_changepwd.FlatAppearance.BorderSize = 0;
+            this.button_changepwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_changepwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_changepwd.ForeColor = System.Drawing.Color.White;
+            this.button_changepwd.Location = new System.Drawing.Point(184, 401);
+            this.button_changepwd.Margin = new System.Windows.Forms.Padding(2);
+            this.button_changepwd.Name = "button_changepwd";
+            this.button_changepwd.Size = new System.Drawing.Size(212, 43);
+            this.button_changepwd.TabIndex = 5;
+            this.button_changepwd.Text = "Change password";
+            this.button_changepwd.UseVisualStyleBackColor = false;
+            this.button_changepwd.Click += new System.EventHandler(this.button1_Click);
+            // 
             // button_logout
             // 
             this.button_logout.BackColor = System.Drawing.Color.Gray;
@@ -197,7 +214,7 @@
             this.button_logout.Margin = new System.Windows.Forms.Padding(2);
             this.button_logout.Name = "button_logout";
             this.button_logout.Size = new System.Drawing.Size(90, 43);
-            this.button_logout.TabIndex = 26;
+            this.button_logout.TabIndex = 6;
             this.button_logout.Text = "Log out";
             this.button_logout.UseVisualStyleBackColor = false;
             this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
@@ -216,24 +233,7 @@
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
-            this.dateTimePicker1.TabIndex = 25;
-            // 
-            // button_changepwd
-            // 
-            this.button_changepwd.BackColor = System.Drawing.Color.Gray;
-            this.button_changepwd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_changepwd.FlatAppearance.BorderSize = 0;
-            this.button_changepwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_changepwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_changepwd.ForeColor = System.Drawing.Color.White;
-            this.button_changepwd.Location = new System.Drawing.Point(184, 401);
-            this.button_changepwd.Margin = new System.Windows.Forms.Padding(2);
-            this.button_changepwd.Name = "button_changepwd";
-            this.button_changepwd.Size = new System.Drawing.Size(212, 43);
-            this.button_changepwd.TabIndex = 27;
-            this.button_changepwd.Text = "Change password";
-            this.button_changepwd.UseVisualStyleBackColor = false;
-            this.button_changepwd.Click += new System.EventHandler(this.button1_Click);
+            this.dateTimePicker1.TabIndex = 2;
             // 
             // UpdateInfo
             // 

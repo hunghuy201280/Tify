@@ -70,7 +70,7 @@ namespace Tify
             }
             catch (Exception)
             {
-                throw;
+             
             }
          
             connection.Close();

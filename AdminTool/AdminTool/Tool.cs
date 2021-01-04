@@ -869,7 +869,7 @@ delete From Playlist where playlistID=50
                 MessageBox.Show("Empty artist link");
                 return;
             }
-                
+           
             richTextBox1.Clear();
             addArtist(artistLink_textBox.Text);
         }

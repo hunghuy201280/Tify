@@ -1159,7 +1159,7 @@ namespace Tify
         }
         private void next_button_Click(object sender, EventArgs e)
         {
-            if (!(loopMode == LoopMode.On) && currentTrackIndex == nextTrack.Count)
+            if (!(loopMode == LoopMode.On) && currentTrackIndex == nextTrack.Count || nextTrack.Count==0)
             {
                 changeSong(new TrackInfo() { TrackLink = suggestedSong[0] });
                 setplayfrom("Suggests");
