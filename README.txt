@@ -1,3 +1,3 @@
-A Music Streaming App written in C#/Winform using .Net Framework
+# A Music Streaming App written in C#/Winform using .Net Framework
 
 
